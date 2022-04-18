@@ -1,4 +1,4 @@
-import styles from './PhotoTile.module.scss'
+import styles from './photoTile.module.scss'
 import Image from 'next/image'
 import { photoProps } from './types'
 
