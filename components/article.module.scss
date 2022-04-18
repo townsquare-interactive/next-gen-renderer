@@ -1,0 +1,60 @@
+@use '../styles/utils.scss';
+@use './styles/breakpoints.scss';
+
+.root {
+    width: 100%;
+
+    .wrapper {
+        padding: 20px;
+        max-width: 900px;
+        margin: 15px auto;
+        @include utils.useFlex;
+        flex-direction: column;
+
+        .imageBlock {
+            position: relative;
+            @include breakpoints.md {
+                width: 50%;
+                height: 300px;
+            }
+        }
+
+        .allText {
+            text-align: center;
+            padding: 10px;
+            .title {
+                margin-bottom: 20px;
+                //border-bottom: 2px solid #000;
+                font-weight: bold;
+
+                .text {
+                    font-size: 30px;
+                }
+            }
+
+            .textBlock {
+                .text {
+                    font-size: 20px;
+                }
+            }
+        }
+
+        //conditional classes
+        &.bordered {
+            background-color: rgba(249, 247, 197, 0.502);
+            border: 5px solid #000;
+        }
+
+        @include breakpoints.md {
+            &.imageArticle {
+                flex-direction: row;
+            }
+
+            &.imageArticle .allText {
+                width: 50%;
+                text-align: left;
+                justify-content: start;
+            }
+        }
+    }
+}

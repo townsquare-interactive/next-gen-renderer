@@ -1,0 +1,14 @@
+@use 'utils';
+
+.root {
+    width: 100%;
+
+    .wrapper {
+        padding: 20px;
+        @include utils.useFlex;
+
+        .text {
+            font-size: 30px;
+        }
+    }
+}

@@ -1,0 +1,23 @@
+@use '../styles/breakpoints.scss';
+
+.root {
+    width: 100%;
+    .wrapper {
+        .text {
+            text-align: center;
+        }
+        /* .imageHolder {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+
+            .imageBlock {
+                width: 50%;
+
+                @include breakpoints.md {
+                    width: 20%;
+                }
+            }
+        } */
+    }
+}

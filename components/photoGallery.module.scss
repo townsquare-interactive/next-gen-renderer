@@ -1,0 +1,19 @@
+@use '../styles/breakpoints.scss';
+
+.root {
+    .wrapper {
+        .imageHolder {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+
+            .imageBlock {
+                width: 50%;
+
+                @include breakpoints.md {
+                    width: 14.28%;
+                }
+            }
+        }
+    }
+}
