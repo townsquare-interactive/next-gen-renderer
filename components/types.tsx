@@ -55,3 +55,14 @@ export interface posts {
     posts: postData[]
     //posts:postData,
 }
+
+export interface blogData {
+    id: number
+    title: string
+    date: string
+    body: string
+}
+
+export interface blog {
+    allPostsData: blogData[]
+}

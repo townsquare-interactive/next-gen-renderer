@@ -4,8 +4,22 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.scss'
 import Script from 'next/script'
 import Article from '../components/Article'
+/*import { getSortedPostsData } from '../lib/posts'
+ import Link from 'next/link'
+import utilStyles from '../styles/utils.module.scss'
+import { blog } from '../components/types'
+import Date from '../components/date' */
 
-const Home: NextPage = () => {
+/* export async function getStaticProps() {
+    const allPostsData = getSortedPostsData()
+    return {
+        props: {
+            allPostsData,
+        },
+    }
+} */
+
+const Home = () => {
     return (
         <div className={styles.root}>
             <Head>
@@ -39,6 +53,21 @@ const Home: NextPage = () => {
                         //objectPosition="bottom center"
                     />
                 </div>
+
+                {/* <div className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+                    <h2 className={utilStyles.headingLg}>Blog</h2>
+                    <ul className={utilStyles.list}>
+                        {allPostsData.map(({ id, date, title }) => (
+                            <li className={utilStyles.listItem} key={id}>
+                                <Link href={`/posts/${id}`}>
+                                    <a>{title}</a>
+                                </Link>
+                                <br />
+                                <small className={utilStyles.lightText}>{<Date dateString={date} />}</small>
+                            </li>
+                        ))}
+                    </ul>
+                </div> */}
             </div>
             {/*             <Script
                 id="weather"

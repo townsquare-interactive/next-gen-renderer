@@ -16,7 +16,7 @@ const Navbar = () => {
                         <a>Gallery</a>
                     </Link>
                     <Link href="/">
-                        <a>Page 4</a>
+                        <a>Other Page</a>
                     </Link>
                 </div>
             </div>

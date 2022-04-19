@@ -2,24 +2,24 @@ import { postData, comments, postComment } from '../components/types'
 import { NextPage } from 'next'
 import { loadComponents } from 'next/dist/server/load-components'
 
-const Post = ({ id, comments }: comments) => {
-    //console.log(body)
+const Comments = ({ id, comments }: comments) => {
+    //console.log('comments', comments)
     return (
         <div>
-            <h1>Blog Number {id}</h1>
+            <h1>Blog Number {id} Comments</h1>
             {comments.map((comment) => (
                 <div key={comment.id}>
-                    <h3>Name: {comment.name}</h3>
+                    <h3>Email: {comment.email}</h3>
                     <p> {comment.body}</p>
                 </div>
             ))}
         </div>
     )
 }
-Post.getInitialProps = async ({ query }: any) => {
+Comments.getInitialProps = async ({ query }: any) => {
     //console.log(query)
 
-    const res = await fetch('https://jsonplaceholder.typicode.com/comments?postId=3')
+    const res = await fetch('https://jsonplaceholder.typicode.com/comments?postId=1')
     const data = await res.json()
     console.log('data', data)
 
@@ -31,4 +31,4 @@ Post.getInitialProps = async ({ query }: any) => {
     } */
 }
 
-export default Post
+export default Comments
