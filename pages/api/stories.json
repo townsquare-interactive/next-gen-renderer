@@ -1,0 +1,24 @@
+{
+    "story": [
+        {
+            "title": "The Three Little Pigs",
+            "id": "1",
+            "body": "Once upon a time there was an old mother pig who had three little pigs and not enough food to feed them. So when they were old enough, she sent them out into the world to seek their fortunes."
+        },
+        {
+            "title": "Winnie The Pooh",
+            "id": "2",
+            "body": "Story about a bear that plays in the woods with his friends."
+        },
+        {
+            "title": "Jack and The Beanstalk",
+            "id": "3",
+            "body": "A boy named Jack buys a magic bean."
+        },
+        {
+            "title": "The Tortoise and the Hare",
+            "id": "4",
+            "body": "A race between a hare and a turtoise takes an unexpected turn."
+        }
+    ]
+}

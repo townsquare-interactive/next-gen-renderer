@@ -39,6 +39,7 @@ const Home = () => {
                     height={500} // Desired size with correct aspect ratio
                     width={700} // Desired size with correct aspect ratio
                     alt=""
+                    /*                     sizes="(min-width: 767px) 33vw,(min-width: 568px) 50vw, 100vw" */
                 />
 
                 <div style={{ position: 'relative', width: '800px', height: '400px', maxWidth: '100%' }}>

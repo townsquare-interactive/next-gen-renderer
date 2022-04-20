@@ -31,19 +31,6 @@ const PhotoGallery = (props: imageUse) => {
                         </div>
                     ))}
                 </div>
-
-                <div style={{ position: 'relative', width: '900px', height: '400px', maxWidth: '100%' }}>
-                    <Image
-                        // Route of the image file
-                        src="https://images.pexels.com/photos/10914326/pexels-photo-10914326.jpeg"
-                        /* height={600} // Desired size with correct aspect ratio
-                    width={800} // Desired size with correct aspect ratio */
-                        layout="fill"
-                        objectFit="cover"
-                        alt=""
-                        //objectPosition="bottom center"
-                    />
-                </div>
             </div>
         </div>
     )

@@ -45,9 +45,6 @@ const Blog = (posts: posts) => {
 
             <div className={styles.wrapper}>
                 <h1 className={styles.text}>Blog Page</h1>
-                <h3>
-                    <i>Click to see article comments</i>
-                </h3>
             </div>
 
             {firstPosts.map((post: postData) => (
@@ -56,7 +53,7 @@ const Blog = (posts: posts) => {
                         <Article title={post.title} body={post.body} border={true} />
                     </a>
                 </Link> */
-                <Link href={`/blogs/${post.id}`} as={`/blogs/${post.id}`} key={post.id}>
+                <Link href={`/blogs/${post.id}`} key={post.id}>
                     <a>
                         <Article title={post.title} body={post.body} border={true} />
                     </a>

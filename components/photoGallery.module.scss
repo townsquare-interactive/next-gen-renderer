@@ -9,9 +9,11 @@
 
             .imageBlock {
                 width: 50%;
+                position: relative;
 
                 @include breakpoints.md {
                     width: 14.28%;
+                    //width: 75%;
                 }
             }
         }

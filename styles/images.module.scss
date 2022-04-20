@@ -1,0 +1,28 @@
+.root {
+    .wrapper {
+        text-align: center;
+
+        div {
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .fillBlock {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /*             position: relative;
+            width: 400px;
+            height: 200px;
+            max-width: 100%; */
+
+            p {
+                color: #fff;
+                position: absolute;
+                z-index: 9999999;
+                font-size: 30px;
+                font-weight: bold;
+            }
+        }
+    }
+}

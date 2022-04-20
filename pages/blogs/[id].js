@@ -10,6 +10,7 @@ export const getStaticPaths = async () => {
             params: { id: blog.id.toString() },
         }
     })
+    console.log('paths', paths)
     return {
         //props: { posts: data },
         paths,
@@ -30,10 +31,9 @@ export const getStaticProps = async (context) => {
 }
 
 const Details = ({ blog }) => {
-    console.log('blog', blog)
     return (
         <div>
-            <Article title={blog.title} body={blog.body} border={false} />
+            <Article title={`Blog #${blog.id}: ${blog.title}`} body={blog.body} border={false} />
         </div>
     )
 }

@@ -13,9 +13,16 @@
 
         .imageBlock {
             position: relative;
+            width: 800px;
+            height: 300px;
+            max-width: 100%;
+
+            position: relative;
+            img {
+                width: 100%;
+            }
             @include breakpoints.md {
                 width: 50%;
-                height: 300px;
             }
         }
 

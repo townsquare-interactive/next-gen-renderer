@@ -14,8 +14,9 @@ const PhotoTile = (props: photoProps) => {
                     <Image
                         // Route of the image file
                         src={props.url}
-                        height={300} // Desired size with correct aspect ratio
-                        width={300} // Desired size with correct aspect ratio
+                        height={300}
+                        width={300}
+                        //layout="fill"
                         alt=""
                     />
                 </div>
