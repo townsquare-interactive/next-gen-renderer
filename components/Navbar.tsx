@@ -15,8 +15,8 @@ const Navbar = () => {
                     <Link href="/gallery">
                         <a>Gallery</a>
                     </Link>
-                    <Link href="/">
-                        <a>Other Page</a>
+                    <Link href="/images">
+                        <a>Image Testing</a>
                     </Link>
                 </div>
             </div>
