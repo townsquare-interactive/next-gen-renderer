@@ -66,3 +66,8 @@ export interface blogData {
 export interface blog {
     allPostsData: blogData[]
 }
+
+export interface HeaderProps {
+    headline?: string
+    imageUrl: string
+}

@@ -1,27 +1,15 @@
 import dl1 from '../images/pexels-pixabay-260922.jpg'
 import styles from './header.module.scss'
 import Image from 'next/image'
-
-interface HeaderProps {
-    headline: string
-}
+import { HeaderProps } from './types'
 
 function Header(props: HeaderProps) {
     return (
         <div className={styles.root}>
-            {/* <div className={styles.wrapper}>
-                <div className={styles.headline}>{props.headline}</div> */}
-            {/*                 <Image
-                    //src="/images/pexels-pixabay-260922.jpg"
-                    src={dl1}
-                    width="400px"
-                    height="300px"
-                /> */}
-
             <div className={styles.wrapper}>
-                <div className={styles.headline}>{props.headline}</div>
+                {props.headline && <div className={styles.headline}>{props.headline}</div>}
                 <Image
-                    src="https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg"
+                    src={props.imageUrl}
                     layout="fill"
                     objectFit="cover"
                     alt=""
