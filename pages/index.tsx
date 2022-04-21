@@ -5,6 +5,7 @@ import styles from '../styles/Home.module.scss'
 import Script from 'next/script'
 import Article from '../components/Article'
 import Header from '../components/Header'
+import HeroBanner from '../components/HeroBanner'
 /*import { getSortedPostsData } from '../lib/posts'
  import Link from 'next/link'
 import utilStyles from '../styles/utils.module.scss'
@@ -29,6 +30,7 @@ const Home = () => {
             </Head>{' '}
             <div className={styles.wrapper}>
                 <Header headline="Menu Stuff" />
+                <HeroBanner headline="Menu Stuff" />
                 <h1>Index Page</h1>
                 <Article
                     title="Hello welcome to my Next.js playground"
