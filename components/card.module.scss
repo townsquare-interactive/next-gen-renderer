@@ -1,5 +1,6 @@
 @use '../styles/breakpoints.scss';
 @use 'sass:math';
+@use '../styles/variables.scss';
 
 //Variables
 $ratio: math.div(4, 3);
@@ -11,13 +12,13 @@ $image-width: #{$image-width-decimal * 100}vw;
 $image-height: $image-width / $ratio;
 
 //Content width and max-size of content
-$content-width: 80%;
-$max-main-width: 1200px;
+//$content-width: 80%;
+//$max-main-width: 1200px;
 
 //Image and content size calculations
-$img-height-max: math.div($image-width-decimal * $max-main-width, $ratio);
-$max-main-image-width: $max-main-width * $image-width-decimal;
-$max-main-content-width: $max-main-width * (1 - $image-width-decimal);
+$img-height-max: math.div($image-width-decimal * variables.$max-main-width, $ratio);
+$max-main-image-width: variables.$max-main-width * $image-width-decimal;
+$max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
 
 //mixin for cropping space from top of text
 $lh-height: 1.3;
@@ -106,21 +107,25 @@ $lh-height: 1.3;
             .blockPicture {
                 width: 100%;
                 position: relative;
-                height: 350px;
+                // height: 350px;
 
                 @include breakpoints.md {
+                    position: relative;
                     aspect-ratio: $ratio;
-                    height: auto;
                 }
 
                 img {
-                    width: 100%;
+                    width: 100% !important;
                     object-fit: cover;
+                    /* height: auto !important;
+                    width: auto;
+                    min-height: auto; */
                     @include breakpoints.md {
                         position: absolute;
                         top: 0;
                         left: 0;
                         height: 100%;
+                        width: 100%;
                     }
                 }
             }
@@ -164,7 +169,7 @@ $lh-height: 1.3;
         }
     }
     //Unsetting side block aspect ratio so it can stretch to allow max-content size
-    @include breakpoints.custom(math.div($max-main-width, math.div($content-width, 100%))) {
+    @include breakpoints.custom(math.div(variables.$max-main-width, math.div(variables.$content-width, 100%))) {
         .wrapper .colorBlock .colorFill {
             height: $img-height-max;
             aspect-ratio: auto;

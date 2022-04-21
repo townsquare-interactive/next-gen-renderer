@@ -1,29 +1,16 @@
 import styles from './card.module.scss'
 import Image from 'next/image'
 
-function Card(props) {
+interface Card {
+    imgSrc?: string
+    children?: string
+    title?: string
+}
+
+function Card(props: Card) {
     const { imgSrc, children, title } = props
 
     return (
-        /*         <div className={styles.root}>
-            <div className={styles.wrapper}>
-                <div className={styles.title}>
-                    <div className={styles.titleText}>{title}</div>
-                </div>
-                <div className={styles.features}>
-                    <div className={styles.imageBlock}>
-                        <div className={styles.colorBlock}>
-                            <div className={styles.colorFill}></div>
-                        </div>
-                        <div className={styles.blockPicture}>{imgSrc && <img src={imgSrc} alt="" />}</div>
-                    </div>
-                    <div className={styles.textBlock}>
-                        <div className={styles.text}>{children}</div>
-                    </div>
-                </div>
-            </div> */
-
-        //D versh
         <div className={styles.root}>
             <div className={styles.wrapper}>
                 <div className={styles.title}>
@@ -42,8 +29,18 @@ function Card(props) {
                         <div className={styles.colorFill}></div>
                     </div>
                     <div className={styles.imageBlock}>
-                        {/* <div className={styles.blockPicture}>{imgSrc && <img src={imgSrc} alt={title} />}</div> */}
-                        <div className={styles.blockPicture}>{imgSrc && <Image src={imgSrc} layout="fill" alt={title} />}</div>
+                        <div className={styles.blockPicture}>
+                            {imgSrc && (
+                                <Image
+                                    src={imgSrc}
+                                    //layout="fill"
+                                    height="300px"
+                                    width="400px"
+                                    layout="responsive"
+                                    alt={title}
+                                />
+                            )}
+                        </div>
                     </div>
                     <div className={styles.textBlock}>
                         <div className={styles.text}>{children}</div>

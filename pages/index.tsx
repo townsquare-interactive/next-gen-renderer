@@ -36,6 +36,9 @@ const Home = () => {
                     title="Hello welcome to my Next.js playground"
                     body="I am using this site to experiment with the capabilities of Next.js. Using things like the Image tag, getStaticProps, etc.."
                     imageUrl="https://images.pexels.com/photos/10914326/pexels-photo-10914326.jpeg"
+                    //border={false}
+                    linkUrl="/"
+                    btnText="Contact Us"
                 />
 
                 <Image
