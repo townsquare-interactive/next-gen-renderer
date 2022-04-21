@@ -16,7 +16,9 @@ const PhotoTile = (props: photoProps) => {
                         src={props.url}
                         height={300}
                         width={300}
-                        //layout="fill"
+                        /*                        layout="fill"
+                        objectPosition="bottom center"
+                        object-fit="cover" */
                         alt=""
                     />
                 </div>

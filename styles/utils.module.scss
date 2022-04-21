@@ -4,6 +4,12 @@
     align-items: center;
 }
 
+$root-bottom-margin: 50px;
+@mixin root {
+    width: 100%;
+    margin-bottom: $root-bottom-margin;
+}
+
 .heading2Xl {
     font-size: 2.5rem;
     line-height: 1.2;

@@ -65,8 +65,8 @@ const Gallery = (data: images) => {
                 <PhotoGallery images={firstImages} />
 
                 <div /* style={{ position: 'relative', width: '900px', height: '400px', maxWidth: '100%' }} */>
-                    <Image
-                        // Route of the image file
+                    {/*                     <Image
+
                         src="https://images.pexels.com/photos/10914326/pexels-photo-10914326.jpeg"
                         height={600}
                         width={800}
@@ -74,8 +74,8 @@ const Gallery = (data: images) => {
                         layout="responsive"
                         objectFit="contain"
                         alt=""
-                        //objectPosition="bottom center"
-                    />
+
+                    /> */}
                 </div>
             </div>
         </div>
