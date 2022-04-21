@@ -1,0 +1,177 @@
+@use '../styles/breakpoints.scss';
+@use 'sass:math';
+
+//Variables
+$ratio: math.div(4, 3);
+
+//Setting image sizes
+$image-width-percentage: 25%;
+$image-width-decimal: 0.25;
+$image-width: #{$image-width-decimal * 100}vw;
+$image-height: $image-width / $ratio;
+
+//Content width and max-size of content
+$content-width: 80%;
+$max-main-width: 1200px;
+
+//Image and content size calculations
+$img-height-max: math.div($image-width-decimal * $max-main-width, $ratio);
+$max-main-image-width: $max-main-width * $image-width-decimal;
+$max-main-content-width: $max-main-width * (1 - $image-width-decimal);
+
+//mixin for cropping space from top of text
+$lh-height: 1.3;
+@mixin lhCrop($line-height) {
+    &::before {
+        content: '';
+        display: block;
+        height: 0;
+        width: 0;
+        margin-top: calc((1 - #{$line-height}) * 0.8em);
+    }
+}
+
+/*------------------------------------------------------------------*/
+
+.root {
+    .title {
+        @include breakpoints.md {
+            display: flex;
+            flex-direction: row;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .textGutter {
+            flex: 10 0 0;
+        }
+
+        .insideTextGutter {
+            flex: 20 0 0;
+            max-width: $max-main-image-width;
+        }
+
+        .titleText {
+            display: flex;
+            font-size: 40px;
+            font-weight: bold;
+            text-align: center;
+            @include breakpoints.md {
+                text-align: left;
+                align-self: start;
+                flex: 60 0 0;
+                max-width: $max-main-content-width;
+            }
+
+            .text {
+                max-width: $max-main-content-width;
+                margin-left: auto;
+                padding: 20px;
+                flex: 60 0 0;
+                @include breakpoints.md {
+                    padding: 0px 0px 0px 20px;
+                }
+            }
+        }
+    }
+    .features {
+        display: flex;
+        flex-direction: column;
+        @include breakpoints.md {
+            flex-direction: row;
+        }
+
+        .colorBlock {
+            flex: 10 0 0;
+            display: none;
+            @include breakpoints.md {
+                display: block;
+            }
+
+            .colorFill {
+                background-color: grey;
+                aspect-ratio: math.div($ratio, 2);
+                height: $image-height;
+            }
+        }
+
+        .imageBlock {
+            @include breakpoints.md {
+                flex: 20 0 0;
+                background-color: grey;
+                align-self: start;
+                max-width: $max-main-image-width;
+                width: $image-width;
+            }
+            .blockPicture {
+                width: 100%;
+                position: relative;
+                height: 350px;
+
+                @include breakpoints.md {
+                    aspect-ratio: $ratio;
+                    height: auto;
+                }
+
+                img {
+                    width: 100%;
+                    object-fit: cover;
+                    @include breakpoints.md {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        height: 100%;
+                    }
+                }
+            }
+        }
+
+        .textBlock {
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            max-width: $max-main-content-width;
+
+            @include breakpoints.md {
+                flex: 60 0 0;
+                position: relative;
+            }
+
+            .text {
+                padding: 20px;
+                padding-top: 0;
+                font-size: 25px;
+                text-align: center;
+                @include breakpoints.md {
+                    text-align: left;
+                    line-height: $lh-height;
+                    @include lhCrop($lh-height); //line-height: 1.2
+                }
+            }
+        }
+    }
+    &:nth-child(even) {
+        @include breakpoints.md {
+            .title {
+                flex-direction: row-reverse;
+            }
+        }
+    }
+
+    &:nth-child(even) .features {
+        @include breakpoints.md {
+            flex-direction: row-reverse;
+        }
+    }
+    //Unsetting side block aspect ratio so it can stretch to allow max-content size
+    @include breakpoints.custom(math.div($max-main-width, math.div($content-width, 100%))) {
+        .wrapper .colorBlock .colorFill {
+            height: $img-height-max;
+            aspect-ratio: auto;
+        }
+    }
+}
+
+/* .root {
+    @include maincode;
+} */

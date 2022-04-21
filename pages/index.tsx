@@ -29,8 +29,8 @@ const Home = () => {
                 <meta property="og:title" content="My page title" key="title" />
             </Head>{' '}
             <div className={styles.wrapper}>
-                <Header headline="Menu Stuff" imageUrl="https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg" />
-                <HeroBanner headline="Menu Stuff" imageUrl="https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg" />
+                <Header headline="Next Website" imageUrl="https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg" />
+                {/*  <HeroBanner headline="Menu Stuff" imageUrl="https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg" /> */}
                 <h1>Index Page</h1>
                 <Article
                     title="Hello welcome to my Next.js playground"

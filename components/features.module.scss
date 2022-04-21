@@ -1,0 +1,8 @@
+@use '../styles/utils.module.scss';
+
+.root {
+    @include utils.root;
+
+    .wrapper {
+    }
+}

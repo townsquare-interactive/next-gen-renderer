@@ -18,6 +18,9 @@ const Navbar = () => {
                     <Link href="/images">
                         <a>Image Testing</a>
                     </Link>
+                    <Link href="/menu">
+                        <a>Menu</a>
+                    </Link>
                 </div>
             </div>
         </div>
