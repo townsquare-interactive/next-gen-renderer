@@ -35,7 +35,6 @@ export interface postData {
     body: string
     border?: boolean
     imageUrl?: string
-    cta_btn?: string
     linkUrl?: string
     btnText?: string
 }

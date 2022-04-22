@@ -6,6 +6,7 @@ import Script from 'next/script'
 import Article from '../components/Article'
 import Header from '../components/Header'
 import HeroBanner from '../components/HeroBanner'
+import PhotoTiles3 from '../components/PhotoTiles3'
 /*import { getSortedPostsData } from '../lib/posts'
  import Link from 'next/link'
 import utilStyles from '../styles/utils.module.scss'
@@ -76,6 +77,7 @@ const Home = () => {
                         ))}
                     </ul>
                 </div> */}
+                <PhotoTiles3 />
             </div>
             {/*             <Script
                 id="weather"

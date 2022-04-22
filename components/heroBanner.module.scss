@@ -1,5 +1,6 @@
 @use '../styles/utils.module.scss';
 @use '../styles/breakpoints.scss';
+@use '../styles/variables.scss';
 
 .root {
     @include utils.root;
@@ -12,6 +13,7 @@
         margin: 0 auto;
         height: 350px;
         width: 100%;
+        max-width: variables.$max-main-width;
 
         @include breakpoints.md {
             width: 80%;

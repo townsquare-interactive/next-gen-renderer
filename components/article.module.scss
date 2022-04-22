@@ -66,11 +66,14 @@ $lh-height: 1.3;
                     &:after {
                         padding: 10px;
                         content: '>';
+                        color: rgb(230, 211, 65);
                     }
-                    &:hover {
-                        transition-duration: 0.5s !important;
-                        transition-timing-function: ease-in !important;
-                        padding-left: 20px;
+                    @include breakpoints.md {
+                        &:hover {
+                            transition-duration: 0.5s !important;
+                            transition-timing-function: ease-in !important;
+                            padding-left: 20px;
+                        }
                     }
                 }
             }
