@@ -17,53 +17,95 @@ $ratio: math.div(4, 3);
     width: 80%;
     max-width: variables.$max-main-width;
     margin-top: 20px;
-
     .wrapper {
-        @include breakpoints.md {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-
-            gap: 5px;
-        }
-    }
-
-    .tileImage {
-        position: relative;
-        max-width: 100%;
-        aspect-ratio: $ratio;
-
-        &.mainImage {
-            grid-row: 1 / 3;
-            grid-column: 1/3;
-            // height: 500px;
-            //height: $tile-height;
-        }
-
-        &.thirdImage {
-        }
-
-        .text {
-            color: #fff;
-            padding: 10px;
-            font-size: 25px;
-            position: absolute;
-            bottom: 0;
-            right: 0;
-
-            font-weight: bold;
-
-            &:after {
-                padding: 10px;
-                content: '>';
-                color: rgb(230, 211, 65);
+        .tileBlock {
+            @include breakpoints.md {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 5px;
             }
-            /*  @include breakpoints.md {
+
+            .tileImage {
+                position: relative;
+                max-width: 100%;
+
+                &.mainImage {
+                    grid-row: 1 / 3;
+                    grid-column: 1/3;
+                    aspect-ratio: $ratio;
+                    // height: 500px;
+                    //height: $tile-height;
+                }
+                &.sideImage {
+                    aspect-ratio: $ratio;
+                }
+
+                //Conditionals for two images and one image
+                &.sideImage2 {
+                    aspect-ratio: $ratio;
+                    @include breakpoints.md {
+                        grid-row: 1 / 3;
+                        aspect-ratio: unset;
+                    }
+                }
+
+                &.mainImage1 {
+                    @include breakpoints.md {
+                        grid-row: 1 / 3;
+                        grid-column: 1/4;
+                    }
+                    aspect-ratio: $ratio;
+                }
+
+                .text {
+                    color: #fff;
+                    padding: 10px;
+                    font-size: 25px;
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+
+                    font-weight: bold;
+
+                    /*  @include breakpoints.md {
                         &:hover {
                             transition-duration: 0.5s !important;
                             transition-timing-function: ease-in !important;
                             padding-left: 20px;
                         }
                     } */
+                }
+                .linked {
+                    img {
+                        filter: grayscale(100);
+                    }
+
+                    &:hover img {
+                        filter: grayscale(0);
+                    }
+                    .text:after {
+                        padding: 10px;
+                        content: '>';
+                        color: rgb(230, 211, 65);
+                    }
+                }
+            }
+
+            .tileBlockO2 {
+                .tileImage {
+                    &.sideImage {
+                        grid-column: 1/3;
+                    }
+                }
+            }
+            .tileBlockO1 {
+                .tileImage {
+                    &.mainImage {
+                        grid-row: 1 / 4;
+                        grid-column: 1/3;
+                    }
+                }
+            }
         }
     }
 }

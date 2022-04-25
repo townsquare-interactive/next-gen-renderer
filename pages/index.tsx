@@ -23,6 +23,24 @@ import Date from '../components/date' */
 } */
 
 const Home = () => {
+    const imageData = [
+        {
+            imageUrl: 'https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg',
+            linkUrl: '/menu',
+            title: 'Menu',
+        },
+        {
+            imageUrl: 'https://images.pexels.com/photos/219692/pexels-photo-219692.jpeg',
+            //linkUrl: '/images',
+            title: 'Images',
+        },
+        {
+            imageUrl: 'https://images.pexels.com/photos/10838475/pexels-photo-10838475.jpeg',
+            linkUrl: '/blog',
+            title: 'Blog',
+        },
+    ]
+
     return (
         <div className={styles.root}>
             <Head>
@@ -77,18 +95,19 @@ const Home = () => {
                         ))}
                     </ul>
                 </div> */}
-                <PhotoTiles3 />
+
+                {/*                 <PhotoTiles3
+                    imageUrls={[
+                        'https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg',
+                        'https://images.pexels.com/photos/219692/pexels-photo-219692.jpeg',
+                        'https://images.pexels.com/photos/10838475/pexels-photo-10838475.jpeg',
+                    ]}
+                    linkUrl={['/menu', '/blog', '/images']}
+                    titles={['Menu', 'Blog', 'Images']}
+                /> */}
+
+                <PhotoTiles3 tileData={imageData} />
             </div>
-            {/*             <Script
-                id="weather"
-                strategy="lazyOnload"
-                dangerouslySetInnerHTML={{
-                    __html: `
-    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
-`,
-                }}
-                onLoad={() => console.log(`Weather script loaded`)}
-            /> */}
         </div>
     )
 }
