@@ -73,3 +73,13 @@ export interface HeaderProps {
     headline?: string
     imageUrl: string
 }
+
+export interface imageTile {
+    imageUrl: string
+    linkUrl?: string
+    title: string
+}
+
+export interface PhotoTiles {
+    tileData: imageTile[]
+}

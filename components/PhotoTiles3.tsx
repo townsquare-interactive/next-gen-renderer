@@ -2,23 +2,17 @@ import styles from './photoTiles3.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
 import cn from 'classnames'
-import { secondsToMilliseconds } from 'date-fns'
+import { PhotoTiles } from './types'
 
-/* interface PhotoTiles {
-    imageUrls: string[]
-    linkUrl: string[]
-    titles: string[]
-} */
-
-interface imageData {
+/* interface imageData {
     imageUrl: string
     linkUrl?: string
     title: string
-}
+} 
 
 interface PhotoTiles {
     tileData: imageData[]
-}
+}*/
 
 const PhotoTiles3 = ({ tileData }: PhotoTiles) => {
     return (
