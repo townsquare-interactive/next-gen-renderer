@@ -47,11 +47,16 @@ const Home = () => {
             <Head>
                 <title>Home Page</title>
                 <meta property="og:title" content="My page title" key="title" />
-            </Head>{' '}
+            </Head>
             <div className={styles.wrapper}>
-                <Header headline="Next Website" imageUrl="https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg" />
-                {/*  <HeroBanner headline="Menu Stuff" imageUrl="https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg" /> */}
-                <h1>Index Page</h1>
+                {/* <Header headline="Next Website" imageUrl="https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg" /> */}
+
+                <Hero
+                    headline="My Website"
+                    imageUrl="https://images.pexels.com/photos/10838475/pexels-photo-10838475.jpeg"
+                    backgroundImage="/images/seamless-5178982.png"
+                />
+
                 <Article
                     title="Hello welcome to my Next.js playground"
                     body="I am using this site to experiment with the capabilities of Next.js. Using things like the Image tag, getStaticProps, etc.."
@@ -60,26 +65,6 @@ const Home = () => {
                     linkUrl="/"
                     btnText="Contact Us"
                 />
-
-                {/*                 <Image
-                    src="https://images.pexels.com/photos/10838475/pexels-photo-10838475.jpeg"
-                    height={500} // Desired size with correct aspect ratio
-                    width={700} // Desired size with correct aspect ratio
-                    alt=""
-     
-                />
-
-                <div style={{ position: 'relative', width: '800px', height: '400px', maxWidth: '100%' }}>
-                    <Image
-                        // Route of the image file
-                        src="https://images.pexels.com/photos/10838475/pexels-photo-10838475.jpeg"
-
-                        layout="fill"
-                        objectFit="cover"
-                        alt=""
-                        //objectPosition="bottom center"
-                    />
-                </div> */}
 
                 {/* <div className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
                     <h2 className={utilStyles.headingLg}>Blog</h2>
@@ -107,8 +92,6 @@ const Home = () => {
                 /> */}
 
                 <PhotoTiles3 tileData={imageData} />
-
-                <Hero headline="My Website" imageUrl="https://images.pexels.com/photos/10838475/pexels-photo-10838475.jpeg" />
             </div>
         </div>
     )

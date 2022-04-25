@@ -4,16 +4,6 @@ import Link from 'next/link'
 import cn from 'classnames'
 import { PhotoTiles } from './types'
 
-/* interface imageData {
-    imageUrl: string
-    linkUrl?: string
-    title: string
-} 
-
-interface PhotoTiles {
-    tileData: imageData[]
-}*/
-
 const PhotoTiles3 = ({ tileData }: PhotoTiles) => {
     return (
         <div className={styles.root}>
@@ -81,7 +71,7 @@ const PhotoTiles3 = ({ tileData }: PhotoTiles) => {
                     </div>
                 )}
 
-                {/*---------------------------------------Part 2 -----------------*/}
+                {/*---------------------------------------Two Images Passed ----------------------------------------------------------------*/}
                 {tileData.length == 2 && (
                     <div className={styles.tileBlock}>
                         <div className={`${styles.tileImage} ${styles.mainImage}`}>
@@ -121,8 +111,7 @@ const PhotoTiles3 = ({ tileData }: PhotoTiles) => {
                     </div>
                 )}
 
-                {/*--------------------------------------One image passed ----------------------*/}
-                {/*---------------------------------------Part 2 -----------------*/}
+                {/*--------------------------------------One image passed ------------------------------------------*/}
                 {tileData.length == 1 && (
                     <div className={styles.tileBlock}>
                         <div className={`${styles.tileImage} ${styles.mainImage1}`}>

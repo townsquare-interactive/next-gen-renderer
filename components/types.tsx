@@ -74,6 +74,12 @@ export interface HeaderProps {
     imageUrl: string
 }
 
+export interface Hero {
+    headline?: string
+    imageUrl: string
+    backgroundImage?: string
+}
+
 export interface imageTile {
     imageUrl: string
     linkUrl?: string

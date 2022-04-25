@@ -1,33 +1,40 @@
 import dl1 from '../images/pexels-pixabay-260922.jpg'
 import styles from './hero.module.scss'
 import Image from 'next/image'
-import { HeaderProps } from './types'
+import { Hero } from './types'
 
-function Hero(props: HeaderProps) {
+function Hero(props: Hero) {
     return (
         <div className={styles.root}>
             <div className={styles.wrapper}>
-                <Image
-                    src="/images/honeycomb-34984.png"
-                    layout="fill"
-                    objectFit="cover"
-                    alt=""
-                    //objectPosition="bottom center"
-                />
-
-                <div className={styles.gutter}></div>
-                <div className={styles.heroImage}>
-                    <Image
-                        src={props.imageUrl}
-                        layout="fill"
-                        objectFit="cover"
-                        alt=""
-                        //objectPosition="bottom center"
-                    />
+                <div className={styles.gutter}>
+                    {props.backgroundImage && (
+                        <div className={styles.backgroundBlock}>
+                            <Image src={props.backgroundImage} layout="fill" objectFit="cover" alt="" />
+                        </div>
+                    )}
                 </div>
+                {props.imageUrl && (
+                    <div className={styles.heroImage}>
+                        <Image src={props.imageUrl} layout="fill" objectFit="cover" alt="" />
+                    </div>
+                )}
 
-                <div className={styles.headline}>{props.headline}</div>
-                <div className={`${styles.gutter} ${styles.gutter_alt}`}></div>
+                <div className={styles.headline}>
+                    {props.backgroundImage && (
+                        <div className={styles.backgroundBlock}>
+                            <Image src={props.backgroundImage} layout="fill" objectFit="cover" alt="" />
+                            <div className={styles.text}>{props.headline}</div>
+                        </div>
+                    )}
+                </div>
+                <div className={`${styles.gutter} ${styles.gutter_alt}`}>
+                    {props.backgroundImage && (
+                        <div className={styles.backgroundBlock}>
+                            <Image src={props.backgroundImage} layout="fill" objectFit="cover" alt="" />
+                        </div>
+                    )}
+                </div>
             </div>
         </div>
     )
