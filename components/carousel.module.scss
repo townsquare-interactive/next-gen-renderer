@@ -1,0 +1,33 @@
+@use '../styles/utils.module.scss';
+
+.root {
+    width: 100%;
+
+    .wrapper {
+        margin-bottom: 40px;
+        max-width: 900px;
+        margin: 40px auto;
+
+        //modifying before slider arrows
+        *:before {
+            color: #000;
+        }
+
+        /*         .slick-prev:before,
+        .slick-next:before {
+            color: #000 !important;
+        } */
+
+        .item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            p {
+                padding: 20px;
+                max-width: 700px;
+                margin: 0 auto;
+            }
+        }
+    }
+}

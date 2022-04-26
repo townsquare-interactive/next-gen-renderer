@@ -9,6 +9,8 @@ import HeroBanner from '../components/HeroBanner'
 import Hero from '../components/Hero'
 import PhotoTiles3 from '../components/PhotoTiles3'
 import Label from '../components/Label'
+import Carousel from '../components/Carousel'
+
 /*import { getSortedPostsData } from '../lib/posts'
  import Link from 'next/link'
 import utilStyles from '../styles/utils.module.scss'
@@ -97,7 +99,9 @@ const Home = () => {
 
                 <PhotoTiles3 tileData={imageData} />
 
-                <Label text="Quotes" border={true} />
+                {/*                 <Label text="Quotes" border={true} />
+
+                <Carousel /> */}
             </div>
         </div>
     )
