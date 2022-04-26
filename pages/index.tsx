@@ -8,6 +8,7 @@ import Header from '../components/Header'
 import HeroBanner from '../components/HeroBanner'
 import Hero from '../components/Hero'
 import PhotoTiles3 from '../components/PhotoTiles3'
+import Label from '../components/Label'
 /*import { getSortedPostsData } from '../lib/posts'
  import Link from 'next/link'
 import utilStyles from '../styles/utils.module.scss'
@@ -55,6 +56,7 @@ const Home = () => {
                     headline="My Website"
                     imageUrl="https://images.pexels.com/photos/10838475/pexels-photo-10838475.jpeg"
                     backgroundImage="/images/seamless-5178982.png"
+                    //reverse={true}
                 />
 
                 <Article
@@ -91,7 +93,11 @@ const Home = () => {
                     titles={['Menu', 'Blog', 'Images']}
                 /> */}
 
+                <Label text="Photo Tiles" />
+
                 <PhotoTiles3 tileData={imageData} />
+
+                <Label text="Quotes" border={true} />
             </div>
         </div>
     )

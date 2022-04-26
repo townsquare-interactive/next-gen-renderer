@@ -1,11 +1,40 @@
-/* export interface imageData {
-    id: string
-    author: string
-    width: number
-    height: number
-    url: string
-    download_url: string
-} */
+/* Componenets */
+
+export interface HeaderProps {
+    headline?: string
+    imageUrl: string
+}
+
+export interface HeroProps {
+    headline?: string
+    imageUrl: string
+    backgroundImage?: string
+    reverse?: boolean
+}
+
+export interface ArticleProps {
+    title: string
+    body: string
+    border?: boolean
+    imageUrl?: string
+    linkUrl?: string
+    btnText?: string
+}
+
+export interface LabelProps {
+    text: string
+    border?: boolean
+}
+
+export interface imageTile {
+    imageUrl: string
+    linkUrl?: string
+    title: string
+}
+
+export interface PhotoTiles3Props {
+    tileData: imageTile[]
+}
 
 export interface imageData {
     albumId: number
@@ -67,25 +96,4 @@ export interface blogData {
 
 export interface blog {
     allPostsData: blogData[]
-}
-
-export interface HeaderProps {
-    headline?: string
-    imageUrl: string
-}
-
-export interface Hero {
-    headline?: string
-    imageUrl: string
-    backgroundImage?: string
-}
-
-export interface imageTile {
-    imageUrl: string
-    linkUrl?: string
-    title: string
-}
-
-export interface PhotoTiles {
-    tileData: imageTile[]
 }

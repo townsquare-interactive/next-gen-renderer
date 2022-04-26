@@ -1,12 +1,18 @@
 import dl1 from '../images/pexels-pixabay-260922.jpg'
 import styles from './hero.module.scss'
 import Image from 'next/image'
-import { Hero } from './types'
+import { HeroProps } from './types'
+import cn from 'classnames'
 
-function Hero(props: Hero) {
+function Hero(props: HeroProps) {
     return (
         <div className={styles.root}>
-            <div className={styles.wrapper}>
+            <div
+                className={cn({
+                    [styles.wrapper]: true,
+                    [styles.reverse]: props.reverse,
+                })}
+            >
                 <div className={styles.gutter}>
                     {props.backgroundImage && (
                         <div className={styles.backgroundBlock}>

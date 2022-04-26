@@ -2,9 +2,9 @@ import styles from './photoTiles3.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
 import cn from 'classnames'
-import { PhotoTiles } from './types'
+import { PhotoTiles3Props } from './types'
 
-const PhotoTiles3 = ({ tileData }: PhotoTiles) => {
+const PhotoTiles3 = ({ tileData }: PhotoTiles3Props) => {
     return (
         <div className={styles.root}>
             <div className={styles.wrapper}>

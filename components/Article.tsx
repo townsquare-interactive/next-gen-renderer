@@ -1,14 +1,9 @@
 import styles from './article.module.scss'
-import { postData } from '../components/types'
+import { ArticleProps } from '../components/types'
 import Image from 'next/image'
 import cn from 'classnames'
 
-/* interface postData {
-    title: string
-    body: string
-} */
-
-const Article = (props: postData) => {
+const Article = (props: ArticleProps) => {
     const { title, body, border = true, imageUrl, linkUrl, btnText } = props
     return (
         <div className={styles.root}>
