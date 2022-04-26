@@ -1,3 +1,6 @@
+@use 'sass:math';
+
 /* Global variables */
 $content-width: 80%;
 $max-main-width: 1200px;
+$aspect-ratio-main: math.div(4, 3);

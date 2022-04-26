@@ -9,7 +9,6 @@ import HeroBanner from '../components/HeroBanner'
 import Hero from '../components/Hero'
 import PhotoTiles3 from '../components/PhotoTiles3'
 import Label from '../components/Label'
-import Carousel from '../components/Carousel'
 
 /*import { getSortedPostsData } from '../lib/posts'
  import Link from 'next/link'
@@ -44,6 +43,25 @@ const Home = () => {
             title: 'Blog',
         },
     ]
+    const imageData1 = [
+        {
+            imageUrl: 'https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg',
+            linkUrl: '/menu',
+            title: 'Menu',
+        },
+        {
+            imageUrl: 'https://images.pexels.com/photos/219692/pexels-photo-219692.jpeg',
+            //linkUrl: '/images',
+            title: 'Images',
+        },
+    ]
+    const imageData2 = [
+        {
+            imageUrl: 'https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg',
+            linkUrl: '/menu',
+            title: 'Menu',
+        },
+    ]
 
     return (
         <div className={styles.root}>
@@ -63,7 +81,7 @@ const Home = () => {
 
                 <Article
                     title="Hello welcome to my Next.js playground"
-                    body="I am using this site to experiment with the capabilities of Next.js. Using things like the Image tag, getStaticProps, etc.."
+                    body="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. "
                     imageUrl="https://images.pexels.com/photos/219692/pexels-photo-219692.jpeg"
                     //border={false}
                     linkUrl="/"
@@ -99,9 +117,11 @@ const Home = () => {
 
                 <PhotoTiles3 tileData={imageData} />
 
-                {/*                 <Label text="Quotes" border={true} />
+                <PhotoTiles3 tileData={imageData1} />
 
-                <Carousel /> */}
+                <PhotoTiles3 tileData={imageData2} />
+
+                {/*                 <Label text="Quotes" border={true} />*/}
             </div>
         </div>
     )

@@ -23,9 +23,11 @@ $lh-height: 1.3;
 
         .imageBlock {
             position: relative;
-            width: 800px;
-            height: 300px;
+            /*  width: 800px;
+            height: 300px; */
+            aspect-ratio: variables.$aspect-ratio-main;
             max-width: 100%;
+            height: 200px;
 
             position: relative;
             img {
@@ -33,6 +35,7 @@ $lh-height: 1.3;
             }
             @include breakpoints.md {
                 width: 50%;
+                height: auto;
             }
         }
 
