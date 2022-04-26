@@ -7,7 +7,7 @@ export interface HeaderProps {
 
 export interface HeroProps {
     headline?: string
-    imageUrl: string
+    imageUrl?: string
     backgroundImage?: string
     reverse?: boolean
 }
@@ -28,8 +28,8 @@ export interface LabelProps {
 
 export interface imageTile {
     imageUrl: string
+    linkText: string
     linkUrl?: string
-    title: string
 }
 
 export interface PhotoTiles3Props {

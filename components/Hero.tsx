@@ -5,39 +5,37 @@ import { HeroProps } from './types'
 import cn from 'classnames'
 
 function Hero(props: HeroProps) {
+    const { reverse = false, backgroundImage, imageUrl, headline = '' } = props
     return (
         <div className={styles.root}>
             <div
-                className={cn({
-                    [styles.wrapper]: true,
-                    [styles.reverse]: props.reverse,
+                className={cn(styles.wrapper, {
+                    [styles.reverse]: reverse,
                 })}
             >
                 <div className={styles.gutter}>
-                    {props.backgroundImage && (
+                    {backgroundImage && (
                         <div className={styles.backgroundBlock}>
-                            <Image src={props.backgroundImage} layout="fill" objectFit="cover" alt="" />
+                            <Image src={backgroundImage} layout="fill" objectFit="cover" alt="" />
                         </div>
                     )}
                 </div>
-                {props.imageUrl && (
+                {imageUrl && (
                     <div className={styles.heroImage}>
-                        <Image src={props.imageUrl} layout="fill" objectFit="cover" alt="" />
+                        <Image src={imageUrl} layout="fill" objectFit="cover" alt="" />
                     </div>
                 )}
 
                 <div className={styles.headline}>
-                    {props.backgroundImage && (
-                        <div className={styles.backgroundBlock}>
-                            <Image src={props.backgroundImage} layout="fill" objectFit="cover" alt="" />
-                            <div className={styles.text}>{props.headline}</div>
-                        </div>
-                    )}
+                    <div className={styles.backgroundBlock}>
+                        {backgroundImage && <Image src={backgroundImage} layout="fill" objectFit="cover" alt="" />}
+                        <div className={styles.text}>{headline}</div>
+                    </div>
                 </div>
-                <div className={`${styles.gutter} ${styles.gutter_alt}`}>
-                    {props.backgroundImage && (
+                <div className={cn(styles.gutter, styles.gutter_alt)}>
+                    {backgroundImage && (
                         <div className={styles.backgroundBlock}>
-                            <Image src={props.backgroundImage} layout="fill" objectFit="cover" alt="" />
+                            <Image src={backgroundImage} layout="fill" objectFit="cover" alt="" />
                         </div>
                     )}
                 </div>

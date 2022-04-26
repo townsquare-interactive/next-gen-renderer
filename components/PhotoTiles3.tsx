@@ -17,54 +17,56 @@ const PhotoTiles3 = ({ tileData }: PhotoTiles3Props) => {
                 > */}
                 {tileData.length == 3 && (
                     <div className={styles.tileBlock}>
-                        <div className={`${styles.tileImage} ${styles.mainImage}`}>
+                        <div className={cn(styles.tileImage, styles.mainImage)}>
+                            {/* <div className={`${styles.tileImage} ${styles.mainImage}`}> */}
                             {tileData[0].linkUrl ? (
                                 <div className={`${styles.linked}`}>
                                     <Link href={tileData[0].linkUrl}>
                                         <a>
-                                            <Image src={tileData[0].imageUrl} layout="fill" objectFit="cover" alt={tileData[0].title} />
-                                            <div className={styles.text}>{tileData[0].title}</div>
+                                            <Image src={tileData[0].imageUrl} layout="fill" objectFit="cover" alt={tileData[0].linkText} />
+                                            <div className={styles.text}>{tileData[0].linkText}</div>
                                         </a>
                                     </Link>
                                 </div>
                             ) : (
                                 <div>
-                                    <Image src={tileData[0].imageUrl} layout="fill" objectFit="cover" alt={tileData[0].title} />
-                                    <div className={styles.text}>{tileData[0].title}</div>
+                                    <Image src={tileData[0].imageUrl} layout="fill" objectFit="cover" alt={tileData[0].linkText} />
+                                    <div className={styles.text}>{tileData[0].linkText}</div>
                                 </div>
                             )}
                         </div>
-                        <div className={`${styles.tileImage} ${styles.sideImage}`}>
+
+                        <div className={cn(styles.tileImage, styles.sideImage)}>
                             {tileData[1].linkUrl ? (
                                 <div className={`${styles.linked}`}>
                                     <Link href={tileData[1].linkUrl}>
                                         <a>
-                                            <Image src={tileData[1].imageUrl} layout="fill" objectFit="cover" alt={tileData[1].title} />
-                                            <div className={styles.text}>{tileData[1].title}</div>
+                                            <Image src={tileData[1].imageUrl} layout="fill" objectFit="cover" alt={tileData[1].linkText} />
+                                            <div className={styles.text}>{tileData[1].linkText}</div>
                                         </a>
                                     </Link>
                                 </div>
                             ) : (
                                 <div>
-                                    <Image src={tileData[1].imageUrl} layout="fill" objectFit="cover" alt={tileData[1].title} />
-                                    <div className={styles.text}>{tileData[1].title}</div>
+                                    <Image src={tileData[1].imageUrl} layout="fill" objectFit="cover" alt={tileData[1].linkText} />
+                                    <div className={styles.text}>{tileData[1].linkText}</div>
                                 </div>
                             )}
                         </div>
-                        <div className={`${styles.tileImage} ${styles.sideImage}`}>
+                        <div className={cn(styles.tileImage, styles.sideImage)}>
                             {tileData[2].linkUrl ? (
                                 <div className={`${styles.linked}`}>
                                     <Link href={tileData[2].linkUrl}>
                                         <a>
-                                            <Image src={tileData[2].imageUrl} layout="fill" objectFit="cover" alt={tileData[2].title} />
-                                            <div className={styles.text}>{tileData[2].title}</div>
+                                            <Image src={tileData[2].imageUrl} layout="fill" objectFit="cover" alt={tileData[2].linkText} />
+                                            <div className={styles.text}>{tileData[2].linkText}</div>
                                         </a>
                                     </Link>
                                 </div>
                             ) : (
                                 <div>
-                                    <Image src={tileData[2].imageUrl} layout="fill" objectFit="cover" alt={tileData[2].title} />
-                                    <div className={styles.text}>{tileData[2].title}</div>
+                                    <Image src={tileData[2].imageUrl} layout="fill" objectFit="cover" alt={tileData[2].linkText} />
+                                    <div className={styles.text}>{tileData[2].linkText}</div>
                                 </div>
                             )}
                         </div>
@@ -74,37 +76,37 @@ const PhotoTiles3 = ({ tileData }: PhotoTiles3Props) => {
                 {/*---------------------------------------Two Images Passed ----------------------------------------------------------------*/}
                 {tileData.length == 2 && (
                     <div className={styles.tileBlock}>
-                        <div className={`${styles.tileImage} ${styles.mainImage}`}>
+                        <div className={cn(styles.tileImage, styles.mainImage)}>
                             {tileData[0].linkUrl ? (
                                 <div className={`${styles.linked}`}>
                                     <Link href={tileData[0].linkUrl}>
                                         <a>
-                                            <Image src={tileData[0].imageUrl} layout="fill" objectFit="cover" alt={tileData[0].title} />
-                                            <div className={styles.text}>{tileData[0].title}</div>
+                                            <Image src={tileData[0].imageUrl} layout="fill" objectFit="cover" alt={tileData[0].linkText} />
+                                            <div className={styles.text}>{tileData[0].linkText}</div>
                                         </a>
                                     </Link>
                                 </div>
                             ) : (
                                 <div>
-                                    <Image src={tileData[0].imageUrl} layout="fill" objectFit="cover" alt={tileData[0].title} />
-                                    <div className={styles.text}>{tileData[0].title}</div>
+                                    <Image src={tileData[0].imageUrl} layout="fill" objectFit="cover" alt={tileData[0].linkText} />
+                                    <div className={styles.text}>{tileData[0].linkText}</div>
                                 </div>
                             )}
                         </div>
-                        <div className={`${styles.tileImage} ${styles.sideImage2}`}>
+                        <div className={cn(styles.tileImage, styles.sideImage2)}>
                             {tileData[1].linkUrl ? (
                                 <div className={`${styles.linked}`}>
                                     <Link href={tileData[1].linkUrl}>
                                         <a>
-                                            <Image src={tileData[1].imageUrl} layout="fill" objectFit="cover" alt={tileData[1].title} />
-                                            <div className={styles.text}>{tileData[1].title}</div>
+                                            <Image src={tileData[1].imageUrl} layout="fill" objectFit="cover" alt={tileData[1].linkText} />
+                                            <div className={styles.text}>{tileData[1].linkText}</div>
                                         </a>
                                     </Link>
                                 </div>
                             ) : (
                                 <div>
-                                    <Image src={tileData[1].imageUrl} layout="fill" objectFit="cover" alt={tileData[1].title} />
-                                    <div className={styles.text}>{tileData[1].title}</div>
+                                    <Image src={tileData[1].imageUrl} layout="fill" objectFit="cover" alt={tileData[1].linkText} />
+                                    <div className={styles.text}>{tileData[1].linkText}</div>
                                 </div>
                             )}
                         </div>
@@ -114,20 +116,20 @@ const PhotoTiles3 = ({ tileData }: PhotoTiles3Props) => {
                 {/*--------------------------------------One image passed ------------------------------------------*/}
                 {tileData.length == 1 && (
                     <div className={styles.tileBlock}>
-                        <div className={`${styles.tileImage} ${styles.mainImage1}`}>
+                        <div className={cn(styles.tileImage, styles.mainImage1)}>
                             {tileData[0].linkUrl ? (
                                 <div className={`${styles.linked}`}>
                                     <Link href={tileData[0].linkUrl}>
                                         <a>
-                                            <Image src={tileData[0].imageUrl} layout="fill" objectFit="cover" alt={tileData[0].title} />
-                                            <div className={styles.text}>{tileData[0].title}</div>
+                                            <Image src={tileData[0].imageUrl} layout="fill" objectFit="cover" alt={tileData[0].linkText} />
+                                            <div className={styles.text}>{tileData[0].linkText}</div>
                                         </a>
                                     </Link>
                                 </div>
                             ) : (
                                 <div>
-                                    <Image src={tileData[0].imageUrl} layout="fill" objectFit="cover" alt={tileData[0].title} />
-                                    <div className={styles.text}>{tileData[0].title}</div>
+                                    <Image src={tileData[0].imageUrl} layout="fill" objectFit="cover" alt={tileData[0].linkText} />
+                                    <div className={styles.text}>{tileData[0].linkText}</div>
                                 </div>
                             )}
                         </div>

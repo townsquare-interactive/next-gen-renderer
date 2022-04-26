@@ -29,37 +29,37 @@ const Home = () => {
     const imageData = [
         {
             imageUrl: 'https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg',
+            linkText: 'Menu',
             linkUrl: '/menu',
-            title: 'Menu',
         },
         {
             imageUrl: 'https://images.pexels.com/photos/219692/pexels-photo-219692.jpeg',
+            linkText: 'Images',
             //linkUrl: '/images',
-            title: 'Images',
         },
         {
             imageUrl: 'https://images.pexels.com/photos/10838475/pexels-photo-10838475.jpeg',
+            linkText: 'Blog',
             linkUrl: '/blog',
-            title: 'Blog',
         },
     ]
     const imageData1 = [
         {
             imageUrl: 'https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg',
+            linkText: 'Menu',
             linkUrl: '/menu',
-            title: 'Menu',
         },
         {
             imageUrl: 'https://images.pexels.com/photos/219692/pexels-photo-219692.jpeg',
             //linkUrl: '/images',
-            title: 'Images',
+            linkText: 'Images',
         },
     ]
     const imageData2 = [
         {
             imageUrl: 'https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg',
+            linkText: 'Menu',
             linkUrl: '/menu',
-            title: 'Menu',
         },
     ]
 
