@@ -5,10 +5,11 @@ $textColor: rgb(104, 104, 104);
 
 .root {
     width: 100%;
-    margin-bottom: 10px;
+    //margin-bottom: 10px;
 
     .wrapper {
         width: 100%;
+        max-width: variables.$max-main-width;
 
         @include breakpoints.sm {
             width: variables.$content-width;
