@@ -1,14 +1,9 @@
 import styles from './card.module.scss'
 import Image from 'next/image'
+import { CardProps } from './types'
 
-interface Card {
-    imgSrc?: string
-    children?: string
-    title?: string
-}
-
-function Card(props: Card) {
-    const { imgSrc, children, title } = props
+function Card(props: CardProps) {
+    const { imageUrl, body, title } = props
 
     return (
         <div className={styles.root}>
@@ -30,9 +25,9 @@ function Card(props: Card) {
                     </div>
                     <div className={styles.imageBlock}>
                         <div className={styles.blockPicture}>
-                            {imgSrc && (
+                            {imageUrl && (
                                 <Image
-                                    src={imgSrc}
+                                    src={imageUrl}
                                     //layout="fill"
                                     height="300px"
                                     width="400px"
@@ -43,7 +38,7 @@ function Card(props: Card) {
                         </div>
                     </div>
                     <div className={styles.textBlock}>
-                        <div className={styles.text}>{children}</div>
+                        <div className={styles.text}>{body}</div>
                     </div>
                     <div className={styles.colorBlock}></div>
                 </div>

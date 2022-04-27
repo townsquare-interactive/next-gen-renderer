@@ -12,6 +12,12 @@ export interface HeroProps {
     reverse?: boolean
 }
 
+export interface CardProps {
+    imgSrc?: string
+    title?: string
+    body?: string
+}
+
 export interface ArticleProps {
     title: string
     body: string
@@ -30,6 +36,7 @@ export interface imageTile {
     imageUrl: string
     linkText?: string
     linkUrl?: string
+    headline?: string
 }
 
 export interface PhotoTiles3Props {

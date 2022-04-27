@@ -9,6 +9,7 @@ import HeroBanner from '../components/HeroBanner'
 import Hero from '../components/Hero'
 import PhotoTiles3 from '../components/PhotoTiles3'
 import Label from '../components/Label'
+import Card from '../components/Card'
 
 /*import { getSortedPostsData } from '../lib/posts'
  import Link from 'next/link'
@@ -28,7 +29,7 @@ import Date from '../components/date' */
 const Home = () => {
     const imageData = {
         gap: true,
-        layout: 'v1',
+        layout: '3-2/3',
         items: [
             {
                 imageUrl: 'https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg',
@@ -64,11 +65,13 @@ const Home = () => {
         ],
     }
     const imageData2 = {
+        layout: '1-full',
         items: [
             {
                 imageUrl: 'https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg',
                 //linkText: 'Menu',
-                //linkUrl: '/menu',
+                linkUrl: '/menu',
+                headline: 'Now Hero',
             },
         ],
     }
@@ -125,15 +128,31 @@ const Home = () => {
 
                 <Label text="Photo Tiles" />
 
+                {/*
+                    layout options:
+                    3-1/3 : Three images, each one 1/3 in size
+                    3-2/3: Three images, Main image takes up 2/3
+                    2-2/3: Two images, main image takes up 2/3
+                    2-1/2: Two images, each image takes up 1/2
+                    1-full: One image that takes up full width
+                    */}
+
                 <PhotoTiles3 tileData={imageData.items} layout={imageData.layout} gap={imageData.gap} />
 
-                <PhotoTiles3 tileData={imageData.items} layout="v2" />
+                <PhotoTiles3 tileData={imageData.items} layout="3-1/3" />
 
-                <PhotoTiles3 tileData={imageData1.items} gap={imageData.gap} />
+                <PhotoTiles3 tileData={imageData1.items} gap={imageData1.gap} layout="2-2/3" />
 
-                <PhotoTiles3 tileData={imageData2.items} />
+                <PhotoTiles3 tileData={imageData2.items} layout={imageData2.layout} />
 
                 {/*                 <Label text="Quotes" border={true} />*/}
+
+                <Card
+                    imageUrl="https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg"
+                    title="hello"
+                    body="                    Hey whats up hello, Hey whats up helloHey whats up helloHey whats up helloHey whats up helloHey whats up helloHey whats up helloHey whats up
+                    helloHey whats up helloHey whats up helloHey whats up hello"
+                />
             </div>
         </div>
     )
