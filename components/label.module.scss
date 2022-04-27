@@ -8,14 +8,14 @@ $textColor: rgb(104, 104, 104);
     //margin-bottom: 10px;
 
     .wrapper {
-        width: 100%;
+        width: variables.$content-width;
         max-width: variables.$max-main-width;
+        // margin-left: 0;
+        margin: 0 auto;
 
         @include breakpoints.sm {
             width: variables.$content-width;
         }
-
-        margin: 0 auto;
 
         .headline {
             .text {

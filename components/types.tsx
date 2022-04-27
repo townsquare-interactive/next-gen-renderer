@@ -28,12 +28,14 @@ export interface LabelProps {
 
 export interface imageTile {
     imageUrl: string
-    linkText: string
+    linkText?: string
     linkUrl?: string
 }
 
 export interface PhotoTiles3Props {
     tileData: imageTile[]
+    layout?: string
+    gap?: boolean
 }
 
 export interface imageData {

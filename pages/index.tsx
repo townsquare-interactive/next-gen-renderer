@@ -26,42 +26,52 @@ import Date from '../components/date' */
 } */
 
 const Home = () => {
-    const imageData = [
-        {
-            imageUrl: 'https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg',
-            linkText: 'Menu',
-            linkUrl: '/menu',
-        },
-        {
-            imageUrl: 'https://images.pexels.com/photos/219692/pexels-photo-219692.jpeg',
-            linkText: 'Images',
-            //linkUrl: '/images',
-        },
-        {
-            imageUrl: 'https://images.pexels.com/photos/10838475/pexels-photo-10838475.jpeg',
-            linkText: 'Blog',
-            linkUrl: '/blog',
-        },
-    ]
-    const imageData1 = [
-        {
-            imageUrl: 'https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg',
-            linkText: 'Menu',
-            linkUrl: '/menu',
-        },
-        {
-            imageUrl: 'https://images.pexels.com/photos/219692/pexels-photo-219692.jpeg',
-            //linkUrl: '/images',
-            linkText: 'Images',
-        },
-    ]
-    const imageData2 = [
-        {
-            imageUrl: 'https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg',
-            linkText: 'Menu',
-            linkUrl: '/menu',
-        },
-    ]
+    const imageData = {
+        gap: true,
+        layout: 'v1',
+        items: [
+            {
+                imageUrl: 'https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg',
+                linkText: 'Menu',
+                linkUrl: '/menu',
+            },
+            {
+                imageUrl: 'https://images.pexels.com/photos/219692/pexels-photo-219692.jpeg',
+                linkText: 'Images',
+                //linkUrl: '/images',
+            },
+            {
+                imageUrl: 'https://images.pexels.com/photos/10838475/pexels-photo-10838475.jpeg',
+                linkText: 'Blog',
+                linkUrl: '/blog',
+            },
+        ],
+    }
+
+    const imageData1 = {
+        gap: true,
+        items: [
+            {
+                imageUrl: 'https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg',
+                linkText: 'Menu',
+                linkUrl: '/menu',
+            },
+            {
+                imageUrl: 'https://images.pexels.com/photos/219692/pexels-photo-219692.jpeg',
+                linkText: 'Images',
+                linkUrl: '/images',
+            },
+        ],
+    }
+    const imageData2 = {
+        items: [
+            {
+                imageUrl: 'https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg',
+                //linkText: 'Menu',
+                //linkUrl: '/menu',
+            },
+        ],
+    }
 
     return (
         <div className={styles.root}>
@@ -70,7 +80,7 @@ const Home = () => {
                 <meta property="og:title" content="My page title" key="title" />
             </Head>
             <div className={styles.wrapper}>
-                {/* <Header headline="Next Website" imageUrl="https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg" /> */}
+                {/*                 <HeroBanner headline="Next Website" imageUrl="https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg" /> */}
 
                 <Hero
                     headline="My Website"
@@ -115,11 +125,13 @@ const Home = () => {
 
                 <Label text="Photo Tiles" />
 
-                <PhotoTiles3 tileData={imageData} />
+                <PhotoTiles3 tileData={imageData.items} layout={imageData.layout} gap={imageData.gap} />
 
-                <PhotoTiles3 tileData={imageData1} />
+                <PhotoTiles3 tileData={imageData.items} layout="v2" />
 
-                <PhotoTiles3 tileData={imageData2} />
+                <PhotoTiles3 tileData={imageData1.items} gap={imageData.gap} />
+
+                <PhotoTiles3 tileData={imageData2.items} />
 
                 {/*                 <Label text="Quotes" border={true} />*/}
             </div>

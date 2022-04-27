@@ -4,7 +4,7 @@ import Link from 'next/link'
 import cn from 'classnames'
 import { PhotoTiles3Props } from './types'
 
-const PhotoTiles3 = ({ tileData }: PhotoTiles3Props) => {
+const PhotoTiles3 = ({ tileData, layout = 'v1', gap = false }: PhotoTiles3Props) => {
     return (
         <div className={styles.root}>
             <div className={styles.wrapper}>
@@ -16,8 +16,17 @@ const PhotoTiles3 = ({ tileData }: PhotoTiles3Props) => {
                     })}
                 > */}
                 {tileData.length == 3 && (
-                    <div className={styles.tileBlock}>
-                        <div className={cn(styles.tileImage, styles.mainImage)}>
+                    <div
+                        className={cn(styles.tileBlock, {
+                            [styles.gap]: gap,
+                        })}
+                    >
+                        <div
+                            className={cn(styles.tileImage, {
+                                [styles.mainImage]: layout === 'v1',
+                                [styles.mainImage_2]: layout === 'v2',
+                            })}
+                        >
                             {/* <div className={`${styles.tileImage} ${styles.mainImage}`}> */}
                             {tileData[0].linkUrl ? (
                                 <div className={`${styles.linked}`}>
@@ -75,7 +84,11 @@ const PhotoTiles3 = ({ tileData }: PhotoTiles3Props) => {
 
                 {/*---------------------------------------Two Images Passed ----------------------------------------------------------------*/}
                 {tileData.length == 2 && (
-                    <div className={styles.tileBlock}>
+                    <div
+                        className={cn(styles.tileBlock, {
+                            [styles.gap]: gap,
+                        })}
+                    >
                         <div className={cn(styles.tileImage, styles.mainImage)}>
                             {tileData[0].linkUrl ? (
                                 <div className={`${styles.linked}`}>
@@ -115,7 +128,11 @@ const PhotoTiles3 = ({ tileData }: PhotoTiles3Props) => {
 
                 {/*--------------------------------------One image passed ------------------------------------------*/}
                 {tileData.length == 1 && (
-                    <div className={styles.tileBlock}>
+                    <div
+                        className={cn(styles.tileBlock, {
+                            [styles.gap]: gap,
+                        })}
+                    >
                         <div className={cn(styles.tileImage, styles.mainImage1)}>
                             {tileData[0].linkUrl ? (
                                 <div className={`${styles.linked}`}>
