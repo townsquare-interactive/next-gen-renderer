@@ -13,7 +13,7 @@ export interface HeroProps {
 }
 
 export interface CardProps {
-    imgSrc?: string
+    imageUrl?: string
     title?: string
     body?: string
 }
