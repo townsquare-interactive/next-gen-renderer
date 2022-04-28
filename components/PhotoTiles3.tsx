@@ -81,7 +81,7 @@ const PhotoTiles3 = ({ tileData, layout = '3-2/3', gap = false }: PhotoTiles3Pro
                     <div
                         className={cn(styles.tileBlock, {
                             [styles.gap]: gap,
-                            [styles.tileBloxk_2_half]: layout === '2-1/2',
+                            [styles.tileBlock_2_half]: layout === '2-1/2',
                         })}
                     >
                         <div

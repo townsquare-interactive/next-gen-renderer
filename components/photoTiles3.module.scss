@@ -1,16 +1,21 @@
 @use '../styles/breakpoints.scss';
 @use 'sass:math';
 @use '../styles/variables.scss';
+@use '../styles/utils.module.scss';
 
 //$tile-height: math.div(variables.$max-main-width, 2.5);
 $ratio: math.div(4, 3);
 $ratio2: math.div(16, 9);
 
 .root {
-    width: 80%;
-    max-width: variables.$max-main-width;
     margin-top: 20px;
+    @include utils.root;
+
     .wrapper {
+        max-width: variables.$max-main-width;
+        width: 80%;
+        margin: 0 auto;
+
         .tileBlock {
             @include breakpoints.md {
                 display: grid;
@@ -20,7 +25,7 @@ $ratio2: math.div(16, 9);
                     gap: 5px;
                 }
 
-                &.tileBloxk_2_half {
+                &.tileBlock_2_half {
                     grid-template-columns: repeat(2, 1fr);
                 }
             }

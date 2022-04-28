@@ -99,6 +99,19 @@ const Home = () => {
                     //border={false}
                     linkUrl="/"
                     btnText="Contact Us"
+                    //modLayout="article"
+                    modLayout="article"
+                />
+
+                <Article
+                    title="Hello welcome to my Next.js playground"
+                    body="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. "
+                    imageUrl="https://images.pexels.com/photos/219692/pexels-photo-219692.jpeg"
+                    //border={false}
+                    linkUrl="/"
+                    btnText="Contact Us"
+                    //modLayout="article"
+                    modLayout="card"
                 />
 
                 {/* <div className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
@@ -143,6 +156,8 @@ const Home = () => {
 
                 <PhotoTiles3 tileData={imageData1.items} gap={imageData1.gap} layout="2-2/3" />
 
+                <PhotoTiles3 tileData={imageData1.items} gap={imageData1.gap} layout="2-1/2" />
+
                 <PhotoTiles3 tileData={imageData2.items} layout={imageData2.layout} />
 
                 {/*                 <Label text="Quotes" border={true} />*/}
@@ -150,7 +165,7 @@ const Home = () => {
                 <Card
                     imageUrl="https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg"
                     title="hello"
-                    body="                    Hey whats up hello, Hey whats up helloHey whats up helloHey whats up helloHey whats up helloHey whats up helloHey whats up helloHey whats up
+                    body=" Hey whats up hello, Hey whats up helloHey whats up helloHey whats up helloHey whats up helloHey whats up helloHey whats up helloHey whats up
                     helloHey whats up helloHey whats up helloHey whats up hello"
                 />
             </div>

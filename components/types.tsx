@@ -25,6 +25,7 @@ export interface ArticleProps {
     imageUrl?: string
     linkUrl?: string
     btnText?: string
+    modLayout?: string
 }
 
 export interface LabelProps {

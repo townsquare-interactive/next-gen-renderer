@@ -4,7 +4,7 @@
     align-items: center;
 }
 
-$root-bottom-margin: 50px;
+$root-bottom-margin: 30px;
 @mixin root {
     width: 100%;
     margin-bottom: $root-bottom-margin;
