@@ -17,9 +17,6 @@ function Card(props: CardProps) {
                     <div className={` ${styles.textGutter} ${styles.textGutter_2}`}></div>
                 </div>
                 <div className={styles.features}>
-                    {/*                     <div className={styles.title}>
-                        <div className={styles.titleText}>{title}</div>
-                    </div> */}
                     <div className={styles.colorBlock}>
                         <div className={styles.colorFill}></div>
                     </div>

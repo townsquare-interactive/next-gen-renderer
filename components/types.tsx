@@ -19,8 +19,8 @@ export interface CardProps {
 }
 
 export interface ArticleProps {
-    title: string
-    body: string
+    title?: string
+    body?: string
     border?: boolean
     imageUrl?: string
     linkUrl?: string
@@ -31,6 +31,9 @@ export interface ArticleProps {
 export interface LabelProps {
     text: string
     border?: boolean
+    gap?: boolean
+    align?: string
+    size?: string
 }
 
 export interface imageTile {

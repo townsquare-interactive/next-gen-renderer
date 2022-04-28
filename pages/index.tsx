@@ -114,6 +114,16 @@ const Home = () => {
                     //modLayout="article"
                     modLayout="card"
                 />
+                <Article
+                    title="Hello welcome to my Next.js playground"
+                    body="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. "
+                    imageUrl="https://images.pexels.com/photos/219692/pexels-photo-219692.jpeg"
+                    linkUrl="/"
+                    btnText="Contact Us"
+                    border={false}
+                    //modLayout="article"
+                    modLayout="card"
+                />
 
                 {/* <div className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
                     <h2 className={utilStyles.headingLg}>Blog</h2>
@@ -140,7 +150,14 @@ const Home = () => {
                     titles={['Menu', 'Blog', 'Images']}
                 /> */}
 
-                <Label text="Photo Tiles" />
+                {/*
+                layout: can be left right or center
+                border: true or false
+                gap:true or false, adds padding to text
+                size: size of text: sm, md, lg
+            
+            */}
+                <Label text="Photo Tiles" gap={true} align="left" border={true} size="sm" />
 
                 {/*
                     layout options:
@@ -149,6 +166,8 @@ const Home = () => {
                     2-2/3: Two images, main image takes up 2/3
                     2-1/2: Two images, each image takes up 1/2
                     1-full: One image that takes up full width
+
+
                     */}
 
                 <PhotoTiles3 tileData={imageData.items} layout={imageData.layout} gap={imageData.gap} />
@@ -163,12 +182,12 @@ const Home = () => {
 
                 {/*                 <Label text="Quotes" border={true} />*/}
 
-                <Card
+                {/* <Card
                     imageUrl="https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg"
                     title="hello"
                     body=" Hey whats up hello, Hey whats up helloHey whats up helloHey whats up helloHey whats up helloHey whats up helloHey whats up helloHey whats up
                     helloHey whats up helloHey whats up helloHey whats up hello"
-                />
+                /> */}
             </div>
         </div>
     )

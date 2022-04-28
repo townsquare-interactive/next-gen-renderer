@@ -3,7 +3,7 @@ import { LabelProps } from './types'
 import cn from 'classnames'
 
 function Label(props: LabelProps) {
-    const { text, border = false } = props
+    const { text, border = false, gap = false, align = 'left', size = 'md' } = props
 
     return (
         <div className={styles.root}>
@@ -12,9 +12,21 @@ function Label(props: LabelProps) {
                     className={cn({
                         [styles.headline]: true,
                         [styles.bordered]: border,
+                        [styles.gap]: gap,
                     })}
                 >
-                    <h3 className={styles.text}>{text}</h3>
+                    <h3
+                        className={cn(styles.text, {
+                            [styles.center]: align === 'center',
+                            [styles.left]: align === 'left',
+                            [styles.right]: align === 'right',
+                            [styles.lg]: size === 'lg',
+                            [styles.md]: size === 'md',
+                            [styles.sm]: size === 'sm',
+                        })}
+                    >
+                        {text}
+                    </h3>
                 </div>
             </div>
         </div>

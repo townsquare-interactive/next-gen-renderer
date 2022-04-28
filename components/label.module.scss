@@ -20,22 +20,58 @@ $textColor: rgb(104, 104, 104);
 
         .headline {
             .text {
-                font-size: 25px;
                 width: 100%;
-
                 margin: 0;
                 color: $textColor;
                 text-transform: uppercase;
-                text-align: left;
 
-                @include breakpoints.sm {
-                    font-size: 40px;
-                    padding: 20px;
+                &.center {
+                    text-align: center;
+                }
+
+                &.left {
+                    text-align: left;
+                }
+
+                &.right {
+                    text-align: right;
+                }
+
+                &.sm {
+                    font-size: 18px;
+
+                    @include breakpoints.sm {
+                        font-size: 25px;
+                    }
+                }
+
+                &.md {
+                    font-size: 25px;
+
+                    @include breakpoints.sm {
+                        font-size: 40px;
+                    }
+                }
+
+                &.lg {
+                    font-size: 35px;
+
+                    @include breakpoints.sm {
+                        font-size: 70px;
+                    }
                 }
             }
 
             &.bordered {
                 border-bottom: 4px solid $textColor;
+                //padding-bottom: 20px;
+            }
+
+            &.gap {
+                @include breakpoints.sm {
+                    padding: 20px;
+                    //margin: 20px;
+                }
             }
         }
     }

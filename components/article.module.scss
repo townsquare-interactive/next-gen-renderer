@@ -264,7 +264,7 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
             .imageBlock {
                 @include breakpoints.md {
                     flex: 20 0 0;
-                    background-color: grey;
+                    background-color: variables.$main-color;
                     align-self: flex-start;
                     max-width: $max-main-image-width;
                     width: $image-width;
@@ -331,15 +331,16 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
             //background-color: rgba(249, 247, 197, 0.502);
             background-color: #000;
             //border: 5px solid #fff;
+            color: #fff;
 
             .text {
                 padding: 20px;
+                // color: #fff;
             }
             .cta_btn {
                 padding-bottom: 20px;
-            }
-            * {
                 color: #fff;
+                // color: #fff;
             }
         }
         @include breakpoints.custom(math.div(variables.$max-main-width, math.div(variables.$content-width, 100%))) {

@@ -4,7 +4,7 @@ import Image from 'next/image'
 import cn from 'classnames'
 
 const Article = (props: ArticleProps) => {
-    const { title, body, border = true, imageUrl, linkUrl, btnText, modLayout = 'article' } = props
+    const { title = '', body = '', border = true, imageUrl, linkUrl, btnText = '', modLayout = 'article' } = props
 
     return (
         <div
