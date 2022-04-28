@@ -4,9 +4,15 @@
 @use 'sass:math';
 
 $lh-height: 1.3;
+$margin-text: 20px;
 
 @mixin cta_btn {
-    margin: 20px;
+    margin-top: $margin-text;
+    text-align: center;
+
+    @include breakpoints.md {
+        text-align: left;
+    }
 
     a {
         font-size: 15px;
@@ -62,11 +68,11 @@ $lh-height: 1.3;
                 position: relative;
                 /*  width: 800px;
             height: 300px; */
-                aspect-ratio: variables.$aspect-ratio-4_3;
+                width: 100%;
                 max-width: 100%;
-                height: 200px;
+                height: 100%;
+                align-self: start;
 
-                position: relative;
                 img {
                     width: 100%;
                 }
@@ -76,6 +82,7 @@ $lh-height: 1.3;
                 }
                 /*             @include breakpoints.lg {
                 aspect-ratio: variables.$aspect-ratio-4_3;
+                aspect-ratio: variables.$aspect-ratio-4_3;
             } */
             }
 
@@ -83,7 +90,7 @@ $lh-height: 1.3;
                 text-align: center;
                 padding: 0 10px;
                 align-self: start;
-                color: #fff;
+                // color: #fff;
                 display: flex;
                 flex-direction: column;
 
@@ -92,32 +99,41 @@ $lh-height: 1.3;
                 }
 
                 .title {
-                    margin-bottom: 20px;
                     //border-bottom: 2px solid #000;
                     font-weight: bold;
+                    text-align: center;
+                    margin-bottom: $margin-text;
+
+                    @include breakpoints.md {
+                        margin-left: $margin-text;
+
+                        text-align: left;
+                    }
 
                     .text {
-                        font-size: 18px;
+                        font-size: 25px;
                         @include utils.lhCrop($lh-height);
                         line-height: $lh-height;
-                        margin-top: 10px;
+                        margin-top: 30px;
 
                         @include breakpoints.sm {
-                            font-size: 30px;
+                            font-size: 35px;
+                        }
+                        @include breakpoints.md {
                             margin-top: 0;
                         }
                     }
                 }
 
                 .textBlock {
-                    margin: 0 20px;
+                    margin: 0 $margin-text;
                     .text {
                         font-size: 20px;
                     }
                 }
                 .cta_btn {
                     @include cta_btn;
-                    color: #fff;
+                    // color: #fff;
                 }
             }
 
@@ -126,7 +142,11 @@ $lh-height: 1.3;
         &.bordered {
             //background-color: rgba(249, 247, 197, 0.502);
             background-color: #000;
-            border: 5px solid #fff;
+            //border: 5px solid #fff;
+
+            * {
+                color: #fff;
+            }
         }
 
         @include breakpoints.md {
@@ -163,130 +183,158 @@ $max-main-image-width: variables.$max-main-width * $image-width-decimal;
 $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
 
 @mixin card {
-    .title {
-        @include breakpoints.md {
-            display: flex;
-            flex-direction: row;
-            margin-top: 20px;
-            margin-bottom: 10px;
-        }
-
-        .textGutter {
-            flex: 10 0 0;
-        }
-
-        .insideTextGutter {
-            flex: 20 0 0;
-            max-width: $max-main-image-width;
-        }
-
-        .titleText {
-            display: flex;
-            font-size: 40px;
-            font-weight: bold;
-            text-align: center;
+    .wrapper {
+        .title {
             @include breakpoints.md {
-                text-align: left;
-                align-self: start;
-                flex: 60 0 0;
-                max-width: $max-main-content-width;
+                display: flex;
+                flex-direction: row;
+                margin-top: 20px;
+                margin-bottom: 10px;
             }
 
-            .text {
-                max-width: $max-main-content-width;
-                margin-left: auto;
-                padding: 20px;
-                flex: 60 0 0;
-                @include breakpoints.md {
-                    padding: 0px 0px 0px 20px;
-                }
-            }
-        }
-    }
-    .features {
-        display: flex;
-        flex-direction: column;
-        @include breakpoints.md {
-            flex-direction: row;
-        }
-
-        .colorBlock {
-            flex: 10 0 0;
-            display: none;
-            @include breakpoints.md {
-                display: block;
+            .textGutter {
+                flex: 10 0 0;
             }
 
-            .colorFill {
-                background-color: grey;
-                aspect-ratio: math.div($ratio, 2);
-                height: $image-height;
-            }
-        }
-
-        .imageBlock {
-            @include breakpoints.md {
+            .insideTextGutter {
                 flex: 20 0 0;
-                background-color: grey;
-                align-self: start;
                 max-width: $max-main-image-width;
-                width: $image-width;
             }
-            .blockPicture {
-                width: 100%;
-                position: relative;
-                // height: 350px;
 
+            .titleText {
+                display: flex;
+                font-size: 40px;
+                font-weight: bold;
+                text-align: center;
                 @include breakpoints.md {
-                    position: relative;
-                    aspect-ratio: $ratio;
+                    text-align: left;
+                    align-self: start;
+                    flex: 60 0 0;
+                    max-width: $max-main-content-width;
                 }
 
-                img {
-                    width: 100% !important;
-                    object-fit: cover;
-                    /* height: auto !important;
-                    width: auto;
-                    min-height: auto; */
+                .text {
+                    //max-width: $max-main-content-width;
+                    margin-left: auto;
+                    padding: 20px;
+
                     @include breakpoints.md {
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        height: 100%;
-                        width: 100%;
+                        padding: 0px 0px 0px 20px;
+                        flex: 60 0 0;
                     }
                 }
             }
         }
-
-        .textBlock {
+        .features {
             display: flex;
             flex-direction: column;
-            justify-content: start;
-            max-width: $max-main-content-width;
-
             @include breakpoints.md {
-                flex: 60 0 0;
-                position: relative;
+                flex-direction: row;
             }
+
+            .colorBlock {
+                flex: 10 0 0;
+                display: none;
+                @include breakpoints.md {
+                    display: block;
+                }
+
+                .colorFill {
+                    background-color: variables.$main-color;
+                    aspect-ratio: math.div($ratio, 2);
+                    height: $image-height;
+                }
+            }
+
+            .imageBlock {
+                @include breakpoints.md {
+                    flex: 20 0 0;
+                    background-color: grey;
+                    align-self: start;
+                    max-width: $max-main-image-width;
+                    width: $image-width;
+                }
+                .blockPicture {
+                    width: 100%;
+                    position: relative;
+                    // height: 350px;
+
+                    @include breakpoints.md {
+                        position: relative;
+                        aspect-ratio: $ratio;
+                    }
+
+                    img {
+                        width: 100% !important;
+                        object-fit: cover;
+                        /* height: auto !important;
+                    width: auto;
+                    min-height: auto; */
+                        @include breakpoints.md {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            height: 100%;
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+
+            .textBlock {
+                display: flex;
+                flex-direction: column;
+                justify-content: start;
+                max-width: $max-main-content-width;
+
+                @include breakpoints.md {
+                    flex: 60 0 0;
+                    position: relative;
+                }
+
+                .text {
+                    padding: 20px;
+                    padding-top: 0;
+                    font-size: 25px;
+                    text-align: center;
+                    @include breakpoints.md {
+                        text-align: left;
+                        line-height: $lh-height;
+                        @include utils.lhCrop($lh-height); //line-height: 1.2
+                    }
+                }
+                .cta_btn {
+                    @include cta_btn;
+                    color: #000;
+                    @include breakpoints.md {
+                        margin-left: 20px;
+                    }
+                }
+            }
+        }
+        &.bordered .textBlock {
+            //background-color: rgba(249, 247, 197, 0.502);
+            background-color: #000;
+            //border: 5px solid #fff;
 
             .text {
                 padding: 20px;
-                padding-top: 0;
-                font-size: 25px;
-                text-align: center;
-                @include breakpoints.md {
-                    text-align: left;
-                    line-height: $lh-height;
-                    @include utils.lhCrop($lh-height); //line-height: 1.2
-                }
             }
             .cta_btn {
-                @include cta_btn;
-                color: #000;
+                padding-bottom: 20px;
+            }
+            * {
+                color: #fff;
+            }
+        }
+        @include breakpoints.custom(math.div(variables.$max-main-width, math.div(variables.$content-width, 100%))) {
+            .features .colorBlock .colorFill {
+                height: $img-height-max;
+                aspect-ratio: auto;
             }
         }
     }
+
     &:nth-child(even) {
         @include breakpoints.md {
             .title {
@@ -301,12 +349,6 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
         }
     }
     //Unsetting side block aspect ratio so it can stretch to allow max-content size
-    @include breakpoints.custom(math.div(variables.$max-main-width, math.div(variables.$content-width, 100%))) {
-        .wrapper .colorBlock .colorFill {
-            height: $img-height-max;
-            aspect-ratio: auto;
-        }
-    }
 }
 
 .root {

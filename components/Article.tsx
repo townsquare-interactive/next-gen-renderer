@@ -12,7 +12,6 @@ const Article = (props: ArticleProps) => {
         <div
             className={cn(styles.root, {
                 [styles.articleLayout]: modLayout === 'article',
-                //[styles.cardLayout]: modLayout === 'card',
                 [styles.cardLayout]: modLayout === 'card',
             })}
         >
@@ -51,7 +50,7 @@ const Article = (props: ArticleProps) => {
             <div
                 className={cn({
                     [styles.wrapper]: true,
-                    [styles.bordered]: border && modLayout != 'card',
+                    [styles.bordered]: border === true,
                     [styles.imageArticle]: imageUrl && modLayout != 'card',
                 })}
             >
@@ -63,12 +62,12 @@ const Article = (props: ArticleProps) => {
                         <div className={styles.titleText}>
                             <div className={styles.text}>{title}</div>
                         </div>
-                        <div className={` ${styles.textGutter} ${styles.textGutter_2}`}></div>
+                        <div className={cn(styles.textGutter, styles.textGutter_2)}></div>
                     </div>
                 )}
 
                 <div className={styles.features}>
-                    {modLayout == 'card' && (
+                    {modLayout === 'card' && (
                         <div className={styles.colorBlock}>
                             <div className={styles.colorFill}></div>
                         </div>
@@ -114,7 +113,7 @@ const Article = (props: ArticleProps) => {
                         </div>
                     )}
 
-                    {modLayout == 'card' && <div className={styles.colorBlock}></div>}
+                    {modLayout === 'card' && <div className={styles.colorBlock}></div>}
                 </div>
             </div>
         </div>
