@@ -5,9 +5,7 @@ import cn from 'classnames'
 
 const Article = (props: ArticleProps) => {
     const { title, body, border = true, imageUrl, linkUrl, btnText, modLayout = 'article' } = props
-    {
-        console.log('article type', modLayout)
-    }
+
     return (
         <div
             className={cn(styles.root, {

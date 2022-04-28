@@ -1,10 +1,11 @@
 @use '../styles/variables.scss';
 @use '../styles/breakpoints.scss';
+@use '../styles/utils.module.scss';
 
 $textColor: rgb(104, 104, 104);
 
 .root {
-    width: 100%;
+    //@include utils.root;
     //margin-bottom: 10px;
 
     .wrapper {
@@ -21,7 +22,7 @@ $textColor: rgb(104, 104, 104);
             .text {
                 font-size: 25px;
                 width: 100%;
-                padding: 20px;
+
                 margin: 0;
                 color: $textColor;
                 text-transform: uppercase;
@@ -29,6 +30,7 @@ $textColor: rgb(104, 104, 104);
 
                 @include breakpoints.sm {
                     font-size: 40px;
+                    padding: 20px;
                 }
             }
 

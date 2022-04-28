@@ -6,6 +6,27 @@
 $lh-height: 1.3;
 $margin-text: 20px;
 
+@mixin text-sizes {
+    //@include utils.lhCrop($lh-height);
+    font-size: 15px;
+
+    @include breakpoints.md {
+        font-size: 20px;
+    }
+    @include breakpoints.lg {
+        font-size: 25px;
+    }
+}
+
+@mixin headline-sizes {
+    font-weight: bold;
+    font-size: 25px;
+
+    @include breakpoints.md {
+        font-size: 35px;
+    }
+}
+
 @mixin cta_btn {
     margin-top: $margin-text;
     text-align: center;
@@ -13,14 +34,10 @@ $margin-text: 20px;
     @include breakpoints.md {
         text-align: left;
     }
+    @include text-sizes;
 
     a {
-        font-size: 15px;
         font-weight: bold;
-
-        @include breakpoints.sm {
-            font-size: 25px;
-        }
 
         &:after {
             padding: 10px;
@@ -71,7 +88,7 @@ $margin-text: 20px;
                 width: 100%;
                 max-width: 100%;
                 height: 100%;
-                align-self: start;
+                align-self: flex-start;
 
                 img {
                     width: 100%;
@@ -89,7 +106,7 @@ $margin-text: 20px;
             .allText {
                 text-align: center;
                 padding: 0 10px;
-                align-self: start;
+                align-self: flex-start;
                 // color: #fff;
                 display: flex;
                 flex-direction: column;
@@ -111,24 +128,20 @@ $margin-text: 20px;
                     }
 
                     .text {
-                        font-size: 25px;
                         @include utils.lhCrop($lh-height);
                         line-height: $lh-height;
                         margin-top: 30px;
-
-                        @include breakpoints.sm {
-                            font-size: 35px;
-                        }
                         @include breakpoints.md {
                             margin-top: 0;
                         }
+                        @include headline-sizes;
                     }
                 }
 
                 .textBlock {
                     margin: 0 $margin-text;
                     .text {
-                        font-size: 20px;
+                        @include text-sizes;
                     }
                 }
                 .cta_btn {
@@ -157,7 +170,7 @@ $margin-text: 20px;
             &.imageArticle .allText {
                 width: 50%;
                 text-align: left;
-                justify-content: start;
+                justify-content: flex-start;
             }
         }
     }
@@ -203,22 +216,24 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
 
             .titleText {
                 display: flex;
-                font-size: 40px;
-                font-weight: bold;
                 text-align: center;
+                justify-content: center;
                 @include breakpoints.md {
                     text-align: left;
-                    align-self: start;
+                    align-self: flex-start;
                     flex: 60 0 0;
                     max-width: $max-main-content-width;
                 }
 
                 .text {
                     //max-width: $max-main-content-width;
-                    margin-left: auto;
+
                     padding: 20px;
+                    //@include text-sizes;
+                    @include headline-sizes;
 
                     @include breakpoints.md {
+                        margin-left: auto;
                         padding: 0px 0px 0px 20px;
                         flex: 60 0 0;
                     }
@@ -250,7 +265,7 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
                 @include breakpoints.md {
                     flex: 20 0 0;
                     background-color: grey;
-                    align-self: start;
+                    align-self: flex-start;
                     max-width: $max-main-image-width;
                     width: $image-width;
                 }
@@ -284,7 +299,7 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
             .textBlock {
                 display: flex;
                 flex-direction: column;
-                justify-content: start;
+                justify-content: flex-start;
                 max-width: $max-main-content-width;
 
                 @include breakpoints.md {
@@ -293,15 +308,15 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
                 }
 
                 .text {
-                    padding: 20px;
+                    padding-left: 20px;
                     padding-top: 0;
-                    font-size: 25px;
                     text-align: center;
                     @include breakpoints.md {
                         text-align: left;
                         line-height: $lh-height;
                         @include utils.lhCrop($lh-height); //line-height: 1.2
                     }
+                    @include text-sizes;
                 }
                 .cta_btn {
                     @include cta_btn;
