@@ -107,6 +107,15 @@ $ratio2: math.div(16, 9);
                     }
                 }
 
+                //Fixing style issues on ios?
+                span {
+                    position: auto !important;
+                }
+
+                img {
+                    position: auto !important;
+                }
+
                 //Linked images are filtered black and white until hover
                 .linked {
                     img {

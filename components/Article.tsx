@@ -53,7 +53,6 @@ const Article = (props: ArticleProps) => {
                     [styles.wrapper]: true,
                     [styles.bordered]: border === true,
                     [styles.imageArticle]: imageUrl && modLayout != 'card',
-                    [styles.noImg]: !imageUrl,
                 })}
             >
                 {/*change title div layout on card*/}
