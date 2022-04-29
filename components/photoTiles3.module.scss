@@ -33,6 +33,7 @@ $ratio2: math.div(16, 9);
             .tileImage {
                 position: relative;
                 max-width: 100%;
+                min-height: 100%;
 
                 &.mainImage {
                     grid-row: 1 / 3;
@@ -108,13 +109,13 @@ $ratio2: math.div(16, 9);
                 }
 
                 //Fixing style issues on ios?
-                span {
-                    position: auto !important;
+                /*                 span {
+                    position: static !important;
                 }
 
                 img {
-                    position: auto !important;
-                }
+                    position: static !important;
+                } */
 
                 //Linked images are filtered black and white until hover
                 .linked {
