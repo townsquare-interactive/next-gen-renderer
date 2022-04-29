@@ -121,6 +121,12 @@ $ratio2: math.div(16, 9);
 
                 //Linked images are filtered black and white until hover
                 .linked {
+                    position: relative;
+                    max-width: 100%;
+                    min-height: 100%;
+                    width: 100%;
+                    height: 100%;
+
                     img {
                         filter: grayscale(100);
                     }
