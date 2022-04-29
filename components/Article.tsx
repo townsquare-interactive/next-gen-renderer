@@ -4,13 +4,16 @@ import Image from 'next/image'
 import cn from 'classnames'
 
 const Article = (props: ArticleProps) => {
-    const { title = '', body = '', border = true, imageUrl, linkUrl, btnText = '', modLayout = 'article' } = props
+    const { title = '', body = '', border = true, imageUrl, linkUrl, btnText = '', modLayout = 'article', textSize = 'md' } = props
 
     return (
         <div
             className={cn(styles.root, {
                 [styles.articleLayout]: modLayout === 'article',
                 [styles.cardLayout]: modLayout === 'card',
+                [styles.sm]: textSize === 'sm',
+                [styles.md]: textSize === 'md',
+                [styles.lg]: textSize === 'lg',
             })}
         >
             {/* {modLayout != 'card' && (
@@ -50,6 +53,7 @@ const Article = (props: ArticleProps) => {
                     [styles.wrapper]: true,
                     [styles.bordered]: border === true,
                     [styles.imageArticle]: imageUrl && modLayout != 'card',
+                    [styles.noImg]: !imageUrl,
                 })}
             >
                 {/*change title div layout on card*/}
@@ -93,7 +97,7 @@ const Article = (props: ArticleProps) => {
                             </div>
                             <div className={styles.textBlock}>
                                 <div className={styles.text}>{body}</div>
-                                {linkUrl && (
+                                {linkUrl && btnText && (
                                     <div className={styles.cta_btn}>
                                         <a href={linkUrl}>{btnText}</a>
                                     </div>
@@ -103,7 +107,7 @@ const Article = (props: ArticleProps) => {
                     ) : (
                         <div className={styles.textBlock}>
                             <div className={styles.text}>{body}</div>
-                            {linkUrl && (
+                            {linkUrl && btnText && (
                                 <div className={styles.cta_btn}>
                                     <a href={linkUrl}>{btnText}</a>
                                 </div>

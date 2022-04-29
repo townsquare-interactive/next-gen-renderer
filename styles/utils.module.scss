@@ -1,3 +1,6 @@
+@use '../styles/variables.scss';
+@use './styles/breakpoints.scss';
+
 @mixin useFlex {
     display: flex;
     flex-direction: column;
@@ -21,6 +24,69 @@ $root-bottom-margin: 30px;
         margin-top: calc((1 - #{$line-height}) * 0.8em);
     }
 }
+
+/*Font size mixins */
+@mixin text-sizes-sm {
+    font-size: variables.$text-size-body-xsm;
+
+    @include breakpoints.md {
+        font-size: variables.$text-size-body-sm;
+    }
+}
+@mixin text-sizes-md {
+    font-size: variables.$text-size-body-xsm;
+
+    @include breakpoints.md {
+        font-size: variables.$text-size-body-sm;
+    }
+    @include breakpoints.lg {
+        font-size: variables.$text-size-body-md;
+    }
+}
+@mixin text-sizes-lg {
+    font-size: variables.$text-size-body-xsm;
+
+    @include breakpoints.md {
+        font-size: variables.$text-size-body-md;
+    }
+    @include breakpoints.lg {
+        font-size: variables.$text-size-body-lg;
+    }
+}
+
+/*-------------------------------*/
+
+@mixin headline-sizes-sm {
+    font-weight: bold;
+    font-size: variables.$text-size-head-xl;
+
+    @include breakpoints.md {
+        font-size: variables.$text-size-head-sm;
+    }
+}
+
+@mixin headline-sizes-md {
+    font-weight: bold;
+    font-size: variables.$text-size-head-sm;
+
+    @include breakpoints.md {
+        font-size: variables.$text-size-head-md;
+    }
+}
+
+@mixin headline-sizes-lg {
+    font-weight: bold;
+    font-size: variables.$text-size-head-sm;
+
+    @include breakpoints.md {
+        font-size: variables.$text-size-head-md;
+    }
+    @include breakpoints.lg {
+        font-size: variables.$text-size-head-lg;
+    }
+}
+
+/*-----------------------------------*/
 
 .heading2Xl {
     font-size: 2.5rem;

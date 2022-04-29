@@ -9,5 +9,20 @@ $aspect-ratio-3_4: math.div(3, 4);
 
 /*Colors*/
 $link-color: rgb(230, 211, 65);
-//rgb(192, 192, 59, 1)
 $main-color: rgb(50, 50, 191);
+$text-color-accent: #fff;
+$text-color-main: #000;
+
+/*Text sizes*/
+$text-size-body-xsm: 10px;
+$text-size-body-sm: 15px;
+$text-size-body-md: 20px;
+$text-size-body-lg: 30px;
+$text-size-body-xlg: 45px;
+
+/*Headlines*/
+$text-size-head-xsm: 18px;
+$text-size-head-sm: 20px;
+$text-size-head-md: 35px;
+$text-size-head-lg: 50px;
+$text-size-head-xl: 70px;

@@ -26,6 +26,7 @@ export interface ArticleProps {
     linkUrl?: string
     btnText?: string
     modLayout?: string
+    textSize?: string
 }
 
 export interface LabelProps {
@@ -33,7 +34,7 @@ export interface LabelProps {
     border?: boolean
     gap?: boolean
     align?: string
-    size?: string
+    textSize?: string
 }
 
 export interface imageTile {

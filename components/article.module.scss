@@ -6,35 +6,34 @@
 $lh-height: 1.3;
 $margin-text: 20px;
 
-@mixin text-sizes {
-    //@include utils.lhCrop($lh-height);
-    font-size: 15px;
+/* @mixin text-sizes {
+    font-size: variables.$text-size-body-xsm;
 
     @include breakpoints.md {
-        font-size: 20px;
+        font-size: variables.$text-size-body-sm;
     }
     @include breakpoints.lg {
-        font-size: 25px;
+        font-size: variables.$text-size-body-md;
     }
 }
 
 @mixin headline-sizes {
     font-weight: bold;
-    font-size: 25px;
+    font-size: variables.$text-size-head-sm;
 
     @include breakpoints.md {
-        font-size: 35px;
+        font-size: variables.$text-size-head-md;
     }
-}
+} */
 
 @mixin cta_btn {
     margin-top: $margin-text;
-    text-align: center;
+    text-align: left;
 
     @include breakpoints.md {
         text-align: left;
     }
-    @include text-sizes;
+    //@include text-sizes;
 
     a {
         font-weight: bold;
@@ -89,6 +88,7 @@ $margin-text: 20px;
                 max-width: 100%;
                 height: 100%;
                 align-self: flex-start;
+                display: none;
 
                 img {
                     width: 100%;
@@ -104,27 +104,24 @@ $margin-text: 20px;
             }
 
             .allText {
-                text-align: center;
+                //text-align: center;
                 padding: 0 10px;
                 align-self: flex-start;
-                // color: #fff;
                 display: flex;
                 flex-direction: column;
+                color: variables.$text-color-main;
 
-                @include breakpoints.md {
+                /*                 @include breakpoints.md {
                     width: 50%;
-                }
+                } */
 
                 .title {
                     //border-bottom: 2px solid #000;
-                    font-weight: bold;
-                    text-align: center;
+                    text-align: left;
                     margin-bottom: $margin-text;
 
                     @include breakpoints.md {
                         margin-left: $margin-text;
-
-                        text-align: left;
                     }
 
                     .text {
@@ -134,14 +131,14 @@ $margin-text: 20px;
                         @include breakpoints.md {
                             margin-top: 0;
                         }
-                        @include headline-sizes;
+                        //@include headline-sizes;
                     }
                 }
 
                 .textBlock {
                     margin: 0 $margin-text;
                     .text {
-                        @include text-sizes;
+                        //@include text-sizes;
                     }
                 }
                 .cta_btn {
@@ -162,15 +159,30 @@ $margin-text: 20px;
             }
         }
 
-        @include breakpoints.md {
-            &.imageArticle {
+        /*             &.imageArticle {
                 flex-direction: row;
+            } */
+        &.imageArticle {
+            .imageBlock {
+                display: block;
             }
 
-            &.imageArticle .allText {
-                width: 50%;
+            .allText {
                 text-align: left;
                 justify-content: flex-start;
+                @include breakpoints.md {
+                    width: 50%;
+                }
+            }
+        }
+
+        &.noImg {
+            /* .imageBlock {
+                display: none;
+            } */
+
+            .allText {
+                // width: 100%;
             }
         }
     }
@@ -216,8 +228,9 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
 
             .titleText {
                 display: flex;
-                text-align: center;
-                justify-content: center;
+                /* text-align: center;
+                justify-content: center;*/
+                align-self: flex-start;
                 @include breakpoints.md {
                     text-align: left;
                     align-self: flex-start;
@@ -227,10 +240,10 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
 
                 .text {
                     //max-width: $max-main-content-width;
-
+                    color: variables.$text-color-main;
                     padding: 20px;
                     //@include text-sizes;
-                    @include headline-sizes;
+                    //@include headline-sizes;
 
                     @include breakpoints.md {
                         margin-left: auto;
@@ -308,21 +321,26 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
                 }
 
                 .text {
-                    padding-left: 20px;
                     padding-top: 0;
-                    text-align: center;
+                    //text-align: center;
+                    text-align: left;
+                    padding: 20px;
                     @include breakpoints.md {
-                        text-align: left;
+                        // text-align: left;
                         line-height: $lh-height;
                         @include utils.lhCrop($lh-height); //line-height: 1.2
+                        padding: 0;
+                        padding-left: 20px;
                     }
-                    @include text-sizes;
+                    //@include text-sizes;
                 }
                 .cta_btn {
                     @include cta_btn;
-                    color: #000;
+                    color: variables.$text-color-main;
+                    padding-left: 20px;
                     @include breakpoints.md {
                         margin-left: 20px;
+                        padding: 0;
                     }
                 }
             }
@@ -343,6 +361,7 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
                 // color: #fff;
             }
         }
+
         @include breakpoints.custom(math.div(variables.$max-main-width, math.div(variables.$content-width, 100%))) {
             .features .colorBlock .colorFill {
                 height: $img-height-max;
@@ -376,5 +395,39 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
 
     &.cardLayout {
         @include card;
+    }
+
+    &.sm {
+        .textBlock .text,
+        .cta_btn {
+            @include utils.text-sizes-sm;
+        }
+
+        .titleText .text,
+        .title .text {
+            @include utils.headline-sizes-sm;
+        }
+    }
+    &.md {
+        .textBlock .text,
+        .cta_btn {
+            @include utils.text-sizes-md;
+        }
+
+        .titleText .text,
+        .title .text {
+            @include utils.headline-sizes-md;
+        }
+    }
+    &.lg {
+        .textBlock .text,
+        .cta_btn {
+            @include utils.text-sizes-lg;
+        }
+
+        .titleText .text,
+        .title .text {
+            @include utils.headline-sizes-lg;
+        }
     }
 }

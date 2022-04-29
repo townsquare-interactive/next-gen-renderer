@@ -81,20 +81,11 @@ $ratio2: math.div(16, 9);
                 .text {
                     color: #fff;
                     padding: 10px;
-                    font-size: 25px;
+                    font-size: variables.$text-size-body-md;
                     position: absolute;
                     bottom: 0;
                     right: 0;
-
                     font-weight: bold;
-
-                    /*  @include breakpoints.md {
-                        &:hover {
-                            transition-duration: 0.5s !important;
-                            transition-timing-function: ease-in !important;
-                            padding-left: 20px;
-                        }
-                    } */
                 }
 
                 .headline {
@@ -108,10 +99,10 @@ $ratio2: math.div(16, 9);
                     h3 {
                         color: #fff;
                         padding: 10px;
-                        font-size: 25px;
+                        font-size: variables.$text-size-head-sm;
 
                         @include breakpoints.md {
-                            font-size: 50px;
+                            font-size: variables.$text-size-head-lg;
                         }
                     }
                 }

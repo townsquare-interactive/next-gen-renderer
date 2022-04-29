@@ -3,7 +3,7 @@ import { LabelProps } from './types'
 import cn from 'classnames'
 
 function Label(props: LabelProps) {
-    const { text, border = false, gap = false, align = 'left', size = 'md' } = props
+    const { text, border = false, gap = false, align = 'left', textSize = 'md' } = props
 
     return (
         <div className={styles.root}>
@@ -20,9 +20,9 @@ function Label(props: LabelProps) {
                             [styles.center]: align === 'center',
                             [styles.left]: align === 'left',
                             [styles.right]: align === 'right',
-                            [styles.lg]: size === 'lg',
-                            [styles.md]: size === 'md',
-                            [styles.sm]: size === 'sm',
+                            [styles.lg]: textSize === 'lg',
+                            [styles.md]: textSize === 'md',
+                            [styles.sm]: textSize === 'sm',
                         })}
                     >
                         {text}

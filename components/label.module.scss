@@ -38,26 +38,26 @@ $textColor: rgb(104, 104, 104);
                 }
 
                 &.sm {
-                    font-size: 18px;
+                    font-size: variables.$text-size-head-xsm;
 
                     @include breakpoints.sm {
-                        font-size: 25px;
+                        font-size: variables.$text-size-head-sm;
                     }
                 }
 
                 &.md {
-                    font-size: 25px;
+                    font-size: variables.$text-size-head-sm;
 
                     @include breakpoints.sm {
-                        font-size: 40px;
+                        font-size: variables.$text-size-head-lg;
                     }
                 }
 
                 &.lg {
-                    font-size: 35px;
+                    font-size: variables.$text-size-head-md;
 
                     @include breakpoints.sm {
-                        font-size: 70px;
+                        font-size: variables.$text-size-head-xl;
                     }
                 }
             }

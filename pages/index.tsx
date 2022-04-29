@@ -102,6 +102,7 @@ const Home = () => {
                     btnText="Contact Us"
                     //modLayout="article"
                     modLayout="article"
+                    textSize="md"
                 />
 
                 <Article
@@ -120,9 +121,21 @@ const Home = () => {
                     imageUrl="https://images.pexels.com/photos/219692/pexels-photo-219692.jpeg"
                     linkUrl="/"
                     btnText="Contact Us"
-                    border={false}
+                    border={true}
                     //modLayout="article"
                     modLayout="card"
+                />
+
+                <Article
+                    title="Hello welcome to my Next.js playground Hello welcome to my Next.js playgroundHello welcome to my Next.js playgroundHello welcome to my Next.js playground"
+                    body="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."
+                    imageUrl="https://images.pexels.com/photos/219692/pexels-photo-219692.jpeg"
+                    border={true}
+                    linkUrl="/"
+                    btnText="Contact Us"
+                    //modLayout="article"
+                    textSize="md"
+                    modLayout="article"
                 />
 
                 {/* <div className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
@@ -157,7 +170,7 @@ const Home = () => {
                 size: size of text: sm, md, lg
             
             */}
-                <Label text="Photo Tiles" gap={true} align="left" border={true} size="sm" />
+                <Label text="Photo Tiles" gap={true} align="left" border={true} textSize="md" />
 
                 {/*
                     layout options:
