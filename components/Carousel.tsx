@@ -3,7 +3,6 @@
 
 import styles from './carousel.module.scss'
 import Image from 'next/image'
-import { HeroProps } from './types'
 import cn from 'classnames'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
