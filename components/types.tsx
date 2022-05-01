@@ -54,7 +54,8 @@ export interface imageTile {
 
 export interface ImagesProps {
     tileData: imageTile[]
-    modLayout?: '3-1/3' | '3-2/3' | '2-2/3' | '2-1/2' | '1-full'
+    // modLayout?: '3-1/3' | '3-2/3' | '2-2/3' | '2-1/2' | '1-full'
+    modLayout?: string
     gap?: boolean
 }
 
