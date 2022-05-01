@@ -1,4 +1,4 @@
-import Article from '/components/Article'
+import List from '/components/List'
 
 //runs at build time just like static props
 export const getStaticPaths = async () => {
@@ -33,7 +33,7 @@ export const getStaticProps = async (context) => {
 const Details = ({ blog }) => {
     return (
         <div>
-            <Article title={`Blog #${blog.id}: ${blog.title}`} body={blog.body} border={false} />
+            <List title={`Blog #${blog.id}: ${blog.title}`} body={blog.body} border={false} />
         </div>
     )
 }
