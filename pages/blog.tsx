@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../styles/blog.module.scss'
-import Article from '../components/List'
+import List from '../components/List'
 import { GetStaticProps } from 'next'
 import { postData, posts } from '../components/types'
 
@@ -50,22 +50,22 @@ const Blog = (posts: posts) => {
             {firstPosts.map((post: postData) => (
                 /*                 <Link href={`/post?id=${post.id}`} as={`/p/${post.id}`} key={post.id}>
                     <a>
-                        <Article title={post.title} body={post.body} border={true} />
+                        <List title={post.title} body={post.body} border={true} />
                     </a>
                 </Link> */
                 <Link href={`/blogs/${post.id}`} key={post.id}>
                     <a>
-                        <Article title={post.title} body={post.body} border={true} />
+                        <List title={post.title} body={post.body} border={true} />
                     </a>
                 </Link>
             ))}
 
-            <Article
-                title="Article Image test"
+            <List
+                title="List Image test"
                 body="Adding an image to the component, no border prop"
                 imageUrl="https://images.pexels.com/photos/10914326/pexels-photo-10914326.jpeg"
             />
-            <Article title="Intro Article" body="This is the first article on the page" border={false} />
+            <List title="Intro Article" body="This is the first article on the page" border={false} />
         </div>
     )
 }
