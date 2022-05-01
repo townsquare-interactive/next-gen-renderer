@@ -1,14 +1,14 @@
-import styles from './photoTiles3.module.scss'
+import styles from './images.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
 import cn from 'classnames'
-import { PhotoTiles3Props } from './types'
+import { ImagesProps } from './types'
 
-const PhotoTiles3 = ({ tileData, layout = '3-2/3', gap = false }: PhotoTiles3Props) => {
+const Images = ({ tileData, modLayout = '3-2/3', gap = false }: ImagesProps) => {
     return (
         <div className={styles.root}>
             <div className={styles.wrapper}>
-                {tileData.length === 3 && (layout === '3-2/3' || '3-1/3') && (
+                {tileData.length === 3 && (modLayout === '3-2/3' || '3-1/3') && (
                     <div
                         className={cn(styles.tileBlock, {
                             [styles.gap]: gap,
@@ -16,8 +16,8 @@ const PhotoTiles3 = ({ tileData, layout = '3-2/3', gap = false }: PhotoTiles3Pro
                     >
                         <div
                             className={cn(styles.tileImage, {
-                                [styles.mainImage]: layout === '3-2/3',
-                                [styles.mainImage_one]: layout === '3-1/3',
+                                [styles.mainImage]: modLayout === '3-2/3',
+                                [styles.mainImage_one]: modLayout === '3-1/3',
                             })}
                         >
                             {/* <div className={`${styles.tileImage} ${styles.mainImage}`}> */}
@@ -77,17 +77,17 @@ const PhotoTiles3 = ({ tileData, layout = '3-2/3', gap = false }: PhotoTiles3Pro
 
                 {/*---------------------------------------Two Images Passed ----------------------------------------------------------------*/}
                 {/* {tileData.length == 2 && ( */}
-                {tileData.length === 2 && (layout === '2-2/3' || '2-1/2') && (
+                {tileData.length === 2 && (modLayout === '2-2/3' || '2-1/2') && (
                     <div
                         className={cn(styles.tileBlock, {
                             [styles.gap]: gap,
-                            [styles.tileBlock_2_half]: layout === '2-1/2',
+                            [styles.tileBlock_2_half]: modLayout === '2-1/2',
                         })}
                     >
                         <div
                             className={cn(styles.tileImage, {
-                                [styles.mainImage]: layout === '2-2/3',
-                                [styles.mainImage_one]: layout === '2-1/2',
+                                [styles.mainImage]: modLayout === '2-2/3',
+                                [styles.mainImage_one]: modLayout === '2-1/2',
                             })}
                         >
                             {tileData[0].linkUrl ? (
@@ -108,8 +108,8 @@ const PhotoTiles3 = ({ tileData, layout = '3-2/3', gap = false }: PhotoTiles3Pro
                         </div>
                         <div
                             className={cn(styles.tileImage, {
-                                [styles.sideImage2_third]: layout === '2-2/3',
-                                [styles.sideImage2_half]: layout === '2-1/2',
+                                [styles.sideImage2_third]: modLayout === '2-2/3',
+                                [styles.sideImage2_half]: modLayout === '2-1/2',
                             })}
                         >
                             {tileData[1].linkUrl ? (
@@ -132,7 +132,7 @@ const PhotoTiles3 = ({ tileData, layout = '3-2/3', gap = false }: PhotoTiles3Pro
                 )}
 
                 {/*--------------------------------------One image passed ------------------------------------------*/}
-                {tileData.length === 1 && layout === '1-full' && (
+                {tileData.length === 1 && modLayout === '1-full' && (
                     <div
                         className={cn(styles.tileBlock, {
                             [styles.gap]: gap,
@@ -167,4 +167,4 @@ const PhotoTiles3 = ({ tileData, layout = '3-2/3', gap = false }: PhotoTiles3Pro
     )
 }
 
-export default PhotoTiles3
+export default Images

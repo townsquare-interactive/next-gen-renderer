@@ -1,9 +1,9 @@
-import styles from './article.module.scss'
-import { ArticleProps } from '../components/types'
+import styles from './list.module.scss'
+import { ListProps } from './types'
 import Image from 'next/image'
 import cn from 'classnames'
 
-const Article = (props: ArticleProps) => {
+const Article = (props: ListProps) => {
     const { title = '', body = '', border = true, imageUrl, linkUrl, btnText = '', modLayout = 'article', textSize = 'md' } = props
 
     return (

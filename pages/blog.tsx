@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../styles/blog.module.scss'
-import Article from '../components/Article'
+import Article from '../components/List'
 import { GetStaticProps } from 'next'
 import { postData, posts } from '../components/types'
 

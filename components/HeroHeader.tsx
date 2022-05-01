@@ -1,5 +1,5 @@
 import dl1 from '../images/pexels-pixabay-260922.jpg'
-import styles from './heroBanner.module.scss'
+import styles from './heroHeader.module.scss'
 import Image from 'next/image'
 import { HeroHeader } from './types'
 
@@ -7,7 +7,7 @@ function Header(props: HeroHeader) {
     return (
         <div className={styles.root}>
             <div className={styles.wrapper}>
-                <div className={styles.headline}>{props.headline}</div>
+                {props.headline && <div className={styles.headline}>{props.headline}</div>}
                 <Image
                     src={props.imageUrl}
                     layout="fill"

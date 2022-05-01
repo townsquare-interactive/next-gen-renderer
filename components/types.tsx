@@ -1,11 +1,11 @@
 /* Componenets */
 
-export interface HeaderProps {
+export interface HeroHeader {
     headline?: string
     imageUrl: string
 }
 
-export interface HeroProps {
+export interface HeaderProps {
     headline?: string
     imageUrl?: string
     backgroundImage?: string
@@ -18,23 +18,31 @@ export interface CardProps {
     body?: string
 }
 
-export interface ArticleProps {
+export interface ListProps {
     title?: string
     body?: string
     border?: boolean
     imageUrl?: string
     linkUrl?: string
     btnText?: string
-    modLayout?: string
-    textSize?: string
+    modLayout?: 'card' | 'article'
+    textSize?: 'sm' | 'md' | 'lg'
 }
 
 export interface LabelProps {
     text: string
     border?: boolean
     gap?: boolean
-    align?: string
-    textSize?: string
+    align?: 'left' | 'right' | 'center'
+    textSize?: 'sm' | 'md' | 'lg'
+}
+
+export interface TextProps {
+    text: string
+    border?: boolean
+    gap?: boolean
+    align?: 'left' | 'right' | 'center'
+    textSize?: 'sm' | 'md' | 'lg'
 }
 
 export interface imageTile {
@@ -44,9 +52,9 @@ export interface imageTile {
     headline?: string
 }
 
-export interface PhotoTiles3Props {
+export interface ImagesProps {
     tileData: imageTile[]
-    layout?: string
+    modLayout?: '3-1/3' | '3-2/3' | '2-2/3' | '2-1/2' | '1-full'
     gap?: boolean
 }
 

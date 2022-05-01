@@ -3,13 +3,13 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.scss'
 import Script from 'next/script'
-import Article from '../components/Article'
+import List from '../components/List'
 import Header from '../components/Header'
-import HeroBanner from '../components/HeroBanner'
-import Hero from '../components/Hero'
-import PhotoTiles3 from '../components/PhotoTiles3'
+import Hero from '../components/Header'
+import Images from '../components/Images'
 import Label from '../components/Label'
 import Card from '../components/Card'
+import Text from '../components/Text'
 
 /*import { getSortedPostsData } from '../lib/posts'
  import Link from 'next/link'
@@ -85,14 +85,14 @@ const Home = () => {
             <div className={styles.wrapper}>
                 {/*                 <HeroBanner headline="Next Website" imageUrl="https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg" /> */}
 
-                <Hero
+                <Header
                     headline="My Website"
                     imageUrl="https://images.pexels.com/photos/10838475/pexels-photo-10838475.jpeg"
                     backgroundImage="/images/seamless-5178982.png"
                     //reverse={true}
                 />
 
-                <Article
+                <List
                     title="Hello welcome to my Next.js playground"
                     body="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. "
                     imageUrl="https://images.pexels.com/photos/219692/pexels-photo-219692.jpeg"
@@ -100,12 +100,11 @@ const Home = () => {
                     border={true}
                     linkUrl="/"
                     btnText="Contact Us"
-                    //modLayout="article"
                     modLayout="article"
                     textSize="md"
                 />
 
-                <Article
+                <List
                     title="Hello welcome to my Next.js playground"
                     body="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. "
                     imageUrl="https://images.pexels.com/photos/219692/pexels-photo-219692.jpeg"
@@ -115,7 +114,7 @@ const Home = () => {
                     //modLayout="article"
                     modLayout="card"
                 />
-                <Article
+                <List
                     title="Hello welcome to my Next.js playground"
                     body="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. "
                     imageUrl="https://images.pexels.com/photos/219692/pexels-photo-219692.jpeg"
@@ -126,7 +125,7 @@ const Home = () => {
                     modLayout="card"
                 />
 
-                <Article
+                <List
                     title="Hello welcome to my Next.js playground Hello welcome to my Next.js playgroundHello welcome to my Next.js playgroundHello welcome to my Next.js playground"
                     body="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."
                     imageUrl="https://images.pexels.com/photos/219692/pexels-photo-219692.jpeg"
@@ -171,6 +170,13 @@ const Home = () => {
             
             */}
                 <Label text="Photo Tiles" gap={true} align="left" border={true} textSize="md" />
+                <Text
+                    text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                    gap={false}
+                    //align="left"
+                    border={false}
+                    textSize="md"
+                />
 
                 {/*
                     layout options:
@@ -183,15 +189,15 @@ const Home = () => {
 
                     */}
 
-                <PhotoTiles3 tileData={imageData.items} layout={imageData.layout} gap={imageData.gap} />
+                <Images tileData={imageData.items} modLayout={imageData.layout} gap={imageData.gap} />
 
-                <PhotoTiles3 tileData={imageData.items} layout="3-1/3" />
+                <Images tileData={imageData.items} modLayout="3-1/3" />
 
-                <PhotoTiles3 tileData={imageData1.items} gap={imageData1.gap} layout="2-2/3" />
+                <Images tileData={imageData1.items} gap={imageData1.gap} modLayout="2-2/3" />
 
-                <PhotoTiles3 tileData={imageData1.items} gap={imageData1.gap} layout="2-1/2" />
+                <Images tileData={imageData1.items} gap={imageData1.gap} modLayout="2-1/2" />
 
-                <PhotoTiles3 tileData={imageData2.items} layout={imageData2.layout} />
+                <Images tileData={imageData2.items} modLayout={imageData2.layout} />
 
                 {/*                 <Label text="Quotes" border={true} />*/}
 

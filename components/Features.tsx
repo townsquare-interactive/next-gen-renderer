@@ -1,6 +1,6 @@
 import styles from './features.module.scss'
 import Card from './Card'
-import Article from './Article'
+import Article from './List'
 import menuData from './menu.json'
 const menu = menuData.menu
 

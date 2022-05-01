@@ -2,7 +2,7 @@
 
 import type { NextApiRequest, NextApiResponse } from 'next'
 import Head from 'next/head'
-import Article from '../components/Article'
+import Article from '../components/List'
 import storyData from './api/stories.json'
 
 //const stories = storyData.stories
