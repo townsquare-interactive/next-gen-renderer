@@ -48,24 +48,19 @@ const Blog = (posts: posts) => {
             </div>
 
             {firstPosts.map((post: postData) => (
-                /*                 <Link href={`/post?id=${post.id}`} as={`/p/${post.id}`} key={post.id}>
-                    <a>
-                        <List title={post.title} body={post.body} border={true} />
-                    </a>
-                </Link> */
                 <Link href={`/blogs/${post.id}`} key={post.id}>
                     <a>
-                        <List title={post.title} body={post.body} border={true} />
+                        <List headline={post.title} body={post.body} border={true} />
                     </a>
                 </Link>
             ))}
 
             <List
-                title="List Image test"
+                headline="List Image test"
                 body="Adding an image to the component, no border prop"
                 imageUrl="https://images.pexels.com/photos/10914326/pexels-photo-10914326.jpeg"
             />
-            <List title="Intro Article" body="This is the first article on the page" border={false} />
+            <List headline="Intro Article" body="This is the first article on the page" border={false} />
         </div>
     )
 }
