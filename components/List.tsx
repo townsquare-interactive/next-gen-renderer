@@ -6,7 +6,7 @@ import { reverse } from 'dns'
 
 const Article = (props: ListProps) => {
     const {
-        title = '',
+        headline = '',
         body = '',
         border = true,
         imageUrl,
@@ -77,7 +77,7 @@ const Article = (props: ListProps) => {
                         <div className={styles.textGutter}></div>
                         <div className={styles.insideTextGutter}></div>
                         <div className={styles.titleText}>
-                            <div className={styles.text}>{title}</div>
+                            <div className={styles.text}>{headline}</div>
                         </div>
                         <div className={cn(styles.textGutter, styles.textGutter_2)}></div>
                     </div>
@@ -99,7 +99,7 @@ const Article = (props: ListProps) => {
                                     height="300px"
                                     width="400px"
                                     layout="responsive"
-                                    alt={title}
+                                    alt={headline}
                                 />
                             )}
                         </div>
@@ -108,7 +108,7 @@ const Article = (props: ListProps) => {
                     {modLayout != 'card' ? (
                         <div className={styles.allText}>
                             <div className={styles.title}>
-                                <div className={styles.text}>{title}</div>
+                                <div className={styles.text}>{headline}</div>
                             </div>
                             <div className={styles.textBlock}>
                                 <div className={styles.text}>{body}</div>

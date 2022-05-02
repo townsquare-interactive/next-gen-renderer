@@ -5,7 +5,7 @@ import { HeaderProps } from './types'
 import cn from 'classnames'
 
 function Hero(props: HeaderProps) {
-    const { reverse = false, backgroundImage, imageUrl, headline = '' } = props
+    const { reverse = false, backgroundImageUrl, imageUrl, headline = '' } = props
     return (
         <div className={styles.root}>
             <div
@@ -14,9 +14,9 @@ function Hero(props: HeaderProps) {
                 })}
             >
                 <div className={styles.gutter}>
-                    {backgroundImage && (
+                    {backgroundImageUrl && (
                         <div className={styles.backgroundBlock}>
-                            <Image src={backgroundImage} layout="fill" objectFit="cover" alt="" />
+                            <Image src={backgroundImageUrl} layout="fill" objectFit="cover" alt="" />
                         </div>
                     )}
                 </div>
@@ -28,14 +28,14 @@ function Hero(props: HeaderProps) {
 
                 <div className={styles.headline}>
                     <div className={styles.backgroundBlock}>
-                        {backgroundImage && <Image src={backgroundImage} layout="fill" objectFit="cover" alt="" />}
+                        {backgroundImageUrl && <Image src={backgroundImageUrl} layout="fill" objectFit="cover" alt="" />}
                         <div className={styles.text}>{headline}</div>
                     </div>
                 </div>
                 <div className={cn(styles.gutter, styles.gutter_alt)}>
-                    {backgroundImage && (
+                    {backgroundImageUrl && (
                         <div className={styles.backgroundBlock}>
-                            <Image src={backgroundImage} layout="fill" objectFit="cover" alt="" />
+                            <Image src={backgroundImageUrl} layout="fill" objectFit="cover" alt="" />
                         </div>
                     )}
                 </div>

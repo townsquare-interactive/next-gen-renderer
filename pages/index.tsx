@@ -10,6 +10,7 @@ import Images from '../components/Images'
 import Label from '../components/Label'
 import Card from '../components/Card'
 import Text from '../components/Text'
+import { ImagesProps, ListProps } from '../components/types'
 
 /*import { getSortedPostsData } from '../lib/posts'
  import Link from 'next/link'
@@ -27,9 +28,9 @@ import Date from '../components/date' */
 } */
 
 const Home = () => {
-    const imageData = {
+    const imageData: ImagesProps = {
         gap: true,
-        layout: '3-2/3',
+        modLayout: '3-1/3',
         items: [
             {
                 imageUrl: 'https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg',
@@ -49,8 +50,9 @@ const Home = () => {
         ],
     }
 
-    const imageData1 = {
+    const imageData1: ImagesProps = {
         gap: true,
+        modLayout: '2-2/3',
         items: [
             {
                 imageUrl: 'https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg',
@@ -64,8 +66,8 @@ const Home = () => {
             },
         ],
     }
-    const imageData2 = {
-        layout: '1-full',
+    const imageData2: ImagesProps = {
+        modLayout: '1-hero',
         items: [
             {
                 imageUrl: 'https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg',
@@ -74,6 +76,18 @@ const Home = () => {
                 headline: 'Now Hero',
             },
         ],
+    }
+    const textData: ListProps = {
+        headline: 'Text Data Test',
+        body: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. ',
+        imageUrl: 'https://images.pexels.com/photos/219692/pexels-photo-219692.jpeg',
+        border: false,
+        linkUrl: '/',
+        btnText: 'Contact Us',
+        modLayout: 'article',
+        textSize: 'md',
+        align: 'left',
+        reverse: false,
     }
 
     return (
@@ -88,12 +102,12 @@ const Home = () => {
                 <Header
                     headline="My Website"
                     imageUrl="https://images.pexels.com/photos/10838475/pexels-photo-10838475.jpeg"
-                    backgroundImage="/images/seamless-5178982.png"
+                    backgroundImageUrl="/images/seamless-5178982.png"
                     //reverse={true}
                 />
 
                 <List
-                    title="Hello welcome to my Next.js playground"
+                    headline="Hello welcome to my Next.js playground"
                     body="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. "
                     imageUrl="https://images.pexels.com/photos/219692/pexels-photo-219692.jpeg"
                     //border={false}
@@ -102,12 +116,12 @@ const Home = () => {
                     btnText="Contact Us"
                     modLayout="article"
                     textSize="md"
-                    align="right"
+                    align="left"
                     //reverse={true}
                 />
 
                 <List
-                    title="yo"
+                    headline="Hello"
                     body="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. "
                     imageUrl="https://images.pexels.com/photos/219692/pexels-photo-219692.jpeg"
                     linkUrl="/"
@@ -119,7 +133,7 @@ const Home = () => {
                     //reverse={true}
                 />
                 <List
-                    title="Hello welcome to my Next.js playground"
+                    headline="Hello welcome to my Next.js playground"
                     body="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. "
                     imageUrl="https://images.pexels.com/photos/219692/pexels-photo-219692.jpeg"
                     linkUrl="/"
@@ -130,7 +144,7 @@ const Home = () => {
                 />
 
                 <List
-                    title="Hello welcome to my Next.js playground Hello welcome to my Next.js playgroundHello welcome to my Next.js playgroundHello welcome to my Next.js playground"
+                    headline="Hello welcome to my Next.js playground "
                     body="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."
                     imageUrl="https://images.pexels.com/photos/219692/pexels-photo-219692.jpeg"
                     border={true}
@@ -140,6 +154,8 @@ const Home = () => {
                     textSize="md"
                     modLayout="article"
                 />
+
+                <List {...textData} />
 
                 {/* <div className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
                     <h2 className={utilStyles.headingLg}>Blog</h2>
@@ -193,7 +209,7 @@ const Home = () => {
 
                     */}
 
-                <Images tileData={imageData.items} modLayout={imageData.layout} gap={imageData.gap} />
+                {/*                 <Images tileData={imageData.items} modLayout={imageData.layout} gap={imageData.gap} />
 
                 <Images tileData={imageData.items} modLayout="3-1/3" />
 
@@ -201,16 +217,13 @@ const Home = () => {
 
                 <Images tileData={imageData1.items} gap={imageData1.gap} modLayout="2-1/2" />
 
-                <Images tileData={imageData2.items} modLayout={imageData2.layout} />
+                <Images tileData={imageData2.items} modLayout={imageData2.layout} /> */}
 
-                {/*                 <Label text="Quotes" border={true} />*/}
+                <Images {...imageData} />
 
-                {/* <Card
-                    imageUrl="https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg"
-                    title="hello"
-                    body=" Hey whats up hello, Hey whats up helloHey whats up helloHey whats up helloHey whats up helloHey whats up helloHey whats up helloHey whats up
-                    helloHey whats up helloHey whats up helloHey whats up hello"
-                /> */}
+                <Images {...imageData1} />
+
+                <Images {...imageData2} />
             </div>
         </div>
     )

@@ -28,6 +28,14 @@ $margin-text: 20px;
     }
 }
 
+@mixin bordered {
+    background-color: black;
+
+    * {
+        color: #fff;
+    }
+}
+
 @mixin article {
     .wrapper {
         max-width: variables.$max-main-width;
@@ -35,7 +43,6 @@ $margin-text: 20px;
 
         @include breakpoints.md {
             width: variables.$content-width;
-            margin: 15px auto;
         }
 
         .features {
@@ -60,40 +67,30 @@ $margin-text: 20px;
                     width: 50%;
                     height: auto;
                 }
-                /*             @include breakpoints.lg {
-                aspect-ratio: variables.$aspect-ratio-4_3;
-                aspect-ratio: variables.$aspect-ratio-4_3;
-            } */
             }
 
             .allText {
-                //text-align: center;
                 padding: 0 10px;
                 align-self: flex-start;
                 display: flex;
                 flex-direction: column;
                 color: variables.$text-color-main;
 
-                /*                 @include breakpoints.md {
-                    width: 50%;
-                } */
-
                 .title {
-                    // text-align: left;
                     margin-bottom: $margin-text;
+                    line-height: $lh-height;
 
                     @include breakpoints.md {
                         margin-left: $margin-text;
                     }
 
                     .text {
-                        @include utils.lhCrop($lh-height);
                         line-height: $lh-height;
+                        @include utils.lhCrop($lh-height);
                         margin-top: 30px;
                         @include breakpoints.md {
                             margin-top: 0;
                         }
-                        //@include headline-sizes;
                     }
                 }
 
@@ -109,13 +106,7 @@ $margin-text: 20px;
             //conditional classes
         }
         &.bordered {
-            //background-color: rgba(249, 247, 197, 0.502);
-            background-color: #000;
-            //border: 5px solid #fff;
-
-            * {
-                color: #fff;
-            }
+            @include bordered;
         }
 
         /*             &.imageArticle {
@@ -140,16 +131,6 @@ $margin-text: 20px;
                 flex-direction: row-reverse;
             }
         }
-
-        /* &.noImg {
-             .imageBlock {
-                display: none;
-            } 
-
-            .allText {
-                // width: 100%;
-            }
-        } */
     }
 }
 
@@ -162,10 +143,6 @@ $image-width-percentage: 25%;
 $image-width-decimal: 0.25;
 $image-width: #{$image-width-decimal * 100}vw;
 $image-height: $image-width / $ratio;
-
-//Content width and max-size of content
-//$content-width: 80%;
-//$max-main-width: 1200px;
 
 //Image and content size calculations
 $img-height-max: math.div($image-width-decimal * variables.$max-main-width, $ratio);
@@ -196,7 +173,6 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
                 align-self: flex-start;
 
                 @include breakpoints.md {
-                    //text-align: left;
                     align-self: flex-start;
                     flex: 60 0 0;
                     max-width: $max-main-content-width;
@@ -279,7 +255,7 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
                     padding: 20px;
                     @include breakpoints.md {
                         line-height: $lh-height;
-                        @include utils.lhCrop($lh-height); //line-height: 1.2
+                        @include utils.lhCrop($lh-height);
                         padding: 0;
                         padding-left: 20px;
                     }
@@ -297,16 +273,13 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
             }
         }
         &.bordered .textBlock {
-            background-color: #000;
-            color: #fff;
+            @include bordered;
 
             .text {
                 padding: 20px;
-                // color: #fff;
             }
             .cta_btn {
                 padding-bottom: 20px;
-                color: #fff;
             }
         }
 

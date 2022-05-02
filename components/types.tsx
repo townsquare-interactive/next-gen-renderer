@@ -8,7 +8,7 @@ export interface HeroHeader {
 export interface HeaderProps {
     headline?: string
     imageUrl?: string
-    backgroundImage?: string
+    backgroundImageUrl?: string
     reverse?: boolean
 }
 
@@ -19,7 +19,7 @@ export interface CardProps {
 }
 
 export interface ListProps {
-    title?: string
+    headline?: string
     body?: string
     border?: boolean
     imageUrl?: string
@@ -47,7 +47,7 @@ export interface TextProps {
     textSize?: 'sm' | 'md' | 'lg'
 }
 
-export interface imageTile {
+/* export interface imageTile {
     imageUrl: string
     linkText?: string
     linkUrl?: string
@@ -58,6 +58,19 @@ export interface ImagesProps {
     tileData: imageTile[]
     // modLayout?: '3-1/3' | '3-2/3' | '2-2/3' | '2-1/2' | '1-full'
     modLayout?: string
+    gap?: boolean
+} */
+
+export interface imageTile {
+    imageUrl: string
+    linkText?: string
+    linkUrl?: string
+    headline?: string
+}
+
+export interface ImagesProps {
+    items: imageTile[]
+    modLayout?: '3-1/3' | '3-2/3' | '2-2/3' | '2-1/2' | '1-full' | '1-hero'
     gap?: boolean
 }
 
