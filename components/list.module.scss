@@ -102,16 +102,11 @@ $margin-text: 20px;
                     @include cta_btn;
                 }
             }
-
-            //conditional classes
         }
         &.bordered {
             @include bordered;
         }
 
-        /*             &.imageArticle {
-                flex-direction: row;
-            } */
         &.imageArticle {
             .imageBlock {
                 display: block;
@@ -272,6 +267,7 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
                 }
             }
         }
+
         &.bordered .textBlock {
             @include bordered;
 
@@ -290,6 +286,7 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
             }
         }
 
+        //Unsetting aspect-ratio and changing height to account for 1200px max-width
         @include breakpoints.custom(math.div(variables.$max-main-width, math.div(variables.$content-width, 100%))) {
             .features .colorBlock .colorFill {
                 height: $img-height-max;
@@ -298,6 +295,7 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
         }
     }
 
+    //Card items reverse order on every even number
     &:nth-child(even) {
         @include breakpoints.md {
             .title {

@@ -9,7 +9,7 @@ function Features() {
         <div className={styles.root}>
             <div className={styles.wrapper}>
                 {menu.map((item, index) => {
-                    return <List imageUrl={item.imgSrc} title={item.title} key={index} body={item.text} modLayout="card" border={false} />
+                    return <List imageUrl={item.imageUrl} headline={item.headline} key={index} body={item.body} modLayout="card" border={false} />
                 })}
             </div>
         </div>
