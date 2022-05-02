@@ -2,9 +2,21 @@ import styles from './list.module.scss'
 import { ListProps } from './types'
 import Image from 'next/image'
 import cn from 'classnames'
+import { reverse } from 'dns'
 
 const Article = (props: ListProps) => {
-    const { title = '', body = '', border = true, imageUrl, linkUrl, btnText = '', modLayout = 'article', textSize = 'md' } = props
+    const {
+        title = '',
+        body = '',
+        border = true,
+        imageUrl,
+        linkUrl,
+        btnText = '',
+        modLayout = 'article',
+        textSize = 'md',
+        reverse = false,
+        align = 'left',
+    } = props
 
     return (
         <div
@@ -14,6 +26,9 @@ const Article = (props: ListProps) => {
                 [styles.sm]: textSize === 'sm',
                 [styles.md]: textSize === 'md',
                 [styles.lg]: textSize === 'lg',
+                [styles.center]: align === 'center',
+                [styles.left]: align === 'left',
+                [styles.right]: align === 'right',
             })}
         >
             {/* {modLayout != 'card' && (
@@ -53,6 +68,7 @@ const Article = (props: ListProps) => {
                     [styles.wrapper]: true,
                     [styles.bordered]: border === true,
                     [styles.imageArticle]: imageUrl && modLayout != 'card',
+                    [styles.reverse]: reverse,
                 })}
             >
                 {/*change title div layout on card*/}

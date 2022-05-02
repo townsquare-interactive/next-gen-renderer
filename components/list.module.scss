@@ -6,34 +6,8 @@
 $lh-height: 1.3;
 $margin-text: 20px;
 
-/* @mixin text-sizes {
-    font-size: variables.$text-size-body-xsm;
-
-    @include breakpoints.md {
-        font-size: variables.$text-size-body-sm;
-    }
-    @include breakpoints.lg {
-        font-size: variables.$text-size-body-md;
-    }
-}
-
-@mixin headline-sizes {
-    font-weight: bold;
-    font-size: variables.$text-size-head-sm;
-
-    @include breakpoints.md {
-        font-size: variables.$text-size-head-md;
-    }
-} */
-
 @mixin cta_btn {
     margin-top: $margin-text;
-    text-align: left;
-
-    @include breakpoints.md {
-        text-align: left;
-    }
-    //@include text-sizes;
 
     a {
         font-weight: bold;
@@ -46,20 +20,16 @@ $margin-text: 20px;
     }
 }
 
+@mixin features {
+    display: flex;
+    flex-direction: column;
+    @include breakpoints.md {
+        flex-direction: row;
+    }
+}
+
 @mixin article {
     .wrapper {
-        /*         padding: 30px;
-        width: 100%;
-        margin: 15px auto;
-        max-width: variables.$max-main-width;
-
-        @include breakpoints.sm {
-            width: variables.$content-width;
-        }
-
-        @include utils.useFlex;
-        flex-direction: column;
-        box-sizing: border-box; */
         max-width: variables.$max-main-width;
         margin: 15px auto;
 
@@ -71,19 +41,12 @@ $margin-text: 20px;
         .features {
             padding: 30px;
             width: 100%;
-
-            @include utils.useFlex;
-            flex-direction: column;
+            @include features;
             box-sizing: border-box;
-
-            @include breakpoints.md {
-                flex-direction: row;
-            }
+            align-items: center;
 
             .imageBlock {
                 position: relative;
-                /*  width: 800px;
-            height: 300px; */
                 width: 100%;
                 max-width: 100%;
                 height: 100%;
@@ -116,8 +79,7 @@ $margin-text: 20px;
                 } */
 
                 .title {
-                    //border-bottom: 2px solid #000;
-                    text-align: left;
+                    // text-align: left;
                     margin-bottom: $margin-text;
 
                     @include breakpoints.md {
@@ -137,13 +99,10 @@ $margin-text: 20px;
 
                 .textBlock {
                     margin: 0 $margin-text;
-                    .text {
-                        //@include text-sizes;
-                    }
                 }
+
                 .cta_btn {
                     @include cta_btn;
-                    // color: #fff;
                 }
             }
 
@@ -168,11 +127,17 @@ $margin-text: 20px;
             }
 
             .allText {
-                text-align: left;
+                //text-align: left;
                 justify-content: flex-start;
                 @include breakpoints.md {
                     width: 50%;
                 }
+            }
+        }
+
+        &.reverse .features {
+            @include breakpoints.md {
+                flex-direction: row-reverse;
             }
         }
 
@@ -228,22 +193,19 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
 
             .titleText {
                 display: flex;
-                /* text-align: center;
-                justify-content: center;*/
                 align-self: flex-start;
+
                 @include breakpoints.md {
-                    text-align: left;
+                    //text-align: left;
                     align-self: flex-start;
                     flex: 60 0 0;
                     max-width: $max-main-content-width;
                 }
 
                 .text {
-                    //max-width: $max-main-content-width;
                     color: variables.$text-color-main;
                     padding: 20px;
-                    //@include text-sizes;
-                    //@include headline-sizes;
+                    width: 100%;
 
                     @include breakpoints.md {
                         margin-left: auto;
@@ -254,11 +216,7 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
             }
         }
         .features {
-            display: flex;
-            flex-direction: column;
-            @include breakpoints.md {
-                flex-direction: row;
-            }
+            @include features;
 
             .colorBlock {
                 flex: 10 0 0;
@@ -285,19 +243,15 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
                 .blockPicture {
                     width: 100%;
                     position: relative;
-                    // height: 350px;
 
                     @include breakpoints.md {
-                        position: relative;
                         aspect-ratio: $ratio;
                     }
 
                     img {
                         width: 100% !important;
                         object-fit: cover;
-                        /* height: auto !important;
-                    width: auto;
-                    min-height: auto; */
+
                         @include breakpoints.md {
                             position: absolute;
                             top: 0;
@@ -322,18 +276,15 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
 
                 .text {
                     padding-top: 0;
-                    //text-align: center;
-                    text-align: left;
                     padding: 20px;
                     @include breakpoints.md {
-                        // text-align: left;
                         line-height: $lh-height;
                         @include utils.lhCrop($lh-height); //line-height: 1.2
                         padding: 0;
                         padding-left: 20px;
                     }
-                    //@include text-sizes;
                 }
+
                 .cta_btn {
                     @include cta_btn;
                     color: variables.$text-color-main;
@@ -346,9 +297,7 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
             }
         }
         &.bordered .textBlock {
-            //background-color: rgba(249, 247, 197, 0.502);
             background-color: #000;
-            //border: 5px solid #fff;
             color: #fff;
 
             .text {
@@ -358,7 +307,13 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
             .cta_btn {
                 padding-bottom: 20px;
                 color: #fff;
-                // color: #fff;
+            }
+        }
+
+        &.reverse .features,
+        &.reverse .title {
+            @include breakpoints.md {
+                flex-direction: row-reverse;
             }
         }
 
@@ -383,7 +338,6 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
             flex-direction: row-reverse;
         }
     }
-    //Unsetting side block aspect ratio so it can stretch to allow max-content size
 }
 
 .root {
@@ -395,6 +349,36 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
 
     &.cardLayout {
         @include card;
+    }
+
+    &.left {
+        .textBlock .text,
+        .titleText .text,
+        .title .text,
+        .allText,
+        .cta_btn {
+            text-align: left;
+        }
+    }
+
+    &.right {
+        .textBlock .text,
+        .titleText .text,
+        .title .text,
+        .allText,
+        .cta_btn {
+            text-align: right;
+        }
+    }
+
+    &.center {
+        .textBlock .text,
+        .titleText .text,
+        .title .text,
+        .allText,
+        .cta_btn {
+            text-align: center;
+        }
     }
 
     &.sm {

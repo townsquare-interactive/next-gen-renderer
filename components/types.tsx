@@ -27,6 +27,8 @@ export interface ListProps {
     btnText?: string
     modLayout?: 'card' | 'article'
     textSize?: 'sm' | 'md' | 'lg'
+    reverse?: boolean
+    align?: 'left' | 'right' | 'center'
 }
 
 export interface LabelProps {
