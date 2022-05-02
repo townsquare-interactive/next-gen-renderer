@@ -12,6 +12,12 @@ import Card from '../components/Card'
 import Text from '../components/Text'
 import { ImagesProps, ListProps } from '../components/types'
 
+import data from '../components/indexData.json'
+const imageDataJ: ImagesProps = data.imagesData as ImagesProps
+console.log('hello', imageDataJ)
+
+//const data: ImagesProps = imagesData
+
 /*import { getSortedPostsData } from '../lib/posts'
  import Link from 'next/link'
 import utilStyles from '../styles/utils.module.scss'
@@ -29,8 +35,9 @@ import Date from '../components/date' */
 
 const Home = () => {
     const imageData: ImagesProps = {
-        gap: true,
         modLayout: '3-1/3',
+        gap: true,
+        // modLayout: ModLayout.ThreeAndOneThird,
         items: [
             {
                 imageUrl: 'https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg',
@@ -219,7 +226,7 @@ const Home = () => {
 
                 <Images tileData={imageData2.items} modLayout={imageData2.layout} /> */}
 
-                <Images {...imageData} />
+                <Images {...imageDataJ} />
 
                 <Images {...imageData1} />
 

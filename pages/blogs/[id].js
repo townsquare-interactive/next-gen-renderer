@@ -33,7 +33,7 @@ export const getStaticProps = async (context) => {
 const Details = ({ blog }) => {
     return (
         <div>
-            <List title={`Blog #${blog.id}: ${blog.title}`} body={blog.body} border={false} />
+            <List headline={`Blog #${blog.id}: ${blog.title}`} body={blog.body} border={false} />
         </div>
     )
 }
