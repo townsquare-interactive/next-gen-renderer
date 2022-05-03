@@ -33,7 +33,8 @@ $sm-block-max: (variables.$max-main-width * 0.25);
             flex: 10 0 0;
             background-color: variables.$main-color;
             height: 100%;
-            display: none;
+            //display: none;
+            display: block;
             max-width: 100%;
 
             @include breakpoints.md {
@@ -80,6 +81,9 @@ $sm-block-max: (variables.$max-main-width * 0.25);
                     position: absolute;
 
                     @include breakpoints.sm {
+                        font-size: variables.$text-size-head-sm;
+                    }
+                    @include breakpoints.lg {
                         font-size: variables.$text-size-head-md;
                     }
                 }
