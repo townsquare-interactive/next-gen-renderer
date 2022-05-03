@@ -70,6 +70,10 @@ $root-bottom-margin: 30px;
     font-size: variables.$text-size-head-sm;
 
     @include breakpoints.md {
+        font-size: variables.$text-size-head-sm;
+    }
+
+    @include breakpoints.xl {
         font-size: variables.$text-size-head-md;
     }
 }

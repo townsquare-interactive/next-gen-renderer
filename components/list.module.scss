@@ -95,7 +95,9 @@ $margin-text: 20px;
                 }
 
                 .textBlock {
-                    margin: 0 $margin-text;
+                    @include breakpoints.md {
+                        margin: 0 $margin-text;
+                    }
                 }
 
                 .cta_btn {

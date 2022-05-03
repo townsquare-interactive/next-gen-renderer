@@ -14,24 +14,7 @@ import { ImagesProps, ListProps } from '../components/types'
 
 import data from '../components/indexData.json'
 const imageDataJ: ImagesProps = data.imagesData as ImagesProps
-console.log('hello', imageDataJ)
-
-//const data: ImagesProps = imagesData
-
-/*import { getSortedPostsData } from '../lib/posts'
- import Link from 'next/link'
-import utilStyles from '../styles/utils.module.scss'
-import { blog } from '../components/types'
-import Date from '../components/date' */
-
-/* export async function getStaticProps() {
-    const allPostsData = getSortedPostsData()
-    return {
-        props: {
-            allPostsData,
-        },
-    }
-} */
+const listData: ListProps = data.listData as ListProps
 
 const Home = () => {
     const imageData: ImagesProps = {
@@ -78,7 +61,7 @@ const Home = () => {
         items: [
             {
                 imageUrl: 'https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg',
-                //linkText: 'Menu',
+                linkText: 'Menu',
                 linkUrl: '/menu',
                 headline: 'Now Hero',
             },
@@ -145,58 +128,16 @@ const Home = () => {
                     imageUrl="https://images.pexels.com/photos/219692/pexels-photo-219692.jpeg"
                     linkUrl="/"
                     btnText="Contact Us"
-                    border={true}
+                    border={false}
                     //modLayout="article"
                     modLayout="card"
                 />
 
-                <List
-                    headline="Hello welcome to my Next.js playground "
-                    body="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."
-                    imageUrl="https://images.pexels.com/photos/219692/pexels-photo-219692.jpeg"
-                    border={true}
-                    linkUrl="/"
-                    btnText="Contact Us"
-                    //modLayout="article"
-                    textSize="md"
-                    modLayout="article"
-                />
+                <List {...listData} />
 
-                <List {...textData} />
+                <List {...listData} border={true} />
 
-                {/* <div className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-                    <h2 className={utilStyles.headingLg}>Blog</h2>
-                    <ul className={utilStyles.list}>
-                        {allPostsData.map(({ id, date, title }) => (
-                            <li className={utilStyles.listItem} key={id}>
-                                <Link href={`/posts/${id}`}>
-                                    <a>{title}</a>
-                                </Link>
-                                <br />
-                                <small className={utilStyles.lightText}>{<Date dateString={date} />}</small>
-                            </li>
-                        ))}
-                    </ul>
-                </div> */}
-
-                {/*                 <PhotoTiles3
-                    imageUrls={[
-                        'https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg',
-                        'https://images.pexels.com/photos/219692/pexels-photo-219692.jpeg',
-                        'https://images.pexels.com/photos/10838475/pexels-photo-10838475.jpeg',
-                    ]}
-                    linkUrl={['/menu', '/blog', '/images']}
-                    titles={['Menu', 'Blog', 'Images']}
-                /> */}
-
-                {/*
-                layout: can be left right or center
-                border: true or false
-                gap:true or false, adds padding to text
-                size: size of text: sm, md, lg
-            
-            */}
-                <Label text="Photo Tiles" gap={true} align="left" border={true} textSize="md" />
+                <Label text="Photo Tiles" gap={false} align="left" border={true} textSize="md" />
                 <Text
                     text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
                     gap={false}
@@ -215,16 +156,6 @@ const Home = () => {
 
 
                     */}
-
-                {/*                 <Images tileData={imageData.items} modLayout={imageData.layout} gap={imageData.gap} />
-
-                <Images tileData={imageData.items} modLayout="3-1/3" />
-
-                <Images tileData={imageData1.items} gap={imageData1.gap} modLayout="2-2/3" />
-
-                <Images tileData={imageData1.items} gap={imageData1.gap} modLayout="2-1/2" />
-
-                <Images tileData={imageData2.items} modLayout={imageData2.layout} /> */}
 
                 <Images {...imageDataJ} />
 

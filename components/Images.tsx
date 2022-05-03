@@ -2,7 +2,7 @@ import styles from './images.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
 import cn from 'classnames'
-import { ImagesProps } from './types'
+import { ImagesProps, TileImage } from './types'
 
 //const Images3_23 = ({ image1, image2, image3}) => {
 
@@ -17,339 +17,146 @@ import { ImagesProps } from './types'
 //    return <Images22 items={items} />
 //}
 
-const Images3_23 = ({ items, modLayout = '3-2/3', gap = false }: ImagesProps) => {
-    return (
-        <div className={styles.wrapper}>
-            {items.length === 3 && (modLayout === '3-2/3' || '3-1/3') && (
-                <div
-                    className={cn(styles.tileBlock, {
-                        [styles.gap]: gap,
-                    })}
-                >
-                    <div
-                        className={cn(styles.tileImage, {
-                            [styles.mainImage]: modLayout === '3-2/3',
-                            [styles.mainImage_one]: modLayout === '3-1/3',
-                        })}
-                    >
-                        {items[0].linkUrl ? (
-                            <div className={`${styles.linked}`}>
-                                <Link href={items[0].linkUrl}>
-                                    <a>
-                                        <Image src={items[0].imageUrl} layout="fill" objectFit="cover" alt={items[0].linkText} />
-                                        <div className={styles.text}>{items[0].linkText || 'My Default Link Text'}</div>
-                                    </a>
-                                </Link>
-                            </div>
-                        ) : (
-                            <div>
-                                <Image src={items[0].imageUrl} layout="fill" objectFit="cover" alt={items[0].linkText} />
-                                <div className={styles.text}>{items[0].linkText}</div>
-                            </div>
-                        )}
-                    </div>
-
-                    <div className={cn(styles.tileImage, styles.sideImage)}>
-                        {items[1].linkUrl ? (
-                            <div className={`${styles.linked}`}>
-                                <Link href={items[1].linkUrl}>
-                                    <a>
-                                        <Image src={items[1].imageUrl} layout="fill" objectFit="cover" alt={items[1].linkText} />
-                                        <div className={styles.text}>{items[1].linkText}</div>
-                                    </a>
-                                </Link>
-                            </div>
-                        ) : (
-                            <div>
-                                <Image src={items[1].imageUrl} layout="fill" objectFit="cover" alt={items[1].linkText} />
-                                <div className={styles.text}>{items[1].linkText}</div>
-                            </div>
-                        )}
-                    </div>
-                    <div className={cn(styles.tileImage, styles.sideImage)}>
-                        {items[2].linkUrl ? (
-                            <div className={`${styles.linked}`}>
-                                <Link href={items[2].linkUrl}>
-                                    <a>
-                                        <Image src={items[2].imageUrl} layout="fill" objectFit="cover" alt={items[2].linkText} />
-                                        <div className={styles.text}>{items[2].linkText}</div>
-                                    </a>
-                                </Link>
-                            </div>
-                        ) : (
-                            <div>
-                                <Image src={items[2].imageUrl} layout="fill" objectFit="cover" alt={items[2].linkText} />
-                                <div className={styles.text}>{items[2].linkText}</div>
-                            </div>
-                        )}
-                    </div>
-                </div>
-            )}
-        </div>
-    )
-}
-
-const Images2_23 = ({ items, modLayout = '2-2/3', gap = false }: ImagesProps) => {
-    return (
-        <div className={styles.wrapper}>
-            <div
-                className={cn(styles.tileBlock, {
-                    [styles.gap]: gap,
-                    [styles.tileBlock_2_half]: modLayout === '2-1/2',
-                })}
-            >
-                <div
-                    className={cn(styles.tileImage, {
-                        [styles.mainImage]: modLayout === '2-2/3',
-                        [styles.mainImage_one]: modLayout === '2-1/2',
-                    })}
-                >
-                    {items[0].linkUrl ? (
-                        <div className={`${styles.linked}`}>
-                            <Link href={items[0].linkUrl}>
-                                <a>
-                                    <Image src={items[0].imageUrl} layout="fill" objectFit="cover" alt={items[0].linkText} />
-                                    <div className={styles.text}>{items[0].linkText}</div>
-                                </a>
-                            </Link>
-                        </div>
-                    ) : (
-                        <div>
-                            <Image src={items[0].imageUrl} layout="fill" objectFit="cover" alt={items[0].linkText} />
-                            <div className={styles.text}>{items[0].linkText}</div>
-                        </div>
-                    )}
-                </div>
-                <div
-                    className={cn(styles.tileImage, {
-                        [styles.sideImage2_third]: modLayout === '2-2/3',
-                        [styles.sideImage2_half]: modLayout === '2-1/2',
-                    })}
-                >
-                    {items[1].linkUrl ? (
-                        <div className={`${styles.linked}`}>
-                            <Link href={items[1].linkUrl}>
-                                <a>
-                                    <Image src={items[1].imageUrl} layout="fill" objectFit="cover" alt={items[1].linkText} />
-                                    <div className={styles.text}>{items[1].linkText}</div>
-                                </a>
-                            </Link>
-                        </div>
-                    ) : (
-                        <div>
-                            <Image src={items[1].imageUrl} layout="fill" objectFit="cover" alt={items[1].linkText} />
-                            <div className={styles.text}>{items[1].linkText}</div>
-                        </div>
-                    )}
-                </div>
-            </div>
-        </div>
-    )
-}
-
-const Images1_full = ({ items, modLayout = '1-full', gap = false }: ImagesProps) => {
-    return (
-        <div className={styles.wrapper}>
-            {items.length === 1 && (modLayout === '1-full' || '1-hero') && (
-                <div
-                    className={cn(styles.tileBlock, {
-                        [styles.gap]: gap,
-                    })}
-                >
-                    <div
-                        className={cn(styles.tileImage, styles.mainImage1, {
-                            [styles.heroImage]: modLayout === '1-hero',
-                        })}
-                    >
-                        {items[0].linkUrl ? (
-                            <div className={`${styles.linked}`}>
-                                <Link href={items[0].linkUrl}>
-                                    <a>
-                                        <Image src={items[0].imageUrl} layout="fill" objectFit="cover" alt={items[0].linkText} />
-                                        {items[0].linkText && <div className={styles.text}>{items[0].linkText}</div>}
-                                        <div className={styles.headline}>
-                                            <h3>{items[0].headline}</h3>
-                                        </div>
-                                    </a>
-                                </Link>
-                            </div>
-                        ) : (
-                            <div>
-                                <Image src={items[0].imageUrl} layout="fill" objectFit="cover" alt={items[0].linkText} />
-                                <div className={styles.headline}>
-                                    <h3>{items[0].headline}</h3>
-                                </div>
-                            </div>
-                        )}
-                    </div>
-                </div>
-            )}
-        </div>
-    )
-}
+//    return <Images3_23 items={items} />
 
 const Images = ({ items, modLayout = '3-2/3', gap = false }: ImagesProps) => {
+    if (items.length === 3) {
+        return <Images3 items={items} gap={gap} modLayout={modLayout} />
+    } else if (items.length === 2) {
+        return <Images2 items={items} gap={gap} modLayout={modLayout} />
+    } else if (items.length === 1) {
+        return <Images1 items={items} gap={gap} modLayout={modLayout} />
+    } else {
+        return <ImagesPlus items={items} gap={gap} modLayout="4-plus" />
+    }
+}
+
+const Images3 = ({ items, modLayout = '3-2/3', gap = false }: ImagesProps) => {
+    /*console.log(items.length)
+    let compList: any = []
+    function callTiles(items: any) {
+        for (let x = 0; (x = items.length); x++) {
+            let mainImage
+
+            if ((x = 0)) {
+                mainImage = true
+            } else {
+                mainImage = false
+            }
+
+            compList.push(<TileImage itemNumber={items[x]} modLayout={modLayout} items={items} isMainImage={mainImage} />)
+        }
+    } 
+    callTiles(items)*/
     return (
         <div className={styles.root}>
             <div className={styles.wrapper}>
-                {items.length === 3 && (modLayout === '3-2/3' || '3-1/3') && (
-                    <div
-                        className={cn(styles.tileBlock, {
-                            [styles.gap]: gap,
-                        })}
-                    >
-                        <div
-                            className={cn(styles.tileImage, {
-                                [styles.mainImage]: modLayout === '3-2/3',
-                                [styles.mainImage_one]: modLayout === '3-1/3',
-                            })}
-                        >
-                            {items[0].linkUrl ? (
-                                <div className={`${styles.linked}`}>
-                                    <Link href={items[0].linkUrl}>
-                                        <a>
-                                            <Image src={items[0].imageUrl} layout="fill" objectFit="cover" alt={items[0].linkText} />
-                                            <div className={styles.text}>{items[0].linkText || 'My Default Link Text'}</div>
-                                        </a>
-                                    </Link>
-                                </div>
-                            ) : (
-                                <div>
-                                    <Image src={items[0].imageUrl} layout="fill" objectFit="cover" alt={items[0].linkText} />
-                                    <div className={styles.text}>{items[0].linkText}</div>
-                                </div>
-                            )}
-                        </div>
+                <div
+                    className={cn(styles.tileBlock, {
+                        [styles.gap]: gap,
+                    })}
+                >
+                    <TileImage itemNumber={items[0]} modLayout={modLayout} isMainImage={true} />
 
-                        <div className={cn(styles.tileImage, styles.sideImage)}>
-                            {items[1].linkUrl ? (
-                                <div className={`${styles.linked}`}>
-                                    <Link href={items[1].linkUrl}>
-                                        <a>
-                                            <Image src={items[1].imageUrl} layout="fill" objectFit="cover" alt={items[1].linkText} />
-                                            <div className={styles.text}>{items[1].linkText}</div>
-                                        </a>
-                                    </Link>
-                                </div>
-                            ) : (
-                                <div>
-                                    <Image src={items[1].imageUrl} layout="fill" objectFit="cover" alt={items[1].linkText} />
-                                    <div className={styles.text}>{items[1].linkText}</div>
-                                </div>
-                            )}
-                        </div>
-                        <div className={cn(styles.tileImage, styles.sideImage)}>
-                            {items[2].linkUrl ? (
-                                <div className={`${styles.linked}`}>
-                                    <Link href={items[2].linkUrl}>
-                                        <a>
-                                            <Image src={items[2].imageUrl} layout="fill" objectFit="cover" alt={items[2].linkText} />
-                                            <div className={styles.text}>{items[2].linkText}</div>
-                                        </a>
-                                    </Link>
-                                </div>
-                            ) : (
-                                <div>
-                                    <Image src={items[2].imageUrl} layout="fill" objectFit="cover" alt={items[2].linkText} />
-                                    <div className={styles.text}>{items[2].linkText}</div>
-                                </div>
-                            )}
-                        </div>
-                    </div>
-                )}
+                    <TileImage itemNumber={items[1]} modLayout={modLayout} isMainImage={false} />
 
-                {/*---------------------------------------Two Images Passed ----------------------------------------------------------------*/}
-                {/* {items.length == 2 && ( */}
-                {items.length === 2 && (modLayout === '2-2/3' || '2-1/2') && (
-                    <div
-                        className={cn(styles.tileBlock, {
-                            [styles.gap]: gap,
-                            [styles.tileBlock_2_half]: modLayout === '2-1/2',
-                        })}
-                    >
-                        <div
-                            className={cn(styles.tileImage, {
-                                [styles.mainImage]: modLayout === '2-2/3',
-                                [styles.mainImage_one]: modLayout === '2-1/2',
-                            })}
-                        >
-                            {items[0].linkUrl ? (
-                                <div className={`${styles.linked}`}>
-                                    <Link href={items[0].linkUrl}>
-                                        <a>
-                                            <Image src={items[0].imageUrl} layout="fill" objectFit="cover" alt={items[0].linkText} />
-                                            <div className={styles.text}>{items[0].linkText}</div>
-                                        </a>
-                                    </Link>
-                                </div>
-                            ) : (
-                                <div>
-                                    <Image src={items[0].imageUrl} layout="fill" objectFit="cover" alt={items[0].linkText} />
-                                    <div className={styles.text}>{items[0].linkText}</div>
-                                </div>
-                            )}
-                        </div>
-                        <div
-                            className={cn(styles.tileImage, {
-                                [styles.sideImage2_third]: modLayout === '2-2/3',
-                                [styles.sideImage2_half]: modLayout === '2-1/2',
-                            })}
-                        >
-                            {items[1].linkUrl ? (
-                                <div className={`${styles.linked}`}>
-                                    <Link href={items[1].linkUrl}>
-                                        <a>
-                                            <Image src={items[1].imageUrl} layout="fill" objectFit="cover" alt={items[1].linkText} />
-                                            <div className={styles.text}>{items[1].linkText}</div>
-                                        </a>
-                                    </Link>
-                                </div>
-                            ) : (
-                                <div>
-                                    <Image src={items[1].imageUrl} layout="fill" objectFit="cover" alt={items[1].linkText} />
-                                    <div className={styles.text}>{items[1].linkText}</div>
-                                </div>
-                            )}
-                        </div>
-                    </div>
-                )}
-
-                {/*--------------------------------------One image passed -------------------------*/}
-                {items.length === 1 && (modLayout === '1-full' || '1-hero') && (
-                    <div
-                        className={cn(styles.tileBlock, {
-                            [styles.gap]: gap,
-                        })}
-                    >
-                        <div
-                            className={cn(styles.tileImage, styles.mainImage1, {
-                                [styles.heroImage]: modLayout === '1-hero',
-                            })}
-                        >
-                            {items[0].linkUrl ? (
-                                <div className={`${styles.linked}`}>
-                                    <Link href={items[0].linkUrl}>
-                                        <a>
-                                            <Image src={items[0].imageUrl} layout="fill" objectFit="cover" alt={items[0].linkText} />
-                                            {items[0].linkText && <div className={styles.text}>{items[0].linkText}</div>}
-                                            <div className={styles.headline}>
-                                                <h3>{items[0].headline}</h3>
-                                            </div>
-                                        </a>
-                                    </Link>
-                                </div>
-                            ) : (
-                                <div>
-                                    <Image src={items[0].imageUrl} layout="fill" objectFit="cover" alt={items[0].linkText} />
-                                    <div className={styles.headline}>
-                                        <h3>{items[0].headline}</h3>
-                                    </div>
-                                </div>
-                            )}
-                        </div>
-                    </div>
-                )}
+                    <TileImage itemNumber={items[2]} modLayout={modLayout} isMainImage={false} />
+                </div>
             </div>
+        </div>
+    )
+}
+
+const Images2 = ({ items, modLayout = '2-2/3', gap = false }: ImagesProps) => {
+    return (
+        <div className={styles.root}>
+            <div className={styles.wrapper}>
+                <div
+                    className={cn(styles.tileBlock, {
+                        [styles.gap]: gap,
+                        [styles.tileBlock_2_half]: modLayout === '2-1/2',
+                    })}
+                >
+                    <TileImage itemNumber={items[0]} modLayout={modLayout} isMainImage={true} />
+
+                    <TileImage itemNumber={items[1]} modLayout={modLayout} isMainImage={false} />
+                </div>
+            </div>
+        </div>
+    )
+}
+
+const Images1 = ({ items, modLayout = '1-full', gap = false }: ImagesProps) => {
+    return (
+        <div className={styles.root}>
+            <div className={styles.wrapper}>
+                <div
+                    className={cn(styles.tileBlock, {
+                        [styles.gap]: gap,
+                    })}
+                >
+                    <TileImage itemNumber={items[0]} modLayout={modLayout} isMainImage={true} />
+                </div>
+            </div>
+        </div>
+    )
+}
+
+const ImagesPlus = ({ items, modLayout = '4-plus', gap = false }: ImagesProps) => {
+    return (
+        <div className={styles.root}>
+            <div className={styles.wrapper}>
+                <div
+                    className={cn(styles.tileBlock, {
+                        [styles.gap]: gap,
+                    })}
+                >
+                    {items.map((item, index) => (
+                        <TileImage itemNumber={item} modLayout={modLayout} isMainImage={false} key={index} />
+                    ))}
+                </div>
+            </div>
+        </div>
+    )
+}
+
+const TileImage = ({ itemNumber, modLayout, isMainImage = false }: TileImage) => {
+    console.log('layout', modLayout)
+    return (
+        <div
+            className={cn(styles.tileImage, {
+                [styles.mainImage]: isMainImage === true && (modLayout === '3-2/3' || modLayout === '2-2/3'),
+                [styles.mainImage_two]: isMainImage === true && (modLayout === '3-1/3' || modLayout === '2-1/2'),
+                [styles.mainImage1]: (isMainImage === true && modLayout === '1-full') || modLayout === '1-hero',
+                [styles.heroImage]: isMainImage === true && modLayout === '1-hero',
+                [styles.sideImage]: isMainImage === false,
+                [styles.sideImage2_third]: isMainImage === false && modLayout === '2-2/3',
+                [styles.sideImage2_half]: isMainImage === false && modLayout === '2-1/2',
+                [styles.sideImage4_plus]: modLayout === '4-plus',
+            })}
+        >
+            {itemNumber.linkUrl ? (
+                <div className={`${styles.linked}`}>
+                    <Link href={itemNumber.linkUrl}>
+                        <a>
+                            <Image src={itemNumber.imageUrl} layout="fill" objectFit="cover" alt={itemNumber.linkText} />
+
+                            {itemNumber.linkText && <div className={styles.text}>{itemNumber.linkText}</div>}
+                            <div className={styles.headline}>
+                                <h3>{itemNumber.headline || ''}</h3>
+                            </div>
+                        </a>
+                    </Link>
+                </div>
+            ) : (
+                <div>
+                    <Image src={itemNumber.imageUrl} layout="fill" objectFit="cover" alt={itemNumber.linkText} />
+                    {itemNumber.linkText && <div className={styles.text}>{itemNumber.linkText}</div>}
+                    <div className={styles.headline}>
+                        <h3>{itemNumber.headline || ''}</h3>
+                    </div>
+                </div>
+            )}
         </div>
     )
 }
