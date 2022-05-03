@@ -1,21 +1,10 @@
-/* Componenets */
-
-export interface HeroHeader {
-    headline?: string
-    imageUrl: string
-}
+/* Components */
 
 export interface HeaderProps {
     headline?: string
     imageUrl?: string
     backgroundImageUrl?: string
     reverse?: boolean
-}
-
-export interface CardProps {
-    imageUrl?: string
-    title?: string
-    body?: string
 }
 
 export interface ListProps {
@@ -32,7 +21,7 @@ export interface ListProps {
 }
 
 export interface LabelProps {
-    text: string
+    text?: string
     border?: boolean
     gap?: boolean
     align?: 'left' | 'right' | 'center'
@@ -40,26 +29,12 @@ export interface LabelProps {
 }
 
 export interface TextProps {
-    text: string
+    text?: string
     border?: boolean
     gap?: boolean
     align?: 'left' | 'right' | 'center'
     textSize?: 'sm' | 'md' | 'lg'
 }
-
-/* export interface imageTile {
-    imageUrl: string
-    linkText?: string
-    linkUrl?: string
-    headline?: string
-}
-
-export interface ImagesProps {
-    tileData: imageTile[]
-    // modLayout?: '3-1/3' | '3-2/3' | '2-2/3' | '2-1/2' | '1-full'
-    modLayout?: string
-    gap?: boolean
-} */
 
 export interface imageItem {
     imageUrl: string
@@ -84,6 +59,20 @@ export interface TileImage {
     isMainImage: boolean
 }
 
+export interface ModuleData {
+    imagesData?: ImagesProps
+    listData?: ListProps
+    headerData?: HeaderProps
+    labelData?: LabelProps
+    textData?: TextProps
+}
+
+export interface HomeProps {
+    moduleData: ModuleData
+}
+
+/*-----------------------------End of Components-------------*/
+
 export interface imageData {
     albumId: number
     id: number
@@ -99,6 +88,17 @@ export interface images {
 
 export interface imageUse {
     images: imageData[]
+}
+
+export interface HeroHeader {
+    headline?: string
+    imageUrl: string
+}
+
+export interface CardProps {
+    imageUrl?: string
+    title?: string
+    body?: string
 }
 
 export interface photoProps {

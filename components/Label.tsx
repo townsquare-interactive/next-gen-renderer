@@ -3,7 +3,7 @@ import { LabelProps } from './types'
 import cn from 'classnames'
 
 function Label(props: LabelProps) {
-    const { text, border = false, gap = false, align = 'left', textSize = 'md' } = props
+    const { text = '', border = false, gap = false, align = 'left', textSize = 'md' } = props
 
     return (
         <div className={styles.root}>

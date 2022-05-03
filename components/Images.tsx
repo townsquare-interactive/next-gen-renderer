@@ -121,7 +121,6 @@ const ImagesPlus = ({ items, modLayout = '4-plus', gap = false }: ImagesProps) =
 }
 
 const TileImage = ({ itemNumber, modLayout, isMainImage = false }: TileImage) => {
-    console.log('layout', modLayout)
     return (
         <div
             className={cn(styles.tileImage, {

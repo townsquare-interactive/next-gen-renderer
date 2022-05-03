@@ -8,7 +8,7 @@ const Article = (props: ListProps) => {
     const {
         headline = '',
         body = '',
-        border = true,
+        border = false,
         imageUrl,
         linkUrl,
         btnText = '',

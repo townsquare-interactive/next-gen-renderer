@@ -10,13 +10,26 @@ import Images from '../components/Images'
 import Label from '../components/Label'
 import Card from '../components/Card'
 import Text from '../components/Text'
-import { ImagesProps, ListProps } from '../components/types'
+import { ImagesProps, ListProps, HomeProps, ModuleData } from '../components/types'
+import { GetStaticProps } from 'next'
 
-import data from '../components/indexData.json'
-const imageDataJ: ImagesProps = data.imagesData as ImagesProps
-const listData: ListProps = data.listData as ListProps
+//import data from '../components/indexData.json'
 
-const Home = () => {
+import data from '../components/moduleData'
+
+export const getStaticProps: GetStaticProps = async () => {
+    return {
+        props: { moduleData: data },
+        //props: { data },
+    }
+}
+
+const Home = ({ moduleData }: HomeProps) => {
+    console.log('static props', moduleData)
+
+    /*    const ModuleImageData: ImagesProps = moduleData.imagesData
+    const ModuleListData: ListProps = moduleData.listData */
+
     const imageData: ImagesProps = {
         modLayout: '3-1/3',
         gap: true,
@@ -61,7 +74,7 @@ const Home = () => {
         items: [
             {
                 imageUrl: 'https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg',
-                linkText: 'Menu',
+                //linkText: 'Menu',
                 linkUrl: '/menu',
                 headline: 'Now Hero',
             },
@@ -87,14 +100,15 @@ const Home = () => {
                 <meta property="og:title" content="My page title" key="title" />
             </Head>
             <div className={styles.wrapper}>
-                {/*                 <HeroBanner headline="Next Website" imageUrl="https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg" /> */}
-
-                <Header
+                {/*              <Header
                     headline="My Website"
                     imageUrl="https://images.pexels.com/photos/10838475/pexels-photo-10838475.jpeg"
                     backgroundImageUrl="/images/seamless-5178982.png"
                     //reverse={true}
-                />
+                /> */}
+                <Header {...moduleData.headerData} />
+
+                <Images {...(moduleData.imagesData as ImagesProps)} />
 
                 <List
                     headline="Hello welcome to my Next.js playground"
@@ -133,18 +147,13 @@ const Home = () => {
                     modLayout="card"
                 />
 
-                <List {...listData} />
+                <List {...(moduleData.listData as ListProps)} />
 
-                <List {...listData} border={true} />
+                <List {...(moduleData.listData as ListProps)} border={true} />
 
-                <Label text="Photo Tiles" gap={false} align="left" border={true} textSize="md" />
-                <Text
-                    text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                    gap={false}
-                    //align="left"
-                    border={false}
-                    textSize="md"
-                />
+                <Label {...moduleData.labelData} />
+                <Text {...moduleData.textData} />
+                <List {...moduleData.listData} />
 
                 {/*
                     layout options:
@@ -157,7 +166,7 @@ const Home = () => {
 
                     */}
 
-                <Images {...imageDataJ} />
+                <Images {...(moduleData.imagesData as ImagesProps)} />
 
                 <Images {...imageData1} />
 

@@ -3,7 +3,7 @@ import { TextProps } from './types'
 import cn from 'classnames'
 
 function Text(props: TextProps) {
-    const { text, border = false, gap = false, align = 'left', textSize = 'md' } = props
+    const { text = '', border = false, gap = false, align = 'left', textSize = 'md' } = props
 
     return (
         <div className={styles.root}>
