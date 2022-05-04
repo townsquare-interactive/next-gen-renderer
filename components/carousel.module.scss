@@ -1,32 +1,41 @@
+@use '../styles/breakpoints.scss';
+@use 'sass:math';
+@use '../styles/variables.scss';
 @use '../styles/utils.module.scss';
 
 .root {
-    width: 100%;
+    @include utils.root;
 
     .wrapper {
-        margin-bottom: 40px;
-        max-width: 900px;
-        margin: 40px auto;
+        max-width: 1200px;
+        margin: 0 auto;
+        box-sizing: border-box;
+        padding: 10px 30px;
 
         //modifying before slider arrows
         *:before {
             color: #000;
         }
 
-        /*         .slick-prev:before,
-        .slick-next:before {
-            color: #000 !important;
-        } */
+        .slideItems {
+            margin: 0 20px;
 
-        .item {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            .item {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                .text {
+                    padding: 20px;
+                    max-width: 700px;
+                    margin: 0 auto;
+                    p {
+                    }
+                }
+            }
 
-            p {
-                padding: 20px;
-                max-width: 700px;
-                margin: 0 auto;
+            .imageTile {
+                position: relative;
+                aspect-ratio: (4 / 3);
             }
         }
     }

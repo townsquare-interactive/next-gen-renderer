@@ -9,8 +9,9 @@ import Images from '../components/Images'
 import Label from '../components/Label'
 import Card from '../components/Card'
 import Text from '../components/Text'
-import { ImagesProps, ListProps, HomeProps, ModuleData, TextProps, HeaderProps } from '../components/types'
+import { ImagesProps, ListProps, HomeProps, ModuleData, TextProps, HeaderProps, SliderProps } from '../components/types'
 import { GetStaticProps } from 'next'
+import Carousel from '../components/Carousel'
 
 import data from '../components/moduleData'
 
@@ -112,6 +113,12 @@ const Home = ({ moduleData }: HomeProps) => {
                 <Text {...(moduleData.textData as TextProps)} align="center" textSize="lg" />
 
                 <Text {...(moduleData.textData as TextProps)} align="right" border={true} />
+
+                <Label {...moduleData.labelData} text="Slider Module" />
+
+                <Carousel {...(moduleData.sliderData as SliderProps)} />
+
+                <Carousel {...(moduleData.sliderData as SliderProps)} modLayout="images" />
             </div>
         </div>
     )

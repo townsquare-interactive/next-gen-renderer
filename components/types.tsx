@@ -61,16 +61,29 @@ export interface TileImage {
     isMainImage: boolean
 }
 
+export interface SlideData {
+    imageUrl?: string
+    text?: string
+    headline?: string
+}
+
+export interface SliderProps {
+    modLayout: 'images' | 'text'
+    slideCount: 1 | 2 | 3
+    items: SlideData[]
+}
+
+export interface HomeProps {
+    moduleData: ModuleData
+}
+
 export interface ModuleData {
     imagesData?: ImagesProps
     listData?: ListProps
     headerData?: HeaderProps
     labelData?: LabelProps
     textData?: TextProps
-}
-
-export interface HomeProps {
-    moduleData: ModuleData
+    sliderData?: SliderProps
 }
 
 /*-----------------------------End of Components-------------*/
