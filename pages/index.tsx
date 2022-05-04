@@ -83,8 +83,6 @@ const Home = ({ moduleData }: HomeProps) => {
 
                 <Label {...moduleData.labelData} border={false} />
 
-                {/* <List {...moduleData.listData} /> */}
-
                 {/*
                     layout options:
                     3-1/3 : Three images, each one 1/3 in size
@@ -92,6 +90,7 @@ const Home = ({ moduleData }: HomeProps) => {
                     2-2/3: Two images, main image takes up 2/3
                     2-1/2: Two images, each image takes up 1/2
                     1-full: One image that takes up full width
+                    1-hero: One image, less height
 
 
                     */}

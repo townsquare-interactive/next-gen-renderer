@@ -10,15 +10,18 @@ const data: ModuleData = {
                 imageUrl: 'https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg',
                 linkText: 'Menu',
                 linkUrl: '/menu',
+                body: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventor',
             },
             {
                 imageUrl: 'https://images.pexels.com/photos/219692/pexels-photo-219692.jpeg',
                 linkText: 'Images',
+                body: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventor',
             },
             {
                 imageUrl: 'https://images.pexels.com/photos/10838475/pexels-photo-10838475.jpeg',
                 linkText: 'Blog',
                 linkUrl: '/blog',
+                body: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventor',
             },
         ],
     },

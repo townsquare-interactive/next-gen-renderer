@@ -4,21 +4,6 @@ import Link from 'next/link'
 import cn from 'classnames'
 import { ImagesProps, TileImage } from './types'
 
-//const Images3_23 = ({ image1, image2, image3}) => {
-
-// {
-//     const item0: imageTile = items[0]
-//     const { src, alt, title = '', link } = item0
-// }
-
-//if (modLayout === '3-2/3') {
-//    return <Images3_23 items={items} />
-//} else if (modLayout === '2-2/2') {
-//    return <Images22 items={items} />
-//}
-
-//    return <Images3_23 items={items} />
-
 const Images = ({ items, modLayout = '3-2/3', gap = false }: ImagesProps) => {
     if (items.length === 3) {
         return <Images3 items={items} gap={gap} modLayout={modLayout} />
@@ -32,22 +17,6 @@ const Images = ({ items, modLayout = '3-2/3', gap = false }: ImagesProps) => {
 }
 
 const Images3 = ({ items, modLayout = '3-2/3', gap = false }: ImagesProps) => {
-    /*console.log(items.length)
-    let compList: any = []
-    function callTiles(items: any) {
-        for (let x = 0; (x = items.length); x++) {
-            let mainImage
-
-            if ((x = 0)) {
-                mainImage = true
-            } else {
-                mainImage = false
-            }
-
-            compList.push(<TileImage itemNumber={items[x]} modLayout={modLayout} items={items} isMainImage={mainImage} />)
-        }
-    } 
-    callTiles(items)*/
     return (
         <div className={styles.root}>
             <div className={styles.wrapper}>
@@ -132,6 +101,7 @@ const TileImage = ({ itemNumber, modLayout, isMainImage = false }: TileImage) =>
                 [styles.sideImage2_third]: isMainImage === false && modLayout === '2-2/3',
                 [styles.sideImage2_half]: isMainImage === false && modLayout === '2-1/2',
                 [styles.sideImage4_plus]: modLayout === '4-plus',
+                [styles.hasBody]: itemNumber.body,
             })}
         >
             {itemNumber.linkUrl ? (
@@ -143,6 +113,11 @@ const TileImage = ({ itemNumber, modLayout, isMainImage = false }: TileImage) =>
                             <div className={styles.headline}>
                                 <h3>{itemNumber.headline || ''}</h3>
                             </div>
+                            {itemNumber.body && (
+                                <div className={styles.description}>
+                                    <p>{itemNumber.body}</p>
+                                </div>
+                            )}
                         </a>
                     </Link>
                 </div>
@@ -153,6 +128,11 @@ const TileImage = ({ itemNumber, modLayout, isMainImage = false }: TileImage) =>
                     <div className={styles.headline}>
                         <h3>{itemNumber.headline || ''}</h3>
                     </div>
+                    {itemNumber.body && (
+                        <div className={styles.description}>
+                            <p>{itemNumber.body}</p>
+                        </div>
+                    )}
                 </div>
             )}
         </div>

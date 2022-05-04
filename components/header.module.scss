@@ -110,7 +110,10 @@ $sm-block-max: (variables.$max-main-width * 0.25);
         }
         //option for reversed format
         &.reverse {
-            flex-direction: row-reverse;
+            flex-direction: column;
+            @include breakpoints.md {
+                flex-direction: row-reverse;
+            }
         }
     }
 }

@@ -37,11 +37,12 @@ export interface TextProps {
     textSize?: 'sm' | 'md' | 'lg'
 }
 
-export interface imageItem {
+export interface ImageItem {
     imageUrl: string
     linkText?: string
     linkUrl?: string
     headline?: string
+    body?: string
 }
 
 /* export enum ModLayout {
@@ -49,13 +50,13 @@ export interface imageItem {
     ThreeAndTwoThirds = '3-2/3',
 } */
 export interface ImagesProps {
-    items: imageItem[]
+    items: ImageItem[]
     modLayout: '3-1/3' | '3-2/3' | '2-2/3' | '2-1/2' | '1-full' | '1-hero' | '4-plus'
     gap?: boolean
 }
 
 export interface TileImage {
-    itemNumber: imageItem
+    itemNumber: ImageItem
     modLayout: '3-1/3' | '3-2/3' | '2-2/3' | '2-1/2' | '1-full' | '1-hero' | '4-plus'
     isMainImage: boolean
 }

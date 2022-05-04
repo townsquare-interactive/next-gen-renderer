@@ -38,12 +38,10 @@ const Images = () => {
                         src="https://images.pexels.com/photos/773471/pexels-photo-773471.jpeg"
                         height={9}
                         width={16}
-                        //layout="fill"
                         layout="responsive"
                         objectFit="contain"
                         alt=""
                         quality={55}
-                        //objectPosition="bottom center"
                     />
                 </div>
 
@@ -58,7 +56,6 @@ const Images = () => {
                         layout="fill"
                         objectFit="contain"
                         alt=""
-                        //objectPosition="bottom center"
                     />
                 </div>
                 <h3>Background Image</h3>
@@ -72,7 +69,6 @@ const Images = () => {
                         layout="fill"
                         objectFit="cover"
                         alt=""
-                        //objectPosition="bottom center"
                     />
                 </div>
 
