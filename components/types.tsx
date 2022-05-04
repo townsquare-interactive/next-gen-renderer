@@ -5,6 +5,7 @@ export interface HeaderProps {
     imageUrl?: string
     backgroundImageUrl?: string
     reverse?: boolean
+    modLayout: 'normal' | 'alt-layout'
 }
 
 export interface ListProps {
@@ -29,7 +30,7 @@ export interface LabelProps {
 }
 
 export interface TextProps {
-    text?: string
+    text: string
     border?: boolean
     gap?: boolean
     align?: 'left' | 'right' | 'center'

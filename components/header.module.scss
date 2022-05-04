@@ -13,28 +13,20 @@ $sm-block-max: (variables.$max-main-width * 0.25);
     .wrapper {
         display: flex;
         justify-content: center;
-        //align-items: center;
-        // position: relative;
         margin: 0 auto;
         height: 200px;
+        width: 100%;
+        position: relative;
 
         @include breakpoints.sm {
             height: 300px;
-        }
-        width: 100%;
-        position: relative;
-        //max-width: variables.$max-main-width;
-
-        &.reverse {
-            flex-direction: row-reverse;
         }
 
         .gutter {
             flex: 10 0 0;
             background-color: variables.$main-color;
             height: 100%;
-            //display: none;
-            display: block;
+            display: none;
             max-width: 100%;
 
             @include breakpoints.md {
@@ -79,13 +71,7 @@ $sm-block-max: (variables.$max-main-width * 0.25);
                     font-size: variables.$text-size-head-xsm;
                     text-align: center;
                     position: absolute;
-
-                    @include breakpoints.sm {
-                        font-size: variables.$text-size-head-sm;
-                    }
-                    @include breakpoints.lg {
-                        font-size: variables.$text-size-head-md;
-                    }
+                    @include utils.headline-sizes-sm;
                 }
             }
         }
@@ -94,17 +80,37 @@ $sm-block-max: (variables.$max-main-width * 0.25);
         .backgroundBlock {
             z-index: 999;
             position: relative;
-            opacity: 1;
             width: 100%;
             height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
 
-            //background image pattern
             img {
                 opacity: 0.2;
             }
+        }
+
+        //alternate layout on mobile
+        &.altLayout {
+            flex-direction: column;
+            @include breakpoints.md {
+                flex-direction: row;
+            }
+            .gutter_alt {
+                display: block;
+            }
+
+            .headline {
+                max-width: 100%;
+                @include breakpoints.md {
+                    max-width: $sm-block-max;
+                }
+            }
+        }
+        //option for reversed format
+        &.reverse {
+            flex-direction: row-reverse;
         }
     }
 }

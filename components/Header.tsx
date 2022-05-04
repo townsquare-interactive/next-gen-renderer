@@ -5,12 +5,13 @@ import { HeaderProps } from './types'
 import cn from 'classnames'
 
 function Hero(props: HeaderProps) {
-    const { reverse = false, backgroundImageUrl, imageUrl, headline = '' } = props
+    const { reverse = false, backgroundImageUrl, imageUrl = '', headline = '', modLayout = 'normal' } = props
     return (
         <div className={styles.root}>
             <div
                 className={cn(styles.wrapper, {
                     [styles.reverse]: reverse,
+                    [styles.altLayout]: modLayout === 'alt-layout',
                 })}
             >
                 <div className={styles.gutter}>
@@ -22,7 +23,7 @@ function Hero(props: HeaderProps) {
                 </div>
                 {imageUrl && (
                     <div className={styles.heroImage}>
-                        <Image src={imageUrl} layout="fill" objectFit="cover" alt="" />
+                        <Image src={imageUrl} layout="fill" objectFit="cover" alt="" priority />
                     </div>
                 )}
 

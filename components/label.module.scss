@@ -6,12 +6,10 @@ $textColor: rgb(104, 104, 104);
 
 .root {
     @include utils.root;
-    //margin-bottom: 10px;
 
     .wrapper {
         width: variables.$content-width;
         max-width: variables.$max-main-width;
-        // margin-left: 0;
         margin: 0 auto;
 
         @include breakpoints.sm {
@@ -22,7 +20,7 @@ $textColor: rgb(104, 104, 104);
             .text {
                 width: 100%;
                 margin: 0;
-                color: $textColor;
+                color: variables.$label-color;
                 text-transform: uppercase;
 
                 &.center {
@@ -52,13 +50,11 @@ $textColor: rgb(104, 104, 104);
 
             &.bordered {
                 border-bottom: 4px solid $textColor;
-                //padding-bottom: 20px;
             }
 
             &.gap {
                 @include breakpoints.sm {
                     padding: 20px;
-                    //margin: 20px;
                 }
             }
         }

@@ -4,6 +4,7 @@ const data: ModuleData = {
     imagesData: {
         gap: true,
         modLayout: '3-2/3',
+
         items: [
             {
                 imageUrl: 'https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg',
@@ -23,10 +24,10 @@ const data: ModuleData = {
     },
 
     listData: {
-        headline: 'Data from Json',
+        headline: 'Headline for text',
         body: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. ',
         imageUrl: 'https://images.pexels.com/photos/219692/pexels-photo-219692.jpeg',
-        border: false,
+        border: true,
         linkUrl: '/',
         btnText: 'Contact Us',
         modLayout: 'article',
@@ -40,10 +41,11 @@ const data: ModuleData = {
         imageUrl: 'https://images.pexels.com/photos/10838475/pexels-photo-10838475.jpeg',
         backgroundImageUrl: '/images/seamless-5178982.png',
         reverse: false,
+        modLayout: 'normal',
     },
 
     labelData: {
-        text: 'Photo Tiles',
+        text: 'Images Module',
         gap: false,
         align: 'left',
         border: true,

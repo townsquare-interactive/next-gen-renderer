@@ -58,10 +58,10 @@ $root-bottom-margin: 30px;
 
 @mixin headline-sizes-sm {
     font-weight: bold;
-    font-size: variables.$text-size-head-xl;
+    font-size: variables.$text-size-head-sm;
 
-    @include breakpoints.md {
-        font-size: variables.$text-size-head-sm;
+    @include breakpoints.lg {
+        font-size: variables.$text-size-head-md;
     }
 }
 

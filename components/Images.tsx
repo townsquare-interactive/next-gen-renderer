@@ -125,8 +125,8 @@ const TileImage = ({ itemNumber, modLayout, isMainImage = false }: TileImage) =>
         <div
             className={cn(styles.tileImage, {
                 [styles.mainImage]: isMainImage === true && (modLayout === '3-2/3' || modLayout === '2-2/3'),
-                [styles.mainImage_two]: isMainImage === true && (modLayout === '3-1/3' || modLayout === '2-1/2'),
-                [styles.mainImage1]: (isMainImage === true && modLayout === '1-full') || modLayout === '1-hero',
+                [styles.mainImage2]: isMainImage === true && (modLayout === '3-1/3' || modLayout === '2-1/2'),
+                [styles.mainImage1]: isMainImage === true && (modLayout === '1-full' || modLayout === '1-hero'),
                 [styles.heroImage]: isMainImage === true && modLayout === '1-hero',
                 [styles.sideImage]: isMainImage === false,
                 [styles.sideImage2_third]: isMainImage === false && modLayout === '2-2/3',
