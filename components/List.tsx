@@ -31,38 +31,6 @@ const Article = (props: ListProps) => {
                 [styles.right]: align === 'right',
             })}
         >
-            {/* {modLayout != 'card' && (
-                <div
-                    className={cn({
-                        [styles.wrapper]: true,
-                        [styles.bordered]: border,
-                        [styles.imageArticle]: imageUrl,
-                    })}
-                >
-                    {imageUrl && (
-                        <div className={styles.imageBlock}>
-                            <div className={styles.blockPicture}>
-                                <Image src={imageUrl} layout="fill" objectFit="cover" alt="" />
-                            </div>
-                        </div>
-                    )}
-                    <div className={styles.allText}>
-                        <div className={styles.title}>
-                            <div className={styles.text}>{title}</div>
-                        </div>
-                        <div className={styles.textBlock}>
-                            <div className={styles.text}>{body}</div>
-                        </div>
-                        {linkUrl && (
-                            <div className={styles.cta_btn}>
-                                <a href={linkUrl}>{btnText}</a>
-                            </div>
-                        )}
-                    </div>
-                </div>
-            )} */}
-
-            {/*card */}
             <div
                 className={cn({
                     [styles.wrapper]: true,

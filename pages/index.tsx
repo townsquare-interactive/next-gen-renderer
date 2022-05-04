@@ -67,52 +67,13 @@ const Home = ({ moduleData }: HomeProps) => {
 
                 <Header {...(moduleData.headerData as HeaderProps)} reverse={true} modLayout="alt-layout" />
 
-                {/*                 <List
-                    headline="Hello welcome to my Next.js playground"
-                    body="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. "
-                    imageUrl="https://images.pexels.com/photos/219692/pexels-photo-219692.jpeg"
-                    //border={false}
-                    border={true}
-                    linkUrl="/"
-                    btnText="Contact Us"
-                    modLayout="article"
-                    textSize="md"
-                    align="left"
-                    //reverse={true}
-                />
-
-                <List
-                    headline="Hello"
-                    body="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. "
-                    imageUrl="https://images.pexels.com/photos/219692/pexels-photo-219692.jpeg"
-                    linkUrl="/"
-                    btnText="Contact Us"
-                    border={false}
-                    //modLayout="article"
-                    modLayout="card"
-                    //align="left"
-                    //reverse={true}
-                />
-                <List
-                    headline="Hello welcome to my Next.js playground"
-                    body="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. "
-                    imageUrl="https://images.pexels.com/photos/219692/pexels-photo-219692.jpeg"
-                    linkUrl="/"
-                    btnText="Contact Us"
-                    border={false}
-                    //modLayout="article"
-                    modLayout="card"
-                />
-*/}
-
                 <Label {...moduleData.labelData} text="List Modules: Article Layout" />
 
                 <List {...moduleData.listData} />
+
                 <List {...moduleData.listData} reverse={true} border={false} />
 
                 <Label {...moduleData.labelData} text="List Modules: Card layout" align="center" gap={true} />
-
-                <List {...moduleData.listData} modLayout="card" border={false} />
 
                 <List {...moduleData.listData} modLayout="card" border={false} />
 
@@ -141,7 +102,7 @@ const Home = ({ moduleData }: HomeProps) => {
 
                 <Images {...imageData1} gap={false} />
 
-                <Images {...imageData1} modLayout="2-2/3" />
+                <Images {...imageData1} modLayout="2-1/2" />
 
                 <Images {...imageData2} />
 
@@ -151,7 +112,7 @@ const Home = ({ moduleData }: HomeProps) => {
 
                 <Text {...(moduleData.textData as TextProps)} align="center" textSize="lg" />
 
-                <Text {...(moduleData.textData as TextProps)} align="right" />
+                <Text {...(moduleData.textData as TextProps)} align="right" border={true} />
             </div>
         </div>
     )
