@@ -89,6 +89,7 @@ export interface FooterProps {
     addressData: AddressData
     siteName: string
     phoneNumber: string
+    navData?: NavData
 }
 
 export interface HomeProps {
@@ -99,6 +100,28 @@ export interface LayoutProps {
     footerData?: FooterProps
 }
 
+export interface PagesData {
+    text: string
+    linkUrl: string
+}
+
+export interface PagesProps {
+    text: string
+    linkUrl: string
+}
+
+export interface NavData {
+    pages: PagesProps[]
+}
+
+export interface NavData2 {
+    list: PagesProps[]
+}
+
+export interface NavProps {
+    navData: NavData
+}
+
 export interface ModuleData {
     imagesData?: ImagesProps
     listData?: ListProps
@@ -107,6 +130,7 @@ export interface ModuleData {
     textData?: TextProps
     sliderData?: SliderProps
     footerData?: FooterProps
+    navData?: NavData
 }
 
 /*-----------------------------End of Components-------------*/

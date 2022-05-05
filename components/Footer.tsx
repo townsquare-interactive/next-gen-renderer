@@ -5,10 +5,10 @@ import cn from 'classnames'
 import Image from 'next/image'
 import Nav from './Nav'
 import Logo from './Logo'
-import { FooterProps } from './types'
+import { FooterProps, NavProps, NavData } from './types'
 
-const Footer = ({ socialData, addressData, siteName, phoneNumber }: FooterProps) => {
-    console.log(socialData)
+const Footer = ({ socialData, addressData, siteName, phoneNumber, navData }: FooterProps) => {
+    console.log('footer nav data', navData)
     return (
         <div className={styles.root}>
             <div className={styles.wrapper}>
@@ -16,11 +16,9 @@ const Footer = ({ socialData, addressData, siteName, phoneNumber }: FooterProps)
                     <Logo />
                     <div className={styles.social}>
                         {socialData.map((item, index) => (
-                            <Link href={item.linkUrl} key={index}>
-                                <a>
-                                    <i className={item.fontAwesomeName}></i>
-                                </a>
-                            </Link>
+                            <a href={item.linkUrl} key={index} rel="noopener noreferrer" target="_blank">
+                                <i className={item.fontAwesomeName}></i>
+                            </a>
                         ))}
                     </div>
                     <div className={styles.phone}>{phoneNumber}</div>
@@ -30,6 +28,8 @@ const Footer = ({ socialData, addressData, siteName, phoneNumber }: FooterProps)
                     </div>
                 </div>
                 <div className={cn(styles.block, styles.navInfo)}>
+                    {/* <Nav {...navData as NavData} /> */}
+                    {/*                     <Nav navData={navData} /> */}
                     <Nav />
                 </div>
                 <div className={cn(styles.block, styles.addInfo)}>

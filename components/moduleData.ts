@@ -93,19 +93,19 @@ const data: ModuleData = {
     footerData: {
         socialData: [
             {
-                linkUrl: 'google.com',
+                linkUrl: 'https://www.google.com/',
                 fontAwesomeName: 'fa-brands fa-google',
             },
             {
-                linkUrl: 'facebook.com',
+                linkUrl: 'https://www.facebook.com',
                 fontAwesomeName: 'fa-brands fa-facebook',
             },
             {
-                linkUrl: 'instagram.com',
+                linkUrl: 'https://www.instagram.com',
                 fontAwesomeName: 'fa-brands fa-instagram',
             },
             {
-                linkUrl: 'twitter.com',
+                linkUrl: 'https://www.twitter.com',
                 fontAwesomeName: 'fa-brands fa-twitter',
             },
         ],
@@ -117,6 +117,39 @@ const data: ModuleData = {
 
         siteName: 'Travel 365',
         phoneNumber: '922-444-2849',
+    },
+
+    navData: {
+        pages: [
+            {
+                text: 'Home',
+                linkUrl: '/',
+            },
+            {
+                text: 'Menu',
+                linkUrl: '/menu',
+            },
+            {
+                text: 'Images',
+                linkUrl: '/images',
+            },
+            {
+                text: 'Blog',
+                linkUrl: '/blog',
+            },
+            {
+                text: 'Contact',
+                linkUrl: '/',
+            },
+            {
+                text: 'About Us',
+                linkUrl: '/',
+            },
+            {
+                text: 'Our Sponsors',
+                linkUrl: '/',
+            },
+        ],
     },
 }
 

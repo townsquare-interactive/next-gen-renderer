@@ -9,42 +9,7 @@ import 'slick-carousel/slick/slick-theme.css'
 
 import { SliderProps } from './types'
 
-/* const sliderData: {
-    modLayout: 'image'
-    items: [
-        {
-            text: 'helo'
-            imageUrl: 'https://images.pexels.com/photos/10914326/pexels-photo-10914326.jpeg'
-        },
-        {
-            text: 'helo'
-            imageUrl: 'https://images.pexels.com/photos/10914326/pexels-photo-10914326.jpeg'
-        },
-        {
-            text: 'helo'
-            imageUrl: 'https://images.pexels.com/photos/10914326/pexels-photo-10914326.jpeg'
-        },
-        {
-            text: 'helo'
-            imageUrl: 'https://images.pexels.com/photos/10914326/pexels-photo-10914326.jpeg'
-        }
-    ]
-} */
-
 function Carousel(sliderData: SliderProps) {
-    /*     function calcSlides() {
-        let slidesShown
-        if (sliderData.items.length === 1) {
-            return 1
-        } else if (sliderData.items.length === 2) {
-            return 2
-        } else {
-            return 3
-        }
-    } */
-
-    // let imageUrl = true
-    console.log('slidecount', sliderData.slideCount)
     const settings = {
         dots: true,
         infinite: true,
@@ -71,8 +36,6 @@ function Carousel(sliderData: SliderProps) {
                                             <Image
                                                 // Route of the image file
                                                 src={item.imageUrl}
-                                                height={400}
-                                                width={600}
                                                 layout="fill"
                                                 objectFit="cover"
                                                 alt=""

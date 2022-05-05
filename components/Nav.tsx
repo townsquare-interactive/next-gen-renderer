@@ -1,9 +1,13 @@
 import styles from './nav.module.scss'
 import Link from 'next/dist/client/link'
 import cn from 'classnames'
+import { PagesProps, NavData, NavProps, PagesData, NavData2 } from '../components/types'
 
+/* const Nav = (list: PagesProps[]) => { */
 const Nav = () => {
-    const navData = [
+    const modLayout = 'header'
+
+    const pages = [
         {
             text: 'Home',
             linkUrl: '/',
@@ -36,9 +40,14 @@ const Nav = () => {
 
     return (
         <div className={styles.root}>
-            <div className={styles.wrapper}>
+            <div
+                className={cn(styles.wrapper, {
+                    //[styles.footerNav]: modLayout === 'footer',
+                    [styles.headerNav]: modLayout === 'header',
+                })}
+            >
                 <ul>
-                    {navData.map((item, index) => (
+                    {pages.map((item, index) => (
                         <li key={index}>
                             <Link href={item.linkUrl}>
                                 <a>{item.text}</a>

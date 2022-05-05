@@ -9,12 +9,13 @@ import Images from '../components/Images'
 import Label from '../components/Label'
 import Card from '../components/Card'
 import Text from '../components/Text'
-import { ImagesProps, ListProps, HomeProps, ModuleData, TextProps, HeaderProps, SliderProps, FooterProps } from '../components/types'
+import { ImagesProps, ListProps, HomeProps, ModuleData, TextProps, HeaderProps, SliderProps, FooterProps, PagesProps } from '../components/types'
 import { GetStaticProps } from 'next'
 import Carousel from '../components/Carousel'
 import Layout from '../components/Layout'
 import Footer from '../components/Footer'
 import data from '../components/moduleData'
+import Burger from '../components/Burger'
 
 export const getStaticProps: GetStaticProps = async () => {
     return {
@@ -24,6 +25,8 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 const Home = ({ moduleData }: HomeProps) => {
+    console.log(moduleData.navData)
+
     const imageData1: ImagesProps = {
         gap: true,
         modLayout: '2-2/3',
@@ -115,7 +118,7 @@ const Home = ({ moduleData }: HomeProps) => {
 
                 <Carousel {...(moduleData.sliderData as SliderProps)} modLayout="images" />
             </div>
-            <Footer {...(moduleData.footerData as FooterProps)} />
+            <Footer {...(moduleData.footerData as FooterProps)} navData={moduleData.navData} />
         </div>
     )
 }

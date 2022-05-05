@@ -31,5 +31,13 @@
                 }
             }
         }
+
+        &.headerNav {
+            li {
+                &:nth-last-child(3) {
+                    border-color: #fff;
+                }
+            }
+        }
     }
 }
