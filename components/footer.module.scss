@@ -11,60 +11,6 @@
 
     color: #fff;
 
-    /* .wrapper {
-        display: flex;
-        flex-direction: column;
-        background-color: #000;
-        padding: 10px;
-
-        .title {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            text-align: center;
-        }
-
-        .text {
-            color: #fff;
-            max-width: 700px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .features {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-
-            a {
-                border: 5px solid #fff;
-                font-weight: bold;
-                padding: 20px;
-                color: #fff;
-                margin: 10px 20px;
-                width: 100%;
-                text-align: center;
-                text-decoration: none;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-basis: 17%;
-
-                &:hover {
-                    background-color: #fff;
-                    color: #000;
-                }
-            }
-
-            i {
-                font-size: 30px;
-                padding: 8px;
-            }
-        }
-    } */
-
     .wrapper {
         max-width: variables.$max-main-width;
         margin: 0 auto;
@@ -120,13 +66,13 @@
                 }
 
                 a:hover {
-                    color: variables.$link-color;
+                    color: variables.$alt-color;
                 }
             }
 
             .phone {
                 @include utils.headline-sizes-md;
-                color: rgb(169, 169, 10);
+                color: variables.$alt-color;
             }
 
             .siteInfo {
@@ -135,7 +81,7 @@
             }
         }
 
-        .navInfo {
+        /* .navInfo {
             //grid-row: 2 / 4;
             grid-column: 2/3;
             @include breakpoints.md {
@@ -162,11 +108,11 @@
                     }
 
                     &:hover {
-                        color: variables.$link-color;
+                        color: variables.$alt-color;
                     }
                 }
             }
-        }
+        } */
 
         .addInfo {
             //grid-row: 1 / 3;

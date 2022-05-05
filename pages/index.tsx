@@ -9,10 +9,11 @@ import Images from '../components/Images'
 import Label from '../components/Label'
 import Card from '../components/Card'
 import Text from '../components/Text'
-import { ImagesProps, ListProps, HomeProps, ModuleData, TextProps, HeaderProps, SliderProps } from '../components/types'
+import { ImagesProps, ListProps, HomeProps, ModuleData, TextProps, HeaderProps, SliderProps, FooterProps } from '../components/types'
 import { GetStaticProps } from 'next'
 import Carousel from '../components/Carousel'
-
+import Layout from '../components/Layout'
+import Footer from '../components/Footer'
 import data from '../components/moduleData'
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -58,12 +59,6 @@ const Home = ({ moduleData }: HomeProps) => {
                 <meta property="og:title" content="My page title" key="title" />
             </Head>
             <div className={styles.wrapper}>
-                {/*              <Header
-                    headline="My Website"
-                    imageUrl="https://images.pexels.com/photos/10838475/pexels-photo-10838475.jpeg"
-                    backgroundImageUrl="/images/seamless-5178982.png"
-                    //reverse={true}
-                /> */}
                 <Header {...(moduleData.headerData as HeaderProps)} />
 
                 <Header {...(moduleData.headerData as HeaderProps)} reverse={true} modLayout="alt-layout" />
@@ -120,6 +115,7 @@ const Home = ({ moduleData }: HomeProps) => {
 
                 <Carousel {...(moduleData.sliderData as SliderProps)} modLayout="images" />
             </div>
+            <Footer {...(moduleData.footerData as FooterProps)} />
         </div>
     )
 }

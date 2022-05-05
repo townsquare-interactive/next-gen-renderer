@@ -89,6 +89,35 @@ const data: ModuleData = {
             },
         ],
     },
+
+    footerData: {
+        socialData: [
+            {
+                linkUrl: 'google.com',
+                fontAwesomeName: 'fa-brands fa-google',
+            },
+            {
+                linkUrl: 'facebook.com',
+                fontAwesomeName: 'fa-brands fa-facebook',
+            },
+            {
+                linkUrl: 'instagram.com',
+                fontAwesomeName: 'fa-brands fa-instagram',
+            },
+            {
+                linkUrl: 'twitter.com',
+                fontAwesomeName: 'fa-brands fa-twitter',
+            },
+        ],
+        addressData: {
+            street: '444 happy road',
+            cityState: 'Townsville, Georgia',
+            zip: '47384',
+        },
+
+        siteName: 'Travel 365',
+        phoneNumber: '922-444-2849',
+    },
 }
 
 export default data

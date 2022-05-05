@@ -1,0 +1,35 @@
+@use '../styles/breakpoints.scss';
+@use 'sass:math';
+@use '../styles/variables.scss';
+@use '../styles/utils.module.scss';
+
+.root {
+    .wrapper {
+        @include breakpoints.md {
+            padding: 40px 20px;
+
+            ul {
+                columns: 2;
+            }
+        }
+        ul {
+            padding: 0;
+            li {
+                text-decoration: none;
+                list-style-type: none;
+                padding: 10px;
+                @include utils.text-sizes-md;
+
+                &:nth-last-child(3) {
+                    margin-bottom: 25px;
+                    padding-bottom: 25px;
+                    border-bottom: 1px solid grey;
+                }
+
+                &:hover {
+                    color: variables.$alt-color;
+                }
+            }
+        }
+    }
+}

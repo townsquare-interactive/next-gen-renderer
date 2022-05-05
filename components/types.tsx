@@ -73,8 +73,30 @@ export interface SliderProps {
     items: SlideData[]
 }
 
+export interface SocialData {
+    linkUrl: string
+    fontAwesomeName: string
+}
+
+export interface AddressData {
+    street: string
+    cityState: string
+    zip: string
+}
+
+export interface FooterProps {
+    socialData: SocialData[]
+    addressData: AddressData
+    siteName: string
+    phoneNumber: string
+}
+
 export interface HomeProps {
     moduleData: ModuleData
+}
+
+export interface LayoutProps {
+    footerData?: FooterProps
 }
 
 export interface ModuleData {
@@ -84,6 +106,7 @@ export interface ModuleData {
     labelData?: LabelProps
     textData?: TextProps
     sliderData?: SliderProps
+    footerData?: FooterProps
 }
 
 /*-----------------------------End of Components-------------*/
