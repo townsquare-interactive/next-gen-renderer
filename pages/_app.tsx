@@ -7,6 +7,7 @@ import { FooterProps } from '../components/types'
 import { GetStaticProps } from 'next'
 import Layout from '../components/Layout'
 import Burger from '../components/Burger'
+import Navigation from '../components/Navigation'
 
 import data from '../components/moduleData'
 
@@ -40,9 +41,10 @@ function MyApp({ Component, pageProps }: AppProps) {
 
     return (
         <div>
+            <Navbar navCheck={navCheck} />
+            <Navigation />
             <Burger navSwitch={navSwitch} />
             {/* <Burger /> */}
-            {/* <Navbar /> */}
 
             <Component {...pageProps} />
         </div>

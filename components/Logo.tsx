@@ -5,8 +5,12 @@ import Image from 'next/image'
 
 const Nav = () => {
     return (
-        <div className={styles.logo}>
-            <Image src="/images/company-logo.png" height={156} width={722} alt="logo" />
+        <div className={styles.root}>
+            <div className={styles.wrapper}>
+                <div className={styles.logo}>
+                    <Image src="/images/company-logo.png" layout="responsive" width={722} height={156} alt="logo" />
+                </div>
+            </div>
         </div>
     )
 }

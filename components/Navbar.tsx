@@ -2,17 +2,26 @@ import styles from './navbar.module.scss'
 import Link from 'next/dist/client/link'
 import Nav from './Nav'
 import Image from 'next/image'
+import cn from 'classnames'
 
-const Navbar = () => {
+interface navProps {
+    navCheck: boolean
+}
+
+const Navbar = (props: navProps) => {
     return (
-        <div className={styles.root}>
+        <div
+            className={cn(styles.root, {
+                [styles.visible]: props.navCheck,
+            })}
+        >
             <div className={styles.wrapper}>
                 <div className={styles.navDrop}>
                     <div className={styles.navItems}>
                         <Nav />
                     </div>
                     <div className={styles.imageTile}>
-                        <Image src="/images/company-logo.png" height={156} width={722} alt="logo" />
+                        <Image src="https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg" layout="fill" alt="logo" />
                     </div>
                 </div>
             </div>

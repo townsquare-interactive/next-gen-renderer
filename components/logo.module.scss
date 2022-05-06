@@ -1,8 +1,17 @@
+@use '../styles/breakpoints.scss';
+@use 'sass:math';
+@use '../styles/variables.scss';
+@use '../styles/utils.module.scss';
+
+$logo-ratio: math.div(722, 156);
+
 .root {
     .wrapper {
         .logo {
             width: 100%;
-            max-width: 400px;
+            max-width: 300px;
+            /*             aspect-ratio: $logo-ratio;
+            position: relative; */
         }
     }
 }

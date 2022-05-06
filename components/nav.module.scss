@@ -4,12 +4,18 @@
 @use '../styles/utils.module.scss';
 
 .root {
+    width: 100%;
+
     .wrapper {
         @include breakpoints.md {
             padding: 40px 20px;
 
             ul {
                 columns: 2;
+            }
+
+            &.wrapper {
+                width: 80%;
             }
         }
         ul {

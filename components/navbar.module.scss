@@ -6,6 +6,7 @@
 .root {
     width: 100%;
     z-index: 99;
+    display: none;
 
     .wrapper {
         z-index: 9999;
@@ -24,11 +25,14 @@
             align-items: center;
             position: fixed;
             z-index: 9999;
-            background-color: rgba(variables.$main-color, 0.7);
+            background-color: rgba(0, 0, 0, 0.9);
             top: 0;
             //width: 80%;
             width: 100%;
             margin: 0 auto;
+            padding: 15px;
+            padding-top: 40px;
+            box-sizing: border-box;
 
             .navItems {
                 display: flex;
@@ -49,11 +53,17 @@
                 flex: 30 0 0;
                 padding: 20px;
                 position: relative;
+                //margin-top: 15px;
+                aspect-ratio: variables.$aspect-ratio-16_9;
 
                 img {
                     max-width: 100%;
                 }
             }
         }
+    }
+
+    &.visible {
+        display: block;
     }
 }
