@@ -3,15 +3,9 @@ import Link from 'next/dist/client/link'
 import Image from 'next/image'
 import Logo from './Logo'
 import Burger from './Burger'
+import { NavtigationProps } from './types'
 
-interface BurgerProps {
-    //navSwitch: () => void
-    //navSwitch: React.MouseEvent<HTMLInputElement>
-    navSwitch: () => void
-    navCheck: boolean
-}
-
-const Navigation = (props: BurgerProps) => {
+const Navigation = (props: NavtigationProps) => {
     const { navSwitch, navCheck = false } = props
     return (
         <div className={styles.root}>

@@ -122,6 +122,20 @@ export interface NavProps {
     navData: NavData
 }
 
+export interface BurgerProps {
+    navSwitch: () => void
+    navCheck: boolean
+}
+
+export interface NavtigationProps {
+    navSwitch: () => void
+    navCheck: boolean
+}
+
+export interface NavBarProps {
+    navCheck: boolean
+}
+
 export interface ModuleData {
     imagesData?: ImagesProps
     listData?: ListProps

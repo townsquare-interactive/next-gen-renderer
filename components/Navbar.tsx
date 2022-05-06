@@ -3,12 +3,9 @@ import Link from 'next/dist/client/link'
 import Nav from './Nav'
 import Image from 'next/image'
 import cn from 'classnames'
+import { NavBarProps } from './types'
 
-interface navProps {
-    navCheck: boolean
-}
-
-const Navbar = (props: navProps) => {
+const Navbar = (props: NavBarProps) => {
     return (
         <div
             className={cn(styles.root, {

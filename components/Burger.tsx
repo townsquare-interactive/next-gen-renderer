@@ -4,13 +4,7 @@ import Nav from './Nav'
 import Image from 'next/image'
 import { useState } from 'react'
 import cn from 'classnames'
-
-interface BurgerProps {
-    //navSwitch: () => void
-    //navSwitch: React.MouseEvent<HTMLInputElement>
-    navSwitch: () => void
-    navCheck: boolean
-}
+import { BurgerProps } from './types'
 
 const Burger = (props: BurgerProps) => {
     const { navSwitch, navCheck = false } = props

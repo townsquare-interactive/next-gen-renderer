@@ -51,6 +51,7 @@
             }
             &.navActive {
                 div:first-of-type {
+                    transform: rotate(-45deg);
                     -webkit-transform: rotate(-45deg);
                     transition: transform 0.5s ease-in-out;
                     top: 6px;
@@ -65,6 +66,7 @@
                 }
 
                 div:last-of-type {
+                    transform: rotate(-5deg);
                     -webkit-transform: rotate(45deg);
                     transition: transform 0.5s ease-in-out;
                     top: -6px;
