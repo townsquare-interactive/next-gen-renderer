@@ -42,8 +42,8 @@ function MyApp({ Component, pageProps }: AppProps) {
     return (
         <div>
             <Navbar navCheck={navCheck} />
-            <Navigation />
-            <Burger navSwitch={navSwitch} />
+            <Navigation navSwitch={navSwitch} navCheck={navCheck} />
+            {/* <Burger navSwitch={navSwitch} navCheck={navCheck} /> */}
             {/* <Burger /> */}
 
             <Component {...pageProps} />

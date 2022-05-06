@@ -24,6 +24,7 @@
                 text-decoration: none;
                 list-style-type: none;
                 padding: 10px;
+                color: variables.$text-color-accent;
                 @include utils.text-sizes-md;
 
                 &:nth-last-child(3) {
@@ -41,7 +42,7 @@
         &.headerNav {
             li {
                 &:nth-last-child(3) {
-                    border-color: #fff;
+                    border-color: variables.$text-color-accent;
                 }
             }
         }

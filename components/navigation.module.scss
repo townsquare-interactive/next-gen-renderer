@@ -7,19 +7,31 @@
     width: 100%;
     position: fixed;
     top: 0;
-    z-index: 99;
+    z-index: 99999999999999;
+    background-color: rgb(0, 0, 0, 0.9);
 
     .wrapper {
-        background-color: rgb(0, 0, 0, 0.9);
+        display: flex;
+        max-width: variables.$max-main-width;
+
+        @include breakpoints.md {
+            width: variables.$content-width;
+            margin: 0 auto;
+        }
         // height: 150px;
 
         .logoBlock {
-            width: 50%;
+            flex-grow: 2;
             padding: 15px;
 
             @include breakpoints.md {
                 width: 80%;
             }
+        }
+
+        .burgerBlock {
+            flex-grow: 1;
+            //align-self: flex-end;
         }
     }
 }
