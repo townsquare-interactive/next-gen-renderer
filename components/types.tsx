@@ -84,25 +84,22 @@ export interface AddressData {
     zip: string
 }
 
-export interface FooterProps {
+export interface FooterData {
     socialData: SocialData[]
     addressData: AddressData
     siteName: string
     phoneNumber: string
-    navData?: NavData
+}
+
+export interface FooterProps {
+    footerData: FooterData
+    navData: NavProps
 }
 
 export interface VideoProps {
     videoUrl: string
     modLayout: 'youtube' | 'local'
-    vidId?: string
 }
-
-/* export interface VideoProps {
-    videoData: VideoData
-
-}
- */
 
 export interface HomeProps {
     moduleData: ModuleData
@@ -122,18 +119,23 @@ export interface PagesProps {
     linkUrl: string
 }
 
-export interface NavData {
+/* export interface NavData {
     pages: PagesProps[]
-}
+} */
 
-export interface NavData2 {
+/* export interface NavData2 {
     list: PagesProps[]
-}
+} */
 
 export interface NavProps {
-    navData: NavData
+    pages: PagesProps[]
+    modLayout?: string
 }
 
+/* export interface NavProps2 {
+    pages: PagesProps[]
+}
+ */
 export interface BurgerProps {
     navSwitch: () => void
     navCheck: boolean
@@ -146,6 +148,7 @@ export interface NavtigationProps {
 
 export interface NavBarProps {
     navCheck: boolean
+    navData: NavProps
 }
 
 export interface ModuleData {
@@ -155,8 +158,8 @@ export interface ModuleData {
     labelData?: LabelProps
     textData?: TextProps
     sliderData?: SliderProps
-    footerData?: FooterProps
-    navData?: NavData
+    footerData?: FooterData
+    navData: NavProps
     videoData?: VideoProps
 }
 

@@ -5,37 +5,43 @@ import cn from 'classnames'
 import Image from 'next/image'
 import Nav from './Nav'
 import Logo from './Logo'
-import { FooterProps, NavProps, NavData } from './types'
+import { FooterProps, HomeProps, NavProps, PagesProps } from './types'
 
-const Footer = ({ socialData, addressData, siteName, phoneNumber, navData }: FooterProps) => {
-    console.log('footer nav data', navData)
+//const Footer = ({ socialData, addressData, siteName, phoneNumber, navData }: any) => {
+const Footer = (props: FooterProps) => {
+    //const Footer = (props: FooterProps) => {
+    /* const { socialData, addressData, siteName, phoneNumber, navData } = props */
+
+    // useContext
+    console.log('navdataf', props.footerData)
+
     return (
         <div className={styles.root}>
             <div className={styles.wrapper}>
                 <div className={cn(styles.block, styles.logoInfo)}>
                     <Logo />
                     <div className={styles.social}>
-                        {socialData.map((item, index) => (
+                        {props.footerData.socialData.map((item, index) => (
                             <a href={item.linkUrl} key={index} rel="noopener noreferrer" target="_blank">
                                 <i className={item.fontAwesomeName}></i>
                             </a>
                         ))}
                     </div>
-                    <div className={styles.phone}>{phoneNumber}</div>
+                    <div className={styles.phone}>{props.footerData.phoneNumber}</div>
                     <div className={styles.siteInfo}>
-                        <p>{siteName}</p>
+                        <p>{props.footerData.siteName}</p>
                         <p>&copy; All rights reserved</p>
                     </div>
                 </div>
                 <div className={cn(styles.block, styles.navInfo)}>
                     {/* <Nav {...navData as NavData} /> */}
-                    {/*                     <Nav navData={navData} /> */}
-                    <Nav />
+                    <Nav pages={props.navData.pages} />
+                    {/* <Nav /> */}
                 </div>
                 <div className={cn(styles.block, styles.addInfo)}>
-                    <p>{addressData.cityState}</p>
-                    <p>{addressData.street}</p>
-                    <p>{addressData.zip}</p>
+                    <p>{props.footerData.addressData.cityState}</p>
+                    <p>{props.footerData.addressData.street}</p>
+                    <p>{props.footerData.addressData.zip}</p>
                 </div>
             </div>
             {<Script src="https://kit.fontawesome.com/711388ec06.js" strategy="lazyOnload" onLoad={() => console.log(`Fontawesome Loaded Correctly`)} />}

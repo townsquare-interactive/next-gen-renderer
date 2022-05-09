@@ -150,6 +150,7 @@ const data: ModuleData = {
                 linkUrl: '/',
             },
         ],
+        modLayout: 'header',
     },
 
     videoData: {

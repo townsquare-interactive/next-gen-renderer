@@ -1,13 +1,17 @@
 import styles from './nav.module.scss'
 import Link from 'next/dist/client/link'
 import cn from 'classnames'
-import { PagesProps, NavData, NavProps, PagesData, NavData2 } from '../components/types'
+import { PagesProps, NavProps, PagesData } from '../components/types'
 
-/* const Nav = (list: PagesProps[]) => { */
-const Nav = () => {
-    const modLayout = 'header'
+/* const Nav = (props: NavProps) => {
+    const { navData } = props */
+const Nav = (props: NavProps) => {
+    const { pages, modLayout } = props
+    // const modLayout = 'header'
 
-    const pages = [
+    console.log('pages', pages)
+
+    /* const pages = [
         {
             text: 'Home',
             linkUrl: '/',
@@ -36,7 +40,7 @@ const Nav = () => {
             text: 'Our Sponsors',
             linkUrl: '/',
         },
-    ]
+    ] */
 
     return (
         <div className={styles.root}>

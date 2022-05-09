@@ -9,7 +9,23 @@ import Images from '../components/Images'
 import Label from '../components/Label'
 import Card from '../components/Card'
 import Text from '../components/Text'
-import { ImagesProps, ListProps, HomeProps, ModuleData, TextProps, HeaderProps, SliderProps, FooterProps, PagesProps, VideoProps } from '../components/types'
+import Navbar from '../components/Navbar'
+import Navigation from '../components/Navigation'
+
+import {
+    ImagesProps,
+    ListProps,
+    HomeProps,
+    ModuleData,
+    TextProps,
+    HeaderProps,
+    SliderProps,
+    FooterProps,
+    PagesProps,
+    VideoProps,
+    NavProps,
+    FooterData,
+} from '../components/types'
 import { GetStaticProps } from 'next'
 import Carousel from '../components/Carousel'
 import Layout from '../components/Layout'
@@ -17,6 +33,7 @@ import Footer from '../components/Footer'
 import data from '../components/moduleData'
 import Burger from '../components/Burger'
 import Video from '../components/Video'
+import { useState } from 'react'
 
 export const getStaticProps: GetStaticProps = async () => {
     return {
@@ -26,7 +43,45 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 const Home = ({ moduleData }: HomeProps) => {
-    console.log(moduleData.navData)
+    const [navCheck, setNav] = useState<boolean>(false)
+
+    console.log('nsfnkdsfsdfkf', moduleData)
+
+    function navSwitch() {
+        setNav(!navCheck)
+        console.log(navCheck)
+    }
+
+    /* const pages = [
+        {
+            text: 'Home',
+            linkUrl: '/',
+        },
+        {
+            text: 'Menu',
+            linkUrl: '/menu',
+        },
+        {
+            text: 'Images',
+            linkUrl: '/images',
+        },
+        {
+            text: 'Blog',
+            linkUrl: '/blog',
+        },
+        {
+            text: 'Contact',
+            linkUrl: '/',
+        },
+        {
+            text: 'About Us',
+            linkUrl: '/',
+        },
+        {
+            text: 'Our Sponsors',
+            linkUrl: '/',
+        },
+    ] */
 
     const imageData1: ImagesProps = {
         gap: true,
@@ -62,6 +117,10 @@ const Home = ({ moduleData }: HomeProps) => {
                 <title>Home Page</title>
                 <meta property="og:title" content="My page title" key="title" />
             </Head>
+
+            <Navbar navCheck={navCheck} navData={moduleData.navData} />
+
+            <Navigation navSwitch={navSwitch} navCheck={navCheck} />
             <div className={styles.wrapper}>
                 <Header {...(moduleData.headerData as HeaderProps)} />
 
@@ -121,7 +180,14 @@ const Home = ({ moduleData }: HomeProps) => {
 
                 <Video {...(moduleData.videoData as VideoProps)} />
             </div>
-            <Footer {...(moduleData.footerData as FooterProps)} navData={moduleData.navData} />
+
+            {/* <ModuleProvider moduleData={moduleData}>
+            <Footer {...(moduleData.footerData as FooterProps)} />
+            </ModuleProvider> */}
+
+            {/* <Footer {...(moduleData.footerData as FooterProps)} /> */}
+
+            <Footer footerData={moduleData.footerData as FooterData} navData={moduleData.navData} />
         </div>
     )
 }
