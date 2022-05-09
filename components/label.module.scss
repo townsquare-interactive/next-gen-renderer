@@ -2,8 +2,6 @@
 @use '../styles/breakpoints.scss';
 @use '../styles/utils.module.scss';
 
-$textColor: rgb(104, 104, 104);
-
 .root {
     width: 100%;
     margin-bottom: 10px;
@@ -50,7 +48,7 @@ $textColor: rgb(104, 104, 104);
             }
 
             &.bordered {
-                border-bottom: 4px solid $textColor;
+                border-bottom: 4px solid variables.$label-color;
             }
 
             &.gap {

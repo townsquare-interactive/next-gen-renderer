@@ -16,15 +16,17 @@ $slick-next-character: '\f054'; */
         box-sizing: border-box;
         padding: 10px 30px;
 
-        @include breakpoints.sm {
-            width: 80%;
-            padding: 0;
-        }
-
         //modifying before slider arrows
         *:before {
             color: #000;
             //content: 'Next >' !important;
+        }
+
+        @include breakpoints.sm {
+            width: 80% !important;
+            padding: 0;
+            margin: 0 auto;
+            padding: 20px;
         }
 
         .slideItems {
@@ -32,14 +34,20 @@ $slick-next-character: '\f054'; */
                 margin: 0 20px;
             }
 
+            /*             @include breakpoints.sm {
+                width: 80% !important;
+                padding: 0;
+                margin: 0 auto;
+                padding: 20px;
+            } */
+
             .item {
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 .text {
-                    padding: 20px;
                     padding-top: 0;
-                    max-width: 700px;
+                    //max-width: 700px;
                     margin: 0 auto;
                     p {
                         font-style: italic;
@@ -54,6 +62,8 @@ $slick-next-character: '\f054'; */
         }
 
         &.hasText {
+            border-bottom: 4px solid variables.$label-color;
+
             .nextBtn {
                 font-size: 13px;
                 color: #000;
@@ -73,6 +83,11 @@ $slick-next-character: '\f054'; */
 
             .prevBtn {
                 display: none !important;
+            }
+
+            .slideItems {
+                margin: 15px auto;
+                max-width: 600px;
             }
         }
     }
