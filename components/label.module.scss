@@ -5,7 +5,8 @@
 $textColor: rgb(104, 104, 104);
 
 .root {
-    @include utils.root;
+    width: 100%;
+    margin-bottom: 10px;
 
     .wrapper {
         width: variables.$content-width;

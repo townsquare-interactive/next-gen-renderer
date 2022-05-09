@@ -75,17 +75,17 @@ const data: ModuleData = {
             {
                 text: '                                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure',
                 imageUrl: 'https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg',
-                headline: '-Rupert Tolson',
+                headline: '-Jeff Grover',
             },
             {
                 text: '                                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non',
                 imageUrl: 'https://images.pexels.com/photos/10838475/pexels-photo-10838475.jpeg',
-                headline: '-Rupert Tolson',
+                headline: '-Mark Ilten',
             },
             {
                 text: '                                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
                 imageUrl: 'https://images.pexels.com/photos/219692/pexels-photo-219692.jpeg',
-                headline: '-Rupert Tolson',
+                headline: '-Sarah Patterson',
             },
         ],
     },

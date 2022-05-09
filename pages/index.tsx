@@ -114,7 +114,7 @@ const Home = ({ moduleData }: HomeProps) => {
 
                 <Label {...moduleData.labelData} text="Slider Module" />
 
-                <Carousel {...(moduleData.sliderData as SliderProps)} />
+                <Carousel {...(moduleData.sliderData as SliderProps)} slideCount={1} />
 
                 <Carousel {...(moduleData.sliderData as SliderProps)} modLayout="images" />
             </div>

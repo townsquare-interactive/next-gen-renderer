@@ -3,6 +3,10 @@
 @use '../styles/variables.scss';
 @use '../styles/utils.module.scss';
 
+/* $slick-font-family: FontAwesome;
+$slick-prev-character: 'next';
+$slick-next-character: '\f054'; */
+
 .root {
     @include utils.root;
 
@@ -12,13 +16,21 @@
         box-sizing: border-box;
         padding: 10px 30px;
 
+        @include breakpoints.sm {
+            width: 80%;
+            padding: 0;
+        }
+
         //modifying before slider arrows
         *:before {
             color: #000;
+            //content: 'Next >' !important;
         }
 
         .slideItems {
-            margin: 0 20px;
+            @include breakpoints.sm {
+                margin: 0 20px;
+            }
 
             .item {
                 display: flex;
@@ -26,9 +38,11 @@
                 align-items: center;
                 .text {
                     padding: 20px;
+                    padding-top: 0;
                     max-width: 700px;
                     margin: 0 auto;
                     p {
+                        font-style: italic;
                     }
                 }
             }
@@ -36,6 +50,29 @@
             .imageTile {
                 position: relative;
                 aspect-ratio: (4 / 3);
+            }
+        }
+
+        &.hasText {
+            .nextBtn {
+                font-size: 13px;
+                color: #000;
+                line-height: auto;
+                width: 100%;
+                text-align: right;
+                position: static;
+
+                &:before {
+                    display: none;
+                }
+
+                &:hover {
+                    color: #000;
+                }
+            }
+
+            .prevBtn {
+                display: none !important;
             }
         }
     }
