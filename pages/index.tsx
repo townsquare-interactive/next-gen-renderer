@@ -9,13 +9,14 @@ import Images from '../components/Images'
 import Label from '../components/Label'
 import Card from '../components/Card'
 import Text from '../components/Text'
-import { ImagesProps, ListProps, HomeProps, ModuleData, TextProps, HeaderProps, SliderProps, FooterProps, PagesProps } from '../components/types'
+import { ImagesProps, ListProps, HomeProps, ModuleData, TextProps, HeaderProps, SliderProps, FooterProps, PagesProps, VideoProps } from '../components/types'
 import { GetStaticProps } from 'next'
 import Carousel from '../components/Carousel'
 import Layout from '../components/Layout'
 import Footer from '../components/Footer'
 import data from '../components/moduleData'
 import Burger from '../components/Burger'
+import Video from '../components/Video'
 
 export const getStaticProps: GetStaticProps = async () => {
     return {
@@ -117,6 +118,8 @@ const Home = ({ moduleData }: HomeProps) => {
                 <Carousel {...(moduleData.sliderData as SliderProps)} slideCount={1} />
 
                 <Carousel {...(moduleData.sliderData as SliderProps)} modLayout="images" />
+
+                <Video {...(moduleData.videoData as VideoProps)} />
             </div>
             <Footer {...(moduleData.footerData as FooterProps)} navData={moduleData.navData} />
         </div>

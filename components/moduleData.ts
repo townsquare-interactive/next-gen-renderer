@@ -68,17 +68,17 @@ const data: ModuleData = {
         slideCount: 3,
         items: [
             {
-                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                 imageUrl: 'https://images.pexels.com/photos/10914326/pexels-photo-10914326.jpeg',
                 headline: '-Rupert Tolson',
             },
             {
-                text: '                                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure',
+                text: '                                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                 imageUrl: 'https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg',
                 headline: '-Jeff Grover',
             },
             {
-                text: '                                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non',
+                text: '                                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                 imageUrl: 'https://images.pexels.com/photos/10838475/pexels-photo-10838475.jpeg',
                 headline: '-Mark Ilten',
             },
@@ -150,6 +150,13 @@ const data: ModuleData = {
                 linkUrl: '/',
             },
         ],
+    },
+
+    videoData: {
+        //modLayout: 'local',
+        modLayout: 'youtube',
+        //videoUrl: '/videos/local_vid.mp4',
+        videoUrl: 'https://www.youtube.com/watch?v=ysz5S6PUM-U',
     },
 }
 

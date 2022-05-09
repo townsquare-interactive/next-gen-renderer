@@ -1,0 +1,26 @@
+@use '../styles/breakpoints.scss';
+@use 'sass:math';
+@use '../styles/variables.scss';
+@use '../styles/utils.module.scss';
+
+.root {
+    @include utils.root;
+    .wrapper {
+        max-width: variables.$max-main-width;
+
+        @include breakpoints.sm {
+            width: variables.$content-width;
+            margin: 0 auto;
+        }
+
+        .videoBlock {
+            video {
+                width: 100%;
+            }
+
+            div {
+                margin: 0 auto;
+            }
+        }
+    }
+}

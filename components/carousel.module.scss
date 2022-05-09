@@ -3,15 +3,11 @@
 @use '../styles/variables.scss';
 @use '../styles/utils.module.scss';
 
-/* $slick-font-family: FontAwesome;
-$slick-prev-character: 'next';
-$slick-next-character: '\f054'; */
-
 .root {
     @include utils.root;
 
     .wrapper {
-        max-width: 1200px;
+        max-width: variables.$content-width;
         margin: 0 auto;
         box-sizing: border-box;
         padding: 10px 30px;
@@ -34,13 +30,6 @@ $slick-next-character: '\f054'; */
                 margin: 0 20px;
             }
 
-            /*             @include breakpoints.sm {
-                width: 80% !important;
-                padding: 0;
-                margin: 0 auto;
-                padding: 20px;
-            } */
-
             .item {
                 display: flex;
                 justify-content: center;
@@ -57,7 +46,7 @@ $slick-next-character: '\f054'; */
 
             .imageTile {
                 position: relative;
-                aspect-ratio: (4 / 3);
+                aspect-ratio: variables.$aspect-ratio-4_3;
             }
         }
 
@@ -65,7 +54,7 @@ $slick-next-character: '\f054'; */
             border-bottom: 4px solid variables.$label-color;
 
             .nextBtn {
-                font-size: 13px;
+                font-size: 20px;
                 color: #000;
                 line-height: auto;
                 width: 100%;
@@ -87,7 +76,7 @@ $slick-next-character: '\f054'; */
 
             .slideItems {
                 margin: 15px auto;
-                max-width: 600px;
+                //max-width: 600px;
             }
         }
     }

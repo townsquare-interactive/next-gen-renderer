@@ -92,6 +92,18 @@ export interface FooterProps {
     navData?: NavData
 }
 
+export interface VideoProps {
+    videoUrl: string
+    modLayout: 'youtube' | 'local'
+    vidId?: string
+}
+
+/* export interface VideoProps {
+    videoData: VideoData
+
+}
+ */
+
 export interface HomeProps {
     moduleData: ModuleData
 }
@@ -145,6 +157,7 @@ export interface ModuleData {
     sliderData?: SliderProps
     footerData?: FooterProps
     navData?: NavData
+    videoData?: VideoProps
 }
 
 /*-----------------------------End of Components-------------*/
