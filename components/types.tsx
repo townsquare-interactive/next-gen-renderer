@@ -1,5 +1,7 @@
 /* Components */
 
+import { ReactNode } from 'react'
+
 export interface HeaderProps {
     headline?: string
     imageUrl?: string
@@ -106,7 +108,9 @@ export interface HomeProps {
 }
 
 export interface LayoutProps {
-    footerData?: FooterProps
+    //children: React.PropsWithChildren<{}>,
+    children: ReactNode
+    moduleData: ModuleData
 }
 
 export interface PagesData {
@@ -129,7 +133,8 @@ export interface PagesProps {
 
 export interface NavProps {
     pages: PagesProps[]
-    modLayout?: string
+    modLayout?: 'header' | 'footer'
+    navStyle?: 'layout1' | 'layout2'
 }
 
 /* export interface NavProps2 {
@@ -141,14 +146,16 @@ export interface BurgerProps {
     navCheck: boolean
 }
 
-export interface NavtigationProps {
+export interface NavigationProps {
     navSwitch: () => void
     navCheck: boolean
+    navStyle?: string
 }
 
 export interface NavBarProps {
     navCheck: boolean
     navData: NavProps
+    navStyle?: string
 }
 
 export interface ModuleData {

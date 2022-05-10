@@ -13,7 +13,6 @@
     .wrapper {
         display: flex;
         max-width: variables.$max-main-width;
-
         @include breakpoints.md {
             width: variables.$content-width;
             margin: 0 auto;
@@ -23,6 +22,7 @@
         .logoBlock {
             flex-grow: 2;
             padding: 15px;
+            z-index: 9999999999;
 
             @include breakpoints.md {
                 width: 80%;
@@ -33,5 +33,9 @@
             flex-grow: 1;
             //align-self: flex-end;
         }
+    }
+
+    &.layout2 {
+        position: static;
     }
 }

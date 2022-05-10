@@ -150,7 +150,8 @@ const data: ModuleData = {
                 linkUrl: '/',
             },
         ],
-        modLayout: 'header',
+        //modLayout: 'header',
+        navStyle: 'layout1',
     },
 
     videoData: {

@@ -3,12 +3,17 @@ import Link from 'next/dist/client/link'
 import Image from 'next/image'
 import Logo from './Logo'
 import Burger from './Burger'
-import { NavtigationProps } from './types'
+import cn from 'classnames'
+import { NavigationProps } from './types'
 
-const Navigation = (props: NavtigationProps) => {
-    const { navSwitch, navCheck = false } = props
+const Navigation = (props: NavigationProps) => {
+    const { navSwitch, navCheck = false, navStyle = 'layout1' } = props
     return (
-        <div className={styles.root}>
+        <div
+            className={cn(styles.root, {
+                [styles.layout2]: navStyle === 'layout2',
+            })}
+        >
             <div className={styles.wrapper}>
                 <div className={styles.logoBlock}>
                     <Logo />

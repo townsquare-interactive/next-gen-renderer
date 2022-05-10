@@ -6,41 +6,8 @@ import { PagesProps, NavProps, PagesData } from '../components/types'
 /* const Nav = (props: NavProps) => {
     const { navData } = props */
 const Nav = (props: NavProps) => {
-    const { pages, modLayout } = props
+    const { pages, modLayout = 'header' } = props
     // const modLayout = 'header'
-
-    console.log('pages', pages)
-
-    /* const pages = [
-        {
-            text: 'Home',
-            linkUrl: '/',
-        },
-        {
-            text: 'Menu',
-            linkUrl: '/menu',
-        },
-        {
-            text: 'Images',
-            linkUrl: '/images',
-        },
-        {
-            text: 'Blog',
-            linkUrl: '/blog',
-        },
-        {
-            text: 'Contact',
-            linkUrl: '/',
-        },
-        {
-            text: 'About Us',
-            linkUrl: '/',
-        },
-        {
-            text: 'Our Sponsors',
-            linkUrl: '/',
-        },
-    ] */
 
     return (
         <div className={styles.root}>

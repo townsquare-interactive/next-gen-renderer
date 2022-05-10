@@ -1,4 +1,5 @@
 import type { NextPage } from 'next'
+import cn from 'classnames'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.scss'
@@ -38,50 +39,16 @@ import { useState } from 'react'
 export const getStaticProps: GetStaticProps = async () => {
     return {
         props: { moduleData: data },
-        //props: { data },
     }
 }
 
 const Home = ({ moduleData }: HomeProps) => {
     const [navCheck, setNav] = useState<boolean>(false)
 
-    console.log('nsfnkdsfsdfkf', moduleData)
-
+    //Flipping state value for navbar visibility
     function navSwitch() {
         setNav(!navCheck)
-        console.log(navCheck)
     }
-
-    /* const pages = [
-        {
-            text: 'Home',
-            linkUrl: '/',
-        },
-        {
-            text: 'Menu',
-            linkUrl: '/menu',
-        },
-        {
-            text: 'Images',
-            linkUrl: '/images',
-        },
-        {
-            text: 'Blog',
-            linkUrl: '/blog',
-        },
-        {
-            text: 'Contact',
-            linkUrl: '/',
-        },
-        {
-            text: 'About Us',
-            linkUrl: '/',
-        },
-        {
-            text: 'Our Sponsors',
-            linkUrl: '/',
-        },
-    ] */
 
     const imageData1: ImagesProps = {
         gap: true,
@@ -118,31 +85,37 @@ const Home = ({ moduleData }: HomeProps) => {
                 <meta property="og:title" content="My page title" key="title" />
             </Head>
 
-            <Navbar navCheck={navCheck} navData={moduleData.navData} />
+            <Layout moduleData={moduleData}>
+                {/*                 <Navbar navCheck={navCheck} navData={moduleData.navData} navStyle={moduleData.navData.navStyle} />
 
-            <Navigation navSwitch={navSwitch} navCheck={navCheck} />
-            <div className={styles.wrapper}>
-                <Header {...(moduleData.headerData as HeaderProps)} />
+                <Navigation navSwitch={navSwitch} navCheck={navCheck} navStyle={moduleData.navData.navStyle} /> */}
+                <div
+                    className={cn(styles.wrapper, {
+                        [styles.layout1]: moduleData.navData.navStyle === 'layout1',
+                        [styles.layout2]: moduleData.navData.navStyle === 'layout2',
+                    })}
+                >
+                    <Header {...(moduleData.headerData as HeaderProps)} />
 
-                <Header {...(moduleData.headerData as HeaderProps)} reverse={true} modLayout="alt-layout" />
+                    <Header {...(moduleData.headerData as HeaderProps)} reverse={true} modLayout="alt-layout" />
 
-                <Label {...moduleData.labelData} text="List Modules: Article Layout" />
+                    <Label {...moduleData.labelData} text="List Modules: Article Layout" />
 
-                <List {...moduleData.listData} />
+                    <List {...moduleData.listData} />
 
-                <List {...moduleData.listData} reverse={true} border={false} />
+                    <List {...moduleData.listData} reverse={true} border={false} />
 
-                <Label {...moduleData.labelData} text="List Modules: Card layout" align="center" gap={true} />
+                    <Label {...moduleData.labelData} text="List Modules: Card layout" align="center" gap={true} />
 
-                <List {...moduleData.listData} modLayout="card" border={false} />
+                    <List {...moduleData.listData} modLayout="card" border={false} />
 
-                <List {...moduleData.listData} modLayout="card" border={false} />
+                    <List {...moduleData.listData} modLayout="card" border={false} />
 
-                <List {...moduleData.listData} modLayout="card" border={false} />
+                    <List {...moduleData.listData} modLayout="card" border={false} />
 
-                <Label {...moduleData.labelData} border={false} />
+                    <Label {...moduleData.labelData} border={false} />
 
-                {/*
+                    {/*
                     layout options:
                     3-1/3 : Three images, each one 1/3 in size
                     3-2/3: Three images, Main image takes up 2/3
@@ -154,32 +127,33 @@ const Home = ({ moduleData }: HomeProps) => {
 
                     */}
 
-                <Images {...(moduleData.imagesData as ImagesProps)} />
+                    <Images {...(moduleData.imagesData as ImagesProps)} />
 
-                <Images {...(moduleData.imagesData as ImagesProps)} modLayout="3-1/3" />
+                    <Images {...(moduleData.imagesData as ImagesProps)} modLayout="3-1/3" />
 
-                <Images {...imageData1} gap={false} />
+                    <Images {...imageData1} gap={false} />
 
-                <Images {...imageData1} modLayout="2-1/2" />
+                    <Images {...imageData1} modLayout="2-1/2" />
 
-                <Images {...imageData2} />
+                    <Images {...imageData2} />
 
-                <Label {...moduleData.labelData} text="Text Module" />
+                    <Label {...moduleData.labelData} text="Text Module" />
 
-                <Text {...(moduleData.textData as TextProps)} />
+                    <Text {...(moduleData.textData as TextProps)} />
 
-                <Text {...(moduleData.textData as TextProps)} align="center" textSize="lg" />
+                    <Text {...(moduleData.textData as TextProps)} align="center" textSize="lg" />
 
-                <Text {...(moduleData.textData as TextProps)} align="right" border={true} />
+                    <Text {...(moduleData.textData as TextProps)} align="right" border={true} />
 
-                <Label {...moduleData.labelData} text="Slider Module" />
+                    <Label {...moduleData.labelData} text="Slider Module" />
 
-                <Carousel {...(moduleData.sliderData as SliderProps)} slideCount={1} />
+                    <Carousel {...(moduleData.sliderData as SliderProps)} slideCount={1} />
 
-                <Carousel {...(moduleData.sliderData as SliderProps)} modLayout="images" />
+                    <Carousel {...(moduleData.sliderData as SliderProps)} modLayout="images" />
 
-                <Video {...(moduleData.videoData as VideoProps)} />
-            </div>
+                    <Video {...(moduleData.videoData as VideoProps)} />
+                </div>
+            </Layout>
 
             {/* <ModuleProvider moduleData={moduleData}>
             <Footer {...(moduleData.footerData as FooterProps)} />
@@ -187,7 +161,7 @@ const Home = ({ moduleData }: HomeProps) => {
 
             {/* <Footer {...(moduleData.footerData as FooterProps)} /> */}
 
-            <Footer footerData={moduleData.footerData as FooterData} navData={moduleData.navData} />
+            {/* <Footer footerData={moduleData.footerData as FooterData} navData={moduleData.navData} /> */}
         </div>
     )
 }

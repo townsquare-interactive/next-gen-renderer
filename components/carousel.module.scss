@@ -7,7 +7,7 @@
     @include utils.root;
 
     .wrapper {
-        max-width: variables.$content-width;
+        max-width: variables.$max-main-width;
         margin: 0 auto;
         box-sizing: border-box;
         padding: 10px 30px;
@@ -15,14 +15,13 @@
         //modifying before slider arrows
         *:before {
             color: #000;
-            //content: 'Next >' !important;
         }
 
         @include breakpoints.sm {
-            width: 80% !important;
+            width: variables.$content-width;
             padding: 0;
             margin: 0 auto;
-            padding: 20px;
+            //padding: 20px;
         }
 
         .slideItems {

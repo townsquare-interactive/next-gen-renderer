@@ -78,4 +78,9 @@
     &.visible {
         display: block;
     }
+
+    &.layout2 .navDrop {
+        position: absolute;
+        top: 0;
+    }
 }

@@ -13,7 +13,6 @@ const Footer = (props: FooterProps) => {
     /* const { socialData, addressData, siteName, phoneNumber, navData } = props */
 
     // useContext
-    console.log('navdataf', props.footerData)
 
     return (
         <div className={styles.root}>
