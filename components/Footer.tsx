@@ -27,10 +27,6 @@ const Footer = (props: FooterProps) => {
                         ))}
                     </div>
                     <div className={styles.phone}>{props.footerData.phoneNumber}</div>
-                    <div className={styles.siteInfo}>
-                        <p>{props.footerData.siteName}</p>
-                        <p>&copy; All rights reserved</p>
-                    </div>
                 </div>
                 <div className={cn(styles.block, styles.navInfo)}>
                     {/* <Nav {...navData as NavData} /> */}
@@ -38,9 +34,15 @@ const Footer = (props: FooterProps) => {
                     {/* <Nav /> */}
                 </div>
                 <div className={cn(styles.block, styles.addInfo)}>
-                    <p>{props.footerData.addressData.cityState}</p>
-                    <p>{props.footerData.addressData.street}</p>
-                    <p>{props.footerData.addressData.zip}</p>
+                    <div>
+                        <p>{props.footerData.addressData.cityState}</p>
+                        <p>{props.footerData.addressData.street}</p>
+                        <p>{props.footerData.addressData.zip}</p>
+                    </div>
+                </div>
+                <div className={cn(styles.block, styles.siteInfo)}>
+                    <p>{props.footerData.siteName}</p>
+                    <p>&copy; All rights reserved</p>
                 </div>
             </div>
             {<Script src="https://kit.fontawesome.com/711388ec06.js" strategy="lazyOnload" onLoad={() => console.log(`Fontawesome Loaded Correctly`)} />}

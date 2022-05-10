@@ -53,7 +53,7 @@
 
             &.gap {
                 @include breakpoints.sm {
-                    padding: 20px;
+                    padding: variables.$gap;
                 }
             }
         }

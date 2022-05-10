@@ -5,23 +5,13 @@
 
 .root {
     z-index: 99999;
-    /* position: fixed;
-    top: 0;
-    right: 0; */
 
     .wrapper {
-        display: flex;
-        justify-content: flex-end;
-        padding: 20px;
-        //max-width: variables.$max-main-width;
+        //justify-content: flex-end;
+        height: 100%;
+        //padding: 20px;
 
-        /*         @include breakpoints.md {
-            //width: variables.$content-width;
-            margin: 0 auto;
-        }
- */
         .burgerBtn {
-            align-self: flex-end;
             z-index: 9999999;
 
             div {

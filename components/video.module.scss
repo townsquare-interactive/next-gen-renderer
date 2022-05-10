@@ -14,13 +14,17 @@
         }
 
         .videoBlock {
-            video {
+            /*             video {
                 width: 100%;
-            }
+            } */
 
-            div {
-                margin: 0 auto;
+            & > div:first-child {
+                width: 100% !important;
+                //margin: 0 auto;
                 max-width: 100%;
+                @include breakpoints.md {
+                    height: 450px !important;
+                }
             }
         }
     }
