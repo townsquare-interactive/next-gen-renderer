@@ -7,7 +7,7 @@
     width: 100%;
 
     .wrapper {
-        @include breakpoints.md {
+        @include breakpoints.sm {
             padding: 40px 20px;
 
             ul {
@@ -27,11 +27,11 @@
                 color: variables.$text-color-accent;
                 @include utils.text-sizes-md;
 
-                @include breakpoints.md {
-                    &:nth-last-child(3) {
+                @include breakpoints.sm {
+                    &:nth-last-child(2) {
                         margin-bottom: 20px;
                         padding-bottom: 20px;
-                        border-bottom: 1px solid grey;
+                        border-bottom: 1px solid variables.$text-color-accent;
                     }
                 }
 
@@ -43,8 +43,29 @@
 
         &.headerNav {
             li {
-                &:nth-last-child(3) {
-                    border-color: variables.$text-color-accent;
+                text-align: center;
+                @include breakpoints.md {
+                    text-align: left;
+                }
+            }
+        }
+
+        &.footerNav {
+            ul {
+                columns: 2;
+            }
+            li {
+                /* font-size: variables.$text-size-body-md; */
+
+                /*                 @include breakpoints.sm {
+                    font-size: variables.$text-size-body-md;
+                }
+
+                @include breakpoints.md {
+                    font-size: variables.$text-size-body-sm;
+                } */
+                @media (max-width: breakpoints.$screen-sm-min) {
+                    font-size: variables.$text-size-body-md;
                 }
             }
         }

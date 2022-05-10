@@ -8,27 +8,15 @@ import { useEffect, useState } from 'react'
 const Video = (props: VideoProps) => {
     const { videoUrl, modLayout = 'local' } = props
 
-    /* <video autoPlay loop controls preload="none">
-                            <source src={videoUrl} />
-                        </video> */
-
     const [isSSR, setIsSSR] = useState(true)
-
-    //let id = 'ysz5S6PUM-U'
 
     useEffect(() => {
         setIsSSR(false)
     }, [])
 
-    function getThumb(str: string) {
-        var id = str.split('=')[1]
-        var thumb = '<img src="https://i.ytimg.com/vi/ID/hqdefault.jpg">'
-        return thumb.replace('ID', id)
-    }
-
-    /*     function labnolThumb(id: string) {
-        var thumb = '<img src="https://i.ytimg.com/vi/ID/hqdefault.jpg">'
-        console.log(thumb.replace('ID', id))
+    /*     function getThumb(str: string) {
+        const id = str.split('=')[1]
+        const thumb = '<img src="https://i.ytimg.com/vi/ID/hqdefault.jpg">'
         return thumb.replace('ID', id)
     }
  */
@@ -38,14 +26,14 @@ const Video = (props: VideoProps) => {
                 <div className={styles.wrapper}>
                     {modLayout === 'youtube' && (
                         <div className={styles.videoBlock}>
-                            <ReactPlayer url="https://www.youtube.com/watch?v=ysz5S6PUM-U" light controls={true}>
-                                {getThumb(videoUrl)}
+                            <ReactPlayer url={videoUrl} light controls={true}>
+                                {/* {getThumb(videoUrl)} */}
                             </ReactPlayer>
                         </div>
                     )}
                     {modLayout === 'local' && (
                         <div className={styles.videoBlock}>
-                            <ReactPlayer url={videoUrl} controls={true} />
+                            <ReactPlayer url={videoUrl} controls={true}></ReactPlayer>
                         </div>
                     )}
                 </div>

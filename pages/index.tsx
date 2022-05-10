@@ -20,7 +20,7 @@ import {
     ModuleData,
     TextProps,
     HeaderProps,
-    SliderProps,
+    CarouselProps,
     FooterProps,
     PagesProps,
     VideoProps,
@@ -147,9 +147,13 @@ const Home = ({ moduleData }: HomeProps) => {
 
                     <Label {...moduleData.labelData} text="Slider Module" />
 
-                    <Carousel {...(moduleData.sliderData as SliderProps)} slideCount={1} />
+                    <Carousel {...(moduleData.sliderData as CarouselProps)} />
 
-                    <Carousel {...(moduleData.sliderData as SliderProps)} modLayout="images" />
+                    <Carousel {...(moduleData.sliderData as CarouselProps)} modLayout="images" slideCount={3} />
+
+                    <Carousel {...(moduleData.sliderData as CarouselProps)} modLayout="images" slideCount={2} />
+
+                    <Carousel {...(moduleData.sliderData as CarouselProps)} modLayout="images" slideCount={1} />
 
                     <Video {...(moduleData.videoData as VideoProps)} />
                 </div>

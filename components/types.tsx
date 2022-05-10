@@ -69,7 +69,7 @@ export interface SlideData {
     headline?: string
 }
 
-export interface SliderProps {
+export interface CarouselProps {
     modLayout: 'images' | 'text'
     slideCount: 1 | 2 | 3
     items: SlideData[]
@@ -164,7 +164,7 @@ export interface ModuleData {
     headerData?: HeaderProps
     labelData?: LabelProps
     textData?: TextProps
-    sliderData?: SliderProps
+    sliderData?: CarouselProps
     footerData?: FooterData
     navData: NavProps
     videoData?: VideoProps

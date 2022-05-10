@@ -34,7 +34,7 @@ const Footer = (props: FooterProps) => {
                 </div>
                 <div className={cn(styles.block, styles.navInfo)}>
                     {/* <Nav {...navData as NavData} /> */}
-                    <Nav pages={props.navData.pages} />
+                    <Nav pages={props.navData.pages} modLayout="footer" />
                     {/* <Nav /> */}
                 </div>
                 <div className={cn(styles.block, styles.addInfo)}>

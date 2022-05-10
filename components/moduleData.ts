@@ -65,7 +65,7 @@ const data: ModuleData = {
 
     sliderData: {
         modLayout: 'text',
-        slideCount: 3,
+        slideCount: 1,
         items: [
             {
                 text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -83,7 +83,7 @@ const data: ModuleData = {
                 headline: '-Mark Ilten',
             },
             {
-                text: '                                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                text: ' proident, sunt in culpa qui officia deserunt mollit anim id est laborum. proident, sunt in culpa qui officia deserunt mollit anim id est laborum.proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
                 imageUrl: 'https://images.pexels.com/photos/219692/pexels-photo-219692.jpeg',
                 headline: '-Sarah Patterson',
             },
@@ -159,6 +159,8 @@ const data: ModuleData = {
         modLayout: 'youtube',
         //videoUrl: '/videos/local_vid.mp4',
         videoUrl: 'https://www.youtube.com/watch?v=ysz5S6PUM-U',
+        //videoUrl: 'https://vimeo.com/300544856',
+        //videoUrl: 'https://youtu.be/Qt0-9mO-ZXY',
     },
 }
 

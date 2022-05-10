@@ -13,7 +13,7 @@ const Nav = (props: NavProps) => {
         <div className={styles.root}>
             <div
                 className={cn(styles.wrapper, {
-                    //[styles.footerNav]: modLayout === 'footer',
+                    [styles.footerNav]: modLayout === 'footer',
                     [styles.headerNav]: modLayout === 'header',
                 })}
             >

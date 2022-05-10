@@ -5,23 +5,9 @@ import Image from 'next/image'
 import cn from 'classnames'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import { SliderProps } from './types'
+import { CarouselProps } from './types'
 
-function SampleNextArrow(props: any) {
-    const { className, style, onClick } = props
-    return (
-        <div className={cn(className, styles.nextBtn)} style={{ ...style }} onClick={onClick}>
-            next &gt;
-        </div>
-    )
-}
-
-function SamplePrevArrow(props: any) {
-    const { className, style, onClick } = props
-    return <div className={cn(className, styles.prevBtn)} style={{ ...style }} onClick={onClick}></div>
-}
-
-function Carousel(sliderData: SliderProps) {
+function Carousel(sliderData: CarouselProps) {
     const settingsImage = {
         dots: true,
         infinite: true,
@@ -36,8 +22,8 @@ function Carousel(sliderData: SliderProps) {
         speed: 200,
         slidesToShow: sliderData.slideCount,
         slidesToScroll: 1,
-        nextArrow: <SampleNextArrow />,
-        prevArrow: <SamplePrevArrow />,
+        nextArrow: <NextArrow />,
+        prevArrow: <PrevArrow />,
     }
 
     return (
@@ -55,13 +41,7 @@ function Carousel(sliderData: SliderProps) {
                                 <div className={styles.item} key={index}>
                                     {item.imageUrl && (
                                         <div className={styles.imageTile}>
-                                            <Image
-                                                // Route of the image file
-                                                src={item.imageUrl}
-                                                layout="fill"
-                                                objectFit="cover"
-                                                alt=""
-                                            />
+                                            <Image src={item.imageUrl} layout="fill" objectFit="cover" alt="" />
                                         </div>
                                     )}
                                 </div>
@@ -71,8 +51,6 @@ function Carousel(sliderData: SliderProps) {
                 )}
                 {sliderData.modLayout === 'text' && (
                     <div className={styles.slideItems}>
-                        {/*-------------------Text layout*/}
-
                         <Slider {...settingsText}>
                             {sliderData.items.map((item, index) => (
                                 <div className={styles.item} key={index}>
@@ -88,6 +66,20 @@ function Carousel(sliderData: SliderProps) {
             </div>
         </div>
     )
+}
+
+function NextArrow(props: any) {
+    const { className, style, onClick } = props
+    return (
+        <div className={cn(className, styles.nextBtn)} style={{ ...style }} onClick={onClick}>
+            next &gt;
+        </div>
+    )
+}
+
+function PrevArrow(props: any) {
+    const { className, style, onClick } = props
+    return <div className={cn(className, styles.prevBtn)} style={{ ...style }} onClick={onClick}></div>
 }
 
 export default Carousel
