@@ -3,6 +3,8 @@
 @use '../styles/variables.scss';
 @use '../styles/utils.module.scss';
 
+$arrowSize: 40px;
+
 .root {
     @include utils.root;
 
@@ -104,8 +106,6 @@
                 }
             } */
         }
-
-        $arrowSize: 40px;
 
         .nextImageBtn {
             right: 0 !important;
