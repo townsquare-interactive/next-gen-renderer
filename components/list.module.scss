@@ -89,6 +89,11 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
                 display: flex;
                 flex-direction: column;
                 color: variables.$text-color-main;
+                padding: 20px;
+
+                @include breakpoints.md {
+                    padding: 0;
+                }
 
                 .title {
                     margin-bottom: $margin-text;

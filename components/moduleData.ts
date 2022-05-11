@@ -145,6 +145,22 @@ const data: ModuleData = {
                 text: 'Our Sponsors',
                 linkUrl: '/',
             },
+            {
+                text: 'Blog',
+                linkUrl: '/blog',
+            },
+            {
+                text: 'Contact',
+                linkUrl: '/',
+            },
+            {
+                text: 'Our Projects',
+                linkUrl: '/',
+            },
+            {
+                text: 'Other',
+                linkUrl: '/',
+            },
         ],
         //modLayout: 'header',
         navStyle: 'layout1',

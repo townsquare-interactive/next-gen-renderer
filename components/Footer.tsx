@@ -64,8 +64,8 @@ const Footer = (props: FooterProps) => {
                 </div>
                 <div className={cn(styles.block, styles.addInfo)}>
                     <div>
-                        <p>{props.footerData.addressData.cityState}</p>
                         <p>{props.footerData.addressData.street}</p>
+                        <p>{props.footerData.addressData.cityState}</p>
                         <p>{props.footerData.addressData.zip}</p>
                     </div>
                 </div>
