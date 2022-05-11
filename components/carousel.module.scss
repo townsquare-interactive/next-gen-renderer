@@ -15,9 +15,9 @@ $arrowSize: 40px;
         //padding: 10px 30px;
 
         //modifying before slider arrows
-        *:before {
+        /*         *:before {
             color: #000;
-        }
+        } */
 
         @include breakpoints.sm {
             width: variables.$content-width;
@@ -74,6 +74,10 @@ $arrowSize: 40px;
 
             .prevBtn {
                 display: none !important;
+            }
+
+            .nextBtn:before {
+                color: #000;
             }
 
             .slick-arrow.slick-next.nextImageBtm {
