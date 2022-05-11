@@ -10,7 +10,7 @@
         max-width: variables.$max-main-width;
         margin: 0 auto;
         box-sizing: border-box;
-        padding: 10px 30px;
+        //padding: 10px 30px;
 
         //modifying before slider arrows
         *:before {
@@ -74,6 +74,10 @@
                 display: none !important;
             }
 
+            .slick-arrow.slick-next.nextImageBtm {
+                right: 0 !important;
+            }
+
             .slideItems {
                 margin: 15px auto;
                 //max-width: 600px;
@@ -81,6 +85,49 @@
                 .slick-next {
                     right: 0 !important;
                 }
+            }
+
+            .slick-slider {
+                button {
+                    left: 0;
+
+                    &:before {
+                        color: #fff;
+                    }
+                }
+            }
+            /*             button.slick-arrow.slick-next {
+                right: 0;
+
+                &:before {
+                    color: #fff;
+                }
+            } */
+        }
+
+        $arrowSize: 40px;
+
+        .nextImageBtn {
+            right: 0 !important;
+            z-index: 999;
+            height: $arrowSize;
+            width: $arrowSize;
+
+            &:before {
+                color: #fff;
+                font-size: $arrowSize;
+            }
+        }
+
+        .prevImageBtn {
+            left: 0 !important;
+            z-index: 999;
+            height: $arrowSize;
+            width: $arrowSize;
+
+            &:before {
+                color: #fff;
+                font-size: $arrowSize;
             }
         }
     }

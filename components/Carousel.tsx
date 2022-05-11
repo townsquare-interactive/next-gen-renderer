@@ -14,6 +14,8 @@ function Carousel(sliderData: CarouselProps) {
         speed: 200,
         slidesToShow: sliderData.slideCount,
         slidesToScroll: 1,
+        nextArrow: <NextArrowImage />,
+        prevArrow: <PrevArrowImage />,
     }
 
     const settingsText = {
@@ -80,6 +82,16 @@ function NextArrow(props: any) {
 function PrevArrow(props: any) {
     const { className, style, onClick } = props
     return <div className={cn(className, styles.prevBtn)} style={{ ...style }} onClick={onClick}></div>
+}
+
+function NextArrowImage(props: any) {
+    const { className, style, onClick } = props
+    return <div className={cn(className, styles.nextImageBtn)} style={{ ...style }} onClick={onClick}></div>
+}
+
+function PrevArrowImage(props: any) {
+    const { className, style, onClick } = props
+    return <div className={cn(className, styles.prevImageBtn)} style={{ ...style }} onClick={onClick}></div>
 }
 
 export default Carousel
