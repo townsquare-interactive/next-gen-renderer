@@ -94,19 +94,15 @@ const data: ModuleData = {
         socialData: [
             {
                 linkUrl: 'https://www.google.com/',
-                fontAwesomeName: 'fa-brands fa-google',
             },
             {
                 linkUrl: 'https://www.facebook.com',
-                fontAwesomeName: 'fa-brands fa-facebook',
             },
             {
                 linkUrl: 'https://www.instagram.com',
-                fontAwesomeName: 'fa-brands fa-instagram',
             },
             {
                 linkUrl: 'https://www.twitter.com',
-                fontAwesomeName: 'fa-brands fa-twitter',
             },
         ],
         addressData: {

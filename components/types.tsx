@@ -77,7 +77,6 @@ export interface CarouselProps {
 
 export interface SocialData {
     linkUrl: string
-    fontAwesomeName: string
 }
 
 export interface AddressData {
