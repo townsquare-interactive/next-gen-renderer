@@ -3,7 +3,7 @@
 @use '../styles/variables.scss';
 @use '../styles/utils.module.scss';
 
-$arrowSize: 40px;
+$arrowSize: 30px;
 
 .root {
     @include utils.root;
@@ -12,6 +12,8 @@ $arrowSize: 40px;
         max-width: variables.$max-main-width;
         margin: 0 auto;
         box-sizing: border-box;
+        padding: 0 0 30px 0;
+
         //padding: 10px 30px;
 
         //modifying before slider arrows
@@ -21,8 +23,6 @@ $arrowSize: 40px;
 
         @include breakpoints.sm {
             width: variables.$content-width;
-            padding: 0 0 30px 0;
-
             margin: 0 auto;
             //padding: 20px;
         }
@@ -54,6 +54,9 @@ $arrowSize: 40px;
 
         &.hasText {
             border-bottom: 4px solid variables.$label-color;
+            //width: variables.$content-width;
+
+            padding: 0 variables.$gap variables.$gap variables.$gap;
 
             .nextBtn {
                 font-size: 20px;
@@ -111,27 +114,39 @@ $arrowSize: 40px;
             } */
         }
 
-        .nextImageBtn {
-            right: 0 !important;
-            z-index: 999;
+        .imageBtns {
+            z-index: 99999;
             height: $arrowSize;
             width: $arrowSize;
 
-            &:before {
-                color: #fff;
-                font-size: $arrowSize;
+            @include breakpoints.sm {
+                height: $arrowSize + 20px;
+                width: $arrowSize;
+                background-color: variables.$main-color;
             }
-        }
-
-        .prevImageBtn {
-            left: 0 !important;
-            z-index: 999;
-            height: $arrowSize;
-            width: $arrowSize;
 
             &:before {
                 color: #fff;
                 font-size: $arrowSize;
+                @include breakpoints.sm {
+                    display: none;
+                }
+            }
+
+            &.nextImageBtn {
+                right: 0;
+                @include breakpoints.sm {
+                    clip-path: polygon(100% 50%, 0 0, 0 100%);
+                    right: -$arrowSize;
+                }
+            }
+
+            &.prevImageBtn {
+                left: 0;
+                @include breakpoints.sm {
+                    clip-path: polygon(0 50%, 100% 0, 100% 100%);
+                    left: -$arrowSize;
+                }
             }
         }
     }

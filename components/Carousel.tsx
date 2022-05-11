@@ -86,12 +86,12 @@ function PrevArrow(props: any) {
 
 function NextArrowImage(props: any) {
     const { className, style, onClick } = props
-    return <div className={cn(className, styles.nextImageBtn)} style={{ ...style }} onClick={onClick}></div>
+    return <div className={cn(className, styles.imageBtns, styles.nextImageBtn)} style={{ ...style }} onClick={onClick}></div>
 }
 
 function PrevArrowImage(props: any) {
     const { className, style, onClick } = props
-    return <div className={cn(className, styles.prevImageBtn)} style={{ ...style }} onClick={onClick}></div>
+    return <div className={cn(className, styles.imageBtns, styles.prevImageBtn)} style={{ ...style }} onClick={onClick}></div>
 }
 
 export default Carousel
