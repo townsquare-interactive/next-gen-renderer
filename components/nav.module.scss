@@ -52,7 +52,9 @@
 
         &.footerNav {
             ul {
-                columns: 2;
+                @include breakpoints.custom(330px) {
+                    columns: 2;
+                }
             }
             li {
                 padding: 5px;

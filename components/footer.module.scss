@@ -12,6 +12,7 @@
     .wrapper {
         max-width: variables.$max-main-width;
         margin: 0 auto;
+
         /*         @include breakpoints.md {
             width: variables.$content-width;
         } */
@@ -22,6 +23,7 @@
 
         grid-template-columns: repeat(4, 1fr);
         padding: 30px;
+        padding-top: 70px;
 
         @include breakpoints.sm {
             padding-top: 50px;
@@ -60,11 +62,16 @@
 
                 .social {
                     display: flex;
-                    //margin: 20px 0;
+                    margin: 20px 0;
                     justify-content: space-around;
 
                     align-items: center;
                     @include utils.headline-sizes-md;
+
+                    @include breakpoints.sm {
+                        justify-content: space-between;
+                        margin: 0;
+                    }
 
                     a {
                         //padding: 13px;
@@ -73,9 +80,8 @@
                         max-width: 25px;
 
                         @include breakpoints.sm {
-                            padding: 5px;
-                            max-width: 20px;
-                            justify-content: space-between;
+                            padding: 10px;
+                            max-width: 15px;
 
                             &:first-of-type {
                                 padding-left: 0;
@@ -89,7 +95,7 @@
                         @include breakpoints.md {
                             //padding: 12px;
                             padding: 10px;
-                            max-width: 30px;
+                            max-width: 25px;
                         }
                     }
 
@@ -113,11 +119,11 @@
                 padding: 0 20px 0 20px;
 
                 @include breakpoints.md {
-                    padding: 0 50px 0 50px;
+                    padding: 0 50px 0 70px;
                 }
 
                 @include breakpoints.lg {
-                    padding: 0 70px 0 70px;
+                    padding: 0 70px 0 90px;
                 }
             }
 

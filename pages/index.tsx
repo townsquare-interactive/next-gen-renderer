@@ -12,6 +12,7 @@ import Card from '../components/Card'
 import Text from '../components/Text'
 import Navbar from '../components/Navbar'
 import Navigation from '../components/Navigation'
+import Grid from '../components/Grid'
 
 import {
     ImagesProps,
@@ -26,6 +27,7 @@ import {
     VideoProps,
     NavProps,
     FooterData,
+    GridProps,
 } from '../components/types'
 import { GetStaticProps } from 'next'
 import Carousel from '../components/Carousel'
@@ -156,6 +158,8 @@ const Home = ({ moduleData }: HomeProps) => {
                     <Carousel {...(moduleData.sliderData as CarouselProps)} modLayout="images" slideCount={1} />
 
                     <Video {...(moduleData.videoData as VideoProps)} />
+
+                    <Grid {...(moduleData.gridData as GridProps)} />
                 </div>
             </Layout>
 

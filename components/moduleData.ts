@@ -7,18 +7,18 @@ const data: ModuleData = {
 
         items: [
             {
-                imageUrl: 'https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg',
+                imageUrl: '/images/juan-test-015.jpg',
                 linkText: 'Menu',
                 linkUrl: '/menu',
                 body: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventor',
             },
             {
-                imageUrl: 'https://images.pexels.com/photos/219692/pexels-photo-219692.jpeg',
+                imageUrl: '/images/juan-test-016.jpg',
                 linkText: 'Images',
                 body: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventor',
             },
             {
-                imageUrl: 'https://images.pexels.com/photos/10838475/pexels-photo-10838475.jpeg',
+                imageUrl: '/images/juan-test-011.jpg',
                 linkText: 'Blog',
                 linkUrl: '/blog',
                 body: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventor',
@@ -29,7 +29,7 @@ const data: ModuleData = {
     listData: {
         headline: 'Headline for text',
         body: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. ',
-        imageUrl: 'https://images.pexels.com/photos/219692/pexels-photo-219692.jpeg',
+        imageUrl: '/images/juan-test-008.jpg',
         border: true,
         linkUrl: '/',
         btnText: 'Contact Us',
@@ -41,7 +41,7 @@ const data: ModuleData = {
 
     headerData: {
         headline: 'My Website',
-        imageUrl: 'https://images.pexels.com/photos/10838475/pexels-photo-10838475.jpeg',
+        imageUrl: '/images/juan-test-014.jpg',
         backgroundImageUrl: '/images/seamless-5178982.png',
         reverse: false,
         modLayout: 'normal',
@@ -69,22 +69,22 @@ const data: ModuleData = {
         items: [
             {
                 text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                imageUrl: 'https://images.pexels.com/photos/10914326/pexels-photo-10914326.jpeg',
+                imageUrl: '/images/juan-test-010.jpg',
                 headline: '-Rupert Tolson',
             },
             {
                 text: ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                imageUrl: 'https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg',
+                imageUrl: '/images/juan-test-001.jpg',
                 headline: '-Jeff Grover',
             },
             {
                 text: 'dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                imageUrl: 'https://images.pexels.com/photos/10838475/pexels-photo-10838475.jpeg',
+                imageUrl: '/images/juan-test-002.jpg',
                 headline: '-Mark Ilten',
             },
             {
                 text: ' proident, sunt in culpa qui officia deserunt mollit anim id est laborum. proident, sunt in culpa qui officia deserunt mollit anim id est laborum.proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-                imageUrl: 'https://images.pexels.com/photos/219692/pexels-photo-219692.jpeg',
+                imageUrl: '/images/juan-test-005.jpg',
                 headline: '-Sarah Patterson',
             },
         ],
@@ -173,6 +173,71 @@ const data: ModuleData = {
         videoUrl: 'https://www.youtube.com/watch?v=ysz5S6PUM-U',
         //videoUrl: 'https://vimeo.com/300544856',
         //videoUrl: 'https://youtu.be/Qt0-9mO-ZXY',
+    },
+
+    gridData: {
+        items: [
+            {
+                //headline: 'Headline for text',
+                body: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. ',
+                imageUrl: '/images/juan-test-012.jpg',
+                // linkUrl: '/',
+                //btnText: 'Contact Us',
+                textSize: 'md',
+                align: 'left',
+            },
+            {
+                body: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. ',
+                imageUrl: '/images/juan-test-010.jpg',
+                /*            border: false,
+                linkUrl: '/',
+                btnText: 'Contact Us',
+                textSize: 'md',
+                align: 'left', */
+            },
+
+            {
+                body: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. ',
+                imageUrl: '/images/juan-test-011.jpg',
+                /*                linkUrl: '/',
+                headline: 'Headline for text',
+                btnText: 'Contact Us',
+                textSize: 'md',
+                align: 'left', */
+            },
+
+            {
+                headline: 'Headline for text',
+                body: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. ',
+                imageUrl: '/images/juan-test-009.jpg',
+                linkUrl: '/',
+                btnText: 'Contact Us',
+                textSize: 'md',
+                align: 'left',
+                border: true,
+            },
+
+            {
+                headline: 'Headline for text',
+                body: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. ',
+                imageUrl: '/images/juan-test-008.jpg',
+                linkUrl: '/',
+                btnText: 'Contact Us',
+                textSize: 'md',
+                align: 'left',
+            },
+
+            {
+                headline: 'Headline for text',
+                body: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. ',
+                imageUrl: '/images/juan-test-006.jpg',
+                linkUrl: '/',
+                btnText: 'Contact Us',
+                textSize: 'md',
+                align: 'left',
+                border: true,
+            },
+        ],
     },
 }
 

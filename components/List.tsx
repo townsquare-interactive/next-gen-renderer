@@ -67,6 +67,8 @@ const Article = (props: ListProps) => {
                                     height="300px"
                                     width="400px"
                                     layout="responsive"
+                                    //layout="fill"
+                                    //objectFit="cover"
                                     alt={headline}
                                 />
                             )}

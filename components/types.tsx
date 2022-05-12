@@ -23,6 +23,21 @@ export interface ListProps {
     align?: 'left' | 'right' | 'center'
 }
 
+export interface GridData {
+    headline?: string
+    body?: string
+    border?: boolean
+    imageUrl?: string
+    linkUrl?: string
+    btnText?: string
+    textSize?: 'sm' | 'md' | 'lg'
+    align?: 'left' | 'right' | 'center'
+}
+
+export interface GridProps {
+    items: GridData[]
+}
+
 export interface LabelProps {
     text?: string
     border?: boolean
@@ -167,6 +182,7 @@ export interface ModuleData {
     footerData?: FooterData
     navData: NavProps
     videoData?: VideoProps
+    gridData?: GridProps
 }
 
 /*-----------------------------End of Components-------------*/

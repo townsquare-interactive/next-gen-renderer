@@ -1,0 +1,148 @@
+@use '../styles/breakpoints.scss';
+@use 'sass:math';
+@use '../styles/variables.scss';
+@use '../styles/utils.module.scss';
+
+@mixin bordered {
+    background-color: black;
+
+    * {
+        color: #fff;
+    }
+}
+
+.root {
+    @include utils.root;
+
+    .wrapper {
+        display: flex;
+        gap: 40px;
+        max-width: variables.$max-main-width;
+        margin: 0 auto;
+        flex-direction: column;
+        flex-wrap: wrap;
+
+        @include breakpoints.sm {
+            width: variables.$content-width;
+        }
+
+        @include breakpoints.md {
+            flex-direction: row;
+        }
+
+        .block {
+            flex-basis: 28%;
+            flex-grow: 1;
+            box-sizing: border-box;
+            padding: variables.$gap;
+
+            @include breakpoints.sm {
+                padding: 0;
+            }
+
+            .imageTile {
+                position: relative;
+                aspect-ratio: variables.$aspect-ratio-16_9;
+                width: 100%;
+            }
+
+            .textBlock {
+                .cta_btn {
+                    a {
+                        font-weight: bold;
+
+                        &:after {
+                            padding: 10px;
+                            content: '>';
+                            color: #000;
+                        }
+                    }
+                }
+            }
+
+            &.left {
+                .textBlock .text,
+                .titleText .text,
+                .title .text,
+                .allText,
+                .cta_btn {
+                    text-align: left;
+                }
+            }
+
+            &.right {
+                .textBlock .text,
+                .titleText .text,
+                .title .text,
+                .allText,
+                .cta_btn {
+                    text-align: right;
+                }
+            }
+
+            &.center {
+                .textBlock .text,
+                .titleText .text,
+                .title .text,
+                .allText,
+                .cta_btn {
+                    text-align: center;
+                }
+            }
+
+            &.sm {
+                .textBlock .text,
+                .cta_btn {
+                    @include utils.text-sizes-sm;
+                }
+
+                .textBlock .title {
+                    @include utils.headline-sizes-sm;
+                }
+            }
+            &.md {
+                .textBlock .text,
+                .cta_btn {
+                    @include utils.text-sizes-md;
+                }
+
+                .textBlock .title {
+                    @include utils.headline-sizes-md;
+                }
+            }
+            &.lg {
+                .textBlock .text,
+                .cta_btn {
+                    @include utils.text-sizes-lg;
+                }
+
+                .textBlock .title {
+                    @include utils.headline-sizes-lg;
+                }
+            }
+
+            &.bordered {
+                background-color: black;
+                padding: variables.$gap;
+
+                * {
+                    color: #fff;
+                }
+
+                .cta_btn {
+                    & a:after {
+                        color: variables.$alt-color;
+                    }
+                }
+            }
+
+            &.imageArticle {
+                .textBlock {
+                    .title {
+                        padding-top: 20px;
+                    }
+                }
+            }
+        }
+    }
+}
