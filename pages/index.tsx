@@ -147,7 +147,7 @@ const Home = ({ moduleData }: HomeProps) => {
 
                     <Text {...(moduleData.textData as TextProps)} align="right" border={true} />
 
-                    <Label {...moduleData.labelData} text="Slider Module" />
+                    <Label {...moduleData.labelData} text="Slider Module" gap={false} />
 
                     <Carousel {...(moduleData.sliderData as CarouselProps)} />
 

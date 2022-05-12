@@ -32,8 +32,7 @@ const Article = (props: ListProps) => {
             })}
         >
             <div
-                className={cn({
-                    [styles.wrapper]: true,
+                className={cn(styles.wrapper, {
                     [styles.bordered]: border === true,
                     [styles.imageArticle]: imageUrl && modLayout != 'card',
                     [styles.reverse]: reverse,

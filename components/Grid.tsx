@@ -17,8 +17,6 @@ const Grid = (props: GridProps) => {
         align = 'left',
     } = props */
 
-    console.log('props', props)
-
     return (
         <div className={styles.root}>
             <div className={styles.wrapper}>

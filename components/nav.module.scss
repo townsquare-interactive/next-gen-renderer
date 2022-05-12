@@ -31,9 +31,13 @@
                 }
             }
 
-            @include breakpoints.sm {
+            @include breakpoints.xs {
                 columns: 2;
             }
+
+            /*             @include breakpoints.sm {
+                columns: 2;
+            } */
         }
 
         &.headerNav {
@@ -47,15 +51,16 @@
 
             ul {
                 margin: 15px;
+                columns: 2;
             }
         }
 
         &.footerNav {
-            ul {
+            /*         ul {
                 @include breakpoints.custom(330px) {
                     columns: 2;
-                }
-            }
+                } 
+            }  */
             li {
                 padding: 5px;
                 /* font-size: variables.$text-size-body-md; */

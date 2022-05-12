@@ -67,9 +67,14 @@
                 position: relative;
                 //margin-top: 15px;
                 aspect-ratio: variables.$aspect-ratio-16_9;
+                display: none;
 
                 img {
                     max-width: 100%;
+                }
+
+                @include breakpoints.xs {
+                    display: block;
                 }
             }
         }

@@ -54,8 +54,9 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
     .wrapper {
         max-width: variables.$max-main-width;
         margin: 15px auto;
+        width: 100%;
 
-        @include breakpoints.md {
+        @include breakpoints.sm {
             width: variables.$content-width;
         }
 
@@ -91,9 +92,13 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
                 color: variables.$text-color-main;
                 padding: 20px;
 
-                @include breakpoints.md {
+                @include breakpoints.sm {
                     padding: 0;
                 }
+                /* 
+                @media (min-width: breakpoints.$screen-sm-min) and (max-width: breakpoints.$screen-md-min) {
+                    padding: 0;
+                } */
 
                 .title {
                     margin-bottom: $margin-text;
@@ -170,6 +175,14 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
 
 @mixin card {
     .wrapper {
+        @include breakpoints.sm {
+            width: variables.$content-width;
+            margin: 0 auto;
+        }
+        @include breakpoints.md {
+            width: 100%;
+        }
+
         .title {
             @include breakpoints.md {
                 display: flex;
@@ -201,11 +214,24 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
                     color: variables.$text-color-main;
                     padding-left: 20px;
                     width: 100%;
+                    padding: 10px 0 10px 20px;
 
                     @include breakpoints.md {
                         margin-left: auto;
                         //padding: 0px 0px 0px 20px;
                         flex: 60 0 0;
+                    }
+
+                    /*                     @include breakpoints.sm {
+                        padding: 10px 0 10px 0;
+                    }
+
+                    @include breakpoints.md {
+                        padding-left: 20px;
+                    } */
+
+                    @media (min-width: breakpoints.$screen-sm-min) and (max-width: breakpoints.$screen-md-min) {
+                        padding: 10px 0 10px 0;
                     }
                 }
             }

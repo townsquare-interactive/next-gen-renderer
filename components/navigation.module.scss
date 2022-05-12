@@ -25,7 +25,7 @@
             padding: 15px 15px 15px 4px;
             z-index: 9999999999;
 
-            @include breakpoints.md {
+            @include breakpoints.sm {
                 width: 80%;
             }
         }
@@ -33,7 +33,7 @@
         .burgerBlock {
             flex-grow: 1;
             display: flex;
-            justify-content: center;
+            justify-content: flex-end;
             align-items: center;
             //align-self: flex-end;
         }

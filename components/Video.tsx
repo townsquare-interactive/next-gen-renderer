@@ -24,18 +24,20 @@ const Video = (props: VideoProps) => {
         <div className={styles.root}>
             {!isSSR && (
                 <div className={styles.wrapper}>
-                    {modLayout === 'youtube' && (
-                        <div className={styles.videoBlock}>
-                            <ReactPlayer url={videoUrl} light controls={true}>
-                                {/* {getThumb(videoUrl)} */}
-                            </ReactPlayer>
-                        </div>
-                    )}
-                    {modLayout === 'local' && (
-                        <div className={styles.videoBlock}>
-                            <ReactPlayer url={videoUrl} controls={true}></ReactPlayer>
-                        </div>
-                    )}
+                    <div className={styles.videoBlock}>
+                        {modLayout === 'youtube' && (
+                            <>
+                                <ReactPlayer url={videoUrl} light controls={true}>
+                                    {/* {getThumb(videoUrl)} */}
+                                </ReactPlayer>
+                            </>
+                        )}
+                        {modLayout === 'local' && (
+                            <>
+                                <ReactPlayer url={videoUrl} controls={true}></ReactPlayer>
+                            </>
+                        )}
+                    </div>
                 </div>
             )}
         </div>
