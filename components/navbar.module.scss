@@ -59,6 +59,12 @@
                     //color: #fff;
                     text-align: center;
                 }
+
+                @include breakpoints.sm {
+                    flex: 60 0 0;
+                    padding-left: 50px;
+                    padding-right: 50px;
+                }
             }
 
             .imageTile {
@@ -71,6 +77,10 @@
 
                 img {
                     max-width: 100%;
+                }
+
+                @include breakpoints.sm {
+                    flex: 30 0 0;
                 }
 
                 @include breakpoints.xs {

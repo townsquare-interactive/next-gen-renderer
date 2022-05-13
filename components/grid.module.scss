@@ -122,7 +122,7 @@
             }
 
             &.bordered {
-                background-color: black;
+                background-color: variables.$alt-color;
                 padding: variables.$gap;
 
                 * {
@@ -130,8 +130,11 @@
                 }
 
                 .cta_btn {
-                    & a:after {
+                    /*                     & > a:after {
                         color: variables.$alt-color;
+                    } */
+                    & > a:after {
+                        color: #fff;
                     }
                 }
             }

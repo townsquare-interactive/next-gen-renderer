@@ -65,27 +65,27 @@ const data: ModuleData = {
 
     sliderData: {
         modLayout: 'text',
-        slideCount: 1,
+        slideCount: 3,
         items: [
             {
                 text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                 imageUrl: '/images/juan-test-010.jpg',
-                headline: '-Rupert Tolson',
+                byline: '-Rupert Tolson',
             },
             {
                 text: ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                 imageUrl: '/images/juan-test-001.jpg',
-                headline: '-Jeff Grover',
+                byline: '-Jeff Grover',
             },
             {
                 text: 'dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                 imageUrl: '/images/juan-test-002.jpg',
-                headline: '-Mark Ilten',
+                byline: '-Mark Ilten',
             },
             {
                 text: ' proident, sunt in culpa qui officia deserunt mollit anim id est laborum. proident, sunt in culpa qui officia deserunt mollit anim id est laborum.proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
                 imageUrl: '/images/juan-test-005.jpg',
-                headline: '-Sarah Patterson',
+                byline: '-Sarah Patterson',
             },
         ],
     },

@@ -81,7 +81,7 @@ export interface TileImage {
 export interface SlideData {
     imageUrl?: string
     text?: string
-    headline?: string
+    byline?: string
 }
 
 export interface CarouselProps {

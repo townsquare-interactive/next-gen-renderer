@@ -43,7 +43,8 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
 }
 
 @mixin bordered {
-    background-color: black;
+    background-color: variables.$dark-accent-color;
+    //background-color: variables.$alt-color;
 
     * {
         color: #fff;

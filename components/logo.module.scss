@@ -10,9 +10,17 @@ $logo-ratio: math.div(722, 156);
         .logo {
             width: 100%;
             max-width: 300px;
-            //margin: 0 auto;
-            /*             aspect-ratio: $logo-ratio;
-            position: relative; */
+
+            > span {
+                position: unset !important;
+            }
+
+            .image {
+                object-fit: contain;
+                width: 100% !important;
+                position: relative !important;
+                height: unset !important;
+            }
         }
     }
 }

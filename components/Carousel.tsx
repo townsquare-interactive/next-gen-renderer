@@ -8,21 +8,30 @@ import 'slick-carousel/slick/slick-theme.css'
 import { CarouselProps } from './types'
 
 function Carousel(sliderData: CarouselProps) {
+    //Sets slide count to 1 if there are more slides than items to show, or if text shows
+    function setSlide() {
+        if (sliderData.modLayout === 'images' && sliderData.items.length >= sliderData.slideCount) {
+            return sliderData.slideCount
+        } else {
+            return 1
+        }
+    }
+
     const settingsImage = {
         dots: true,
         infinite: true,
         speed: 200,
-        slidesToShow: sliderData.slideCount,
+        slidesToShow: setSlide(),
         slidesToScroll: 1,
         nextArrow: <NextArrowImage />,
         prevArrow: <PrevArrowImage />,
     }
 
     const settingsText = {
-        dots: true,
+        dots: false,
         infinite: true,
         speed: 200,
-        slidesToShow: sliderData.slideCount,
+        slidesToShow: setSlide(),
         slidesToScroll: 1,
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />,
@@ -58,7 +67,7 @@ function Carousel(sliderData: CarouselProps) {
                                 <div className={styles.item} key={index}>
                                     <div className={styles.text}>
                                         <p>{item.text}</p>
-                                        <h3>{item.headline}</h3>
+                                        <h3>{item.byline}</h3>
                                     </div>
                                 </div>
                             ))}
