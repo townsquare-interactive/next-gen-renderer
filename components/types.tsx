@@ -46,12 +46,22 @@ export interface LabelProps {
     textSize?: 'sm' | 'md' | 'lg'
 }
 
-export interface TextProps {
-    text: string
+export interface TextData {
+    //children: string
     border?: boolean
     gap?: boolean
     align?: 'left' | 'right' | 'center'
     textSize?: 'sm' | 'md' | 'lg'
+    text: string
+}
+
+export interface TextProps {
+    children?: string
+    border?: boolean
+    gap?: boolean
+    align?: 'left' | 'right' | 'center'
+    textSize?: 'sm' | 'md' | 'lg'
+    text?: string
 }
 
 export interface ImageItem {
@@ -114,7 +124,7 @@ export interface FooterProps {
 
 export interface VideoProps {
     videoUrl: string
-    modLayout: 'youtube' | 'local'
+    modLayout: 'ext' | 'local'
 }
 
 export interface HomeProps {
@@ -177,7 +187,7 @@ export interface ModuleData {
     listData?: ListProps
     headerData?: HeaderProps
     labelData?: LabelProps
-    textData?: TextProps
+    textData?: TextData
     sliderData?: CarouselProps
     footerData?: FooterData
     navData: NavProps

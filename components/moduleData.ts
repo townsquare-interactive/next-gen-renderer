@@ -56,11 +56,11 @@ const data: ModuleData = {
     },
 
     textData: {
-        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
         gap: false,
         align: 'left',
         border: false,
         textSize: 'md',
+        text: '<b>From JSON</b>: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <ul><li>hello</li><li>hello</li><li>hello</li></ul>',
     },
 
     sliderData: {
@@ -168,7 +168,7 @@ const data: ModuleData = {
 
     videoData: {
         //modLayout: 'local',
-        modLayout: 'youtube',
+        modLayout: 'ext',
         //videoUrl: '/videos/local_vid.mp4',
         videoUrl: 'https://www.youtube.com/watch?v=ysz5S6PUM-U',
         //videoUrl: 'https://vimeo.com/300544856',

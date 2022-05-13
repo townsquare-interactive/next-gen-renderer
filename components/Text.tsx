@@ -1,9 +1,10 @@
 import styles from './text.module.scss'
 import { TextProps } from './types'
 import cn from 'classnames'
+import Parser from 'html-react-parser'
 
 function Text(props: TextProps) {
-    const { text = '', border = false, gap = false, align = 'left', textSize = 'md' } = props
+    const { border = false, gap = false, align = 'left', textSize = 'md', children = '' } = props
 
     return (
         <div className={styles.root}>
@@ -15,7 +16,7 @@ function Text(props: TextProps) {
                         [styles.gap]: gap,
                     })}
                 >
-                    <p
+                    <div
                         className={cn(styles.text, {
                             [styles.center]: align === 'center',
                             [styles.left]: align === 'left',
@@ -24,9 +25,10 @@ function Text(props: TextProps) {
                             [styles.md]: textSize === 'md',
                             [styles.sm]: textSize === 'sm',
                         })}
+                        // dangerouslySetInnerHTML={{ __html: children }}
                     >
-                        {text}
-                    </p>
+                        {Parser(children)}
+                    </div>
                 </div>
             </div>
         </div>

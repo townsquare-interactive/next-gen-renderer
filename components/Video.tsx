@@ -25,7 +25,7 @@ const Video = (props: VideoProps) => {
             {!isSSR && (
                 <div className={styles.wrapper}>
                     <div className={styles.videoBlock}>
-                        {modLayout === 'youtube' && (
+                        {modLayout === 'ext' && (
                             <>
                                 <ReactPlayer url={videoUrl} light controls={true}>
                                     {/* {getThumb(videoUrl)} */}
