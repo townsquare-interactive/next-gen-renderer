@@ -64,7 +64,7 @@ const data: ModuleData = {
         text: '<b>From JSON</b>: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <ul><li>hello</li><li>hello</li><li>hello</li></ul>',
     },
 
-    sliderData: {
+    carouselData: {
         modLayout: 'text',
         slideCount: 3,
         items: [
@@ -165,6 +165,7 @@ const data: ModuleData = {
         ],
         //modLayout: 'header',
         navStyle: 'layout1',
+        borderNum: 7,
     },
 
     videoData: {

@@ -63,11 +63,11 @@ const Article = (props: ListProps) => {
                                 <Image
                                     src={imageUrl}
                                     //layout="fill"
-                                    height="300px"
-                                    width="400px"
+                                    height="450px"
+                                    width="600px"
                                     layout="responsive"
                                     //layout="fill"
-                                    //objectFit="cover"
+                                    objectFit="cover"
                                     alt={headline}
                                 />
                             )}

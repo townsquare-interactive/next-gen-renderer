@@ -72,8 +72,10 @@
                 padding: 20px;
                 position: relative;
                 //margin-top: 15px;
-                aspect-ratio: variables.$aspect-ratio-16_9;
+                aspect-ratio: variables.$aspect-ratio-4_3;
                 display: none;
+                align-self: flex-start;
+                margin-top: 10px;
 
                 img {
                     max-width: 100%;
@@ -85,6 +87,10 @@
 
                 @include breakpoints.xs {
                     display: block;
+                }
+
+                span {
+                    margin-top: 10px !important;
                 }
             }
         }

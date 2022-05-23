@@ -157,6 +157,7 @@ export interface NavProps {
     pages: PagesProps[]
     modLayout?: 'header' | 'footer'
     navStyle?: 'layout1' | 'layout2'
+    borderNum?: number
 }
 
 /* export interface NavProps2 {
@@ -178,6 +179,7 @@ export interface NavBarProps {
     navCheck: boolean
     navData: NavProps
     navStyle?: string
+    borderNum?: number
 }
 
 export interface ModuleData {
@@ -186,7 +188,7 @@ export interface ModuleData {
     headerData?: HeaderProps
     labelData?: LabelProps
     textData?: TextData
-    sliderData?: CarouselProps
+    carouselData?: CarouselProps
     footerData?: FooterData
     navData: NavProps
     videoData?: VideoProps

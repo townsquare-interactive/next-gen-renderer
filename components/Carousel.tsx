@@ -7,11 +7,11 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import { CarouselProps } from './types'
 
-function Carousel(sliderData: CarouselProps) {
+function Carousel(carouselData: CarouselProps) {
     //Sets slide count to 1 if there are more slides than items to show, or if text shows
     function setSlide() {
-        if (sliderData.modLayout === 'images' && sliderData.items.length >= sliderData.slideCount) {
-            return sliderData.slideCount
+        if (carouselData.modLayout === 'images' && carouselData.items.length >= carouselData.slideCount) {
+            return carouselData.slideCount
         } else {
             return 1
         }
@@ -41,14 +41,14 @@ function Carousel(sliderData: CarouselProps) {
         <div className={styles.root}>
             <div
                 className={cn(styles.wrapper, {
-                    [styles.hasImage]: sliderData.modLayout === 'images',
-                    [styles.hasText]: sliderData.modLayout === 'text',
+                    [styles.hasImage]: carouselData.modLayout === 'images',
+                    [styles.hasText]: carouselData.modLayout === 'text',
                 })}
             >
-                {sliderData.modLayout === 'images' && (
+                {carouselData.modLayout === 'images' && (
                     <div className={styles.slideItems}>
                         <Slider {...settingsImage}>
-                            {sliderData.items.map((item, index) => (
+                            {carouselData.items.map((item, index) => (
                                 <div className={styles.item} key={index}>
                                     {item.imageUrl && (
                                         <div className={styles.imageTile}>
@@ -60,10 +60,10 @@ function Carousel(sliderData: CarouselProps) {
                         </Slider>
                     </div>
                 )}
-                {sliderData.modLayout === 'text' && (
+                {carouselData.modLayout === 'text' && (
                     <div className={styles.slideItems}>
                         <Slider {...settingsText}>
-                            {sliderData.items.map((item, index) => (
+                            {carouselData.items.map((item, index) => (
                                 <div className={styles.item} key={index}>
                                     <div className={styles.text}>
                                         <p>{item.text}</p>

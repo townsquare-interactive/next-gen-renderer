@@ -58,11 +58,22 @@ $arrowSize: 30px;
         &.hasText {
             border-bottom: 4px solid variables.$label-color;
             //width: variables.$content-width;
-
             padding: 0 variables.$gap variables.$gap variables.$gap;
+
+            @include breakpoints.sm {
+                padding: 0;
+            }
 
             .item {
                 padding: 10px;
+
+                @include breakpoints.sm {
+                    padding: 0;
+                }
+
+                h3 {
+                    font-weight: normal;
+                }
             }
 
             .nextBtn {

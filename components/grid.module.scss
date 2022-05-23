@@ -48,6 +48,7 @@
 
             .textBlock {
                 .cta_btn {
+                    text-transform: uppercase;
                     a {
                         font-weight: bold;
 
@@ -133,6 +134,7 @@
                     /*                     & > a:after {
                         color: variables.$alt-color;
                     } */
+
                     & > a:after {
                         color: #fff;
                     }

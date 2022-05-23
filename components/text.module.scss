@@ -20,6 +20,10 @@
                 margin: 0;
                 color: variables.$text-color-main;
 
+                ul {
+                    margin: 10px;
+                }
+
                 &.center {
                     text-align: center;
 
