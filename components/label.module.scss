@@ -7,20 +7,28 @@
     margin-bottom: variables.$gap;
 
     .wrapper {
-        width: variables.$content-width;
+        //width: variables.$content-width;
         max-width: variables.$max-main-width;
         margin: 0 auto;
+        width: 100%;
 
         @include breakpoints.sm {
             width: variables.$content-width;
         }
 
         .headline {
+            width: 100%;
+            box-sizing: border-box;
+
             .text {
-                width: 100%;
                 margin: 0;
                 color: variables.$label-color;
                 text-transform: uppercase;
+                padding-left: variables.$gap;
+
+                @include breakpoints.sm {
+                    padding-left: 0;
+                }
 
                 &.center {
                     text-align: center;
@@ -52,8 +60,15 @@
             }
 
             &.gap {
+                width: 90%;
+                margin: 0 auto;
                 @include breakpoints.sm {
                     padding: variables.$gap;
+                    width: 100%;
+                }
+
+                .text {
+                    padding-left: 0;
                 }
             }
         }

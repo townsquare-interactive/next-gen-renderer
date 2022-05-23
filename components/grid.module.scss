@@ -34,7 +34,7 @@
             flex-basis: 28%;
             flex-grow: 1;
             box-sizing: border-box;
-            padding: variables.$gap;
+            padding: 0 variables.$gap;
 
             @include breakpoints.sm {
                 padding: 0;
@@ -48,7 +48,8 @@
 
             .textBlock {
                 .cta_btn {
-                    text-transform: uppercase;
+                    @include utils.cta_btn;
+                    /* text-transform: uppercase;
                     a {
                         font-weight: bold;
 
@@ -57,7 +58,7 @@
                             content: '>';
                             color: #000;
                         }
-                    }
+                    } */
                 }
             }
 
@@ -131,10 +132,6 @@
                 }
 
                 .cta_btn {
-                    /*                     & > a:after {
-                        color: variables.$alt-color;
-                    } */
-
                     & > a:after {
                         color: #fff;
                     }

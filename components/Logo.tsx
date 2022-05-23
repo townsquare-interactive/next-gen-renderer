@@ -23,12 +23,12 @@ const Logo = (logo: any) => {
     }
     img.src = 'http://www.google.com/intl/en_ALL/images/logo.gif' */
 
-    logo = '/images/company-logo.png'
+    /*   logo = '/images/company-logo.png'
 
     const [imageWidth, setWidth] = useState<number>()
     const [imageHeight, setHeight] = useState<number>()
 
-    useEffect(() => {
+      useEffect(() => {
         if (process.browser) {
             var img = document.createElement('img')
 
@@ -40,7 +40,7 @@ const Logo = (logo: any) => {
                 setHeight(img.height)
             }
         }
-    }, [])
+    }, []) */
 
     return (
         <div className={styles.root}>

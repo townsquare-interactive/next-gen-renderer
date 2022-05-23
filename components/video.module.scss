@@ -21,6 +21,10 @@
                 @include breakpoints.md {
                     height: 450px !important;
                 }
+
+                @include breakpoints.xl {
+                    height: 550px !important;
+                }
             }
         }
     }

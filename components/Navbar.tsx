@@ -18,7 +18,7 @@ const Navbar = (props: NavBarProps) => {
                 <div className={styles.navDrop}>
                     <div className={styles.navItems}>{<Nav pages={navData.pages} modLayout="header" borderNum={navData.borderNum} />}</div>
                     <div className={styles.imageTile}>
-                        <Image src="https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg" layout="fill" alt="logo" />
+                        <Image src="https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg" layout="fill" alt="logo" objectFit="cover" />
                     </div>
                 </div>
             </div>

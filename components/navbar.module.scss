@@ -14,17 +14,6 @@
         align-items: center;
         justify-content: center;
 
-        /*         .burger {
-            color: #fff;
-            text-align: right;
-            font-size: 30px;
-            padding: 10px;
-            z-index: 9999999;
-            display: flex;
-            justify-content: flex-end;
-        }
-
- */
         .navDrop {
             display: flex;
             justify-content: center;
@@ -32,12 +21,10 @@
             position: fixed;
             z-index: 9999;
             background-color: rgba(0, 0, 0, 0.9);
-            //background-color: rgb(variables.$link-color, 0.9);
             top: 0;
-            //width: 80%;
             width: 100%;
             margin: 0 auto;
-            padding: 15px;
+            padding: variables.$gap;
             padding-top: 80px;
             box-sizing: border-box;
             max-width: variables.$max-main-width;
@@ -49,21 +36,18 @@
             .navItems {
                 display: flex;
                 flex: 70 0 0;
-                //background-color: #000;
-                //justify-content: space-between;
                 justify-content: center;
                 padding: 10px;
                 flex-wrap: wrap;
 
                 a {
-                    //color: #fff;
                     text-align: center;
                 }
 
                 @include breakpoints.sm {
                     flex: 60 0 0;
-                    padding-left: 50px;
-                    padding-right: 50px;
+                    //padding-left: 40px;
+                    //padding-right: 40px;
                 }
             }
 
@@ -71,7 +55,6 @@
                 flex: 30 0 0;
                 padding: 20px;
                 position: relative;
-                //margin-top: 15px;
                 aspect-ratio: variables.$aspect-ratio-4_3;
                 display: none;
                 align-self: flex-start;

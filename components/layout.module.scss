@@ -1,0 +1,22 @@
+.root {
+    &.layout1 {
+        @media (min-width: 100px) {
+            padding-top: 40px;
+        }
+
+        @media (min-width: 240px) {
+            padding-top: 60px;
+        }
+        @media (min-width: 350px) {
+            padding-top: 70px;
+        }
+
+        @media (min-width: 450px) {
+            padding-top: 90px;
+        }
+
+        @media (min-width: 540px) {
+            padding-top: 92px;
+        }
+    }
+}

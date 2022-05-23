@@ -6,6 +6,8 @@ import Navbar from '../components/Navbar'
 import Navigation from '../components/Navigation'
 import useSWR, { Key, Fetcher } from 'swr'
 import { useState } from 'react'
+import styles from './layout.module.scss'
+import cn from 'classnames'
 
 //export default function Layout({ children }: React.PropsWithChildren<{}>, { moduleData }: any) {
 export default function Layout(props: LayoutProps) {
@@ -19,13 +21,17 @@ export default function Layout(props: LayoutProps) {
     }
 
     return (
-        <>
+        <div
+            className={cn(styles.root, {
+                [styles.layout1]: moduleData.navData.navStyle === 'layout1',
+            })}
+        >
             <Navbar navCheck={navCheck} navData={moduleData.navData} navStyle={moduleData.navData.navStyle} />
             <Navigation navSwitch={navSwitch} navCheck={navCheck} navStyle={moduleData.navData.navStyle} />
 
             <main>{children}</main>
             {/* <Footer {...(moduleData.FooterData as FooterProps)} /> */}
             <Footer footerData={moduleData.footerData as FooterData} navData={moduleData.navData} />
-        </>
+        </div>
     )
 }

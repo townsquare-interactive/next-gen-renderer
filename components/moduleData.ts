@@ -8,10 +8,10 @@ const data: ModuleData = {
         items: [
             {
                 imageUrl: '/images/juan-test-015.jpg',
-                // linkText: 'Menu',
+                linkText: 'Menu',
                 linkUrl: '/menu',
                 body: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventor',
-                headline: 'Hello',
+                //headline: 'Hello',
             },
             {
                 imageUrl: '/images/juan-test-016.jpg',
@@ -61,7 +61,7 @@ const data: ModuleData = {
         align: 'left',
         border: false,
         textSize: 'md',
-        text: '<b>From JSON</b>: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <ul><li>hello</li><li>hello</li><li>hello</li></ul>',
+        text: '<b>Text:</b>: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <ul><li>sed do eiusmod tempor</li><li>sed do eiusmod tempor</li><li>sed do eiusmod tempor</li></ul>',
     },
 
     carouselData: {
@@ -135,8 +135,8 @@ const data: ModuleData = {
                 linkUrl: '/blog',
             },
             {
-                text: 'Contact',
-                linkUrl: '/',
+                text: 'Module Descriptions',
+                linkUrl: '/module-descriptions',
             },
             {
                 text: 'About Us',
@@ -181,7 +181,7 @@ const data: ModuleData = {
         items: [
             {
                 //headline: 'Headline for text',
-                body: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. ',
+                body: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab  ',
                 imageUrl: '/images/juan-test-012.jpg',
                 // linkUrl: '/',
                 //btnText: 'Contact Us',
@@ -189,7 +189,7 @@ const data: ModuleData = {
                 align: 'left',
             },
             {
-                body: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. ',
+                body: ' Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. ',
                 imageUrl: '/images/juan-test-010.jpg',
                 /*            border: false,
                 linkUrl: '/',
@@ -199,7 +199,7 @@ const data: ModuleData = {
             },
 
             {
-                body: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. ',
+                body: ' Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. ',
                 imageUrl: '/images/juan-test-011.jpg',
                 /*                linkUrl: '/',
                 headline: 'Headline for text',
@@ -209,8 +209,8 @@ const data: ModuleData = {
             },
 
             {
-                headline: 'Headline for text',
-                body: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. ',
+                headline: 'Headline 1',
+                body: ' totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,  ',
                 imageUrl: '/images/juan-test-009.jpg',
                 linkUrl: '/',
                 btnText: 'Contact Us',
@@ -220,8 +220,8 @@ const data: ModuleData = {
             },
 
             {
-                headline: 'Headline for text',
-                body: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. ',
+                headline: 'Headline 2',
+                body: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore  ',
                 imageUrl: '/images/juan-test-008.jpg',
                 linkUrl: '/',
                 btnText: 'Contact Us',
@@ -230,8 +230,8 @@ const data: ModuleData = {
             },
 
             {
-                headline: 'Headline for text',
-                body: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. ',
+                headline: 'Headline 3',
+                body: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa  ',
                 imageUrl: '/images/juan-test-006.jpg',
                 linkUrl: '/',
                 btnText: 'Contact Us',

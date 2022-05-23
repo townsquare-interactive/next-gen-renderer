@@ -4,7 +4,6 @@
 @use 'sass:math';
 //Variables
 $lh-height: 1.3;
-$margin-text: 20px;
 $ratio: math.div(4, 3);
 
 //Setting image sizes
@@ -20,21 +19,6 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
 
 /*Mixins Shared between layouts */
 
-@mixin cta_btn {
-    margin-top: $margin-text;
-
-    a {
-        font-weight: bold;
-        text-transform: uppercase;
-
-        &:after {
-            padding: 10px;
-            content: '>';
-            color: variables.$link-color;
-        }
-    }
-}
-
 @mixin features {
     display: flex;
     flex-direction: column;
@@ -45,7 +29,6 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
 
 @mixin bordered {
     background-color: variables.$dark-accent-color;
-    //background-color: variables.$alt-color;
 
     * {
         color: #fff;
@@ -93,6 +76,7 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
                 flex-direction: column;
                 color: variables.$text-color-main;
                 padding: 20px;
+                margin-right: variables.$gap;
 
                 @include breakpoints.sm {
                     padding: 0;
@@ -103,7 +87,7 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
                 } */
 
                 .title {
-                    margin-bottom: $margin-text;
+                    margin-bottom: variables.$gap;
                     line-height: $lh-height;
 
                     .text {
@@ -117,12 +101,12 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
                     }
                 }
 
-                .textBlock {
-                    margin-right: $margin-text;
-                }
+                /*                 .textBlock {
+                    margin-right: variables.$gap;
+                } */
 
                 .cta_btn {
-                    @include cta_btn;
+                    @include utils.cta_btn;
                 }
             }
         }
@@ -130,22 +114,17 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
             @include bordered;
 
             .features {
-                padding: variables.$gap;
-                //padding: 0 10px;
                 padding: 20px;
-
-                .allText {
-                    // padding: variables.$gap;
-                }
 
                 .textBlock {
                     @include breakpoints.md {
-                        margin: 0 $margin-text;
+                        margin-left: variables.$gap;
+                        margin-right: 0;
                     }
                 }
                 .title {
                     @include breakpoints.md {
-                        margin-left: $margin-text;
+                        margin-left: variables.$gap;
                     }
                 }
             }
@@ -157,7 +136,6 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
             }
 
             .allText {
-                //text-align: left;
                 justify-content: flex-start;
                 @include breakpoints.md {
                     width: 50%;
@@ -220,17 +198,8 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
 
                     @include breakpoints.md {
                         margin-left: auto;
-                        //padding: 0px 0px 0px 20px;
                         flex: 60 0 0;
                     }
-
-                    /*                     @include breakpoints.sm {
-                        padding: 10px 0 10px 0;
-                    }
-
-                    @include breakpoints.md {
-                        padding-left: 20px;
-                    } */
 
                     @media (min-width: breakpoints.$screen-sm-min) and (max-width: breakpoints.$screen-md-min) {
                         padding: 10px 0 10px 0;
@@ -310,7 +279,7 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
                 }
 
                 .cta_btn {
-                    @include cta_btn;
+                    @include utils.cta_btn;
                     color: variables.$text-color-main;
                     padding-left: 20px;
                     @include breakpoints.md {
