@@ -8,9 +8,10 @@ const data: ModuleData = {
         items: [
             {
                 imageUrl: '/images/juan-test-015.jpg',
-                linkText: 'Menu',
+                // linkText: 'Menu',
                 linkUrl: '/menu',
                 body: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventor',
+                headline: 'Hello',
             },
             {
                 imageUrl: '/images/juan-test-016.jpg',

@@ -14,7 +14,7 @@
     .wrapper {
         display: flex;
         max-width: variables.$max-main-width;
-        @include breakpoints.md {
+        @include breakpoints.sm {
             width: variables.$content-width;
             margin: 0 auto;
         }
@@ -26,7 +26,7 @@
             z-index: 9999999999;
 
             @include breakpoints.sm {
-                width: 80%;
+                width: variables.$content-width;
             }
         }
 

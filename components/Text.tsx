@@ -4,7 +4,7 @@ import cn from 'classnames'
 import Parser from 'html-react-parser'
 
 function Text(props: TextProps) {
-    const { border = false, gap = false, align = 'left', textSize = 'md', children = '' } = props
+    const { border = false, gap = false, align = 'left', textSize = 'md', text = '' } = props
 
     return (
         <div className={styles.root}>
@@ -27,7 +27,7 @@ function Text(props: TextProps) {
                         })}
                         // dangerouslySetInnerHTML={{ __html: children }}
                     >
-                        {Parser(children)}
+                        {Parser(text)}
                     </div>
                 </div>
             </div>

@@ -42,7 +42,7 @@
             box-sizing: border-box;
             max-width: variables.$max-main-width;
 
-            @include breakpoints.md {
+            @include breakpoints.sm {
                 width: variables.$content-width;
             }
 

@@ -109,10 +109,13 @@ const TileImage = ({ itemNumber, modLayout, isMainImage = false }: TileImage) =>
                     <Image src={itemNumber.imageUrl} layout="fill" objectFit="cover" alt={itemNumber.linkText} />
                     <Link href={itemNumber.linkUrl}>
                         <a className={styles.link}>
-                            {itemNumber.linkText && <div className={styles.text}>{itemNumber.linkText}</div>}
-                            <div className={styles.headline}>
-                                <h3>{itemNumber.headline || ''}</h3>
-                            </div>
+                            {itemNumber.linkText ? (
+                                <div className={styles.text}>{itemNumber.linkText}</div>
+                            ) : (
+                                <div className={styles.headline}>
+                                    <h3>{itemNumber.headline || ''}</h3>
+                                </div>
+                            )}
                             {itemNumber.body && (
                                 <div className={styles.description}>
                                     <p>{itemNumber.body}</p>
@@ -124,10 +127,13 @@ const TileImage = ({ itemNumber, modLayout, isMainImage = false }: TileImage) =>
             ) : (
                 <div className={styles.linkBlock}>
                     <Image src={itemNumber.imageUrl} layout="fill" objectFit="cover" alt={itemNumber.linkText} />
-                    {itemNumber.linkText && <div className={styles.text}>{itemNumber.linkText}</div>}
-                    <div className={styles.headline}>
-                        <h3>{itemNumber.headline || ''}</h3>
-                    </div>
+                    {itemNumber.linkText ? (
+                        <div className={styles.text}>{itemNumber.linkText}</div>
+                    ) : (
+                        <div className={styles.headline}>
+                            <h3>{itemNumber.headline || ''}</h3>
+                        </div>
+                    )}
                     {itemNumber.body && (
                         <div className={styles.description}>
                             <p>{itemNumber.body}</p>

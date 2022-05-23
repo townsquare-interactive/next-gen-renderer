@@ -47,7 +47,6 @@ export interface LabelProps {
 }
 
 export interface TextData {
-    //children: string
     border?: boolean
     gap?: boolean
     align?: 'left' | 'right' | 'center'
@@ -56,7 +55,6 @@ export interface TextData {
 }
 
 export interface TextProps {
-    children?: string
     border?: boolean
     gap?: boolean
     align?: 'left' | 'right' | 'center'

@@ -22,6 +22,10 @@
 
                 &.center {
                     text-align: center;
+
+                    li {
+                        list-style-position: inside;
+                    }
                 }
 
                 &.left {
@@ -30,6 +34,10 @@
 
                 &.right {
                     text-align: right;
+
+                    li {
+                        list-style-position: inside;
+                    }
                 }
 
                 &.sm {
