@@ -25,8 +25,8 @@ export default function Layout(props: LayoutProps) {
                 [styles.layout1]: moduleData.navData.navStyle === 'layout1',
             })}
         >
-            <Navbar navCheck={navCheck} navData={moduleData.navData} navStyle={moduleData.navData.navStyle} />
-            <Navigation navSwitch={navSwitch} navCheck={navCheck} navStyle={moduleData.navData.navStyle} logoUrl={moduleData.logoUrl} />
+            {/* <Navbar navCheck={navCheck} navData={moduleData.navData} navStyle={moduleData.navData.navStyle} /> */}
+            <Navigation navSwitch={navSwitch} navCheck={navCheck} logoUrl={moduleData.logoUrl} navData={moduleData.navData} />
 
             <main>{children}</main>
             <Footer footerData={moduleData.footerData as FooterData} navData={moduleData.navData} logoUrl={moduleData.logoUrl} />

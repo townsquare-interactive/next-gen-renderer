@@ -170,6 +170,7 @@ const data: ModuleData = {
         //modLayout: 'header',
         navStyle: 'layout1',
         borderNum: 7,
+        navImage: 'https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg',
     },
 
     videoData: {

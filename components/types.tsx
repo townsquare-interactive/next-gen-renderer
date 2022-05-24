@@ -156,6 +156,7 @@ export interface NavProps {
     modLayout?: 'header' | 'footer'
     navStyle?: 'layout1' | 'layout2'
     borderNum?: number
+    navImage?: string
 }
 
 export interface BurgerProps {
@@ -168,13 +169,13 @@ export interface NavigationProps {
     navCheck: boolean
     navStyle?: string
     logoUrl?: string
+    navData: NavProps
 }
 
 export interface NavBarProps {
     navCheck: boolean
     navData: NavProps
     navStyle?: string
-    borderNum?: number
 }
 
 export interface ModuleData {
