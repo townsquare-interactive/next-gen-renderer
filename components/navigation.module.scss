@@ -76,19 +76,27 @@
 
                 .navItems {
                     display: flex;
-                    flex: 70 0 0;
-                    justify-content: center;
+                    //flex: 70 0 0;
+                    justify-content: flex-start;
                     padding: 10px;
                     flex-wrap: wrap;
+                    //max-width: 400px;
+
+                    @include breakpoints.sm {
+                        padding-left: 20px;
+                    }
 
                     a {
                         text-align: center;
                     }
 
-                    @include breakpoints.sm {
-                        flex: 60 0 0;
-                        /*                     padding-left: 40px;
-                        padding-right: 40px; */
+                    & > div {
+                        max-width: 450px;
+                        margin-left: 0;
+
+                        @include breakpoints.xl {
+                            max-width: 550px;
+                        }
                     }
                 }
 
@@ -120,6 +128,19 @@
             }
         }
 
+        &.hasImage {
+            .navItems {
+                flex: 50 0 0;
+                justify-content: center;
+
+                @include breakpoints.sm {
+                    flex: 50 0 0;
+                    /*                     padding-left: 40px;
+                    padding-right: 40px; */
+                }
+            }
+        }
+
         &.visible {
             display: block;
         }
@@ -127,6 +148,71 @@
         &.layout2 .navDrop {
             position: absolute;
             top: 0;
+        }
+    }
+
+    .burger {
+        z-index: 99999;
+
+        .wrapper {
+            height: 100%;
+
+            .burgerBtn {
+                z-index: 9999999;
+
+                div {
+                    position: relative;
+                    background-color: variables.$text-color-accent;
+
+                    width: 25px;
+                    height: 2px;
+                    border-radius: 3px;
+                    margin-top: 4px;
+
+                    @include breakpoints.sm {
+                        width: 40px;
+                        height: 4px;
+                        border-radius: 3px;
+                        margin-top: 5px;
+                    }
+                }
+
+                button {
+                    background-color: transparent;
+                    border: none;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+                &.navActive {
+                    div:first-of-type {
+                        transform: rotate(-45deg);
+                        -webkit-transform: rotate(-45deg);
+                        transition: transform 0.5s ease-in-out;
+                        top: 6px;
+
+                        @include breakpoints.sm {
+                            top: 11px;
+                        }
+                    }
+
+                    div:nth-child(2) {
+                        opacity: 0;
+                    }
+
+                    div:last-of-type {
+                        transform: rotate(-5deg);
+                        -webkit-transform: rotate(45deg);
+                        transition: transform 0.5s ease-in-out;
+                        top: -6px;
+
+                        @include breakpoints.sm {
+                            top: -6px;
+                        }
+                    }
+                }
+            }
         }
     }
 }

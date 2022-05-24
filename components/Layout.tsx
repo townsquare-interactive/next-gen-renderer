@@ -16,7 +16,6 @@ export default function Layout(props: LayoutProps) {
     //Flipping state value for navbar visibility
     function navSwitch() {
         setNav(!navCheck)
-        console.log(navCheck)
     }
 
     return (
@@ -25,7 +24,6 @@ export default function Layout(props: LayoutProps) {
                 [styles.layout1]: moduleData.navData.navStyle === 'layout1',
             })}
         >
-            {/* <Navbar navCheck={navCheck} navData={moduleData.navData} navStyle={moduleData.navData.navStyle} /> */}
             <Navigation navSwitch={navSwitch} navCheck={navCheck} logoUrl={moduleData.logoUrl} navData={moduleData.navData} />
 
             <main>{children}</main>
