@@ -83,7 +83,7 @@ const ModuleDescriptions = ({ moduleData }: HomeProps) => {
     return (
         <div className={styles.root}>
             <Head>
-                <title>Home Page</title>
+                <title>Module Descriptions</title>
                 <meta property="og:title" content="My page title" key="title" />
             </Head>
 

@@ -25,7 +25,6 @@ function Text(props: TextProps) {
                             [styles.md]: textSize === 'md',
                             [styles.sm]: textSize === 'sm',
                         })}
-                        // dangerouslySetInnerHTML={{ __html: children }}
                     >
                         {Parser(text)}
                     </div>

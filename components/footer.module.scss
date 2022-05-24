@@ -128,11 +128,12 @@
 
             &.navInfo {
                 grid-column: 2/4;
-                //padding: 0 20px 0 20px;
+                padding: 0 20px 0 20px;
 
                 @include breakpoints.md {
                     width: 70%;
                     margin: 0 auto;
+                    padding: 0;
                 }
             }
 
