@@ -14,24 +14,12 @@ $arrowSize: 30px;
         box-sizing: border-box;
         padding: 0 0 30px 0;
 
-        //padding: 10px 30px;
-
-        //modifying before slider arrows
-        /*         *:before {
-            color: #000;
-        } */
-
         @include breakpoints.sm {
             width: variables.$content-width;
             margin: 0 auto;
-            //padding: 20px;
         }
 
         .slideItems {
-            @include breakpoints.sm {
-                //margin: 0 20px;
-            }
-
             .item {
                 display: flex;
                 justify-content: center;
@@ -39,7 +27,6 @@ $arrowSize: 30px;
 
                 .text {
                     padding-top: 0;
-                    //max-width: 700px;
                     margin: 0 auto;
                     p {
                         font-style: italic;
@@ -50,14 +37,12 @@ $arrowSize: 30px;
             .imageTile {
                 position: relative;
                 aspect-ratio: variables.$aspect-ratio-4_3;
-                /*                 border-right: 1px solid variables.$main-color;
-                border-left: 1px solid variables.$main-color; */
             }
         }
 
         &.hasText {
             border-bottom: 4px solid variables.$label-color;
-            //width: variables.$content-width;
+            border-top: 4px solid variables.$label-color;
             padding: 0 variables.$gap variables.$gap variables.$gap;
 
             @include breakpoints.sm {
@@ -87,10 +72,6 @@ $arrowSize: 30px;
                 &:before {
                     display: none;
                 }
-
-                /*                 &:hover {
-                    color: #000;
-                } */
             }
 
             .prevBtn {
@@ -107,7 +88,6 @@ $arrowSize: 30px;
 
             .slideItems {
                 margin: 15px auto;
-                //max-width: 600px;
 
                 .slick-next {
                     right: 0 !important;
@@ -123,13 +103,6 @@ $arrowSize: 30px;
                     }
                 }
             }
-            /*             button.slick-arrow.slick-next {
-                right: 0;
-
-                &:before {
-                    color: #fff;
-                }
-            } */
         }
 
         .imageBtns {

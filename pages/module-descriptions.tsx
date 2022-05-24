@@ -88,9 +88,6 @@ const ModuleDescriptions = ({ moduleData }: HomeProps) => {
             </Head>
 
             <Layout moduleData={moduleData}>
-                {/*                 <Navbar navCheck={navCheck} navData={moduleData.navData} navStyle={moduleData.navData.navStyle} />
-
-                <Navigation navSwitch={navSwitch} navCheck={navCheck} navStyle={moduleData.navData.navStyle} /> */}
                 <div
                     className={cn(styles.wrapper, {
                         [styles.layout1]: moduleData.navData.navStyle === 'layout1',
@@ -104,11 +101,11 @@ const ModuleDescriptions = ({ moduleData }: HomeProps) => {
                     <Text
                         {...(moduleData.textData as TextProps)}
                         text="The Header module is a banner that can have a large image, title, a background texture image, and multiple colors. All of these elements are optional. <ul>
-	<li>Two variations of mobile design (normal, alt-layout)</li>
-	<li>Background texture image is available, non texture image most likely will look unpleasant if uploaded in that spot</li>
-	<li>If title,image,backgroundImage are not passed, two colored banner is presented</li>
-</ul>
-"
+                        <li>Two variations of mobile design (normal, alt-layout)</li>
+                        <li>Background texture image is available, non texture image most likely will look unpleasant if uploaded in that spot</li>
+                        <li>If title,image,backgroundImage are not passed, two colored banner is presented</li>
+                        </ul>
+                        "
                     />
 
                     <Header {...(moduleData.headerData as HeaderProps)} reverse={true} modLayout="alt-layout" />
@@ -123,13 +120,13 @@ const ModuleDescriptions = ({ moduleData }: HomeProps) => {
 
                     <Text
                         {...(moduleData.textData as TextProps)}
-                        text="The Label Module is a headline with larger bolded text<br><b>Options</b><ul>
-	<li>Text size: sm, md, lg text</li>
-	<li>Align: left, right, center</li>
-	<li>Border or no border</li>
-	<li>Gap spacing or no gap spacing</li>
-</ul>
-"
+                        text="The Label Module is a headline with larger bolded text<br><br><b>Options</b><ul>
+                        <li>Text size: sm, md, lg text</li>
+                        <li>Align: left, right, center</li>
+                        <li>Border or no border</li>
+                        <li>Gap spacing or no gap spacing</li>
+                        </ul>
+                        "
                     />
 
                     <Label {...moduleData.labelData} text="Label: With gap, no border" gap={true} border={false} />
@@ -141,20 +138,19 @@ const ModuleDescriptions = ({ moduleData }: HomeProps) => {
                     <Text
                         {...(moduleData.textData as TextProps)}
                         text="<ul>
-	<li>Module to show Headline, text, image, button (optional)</li>
-	<li>If any element is not passed then it does not appear on page</li>
-	<li>Link url must be passed for button to appear</li>
-    <li>Varations on list visually presented below</li>
-    
-</ul><b>Options</b> 
-<ul>
-<li>Text size: sm, md, lg text</li>
-<li>Align: left, right, center</li>
-<li>Border or no border (adds background color and spacing)</li>
-<li>Layout: Card or Article</li>
-<li>Reverse: Reverses image/text to be on opposite sides</li>
-</ul><br><b>Layouts </b><br><u>Article Layout:</u> Shows larger image and text alongside each other (shown above)<br><u>Card Layout:</u> Narrower banner version, with color on sides<br>
-Alternates sides when element is placed back to back
+                        <li>Module to show Headline, text, image, button (optional)</li>
+                        <li>If any element is not passed then it does not appear on page</li>
+                        <li>Link url must be passed for button to appear</li>
+                        <li>Varations on list visually presented below</li>  
+                        </ul><b>Options</b> 
+                        <ul>
+                        <li>Text size: sm, md, lg text</li>
+                        <li>Align: left, right, center</li>
+                        <li>Border or no border (adds background color and spacing)</li>
+                        <li>Layout: Card or Article</li>
+                        <li>Reverse: Reverses image/text to be on opposite sides</li>
+                        </ul><br><b>Layouts </b><br><u>Article Layout:</u> Shows larger image and text alongside each other (shown above)<br><u>Card Layout:</u> Narrower banner version, with color on sides<br>
+                        Alternates sides when element is placed back to back
 
 
 
@@ -163,7 +159,7 @@ Alternates sides when element is placed back to back
 
                     <List {...moduleData.listData} reverse={true} border={false} headline="No border option" />
 
-                    <Label {...moduleData.labelData} text="List Modules: Card layout" align="center" gap={true} />
+                    <Label {...moduleData.labelData} text="List Module: Card layout" align="center" gap={true} />
 
                     <List {...moduleData.listData} modLayout="card" border={false} />
 
@@ -173,30 +169,18 @@ Alternates sides when element is placed back to back
 
                     <Label {...moduleData.labelData} text="Images Module" gap={false} />
 
-                    {/*
-                    layout options:
-                    3-1/3 : Three images, each one 1/3 in size
-                    3-2/3: Three images, Main image takes up 2/3
-                    2-2/3: Two images, main image takes up 2/3
-                    2-1/2: Two images, each image takes up 1/2
-                    1-full: One image that takes up full width
-                    1-hero: One image, less height
-
-
-                    */}
-
                     <Images {...(moduleData.imagesData as ImagesProps)} />
 
                     <Text
                         {...(moduleData.textData as TextProps)}
                         text="<ul>
-	<li>Portrays images in multiple grid formats</li>
-	<li>Image can contain buttons, headlines, and descriptions</li>
-	<li>Aspect ratio of images 4/3</li>
-	<li>Description can be provided and slides up on top of the image on hover.</li>
-	<li>If a linkUrl is provided, images are black and white until hovered on</li>
-</ul>
-"
+                        <li>Portrays images in multiple grid formats</li>
+                        <li>Image can contain buttons, headlines, and descriptions</li>
+                        <li>Aspect ratio of images 4/3</li>
+                        <li>Description can be provided and slides up on top of the image on hover.</li>
+                        <li>If a linkUrl is provided, images are black and white until hovered on</li>
+                        </ul>
+                        "
                     />
 
                     <Text
@@ -204,9 +188,9 @@ Alternates sides when element is placed back to back
                         text="<b>Options</b><br><ul>
                         <li>Gap: Can have spacing gap or no spacing gap between photos</li>
                         <li>Layout: Various layout options for different number of images included</li>
-                        <li>Headline can be used instead of button text for hero images</li>
-                    </ul>
-"
+                        <li>If headline is provided it can be used instead of link text </li>
+                        </ul>
+                        "
                     />
 
                     <Text
@@ -219,8 +203,8 @@ Alternates sides when element is placed back to back
                         <li>1-full: One image that takes up full element</li>
                         <li>1-hero: One image that takes up full element but aspect ratio of image is 16/9</li>
                         <li>Four or more images: Images are displayed in rows of 3</li>
-                    </ul>
-"
+                        </ul>
+                        "
                     />
 
                     <Images {...(moduleData.imagesData as ImagesProps)} modLayout="3-1/3" />
@@ -236,34 +220,34 @@ Alternates sides when element is placed back to back
                     <Text
                         {...(moduleData.textData as TextProps)}
                         text="<ul>
-    <li>This is the text module</li>
-<li>Text block on page</li>
-<li>Text data is parsed for HTML content allowing you to use tags</li>
-</ul><br><b>Options </b><br><ul>
-<li>Text size: sm, md, lg text</li>
-<li>Align: left, right, center</li>
-<li>Border or no border</li>
-<li>Gap spacing or no gap spacing</li>
-</ul>
-"
+                        <li>This is the text module</li>
+                        <li>Text block on page</li>
+                        <li>Text data is parsed for HTML content allowing you to use tags</li>
+                        </ul><br><b>Options </b><br><ul>
+                        <li>Text size: sm, md, lg text</li>
+                        <li>Align: left, right, center</li>
+                        <li>Border or no border</li>
+                        <li>Gap spacing or no gap spacing</li>
+                        </ul>
+                        "
                     />
 
                     <Text {...(moduleData.textData as TextProps)} align="center" textSize="lg" />
 
                     <Text {...(moduleData.textData as TextProps)} align="right" border={true} />
 
-                    <Label {...moduleData.labelData} text="Carousel Module" gap={false} />
+                    <Label {...moduleData.labelData} text="Carousel Module" gap={false} border={false} />
 
                     <Carousel {...(moduleData.carouselData as CarouselProps)} modLayout="text" />
 
                     <Text
                         {...(moduleData.textData as TextProps)}
-                        text="Utilizes Slick JS to create a sliding carousel of different elements <br><b>Text Layout</b><ul>
+                        text="Utilizes Slick JS to create a sliding carousel of different elements <br><br><b>Text Layout</b><ul>
                         <li>Shows text description as well as larger byline bolded underneath</li>
                         <li>Next button now appears to change between slides</li>
                         <li>Only one slide at a time available</li>
-                    </ul>
-"
+                        </ul>
+                        "
                     />
 
                     <Text
@@ -323,14 +307,6 @@ Alternates sides when element is placed back to back
                     />
                 </div>
             </Layout>
-
-            {/* <ModuleProvider moduleData={moduleData}>
-            <Footer {...(moduleData.footerData as FooterProps)} />
-            </ModuleProvider> */}
-
-            {/* <Footer {...(moduleData.footerData as FooterProps)} /> */}
-
-            {/* <Footer footerData={moduleData.footerData as FooterData} navData={moduleData.navData} /> */}
         </div>
     )
 }

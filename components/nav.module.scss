@@ -49,6 +49,10 @@
         &.headerNav {
             max-width: 400px;
 
+            @include breakpoints.xl {
+                max-width: 550px;
+            }
+
             li {
                 text-align: left;
                 padding: 10px;

@@ -17,14 +17,8 @@
             & > div:first-child {
                 width: 100% !important;
                 max-width: 100%;
-
-                @include breakpoints.md {
-                    height: 450px !important;
-                }
-
-                @include breakpoints.xl {
-                    height: 550px !important;
-                }
+                aspect-ratio: variables.$aspect-ratio-16_9;
+                height: auto !important;
             }
         }
     }

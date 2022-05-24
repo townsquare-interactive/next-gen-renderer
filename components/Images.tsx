@@ -109,12 +109,12 @@ const TileImage = ({ itemNumber, modLayout, isMainImage = false }: TileImage) =>
                     <Image src={itemNumber.imageUrl} layout="fill" objectFit="cover" alt={itemNumber.linkText} />
                     <Link href={itemNumber.linkUrl}>
                         <a className={styles.link}>
-                            {itemNumber.linkText ? (
-                                <div className={styles.text}>{itemNumber.linkText}</div>
-                            ) : (
+                            {itemNumber.headline ? (
                                 <div className={styles.headline}>
                                     <h3>{itemNumber.headline || ''}</h3>
                                 </div>
+                            ) : (
+                                <div className={styles.text}>{itemNumber.linkText}</div>
                             )}
                             {itemNumber.body && (
                                 <div className={styles.description}>
@@ -127,12 +127,12 @@ const TileImage = ({ itemNumber, modLayout, isMainImage = false }: TileImage) =>
             ) : (
                 <div className={styles.linkBlock}>
                     <Image src={itemNumber.imageUrl} layout="fill" objectFit="cover" alt={itemNumber.linkText} />
-                    {itemNumber.linkText ? (
-                        <div className={styles.text}>{itemNumber.linkText}</div>
-                    ) : (
+                    {itemNumber.headline ? (
                         <div className={styles.headline}>
                             <h3>{itemNumber.headline || ''}</h3>
                         </div>
+                    ) : (
+                        <div className={styles.text}>{itemNumber.linkText}</div>
                     )}
                     {itemNumber.body && (
                         <div className={styles.description}>

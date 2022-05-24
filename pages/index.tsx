@@ -47,11 +47,6 @@ export const getStaticProps: GetStaticProps = async () => {
 const Home = ({ moduleData }: HomeProps) => {
     const [navCheck, setNav] = useState<boolean>(false)
 
-    //Flipping state value for navbar visibility
-    function navSwitch() {
-        setNav(!navCheck)
-    }
-
     const imageData1: ImagesProps = {
         gap: true,
         modLayout: '2-2/3',
@@ -88,9 +83,6 @@ const Home = ({ moduleData }: HomeProps) => {
             </Head>
 
             <Layout moduleData={moduleData}>
-                {/*                 <Navbar navCheck={navCheck} navData={moduleData.navData} navStyle={moduleData.navData.navStyle} />
-
-                <Navigation navSwitch={navSwitch} navCheck={navCheck} navStyle={moduleData.navData.navStyle} /> */}
                 <div
                     className={cn(styles.wrapper, {
                         [styles.layout1]: moduleData.navData.navStyle === 'layout1',
@@ -99,13 +91,13 @@ const Home = ({ moduleData }: HomeProps) => {
                 >
                     <Header {...(moduleData.headerData as HeaderProps)} />
 
-                    <Label {...moduleData.labelData} text="List Modules: Article Layout" />
+                    <Label {...moduleData.labelData} text="List Module: Article Layout" gap={false} />
 
                     <List {...moduleData.listData} />
 
                     <List {...moduleData.listData} reverse={true} border={false} headline="No border option" />
 
-                    <Label {...moduleData.labelData} text="List Modules: Card layout" align="center" gap={true} />
+                    <Label {...moduleData.labelData} text="List Module: Card layout" gap={false} />
 
                     <List {...moduleData.listData} modLayout="card" border={false} />
 
@@ -114,18 +106,6 @@ const Home = ({ moduleData }: HomeProps) => {
                     <List {...moduleData.listData} modLayout="card" border={false} />
 
                     <Label {...moduleData.labelData} text="Images Module" gap={false} />
-
-                    {/*
-                    layout options:
-                    3-1/3 : Three images, each one 1/3 in size
-                    3-2/3: Three images, Main image takes up 2/3
-                    2-2/3: Two images, main image takes up 2/3
-                    2-1/2: Two images, each image takes up 1/2
-                    1-full: One image that takes up full width
-                    1-hero: One image, less height
-
-
-                    */}
 
                     <Images {...(moduleData.imagesData as ImagesProps)} />
 
@@ -141,7 +121,7 @@ const Home = ({ moduleData }: HomeProps) => {
 
                     <Text {...(moduleData.textData as TextProps)} />
 
-                    <Label {...moduleData.labelData} text="Quotes" gap={false} />
+                    <Label {...moduleData.labelData} text="Quotes" gap={false} border={false} />
 
                     <Carousel {...(moduleData.carouselData as CarouselProps)} modLayout="text" />
 
@@ -156,16 +136,10 @@ const Home = ({ moduleData }: HomeProps) => {
                     <Label {...moduleData.labelData} text="Grid Module" gap={false} />
 
                     <Grid {...(moduleData.gridData as GridProps)} />
+
+                    <Label {...moduleData.labelData} text="<a href='/module-descriptions'> Module Descriptions</a> " align="center" border={false} />
                 </div>
             </Layout>
-
-            {/* <ModuleProvider moduleData={moduleData}>
-            <Footer {...(moduleData.footerData as FooterProps)} />
-            </ModuleProvider> */}
-
-            {/* <Footer {...(moduleData.footerData as FooterProps)} /> */}
-
-            {/* <Footer footerData={moduleData.footerData as FooterData} navData={moduleData.navData} /> */}
         </div>
     )
 }

@@ -3,6 +3,7 @@ import { ListProps } from './types'
 import Image from 'next/image'
 import cn from 'classnames'
 import { reverse } from 'dns'
+import Parser from 'html-react-parser'
 
 const Article = (props: ListProps) => {
     const {
@@ -62,7 +63,6 @@ const Article = (props: ListProps) => {
                             {imageUrl && (
                                 <Image
                                     src={imageUrl}
-                                    //layout="fill"
                                     height="450px"
                                     width="600px"
                                     layout="responsive"
@@ -80,7 +80,7 @@ const Article = (props: ListProps) => {
                                 <div className={styles.text}>{headline}</div>
                             </div>
                             <div className={styles.textBlock}>
-                                <div className={styles.text}>{body}</div>
+                                <div className={styles.text}>{Parser(body)}</div>
                                 {linkUrl && btnText && (
                                     <div className={styles.cta_btn}>
                                         <a href={linkUrl}>{btnText}</a>
@@ -90,7 +90,7 @@ const Article = (props: ListProps) => {
                         </div>
                     ) : (
                         <div className={styles.textBlock}>
-                            <div className={styles.text}>{body}</div>
+                            <div className={styles.text}>{Parser(body)}</div>
                             {linkUrl && btnText && (
                                 <div className={styles.cta_btn}>
                                     <a href={linkUrl}>{btnText}</a>

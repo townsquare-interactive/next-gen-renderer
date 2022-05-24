@@ -18,7 +18,6 @@ $max-main-image-width: variables.$max-main-width * $image-width-decimal;
 $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
 
 /*Mixins Shared between layouts */
-
 @mixin features {
     display: flex;
     flex-direction: column;
@@ -46,8 +45,6 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
         }
 
         .features {
-            //padding: 30px;
-            //padding: variables.$gap;
             width: 100%;
             @include features;
             box-sizing: border-box;

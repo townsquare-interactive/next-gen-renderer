@@ -3,11 +3,18 @@
 @use '../styles/variables.scss';
 @use '../styles/utils.module.scss';
 
-$logo-ratio: math.div(722, 156);
-
 .root {
     .wrapper {
         .logo {
+            width: 100%;
+            position: relative;
+            height: 100%;
+            // max-height: 100px;
+            max-width: 300px;
+        }
+
+        //Alternate css logo sizing
+        /*         .logo {
             width: 100%;
             max-width: 300px;
 
@@ -21,6 +28,6 @@ $logo-ratio: math.div(722, 156);
                 position: relative !important;
                 height: unset !important;
             }
-        }
+        } */
     }
 }

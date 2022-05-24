@@ -1,6 +1,9 @@
 import { ImagesProps, ListProps, HomeProps, ModuleData } from '../components/types'
 
 const data: ModuleData = {
+    logoUrl: '/images/company-logo.png',
+    //logoUrl: '/images/juan-test-015.jpg',
+    //logoUrl: '/images/logo-test.png',
     imagesData: {
         gap: true,
         modLayout: '3-2/3',
@@ -29,7 +32,7 @@ const data: ModuleData = {
 
     listData: {
         headline: 'Headline for text',
-        body: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. ',
+        body: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.',
         imageUrl: '/images/juan-test-008.jpg',
         border: true,
         linkUrl: '/',
@@ -67,6 +70,7 @@ const data: ModuleData = {
     carouselData: {
         modLayout: 'text',
         slideCount: 3,
+        autoPlay: true,
         items: [
             {
                 text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -181,7 +185,7 @@ const data: ModuleData = {
         items: [
             {
                 //headline: 'Headline for text',
-                body: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab  ',
+                body: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab',
                 imageUrl: '/images/juan-test-012.jpg',
                 // linkUrl: '/',
                 //btnText: 'Contact Us',

@@ -25,6 +25,8 @@ function Carousel(carouselData: CarouselProps) {
         slidesToScroll: 1,
         nextArrow: <NextArrowImage />,
         prevArrow: <PrevArrowImage />,
+        autoplay: carouselData.autoPlay || false,
+        autoplaySpeed: 2600,
     }
 
     const settingsText = {

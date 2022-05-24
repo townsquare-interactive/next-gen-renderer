@@ -3,14 +3,6 @@
 @use '../styles/variables.scss';
 @use '../styles/utils.module.scss';
 
-@mixin bordered {
-    background-color: black;
-
-    * {
-        color: #fff;
-    }
-}
-
 .root {
     @include utils.root;
 
@@ -49,16 +41,6 @@
             .textBlock {
                 .cta_btn {
                     @include utils.cta_btn;
-                    /* text-transform: uppercase;
-                    a {
-                        font-weight: bold;
-
-                        &:after {
-                            padding: 10px;
-                            content: '>';
-                            color: #000;
-                        }
-                    } */
                 }
             }
 

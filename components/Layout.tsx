@@ -9,7 +9,6 @@ import { useState } from 'react'
 import styles from './layout.module.scss'
 import cn from 'classnames'
 
-//export default function Layout({ children }: React.PropsWithChildren<{}>, { moduleData }: any) {
 export default function Layout(props: LayoutProps) {
     const { children, moduleData } = props
     const [navCheck, setNav] = useState<boolean>(false)
@@ -27,11 +26,10 @@ export default function Layout(props: LayoutProps) {
             })}
         >
             <Navbar navCheck={navCheck} navData={moduleData.navData} navStyle={moduleData.navData.navStyle} />
-            <Navigation navSwitch={navSwitch} navCheck={navCheck} navStyle={moduleData.navData.navStyle} />
+            <Navigation navSwitch={navSwitch} navCheck={navCheck} navStyle={moduleData.navData.navStyle} logoUrl={moduleData.logoUrl} />
 
             <main>{children}</main>
-            {/* <Footer {...(moduleData.FooterData as FooterProps)} /> */}
-            <Footer footerData={moduleData.footerData as FooterData} navData={moduleData.navData} />
+            <Footer footerData={moduleData.footerData as FooterData} navData={moduleData.navData} logoUrl={moduleData.logoUrl} />
         </div>
     )
 }

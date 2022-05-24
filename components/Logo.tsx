@@ -5,6 +5,7 @@ import Image from 'next/image'
 import ImageSize from 'image-size'
 import probe from 'probe-image-size'
 import { useEffect, useState } from 'react'
+import { LogoProps } from './types'
 
 /* const logo = '/images/company-logo.png'
 const size = probe(logo)
@@ -14,39 +15,19 @@ console.log(size) */
 var dimensions = sizeOf(logo)
 console.log(dimensions.width, dimensions.height) */
 
-const Logo = (logo: any) => {
-    //let img = '/images/company-logo.png'
-    /*     let img = <Image src="/images/company-logo.png" />
-
-    img.onload = function () {
-        img.naturalWidth
-    }
-    img.src = 'http://www.google.com/intl/en_ALL/images/logo.gif' */
-
-    /*   logo = '/images/company-logo.png'
-
-    const [imageWidth, setWidth] = useState<number>()
-    const [imageHeight, setHeight] = useState<number>()
-
-      useEffect(() => {
-        if (process.browser) {
-            var img = document.createElement('img')
-
-            img.src = '/images/company-logo.png'
-
-            img.onload = function () {
-                console.log(img.width + ' x ' + img.height)
-                setWidth(img.width)
-                setHeight(img.height)
-            }
-        }
-    }, []) */
+const Logo = (props: LogoProps) => {
+    const { logoUrl = '' } = props
 
     return (
         <div className={styles.root}>
             <div className={styles.wrapper}>
                 <div className={styles.logo}>
-                    <Image src="/images/company-logo.png" layout="fill" alt="logo" className={styles.image} />
+                    <Link href="/">
+                        <a>
+                            {/*  <Image src={logoUrl} layout="fill" alt="logo" className={styles.image} /> */}
+                            <Image src={logoUrl} width="722" height="156px" alt="logo" className={styles.image} objectFit="contain" />
+                        </a>
+                    </Link>
                 </div>
             </div>
         </div>

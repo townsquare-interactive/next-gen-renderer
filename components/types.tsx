@@ -10,6 +10,10 @@ export interface HeaderProps {
     modLayout: 'normal' | 'alt-layout'
 }
 
+export interface LogoProps {
+    logoUrl?: string
+}
+
 export interface ListProps {
     headline?: string
     body?: string
@@ -95,6 +99,7 @@ export interface SlideData {
 export interface CarouselProps {
     modLayout: 'images' | 'text'
     slideCount: 1 | 2 | 3
+    autoPlay?: boolean
     items: SlideData[]
 }
 
@@ -118,6 +123,7 @@ export interface FooterData {
 export interface FooterProps {
     footerData: FooterData
     navData: NavProps
+    logoUrl?: string
 }
 
 export interface VideoProps {
@@ -145,14 +151,6 @@ export interface PagesProps {
     linkUrl: string
 }
 
-/* export interface NavData {
-    pages: PagesProps[]
-} */
-
-/* export interface NavData2 {
-    list: PagesProps[]
-} */
-
 export interface NavProps {
     pages: PagesProps[]
     modLayout?: 'header' | 'footer'
@@ -160,10 +158,6 @@ export interface NavProps {
     borderNum?: number
 }
 
-/* export interface NavProps2 {
-    pages: PagesProps[]
-}
- */
 export interface BurgerProps {
     navSwitch: () => void
     navCheck: boolean
@@ -173,6 +167,7 @@ export interface NavigationProps {
     navSwitch: () => void
     navCheck: boolean
     navStyle?: string
+    logoUrl?: string
 }
 
 export interface NavBarProps {
@@ -183,6 +178,7 @@ export interface NavBarProps {
 }
 
 export interface ModuleData {
+    logoUrl?: string
     imagesData?: ImagesProps
     listData?: ListProps
     headerData?: HeaderProps

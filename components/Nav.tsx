@@ -3,13 +3,8 @@ import Link from 'next/dist/client/link'
 import cn from 'classnames'
 import { PagesProps, NavProps, PagesData } from '../components/types'
 
-/* const Nav = (props: NavProps) => {
-    const { navData } = props */
 const Nav = (props: NavProps) => {
     const { pages, modLayout = 'header', borderNum } = props
-    // const modLayout = 'header'
-
-    console.log(borderNum)
 
     return (
         <div className={styles.root}>
