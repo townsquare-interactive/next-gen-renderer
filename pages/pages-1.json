@@ -1,6 +1,4 @@
 {
-    "id": 1,
-
     "imagesData": {
         "gap": true,
         "modLayout": "3-2/3",
@@ -39,7 +37,7 @@
         "reverse": false
     },
     "headerData": {
-        "component": "Header",
+        "component": "header",
         "headline": "Page 1",
         "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-014.jpg",
         "backgroundImageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/seamless-5178982.png",
@@ -47,7 +45,7 @@
         "modLayout": "normal"
     },
     "labelData": {
-        "component": "Label",
+        "component": "label",
         "text": "Images Module",
         "gap": true,
         "align": "left",
@@ -55,7 +53,7 @@
         "textSize": "md"
     },
     "textData": {
-        "component": "Text",
+        "component": "text",
         "gap": false,
         "align": "left",
         "border": false,
@@ -63,7 +61,7 @@
         "text": "<b>Text:</b>: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <ul><li>sed do eiusmod tempor</li><li>sed do eiusmod tempor</li><li>sed do eiusmod tempor</li></ul>"
     },
     "carouselData": {
-        "component": "Carousel",
+        "component": "carousel",
         "modLayout": "text",
         "slideCount": 3,
         "autoPlay": false,
@@ -91,12 +89,12 @@
         ]
     },
     "videoData": {
-        "component": "Video",
+        "component": "video",
         "modLayout": "ext",
         "videoUrl": "https://www.youtube.com/watch?v=ysz5S6PUM-U"
     },
     "gridData": {
-        "component": "Grid",
+        "component": "grid",
         "items": [
             {
                 "body": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab",

@@ -6,8 +6,9 @@ import { GetStaticProps } from 'next'
 import data from '../components/moduleData'
 import { HomeProps } from '../components/types'
 import { Renderer } from '../components/Renderer'
+import text from '../components/Text'
 
-import config from '../pages/pages-1.json'
+import config from '../pages/config.json'
 
 export const getStaticProps: GetStaticProps = async () => {
     return {
@@ -16,11 +17,7 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 const Menu = ({ moduleData }: HomeProps) => {
-    return (
-        <form>
-            <Renderer config={config} />
-        </form>
-    )
+    return <Renderer config={config} />
 }
 
 /* return (
