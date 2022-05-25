@@ -12,7 +12,7 @@ $arrowSize: 30px;
         max-width: variables.$max-main-width;
         margin: 0 auto;
         box-sizing: border-box;
-        padding: 0 0 30px 0;
+        //padding: 0 0 30px 0;
 
         @include breakpoints.sm {
             width: variables.$content-width;
@@ -32,6 +32,12 @@ $arrowSize: 30px;
                         font-style: italic;
                     }
                 }
+
+                div {
+                    div {
+                        line-height: 0 !important;
+                    }
+                }
             }
 
             .imageTile {
@@ -40,10 +46,17 @@ $arrowSize: 30px;
             }
         }
 
+        &.hasImage {
+            line-height: 0 !important;
+            border-left: 2px solid variables.$main-color;
+            border-right: 2px solid variables.$main-color;
+        }
+
         &.hasText {
             border-bottom: 4px solid variables.$label-color;
             border-top: 4px solid variables.$label-color;
             padding: 0 variables.$gap variables.$gap variables.$gap;
+            line-height: auto;
 
             @include breakpoints.sm {
                 padding: 0;

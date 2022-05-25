@@ -1,0 +1,78 @@
+{
+    "logoUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/company-logo.png",
+
+    "footerData": {
+        "socialData": [
+            {
+                "linkUrl": "https://www.google.com/"
+            },
+            {
+                "linkUrl": "https://www.facebook.com"
+            },
+            {
+                "linkUrl": "https://www.instagram.com"
+            },
+            {
+                "linkUrl": "https://www.twitter.com"
+            }
+        ],
+        "addressData": {
+            "street": "444 happy road",
+            "cityState": "Townsville, Georgia",
+            "zip": "47384"
+        },
+        "siteName": "Travel 365",
+        "phoneNumber": "922-444-2849"
+    },
+    "navData": {
+        "pages": [
+            {
+                "text": "Home",
+                "linkUrl": "/"
+            },
+            {
+                "text": "Menu",
+                "linkUrl": "/menu"
+            },
+            {
+                "text": "Images",
+                "linkUrl": "/images"
+            },
+            {
+                "text": "Blog",
+                "linkUrl": "/blog"
+            },
+            {
+                "text": "Module Descriptions",
+                "linkUrl": "/module-descriptions"
+            },
+            {
+                "text": "About Us",
+                "linkUrl": "/"
+            },
+            {
+                "text": "Our Sponsors",
+                "linkUrl": "/"
+            },
+            {
+                "text": "Blog",
+                "linkUrl": "/blog"
+            },
+            {
+                "text": "Contact",
+                "linkUrl": "/"
+            },
+            {
+                "text": "Our Projects",
+                "linkUrl": "/"
+            },
+            {
+                "text": "Other",
+                "linkUrl": "/"
+            }
+        ],
+        "navStyle": "layout1",
+        "borderNum": 7,
+        "navImage": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-012.jpg"
+    }
+}

@@ -72,6 +72,9 @@ $sm-block-max: (variables.$max-main-width * 0.25);
                     text-align: center;
                     position: absolute;
                     @include utils.headline-sizes-sm;
+                    @include breakpoints.md {
+                        padding: 10px;
+                    }
                 }
             }
         }

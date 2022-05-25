@@ -133,6 +133,8 @@ export interface VideoProps {
 
 export interface HomeProps {
     moduleData: ModuleData
+    global: ModuleData
+    page: ModuleData
 }
 
 export interface LayoutProps {

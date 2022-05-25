@@ -18,7 +18,7 @@ function Carousel(carouselData: CarouselProps) {
     }
 
     const settingsImage = {
-        dots: true,
+        dots: false,
         infinite: true,
         speed: 200,
         slidesToShow: setSlide(),
