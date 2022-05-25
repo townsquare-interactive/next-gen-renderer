@@ -5,6 +5,9 @@ import Layout from '../components/Layout'
 import { GetStaticProps } from 'next'
 import data from '../components/moduleData'
 import { HomeProps } from '../components/types'
+import { Renderer } from '../components/Renderer'
+
+import config from '../pages/pages-1.json'
 
 export const getStaticProps: GetStaticProps = async () => {
     return {
@@ -14,15 +17,23 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const Menu = ({ moduleData }: HomeProps) => {
     return (
+        <form>
+            <Renderer config={config} />
+        </form>
+    )
+}
+
+/* return (
         <Layout moduleData={moduleData}>
             <div>
-                {/*<Header headline="Menu Stuff" imageUrl="https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg" /> */}
+
                 <HeroHeader headline="Our Restaurant" imageUrl="/images/pexels-pixabay-260922.jpg" />
                 <HeroBanner headline="Our Menu" imageUrl="/images/pexels-kaboompics-com-6267.jpg" />
                 <Features />
             </div>
-        </Layout>
-    )
-}
+        </Layout> 
+
+        
+    )*/
 
 export default Menu

@@ -1,4 +1,5 @@
 import type { NextPage } from 'next'
+import { createElement } from 'react'
 import cn from 'classnames'
 import Head from 'next/head'
 import Image from 'next/image'
