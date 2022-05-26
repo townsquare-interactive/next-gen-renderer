@@ -22,7 +22,7 @@ const Navigation = (props: NavigationProps) => {
                     <Burger navSwitch={navSwitch} navCheck={navCheck} />
                 </div>
             </div>
-            <Navbar navCheck={navCheck} navData={navData} navStyle={navData.navStyle} />
+            <Navbar navCheck={navCheck} navData={navData} navStyle={navStyle} />
         </div>
     )
 }

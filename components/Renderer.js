@@ -8,6 +8,8 @@ import Navbar from '../components/Navbar'
 import Navigation from '../components/Navigation'
 import Grid from '../components/Grid'
 import Footer from './Footer'
+import Carousel from './Carousel'
+import Video from './Video'
 
 const keysToComponentMap = {
     text: Text,
@@ -17,8 +19,10 @@ const keysToComponentMap = {
     images: Images,
     grid: Grid,
     header: Header,
-    navbar: Navbar,
+    navigation: Navigation,
     footer: Footer,
+    carousel: Carousel,
+    video: Video,
 }
 
 const mapPropsToConfig = (config) => {
@@ -44,16 +48,15 @@ export const Renderer = ({ config }) => {
     }
 
     const configWithProps = mapPropsToConfig(config)
-    console.log('configprops', configWithProps)
 
-    const renderComponents = (items) => {
+    const renderComponents = (items, index) => {
         return items.map((item) => {
             const { Component, ...props } = item
             //Changes json string to comonent value
             const Comp = keysToComponentMap[Component]
-            console.log(Comp)
+
             return (
-                <Fragment key={props.component}>
+                <Fragment key={index}>
                     <Comp {...props} />
                 </Fragment>
             )

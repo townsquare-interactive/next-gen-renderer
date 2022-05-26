@@ -150,7 +150,7 @@ const ModuleDescriptions = ({ moduleData }: HomeProps) => {
                         <li>Layout: Card or Article</li>
                         <li>Reverse: Reverses image/text to be on opposite sides</li>
                         </ul><br><b>Layouts </b><br><u>Article Layout:</u> Shows larger image and text alongside each other (shown above)<br><u>Card Layout:</u> Narrower banner version, with color on sides<br>
-                        Alternates sides when element is placed back to back
+                        Option for reversing each item to be on different sides back to back
 
 
 
@@ -163,7 +163,7 @@ const ModuleDescriptions = ({ moduleData }: HomeProps) => {
 
                     <List {...moduleData.listData} modLayout="card" border={false} />
 
-                    <List {...moduleData.listData} modLayout="card" border={false} />
+                    <List {...moduleData.listData} modLayout="card" border={false} reverse={true} />
 
                     <List {...moduleData.listData} modLayout="card" border={false} />
 

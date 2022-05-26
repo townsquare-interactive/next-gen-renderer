@@ -38,17 +38,11 @@ import Burger from '../components/Burger'
 import Video from '../components/Video'
 import { useState } from 'react'
 
-/* export const getStaticProps: GetStaticProps = async () => {
-    return {
-        props: { moduleData: data },
-    }
-} */
-
 export const getStaticProps: GetStaticProps = async () => {
-    const res = await fetch('https://townsquareinteractivetest.s3.amazonaws.com/page.json')
+    const resPage = await fetch('https://townsquareinteractivetest.s3.amazonaws.com/page.json')
     const resGlobal = await fetch('https://townsquareinteractivetest.s3.amazonaws.com/global.json')
     //const data = await res.json()
-    const page = await res.json()
+    const page = await resPage.json()
     const global = await resGlobal.json()
     console.log('Global only', global)
 

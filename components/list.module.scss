@@ -312,30 +312,26 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
                 aspect-ratio: auto;
             }
         }
-    }
 
-    //Card items reverse order on every even number
-    &:nth-child(even) {
-        @include breakpoints.md {
-            .title {
-                flex-direction: row-reverse;
+        &.reverse {
+            @include breakpoints.md {
+                .features {
+                    flex-direction: row-reverse;
+                }
+                .title {
+                    flex-direction: row-reverse;
+                }
+
+                .titleText .text,
+                .textBlock .text {
+                    padding-left: 0 !important;
+                    padding-right: 20px !important;
+                }
+
+                .cta_btn {
+                    margin-left: 0 !important;
+                }
             }
-
-            .titleText .text,
-            .textBlock .text {
-                padding-left: 0 !important;
-                padding-right: 20px !important;
-            }
-
-            .cta_btn {
-                margin-left: 0 !important;
-            }
-        }
-    }
-
-    &:nth-child(even) .features {
-        @include breakpoints.md {
-            flex-direction: row-reverse;
         }
     }
 }
@@ -346,6 +342,9 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
     &.articleLayout {
         @include article;
     }
+    /*     .cardLayout {
+        
+    } */
 
     &.cardLayout {
         @include card;

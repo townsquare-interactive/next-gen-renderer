@@ -62,10 +62,10 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context: any) => {
     const slug = context.params.slug
     //grabs 1 item each time
-    const res = await fetch('https://townsquareinteractivetest.s3.amazonaws.com/pages/' + slug + '.json')
+    const resPage = await fetch('https://townsquareinteractivetest.s3.amazonaws.com/pages/' + slug + '.json')
     const resGlobal = await fetch('https://townsquareinteractivetest.s3.amazonaws.com/global.json')
 
-    const page = await res.json()
+    const page = await resPage.json()
     const global = await resGlobal.json()
 
     return {

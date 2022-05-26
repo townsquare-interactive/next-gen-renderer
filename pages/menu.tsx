@@ -4,20 +4,28 @@ import Features from '../components/Features'
 import Layout from '../components/Layout'
 import { GetStaticProps } from 'next'
 import data from '../components/moduleData'
+import global from '../components/global.json'
 import { HomeProps } from '../components/types'
 import { Renderer } from '../components/Renderer'
 import text from '../components/Text'
+import { ModuleData } from '../components/types'
 
 import config from '../pages/config.json'
 
 export const getStaticProps: GetStaticProps = async () => {
     return {
-        props: { moduleData: data },
+        props: { moduleData: data, mods: config },
     }
 }
 
-const Menu = ({ moduleData }: HomeProps) => {
-    return <Renderer config={config} />
+const Menu = ({ moduleData, mods }: HomeProps) => {
+    return (
+        <div>
+            <Layout moduleData={global as ModuleData}>
+                <Renderer config={mods.modules} />
+            </Layout>
+        </div>
+    )
 }
 
 /* return (

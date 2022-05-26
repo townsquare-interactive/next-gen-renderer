@@ -135,6 +135,7 @@ export interface HomeProps {
     moduleData: ModuleData
     global: ModuleData
     page: ModuleData
+    mods: any
 }
 
 export interface LayoutProps {
