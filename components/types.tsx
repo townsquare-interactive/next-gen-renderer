@@ -84,7 +84,7 @@ export interface ImagesProps {
     gap?: boolean
 }
 
-export interface TileImage {
+export interface TileImageProps {
     itemNumber: ImageItem
     modLayout: '3-1/3' | '3-2/3' | '2-2/3' | '2-1/2' | '1-full' | '1-hero' | '4-plus'
     isMainImage: boolean

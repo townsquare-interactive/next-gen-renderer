@@ -163,7 +163,7 @@ const ModuleDescriptions = ({ moduleData }: HomeProps) => {
 
                     <List {...moduleData.listData} modLayout="card" border={false} />
 
-                    <List {...moduleData.listData} modLayout="card" border={false} reverse={true} />
+                    <List {...moduleData.listData} modLayout="card" border={false} reverse={true} headline="Reversed option" />
 
                     <List {...moduleData.listData} modLayout="card" border={false} />
 
