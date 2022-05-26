@@ -2,8 +2,8 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import Label from '../../components/Label'
 
 export default {
+  title: 'Modules/Label',
   component: Label,
-  title: 'Components/Label'
 } as ComponentMeta<typeof Label>
 
 const Template: ComponentStory<typeof Label> = (args) => <Label {...args} />

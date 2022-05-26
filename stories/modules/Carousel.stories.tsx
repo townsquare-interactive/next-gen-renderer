@@ -1,9 +1,8 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import Carousel from '../../components/Carousel'
-import moduleData from '../../components/moduleData'
 
 export default {
-  title: 'Components/Carousel',
+  title: 'Modules/Carousel',
   component: Carousel
 } as ComponentMeta<typeof Carousel>
 
@@ -41,6 +40,27 @@ Text.args = {
   ...Default.args,
   modLayout: 'text',
   slideCount: 3,
+}
+
+export const CleanSingleImage = Template.bind({})
+CleanSingleImage.args = {
+  ...Default.args,
+  modLayout: 'images',
+  slideCount: 1,
+  items: [
+    {
+      imageUrl: '/images/juan-test-010.jpg',
+    },
+    {
+      imageUrl: '/images/juan-test-001.jpg',
+    },
+    {
+      imageUrl: '/images/juan-test-002.jpg',
+    },
+    {
+      imageUrl: '/images/juan-test-005.jpg',
+    },
+  ]
 }
 
 export const SingleImage = Template.bind({})

@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import Text from '../../components/Text'
 
 export default {
-  title: 'Components/Text',
+  title: 'Modules/Text',
   component: Text
 } as ComponentMeta<typeof Text>
 
