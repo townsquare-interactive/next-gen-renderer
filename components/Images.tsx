@@ -2,7 +2,7 @@ import styles from './images.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
 import cn from 'classnames'
-import { ImagesProps, TileImage } from './types'
+import { ImagesProps, TileImage as TileImageType } from './types'
 
 const Images = ({ items, modLayout = '3-2/3', gap = false }: ImagesProps) => {
     if (items.length === 3) {
@@ -89,7 +89,7 @@ const ImagesPlus = ({ items, modLayout = '4-plus', gap = false }: ImagesProps) =
     )
 }
 
-const TileImage = ({ itemNumber, modLayout, isMainImage = false }: TileImage) => {
+const TileImage = ({ itemNumber, modLayout, isMainImage = false }: TileImageType) => {
     return (
         <div
             className={cn(styles.tileImage, {
