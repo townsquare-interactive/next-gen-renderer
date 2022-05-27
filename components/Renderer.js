@@ -23,18 +23,20 @@ const keysToComponentMap = {
     footer: Footer,
     carousel: Carousel,
     video: Video,
+    navigation: Navigation,
+    footer: Footer,
 }
 
 const mapPropsToConfig = (config) => {
     const configWithProps = []
 
     config.forEach((item) => {
-        if (item.component) {
-            const { component, ...props } = item
+        if (item.componentType) {
+            const { componentType, ...props } = item
 
             configWithProps.push({
                 ...props,
-                Component: component,
+                Component: componentType,
             })
         }
     })

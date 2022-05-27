@@ -5,7 +5,7 @@
 
     "modules": [
         {
-            "component": "header",
+            "componentType": "header",
             "headline": "Our Company",
             "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-014.jpg",
             "backgroundImageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/seamless-5178982.png",
@@ -14,7 +14,7 @@
         },
         {
             "modLayout": "1-hero",
-            "component": "images",
+            "componentType": "images",
             "items": [
                 {
                     "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-015.jpg",
@@ -26,7 +26,7 @@
         },
 
         {
-            "component": "list",
+            "componentType": "list",
             "headline": "Photography and Videography",
             "body": " Photography and video production services allow our customers to capture moments and record experiences on the go. We can also provide our customers with digital files, so they can share their experiences with others. We offer a range of delivery options, including on-direction and on-location photography services and on-location video production. ",
             "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-008.jpg",
@@ -39,7 +39,7 @@
             "reverse": false
         },
         {
-            "component": "list",
+            "componentType": "list",
             "headline": "No border, reversed",
             "body": "Our customers can choose the best delivery option for their needs and budget.We specialize in social media management, which allows us to help our clients increase their online presence and generate more business. Our team of experienced professionals can help you build a compelling brand, increase your online presence, and maximize your marketing potential. We offer social media management services, which help you connect with your audience and build a strong network of followers. This not only improves your brand's reputation, but it also allows you to generate more business.",
             "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-009.jpg",
@@ -54,7 +54,7 @@
         {
             "gap": true,
             "modLayout": "3-1/2",
-            "component": "images",
+            "componentType": "images",
             "items": [
                 {
                     "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-015.jpg",
@@ -78,7 +78,7 @@
         {
             "gap": true,
             "modLayout": "3-2/3",
-            "component": "images",
+            "componentType": "images",
             "items": [
                 {
                     "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-015.jpg",
@@ -102,7 +102,7 @@
         {
             "gap": true,
             "modLayout": "2-2/3",
-            "component": "images",
+            "componentType": "images",
             "items": [
                 {
                     "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-016.jpg",
@@ -118,7 +118,7 @@
             ]
         },
         {
-            "component": "grid",
+            "componentType": "grid",
             "items": [
                 {
                     "body": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab",
@@ -168,11 +168,11 @@
         },
 
         {
-            "component": "label",
+            "componentType": "label",
             "text": "Quotes"
         },
         {
-            "component": "carousel",
+            "componentType": "carousel",
             "modLayout": "text",
             "slideCount": 3,
             "autoPlay": false,
@@ -200,7 +200,7 @@
             ]
         },
         {
-            "component": "carousel",
+            "componentType": "carousel",
             "modLayout": "images",
             "slideCount": 3,
             "autoPlay": false,
@@ -224,13 +224,13 @@
             ]
         },
         {
-            "component": "video",
+            "componentType": "video",
             "modLayout": "ext",
             "videoUrl": "https://www.youtube.com/watch?v=ysz5S6PUM-U"
         },
 
         {
-            "component": "list",
+            "componentType": "list",
             "headline": "Headline for text",
             "body": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
             "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-008.jpg",
@@ -243,7 +243,7 @@
             "reverse": false
         },
         {
-            "component": "list",
+            "componentType": "list",
             "headline": "Headline for text",
             "body": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
             "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-009.jpg",
@@ -256,7 +256,7 @@
             "reverse": true
         },
         {
-            "component": "list",
+            "componentType": "list",
             "headline": "Headline for text",
             "body": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
             "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-006.jpg",

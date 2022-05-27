@@ -22,8 +22,8 @@ const Nav = (props: NavProps) => {
                                 [styles.bordered]: index === borderNum,
                             })}
                         >
-                            <Link href={item.linkUrl}>
-                                <a>{item.text}</a>
+                            <Link href={item.slug}>
+                                <a>{item.name}</a>
                             </Link>
                         </li>
                     ))}

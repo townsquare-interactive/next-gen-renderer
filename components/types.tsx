@@ -135,13 +135,15 @@ export interface HomeProps {
     moduleData: ModuleData
     global: ModuleData
     page: ModuleData
-    mods: any
+    //mods: any
+    //pageList?: any
 }
 
 export interface LayoutProps {
     //children: React.PropsWithChildren<{}>,
     children: ReactNode
     moduleData: ModuleData
+    pageList?: PagesProps
 }
 
 export interface PagesData {
@@ -150,8 +152,9 @@ export interface PagesData {
 }
 
 export interface PagesProps {
-    text: string
-    linkUrl: string
+    name: string
+    slug: string
+    id: string
 }
 
 export interface NavProps {
@@ -173,12 +176,14 @@ export interface NavigationProps {
     navStyle?: string
     logoUrl?: string
     navData: NavProps
+    pageList?: PagesProps
 }
 
 export interface NavBarProps {
     navCheck: boolean
     navData: NavProps
     navStyle?: string
+    pageList?: PagesProps
 }
 
 export interface ModuleData {
@@ -193,6 +198,7 @@ export interface ModuleData {
     navData: NavProps
     videoData?: VideoProps
     gridData?: GridProps
+    modules?: ImagesProps | ListProps | HeaderProps | LabelProps | TextData | CarouselProps | FooterData | NavProps | VideoProps | GridProps
 }
 
 /*-----------------------------End of Components-------------*/

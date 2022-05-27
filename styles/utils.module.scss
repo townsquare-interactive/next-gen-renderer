@@ -74,7 +74,7 @@ $root-bottom-margin: 30px;
     font-weight: bold;
     font-size: variables.$text-size-head-sm;
 
-    @include breakpoints.lg {
+    @include breakpoints.xl {
         font-size: variables.$text-size-head-md;
     }
 }

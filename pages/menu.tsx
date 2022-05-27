@@ -14,31 +14,28 @@ import config from '../pages/config.json'
 
 export const getStaticProps: GetStaticProps = async () => {
     return {
-        props: { moduleData: data, mods: config },
+        props: { mods: config, global: global },
     }
 }
 
 const Menu = ({ moduleData, mods }: HomeProps) => {
-    return (
+    /*     return (
         <div>
             <Layout moduleData={global as ModuleData}>
                 <Renderer config={mods.modules} />
             </Layout>
         </div>
-    )
-}
+    ) */
 
-/* return (
+    return (
         <Layout moduleData={moduleData}>
             <div>
-
                 <HeroHeader headline="Our Restaurant" imageUrl="/images/pexels-pixabay-260922.jpg" />
                 <HeroBanner headline="Our Menu" imageUrl="/images/pexels-kaboompics-com-6267.jpg" />
                 <Features />
             </div>
-        </Layout> 
-
-        
-    )*/
+        </Layout>
+    )
+}
 
 export default Menu

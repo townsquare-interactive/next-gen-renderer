@@ -37,6 +37,7 @@ import data from '../components/moduleData'
 import Burger from '../components/Burger'
 import Video from '../components/Video'
 import { useState } from 'react'
+import { Renderer } from '../components/Renderer'
 
 //runs at build time just like static props
 export const getStaticPaths = async () => {
@@ -65,104 +66,32 @@ export const getStaticProps = async (context: any) => {
     const resPage = await fetch('https://townsquareinteractivetest.s3.amazonaws.com/pages/' + slug + '.json')
     const resGlobal = await fetch('https://townsquareinteractivetest.s3.amazonaws.com/global.json')
 
+    //const resPageList = await fetch('https://townsquareinteractivetest.s3.amazonaws.com/pages/page-list.json')
+
     const page = await resPage.json()
     const global = await resGlobal.json()
+    //const pageList = await resPageList.json()
 
     return {
         props: { page, global },
+        // Next.js will attempt to re-generate the page:
+        // - When a request comes in
+        // - At most once every 10 seconds
+        revalidate: 10, // In seconds
     }
 }
-
-/* export const getStaticProps: GetStaticProps = async () => {
-    const res = await fetch('https://townsquareinteractivetest.s3.amazonaws.com/page.json')
-    const resGlobal = await fetch('https://townsquareinteractivetest.s3.amazonaws.com/global.json')
-    //const data = await res.json()
-    const page = await res.json()
-    const global = await resGlobal.json()
-    console.log('Global only', global)
-
-    return {
-        props: { page, global },
-
-    }
-} */
 
 const Amazon = (props: HomeProps) => {
     /* const [navCheck, setNav] = useState<boolean>(false) */
     const { page, global } = props
 
-    console.log(global)
+    //console.log(global)
     //console.log('global', global)
 
     return (
-        <div className={styles.root}>
-            <Head>
-                <title>Home Page</title>
-                <meta property="og:title" content="My page title" key="title" />
-            </Head>
-
-            {/* //<Layout moduleData={moduleData}> */}
-            <Layout moduleData={global}>
-                <Header {...(page.headerData as HeaderProps)} />
-
-                <List {...(page.listData as ListProps)} />
-
-                <div
-                    className={cn(styles.wrapper, {
-                        [styles.layout1]: global.navData.navStyle === 'layout1',
-                        [styles.layout2]: global.navData.navStyle === 'layout2',
-                    })}
-                >
-                    <Header {...(page.headerData as HeaderProps)} />
-
-                    <Label {...page.labelData} text="List Module: Article Layout" gap={false} />
-
-                    <List {...page.listData} />
-
-                    <List {...page.listData} reverse={true} border={false} headline="No border option" />
-
-                    <Label {...page.labelData} text="List Module: Card layout" gap={false} />
-
-                    <List {...page.listData} modLayout="card" border={false} />
-
-                    <List {...page.listData} modLayout="card" border={false} />
-
-                    <List {...page.listData} modLayout="card" border={false} />
-
-                    <Label {...page.labelData} text="Images Module" gap={false} />
-
-                    <Images {...(page.imagesData as ImagesProps)} />
-
-                    <Images {...(page.imagesData as ImagesProps)} modLayout="3-1/3" />
-
-                    {/* <Images {...imageData1} gap={false} />
-
-                    <Images {...imageData1} modLayout="2-1/2" />
-
-                    <Images {...imageData2} /> */}
-
-                    <Label {...page.labelData} gap={false} />
-
-                    <Text {...(page.textData as TextProps)} />
-
-                    <Label {...page.labelData} text="Quotes" gap={false} border={false} />
-
-                    <Carousel {...(page.carouselData as CarouselProps)} modLayout="text" />
-
-                    <Carousel {...(page.carouselData as CarouselProps)} modLayout="images" />
-
-                    <Carousel {...(page.carouselData as CarouselProps)} modLayout="images" slideCount={2} />
-
-                    <Carousel {...(page.carouselData as CarouselProps)} modLayout="images" slideCount={1} />
-
-                    <Video {...(page.videoData as VideoProps)} />
-
-                    <Label {...page.labelData} text="Grid Module" gap={false} />
-
-                    <Grid {...(page.gridData as GridProps)} />
-
-                    <Label {...page.labelData} text="<a href='/module-descriptions'> Module Descriptions</a> " align="center" border={false} />
-                </div>
+        <div>
+            <Layout moduleData={global as ModuleData}>
+                <Renderer config={page.modules} />
             </Layout>
         </div>
     )

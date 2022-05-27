@@ -10,7 +10,7 @@ import styles from './layout.module.scss'
 import cn from 'classnames'
 
 export default function Layout(props: LayoutProps) {
-    const { children, moduleData } = props
+    const { children, moduleData, pageList } = props
     const [navCheck, setNav] = useState<boolean>(false)
 
     //Flipping state value for navbar visibility
@@ -24,7 +24,7 @@ export default function Layout(props: LayoutProps) {
                 [styles.layout1]: moduleData.navData.navStyle === 'layout1',
             })}
         >
-            <Navigation navSwitch={navSwitch} navCheck={navCheck} logoUrl={moduleData.logoUrl} navData={moduleData.navData} />
+            <Navigation navSwitch={navSwitch} navCheck={navCheck} logoUrl={moduleData.logoUrl} navData={moduleData.navData} pageList={pageList} />
 
             <main>{children}</main>
             <Footer footerData={moduleData.footerData as FooterData} navData={moduleData.navData} logoUrl={moduleData.logoUrl} />

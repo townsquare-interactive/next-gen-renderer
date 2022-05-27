@@ -27,48 +27,59 @@
     "navData": {
         "pages": [
             {
-                "text": "Home",
-                "linkUrl": "/"
+                "name": "Home",
+                "slug": "/",
+                "id": "0"
             },
             {
-                "text": "Menu",
-                "linkUrl": "/menu"
+                "name": "Menu",
+                "slug": "/menu",
+                "id": "1"
             },
             {
-                "text": "Images",
-                "linkUrl": "/images"
+                "name": "Images",
+                "slug": "/images",
+                "id": "2"
             },
             {
-                "text": "Blog",
-                "linkUrl": "/blog"
+                "name": "Blog",
+                "slug": "/blog",
+                "id": "3"
             },
             {
-                "text": "Module Descriptions",
-                "linkUrl": "/module-descriptions"
+                "name": "Module Descriptions",
+                "slug": "/module-descriptions",
+                "id": "4"
             },
             {
-                "text": "About Us",
-                "linkUrl": "/"
+                "name": "About Us",
+                "slug": "/",
+                "id": "5"
             },
             {
-                "text": "Our Sponsors",
-                "linkUrl": "/"
+                "name": "Our Sponsors",
+                "slug": "/",
+                "id": "6"
             },
             {
-                "text": "Blog",
-                "linkUrl": "/blog"
+                "name": "Blog",
+                "slug": "/blog",
+                "id": "7"
             },
             {
-                "text": "Contact",
-                "linkUrl": "/"
+                "name": "Contact",
+                "slug": "/",
+                "id": "8"
             },
             {
-                "text": "Our Projects",
-                "linkUrl": "/"
+                "name": "Our Projects",
+                "slug": "/",
+                "id": "9"
             },
             {
-                "text": "Other",
-                "linkUrl": "/"
+                "name": "Other",
+                "slug": "/",
+                "id": "10"
             }
         ],
         "navStyle": "layout1",

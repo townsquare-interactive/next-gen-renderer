@@ -7,7 +7,7 @@ import cn from 'classnames'
 import { NavigationProps, NavBarProps, BurgerProps } from './types'
 
 const Navigation = (props: NavigationProps) => {
-    const { navSwitch, navCheck = false, navStyle = 'layout1', logoUrl, navData } = props
+    const { navSwitch, navCheck = false, navStyle = 'layout1', logoUrl, navData, pageList } = props
     return (
         <div
             className={cn(styles.root, {
@@ -28,7 +28,7 @@ const Navigation = (props: NavigationProps) => {
 }
 
 const Navbar = (props: NavBarProps) => {
-    const { navData, navCheck = false, navStyle = 'layout1' } = props
+    const { navData, navCheck = false, navStyle = 'layout1', pageList } = props
     return (
         <div
             className={cn(styles.navBar, {
