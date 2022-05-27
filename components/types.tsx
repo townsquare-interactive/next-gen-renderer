@@ -135,7 +135,7 @@ export interface HomeProps {
     moduleData: ModuleData
     global: ModuleData
     page: ModuleData
-    //mods: any
+    mods: any
     //pageList?: any
 }
 
