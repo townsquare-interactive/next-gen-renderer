@@ -146,6 +146,20 @@ export interface LayoutProps {
     pageList?: PagesProps
 }
 
+export interface Params {
+    slug: 'string'
+}
+
+export interface Context {
+    params: Params
+}
+
+export interface PageListProps {
+    name: string
+    slug: string
+    id: string
+}
+
 export interface PagesData {
     text: string
     linkUrl: string

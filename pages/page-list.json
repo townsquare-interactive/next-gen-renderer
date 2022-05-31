@@ -1,8 +1,8 @@
 {
     "pages": [
         {
-            "name": "Page 1",
-            "slug": "page-1",
+            "name": "Home",
+            "slug": "home",
             "id": "0"
         },
         {

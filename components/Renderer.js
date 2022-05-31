@@ -54,12 +54,12 @@ export const Renderer = ({ config }) => {
     const renderComponents = (items, index) => {
         return items.map((item) => {
             const { Component, ...props } = item
-            //Changes json string to comonent value
+            //Changes json string to component value
             const Comp = keysToComponentMap[Component]
 
             return (
                 <Fragment key={index}>
-                    <Comp {...props} />
+                    <Comp {...props.attributes} />
                 </Fragment>
             )
         })
