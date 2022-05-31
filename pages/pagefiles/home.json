@@ -22,8 +22,8 @@
                     {
                         "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-015.jpg",
                         "linkText": "Menu",
-                        "linkUrl": "/menu",
-                        "headline": "Take a look at the modules below"
+                        "linkUrl": "/page-4",
+                        "headline": "Start Traveling Today!"
                     }
                 ]
             }
@@ -32,9 +32,9 @@
         {
             "componentType": "list",
             "attributes": {
-                "headline": "Photography and Videography",
-                "body": " Photography and video production services allow our customers to capture moments and record experiences on the go. We can also provide our customers with digital files, so they can share their experiences with others. We offer a range of delivery options, including on-direction and on-location photography services and on-location video production. ",
-                "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-008.jpg",
+                "headline": "Our Journey",
+                "body": " Travel is a passion for many people. It’s a way to explore the world and find new experiences. For others, travel is a necessity. It’s a way to visit family, take a much-needed vacation, or explore a new place. Travel is a life-changing experience, and one of the best ways to explore the world is by vacation. Whether you're interested in visiting a foreign country or exploring your own backyard, our travel company can help.",
+                "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-004.jpg",
                 "border": true,
                 "linkUrl": "/",
                 "btnText": "Contact Us",
@@ -47,8 +47,8 @@
         {
             "componentType": "list",
             "attributes": {
-                "headline": "No border, reversed",
-                "body": "Our customers can choose the best delivery option for their needs and budget.We specialize in social media management, which allows us to help our clients increase their online presence and generate more business. Our team of experienced professionals can help you build a compelling brand, increase your online presence, and maximize your marketing potential. We offer social media management services, which help you connect with your audience and build a strong network of followers. This not only improves your brand's reputation, but it also allows you to generate more business.",
+                "headline": "What we do",
+                "body": "We’re a global travel company. Our team helps travelers discover and book the best vacations, photography experiences, and outdoor adventures. Our mission is to inspire and enable people to live life to the fullest. We’re passionate about creating unique experiences that capture the world through the lens, and we’re proud of the positive impact we’re able to have on the world through travel.",
                 "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-009.jpg",
                 "border": false,
                 "linkUrl": "/",
@@ -63,25 +63,23 @@
             "componentType": "images",
             "attributes": {
                 "gap": true,
-                "modLayout": "3-1/2",
+                "modLayout": "3-2/3",
 
                 "items": [
                     {
                         "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-015.jpg",
-                        "linkText": "Menu",
-                        "linkUrl": "/menu",
-                        "body": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventor"
+                        "linkText": "Info",
+                        "linkUrl": "/page-2"
                     },
                     {
                         "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-016.jpg",
-                        "linkText": "Images",
-                        "body": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventor"
+                        "linkText": "Media",
+                        "linkUrl": "/page-3"
                     },
                     {
                         "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-011.jpg",
-                        "linkText": "Blog",
-                        "linkUrl": "/blog",
-                        "body": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventor"
+                        "linkText": "Reviews",
+                        "linkUrl": "/page-4"
                     }
                 ]
             }
@@ -90,29 +88,31 @@
             "componentType": "images",
             "attributes": {
                 "gap": true,
-                "modLayout": "3-2/3",
+                "modLayout": "3-1/2",
 
                 "items": [
                     {
                         "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-015.jpg",
-                        "linkText": "Menu",
-                        "linkUrl": "/menu",
-                        "body": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventor"
+                        "linkText": "Info",
+                        "linkUrl": "/page-2",
+                        "body": "Take a look at our information"
                     },
                     {
                         "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-016.jpg",
-                        "linkText": "Images",
-                        "body": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventor"
+                        "linkText": "Media",
+                        "linkUrl": "/page-3",
+                        "body": "Take a look at our pictures and videos"
                     },
                     {
                         "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-011.jpg",
-                        "linkText": "Blog",
-                        "linkUrl": "/blog",
-                        "body": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventor"
+                        "linkText": "Reviews",
+                        "linkUrl": "/page-4",
+                        "body": "Take a look at our reviews"
                     }
                 ]
             }
         },
+
         {
             "componentType": "images",
             "attributes": {
@@ -121,15 +121,16 @@
 
                 "items": [
                     {
-                        "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-016.jpg",
-                        "linkText": "Images",
-                        "body": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventor"
+                        "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-015.jpg",
+                        "linkText": "Info",
+                        "linkUrl": "/page-2",
+                        "body": "Take a look at our information"
                     },
                     {
-                        "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-015.jpg",
-                        "linkText": "Menu",
-                        "linkUrl": "/menu",
-                        "body": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventor"
+                        "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-016.jpg",
+                        "linkText": "Media",
+                        "linkUrl": "/page-3",
+                        "body": "Take a look at our pictures and videos"
                     }
                 ]
             }
