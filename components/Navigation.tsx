@@ -5,9 +5,16 @@ import Logo from './Logo'
 import Nav from './Nav'
 import cn from 'classnames'
 import { NavigationProps, NavBarProps, BurgerProps } from './types'
+import { useState } from 'react'
 
 const Navigation = (props: NavigationProps) => {
-    const { navSwitch, navCheck = false, navStyle = 'layout1', logoUrl, navData, pageList } = props
+    const [navCheck, setNav] = useState<boolean>(false)
+    const { navStyle = 'layout1', logoUrl, pages, navImage, borderNum } = props
+
+    function navSwitch() {
+        setNav(!navCheck)
+    }
+
     return (
         <div
             className={cn(styles.root, {
@@ -22,27 +29,27 @@ const Navigation = (props: NavigationProps) => {
                     <Burger navSwitch={navSwitch} navCheck={navCheck} />
                 </div>
             </div>
-            <Navbar navCheck={navCheck} navData={navData} navStyle={navStyle} />
+            <Navbar navCheck={navCheck} pages={pages} navStyle={navStyle} navImage={navImage} borderNum={borderNum} />
         </div>
     )
 }
 
 const Navbar = (props: NavBarProps) => {
-    const { navData, navCheck = false, navStyle = 'layout1', pageList } = props
+    const { navCheck = false, navStyle = 'layout1', navImage, pages, borderNum } = props
     return (
         <div
             className={cn(styles.navBar, {
                 [styles.visible]: navCheck,
                 [styles.layout2]: navStyle === 'layout2',
-                [styles.hasImage]: navData.navImage,
+                [styles.hasImage]: navImage,
             })}
         >
             <div className={styles.wrapper}>
                 <div className={styles.navDrop}>
-                    <div className={styles.navItems}>{<Nav pages={navData.pages} modLayout="header" borderNum={navData.borderNum} />}</div>
-                    {navData.navImage && (
+                    <div className={styles.navItems}>{<Nav pages={pages} modLayout="header" borderNum={borderNum} />}</div>
+                    {navImage && (
                         <div className={styles.imageTile}>
-                            <Image src={navData.navImage} layout="fill" alt="logo" objectFit="cover" />
+                            <Image src={navImage} layout="fill" alt="logo" objectFit="cover" />
                         </div>
                     )}
                 </div>

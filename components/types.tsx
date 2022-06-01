@@ -113,18 +113,21 @@ export interface AddressData {
     zip: string
 }
 
-export interface FooterData {
+export interface FooterProps {
     socialData: SocialData[]
     addressData: AddressData
     siteName: string
     phoneNumber: string
+    pages: PagesProps[]
+    logoUrl?: string
+    borderNum?: number
 }
 
-export interface FooterProps {
+/* export interface FooterProps {
     footerData: FooterData
     navData: NavProps
     logoUrl?: string
-}
+} */
 
 export interface VideoProps {
     videoUrl: string
@@ -142,8 +145,8 @@ export interface HomeProps {
 export interface LayoutProps {
     //children: React.PropsWithChildren<{}>,
     children: ReactNode
-    moduleData: ModuleData
-    pageList?: PagesProps
+    moduleData: any
+    //pageList?: PagesProps
 }
 
 export interface Params {
@@ -185,19 +188,38 @@ export interface BurgerProps {
 }
 
 export interface NavigationProps {
-    navSwitch: () => void
+    navSwitch?: () => void
     navCheck: boolean
-    navStyle?: string
+    pages: PagesProps[]
+    modLayout?: 'header' | 'footer'
+    navStyle?: 'layout1' | 'layout2'
+    borderNum?: number
+    navImage?: string
     logoUrl?: string
-    navData: NavProps
-    pageList?: PagesProps
+}
+export interface NavModule {
+    componentType: string
+    attributes: NavigationProps
+}
+export interface FooterModule {
+    componentType: string
+    attributes: FooterProps
 }
 
-export interface NavBarProps {
+/* export interface NavBarProps {
     navCheck: boolean
     navData: NavProps
     navStyle?: string
     pageList?: PagesProps
+    
+} */
+export interface NavBarProps {
+    navCheck: boolean
+    pages: PagesProps[]
+    modLayout?: 'header' | 'footer'
+    navStyle?: 'layout1' | 'layout2'
+    borderNum?: number
+    navImage?: string
 }
 
 export interface ModuleData {
@@ -208,11 +230,11 @@ export interface ModuleData {
     labelData?: LabelProps
     textData?: TextData
     carouselData?: CarouselProps
-    footerData?: FooterData
+    footerData?: FooterProps
     navData: NavProps
     videoData?: VideoProps
     gridData?: GridProps
-    modules?: ImagesProps | ListProps | HeaderProps | LabelProps | TextData | CarouselProps | FooterData | NavProps | VideoProps | GridProps
+    modules?: ImagesProps | ListProps | HeaderProps | LabelProps | TextData | CarouselProps | FooterProps | NavProps | VideoProps | GridProps
 }
 
 /*-----------------------------End of Components-------------*/

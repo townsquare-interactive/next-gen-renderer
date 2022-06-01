@@ -26,7 +26,6 @@ import {
     PagesProps,
     VideoProps,
     NavProps,
-    FooterData,
     GridProps,
 } from '../components/types'
 import { GetStaticProps } from 'next'

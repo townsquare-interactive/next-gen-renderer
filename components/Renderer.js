@@ -51,7 +51,18 @@ export const Renderer = ({ config }) => {
 
     const configWithProps = mapPropsToConfig(config)
 
-    const renderComponents = (items, index) => {
+    return (
+        <Fragment>
+            {configWithProps.map((item, index) => {
+                const { Component, ...props } = item
+                //Changes json string to component value
+                const Comp = keysToComponentMap[Component]
+                return <Comp {...props.attributes} key={index} />
+            })}
+        </Fragment>
+    )
+
+    /*     const renderComponents = (items, index) => {
         return items.map((item) => {
             const { Component, ...props } = item
             //Changes json string to component value
@@ -63,7 +74,7 @@ export const Renderer = ({ config }) => {
                 </Fragment>
             )
         })
-    }
-
-    return renderComponents(configWithProps)
+    } 
+    renderComponents(configWithProps)
+        */
 }

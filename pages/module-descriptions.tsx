@@ -26,7 +26,6 @@ import {
     PagesProps,
     VideoProps,
     NavProps,
-    FooterData,
     GridProps,
 } from '../components/types'
 import { GetStaticProps } from 'next'
@@ -34,6 +33,7 @@ import Carousel from '../components/Carousel'
 import Layout from '../components/Layout'
 import Footer from '../components/Footer'
 import data from '../components/moduleData'
+import global from '../global.json'
 import Burger from '../components/Burger'
 import Video from '../components/Video'
 import { useState } from 'react'
@@ -87,7 +87,7 @@ const ModuleDescriptions = ({ moduleData }: HomeProps) => {
                 <meta property="og:title" content="My page title" key="title" />
             </Head>
 
-            <Layout moduleData={moduleData}>
+            <Layout moduleData={global}>
                 <div
                     className={cn(styles.wrapper, {
                         [styles.layout1]: moduleData.navData.navStyle === 'layout1',

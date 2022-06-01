@@ -59,6 +59,64 @@
                 "navImage": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-012.jpg"
             }
         },
+        {
+            "componentType": "navigation",
+            "attributes": {
+                "logoUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/company-logo.png",
+                "pages": [
+                    {
+                        "name": "Home",
+                        "slug": "/",
+                        "id": "0"
+                    },
+                    {
+                        "name": "Destinations",
+                        "slug": "destinations",
+                        "id": "1"
+                    },
+                    {
+                        "name": "Media",
+                        "slug": "/media",
+                        "id": "2"
+                    },
+                    {
+                        "name": "Reviews",
+                        "slug": "/reviews",
+                        "id": "3"
+                    },
+                    {
+                        "name": "Blog",
+                        "slug": "/blog",
+                        "id": "4"
+                    },
+                    {
+                        "name": "Module Descriptions",
+                        "slug": "/module-descriptions",
+                        "id": "5"
+                    },
+
+                    {
+                        "name": "Blog",
+                        "slug": "/blog",
+                        "id": "6"
+                    },
+                    {
+                        "name": "Contact",
+                        "slug": "/",
+                        "id": "7"
+                    },
+
+                    {
+                        "name": "Other",
+                        "slug": "/",
+                        "id": "8"
+                    }
+                ],
+                "navStyle": "layout1",
+                "borderNum": 7,
+                "navImage": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-012.jpg"
+            }
+        },
 
         {
             "componentType": "footer",

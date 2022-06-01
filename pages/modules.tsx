@@ -14,6 +14,7 @@ import Text from '../components/Text'
 import Navbar from '../components/Navbar'
 import Navigation from '../components/Navigation'
 import Grid from '../components/Grid'
+import { Renderer } from '../components/Renderer'
 
 import {
     ImagesProps,
@@ -27,7 +28,6 @@ import {
     PagesProps,
     VideoProps,
     NavProps,
-    FooterData,
     GridProps,
 } from '../components/types'
 import { GetStaticProps } from 'next'
@@ -35,6 +35,7 @@ import Carousel from '../components/Carousel'
 import Layout from '../components/Layout'
 import Footer from '../components/Footer'
 import data from '../components/moduleData'
+import globaltest from '../components/globaltest.json'
 import Burger from '../components/Burger'
 import Video from '../components/Video'
 import { useState } from 'react'
@@ -81,7 +82,7 @@ const Modules = ({ moduleData }: HomeProps) => {
                 <meta property="og:title" content="My page title" key="title" />
             </Head>
 
-            <Layout moduleData={moduleData}>
+            <Layout moduleData={globaltest}>
                 <div
                     className={cn(styles.wrapper, {
                         [styles.layout1]: moduleData.navData.navStyle === 'layout1',

@@ -32,9 +32,6 @@ export const getStaticProps = async (context: Context) => {
 const Home = (props: HomeProps) => {
     const { page, global } = props
 
-    //console.log(global)
-    //console.log('global', global)
-
     return (
         <div>
             <Layout moduleData={global}>

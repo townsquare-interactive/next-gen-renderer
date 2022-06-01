@@ -1,33 +1,51 @@
 import data from '../components/moduleData'
 import { GetStaticProps } from 'next'
-import { FooterProps, ModuleData, LayoutProps, FooterData, NavProps } from '../components/types'
+import { FooterProps, ModuleData, LayoutProps, NavProps, NavigationProps, NavModule, FooterModule } from '../components/types'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import Navigation from '../components/Navigation'
-import useSWR, { Key, Fetcher } from 'swr'
-import { useState } from 'react'
+
 import styles from './layout.module.scss'
 import cn from 'classnames'
+import { Renderer } from '../components/Renderer'
 
 export default function Layout(props: LayoutProps) {
-    const { children, moduleData, pageList } = props
-    const [navCheck, setNav] = useState<boolean>(false)
+    /* const { children, moduleData, pageList } = props */
+    const { children, moduleData } = props
 
-    //Flipping state value for navbar visibility
-    function navSwitch() {
-        setNav(!navCheck)
-    }
+    const navigationModule: NavModule[] = []
+    const footerModule: FooterModule[] = []
 
-    return (
+    moduleData.modules.forEach((item: any) => {
+        if (item.componentType === 'navigation') {
+            navigationModule.push(item)
+        } else if (item.componentType === 'footer') {
+            footerModule.push(item)
+        }
+    })
+
+    /* return (
         <div
             className={cn(styles.root, {
                 [styles.layout1]: moduleData.navData.navStyle === 'layout1',
             })}
         >
-            <Navigation navSwitch={navSwitch} navCheck={navCheck} logoUrl={moduleData.logoUrl} navData={moduleData.navData} pageList={pageList} />
+            <Navigation navSwitch={navSwitch} navCheck={navCheck} logoUrl={moduleData.logoUrl} navData={moduleData.navData} />
 
             <main>{children}</main>
             <Footer footerData={moduleData.footerData as FooterData} navData={moduleData.navData} logoUrl={moduleData.logoUrl} />
+        </div>
+    ) */
+    /* return <Renderer config={moduleData.modules} type="global" /> */
+    return (
+        <div
+            className={cn(styles.root, {
+                [styles.layout1]: moduleData.modules[0].attributes.navStyle === 'layout1',
+            })}
+        >
+            <Renderer config={navigationModule} />
+            {children}
+            <Renderer config={footerModule} />
         </div>
     )
 }

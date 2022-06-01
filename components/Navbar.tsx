@@ -6,7 +6,7 @@ import cn from 'classnames'
 import { NavBarProps } from './types'
 
 const Navbar = (props: NavBarProps) => {
-    const { navData, navCheck = false, navStyle = 'layout1' } = props
+    const { navCheck = false, navStyle = 'layout1', pages, borderNum, navImage } = props
     return (
         <div
             className={cn(styles.root, {
@@ -16,9 +16,9 @@ const Navbar = (props: NavBarProps) => {
         >
             <div className={styles.wrapper}>
                 <div className={styles.navDrop}>
-                    <div className={styles.navItems}>{<Nav pages={navData.pages} modLayout="header" borderNum={navData.borderNum} />}</div>
+                    <div className={styles.navItems}>{<Nav pages={pages} modLayout="header" borderNum={borderNum} />}</div>
                     <div className={styles.imageTile}>
-                        <Image src={navData.navImage || ''} layout="fill" alt="logo" objectFit="cover" />
+                        <Image src={navImage || ''} layout="fill" alt="logo" objectFit="cover" />
                     </div>
                 </div>
             </div>

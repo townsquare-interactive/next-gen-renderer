@@ -84,34 +84,6 @@
                 ]
             }
         },
-        {
-            "componentType": "images",
-            "attributes": {
-                "gap": true,
-                "modLayout": "3-1/2",
-
-                "items": [
-                    {
-                        "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-015.jpg",
-                        "linkText": "Info",
-                        "linkUrl": "/page-2",
-                        "body": "Take a look at our information"
-                    },
-                    {
-                        "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-016.jpg",
-                        "linkText": "Media",
-                        "linkUrl": "/page-3",
-                        "body": "Take a look at our pictures and videos"
-                    },
-                    {
-                        "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-011.jpg",
-                        "linkText": "Reviews",
-                        "linkUrl": "/page-4",
-                        "body": "Take a look at our reviews"
-                    }
-                ]
-            }
-        },
 
         {
             "componentType": "images",
@@ -121,13 +93,13 @@
 
                 "items": [
                     {
-                        "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-015.jpg",
-                        "linkText": "Info",
+                        "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-004.jpg",
+                        "linkText": "Blog",
                         "linkUrl": "/page-2",
                         "body": "Take a look at our information"
                     },
                     {
-                        "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-016.jpg",
+                        "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-003.jpg",
                         "linkText": "Media",
                         "linkUrl": "/page-3",
                         "body": "Take a look at our pictures and videos"
@@ -140,48 +112,25 @@
             "attributes": {
                 "items": [
                     {
-                        "body": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab",
-                        "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-012.jpg",
-                        "textSize": "md",
-                        "align": "left"
-                    },
-                    {
-                        "body": " Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. ",
-                        "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-010.jpg"
-                    },
-                    {
-                        "body": " Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. ",
-                        "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-011.jpg"
-                    },
-                    {
-                        "headline": "Headline 1",
-                        "body": " totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,  ",
+                        "body": " Explore the large and little cities throughout Europe",
                         "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-009.jpg",
-                        "linkUrl": "/",
-                        "btnText": "Contact Us",
                         "textSize": "md",
                         "align": "left",
-                        "border": true
+                        "border": false
                     },
                     {
-                        "headline": "Headline 2",
-                        "body": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore  ",
+                        "body": "Go remote with beautiful scenery and outdoor adventures. ",
                         "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-008.jpg",
-                        "linkUrl": "/",
-                        "btnText": "Contact Us",
                         "textSize": "md",
                         "align": "left",
-                        "border": true
+                        "border": false
                     },
                     {
-                        "headline": "Headline 3",
-                        "body": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa  ",
+                        "body": "Sit back and have a drink with an ocean view.",
                         "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-006.jpg",
-                        "linkUrl": "/",
-                        "btnText": "Contact Us",
                         "textSize": "md",
                         "align": "left",
-                        "border": true
+                        "border": false
                     }
                 ]
             }
@@ -201,24 +150,19 @@
                 "autoPlay": false,
                 "items": [
                     {
-                        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                        "text": "I had the trip of a lifetime. Everything was very easy and stress free. Will defintely use this company again for my next vacation.",
 
                         "byline": "-Rupert Tolson"
                     },
                     {
-                        "text": " Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                        "text": "Their knowledge and experience will help you to truly immerse yourself in your destination, so that you can experience the best of what the place has to offer. ",
 
                         "byline": "-Jeff Grover"
                     },
                     {
-                        "text": "dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                        "text": "I am a lifelong traveler that loves to be on the adventurous side of things. I was able to plan my trip with expert suggestions and develop an iternary that was perfect. ",
 
                         "byline": "-Mark Ilten"
-                    },
-                    {
-                        "text": " proident, sunt in culpa qui officia deserunt mollit anim id est laborum. proident, sunt in culpa qui officia deserunt mollit anim id est laborum.proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-
-                        "byline": "-Sarah Patterson"
                     }
                 ]
             }
@@ -254,52 +198,6 @@
             "attributes": {
                 "modLayout": "ext",
                 "videoUrl": "https://www.youtube.com/watch?v=ysz5S6PUM-U"
-            }
-        },
-
-        {
-            "componentType": "list",
-            "attributes": {
-                "headline": "Headline for text",
-                "body": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
-                "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-008.jpg",
-                "border": false,
-                "linkUrl": "/",
-                "btnText": "Contact Us",
-                "modLayout": "card",
-                "textSize": "md",
-                "align": "left",
-                "reverse": false
-            }
-        },
-        {
-            "componentType": "list",
-            "attributes": {
-                "headline": "Headline for text",
-                "body": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
-                "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-009.jpg",
-                "border": false,
-                "linkUrl": "/",
-                "btnText": "Contact Us",
-                "modLayout": "card",
-                "textSize": "md",
-                "align": "left",
-                "reverse": true
-            }
-        },
-        {
-            "componentType": "list",
-            "attributes": {
-                "headline": "Headline for text",
-                "body": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
-                "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-006.jpg",
-                "border": false,
-                "linkUrl": "/",
-                "btnText": "Contact Us",
-                "modLayout": "card",
-                "textSize": "md",
-                "align": "left",
-                "reverse": false
             }
         }
     ]

@@ -6,18 +6,18 @@
             "id": "0"
         },
         {
-            "name": "Page 2",
-            "slug": "page-2",
+            "name": "Destinations",
+            "slug": "destinations",
             "id": "1"
         },
         {
-            "name": "Page 3",
-            "slug": "page-3",
+            "name": "Media",
+            "slug": "media",
             "id": "2"
         },
         {
-            "name": "Page 4",
-            "slug": "page-4",
+            "name": "Reviews",
+            "slug": "reviews",
             "id": "3"
         }
     ],

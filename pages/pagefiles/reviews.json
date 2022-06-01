@@ -29,24 +29,19 @@
                 "autoPlay": false,
                 "items": [
                     {
-                        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                        "text": "I had the trip of a lifetime. Everything was very easy and stress free. Will defintely use this company again for my next vacation.",
 
                         "byline": "-Rupert Tolson"
                     },
                     {
-                        "text": " Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                        "text": "Their knowledge and experience will help you to truly immerse yourself in your destination, so that you can experience the best of what the place has to offer. ",
 
                         "byline": "-Jeff Grover"
                     },
                     {
-                        "text": "dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                        "text": "I am a lifelong traveler that loves to be on the adventurous side of things. I was able to plan my trip with expert suggestions and develop an iternary that was perfect. ",
 
                         "byline": "-Mark Ilten"
-                    },
-                    {
-                        "text": " proident, sunt in culpa qui officia deserunt mollit anim id est laborum. proident, sunt in culpa qui officia deserunt mollit anim id est laborum.proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-
-                        "byline": "-Sarah Patterson"
                     }
                 ]
             }
@@ -75,13 +70,6 @@
                         "byline": "-Sarah Patterson"
                     }
                 ]
-            }
-        },
-        {
-            "componentType": "video",
-            "attributes": {
-                "modLayout": "ext",
-                "videoUrl": "https://www.youtube.com/watch?v=ysz5S6PUM-U"
             }
         }
     ]
