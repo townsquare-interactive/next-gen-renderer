@@ -50,7 +50,7 @@ const Article = (props: ListProps) => {
                             <div className={styles.textGutter}></div>
                             <div className={styles.insideTextGutter}></div>
                             <div className={styles.titleText}>
-                                <div className={styles.text}>{headline}</div>
+                                <h3 className={styles.text}>{headline}</h3>
                             </div>
                             <div className={cn(styles.textGutter, styles.textGutter_2)}></div>
                         </div>
@@ -82,10 +82,10 @@ const Article = (props: ListProps) => {
                         {modLayout != 'card' ? (
                             <div className={styles.allText}>
                                 <div className={styles.title}>
-                                    <div className={styles.text}>{headline}</div>
+                                    <h3 className={styles.text}>{headline}</h3>
                                 </div>
                                 <div className={styles.textBlock}>
-                                    <div className={styles.text}>{Parser(body)}</div>
+                                    <p className={styles.text}>{Parser(body)}</p>
                                     {linkUrl && btnText && (
                                         <div className={styles.cta_btn}>
                                             <a href={linkUrl}>{btnText}</a>
@@ -95,7 +95,7 @@ const Article = (props: ListProps) => {
                             </div>
                         ) : (
                             <div className={styles.textBlock}>
-                                <div className={styles.text}>{Parser(body)}</div>
+                                <p className={styles.text}>{Parser(body)}</p>
                                 {linkUrl && btnText && (
                                     <div className={styles.cta_btn}>
                                         <a href={linkUrl}>{btnText}</a>

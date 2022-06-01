@@ -91,11 +91,16 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
                         line-height: $lh-height;
                         @include utils.lhCrop($lh-height);
                         margin-top: 30px;
+                        margin-bottom: 0;
 
                         @include breakpoints.md {
                             margin-top: 0;
                         }
                     }
+                }
+
+                .textBlock .text {
+                    margin-top: 0;
                 }
 
                 /*                 .textBlock {
@@ -166,6 +171,10 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
                 flex-direction: row;
                 margin-top: 20px;
                 margin-bottom: 10px;
+
+                .text {
+                    margin-bottom: 0;
+                }
             }
 
             .textGutter {
@@ -267,6 +276,7 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
                 .text {
                     padding-top: 0;
                     padding: 20px;
+                    margin-top: 0;
                     @include breakpoints.md {
                         line-height: $lh-height;
                         @include utils.lhCrop($lh-height);

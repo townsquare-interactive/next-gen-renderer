@@ -30,7 +30,7 @@ function Hero(props: HeaderProps) {
                 <div className={styles.headline}>
                     <div className={styles.backgroundBlock}>
                         {backgroundImageUrl && <Image src={backgroundImageUrl} layout="fill" objectFit="cover" alt="" />}
-                        <div className={styles.text}>{headline}</div>
+                        <h1 className={styles.text}>{headline}</h1>
                     </div>
                 </div>
                 <div className={cn(styles.gutter, styles.gutter_alt)}>

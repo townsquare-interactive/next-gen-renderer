@@ -42,13 +42,15 @@
                 .cta_btn {
                     @include utils.cta_btn;
                 }
+
+                .title {
+                    margin: 0;
+                }
             }
 
             &.left {
                 .textBlock .text,
-                .titleText .text,
-                .title .text,
-                .allText,
+                .title,
                 .cta_btn {
                     text-align: left;
                 }
@@ -56,9 +58,7 @@
 
             &.right {
                 .textBlock .text,
-                .titleText .text,
-                .title .text,
-                .allText,
+                .title,
                 .cta_btn {
                     text-align: right;
                 }
@@ -66,9 +66,7 @@
 
             &.center {
                 .textBlock .text,
-                .titleText .text,
-                .title .text,
-                .allText,
+                .title,
                 .cta_btn {
                     text-align: center;
                 }

@@ -34,6 +34,38 @@ const Footer = (props: FooterProps) => {
         }
     }
 
+    return (
+        <div className={styles.root}>
+            <div className={styles.wrapper}>
+                <div className={cn(styles.block, styles.logoInfo)}>
+                    <Logo logoUrl={props.logoUrl} />
+                    <div className={styles.social}>
+                        {props.socialData.map((item, index) => (
+                            <a href={item.linkUrl} key={index} rel="noopener noreferrer" target="_blank">
+                                <FontAwesomeIcon icon={iconConvert(item.linkUrl)} />
+                            </a>
+                        ))}
+                    </div>
+                    <h3 className={styles.phone}>{props.phoneNumber}</h3>
+                </div>
+                <div className={cn(styles.block, styles.navInfo)}>
+                    <Nav pages={props.pages} modLayout="footer" borderNum={props.borderNum} />
+                </div>
+                <div className={cn(styles.block, styles.addInfo)}>
+                    <div>
+                        <p>{props.addressData.street}</p>
+                        <p>{props.addressData.cityState}</p>
+                        <p>{props.addressData.zip}</p>
+                    </div>
+                </div>
+                <div className={cn(styles.block, styles.siteInfo)}>
+                    <p>{props.siteName}</p>
+                    <p>&copy; All rights reserved</p>
+                </div>
+            </div>
+        </div>
+    )
+
     /*     return (
         <div className={styles.root}>
             <div className={styles.wrapper}>
@@ -65,37 +97,6 @@ const Footer = (props: FooterProps) => {
             </div>
         </div>
     ) */
-    return (
-        <div className={styles.root}>
-            <div className={styles.wrapper}>
-                <div className={cn(styles.block, styles.logoInfo)}>
-                    <Logo logoUrl={props.logoUrl} />
-                    <div className={styles.social}>
-                        {props.socialData.map((item, index) => (
-                            <a href={item.linkUrl} key={index} rel="noopener noreferrer" target="_blank">
-                                <FontAwesomeIcon icon={iconConvert(item.linkUrl)} />
-                            </a>
-                        ))}
-                    </div>
-                    <div className={styles.phone}>{props.phoneNumber}</div>
-                </div>
-                <div className={cn(styles.block, styles.navInfo)}>
-                    <Nav pages={props.pages} modLayout="footer" borderNum={props.borderNum} />
-                </div>
-                <div className={cn(styles.block, styles.addInfo)}>
-                    <div>
-                        <p>{props.addressData.street}</p>
-                        <p>{props.addressData.cityState}</p>
-                        <p>{props.addressData.zip}</p>
-                    </div>
-                </div>
-                <div className={cn(styles.block, styles.siteInfo)}>
-                    <p>{props.siteName}</p>
-                    <p>&copy; All rights reserved</p>
-                </div>
-            </div>
-        </div>
-    )
 }
 
 export default Footer

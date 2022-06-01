@@ -42,11 +42,7 @@ const GridBlock = (props: GridData) => {
             )}
 
             <div className={styles.textBlock}>
-                {headline && (
-                    <div className={styles.title}>
-                        <div className={styles.text}>{headline}</div>
-                    </div>
-                )}
+                {headline && <h3 className={styles.title}>{headline}</h3>}
 
                 <p className={styles.text}>{Parser(body)}</p>
 

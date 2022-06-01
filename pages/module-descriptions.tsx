@@ -33,18 +33,18 @@ import Carousel from '../components/Carousel'
 import Layout from '../components/Layout'
 import Footer from '../components/Footer'
 import data from '../components/moduleData'
-import global from '../global.json'
+import globalData from '../global.json'
 import Burger from '../components/Burger'
 import Video from '../components/Video'
 import { useState } from 'react'
 
 export const getStaticProps: GetStaticProps = async () => {
     return {
-        props: { moduleData: data },
+        props: { moduleData: data, global: globalData },
     }
 }
 
-const ModuleDescriptions = ({ moduleData }: HomeProps) => {
+const ModuleDescriptions = ({ moduleData, global }: HomeProps) => {
     const [navCheck, setNav] = useState<boolean>(false)
 
     //Flipping state value for navbar visibility

@@ -110,6 +110,63 @@ const data: ModuleData = {
                 linkUrl: 'https://www.twitter.com',
             },
         ],
+        pages: [
+            {
+                name: 'Home',
+                slug: '/',
+                id: '0',
+            },
+            {
+                name: 'Menu',
+                slug: '/menu',
+                id: '1',
+            },
+            {
+                name: 'Images',
+                slug: '/images',
+                id: '2',
+            },
+            {
+                name: 'Blog',
+                slug: '/blog',
+                id: '3',
+            },
+            {
+                name: 'Module Descriptions',
+                slug: '/module-descriptions',
+                id: '4',
+            },
+            {
+                name: 'About Us',
+                slug: '/',
+                id: '5',
+            },
+            {
+                name: 'Our Sponsors',
+                slug: '/',
+                id: '6',
+            },
+            {
+                name: 'Blog',
+                slug: '/blog',
+                id: '7',
+            },
+            {
+                name: 'Contact',
+                slug: '/',
+                id: '8',
+            },
+            {
+                name: 'Our Projects',
+                slug: '/',
+                id: '9',
+            },
+            {
+                name: 'Other',
+                slug: '/',
+                id: '10',
+            },
+        ],
         addressData: {
             street: '444 happy road',
             cityState: 'Townsville, Georgia',
@@ -228,7 +285,7 @@ const data: ModuleData = {
                 imageUrl: '/images/juan-test-009.jpg',
                 linkUrl: '/',
                 btnText: 'Contact Us',
-                textSize: 'md',
+                textSize: 'sm',
                 align: 'left',
                 border: true,
             },
@@ -239,7 +296,7 @@ const data: ModuleData = {
                 imageUrl: '/images/juan-test-008.jpg',
                 linkUrl: '/',
                 btnText: 'Contact Us',
-                textSize: 'md',
+                textSize: 'sm',
                 align: 'left',
             },
 
@@ -249,7 +306,7 @@ const data: ModuleData = {
                 imageUrl: '/images/juan-test-006.jpg',
                 linkUrl: '/',
                 btnText: 'Contact Us',
-                textSize: 'md',
+                textSize: 'sm',
                 align: 'left',
                 border: true,
             },

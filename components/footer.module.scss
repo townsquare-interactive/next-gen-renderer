@@ -107,6 +107,7 @@
                 .phone {
                     color: variables.$alt-color;
                     font-size: variables.$text-size-body-md;
+                    margin: 0;
 
                     @include breakpoints.sm {
                         font-size: variables.$text-size-body-sm;
