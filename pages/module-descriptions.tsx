@@ -10,7 +10,7 @@ import Images from '../components/Images'
 import Label from '../components/Label'
 import Card from '../components/Card'
 import Text from '../components/Text'
-import Navbar from '../components/Navbar'
+
 import Navigation from '../components/Navigation'
 import Grid from '../components/Grid'
 
@@ -34,7 +34,6 @@ import Layout from '../components/Layout'
 import Footer from '../components/Footer'
 import data from '../components/moduleData'
 import globalData from '../global.json'
-import Burger from '../components/Burger'
 import Video from '../components/Video'
 import { useState } from 'react'
 
@@ -46,11 +45,6 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const ModuleDescriptions = ({ moduleData, global }: HomeProps) => {
     const [navCheck, setNav] = useState<boolean>(false)
-
-    //Flipping state value for navbar visibility
-    function navSwitch() {
-        setNav(!navCheck)
-    }
 
     const imageData1: ImagesProps = {
         gap: true,

@@ -17,7 +17,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Footer = (props: FooterProps) => {
     //const { moduleData } = props
-    console.log('footer props', props)
     function iconConvert(str: string) {
         str.indexOf('google') !== -1
 

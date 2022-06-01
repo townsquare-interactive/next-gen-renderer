@@ -3,28 +3,24 @@ import Images from './Images'
 import Text from './Text'
 import Label from './Label'
 import List from './List'
-import Header from '../components/Header'
-import Navbar from '../components/Navbar'
-import Navigation from '../components/Navigation'
-import Grid from '../components/Grid'
+import Header from './Header'
+import Navigation from './Navigation'
+import Grid from './Grid'
 import Footer from './Footer'
 import Carousel from './Carousel'
 import Video from './Video'
 
 const keysToComponentMap = {
     text: Text,
-    images: Images,
     label: Label,
     list: List,
     images: Images,
     grid: Grid,
     header: Header,
-    navigation: Navigation,
     footer: Footer,
     carousel: Carousel,
     video: Video,
     navigation: Navigation,
-    footer: Footer,
 }
 
 const mapPropsToConfig = (config) => {

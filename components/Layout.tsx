@@ -2,7 +2,6 @@ import data from '../components/moduleData'
 import { GetStaticProps } from 'next'
 import { FooterProps, ModuleData, LayoutProps, NavProps, NavigationProps, NavModule, FooterModule } from '../components/types'
 import Footer from '../components/Footer'
-import Navbar from '../components/Navbar'
 import Navigation from '../components/Navigation'
 
 import styles from './layout.module.scss'
@@ -35,7 +34,7 @@ export default function Layout(props: LayoutProps) {
             })}
         >
             <header>
-                <Renderer config={navigationModule} />
+                <Renderer config={navigationModule} />{' '}
             </header>
             <main>{children}</main>
             <footer>
