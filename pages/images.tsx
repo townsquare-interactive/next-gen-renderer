@@ -7,23 +7,24 @@ import Layout from '../components/Layout'
 import { HomeProps } from '../components/types'
 import { GetStaticProps } from 'next'
 import data from '../components/moduleData'
+import global from '../components/global.json'
 
 const API_KEY = '563492ad6f917000010000019a20b7133bbc4cc8aa6ee45ef9cfe4d0'
 
 export const getStaticProps: GetStaticProps = async () => {
     return {
-        props: { moduleData: data },
+        props: { moduleData: data, global: global },
     }
 }
 
-const Images = ({ moduleData }: HomeProps) => {
+const Images = ({ moduleData, global }: HomeProps) => {
     return (
         <div className={styles.root}>
             <Head>
                 <title>Gallery Page</title>
                 <meta property="og:title" content="My page title" key="title" />
             </Head>
-            <Layout moduleData={moduleData}>
+            <Layout moduleData={global}>
                 <div className={styles.wrapper}>
                     <h1 className={styles.text}>Image Testing</h1>
                     <h3>Regular Image</h3>

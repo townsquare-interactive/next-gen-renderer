@@ -35,18 +35,18 @@ import Carousel from '../components/Carousel'
 import Layout from '../components/Layout'
 import Footer from '../components/Footer'
 import data from '../components/moduleData'
-import globaltest from '../components/globaltest.json'
+import global from '../components/global.json'
 import Burger from '../components/Burger'
 import Video from '../components/Video'
 import { useState } from 'react'
 
 export const getStaticProps: GetStaticProps = async () => {
     return {
-        props: { moduleData: data },
+        props: { moduleData: data, global: global },
     }
 }
 
-const Modules = ({ moduleData }: HomeProps) => {
+const Modules = ({ moduleData, global }: HomeProps) => {
     const imageData1: ImagesProps = {
         gap: true,
         modLayout: '2-2/3',
@@ -82,7 +82,7 @@ const Modules = ({ moduleData }: HomeProps) => {
                 <meta property="og:title" content="My page title" key="title" />
             </Head>
 
-            <Layout moduleData={globaltest}>
+            <Layout moduleData={global}>
                 <div
                     className={cn(styles.wrapper, {
                         [styles.layout1]: moduleData.navData.navStyle === 'layout1',
