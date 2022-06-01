@@ -20,7 +20,7 @@ const Grid = (props: GridProps) => {
 }
 
 const GridBlock = (props: GridData) => {
-    const { headline = '', body = '', border = false, imageUrl, linkUrl, btnText = '', textSize = 'md', align = 'left' } = props
+    const { headline = '', body = '', border = false, imageUrl, linkUrl, btnText = '', textSize = 'md', align = 'left', altText = '' } = props
 
     return (
         <div
@@ -37,7 +37,7 @@ const GridBlock = (props: GridData) => {
         >
             {imageUrl && (
                 <div className={styles.imageTile}>
-                    <Image src={imageUrl} layout="fill" alt="" objectFit="cover" objectPosition="top center" />
+                    <Image src={imageUrl} layout="fill" alt={altText} objectFit="cover" objectPosition="top center" />
                 </div>
             )}
 

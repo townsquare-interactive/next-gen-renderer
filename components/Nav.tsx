@@ -7,7 +7,7 @@ const Nav = (props: NavProps) => {
     const { pages, modLayout = 'header', borderNum } = props
 
     return (
-        <div className={styles.root}>
+        <nav className={styles.root}>
             <div
                 className={cn(styles.wrapper, {
                     [styles.footerNav]: modLayout === 'footer',
@@ -29,7 +29,7 @@ const Nav = (props: NavProps) => {
                     ))}
                 </ul>
             </div>
-        </div>
+        </nav>
     )
 }
 

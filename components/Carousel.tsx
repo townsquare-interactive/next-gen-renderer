@@ -54,7 +54,7 @@ function Carousel(carouselData: CarouselProps) {
                                 <div className={styles.item} key={index}>
                                     {item.imageUrl && (
                                         <div className={styles.imageTile}>
-                                            <Image src={item.imageUrl} layout="fill" objectFit="cover" alt="" />
+                                            <Image src={item.imageUrl} layout="fill" objectFit="cover" alt={item.altText || ''} />
                                         </div>
                                     )}
                                 </div>

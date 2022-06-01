@@ -9,6 +9,7 @@
             "attributes": {
                 "headline": "Home",
                 "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-014.jpg",
+                "altText": "Snowy mountains across water",
                 "backgroundImageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/seamless-5178982.png",
                 "reverse": false,
                 "modLayout": "normal"
@@ -21,6 +22,7 @@
                 "items": [
                     {
                         "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-015.jpg",
+                        "altText": "Pond under the Northern Lights",
                         "linkText": "Menu",
                         "linkUrl": "/page-4",
                         "headline": "Start Traveling Today!"
@@ -35,6 +37,7 @@
                 "headline": "Our Journey",
                 "body": " Travel is a passion for many people. It’s a way to explore the world and find new experiences. For others, travel is a necessity. It’s a way to visit family, take a much-needed vacation, or explore a new place. Travel is a life-changing experience, and one of the best ways to explore the world is by vacation. Whether you're interested in visiting a foreign country or exploring your own backyard, our travel company can help.",
                 "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-004.jpg",
+                "altText": "Pool of water surrounded by waterfalls",
                 "border": true,
                 "linkUrl": "/",
                 "btnText": "Contact Us",
@@ -50,6 +53,7 @@
                 "headline": "What we do",
                 "body": "We’re a global travel company. Our team helps travelers discover and book the best vacations, photography experiences, and outdoor adventures. Our mission is to inspire and enable people to live life to the fullest. We’re passionate about creating unique experiences that capture the world through the lens, and we’re proud of the positive impact we’re able to have on the world through travel.",
                 "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-009.jpg",
+                "altText": "Colorful houses on the side of a river",
                 "border": false,
                 "linkUrl": "/",
                 "btnText": "Contact Us",
@@ -68,16 +72,19 @@
                 "items": [
                     {
                         "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-015.jpg",
+                        "altText": "Pond under the Northern Lights",
                         "linkText": "Info",
                         "linkUrl": "/page-2"
                     },
                     {
                         "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-016.jpg",
+                        "altText": "The Northern Lights in a snowy landscape",
                         "linkText": "Media",
                         "linkUrl": "/page-3"
                     },
                     {
                         "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-011.jpg",
+                        "altText": "Man camping under the Northern Lights",
                         "linkText": "Reviews",
                         "linkUrl": "/page-4"
                     }
@@ -94,12 +101,14 @@
                 "items": [
                     {
                         "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-004.jpg",
+                        "altText": "Pool of water surrounded by waterfalls",
                         "linkText": "Blog",
                         "linkUrl": "/page-2",
                         "body": "Take a look at our information"
                     },
                     {
                         "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-003.jpg",
+                        "altText": "Sunlight shining in a green forest",
                         "linkText": "Media",
                         "linkUrl": "/page-3",
                         "body": "Take a look at our pictures and videos"
@@ -114,6 +123,7 @@
                     {
                         "body": " Explore the large and little cities throughout Europe",
                         "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-009.jpg",
+                        "altText": "Colorful houses on the side of a river",
                         "textSize": "md",
                         "align": "left",
                         "border": false
@@ -121,6 +131,7 @@
                     {
                         "body": "Go remote with beautiful scenery and outdoor adventures. ",
                         "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-008.jpg",
+                        "altText": "Small house surrounded by snowy mountains",
                         "textSize": "md",
                         "align": "left",
                         "border": false
@@ -128,6 +139,7 @@
                     {
                         "body": "Sit back and have a drink with an ocean view.",
                         "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-006.jpg",
+                        "altText": "Palm trees on the beach",
                         "textSize": "md",
                         "align": "left",
                         "border": false
@@ -176,18 +188,22 @@
                 "items": [
                     {
                         "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-010.jpg",
+                        "altText": "Small waterfalls and a mountain at sunset",
                         "byline": "-Rupert Tolson"
                     },
                     {
                         "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-001.jpg",
+                        "altText": "Landscape view of mountains in Wyoming",
                         "byline": "-Jeff Grover"
                     },
                     {
                         "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-002.jpg",
+                        "altText": "Purple flowers at sunset",
                         "byline": "-Mark Ilten"
                     },
                     {
                         "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-005.jpg",
+                        "altText": "Beach pier surrounded by clear blue water",
                         "byline": "-Sarah Patterson"
                     }
                 ]

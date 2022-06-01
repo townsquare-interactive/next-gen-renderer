@@ -5,6 +5,7 @@ import { ReactNode } from 'react'
 export interface HeaderProps {
     headline?: string
     imageUrl?: string
+    altText?: string
     backgroundImageUrl?: string
     reverse?: boolean
     modLayout: 'normal' | 'alt-layout'
@@ -19,6 +20,7 @@ export interface ListProps {
     body?: string
     border?: boolean
     imageUrl?: string
+    altText?: string
     linkUrl?: string
     btnText?: string
     modLayout?: 'card' | 'article'
@@ -32,6 +34,7 @@ export interface GridData {
     body?: string
     border?: boolean
     imageUrl?: string
+    altText?: string
     linkUrl?: string
     btnText?: string
     textSize?: 'sm' | 'md' | 'lg'
@@ -68,6 +71,7 @@ export interface TextProps {
 
 export interface ImageItem {
     imageUrl: string
+    altText?: string
     linkText?: string
     linkUrl?: string
     headline?: string
@@ -92,6 +96,7 @@ export interface TileImageProps {
 
 export interface SlideData {
     imageUrl?: string
+    altText?: string
     text?: string
     byline?: string
 }
@@ -195,6 +200,7 @@ export interface NavigationProps {
     navStyle?: 'layout1' | 'layout2'
     borderNum?: number
     navImage?: string
+    altText?: string
     logoUrl?: string
 }
 export interface NavModule {
@@ -220,6 +226,7 @@ export interface NavBarProps {
     navStyle?: 'layout1' | 'layout2'
     borderNum?: number
     navImage?: string
+    altText?: string
 }
 
 export interface ModuleData {

@@ -13,7 +13,7 @@
                     },
                     {
                         "name": "Destinations",
-                        "slug": "destinations",
+                        "slug": "/destinations",
                         "id": "1"
                     },
                     {
@@ -56,7 +56,8 @@
                 ],
                 "navStyle": "layout1",
                 "borderNum": 7,
-                "navImage": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-012.jpg"
+                "navImage": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-012.jpg",
+                "altText:": "Glowing tent under the Northern Lights"
             }
         },
 
@@ -86,7 +87,7 @@
                     },
                     {
                         "name": "Destinations",
-                        "slug": "destinations",
+                        "slug": "/destinations",
                         "id": "1"
                     },
                     {

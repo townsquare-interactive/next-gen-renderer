@@ -17,6 +17,7 @@ const Article = (props: ListProps) => {
         textSize = 'md',
         reverse = false,
         align = 'left',
+        altText = '',
     } = props
 
     return (
@@ -50,7 +51,7 @@ const Article = (props: ListProps) => {
                             <div className={styles.textGutter}></div>
                             <div className={styles.insideTextGutter}></div>
                             <div className={styles.titleText}>
-                                <h3 className={styles.text}>{headline}</h3>
+                                <h3 className={styles.text}>{headline || ''}</h3>
                             </div>
                             <div className={cn(styles.textGutter, styles.textGutter_2)}></div>
                         </div>
@@ -65,17 +66,7 @@ const Article = (props: ListProps) => {
 
                         <div className={styles.imageBlock}>
                             <div className={styles.blockPicture}>
-                                {imageUrl && (
-                                    <Image
-                                        src={imageUrl}
-                                        height="450px"
-                                        width="600px"
-                                        layout="responsive"
-                                        //layout="fill"
-                                        objectFit="cover"
-                                        alt={headline}
-                                    />
-                                )}
+                                {imageUrl && <Image src={imageUrl} height="450px" width="600px" layout="responsive" objectFit="cover" alt={altText} />}
                             </div>
                         </div>
 

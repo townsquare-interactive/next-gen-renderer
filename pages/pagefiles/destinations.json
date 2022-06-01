@@ -9,6 +9,7 @@
             "attributes": {
                 "headline": "Destinations",
                 "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-003.jpg",
+                "altText": "Sunlight shining in a green forest",
                 "backgroundImageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/seamless-5178982.png",
                 "reverse": false,
                 "modLayout": "normal"
@@ -22,6 +23,7 @@
                     {
                         "body": " Explore the large and little cities throughout Europe",
                         "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-009.jpg",
+                        "altText": "Colorful houses on the side of a river",
                         "textSize": "md",
                         "align": "left",
                         "border": true
@@ -29,6 +31,7 @@
                     {
                         "body": "Go remote with beautiful scenery and outdoor adventures. ",
                         "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-008.jpg",
+                        "altText": "Small house surrounded by snowy mountains",
                         "textSize": "md",
                         "align": "left",
                         "border": true
@@ -36,6 +39,7 @@
                     {
                         "body": "Sit back and have a drink with an ocean view.",
                         "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-006.jpg",
+                        "altText": "Palm trees on the beach",
                         "textSize": "md",
                         "align": "left",
                         "border": true
@@ -50,6 +54,7 @@
                 "headline": "Adventure of a lifetime",
                 "body": "We believe that traveling can be fun and exciting. This is why we offer you the opportunity to take an action-packed vacation that will let you experience a new destination, learn new skills, and help you grow!",
                 "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-012.jpg",
+                "altText": "Glowing tent under the Northern Lights",
                 "border": false,
                 "linkUrl": "/",
                 "btnText": "Contact Us",
@@ -65,6 +70,7 @@
                 "headline": "Variety of Experiences",
                 "body": "Having a travel adventure is an exciting experience that helps you to discover new places, meet new people, and learn new things. It can be a solo adventure or something that involves traveling with a group. For solo travelers, traveling on your own is often the best way to go as you can really immerse yourself into a destination.",
                 "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-010.jpg",
+                "altText": "Small waterfalls and a mountain at sunset",
                 "border": false,
                 "linkUrl": "/",
                 "btnText": "Contact Us",
@@ -80,6 +86,7 @@
                 "headline": "No Stress Vacation",
                 "body": "Our team of experts is on hand to provide you with the best service possible. We’re here to help you make the most of your time away, so if you have any questions or concerns, don’t hesitate to ask.",
                 "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-011.jpg",
+                "altText": "Man camping under the Northern Lights",
                 "border": false,
                 "linkUrl": "/",
                 "btnText": "Contact Us",

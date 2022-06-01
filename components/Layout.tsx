@@ -19,6 +19,7 @@ export default function Layout(props: LayoutProps) {
     moduleData.modules.forEach((item: any) => {
         if (item.componentType === 'navigation') {
             navigationModule.push(item)
+            console.log(navigationModule)
         } else if (item.componentType === 'footer') {
             footerModule.push(item)
         }
@@ -43,9 +44,13 @@ export default function Layout(props: LayoutProps) {
                 [styles.layout1]: moduleData.modules[0].attributes.navStyle === 'layout1',
             })}
         >
-            <Renderer config={navigationModule} />
-            {children}
-            <Renderer config={footerModule} />
+            <header>
+                <Renderer config={navigationModule} />
+            </header>
+            <main>{children}</main>
+            <footer>
+                <Renderer config={footerModule} />
+            </footer>
         </div>
     )
 }

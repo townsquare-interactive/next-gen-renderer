@@ -9,6 +9,7 @@
             "attributes": {
                 "headline": "Testimonials",
                 "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-012.jpg",
+                "altText": "Glowing tent under the Northern Lights",
                 "backgroundImageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/seamless-5178982.png",
                 "reverse": false,
                 "modLayout": "normal"
@@ -55,19 +56,19 @@
                 "items": [
                     {
                         "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-010.jpg",
-                        "byline": "-Rupert Tolson"
+                        "altText": "Small waterfalls and a mountain at sunset"
                     },
                     {
                         "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-001.jpg",
-                        "byline": "-Jeff Grover"
+                        "altText": "Landscape view of mountains in Wyoming"
                     },
                     {
                         "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-002.jpg",
-                        "byline": "-Mark Ilten"
+                        "altText": " Purple flowers at sunset"
                     },
                     {
                         "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-005.jpg",
-                        "byline": "-Sarah Patterson"
+                        "altText": "Beach pier surrounded by clear blue water"
                     }
                 ]
             }

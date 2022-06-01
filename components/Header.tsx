@@ -5,7 +5,7 @@ import { HeaderProps } from './types'
 import cn from 'classnames'
 
 function Hero(props: HeaderProps) {
-    const { reverse = false, backgroundImageUrl, imageUrl = '', headline = '', modLayout = 'normal' } = props
+    const { reverse = false, backgroundImageUrl, imageUrl = '', headline = '', modLayout = 'normal', altText = '' } = props
     return (
         <div className={styles.root}>
             <div
@@ -17,26 +17,26 @@ function Hero(props: HeaderProps) {
                 <div className={styles.gutter}>
                     {backgroundImageUrl && (
                         <div className={styles.backgroundBlock}>
-                            <Image src={backgroundImageUrl} layout="fill" objectFit="cover" alt="" />
+                            <Image src={backgroundImageUrl} layout="fill" objectFit="cover" alt="background texture" />
                         </div>
                     )}
                 </div>
                 {imageUrl && (
                     <div className={styles.heroImage}>
-                        <Image src={imageUrl} layout="fill" objectFit="cover" alt="" priority />
+                        <Image src={imageUrl} layout="fill" objectFit="cover" alt={altText} priority />
                     </div>
                 )}
 
                 <div className={styles.headline}>
                     <div className={styles.backgroundBlock}>
-                        {backgroundImageUrl && <Image src={backgroundImageUrl} layout="fill" objectFit="cover" alt="" />}
+                        {backgroundImageUrl && <Image src={backgroundImageUrl} layout="fill" objectFit="cover" alt="background texture" />}
                         <h1 className={styles.text}>{headline}</h1>
                     </div>
                 </div>
                 <div className={cn(styles.gutter, styles.gutter_alt)}>
                     {backgroundImageUrl && (
                         <div className={styles.backgroundBlock}>
-                            <Image src={backgroundImageUrl} layout="fill" objectFit="cover" alt="" />
+                            <Image src={backgroundImageUrl} layout="fill" objectFit="cover" alt="background texture" />
                         </div>
                     )}
                 </div>
