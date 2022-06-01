@@ -10,20 +10,10 @@ import cn from 'classnames'
 import { Renderer } from '../components/Renderer'
 
 export default function Layout(props: LayoutProps) {
-    /* const { children, moduleData, pageList } = props */
     const { children, moduleData } = props
-
-    const navigationModule: NavModule[] = []
-    const footerModule: FooterModule[] = []
-
-    moduleData.modules.forEach((item: any) => {
-        if (item.componentType === 'navigation') {
-            navigationModule.push(item)
-            console.log(navigationModule)
-        } else if (item.componentType === 'footer') {
-            footerModule.push(item)
-        }
-    })
+    //Placing nav data na footer data into two different arrays
+    const navigationModule = moduleData.modules.filter((module: NavModule) => module.componentType === 'navigation')
+    const footerModule = moduleData.modules.filter((module: FooterModule) => module.componentType === 'footer')
 
     /* return (
         <div
