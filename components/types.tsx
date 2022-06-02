@@ -242,6 +242,7 @@ export interface ModuleData {
     videoData?: VideoProps
     gridData?: GridProps
     modules?: ImagesProps | ListProps | HeaderProps | LabelProps | TextData | CarouselProps | FooterProps | NavProps | VideoProps | GridProps
+    name?: string
 }
 
 /*-----------------------------End of Components-------------*/

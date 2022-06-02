@@ -58,6 +58,9 @@ const Slug = (props: HomeProps) => {
 
     return (
         <div>
+            <Head>
+                <title>{page.name}</title>
+            </Head>
             <Layout moduleData={global}>
                 <Renderer config={page.modules} />
             </Layout>

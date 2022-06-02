@@ -24,7 +24,7 @@
                         "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-015.jpg",
                         "altText": "Pond under the Northern Lights",
                         "linkText": "Menu",
-                        "linkUrl": "/page-4",
+                        "linkUrl": "/contact",
                         "headline": "Start Traveling Today!"
                     }
                 ]
@@ -39,7 +39,7 @@
                 "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-004.jpg",
                 "altText": "Pool of water surrounded by waterfalls",
                 "border": true,
-                "linkUrl": "/",
+                "linkUrl": "/contact",
                 "btnText": "Contact Us",
                 "modLayout": "article",
                 "textSize": "md",
@@ -55,7 +55,7 @@
                 "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-009.jpg",
                 "altText": "Colorful houses on the side of a river",
                 "border": false,
-                "linkUrl": "/",
+                "linkUrl": "/contact",
                 "btnText": "Contact Us",
                 "modLayout": "article",
                 "textSize": "md",
@@ -73,49 +73,25 @@
                     {
                         "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-015.jpg",
                         "altText": "Pond under the Northern Lights",
-                        "linkText": "Info",
-                        "linkUrl": "/page-2"
+                        "linkText": "Destinations",
+                        "linkUrl": "/destinations"
                     },
                     {
                         "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-016.jpg",
                         "altText": "The Northern Lights in a snowy landscape",
                         "linkText": "Media",
-                        "linkUrl": "/page-3"
+                        "linkUrl": "/media"
                     },
                     {
                         "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-011.jpg",
                         "altText": "Man camping under the Northern Lights",
                         "linkText": "Reviews",
-                        "linkUrl": "/page-4"
+                        "linkUrl": "/reviews"
                     }
                 ]
             }
         },
 
-        {
-            "componentType": "images",
-            "attributes": {
-                "gap": true,
-                "modLayout": "2-2/3",
-
-                "items": [
-                    {
-                        "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-004.jpg",
-                        "altText": "Pool of water surrounded by waterfalls",
-                        "linkText": "Blog",
-                        "linkUrl": "/page-2",
-                        "body": "Take a look at our information"
-                    },
-                    {
-                        "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-003.jpg",
-                        "altText": "Sunlight shining in a green forest",
-                        "linkText": "Media",
-                        "linkUrl": "/page-3",
-                        "body": "Take a look at our pictures and videos"
-                    }
-                ]
-            }
-        },
         {
             "componentType": "grid",
             "attributes": {
@@ -213,7 +189,7 @@
             "componentType": "video",
             "attributes": {
                 "modLayout": "ext",
-                "videoUrl": "https://www.youtube.com/watch?v=ysz5S6PUM-U"
+                "videoUrl": "https://youtu.be/iZZCst-1BWE"
             }
         }
     ]

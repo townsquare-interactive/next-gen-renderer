@@ -19,6 +19,11 @@
             "name": "Reviews",
             "slug": "reviews",
             "id": "3"
+        },
+        {
+            "name": "Contact",
+            "slug": "contact",
+            "id": "4"
         }
     ],
     "home": "0"

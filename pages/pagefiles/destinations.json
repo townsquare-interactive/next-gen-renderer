@@ -1,6 +1,6 @@
 {
-    "name": "Page 2",
-    "slug": "page-2",
+    "name": "Destinations",
+    "slug": "destinations",
     "id": "1",
 
     "modules": [
@@ -56,7 +56,7 @@
                 "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-012.jpg",
                 "altText": "Glowing tent under the Northern Lights",
                 "border": false,
-                "linkUrl": "/",
+                "linkUrl": "/contact",
                 "btnText": "Contact Us",
                 "modLayout": "card",
                 "textSize": "md",
@@ -72,7 +72,7 @@
                 "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-010.jpg",
                 "altText": "Small waterfalls and a mountain at sunset",
                 "border": false,
-                "linkUrl": "/",
+                "linkUrl": "/contact",
                 "btnText": "Contact Us",
                 "modLayout": "card",
                 "textSize": "md",
@@ -88,7 +88,7 @@
                 "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-011.jpg",
                 "altText": "Man camping under the Northern Lights",
                 "border": false,
-                "linkUrl": "/",
+                "linkUrl": "/contact",
                 "btnText": "Contact Us",
                 "modLayout": "card",
                 "textSize": "md",

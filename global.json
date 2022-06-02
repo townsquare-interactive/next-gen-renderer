@@ -26,11 +26,7 @@
                         "slug": "/reviews",
                         "id": "3"
                     },
-                    {
-                        "name": "Blog",
-                        "slug": "/blog",
-                        "id": "4"
-                    },
+
                     {
                         "name": "Module Descriptions",
                         "slug": "/module-descriptions",
@@ -102,7 +98,7 @@
                     },
                     {
                         "name": "Contact",
-                        "slug": "/",
+                        "slug": "/contact",
                         "id": "7"
                     },
 
@@ -113,8 +109,9 @@
                     }
                 ],
                 "navStyle": "layout1",
-                "borderNum": 7,
-                "navImage": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-012.jpg"
+                "borderNum": 6,
+                "navImage": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-012.jpg",
+                "altText": "Glowing tent under the Northern Lights"
             }
         },
 
@@ -157,11 +154,7 @@
                         "slug": "/reviews",
                         "id": "3"
                     },
-                    {
-                        "name": "Blog",
-                        "slug": "/blog",
-                        "id": "4"
-                    },
+
                     {
                         "name": "Module Descriptions",
                         "slug": "/module-descriptions",

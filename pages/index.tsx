@@ -6,8 +6,6 @@ import Script from 'next/script'
 import { HomeProps, PageListProps, Context } from '../components/types'
 import { GetStaticProps } from 'next'
 import Layout from '../components/Layout'
-import data from '../components/moduleData'
-import { useState } from 'react'
 import { Renderer } from '../components/Renderer'
 
 //runs at build time just like static props
@@ -34,6 +32,10 @@ const Home = (props: HomeProps) => {
 
     return (
         <div>
+            <Head>
+                <title>{page.name}</title>
+                <meta property="og:title" content="My page title" key="title" />
+            </Head>
             <Layout moduleData={global}>
                 <Renderer config={page.modules} />
             </Layout>

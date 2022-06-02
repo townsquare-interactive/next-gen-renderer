@@ -38,24 +38,19 @@
                     },
 
                     {
-                        "name": "Blog",
-                        "slug": "/blog",
-                        "id": "6"
-                    },
-                    {
                         "name": "Contact",
-                        "slug": "/",
-                        "id": "7"
+                        "slug": "/contact",
+                        "id": "6"
                     },
 
                     {
                         "name": "Other",
                         "slug": "/",
-                        "id": "8"
+                        "id": "7"
                     }
                 ],
                 "navStyle": "layout1",
-                "borderNum": 7,
+                "borderNum": 6,
                 "navImage": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-012.jpg",
                 "altText:": "Glowing tent under the Northern Lights"
             }
@@ -112,22 +107,18 @@
                     },
 
                     {
-                        "name": "Blog",
-                        "slug": "/blog",
-                        "id": "6"
-                    },
-                    {
                         "name": "Contact",
-                        "slug": "/",
-                        "id": "7"
+                        "slug": "/contact",
+                        "id": "6"
                     },
 
                     {
                         "name": "Other",
                         "slug": "/",
-                        "id": "8"
+                        "id": "7"
                     }
                 ],
+                "borderNum": 6,
                 "addressData": {
                     "street": "444 happy road",
                     "cityState": "Townsville, Georgia",
