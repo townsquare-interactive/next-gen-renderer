@@ -33,17 +33,17 @@ import Carousel from '../components/Carousel'
 import Layout from '../components/Layout'
 import Footer from '../components/Footer'
 import data from '../components/moduleData'
-import globalData from '../global.json'
+import globalD from '../global.json'
 import Video from '../components/Video'
 import { useState } from 'react'
 
 export const getStaticProps: GetStaticProps = async () => {
     return {
-        props: { moduleData: data, global: globalData },
+        props: { moduleData: data, globalData: globalD },
     }
 }
 
-const ModuleDescriptions = ({ moduleData, global }: HomeProps) => {
+const ModuleDescriptions = ({ moduleData, globalData }: HomeProps) => {
     const [navCheck, setNav] = useState<boolean>(false)
 
     const imageData1: ImagesProps = {

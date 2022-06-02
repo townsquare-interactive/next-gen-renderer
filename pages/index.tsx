@@ -10,16 +10,19 @@ import { Renderer } from '../components/Renderer'
 
 //runs at build time just like static props
 
+const domain = encodeURI('localhost:3000')
+console.log('The URL of this page is: ' + domain)
+
 export const getStaticProps = async (context: Context) => {
     //grabs 1 item each time
-    const resPage = await fetch('https://townsquareinteractivetest.s3.amazonaws.com/pages/home.json')
-    const resGlobal = await fetch('https://townsquareinteractivetest.s3.amazonaws.com/global.json')
+    const resPage = await fetch('https://townsquareinteractive.s3.amazonaws.com/' + domain + '/pages/home.json')
+    const resGlobal = await fetch('https://townsquareinteractive.s3.amazonaws.com/' + domain + '/global.json')
 
     const page = await resPage.json()
-    const global = await resGlobal.json()
+    const globalData = await resGlobal.json()
 
     return {
-        props: { page, global },
+        props: { page, globalData },
         // Next.js will attempt to re-generate the page:
         // - When a request comes in
         // - At most once every 10 seconds
@@ -28,7 +31,7 @@ export const getStaticProps = async (context: Context) => {
 }
 
 const Home = (props: HomeProps) => {
-    const { page, global } = props
+    const { page, globalData } = props
 
     return (
         <div>
@@ -36,7 +39,7 @@ const Home = (props: HomeProps) => {
                 <title>{page.name}</title>
                 <meta property="og:title" content="My page title" key="title" />
             </Head>
-            <Layout moduleData={global}>
+            <Layout moduleData={globalData}>
                 <Renderer config={page.modules} />
             </Layout>
         </div>

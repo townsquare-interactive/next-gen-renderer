@@ -141,9 +141,9 @@ export interface VideoProps {
 
 export interface HomeProps {
     moduleData: ModuleData
-    global: ModuleData
+    globalData: ModuleData
     page: ModuleData
-    mods: any
+    //mods: any
     //pageList?: any
 }
 

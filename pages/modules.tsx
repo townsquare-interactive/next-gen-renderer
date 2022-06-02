@@ -41,11 +41,11 @@ import { useState } from 'react'
 
 export const getStaticProps: GetStaticProps = async () => {
     return {
-        props: { moduleData: data, global: global },
+        props: { moduleData: data, globalData: global },
     }
 }
 
-const Modules = ({ moduleData, global }: HomeProps) => {
+const Modules = ({ moduleData, globalData }: HomeProps) => {
     const imageData1: ImagesProps = {
         gap: true,
         modLayout: '2-2/3',
@@ -81,7 +81,7 @@ const Modules = ({ moduleData, global }: HomeProps) => {
                 <meta property="og:title" content="My page title" key="title" />
             </Head>
 
-            <Layout moduleData={global}>
+            <Layout moduleData={globalData}>
                 <div
                     className={cn(styles.wrapper, {
                         [styles.layout1]: moduleData.navData.navStyle === 'layout1',

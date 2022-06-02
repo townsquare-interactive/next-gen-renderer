@@ -10,17 +10,25 @@ import Footer from './Footer'
 import Carousel from './Carousel'
 import Video from './Video'
 
+function capitalize(str = '') {
+    if (!str) {
+        return ''
+    }
+
+    return str[0].toUpperCase() + str.slice(1)
+}
+
 const keysToComponentMap = {
-    text: Text,
-    label: Label,
-    list: List,
-    images: Images,
-    grid: Grid,
-    header: Header,
-    footer: Footer,
-    carousel: Carousel,
-    video: Video,
-    navigation: Navigation,
+    Text,
+    Label,
+    List,
+    Images,
+    Grid,
+    Header,
+    Footer,
+    Carousel,
+    Video,
+    Navigation,
 }
 
 const mapPropsToConfig = (config) => {
@@ -32,7 +40,7 @@ const mapPropsToConfig = (config) => {
 
             configWithProps.push({
                 ...props,
-                Component: componentType,
+                Component: capitalize(componentType),
             })
         }
     })
