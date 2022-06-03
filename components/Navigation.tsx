@@ -8,8 +8,6 @@ import { NavigationProps, NavBarProps, BurgerProps } from './types'
 import { useState } from 'react'
 import { domainImage } from '../functions'
 
-const domain = encodeURI(process.env.NEXT_PUBLIC_BASE_URL + '')
-
 const Navigation = (props: NavigationProps) => {
     const { navStyle = 'layout1', logoUrl, pages, navImage, borderNum, altText = '' } = props
     const [navCheck, setNav] = useState<boolean>(false)

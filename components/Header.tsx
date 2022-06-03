@@ -3,9 +3,14 @@ import styles from './header.module.scss'
 import Image from 'next/image'
 import { HeaderProps } from './types'
 import cn from 'classnames'
+import { domainImage } from '../functions'
 
 function Hero(props: HeaderProps) {
-    const { reverse = false, backgroundImageUrl, imageUrl = '', headline = '', modLayout = 'normal', altText = '' } = props
+    const { reverse = false, backgroundImageUrl = '', imageUrl = '', headline = '', modLayout = 'normal', altText = '' } = props
+
+    const backgroundImage = domainImage(backgroundImageUrl)
+    const mainImage = domainImage(imageUrl)
+
     return (
         <div className={styles.root}>
             <div
@@ -17,26 +22,26 @@ function Hero(props: HeaderProps) {
                 <div className={styles.gutter}>
                     {backgroundImageUrl && (
                         <div className={styles.backgroundBlock}>
-                            <Image src={backgroundImageUrl} layout="fill" objectFit="cover" alt="" />
+                            <Image src={backgroundImage} layout="fill" objectFit="cover" alt="" />
                         </div>
                     )}
                 </div>
                 {imageUrl && (
                     <div className={styles.heroImage}>
-                        <Image src={imageUrl} layout="fill" objectFit="cover" alt={altText} priority />
+                        <Image src={mainImage} layout="fill" objectFit="cover" alt={altText} priority />
                     </div>
                 )}
 
                 <div className={styles.headline}>
                     <div className={styles.backgroundBlock}>
-                        {backgroundImageUrl && <Image src={backgroundImageUrl} layout="fill" objectFit="cover" alt="" />}
+                        {backgroundImageUrl && <Image src={backgroundImage} layout="fill" objectFit="cover" alt="" />}
                         <h1 className={styles.text}>{headline}</h1>
                     </div>
                 </div>
                 <div className={cn(styles.gutter, styles.gutter_alt)}>
                     {backgroundImageUrl && (
                         <div className={styles.backgroundBlock}>
-                            <Image src={backgroundImageUrl} layout="fill" objectFit="cover" alt="" />
+                            <Image src={backgroundImage} layout="fill" objectFit="cover" alt="" />
                         </div>
                     )}
                 </div>

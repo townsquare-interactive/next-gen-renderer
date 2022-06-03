@@ -4,6 +4,7 @@ import Image from 'next/image'
 import cn from 'classnames'
 import { reverse } from 'dns'
 import Parser from 'html-react-parser'
+import { domainImage } from '../functions'
 
 const Article = (props: ListProps) => {
     const {
@@ -66,7 +67,9 @@ const Article = (props: ListProps) => {
 
                         <div className={styles.imageBlock}>
                             <div className={styles.blockPicture}>
-                                {imageUrl && <Image src={imageUrl} height="450px" width="600px" layout="responsive" objectFit="cover" alt={altText} />}
+                                {imageUrl && (
+                                    <Image src={domainImage(imageUrl)} height="450px" width="600px" layout="responsive" objectFit="cover" alt={altText} />
+                                )}
                             </div>
                         </div>
 

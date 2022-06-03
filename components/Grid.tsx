@@ -4,6 +4,7 @@ import Image from 'next/image'
 import cn from 'classnames'
 import { reverse } from 'dns'
 import Parser from 'html-react-parser'
+import { domainImage } from '../functions'
 
 const Grid = (props: GridProps) => {
     const { items } = props
@@ -37,7 +38,7 @@ const GridBlock = (props: GridData) => {
         >
             {imageUrl && (
                 <div className={styles.imageTile}>
-                    <Image src={imageUrl} layout="fill" alt={altText} objectFit="cover" objectPosition="top center" />
+                    <Image src={domainImage(imageUrl)} layout="fill" alt={altText} objectFit="cover" objectPosition="top center" />
                 </div>
             )}
 

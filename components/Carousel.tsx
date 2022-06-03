@@ -6,6 +6,7 @@ import cn from 'classnames'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import { CarouselProps } from './types'
+import { domainImage } from '../functions'
 
 function Carousel(carouselData: CarouselProps) {
     //Sets slide count to 1 if there are more slides than items to show, or if text shows
@@ -54,7 +55,7 @@ function Carousel(carouselData: CarouselProps) {
                                 <div className={styles.item} key={index}>
                                     {item.imageUrl && (
                                         <div className={styles.imageTile}>
-                                            <Image src={item.imageUrl} layout="fill" objectFit="cover" alt={item.altText || ''} />
+                                            <Image src={domainImage(item.imageUrl)} layout="fill" objectFit="cover" alt={item.altText || ''} />
                                         </div>
                                     )}
                                 </div>

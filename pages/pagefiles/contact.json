@@ -8,9 +8,9 @@
             "componentType": "header",
             "attributes": {
                 "headline": "Contact Us",
-                "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-004.jpg",
+                "imageUrl": "/juan-test-004.jpg",
                 "altText": "Pool of water surrounded by waterfalls",
-                "backgroundImageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/seamless-5178982.png",
+                "backgroundImageUrl": "/seamless-5178982.png",
                 "reverse": false,
                 "modLayout": "normal"
             }
@@ -21,7 +21,7 @@
                 "modLayout": "1-hero",
                 "items": [
                     {
-                        "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-010.jpg",
+                        "imageUrl": "/juan-test-010.jpg",
                         "altText": "Small waterfalls and a mountain at sunset",
                         "headline": "Reach out to us to learn how to get started"
                     }
@@ -34,7 +34,7 @@
             "attributes": {
                 "headline": "We Plan for you",
                 "body": "We are just a phone call or office visit away from setting up your perfect trip. Our office is located at 444 happy road Townsville, Georgia, 47384. You can also reach out to us with a call or text at 922-444-2849. Don't wait another day before planning your trip of a lifetime!",
-                "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-007.jpg",
+                "imageUrl": "/juan-test-007.jpg",
                 "altText": "Hot air balloon above historic ruins",
                 "border": true,
                 "modLayout": "article",

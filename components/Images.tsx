@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import cn from 'classnames'
 import { ImagesProps, TileImageProps } from './types'
+import { domainImage } from '../functions'
 
 const Images = ({ items, modLayout = '3-2/3', gap = false }: ImagesProps) => {
     if (items.length === 3) {
@@ -106,7 +107,7 @@ const TileImage = ({ itemNumber, modLayout, isMainImage = false }: TileImageProp
         >
             {itemNumber.linkUrl ? (
                 <div className={cn(styles.linkBlock, styles.linked)}>
-                    <Image src={itemNumber.imageUrl} layout="fill" objectFit="cover" alt={itemNumber.altText} />
+                    <Image src={domainImage(itemNumber.imageUrl)} layout="fill" objectFit="cover" alt={itemNumber.altText} />
                     <Link href={itemNumber.linkUrl}>
                         <a className={styles.link}>
                             {itemNumber.headline ? (
@@ -126,7 +127,7 @@ const TileImage = ({ itemNumber, modLayout, isMainImage = false }: TileImageProp
                 </div>
             ) : (
                 <div className={styles.linkBlock}>
-                    <Image src={itemNumber.imageUrl} layout="fill" objectFit="cover" alt={itemNumber.altText} />
+                    <Image src={domainImage(itemNumber.imageUrl)} layout="fill" objectFit="cover" alt={itemNumber.altText} />
                     {itemNumber.headline ? (
                         <div className={styles.headline}>
                             <h2>{itemNumber.headline || ''}</h2>

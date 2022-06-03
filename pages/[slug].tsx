@@ -17,6 +17,7 @@ import { domainImage } from '../functions'
 //const domain = encodeURI(domainFirst + ':3000')
 
 const domain = encodeURI(process.env.NEXT_PUBLIC_BASE_URL + '')
+console.log(process.env.NEXT_PUBLIC_BASE_URL)
 
 //const domain = domainFirst
 
