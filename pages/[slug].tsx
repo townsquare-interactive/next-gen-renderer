@@ -10,10 +10,15 @@ import data from '../components/moduleData'
 import { useState } from 'react'
 import { Renderer } from '../components/Renderer'
 import { useRouter } from 'next/router'
+import { domainImage } from '../functions'
 
 //const domain = encodeURI('localhost:3000')
-const domainFirst = process.env.NEXT_PUBLIC_BASE_URL
-const domain = encodeURI(domainFirst + ':3000')
+//const domainFirst = process.env.NEXT_PUBLIC_BASE_URL
+//const domain = encodeURI(domainFirst + ':3000')
+
+const domain = encodeURI(process.env.NEXT_PUBLIC_BASE_URL + '')
+
+//const domain = domainFirst
 
 //const domainFirst = process.env.NEXT_PUBLIC_HOST1
 
@@ -21,11 +26,6 @@ const domain = encodeURI(domainFirst + ':3000')
 //console.log('d2', domain2)
 //console.log(process.env['HOST'])
 //console.log(`${process.env.DB_HOST}`)
-
-console.log(`${process.env.NEXT_PUBLIC_BASE_URL}`)
-let cat = process.env.NEXT_PUBLIC_BASE_URL
-console.log('cat', cat)
-console.log(`${process.env.NEXT_PUBLIC_HOST1}`)
 
 //console.log('The URL of this page isss: ' + global.location.hostname)
 
@@ -74,6 +74,8 @@ export const getStaticProps = async (context: Context) => {
 }
 
 const Slug = (props: HomeProps) => {
+    const { page, globalData } = props
+
     /*  const { asPath } = useRouter()
     const origin = typeof window !== 'undefined' && window.location.origin ? window.location.origin : ''
 
@@ -81,7 +83,6 @@ const Slug = (props: HomeProps) => {
     console.log(URL) */
 
     /* const [navCheck, setNav] = useState<boolean>(false) */
-    const { page, globalData } = props
 
     /* const { asPath } = useRouter()
     const origin = typeof window !== 'undefined' && window.location.hostname ? window.location.hostname : ''

@@ -6,10 +6,16 @@ import Nav from './Nav'
 import cn from 'classnames'
 import { NavigationProps, NavBarProps, BurgerProps } from './types'
 import { useState } from 'react'
+import { domainImage } from '../functions'
+
+const domain = encodeURI(process.env.NEXT_PUBLIC_BASE_URL + '')
 
 const Navigation = (props: NavigationProps) => {
     const { navStyle = 'layout1', logoUrl, pages, navImage, borderNum, altText = '' } = props
     const [navCheck, setNav] = useState<boolean>(false)
+
+    const navImageDomain = navImage && domainImage(navImage)
+    const logoDomain = logoUrl && domainImage(logoUrl)
 
     function navSwitch() {
         setNav(!navCheck)
@@ -23,13 +29,13 @@ const Navigation = (props: NavigationProps) => {
         >
             <div className={styles.wrapper}>
                 <div className={styles.logoBlock}>
-                    <Logo logoUrl={logoUrl} />
+                    <Logo logoUrl={logoDomain} />
                 </div>
                 <div className={styles.burgerBlock}>
                     <Burger navSwitch={navSwitch} navCheck={navCheck} />
                 </div>
             </div>
-            <Navbar navCheck={navCheck} pages={pages} navStyle={navStyle} navImage={navImage} borderNum={borderNum} altText={altText} />
+            <Navbar navCheck={navCheck} pages={pages} navStyle={navStyle} navImage={navImageDomain} borderNum={borderNum} altText={altText} />
         </div>
     )
 }
@@ -49,7 +55,13 @@ const Navbar = (props: NavBarProps) => {
                     <div className={styles.navItems}>{<Nav pages={pages} modLayout="header" borderNum={borderNum} />}</div>
                     {navImage && (
                         <div className={styles.imageTile}>
-                            <Image src={navImage} layout="fill" alt={altText} objectFit="cover" />
+                            <Image
+                                //src={'https://townsquareinteractive.s3.amazonaws.com/' + domain + '/Assets' + navImage}
+                                src={navImage}
+                                layout="fill"
+                                alt={altText}
+                                objectFit="cover"
+                            />
                         </div>
                     )}
                 </div>

@@ -1,9 +1,10 @@
 {
-"modules": [
+    "logoUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/company-logo.png",
+    "modules": [
         {
             "componentType": "navigation",
             "attributes": {
-                "logoUrl": "/company-logo.png",
+                "logoUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/company-logo.png",
                 "pages": [
                     {
                         "name": "Home",
@@ -50,7 +51,7 @@
                 ],
                 "navStyle": "layout1",
                 "borderNum": 6,
-                "navImage": "/juan-test-012.jpg",
+                "navImage": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-012.jpg",
                 "altText:": "Glowing tent under the Northern Lights"
             }
         },
@@ -58,7 +59,7 @@
         {
             "componentType": "footer",
             "attributes": {
-                "logoUrl": "/company-logo.png",
+                "logoUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/company-logo.png",
                 "socialData": [
                     {
                         "linkUrl": "https://www.google.com/"

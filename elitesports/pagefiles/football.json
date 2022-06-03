@@ -1,0 +1,145 @@
+{
+    "name": "Media",
+    "slug": "media",
+    "id": "2",
+
+    "modules": [
+        {
+            "componentType": "header",
+            "attributes": {
+                "headline": "Football",
+                "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-006.jpg",
+                "altText": "Palm trees on the beach",
+                "backgroundImageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/seamless-5178982.png",
+                "reverse": false,
+                "modLayout": "normal"
+            }
+        },
+        {
+            "componentType": "images",
+            "attributes": {
+                "modLayout": "1-hero",
+
+                "items": [
+                    {
+                        "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-015.jpg",
+                        "altText": "Pond under the Northern Lights",
+                        "linkText": "Menu",
+                        "linkUrl": "/menu",
+                        "headline": "Take a look at the views from our trips"
+                    }
+                ]
+            }
+        },
+        {
+            "componentType": "images",
+            "attributes": {
+                "gap": true,
+                "modLayout": "3-2/3",
+
+                "items": [
+                    {
+                        "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-002.jpg",
+                        "altText": "Purple flowers at sunset",
+                        "linkText": "Ireland",
+                        "linkUrl": "/menu",
+                        "body": "Beautirful nature of Ireland"
+                    },
+                    {
+                        "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-004.jpg",
+                        "altText": "Pool of water surrounded by waterfalls",
+                        "linkText": "Alaskan H2O",
+                        "body": "Waterfall pool in Alaska"
+                    },
+                    {
+                        "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-005.jpg",
+                        "altText": "Beach pier surrounded by clear blue water",
+                        "linkText": "Clearwater Beach",
+                        "linkUrl": "/blog",
+                        "body": "Beach escape in Puerto Rico"
+                    }
+                ]
+            }
+        },
+
+        {
+            "componentType": "images",
+            "attributes": {
+                "gap": true,
+                "modLayout": "3-1/2",
+
+                "items": [
+                    {
+                        "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-015.jpg",
+                        "altText": "Pond under the Northern Lights"
+                    },
+                    {
+                        "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-016.jpg",
+                        "altText": "The Northern Lights in a snowy landscape"
+                    },
+                    {
+                        "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-011.jpg",
+                        "altText": "Man camping under the Northern Lights"
+                    }
+                ]
+            }
+        },
+
+        {
+            "componentType": "images",
+            "attributes": {
+                "gap": true,
+                "modLayout": "2-2/3",
+
+                "items": [
+                    {
+                        "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-006.jpg",
+                        "altText": "Palm trees on the beach"
+                    },
+                    {
+                        "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-007.jpg",
+                        "altText": "Hot air balloon above historic ruins"
+                    }
+                ]
+            }
+        },
+
+        {
+            "componentType": "carousel",
+            "attributes": {
+                "modLayout": "images",
+                "slideCount": 3,
+                "autoPlay": false,
+                "items": [
+                    {
+                        "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-010.jpg",
+                        "altText": "Small waterfalls and a mountain at sunset",
+                        "byline": "-Rupert Tolson"
+                    },
+                    {
+                        "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-001.jpg",
+                        "altText": "Landscape view of mountains in Wyoming",
+                        "byline": "-Jeff Grover"
+                    },
+                    {
+                        "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-002.jpg",
+                        "altText": "Purple flowers at sunset",
+                        "byline": "-Mark Ilten"
+                    },
+                    {
+                        "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-008.jpg",
+                        "altText": "Small house surrounded by snowy mountains",
+                        "byline": "-Sarah Patterson"
+                    }
+                ]
+            }
+        },
+        {
+            "componentType": "video",
+            "attributes": {
+                "modLayout": "ext",
+                "videoUrl": "https://www.youtube.com/watch?v=ycDLfQ1Cv_Y"
+            }
+        }
+    ]
+}

@@ -6,6 +6,7 @@ import Image from 'next/image'
 import Nav from './Nav'
 import Logo from './Logo'
 import { FooterProps, HomeProps, NavProps, PagesProps } from './types'
+import { domainImage } from '../functions'
 
 // import the library
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -17,6 +18,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Footer = (props: FooterProps) => {
     //const { moduleData } = props
+
+    const logo = props.logoUrl && domainImage(props.logoUrl)
+
     function iconConvert(str: string) {
         str.indexOf('google') !== -1
 
@@ -37,7 +41,7 @@ const Footer = (props: FooterProps) => {
         <div className={styles.root}>
             <div className={styles.wrapper}>
                 <div className={cn(styles.block, styles.logoInfo)}>
-                    <Logo logoUrl={props.logoUrl} />
+                    <Logo logoUrl={logo} />
                     <div className={styles.social}>
                         {props.socialData.map((item, index) => (
                             <a href={item.linkUrl} key={index} rel="noopener noreferrer" target="_blank">

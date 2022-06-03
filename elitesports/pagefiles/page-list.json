@@ -1,0 +1,30 @@
+{
+    "pages": [
+        {
+            "name": "Home",
+            "slug": "home",
+            "id": "0"
+        },
+        {
+            "name": "Hockey",
+            "slug": "hockey",
+            "id": "1"
+        },
+        {
+            "name": "Football",
+            "slug": "football",
+            "id": "2"
+        },
+        {
+            "name": "Reviews",
+            "slug": "reviews",
+            "id": "3"
+        },
+        {
+            "name": "Contact",
+            "slug": "contact",
+            "id": "4"
+        }
+    ],
+    "home": "0"
+}

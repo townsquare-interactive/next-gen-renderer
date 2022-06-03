@@ -1,23 +1,24 @@
 {
-"modules": [
+    "logoUrl": "https://townsquareinteractive.s3.amazonaws.com/Assets/company-logo.png",
+    "modules": [
         {
             "componentType": "navigation",
             "attributes": {
-                "logoUrl": "/company-logo.png",
+                "logoUrl": "/sports.png",
                 "pages": [
                     {
                         "name": "Home",
-                        "slug": "/",
+                        "slug": "/home",
                         "id": "0"
                     },
                     {
-                        "name": "Destinations",
-                        "slug": "/destinations",
+                        "name": "Hockey",
+                        "slug": "/hockey",
                         "id": "1"
                     },
                     {
-                        "name": "Media",
-                        "slug": "/media",
+                        "name": "Football",
+                        "slug": "/footbal",
                         "id": "2"
                     },
                     {
@@ -50,7 +51,7 @@
                 ],
                 "navStyle": "layout1",
                 "borderNum": 6,
-                "navImage": "/juan-test-012.jpg",
+                "navImage": "/juan-test-013.jpg",
                 "altText:": "Glowing tent under the Northern Lights"
             }
         },
@@ -58,7 +59,7 @@
         {
             "componentType": "footer",
             "attributes": {
-                "logoUrl": "/company-logo.png",
+                "logoUrl": "/sports.png",
                 "socialData": [
                     {
                         "linkUrl": "https://www.google.com/"

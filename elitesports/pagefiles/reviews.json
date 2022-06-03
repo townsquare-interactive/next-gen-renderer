@@ -1,0 +1,77 @@
+{
+    "name": "Reviews",
+    "slug": "reviews",
+    "id": "3",
+
+    "modules": [
+        {
+            "componentType": "header",
+            "attributes": {
+                "headline": "Testimonials",
+                "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-012.jpg",
+                "altText": "Glowing tent under the Northern Lights",
+                "backgroundImageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/seamless-5178982.png",
+                "reverse": false,
+                "modLayout": "normal"
+            }
+        },
+
+        {
+            "componentType": "label",
+            "attributes": {
+                "text": "Quotes"
+            }
+        },
+        {
+            "componentType": "carousel",
+            "attributes": {
+                "modLayout": "text",
+                "slideCount": 3,
+                "autoPlay": false,
+                "items": [
+                    {
+                        "text": "I had the trip of a lifetime. Everything was very easy and stress free. Will defintely use this company again for my next vacation.",
+
+                        "byline": "-Rupert Tolson"
+                    },
+                    {
+                        "text": "Their knowledge and experience will help you to truly immerse yourself in your destination, so that you can experience the best of what the place has to offer. ",
+
+                        "byline": "-Jeff Grover"
+                    },
+                    {
+                        "text": "I am a lifelong traveler that loves to be on the adventurous side of things. I was able to plan my trip with expert suggestions and develop an iternary that was perfect. ",
+
+                        "byline": "-Mark Ilten"
+                    }
+                ]
+            }
+        },
+        {
+            "componentType": "carousel",
+            "attributes": {
+                "modLayout": "images",
+                "slideCount": 3,
+                "autoPlay": false,
+                "items": [
+                    {
+                        "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-010.jpg",
+                        "altText": "Small waterfalls and a mountain at sunset"
+                    },
+                    {
+                        "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-001.jpg",
+                        "altText": "Landscape view of mountains in Wyoming"
+                    },
+                    {
+                        "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-002.jpg",
+                        "altText": " Purple flowers at sunset"
+                    },
+                    {
+                        "imageUrl": "https://townsquareinteractivetest.s3.amazonaws.com/Assets/juan-test-005.jpg",
+                        "altText": "Beach pier surrounded by clear blue water"
+                    }
+                ]
+            }
+        }
+    ]
+}

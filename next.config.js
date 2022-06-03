@@ -19,6 +19,12 @@ module.exports = {
         // Looks like backward compatibility approach.
     },
     images: {
-        domains: ['via.placeholder.com', 'unsplash.com', 'images.pexels.com', 'townsquareinteractivetest.s3.amazonaws.com'],
+        domains: [
+            'via.placeholder.com',
+            'unsplash.com',
+            'images.pexels.com',
+            'townsquareinteractivetest.s3.amazonaws.com',
+            'townsquareinteractive.s3.amazonaws.com',
+        ],
     },
 }
