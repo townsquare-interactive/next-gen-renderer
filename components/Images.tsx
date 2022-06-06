@@ -115,7 +115,7 @@ const TileImage = ({ itemNumber, modLayout, isMainImage = false }: TileImageProp
                                     <h2>{itemNumber.headline || ''}</h2>
                                 </div>
                             ) : (
-                                <div className={styles.text}>{itemNumber.linkText}</div>
+                                itemNumber.linkText && <div className={styles.text}>{itemNumber.linkText}</div>
                             )}
                             {itemNumber.body && (
                                 <div className={styles.description}>
@@ -133,7 +133,7 @@ const TileImage = ({ itemNumber, modLayout, isMainImage = false }: TileImageProp
                             <h2>{itemNumber.headline || ''}</h2>
                         </div>
                     ) : (
-                        <div className={styles.text}>{itemNumber.linkText}</div>
+                        itemNumber.linkText && <div className={styles.text}>{itemNumber.linkText}</div>
                     )}
                     {itemNumber.body && (
                         <div className={styles.description}>
