@@ -9,14 +9,7 @@ import Grid from './Grid'
 import Footer from './Footer'
 import Carousel from './Carousel'
 import Video from './Video'
-
-function capitalize(str = '') {
-    if (!str) {
-        return ''
-    }
-
-    return str[0].toUpperCase() + str.slice(1)
-}
+import { capitalize } from '../functions'
 
 const keysToComponentMap = {
     Text,

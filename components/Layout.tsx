@@ -14,19 +14,6 @@ export default function Layout(props: LayoutProps) {
     const navigationModule = moduleData.modules.filter((module: NavModule) => module.componentType === 'navigation')
     const footerModule = moduleData.modules.filter((module: FooterModule) => module.componentType === 'footer')
 
-    /* return (
-        <div
-            className={cn(styles.root, {
-                [styles.layout1]: moduleData.navData.navStyle === 'layout1',
-            })}
-        >
-            <Navigation navSwitch={navSwitch} navCheck={navCheck} logoUrl={moduleData.logoUrl} navData={moduleData.navData} />
-
-            <main>{children}</main>
-            <Footer footerData={moduleData.footerData as FooterData} navData={moduleData.navData} logoUrl={moduleData.logoUrl} />
-        </div>
-    ) */
-    /* return <Renderer config={moduleData.modules} type="global" /> */
     return (
         <div
             className={cn(styles.root, {

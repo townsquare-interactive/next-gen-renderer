@@ -3,7 +3,7 @@
         {
             "componentType": "navigation",
             "attributes": {
-                "logoUrl": "/sports.png",
+                "logoUrl": "/company-logo.png",
                 "pages": [
                     {
                         "name": "Home",
@@ -58,7 +58,7 @@
         {
             "componentType": "footer",
             "attributes": {
-                "logoUrl": "/sports.png",
+                "logoUrl": "/company-logo.png",
                 "socialData": [
                     {
                         "linkUrl": "https://www.google.com/"

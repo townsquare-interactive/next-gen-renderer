@@ -51,12 +51,12 @@ const Modules = ({ moduleData, globalData }: HomeProps) => {
         modLayout: '2-2/3',
         items: [
             {
-                imageUrl: 'https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg',
+                imageUrl: '/juan-test-004.jpg',
                 linkText: 'Menu',
                 linkUrl: '/menu',
             },
             {
-                imageUrl: 'https://images.pexels.com/photos/219692/pexels-photo-219692.jpeg',
+                imageUrl: '/juan-test-005.jpg',
                 linkText: 'Images',
                 linkUrl: '/images',
             },
@@ -66,7 +66,7 @@ const Modules = ({ moduleData, globalData }: HomeProps) => {
         modLayout: '1-hero',
         items: [
             {
-                imageUrl: 'https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg',
+                imageUrl: '/juan-test-006.jpg',
                 //linkText: 'Menu',
                 linkUrl: '/menu',
                 headline: 'Now Hero',
