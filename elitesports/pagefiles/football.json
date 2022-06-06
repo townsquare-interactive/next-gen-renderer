@@ -1,15 +1,15 @@
 {
-    "name": "Media",
-    "slug": "media",
+    "name": "football",
+    "slug": "football",
     "id": "2",
 
     "modules": [
         {
             "componentType": "header",
             "attributes": {
-                "headline": "Football",
-                "imageUrl": "/juan-test-006.jpg",
-                "altText": "Palm trees on the beach",
+                "headline": "football",
+                "imageUrl": "/football-2.jpg",
+                "altText": "football",
                 "backgroundImageUrl": "/seamless-5178982.png",
                 "reverse": false,
                 "modLayout": "normal"
@@ -22,85 +22,28 @@
 
                 "items": [
                     {
-                        "imageUrl": "/juan-test-015.jpg",
-                        "altText": "Pond under the Northern Lights",
-                        "linkText": "Menu",
-                        "linkUrl": "/menu",
-                        "headline": "Take a look at the views from our trips"
-                    }
-                ]
-            }
-        },
-        {
-            "componentType": "images",
-            "attributes": {
-                "gap": true,
-                "modLayout": "3-2/3",
-
-                "items": [
-                    {
-                        "imageUrl": "/juan-test-002.jpg",
-                        "altText": "Purple flowers at sunset",
-                        "linkText": "Ireland",
-                        "linkUrl": "/menu",
-                        "body": "Beautirful nature of Ireland"
-                    },
-                    {
-                        "imageUrl": "/juan-test-004.jpg",
-                        "altText": "Pool of water surrounded by waterfalls",
-                        "linkText": "Alaskan H2O",
-                        "body": "Waterfall pool in Alaska"
-                    },
-                    {
-                        "imageUrl": "/juan-test-005.jpg",
-                        "altText": "Beach pier surrounded by clear blue water",
-                        "linkText": "Clearwater Beach",
-                        "linkUrl": "/blog",
-                        "body": "Beach escape in Puerto Rico"
+                        "imageUrl": "/football-3.jpg",
+                        "altText": "football",
+                        "linkUrl": "/contact"
                     }
                 ]
             }
         },
 
         {
-            "componentType": "images",
+            "componentType": "list",
             "attributes": {
-                "gap": true,
-                "modLayout": "3-1/2",
-
-                "items": [
-                    {
-                        "imageUrl": "/juan-test-015.jpg",
-                        "altText": "Pond under the Northern Lights"
-                    },
-                    {
-                        "imageUrl": "/juan-test-016.jpg",
-                        "altText": "The Northern Lights in a snowy landscape"
-                    },
-                    {
-                        "imageUrl": "/juan-test-011.jpg",
-                        "altText": "Man camping under the Northern Lights"
-                    }
-                ]
-            }
-        },
-
-        {
-            "componentType": "images",
-            "attributes": {
-                "gap": true,
-                "modLayout": "2-2/3",
-
-                "items": [
-                    {
-                        "imageUrl": "/juan-test-006.jpg",
-                        "altText": "Palm trees on the beach"
-                    },
-                    {
-                        "imageUrl": "/juan-test-007.jpg",
-                        "altText": "Hot air balloon above historic ruins"
-                    }
-                ]
+                "headline": "Learn how to play the right way",
+                "body": "Football is a sport played by teams with specialized teams and rules. It’s the most popular sport in the United States, with millions of fans around the world. You can watch NFL games on television, or catch a live game at a stadium or arena. Some of the greatest players in history have played football, including Peyton Manning and Tom Brady.",
+                "imageUrl": "/football-4.jpg",
+                "altText": "football",
+                "border": true,
+                "linkUrl": "/contact",
+                "btnText": "Contact Us",
+                "modLayout": "article",
+                "textSize": "md",
+                "align": "left",
+                "reverse": false
             }
         },
 
@@ -112,33 +55,22 @@
                 "autoPlay": false,
                 "items": [
                     {
-                        "imageUrl": "/juan-test-010.jpg",
-                        "altText": "Small waterfalls and a mountain at sunset",
-                        "byline": "-Rupert Tolson"
+                        "imageUrl": "/football-5.jpg",
+                        "altText": "football"
                     },
                     {
-                        "imageUrl": "/juan-test-001.jpg",
-                        "altText": "Landscape view of mountains in Wyoming",
-                        "byline": "-Jeff Grover"
+                        "imageUrl": "/football-6.jpg",
+                        "altText": "football"
                     },
                     {
-                        "imageUrl": "/juan-test-002.jpg",
-                        "altText": "Purple flowers at sunset",
-                        "byline": "-Mark Ilten"
+                        "imageUrl": "/football-7.jpg",
+                        "altText": "football"
                     },
                     {
-                        "imageUrl": "/juan-test-008.jpg",
-                        "altText": "Small house surrounded by snowy mountains",
-                        "byline": "-Sarah Patterson"
+                        "imageUrl": "/football-8.jpg",
+                        "altText": "football"
                     }
                 ]
-            }
-        },
-        {
-            "componentType": "video",
-            "attributes": {
-                "modLayout": "ext",
-                "videoUrl": "https://www.youtube.com/watch?v=ycDLfQ1Cv_Y"
             }
         }
     ]
