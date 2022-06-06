@@ -39,7 +39,6 @@ console.log(process.env.NEXT_PUBLIC_BASE_URL)
 export const getStaticPaths = async () => {
     const res = await fetch('https://townsquareinteractive.s3.amazonaws.com/' + domain + '/pages/page-list.json')
     const data = await res.json()
-    console.log('pages data', data)
 
     const paths = data.pages.map((page: PageListProps) => {
         return {
@@ -48,7 +47,6 @@ export const getStaticPaths = async () => {
     })
     /*     const paths = [{ params: { id: '1' } }, { params: { id: '2' } }, { params: { id: '3' } }, { params: { id: '4' } }] */
 
-    console.log('paths', paths)
     return {
         //props: { posts: data },
         paths,
@@ -76,6 +74,8 @@ export const getStaticProps = async (context: Context) => {
 
 const Slug = (props: HomeProps) => {
     const { page, globalData } = props
+
+    console.log('vercel url', process.env.NEXT_PUBLIC_VERCEL_URL)
 
     /*  const { asPath } = useRouter()
     const origin = typeof window !== 'undefined' && window.location.origin ? window.location.origin : ''

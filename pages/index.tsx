@@ -10,7 +10,8 @@ import { Renderer } from '../components/Renderer'
 
 //runs at build time just like static props
 
-const domain = encodeURI('localhost:3000')
+//const domain = encodeURI('localhost:3000')
+const domain = encodeURI(process.env.NEXT_PUBLIC_BASE_URL + '')
 console.log('The URL of this page is: ' + domain)
 
 export const getStaticProps = async (context: Context) => {
