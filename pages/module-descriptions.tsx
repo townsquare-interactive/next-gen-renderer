@@ -151,7 +151,9 @@ const ModuleDescriptions = ({ moduleData, globalData }: HomeProps) => {
 "
                     />
 
-                    <List {...moduleData.listData} reverse={true} border={false} headline="No border option" />
+                    <List {...moduleData.listData} reverse={true} border={false} headline="No border reversed" />
+
+                    <List {...moduleData.listData} reverse={true} border={true} headline="Reversed border" />
 
                     <Label {...moduleData.labelData} text="List Module: Card layout" align="center" gap={true} />
 

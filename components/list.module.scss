@@ -72,8 +72,8 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
                 display: flex;
                 flex-direction: column;
                 color: variables.$text-color-main;
-                padding: 20px;
-                margin-right: variables.$gap;
+                padding: variables.$gap;
+                //margin-right: variables.$gap;
 
                 @include breakpoints.sm {
                     padding: 0;
@@ -112,25 +112,6 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
                 }
             }
         }
-        &.bordered {
-            @include bordered;
-
-            .features {
-                padding: 20px;
-
-                .textBlock {
-                    @include breakpoints.md {
-                        margin-left: variables.$gap;
-                        margin-right: 0;
-                    }
-                }
-                .title {
-                    @include breakpoints.md {
-                        margin-left: variables.$gap;
-                    }
-                }
-            }
-        }
 
         &.imageArticle {
             .imageBlock {
@@ -139,15 +120,34 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
 
             .allText {
                 justify-content: flex-start;
+                @include breakpoints.sm {
+                    padding-left: variables.$gap;
+                }
                 @include breakpoints.md {
                     width: 50%;
                 }
             }
         }
 
-        &.reverse .features {
-            @include breakpoints.md {
-                flex-direction: row-reverse;
+        &.reverse {
+            .features {
+                @include breakpoints.md {
+                    flex-direction: row-reverse;
+                }
+            }
+            .allText {
+                @include breakpoints.sm {
+                    padding-right: variables.$gap;
+                    padding-left: 0;
+                }
+            }
+        }
+
+        &.bordered {
+            @include bordered;
+
+            .features {
+                padding: variables.$gap;
             }
         }
     }
@@ -198,9 +198,10 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
 
                 .text {
                     color: variables.$text-color-main;
-                    padding-left: 20px;
+                    padding-left: variables.$gap;
                     width: 100%;
                     padding: 10px 0 10px 20px;
+                    margin-top: 0;
 
                     @include breakpoints.md {
                         margin-left: auto;
@@ -275,22 +276,22 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
 
                 .text {
                     padding-top: 0;
-                    padding: 20px;
+                    padding: variables.$gap;
                     margin-top: 0;
                     @include breakpoints.md {
                         line-height: $lh-height;
                         @include utils.lhCrop($lh-height);
                         padding: 0;
-                        padding-left: 20px;
+                        padding-left: variables.$gap;
                     }
                 }
 
                 .cta_btn {
                     @include utils.cta_btn;
                     color: variables.$text-color-main;
-                    padding-left: 20px;
+                    padding-left: variables.$gap;
                     @include breakpoints.md {
-                        margin-left: 20px;
+                        margin-left: variables.$gap;
                         padding: 0;
                     }
                 }
@@ -301,17 +302,19 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
             @include bordered;
 
             .text {
-                padding: 20px;
+                padding: variables.$gap;
             }
             .cta_btn {
-                padding-bottom: 20px;
+                padding-bottom: variables.$gap;
             }
         }
 
-        &.reverse .features,
-        &.reverse .title {
-            @include breakpoints.md {
-                flex-direction: row-reverse;
+        &.reverse {
+            .features,
+            .title {
+                @include breakpoints.md {
+                    flex-direction: row-reverse;
+                }
             }
         }
 
@@ -335,7 +338,7 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
                 .titleText .text,
                 .textBlock .text {
                     padding-left: 0 !important;
-                    padding-right: 20px !important;
+                    padding-right: variables.$gap !important;
                 }
 
                 .cta_btn {
