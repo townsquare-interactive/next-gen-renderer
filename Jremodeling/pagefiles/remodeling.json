@@ -1,0 +1,53 @@
+{
+    "name": "Remodeling",
+    "slug": "remodeling",
+    "id": "1",
+
+    "modules": [
+        {
+            "componentType": "header",
+            "attributes": {
+                "headline": "Remodeling",
+                "imageUrl": "/living-7.jpg",
+                "altText": "Living Room",
+                "backgroundImageUrl": "/seamless-5178982.png",
+                "reverse": false,
+                "modLayout": "normal"
+            }
+        },
+
+        {
+            "componentType": "label",
+            "attributes": {
+                "text": "Let us Change Your Home"
+            }
+        },
+
+        {
+            "componentType": "carousel",
+            "attributes": {
+                "modLayout": "images",
+                "slideCount": 2,
+                "autoPlay": true,
+                "items": [
+                    {
+                        "imageUrl": "/kitchen-3.jpg",
+                        "altText": "Kitchen"
+                    },
+                    {
+                        "imageUrl": "/bathroom-3.jpg",
+                        "altText": "Bathroom"
+                    },
+                    {
+                        "imageUrl": "/living-5.jpg",
+                        "altText": "Living Room"
+                    },
+                    {
+                        "imageUrl": "/living-4.jpg",
+                        "altText": "Living Room"
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -18,14 +18,20 @@ console.log(dimensions.width, dimensions.height) */
 const Logo = (props: LogoProps) => {
     const { logoUrl = '' } = props
 
+    /*     const imageWithSize = probe(logoUrl)
+
+    console.log(imageWithSize.size.width)
+    console.log(imageWithSize.size.height) */
+
     return (
         <div className={styles.root}>
             <div className={styles.wrapper}>
                 <div className={styles.logo}>
                     <Link href="/">
                         <a>
-                            {/*  <Image src={logoUrl} layout="fill" alt="logo" className={styles.image} /> */}
-                            <Image src={logoUrl} width="722" height="156px" alt="logo" className={styles.image} objectFit="contain" />
+                            {/*  <Image src={logoUrl} layout="fill" alt="logo" className={styles.image} objectFit="contain" objectPosition="left" /> */}
+                            <Image src={logoUrl} width="522" height="156px" alt="logo" className={styles.image} objectFit="contain" objectPosition="left" />
+                            {/*  <Image src={logoUrl} layout="fill" className={styles.image} alt="logo" objectFit="contain" /> */}
                         </a>
                     </Link>
                 </div>

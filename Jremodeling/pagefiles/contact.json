@@ -1,0 +1,45 @@
+{
+    "name": "Contact",
+    "slug": "contact",
+    "id": "6",
+
+    "modules": [
+        {
+            "componentType": "header",
+            "attributes": {
+                "headline": "Contact Us",
+                "imageUrl": "/living-2.jpg",
+                "altText": "living room",
+                "backgroundImageUrl": "/seamless-5178982.png",
+                "reverse": false,
+                "modLayout": "normal"
+            }
+        },
+        {
+            "componentType": "images",
+            "attributes": {
+                "modLayout": "1-hero",
+                "items": [
+                    {
+                        "imageUrl": "/bathroom-4.jpg",
+                        "altText": "bathroom",
+                        "headline": "Reach out to us to learn how to get started"
+                    }
+                ]
+            }
+        },
+
+        {
+            "componentType": "list",
+            "attributes": {
+                "headline": "Turn your home around",
+                "body": "Jremodeling does a great job with living room remodeling, providing a completely remodeled living room that is comfortable and functional. Contact us today to get started.",
+                "border": true,
+                "modLayout": "article",
+                "textSize": "md",
+                "align": "center",
+                "reverse": false
+            }
+        }
+    ]
+}

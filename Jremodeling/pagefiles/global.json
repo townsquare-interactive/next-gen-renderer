@@ -1,0 +1,125 @@
+{
+    "modules": [
+        {
+            "componentType": "navigation",
+            "attributes": {
+                "logoUrl": "/jremodeling-logo.png",
+                "pages": [
+                    {
+                        "name": "Home",
+                        "slug": "/home",
+                        "id": "0"
+                    },
+                    {
+                        "name": "Remodeling",
+                        "slug": "/remodeling",
+                        "id": "1"
+                    },
+                    {
+                        "name": "Living Room",
+                        "slug": "/living-room",
+                        "id": "2"
+                    },
+                    {
+                        "name": "Kitchen",
+                        "slug": "/kitchen",
+                        "id": "3"
+                    },
+                    {
+                        "name": "Blog",
+                        "slug": "/blog",
+                        "id": "4"
+                    },
+                    {
+                        "name": "Module Descriptions",
+                        "slug": "/module-descriptions",
+                        "id": "5"
+                    },
+
+                    {
+                        "name": "Contact",
+                        "slug": "/contact",
+                        "id": "6"
+                    }
+                ],
+                "navStyle": "layout1",
+                "borderNum": 5,
+                "navImage": "/living-1.jpg",
+                "altText:": "Living room"
+            }
+        },
+
+        {
+            "componentType": "footer",
+            "attributes": {
+                "logoUrl": "/jremodeling-logo.png",
+                "socialData": [
+                    {
+                        "linkUrl": "https://www.google.com/"
+                    },
+                    {
+                        "linkUrl": "https://www.facebook.com"
+                    },
+                    {
+                        "linkUrl": "https://www.instagram.com"
+                    },
+                    {
+                        "linkUrl": "https://www.twitter.com"
+                    }
+                ],
+                "pages": [
+                    {
+                        "name": "Home",
+                        "slug": "/",
+                        "id": "0"
+                    },
+                    {
+                        "name": "Destinations",
+                        "slug": "/destinations",
+                        "id": "1"
+                    },
+                    {
+                        "name": "Media",
+                        "slug": "/media",
+                        "id": "2"
+                    },
+                    {
+                        "name": "Reviews",
+                        "slug": "/reviews",
+                        "id": "3"
+                    },
+                    {
+                        "name": "Blog",
+                        "slug": "/blog",
+                        "id": "4"
+                    },
+                    {
+                        "name": "Module Descriptions",
+                        "slug": "/module-descriptions",
+                        "id": "5"
+                    },
+
+                    {
+                        "name": "Contact",
+                        "slug": "/contact",
+                        "id": "6"
+                    },
+
+                    {
+                        "name": "Other",
+                        "slug": "/",
+                        "id": "7"
+                    }
+                ],
+                "borderNum": 6,
+                "addressData": {
+                    "street": "4893 Townton Ave",
+                    "cityState": "Apex, NC",
+                    "zip": "27539"
+                },
+                "siteName": "Jremodeling",
+                "phoneNumber": "434-245-2395"
+            }
+        }
+    ]
+}

@@ -1,0 +1,72 @@
+{
+    "name": "Kitchen",
+    "slug": "kitchen",
+    "id": "3",
+
+    "modules": [
+        {
+            "componentType": "header",
+            "attributes": {
+                "headline": "kitchen Room",
+                "imageUrl": "/kitchen-2.jpg",
+                "altText": "kitchen",
+                "backgroundImageUrl": "/seamless-5178982.png",
+                "reverse": false,
+                "modLayout": "normal"
+            }
+        },
+        {
+            "componentType": "images",
+            "attributes": {
+                "modLayout": "1-hero",
+
+                "items": [
+                    {
+                        "imageUrl": "/kitchen-3.jpg",
+                        "altText": "kitchen",
+                        "linkUrl": "/contact"
+                    }
+                ]
+            }
+        },
+
+        {
+            "componentType": "list",
+            "attributes": {
+                "headline": "kitchen room remodeling, also known as home renovation, involves turning an existing space into a new space or making a large change to an existing space. It can include a variety of different types of projects, including but not limited to: redecorating the room, replacing old home appliances, or setting up a new room entirely.",
+                "imageUrl": "/kitchen-1.jpg",
+                "altText": "kitchen",
+                "border": false,
+                "linkUrl": "/contact",
+                "btnText": "Contact Us",
+                "modLayout": "article",
+                "textSize": "md",
+                "align": "left",
+                "reverse": false
+            }
+        },
+
+        {
+            "componentType": "carousel",
+            "attributes": {
+                "modLayout": "images",
+                "slideCount": 2,
+                "autoPlay": true,
+                "items": [
+                    {
+                        "imageUrl": "/kitchen-4.jpg",
+                        "altText": "kitchen"
+                    },
+                    {
+                        "imageUrl": "/kitchen-5.jpg",
+                        "altText": "kitchen"
+                    },
+                    {
+                        "imageUrl": "/kitchen-3.jpg",
+                        "altText": "kitchen"
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,77 @@
+{
+    "name": "Living Room",
+    "slug": "living-room",
+    "id": "2",
+
+    "modules": [
+        {
+            "componentType": "header",
+            "attributes": {
+                "headline": "Living Room",
+                "imageUrl": "/living-2.jpg",
+                "altText": "living",
+                "backgroundImageUrl": "/seamless-5178982.png",
+                "reverse": false,
+                "modLayout": "normal"
+            }
+        },
+        {
+            "componentType": "images",
+            "attributes": {
+                "modLayout": "1-hero",
+
+                "items": [
+                    {
+                        "imageUrl": "/living-3.jpg",
+                        "altText": "living",
+                        "linkUrl": "/contact"
+                    }
+                ]
+            }
+        },
+
+        {
+            "componentType": "list",
+            "attributes": {
+                "headline": "Create the ultimate living room",
+                "body": "Living room remodeling, also known as home renovation, involves turning an existing space into a new space or making a large change to an existing space. It can include a variety of different types of projects, including but not limited to: redecorating the room, replacing old home appliances, or setting up a new room entirely.",
+                "imageUrl": "/living-4.jpg",
+                "altText": "living",
+                "border": false,
+                "linkUrl": "/contact",
+                "btnText": "Contact Us",
+                "modLayout": "article",
+                "textSize": "md",
+                "align": "left",
+                "reverse": false
+            }
+        },
+
+        {
+            "componentType": "carousel",
+            "attributes": {
+                "modLayout": "images",
+                "slideCount": 2,
+                "autoPlay": true,
+                "items": [
+                    {
+                        "imageUrl": "/living-5.jpg",
+                        "altText": "living"
+                    },
+                    {
+                        "imageUrl": "/living-6.jpg",
+                        "altText": "living"
+                    },
+                    {
+                        "imageUrl": "/living-7.jpg",
+                        "altText": "living"
+                    },
+                    {
+                        "imageUrl": "/living-1.jpg",
+                        "altText": "living"
+                    }
+                ]
+            }
+        }
+    ]
+}

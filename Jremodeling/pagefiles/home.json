@@ -1,0 +1,105 @@
+{
+    "name": "Home",
+    "slug": "home",
+    "id": "0",
+
+    "modules": [
+        {
+            "componentType": "header",
+            "attributes": {
+                "headline": "Jremodeling",
+                "imageUrl": "/living-2.jpg",
+                "altText": "Living room",
+                "backgroundImageUrl": "/seamless-5178982.png",
+                "reverse": false,
+                "modLayout": "normal"
+            }
+        },
+
+        {
+            "componentType": "images",
+            "attributes": {
+                "gap": true,
+                "modLayout": "3-1/3",
+
+                "items": [
+                    {
+                        "imageUrl": "/living-4.jpg",
+                        "altText": "living room",
+                        "linkText": "Living Room",
+                        "linkUrl": "/living-room"
+                    },
+                    {
+                        "imageUrl": "/bathroom-2.jpg",
+                        "altText": "bathroom",
+                        "linkText": "Bathroom",
+                        "linkUrl": "/bathroom"
+                    },
+                    {
+                        "imageUrl": "/kitchen-1.jpg",
+                        "altText": "kitchen",
+                        "linkText": "Kitchen",
+                        "linkUrl": "/kitchen"
+                    }
+                ]
+            }
+        },
+        {
+            "componentType": "images",
+            "attributes": {
+                "modLayout": "1-hero",
+                "items": [
+                    {
+                        "imageUrl": "/bathroom-1.jpg",
+                        "altText": "Bathroom",
+                        "linkUrl": "/bathroom",
+                        "headline": "Remodel a bathroom today!"
+                    }
+                ]
+            }
+        },
+
+        {
+            "componentType": "list",
+            "attributes": {
+                "headline": "A history of good work",
+                "body": " Jremodeling is a home remodeling company founded in 2002 by Bill Gossard and operating out of Apex, North Carolina. They offer a unique line of services that includes home remodeling, custom kitchen and bath remodels, room remodeling and repairing, and home improvement projects for existing homes and new construction. ",
+                "imageUrl": "/living-5.jpg",
+                "altText": "Living room",
+                "border": false,
+                "modLayout": "card",
+                "textSize": "md",
+                "align": "left",
+                "reverse": false
+            }
+        },
+        {
+            "componentType": "list",
+            "attributes": {
+                "headline": "Interior Remodeling Experts",
+                "body": "Jremodeling is the branch of interior remodeling focusing on the design and decoration of the interiors of buildings. We can remodel bathrooms, living rooms, kitchens, and more.",
+                "imageUrl": "/bathroom-2.jpg",
+                "altText": "Bathroom",
+                "border": false,
+                "modLayout": "card",
+                "textSize": "md",
+                "align": "left",
+                "reverse": true
+            }
+        },
+        {
+            "componentType": "list",
+            "attributes": {
+                "headline": "Make it colorful",
+                "body": "Jremodeling is also known for their paint schemes and wall decals — they often decorate the walls of their customers' homes with these unique creations. The company has also created some extremely striking logos.",
+                "imageUrl": "/kitchen-3.jpg",
+                "altText": "Kitchen",
+                "border": false,
+                "modLayout": "card",
+                "textSize": "md",
+                "align": "left",
+                "reverse": false
+            }
+        }
+    ]
+}
