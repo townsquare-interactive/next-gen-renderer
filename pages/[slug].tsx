@@ -45,7 +45,6 @@ export const getStaticPaths = async () => {
             params: { slug: page.slug.toString() },
         }
     })
-    /*     const paths = [{ params: { id: '1' } }, { params: { id: '2' } }, { params: { id: '3' } }, { params: { id: '4' } }] */
 
     return {
         //props: { posts: data },
@@ -75,7 +74,7 @@ export const getStaticProps = async (context: Context) => {
 const Slug = (props: HomeProps) => {
     const { page, globalData } = props
 
-    console.log('vercel url', process.env.NEXT_PUBLIC_VERCEL_URL)
+    /* console.log('vercel url', process.env.NEXT_PUBLIC_VERCEL_URL) */
 
     /*  const { asPath } = useRouter()
     const origin = typeof window !== 'undefined' && window.location.origin ? window.location.origin : ''

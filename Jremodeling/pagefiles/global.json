@@ -25,25 +25,15 @@
                         "slug": "/kitchen",
                         "id": "3"
                     },
-                    {
-                        "name": "Blog",
-                        "slug": "/blog",
-                        "id": "4"
-                    },
-                    {
-                        "name": "Module Descriptions",
-                        "slug": "/module-descriptions",
-                        "id": "5"
-                    },
 
                     {
                         "name": "Contact",
                         "slug": "/contact",
-                        "id": "6"
+                        "id": "4"
                     }
                 ],
                 "navStyle": "layout1",
-                "borderNum": 5,
+                "borderNum": 4,
                 "navImage": "/living-1.jpg",
                 "altText:": "Living room"
             }
@@ -70,48 +60,32 @@
                 "pages": [
                     {
                         "name": "Home",
-                        "slug": "/",
+                        "slug": "/home",
                         "id": "0"
                     },
                     {
-                        "name": "Destinations",
-                        "slug": "/destinations",
+                        "name": "Remodeling",
+                        "slug": "/remodeling",
                         "id": "1"
                     },
                     {
-                        "name": "Media",
-                        "slug": "/media",
+                        "name": "Living Room",
+                        "slug": "/living-room",
                         "id": "2"
                     },
                     {
-                        "name": "Reviews",
-                        "slug": "/reviews",
+                        "name": "Kitchen",
+                        "slug": "/kitchen",
                         "id": "3"
-                    },
-                    {
-                        "name": "Blog",
-                        "slug": "/blog",
-                        "id": "4"
-                    },
-                    {
-                        "name": "Module Descriptions",
-                        "slug": "/module-descriptions",
-                        "id": "5"
                     },
 
                     {
                         "name": "Contact",
                         "slug": "/contact",
                         "id": "6"
-                    },
-
-                    {
-                        "name": "Other",
-                        "slug": "/",
-                        "id": "7"
                     }
                 ],
-                "borderNum": 6,
+                "borderNum": 4,
                 "addressData": {
                     "street": "4893 Townton Ave",
                     "cityState": "Apex, NC",

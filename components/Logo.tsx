@@ -3,9 +3,10 @@ import Link from 'next/dist/client/link'
 import cn from 'classnames'
 import Image from 'next/image'
 import ImageSize from 'image-size'
-import probe from 'probe-image-size'
-import { useEffect, useState } from 'react'
 import { LogoProps } from './types'
+//import { useEffect, useState } from 'react'
+
+//import probe from 'probe-image-size'
 
 /* const logo = '/images/company-logo.png'
 const size = probe(logo)
@@ -31,7 +32,6 @@ const Logo = (props: LogoProps) => {
                         <a>
                             {/*  <Image src={logoUrl} layout="fill" alt="logo" className={styles.image} objectFit="contain" objectPosition="left" /> */}
                             <Image src={logoUrl} width="522" height="156px" alt="logo" className={styles.image} objectFit="contain" objectPosition="left" />
-                            {/*  <Image src={logoUrl} layout="fill" className={styles.image} alt="logo" objectFit="contain" /> */}
                         </a>
                     </Link>
                 </div>

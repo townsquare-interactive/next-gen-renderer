@@ -8,7 +8,7 @@
             "componentType": "header",
             "attributes": {
                 "headline": "Testimonials",
-                "imageUrl": "/juan-test-012.jpg",
+                "imageUrl": "/hockey-2.jpg",
                 "altText": "Glowing tent under the Northern Lights",
                 "backgroundImageUrl": "/seamless-5178982.png",
                 "reverse": false,
@@ -30,19 +30,14 @@
                 "autoPlay": false,
                 "items": [
                     {
-                        "text": "I had the trip of a lifetime. Everything was very easy and stress free. Will defintely use this company again for my next vacation.",
+                        "text": "I love sports they are so fun",
 
                         "byline": "-Rupert Tolson"
                     },
                     {
-                        "text": "Their knowledge and experience will help you to truly immerse yourself in your destination, so that you can experience the best of what the place has to offer. ",
+                        "text": "I put my kid in a hockey league here and he really enjoys it. Definitely going to come back next season. ",
 
                         "byline": "-Jeff Grover"
-                    },
-                    {
-                        "text": "I am a lifelong traveler that loves to be on the adventurous side of things. I was able to plan my trip with expert suggestions and develop an iternary that was perfect. ",
-
-                        "byline": "-Mark Ilten"
                     }
                 ]
             }
@@ -55,19 +50,19 @@
                 "autoPlay": false,
                 "items": [
                     {
-                        "imageUrl": "/juan-test-010.jpg",
+                        "imageUrl": "/hockey-3.jpg",
                         "altText": "Small waterfalls and a mountain at sunset"
                     },
                     {
-                        "imageUrl": "/juan-test-001.jpg",
+                        "imageUrl": "/hockey-4.jpg",
                         "altText": "Landscape view of mountains in Wyoming"
                     },
                     {
-                        "imageUrl": "/juan-test-002.jpg",
+                        "imageUrl": "/football-2.jpg",
                         "altText": " Purple flowers at sunset"
                     },
                     {
-                        "imageUrl": "/juan-test-005.jpg",
+                        "imageUrl": "/football-3.jpg",
                         "altText": "Beach pier surrounded by clear blue water"
                     }
                 ]

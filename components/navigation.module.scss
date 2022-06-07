@@ -72,15 +72,15 @@
 
                 @include breakpoints.sm {
                     width: variables.$content-width;
+                    padding-top: 140px;
                 }
 
                 .navItems {
                     display: flex;
-                    //flex: 70 0 0;
                     justify-content: flex-start;
+                    align-self: flex-start;
                     padding: 10px;
                     flex-wrap: wrap;
-                    //max-width: 400px;
 
                     @include breakpoints.sm {
                         padding-left: 20px;
@@ -132,12 +132,6 @@
             .navItems {
                 flex: 50 0 0;
                 justify-content: center;
-
-                @include breakpoints.sm {
-                    flex: 50 0 0;
-                    /*                     padding-left: 40px;
-                    padding-right: 40px; */
-                }
             }
         }
 

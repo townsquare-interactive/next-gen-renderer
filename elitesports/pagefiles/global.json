@@ -30,11 +30,6 @@
                         "slug": "/blog",
                         "id": "4"
                     },
-                    {
-                        "name": "Module Descriptions",
-                        "slug": "/module-descriptions",
-                        "id": "5"
-                    },
 
                     {
                         "name": "Contact",
@@ -49,7 +44,7 @@
                     }
                 ],
                 "navStyle": "layout1",
-                "borderNum": 6,
+                "borderNum": 4,
                 "navImage": "/hockey-5.jpg",
                 "altText:": "Hockey"
             }
@@ -76,17 +71,17 @@
                 "pages": [
                     {
                         "name": "Home",
-                        "slug": "/",
+                        "slug": "/home",
                         "id": "0"
                     },
                     {
-                        "name": "Destinations",
-                        "slug": "/destinations",
+                        "name": "Hockey",
+                        "slug": "/hockey",
                         "id": "1"
                     },
                     {
-                        "name": "Media",
-                        "slug": "/media",
+                        "name": "Football",
+                        "slug": "/football",
                         "id": "2"
                     },
                     {
@@ -99,25 +94,20 @@
                         "slug": "/blog",
                         "id": "4"
                     },
-                    {
-                        "name": "Module Descriptions",
-                        "slug": "/module-descriptions",
-                        "id": "5"
-                    },
 
                     {
                         "name": "Contact",
                         "slug": "/contact",
-                        "id": "6"
+                        "id": "5"
                     },
 
                     {
                         "name": "Other",
                         "slug": "/",
-                        "id": "7"
+                        "id": "6"
                     }
                 ],
-                "borderNum": 6,
+                "borderNum": 4,
                 "addressData": {
                     "street": "1849 Greenyard Lane",
                     "cityState": "Burton, Kansas",
