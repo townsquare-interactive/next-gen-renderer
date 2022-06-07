@@ -24,6 +24,11 @@
             "name": "Contact",
             "slug": "contact",
             "id": "4"
+        },
+        {
+            "name": "Dannel",
+            "slug": "dannel",
+            "id": "5"
         }
     ],
     "home": "0"
