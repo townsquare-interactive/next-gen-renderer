@@ -1,0 +1,561 @@
+{
+    "name": "Module Descriptions",
+    "slug": "module-descriptions",
+    "id": "6",
+
+    "modules": [
+        {
+            "componentType": "label",
+            "attributes": {
+                "text": "Navigation Module Above",
+                "align": "center"
+            }
+        },
+        {
+            "componentType": "text",
+            "attributes": {
+                "text": "Renders logo module, navbar module, burger module. Selecting the burger toggle makes navbar module appear with nav elements inside. Options to place underline border on any nav item. Option for image to be placed inside of navbar."
+            }
+        },
+
+        {
+            "componentType": "label",
+            "attributes": {
+                "text": "Header Module",
+                "align": "center"
+            }
+        },
+        {
+            "componentType": "header",
+            "attributes": {
+                "headline": "My Website",
+                "imageUrl": "/juan-test-014.jpg",
+                "backgroundImageUrl": "/seamless-5178982.png",
+                "altText": "Soccer ball on field",
+                "reverse": false,
+                "modLayout": "normal"
+            }
+        },
+        {
+            "componentType": "text",
+            "attributes": {
+                "text": "The Header module is a banner that can have a large image, title, a background texture image, and multiple colors. All of these elements are optional. <ul><li>Two variations of mobile design (normal, alt-layout)</li><li>Background texture image is available, non texture image most likely will look unpleasant if uploaded in that spot</li> <li>If title,image,backgroundImage are not passed, two colored banner is presented</li></ul>"
+            }
+        },
+        {
+            "componentType": "header",
+            "attributes": {
+                "headline": "Reversed",
+                "imageUrl": "/juan-test-014.jpg",
+                "altText": "Soccer ball on field",
+                "reverse": true,
+                "modLayout": "normal"
+            }
+        },
+        {
+            "componentType": "text",
+            "attributes": {
+                "text": "The Label Module is a headline with larger bolded text<br><br><b>Options</b><ul> <li>Text size: sm, md, lg text</li> <li>Align: left, right, center</li> <li>Border or no border</li> <li>Gap spacing or no gap spacing</li> </ul>"
+            }
+        },
+        {
+            "componentType": "label",
+            "attributes": {
+                "text": "Label: With gap, no border",
+                "align": "left",
+                "gap": "true"
+            }
+        },
+        {
+            "componentType": "label",
+            "attributes": {
+                "text": "List Module",
+                "align": "center",
+                "gap": "false",
+                "border": "true"
+            }
+        },
+        {
+            "componentType": "list",
+            "attributes": {
+                "headline": "Play Anything",
+                "body": " EliteSports offers leagues for most every interest, whether it is volleyball, soccer, football, basketball, or hockey. We offer leagues for girls and boys of all ages, from youth league through the adult league and to the masters league.",
+                "imageUrl": "/juan-test-003.jpg",
+                "altText": "Soccer",
+                "border": true,
+                "linkUrl": "/contact",
+                "btnText": "Contact Us",
+                "modLayout": "article",
+                "textSize": "md",
+                "align": "left",
+                "reverse": false
+            }
+        },
+        {
+            "componentType": "text",
+            "attributes": {
+                "text": "<ul> <li>Module to show Headline, text, image, button (optional)</li> <li>If any element is not passed then it does not appear on page</li> <li>Link url must be passed for button to appear</li> <li>Varations on list visually presented below</li> </ul><b>Options</b> <ul> <li>Text size: sm, md, lg text</li> <li>Align: left, right, center</li> <li>Border or no border (adds background color and spacing)</li> <li>Layout: Card or Article</li> <li>Reverse: Reverses image/text to be on opposite sides</li> </ul><br><b>Layouts </b><br><u>Article Layout:</u> Shows larger image and text alongside each other (shown above)<br><u>Card Layout:</u> Narrower banner version, with color on sides<br> Option for reversing each item to be on different sides back to back"
+            }
+        },
+        {
+            "componentType": "list",
+            "attributes": {
+                "headline": "No border reversed",
+                "body": " Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+                "imageUrl": "/juan-test-003.jpg",
+                "altText": "Soccer",
+                "border": false,
+                "linkUrl": "/contact",
+                "btnText": "Contact Us",
+                "modLayout": "article",
+                "textSize": "md",
+                "align": "left",
+                "reverse": true
+            }
+        },
+        {
+            "componentType": "list",
+            "attributes": {
+                "headline": "Reversed Border",
+                "body": " Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "imageUrl": "/juan-test-003.jpg",
+                "altText": "Soccer",
+                "border": true,
+                "linkUrl": "/contact",
+                "btnText": "Contact Us",
+                "modLayout": "article",
+                "textSize": "md",
+                "align": "left",
+                "reverse": true
+            }
+        },
+
+        {
+            "componentType": "label",
+            "attributes": {
+                "text": "List Module: Card layout",
+                "gap": "true"
+            }
+        },
+        {
+            "componentType": "list",
+            "attributes": {
+                "headline": "Normal",
+                "body": " Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "imageUrl": "/juan-test-003.jpg",
+                "altText": "Soccer",
+                "border": false,
+                "linkUrl": "/contact",
+                "btnText": "Contact Us",
+                "modLayout": "card",
+                "textSize": "md",
+                "align": "left",
+                "reverse": false
+            }
+        },
+        {
+            "componentType": "list",
+            "attributes": {
+                "headline": "Reversed",
+                "body": " Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "imageUrl": "/juan-test-003.jpg",
+                "altText": "Soccer",
+                "border": false,
+                "linkUrl": "/contact",
+                "btnText": "Contact Us",
+                "modLayout": "card",
+                "textSize": "md",
+                "align": "left",
+                "reverse": true
+            }
+        },
+        {
+            "componentType": "list",
+            "attributes": {
+                "headline": "Back to normal",
+                "body": " Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+                "imageUrl": "/juan-test-003.jpg",
+                "altText": "Soccer",
+                "border": false,
+                "linkUrl": "/contact",
+                "btnText": "Contact Us",
+                "modLayout": "card",
+                "textSize": "md",
+                "align": "left",
+                "reverse": false
+            }
+        },
+        {
+            "componentType": "label",
+            "attributes": {
+                "text": "Images Module",
+                "gap": "false"
+            }
+        },
+
+        {
+            "componentType": "images",
+            "attributes": {
+                "gap": true,
+                "modLayout": "3-2/3",
+
+                "items": [
+                    {
+                        "imageUrl": "/juan-test-015.jpg",
+                        "altText": "Pond under the Northern Lights",
+                        "linkText": "Destinations",
+                        "linkUrl": "/destinations"
+                    },
+                    {
+                        "imageUrl": "/juan-test-016.jpg",
+                        "altText": "The Northern Lights in a snowy landscape",
+                        "linkText": "Media",
+                        "linkUrl": "/media"
+                    },
+                    {
+                        "imageUrl": "/juan-test-011.jpg",
+                        "altText": "Man camping under the Northern Lights",
+                        "linkText": "Reviews",
+                        "linkUrl": "/reviews"
+                    }
+                ]
+            }
+        },
+        {
+            "componentType": "text",
+            "attributes": {
+                "text": "<ul> <li>Portrays images in multiple grid formats</li> <li>Image can contain buttons, headlines, and descriptions</li> <li>Aspect ratio of images 4/3</li> <li>Description can be provided and slides up on top of the image on hover.</li> <li>If a linkUrl is provided, images are black and white until hovered on</li> </ul>"
+            }
+        },
+        {
+            "componentType": "text",
+            "attributes": {
+                "text": "<b>Options</b><br><ul> <li>Gap: Can have spacing gap or no spacing gap between photos</li> <li>Layout: Various layout options for different number of images included</li> <li>If headline is provided it can be used instead of link text </li> </ul>"
+            }
+        },
+        {
+            "componentType": "text",
+            "attributes": {
+                "text": "<b>Layouts</b> (Visual examples below)<br><ul> <li>3-1/3: Three images, each one takes up one third of element</li> <li>3-2/3: Three images, first image takes up two thirds of element</li> <li>2-1/2: Two images, each one takes up half of element</li> <li>2-2/3: Two images, first image takes up two thirds of element.</li> <li>1-full: One image that takes up full element</li> <li>1-hero: One image that takes up full element but aspect ratio of image is 16/9</li> <li>Four or more images: Images are displayed in rows of 3</li> </ul>"
+            }
+        },
+        {
+            "componentType": "images",
+            "attributes": {
+                "gap": true,
+                "modLayout": "3-1/3",
+
+                "items": [
+                    {
+                        "imageUrl": "/juan-test-015.jpg",
+                        "altText": "Pond under the Northern Lights",
+                        "linkText": "Destinations",
+                        "linkUrl": "/destinations"
+                    },
+                    {
+                        "imageUrl": "/juan-test-016.jpg",
+                        "altText": "The Northern Lights in a snowy landscape",
+                        "linkText": "Media",
+                        "linkUrl": "/media"
+                    },
+                    {
+                        "imageUrl": "/juan-test-011.jpg",
+                        "altText": "Man camping under the Northern Lights",
+                        "linkText": "Reviews",
+                        "linkUrl": "/reviews"
+                    }
+                ]
+            }
+        },
+        {
+            "componentType": "images",
+            "attributes": {
+                "gap": true,
+                "modLayout": "2-1/2",
+
+                "items": [
+                    {
+                        "imageUrl": "/juan-test-015.jpg",
+                        "altText": "Pond under the Northern Lights",
+                        "linkText": "Destinations",
+                        "linkUrl": "/destinations"
+                    },
+                    {
+                        "imageUrl": "/juan-test-016.jpg",
+                        "altText": "The Northern Lights in a snowy landscape",
+                        "linkText": "Media",
+                        "linkUrl": "/media"
+                    }
+                ]
+            }
+        },
+        {
+            "componentType": "images",
+            "attributes": {
+                "gap": true,
+                "modLayout": "2-2/3",
+
+                "items": [
+                    {
+                        "imageUrl": "/juan-test-015.jpg",
+                        "altText": "Pond under the Northern Lights",
+                        "linkText": "Destinations",
+                        "linkUrl": "/destinations"
+                    },
+                    {
+                        "imageUrl": "/juan-test-016.jpg",
+                        "altText": "The Northern Lights in a snowy landscape",
+                        "linkText": "Media",
+                        "linkUrl": "/media"
+                    }
+                ]
+            }
+        },
+        {
+            "componentType": "label",
+            "attributes": {
+                "text": "Text Module (Used below as description",
+                "gap": "false"
+            }
+        },
+
+        {
+            "componentType": "text",
+            "attributes": {
+                "text": "<ul> <li>This is the text module</li> <li>Text block on page</li> <li>Text data is parsed for HTML content allowing you to use tags</li> </ul><br><b>Options </b><br><ul> <li>Text size: sm, md, lg text</li> <li>Align: left, right, center</li> <li>Border or no border</li> <li>Gap spacing or no gap spacing</li> </ul>"
+            }
+        },
+
+        {
+            "componentType": "text",
+            "attributes": {
+                "text": "<ul> <li>This is the text module</li> <li>Text block on page</li> <li>Text data is parsed for HTML content allowing you to use tags</li> </ul><br><b>Options </b><br><ul> <li>Text size: sm, md, lg text</li> <li>Align: left, right, center</li> <li>Border or no border</li> <li>Gap spacing or no gap spacing</li> </ul>",
+                "align": "center",
+                "textSize": "lg"
+            }
+        },
+
+        {
+            "componentType": "text",
+            "attributes": {
+                "text": "<ul> <li>This is the text module</li> <li>Text block on page</li> <li>Text data is parsed for HTML content allowing you to use tags</li> </ul><br><b>Options </b><br><ul> <li>Text size: sm, md, lg text</li> <li>Align: left, right, center</li> <li>Border or no border</li> <li>Gap spacing or no gap spacing</li> </ul>",
+                "align": "right",
+                "border": true
+            }
+        },
+        {
+            "componentType": "label",
+            "attributes": {
+                "text": "Carousel Module:text"
+            }
+        },
+
+        {
+            "componentType": "carousel",
+            "attributes": {
+                "modLayout": "text",
+                "slideCount": 3,
+                "autoPlay": false,
+                "items": [
+                    {
+                        "text": "I had the trip of a lifetime. Everything was very easy and stress free. Will defintely use this company again for my next vacation.",
+
+                        "byline": "-Rupert Tolson"
+                    },
+                    {
+                        "text": "Their knowledge and experience will help you to truly immerse yourself in your destination, so that you can experience the best of what the place has to offer. ",
+
+                        "byline": "-Jeff Grover"
+                    },
+                    {
+                        "text": "I am a lifelong traveler that loves to be on the adventurous side of things. I was able to plan my trip with expert suggestions and develop an iternary that was perfect. ",
+
+                        "byline": "-Mark Ilten"
+                    }
+                ]
+            }
+        },
+        {
+            "componentType": "text",
+            "attributes": {
+                "text": "Utilizes Slick JS to create a sliding carousel of different elements <br><br><b>Text Layout</b><ul> <li>Shows text description as well as larger byline bolded underneath</li> <li>Next button now appears to change between slides</li> <li>Only one slide at a time available</li> </ul>",
+                "border": true
+            }
+        },
+        {
+            "componentType": "label",
+            "attributes": {
+                "text": "Carousel Module:images"
+            }
+        },
+        {
+            "componentType": "carousel",
+            "attributes": {
+                "modLayout": "images",
+                "slideCount": 3,
+                "autoPlay": false,
+                "items": [
+                    {
+                        "imageUrl": "/juan-test-010.jpg",
+                        "altText": "Small waterfalls and a mountain at sunset"
+                    },
+                    {
+                        "imageUrl": "/juan-test-001.jpg",
+                        "altText": "Landscape view of mountains in Wyoming"
+                    },
+                    {
+                        "imageUrl": "/juan-test-002.jpg",
+                        "altText": "Purple flowers at sunset"
+                    },
+                    {
+                        "imageUrl": "/juan-test-005.jpg",
+                        "altText": "Beach pier surrounded by clear blue water"
+                    }
+                ]
+            }
+        },
+        {
+            "componentType": "carousel",
+            "attributes": {
+                "modLayout": "images",
+                "slideCount": 2,
+                "autoPlay": true,
+                "items": [
+                    {
+                        "imageUrl": "/juan-test-010.jpg",
+                        "altText": "Small waterfalls and a mountain at sunset"
+                    },
+                    {
+                        "imageUrl": "/juan-test-001.jpg",
+                        "altText": "Landscape view of mountains in Wyoming"
+                    },
+                    {
+                        "imageUrl": "/juan-test-002.jpg",
+                        "altText": "Purple flowers at sunset"
+                    },
+                    {
+                        "imageUrl": "/juan-test-005.jpg",
+                        "altText": "Beach pier surrounded by clear blue water"
+                    }
+                ]
+            }
+        },
+        {
+            "componentType": "carousel",
+            "attributes": {
+                "modLayout": "images",
+                "slideCount": 1,
+                "autoPlay": true,
+                "items": [
+                    {
+                        "imageUrl": "/juan-test-010.jpg",
+                        "altText": "Small waterfalls and a mountain at sunset"
+                    },
+                    {
+                        "imageUrl": "/juan-test-001.jpg",
+                        "altText": "Landscape view of mountains in Wyoming"
+                    },
+                    {
+                        "imageUrl": "/juan-test-002.jpg",
+                        "altText": "Purple flowers at sunset"
+                    },
+                    {
+                        "imageUrl": "/juan-test-005.jpg",
+                        "altText": "Beach pier surrounded by clear blue water"
+                    }
+                ]
+            }
+        },
+        {
+            "componentType": "text",
+            "attributes": {
+                "text": "<b>Images Layout</b><ul> <li>Shows an image per slide</li> <li>Slidecount: Able to show up to 1, 2, or 3 slides at a time (if there are at least = image count to slides shown count)</li> <li>Arrows appear with site color on side</li> <li>Arrows appear over images on mobile</li> <li>Visual examples below (optional autoplay)</li> </ul>",
+                "border": true
+            }
+        },
+        {
+            "componentType": "label",
+            "attributes": {
+                "text": "video Module"
+            }
+        },
+        {
+            "componentType": "video",
+            "attributes": {
+                "modLayout": "ext",
+                "videoUrl": "https://youtu.be/iZZCst-1BWE"
+            }
+        },
+        {
+            "componentType": "video",
+            "attributes": {
+                "modLayout": "ext",
+                "videoUrl": "https://youtu.be/cTCgU4Vz0rE"
+            }
+        },
+        {
+            "componentType": "text",
+            "attributes": {
+                "text": "<ul><li>Utilizes React-Player to show video from local file or external site</li> <li> Options for ext video (youtube or vimeo), or local video file</li> <li> External Videos: Automatically loads video template image as placeholder, full video then loads on click. </li></ul>",
+                "border": true
+            }
+        },
+        {
+            "componentType": "label",
+            "attributes": {
+                "text": "Grid Module"
+            }
+        },
+        {
+            "componentType": "grid",
+            "attributes": {
+                "items": [
+                    {
+                        "body": " Explore the large and little cities throughout Europe",
+                        "imageUrl": "/juan-test-009.jpg",
+                        "altText": "Colorful houses on the side of a river",
+                        "textSize": "md",
+                        "align": "left",
+                        "border": false
+                    },
+                    {
+                        "body": "Go remote with beautiful scenery and outdoor adventures. ",
+                        "imageUrl": "/juan-test-008.jpg",
+                        "altText": "Small house surrounded by snowy mountains",
+                        "textSize": "md",
+                        "align": "left",
+                        "border": false
+                    },
+                    {
+                        "body": "Sit back and have a drink with an ocean view.",
+                        "imageUrl": "/juan-test-006.jpg",
+                        "altText": "Palm trees on the beach",
+                        "textSize": "md",
+                        "align": "left",
+                        "border": false
+                    }
+                ]
+            }
+        },
+        {
+            "componentType": "text",
+            "attributes": {
+                "text": "Row of three blocks with options for images, text, headline, button <br><br> <b>Layout Options</b> <ul> <li>Text size: sm, md, lg text</li> <li>Align: left, right, center</li> <li>Border (true or false): shows background color and spacing around content.</li> </ul>",
+                "border": true
+            }
+        },
+        {
+            "componentType": "label",
+            "attributes": {
+                "text": "Footer Module"
+            }
+        },
+        {
+            "componentType": "text",
+            "attributes": {
+                "text": "<ul> <li>Three rows of content, gradient background </li> <li>Content: Company logo, social links, phone number, website information,address info</li> <li>Calls Nav component to show nav links</li> </ul>",
+                "border": true
+            }
+        }
+    ]
+}

@@ -7,7 +7,7 @@
         {
             "componentType": "header",
             "attributes": {
-                "headline": "Elitesports",
+                "headline": "Elitesports Preview Page",
                 "imageUrl": "/soccer-3.jpg",
                 "altText": "Soccer ball on field",
                 "reverse": true,
@@ -23,7 +23,7 @@
                         "imageUrl": "/football-1.jpg",
                         "altText": "Football helmet",
                         "linkUrl": "/football",
-                        "headline": "Join a sports leage today!"
+                        "headline": "Maybe join a sports leage??"
                     }
                 ]
             }

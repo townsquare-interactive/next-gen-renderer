@@ -1,0 +1,50 @@
+{
+    "name": "football",
+    "slug": "football",
+    "id": "2",
+
+    "modules": [
+        {
+            "componentType": "images",
+            "attributes": {
+                "modLayout": "1-hero",
+
+                "items": [
+                    {
+                        "imageUrl": "/football-3.jpg",
+                        "altText": "football",
+                        "linkUrl": "/contact",
+                        "headline": "This is a preview page"
+                    }
+                ]
+            }
+        },
+
+        {
+            "componentType": "carousel",
+            "attributes": {
+                "modLayout": "images",
+                "slideCount": 3,
+                "autoPlay": false,
+                "items": [
+                    {
+                        "imageUrl": "/football-5.jpg",
+                        "altText": "football"
+                    },
+                    {
+                        "imageUrl": "/football-6.jpg",
+                        "altText": "football"
+                    },
+                    {
+                        "imageUrl": "/football-7.jpg",
+                        "altText": "football"
+                    },
+                    {
+                        "imageUrl": "/football-8.jpg",
+                        "altText": "football"
+                    }
+                ]
+            }
+        }
+    ]
+}

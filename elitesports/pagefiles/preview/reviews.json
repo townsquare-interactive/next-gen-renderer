@@ -1,0 +1,72 @@
+{
+    "name": "Reviews",
+    "slug": "reviews",
+    "id": "3",
+
+    "modules": [
+        {
+            "componentType": "header",
+            "attributes": {
+                "headline": "Testimonials",
+                "imageUrl": "/hockey-2.jpg",
+                "altText": "Glowing tent under the Northern Lights",
+                "backgroundImageUrl": "/seamless-5178982.png",
+                "reverse": false,
+                "modLayout": "normal"
+            }
+        },
+
+        {
+            "componentType": "label",
+            "attributes": {
+                "text": "Quotes"
+            }
+        },
+        {
+            "componentType": "carousel",
+            "attributes": {
+                "modLayout": "text",
+                "slideCount": 3,
+                "autoPlay": false,
+                "items": [
+                    {
+                        "text": "I love sports they are so fun",
+
+                        "byline": "-Rupert Tolson"
+                    },
+                    {
+                        "text": "I put my kid in a hockey league here and he really enjoys it. Definitely going to come back next season. ",
+
+                        "byline": "-Jeff Grover"
+                    }
+                ]
+            }
+        },
+        {
+            "componentType": "carousel",
+            "attributes": {
+                "modLayout": "images",
+                "slideCount": 3,
+                "autoPlay": false,
+                "items": [
+                    {
+                        "imageUrl": "/hockey-3.jpg",
+                        "altText": "Small waterfalls and a mountain at sunset"
+                    },
+                    {
+                        "imageUrl": "/hockey-4.jpg",
+                        "altText": "Landscape view of mountains in Wyoming"
+                    },
+                    {
+                        "imageUrl": "/football-2.jpg",
+                        "altText": " Purple flowers at sunset"
+                    },
+                    {
+                        "imageUrl": "/football-3.jpg",
+                        "altText": "Beach pier surrounded by clear blue water"
+                    }
+                ]
+            }
+        }
+    ]
+}

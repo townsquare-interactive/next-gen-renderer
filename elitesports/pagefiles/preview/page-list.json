@@ -6,13 +6,13 @@
             "id": "0"
         },
         {
-            "name": "Destinations",
-            "slug": "destinations",
+            "name": "Hockey",
+            "slug": "hockey",
             "id": "1"
         },
         {
-            "name": "Media",
-            "slug": "media",
+            "name": "Football",
+            "slug": "football",
             "id": "2"
         },
         {
@@ -24,16 +24,6 @@
             "name": "Contact",
             "slug": "contact",
             "id": "4"
-        },
-        {
-            "name": "Dannel",
-            "slug": "dannel",
-            "id": "5"
-        },
-        {
-            "name": "Module Descriptions",
-            "slug": "module-descriptions",
-            "id": "6"
         }
     ],
     "home": "0"
