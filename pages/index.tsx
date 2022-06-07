@@ -36,6 +36,8 @@ export const getStaticProps = async (context: Context) => {
 const Home = (props: HomeProps) => {
     const { page, globalData } = props
 
+    console.log(process.env.NEXT_PUBLIC_BASE_URL)
+
     return (
         <div>
             <Head>
