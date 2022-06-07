@@ -1,6 +1,6 @@
 export function domain() {
-    let domain = encodeURI(process.env.NEXT_PUBLIC_BASE_URL + '')
-    return domain ? 'localhost:3000' : domain
+    let domain = process.env.NEXT_PUBLIC_BASE_URL
+    return domain ? 'localhost:3000' : encodeURI(domain + '')
 }
 //Adds current domain name in amazon for image urls
 export function domainImage(url: string) {
