@@ -10,8 +10,7 @@
                 "headline": "Elitesports",
                 "imageUrl": "/soccer-3.jpg",
                 "altText": "Soccer ball on field",
-                "backgroundImageUrl": "/seamless-5178982.png",
-                "reverse": false,
+                "reverse": true,
                 "modLayout": "normal"
             }
         },

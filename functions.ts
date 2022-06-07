@@ -1,8 +1,10 @@
-const domain = encodeURI(process.env.NEXT_PUBLIC_BASE_URL + '')
-
+export function domain() {
+    let domain = encodeURI(process.env.NEXT_PUBLIC_BASE_URL + '')
+    return domain ? 'localhost:3000' : domain
+}
 //Adds current domain name in amazon for image urls
 export function domainImage(url: string) {
-    return 'https://townsquareinteractive.s3.amazonaws.com/' + domain + '/Assets' + url
+    return 'https://townsquareinteractive.s3.amazonaws.com/' + domain() + '/Assets' + url
 }
 
 //Capitalize first letter of word

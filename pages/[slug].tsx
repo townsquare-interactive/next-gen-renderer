@@ -10,14 +10,14 @@ import data from '../components/moduleData'
 import { useState } from 'react'
 import { Renderer } from '../components/Renderer'
 import { useRouter } from 'next/router'
-import { domainImage } from '../functions'
+import { domainImage, domain } from '../functions'
 
 //const domain = encodeURI('localhost:3000')
 //const domainFirst = process.env.NEXT_PUBLIC_BASE_URL
 //const domain = encodeURI(domainFirst + ':3000')
 
-const domain = encodeURI(process.env.NEXT_PUBLIC_BASE_URL + '')
-console.log(process.env.NEXT_PUBLIC_BASE_URL)
+/* const domain = encodeURI(process.env.NEXT_PUBLIC_BASE_URL + '')
+console.log(process.env.NEXT_PUBLIC_BASE_URL) */
 
 //const domain = domainFirst
 
@@ -37,7 +37,7 @@ console.log(process.env.NEXT_PUBLIC_BASE_URL)
 //runs at build time just like static props
 
 export const getStaticPaths = async () => {
-    const res = await fetch('https://townsquareinteractive.s3.amazonaws.com/' + domain + '/pages/page-list.json')
+    const res = await fetch('https://townsquareinteractive.s3.amazonaws.com/' + domain() + '/pages/page-list.json')
     const data = await res.json()
 
     const paths = data.pages.map((page: PageListProps) => {
@@ -56,8 +56,8 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context: Context) => {
     const slug = context.params.slug
     //grabs 1 item each time
-    const resPage = await fetch('https://townsquareinteractive.s3.amazonaws.com/' + domain + '/pages/' + slug + '.json')
-    const resGlobal = await fetch('https://townsquareinteractive.s3.amazonaws.com/' + domain + '/global.json')
+    const resPage = await fetch('https://townsquareinteractive.s3.amazonaws.com/' + domain() + '/pages/' + slug + '.json')
+    const resGlobal = await fetch('https://townsquareinteractive.s3.amazonaws.com/' + domain() + '/global.json')
 
     const page = await resPage.json()
     const globalData = await resGlobal.json()

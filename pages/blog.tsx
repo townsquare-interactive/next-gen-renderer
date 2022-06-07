@@ -5,6 +5,8 @@ import styles from '../styles/blog.module.scss'
 import List from '../components/List'
 import { GetStaticProps } from 'next'
 import { postData, posts } from '../components/types'
+import globalD from '../components/global.json'
+import Layout from '../components/Layout'
 
 //runs at build time
 export const getStaticProps: GetStaticProps = async () => {
@@ -18,19 +20,6 @@ export const getStaticProps: GetStaticProps = async () => {
     }
 }
 
-/* interface postData {
-    userId: number
-    id: number
-    title: string
-    body: string
-}
-
-interface posts {
-    data: postData[]
-    posts: postData[]
-    //posts:postData,
-} */
-
 const Blog = (posts: posts) => {
     //console.log('data', data)
 
@@ -39,28 +28,23 @@ const Blog = (posts: posts) => {
     return (
         <div className={styles.root}>
             <Head>
-                <title>Blog Page</title>
+                <title>Blog</title>
                 <meta property="og:title" content="My page title" key="title" />
             </Head>
 
-            <div className={styles.wrapper}>
-                <h1 className={styles.text}>Blog Page</h1>
-            </div>
+            <Layout moduleData={globalD}>
+                <div className={styles.wrapper}>
+                    <h1 className={styles.text}>Blog Page</h1>
+                </div>
 
-            {firstPosts.map((post: postData) => (
-                <Link href={`/blogs/${post.id}`} key={post.id}>
-                    <a>
-                        <List headline={post.title} body={post.body} border={true} />
-                    </a>
-                </Link>
-            ))}
-
-            <List
-                headline="List Image test"
-                body="Adding an image to the component, no border prop"
-                imageUrl="https://images.pexels.com/photos/10914326/pexels-photo-10914326.jpeg"
-            />
-            <List headline="Intro Article" body="This is the first article on the page" border={false} />
+                {firstPosts.map((post: postData) => (
+                    <Link href={`/blogs/${post.id}`} key={post.id}>
+                        <a>
+                            <List headline={post.title} body={post.body} border={true} />
+                        </a>
+                    </Link>
+                ))}
+            </Layout>
         </div>
     )
 }

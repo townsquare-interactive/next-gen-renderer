@@ -33,7 +33,7 @@ import Carousel from '../components/Carousel'
 import Layout from '../components/Layout'
 import Footer from '../components/Footer'
 import data from '../components/moduleData'
-import globalD from '../global.json'
+import globalD from '../components/global.json'
 import Video from '../components/Video'
 import { useState } from 'react'
 

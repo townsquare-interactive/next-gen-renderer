@@ -7,15 +7,17 @@ import { HomeProps, PageListProps, Context } from '../components/types'
 import { GetStaticProps } from 'next'
 import Layout from '../components/Layout'
 import { Renderer } from '../components/Renderer'
+import { domain as getDomain } from '../functions'
 
 //runs at build time just like static props
 
 //const domain = encodeURI('localhost:3000')
-const domain = encodeURI(process.env.NEXT_PUBLIC_BASE_URL + '')
-console.log('The URL of this page is: ' + domain)
+/* const domain = encodeURI(process.env.NEXT_PUBLIC_BASE_URL + '')*/
 
 export const getStaticProps = async (context: Context) => {
     //grabs 1 item each time
+    const domain = getDomain()
+    console.log('The URL of this page is: ' + domain)
     const resPage = await fetch('https://townsquareinteractive.s3.amazonaws.com/' + domain + '/pages/home.json')
     const resGlobal = await fetch('https://townsquareinteractive.s3.amazonaws.com/' + domain + '/global.json')
 
