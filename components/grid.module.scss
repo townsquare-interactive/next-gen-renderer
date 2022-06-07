@@ -23,13 +23,18 @@
         }
 
         .block {
-            flex-basis: 28%;
             flex-grow: 1;
             box-sizing: border-box;
             padding: 0 variables.$gap;
+            width: 100%;
 
             @include breakpoints.sm {
                 padding: 0;
+            }
+
+            @include breakpoints.md {
+                padding: 0;
+                flex-basis: 28%;
             }
 
             .imageTile {
