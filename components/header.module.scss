@@ -9,6 +9,7 @@ $sm-block-max: (variables.$max-main-width * 0.25);
 
 .root {
     @include utils.root;
+    border: 30px solid red;
 
     .wrapper {
         display: flex;
