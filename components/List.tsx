@@ -79,7 +79,7 @@ const Article = (props: ListProps) => {
                                     <h3 className={styles.text}>{headline}</h3>
                                 </div>
                                 <div className={styles.textBlock}>
-                                    <p className={styles.text}>{Parser(body)}</p>
+                                    <div className={styles.text}>{Parser(body)}</div>
                                     {linkUrl && btnText && (
                                         <div className={styles.cta_btn}>
                                             <a href={linkUrl}>{btnText}</a>
@@ -89,7 +89,7 @@ const Article = (props: ListProps) => {
                             </div>
                         ) : (
                             <div className={styles.textBlock}>
-                                <p className={styles.text}>{Parser(body)}</p>
+                                <div className={styles.text}>{Parser(body)}</div>
                                 {linkUrl && btnText && (
                                     <div className={styles.cta_btn}>
                                         <a href={linkUrl}>{btnText}</a>

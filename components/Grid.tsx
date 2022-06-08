@@ -45,7 +45,7 @@ const GridBlock = (props: GridData) => {
             <div className={styles.textBlock}>
                 {headline && <h3 className={styles.title}>{headline}</h3>}
 
-                <p className={styles.text}>{Parser(body)}</p>
+                <div className={styles.text}>{Parser(body)}</div>
 
                 {linkUrl && btnText && (
                     <div className={styles.cta_btn}>
