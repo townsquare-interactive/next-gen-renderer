@@ -55,6 +55,8 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context: Context) => {
     const slug = context.params.slug
+
+    console.log('curernt env variable', process.env.NEXT_PUBLIC_BASE_URL)
     //grabs 1 item each time
     const resPage = await fetch('https://townsquareinteractive.s3.amazonaws.com/' + domain() + '/pages/' + slug + '.json')
     const resGlobal = await fetch('https://townsquareinteractive.s3.amazonaws.com/' + domain() + '/global.json')
