@@ -34,6 +34,11 @@
             "name": "Taco",
             "slug": "taco",
             "id": "6"
+        },
+        {
+            "name": "Swimming",
+            "slug": "swimming",
+            "id": "7"
         }
     ],
     "home": "0"
