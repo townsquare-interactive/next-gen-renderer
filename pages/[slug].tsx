@@ -12,30 +12,7 @@ import { Renderer } from '../components/Renderer'
 import { useRouter } from 'next/router'
 import { domainImage, domain } from '../functions'
 
-//const domain = encodeURI('localhost:3000')
-//const domainFirst = process.env.NEXT_PUBLIC_BASE_URL
-//const domain = encodeURI(domainFirst + ':3000')
-
-/* const domain = encodeURI(process.env.NEXT_PUBLIC_BASE_URL + '')
-console.log(process.env.NEXT_PUBLIC_BASE_URL) */
-
-//const domain = domainFirst
-
-//const domainFirst = process.env.NEXT_PUBLIC_HOST1
-
-//console.log(`('first grab', ${process.env.NEXT_PUBLIC_HOST1}`)
-//console.log('d2', domain2)
-//console.log(process.env['HOST'])
-//console.log(`${process.env.DB_HOST}`)
-
-//console.log('The URL of this page isss: ' + global.location.hostname)
-
-/* if (typeof window !== 'undefined') {
-    const domain = window.location.hostname
-} */
-
 //runs at build time just like static props
-
 export const getStaticPaths = async () => {
     const res = await fetch('https://townsquareinteractive.s3.amazonaws.com/' + domain() + '/pages/page-list.json')
     const data = await res.json()
