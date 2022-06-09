@@ -42,7 +42,7 @@ export const getStaticPaths = async () => {
     return {
         //props: { posts: data },
         paths,
-        fallback: true,
+        fallback: 'blocking',
     }
 }
 
