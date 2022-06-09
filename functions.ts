@@ -1,6 +1,6 @@
 export function domain() {
     let domain = process.env.NEXT_PUBLIC_BASE_URL
-    let env = process.env.NEXT_PUBLIC_URL_ENV
+    let env = console.log(process.env.NEXT_PUBLIC_URL_ENV)
 
     //let domain = process.env.NEXT_PUBLIC_BASE_URL
     if (process.env.NEXT_PUBLIC_URL_ENV === '1') {
@@ -9,7 +9,7 @@ export function domain() {
         return encodeURI(domain + '/preview')
     } else {
         console.log('didnt work')
-        return 'jremodeling.com/live'
+        return 'travel365.com/live'
     }
 
     // return process.env.NEXT_PUBLIC_BASE_URL ? encodeURI(domain + '') : 'travel365.com/preview'
