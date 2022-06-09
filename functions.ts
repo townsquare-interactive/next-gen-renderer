@@ -1,6 +1,6 @@
 export function domain() {
     let domain = process.env.NEXT_PUBLIC_BASE_URL
-    let env = console.log(process.env.NEXT_PUBLIC_URL_ENV)
+    let env = process.env.NEXT_PUBLIC_URL_ENV
 
     //let domain = process.env.NEXT_PUBLIC_BASE_URL
     if (process.env.NEXT_PUBLIC_URL_ENV === '1') {
@@ -8,7 +8,7 @@ export function domain() {
     } else if (process.env.NEXT_PUBLIC_URL_ENV === '0') {
         return encodeURI(domain + '/preview')
     } else {
-        console.log('didnt work')
+        // console.log('didnt work')
         return 'travel365.com/live'
     }
 

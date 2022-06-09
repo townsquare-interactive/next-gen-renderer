@@ -28,6 +28,9 @@ import { domainImage, domain } from '../functions'
     }
   } */
 
+//elitesports.com/live
+//elitesports.com/preview
+
 //runs at build time just like static props
 export const getStaticPaths = async () => {
     const res = await fetch('https://townsquareinteractive.s3.amazonaws.com/' + domain() + '/pages/page-list.json')
@@ -66,6 +69,8 @@ export const getStaticProps = async (context: Context) => {
 
 const Slug = (props: HomeProps) => {
     const { page, globalData } = props
+
+    console.log('code', encodeURI('%0A'))
 
     /* console.log('vercel url', process.env.NEXT_PUBLIC_VERCEL_URL) */
 
