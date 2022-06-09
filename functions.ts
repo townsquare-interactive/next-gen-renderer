@@ -1,11 +1,11 @@
 export function domain() {
-    let domain = process.env.BASE_URL
-    let env = process.env.URL_ENV
+    let domain = process.env.NEXT_PUBLIC_BASE_URL
+    let env = process.env.NEXT_PUBLIC_URL_ENV
 
     //let domain = process.env.NEXT_PUBLIC_BASE_URL
-    if (process.env.URL_ENV === '1') {
+    if (process.env.NEXT_PUBLIC_URL_ENV === '1') {
         return encodeURI(domain + '/live')
-    } else if (process.env.URL_ENV === '0') {
+    } else if (process.env.NEXT_PUBLIC_URL_ENV === '0') {
         return encodeURI(domain + '/preview')
     } else {
         console.log('didnt work')
