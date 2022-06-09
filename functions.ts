@@ -1,6 +1,14 @@
 export function domain() {
-    let domain = process.env.NEXT_PUBLIC_BASE_URL
-    return process.env.NEXT_PUBLIC_BASE_URL ? encodeURI(domain + '') : 'elitesports.com/preview'
+    let domain = process.env.BASE_URL
+    //let domain = process.env.NEXT_PUBLIC_BASE_URL
+    if (process.env.BASE_URL == '1') {
+        return encodeURI(domain + '/live')
+    } else if (process.env.BASE_URL == '2') {
+        return encodeURI(domain + '/preview')
+    } else {
+        return 'jremodeling.com/live'
+    }
+
     // return process.env.NEXT_PUBLIC_BASE_URL ? encodeURI(domain + '') : 'travel365.com/preview'
     //return process.env.NEXT_PUBLIC_BASE_URL ? encodeURI(domain + '') : 'jremodeling.com:3000'
 }

@@ -7,7 +7,7 @@
         {
             "componentType": "header",
             "attributes": {
-                "headline": "Josh New Test",
+                "headline": "New Test",
                 "imageUrl": "/hockey-2.jpg",
                 "altText": "Hockey",
                 "backgroundImageUrl": "/seamless-5178982.png",
