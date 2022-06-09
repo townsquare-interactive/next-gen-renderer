@@ -1,9 +1,10 @@
 export function domain() {
     let domain = process.env.BASE_URL
+    let env = process.env.URL_ENV
     //let domain = process.env.NEXT_PUBLIC_BASE_URL
-    if (process.env.BASE_URL == '1') {
+    if (env == '1') {
         return encodeURI(domain + '/live')
-    } else if (process.env.BASE_URL == '2') {
+    } else if (env == '2') {
         return encodeURI(domain + '/preview')
     } else {
         return 'jremodeling.com/live'
