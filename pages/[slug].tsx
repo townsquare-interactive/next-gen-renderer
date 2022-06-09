@@ -12,6 +12,22 @@ import { Renderer } from '../components/Renderer'
 import { useRouter } from 'next/router'
 import { domainImage, domain } from '../functions'
 
+/* export default async function handler(req, res) {
+    // Check for secret to confirm this is a valid request
+    if (req.query.secret !== process.env.MY_SECRET_TOKEN) {
+      return res.status(401).json({ message: 'Invalid token' })
+    }
+  
+    try {
+      await res.unstable_revalidate('/path-to-revalidate')
+      return res.json({ revalidated: true })
+    } catch (err) {
+      // If there was an error, Next.js will continue
+      // to show the last successfully generated page
+      return res.status(500).send('Error revalidating')
+    }
+  } */
+
 //runs at build time just like static props
 export const getStaticPaths = async () => {
     const res = await fetch('https://townsquareinteractive.s3.amazonaws.com/' + domain() + '/pages/page-list.json')
@@ -26,7 +42,7 @@ export const getStaticPaths = async () => {
     return {
         //props: { posts: data },
         paths,
-        fallback: false,
+        fallback: true,
     }
 }
 

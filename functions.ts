@@ -1,7 +1,7 @@
 export function domain() {
     let domain = process.env.NEXT_PUBLIC_BASE_URL
-    // return process.env.NEXT_PUBLIC_BASE_URL ? encodeURI(domain + '') : 'elitesports.com:3000'
-    return process.env.NEXT_PUBLIC_BASE_URL ? encodeURI(domain + '') : 'travel365.com/preview'
+    return process.env.NEXT_PUBLIC_BASE_URL ? encodeURI(domain + '') : 'elitesports.com/preview'
+    // return process.env.NEXT_PUBLIC_BASE_URL ? encodeURI(domain + '') : 'travel365.com/preview'
     //return process.env.NEXT_PUBLIC_BASE_URL ? encodeURI(domain + '') : 'jremodeling.com:3000'
 }
 //Adds current domain name in amazon for image urls
