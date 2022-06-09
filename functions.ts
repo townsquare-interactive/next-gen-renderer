@@ -4,7 +4,7 @@ export function domain() {
     //let domain = process.env.NEXT_PUBLIC_BASE_URL
     if (env == '1') {
         return encodeURI(domain + '/live')
-    } else if (env == '2') {
+    } else if (env == '0') {
         return encodeURI(domain + '/preview')
     } else {
         return 'jremodeling.com/live'
