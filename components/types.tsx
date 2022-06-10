@@ -229,6 +229,13 @@ export interface NavBarProps {
     altText?: string
 }
 
+export interface SeoData {
+    title: string
+    description: string
+    favicon: string
+    ogImage: string
+}
+
 export interface ModuleData {
     logoUrl?: string
     imagesData?: ImagesProps
@@ -243,6 +250,7 @@ export interface ModuleData {
     gridData?: GridProps
     modules?: ImagesProps | ListProps | HeaderProps | LabelProps | TextData | CarouselProps | FooterProps | NavProps | VideoProps | GridProps
     name?: string
+    seo: SeoData
 }
 
 /*-----------------------------End of Components-------------*/
