@@ -25,6 +25,7 @@ module.exports = {
             'images.pexels.com',
             'townsquareinteractivetest.s3.amazonaws.com',
             'townsquareinteractive.s3.amazonaws.com',
+            'townsquareinteractive2.s3.amazonaws.com',
         ],
     },
 }
