@@ -93,16 +93,19 @@ const Slug = (props: HomeProps) => {
 
     return (
         <div>
-            <Head>
-                <title>{page.seo.title || 'title'}</title>
-                <meta property="og:title" content={page.seo.title || 'title'} key="title" />
-                <meta name="description" content={page.seo.description || 'description'} />
-                <meta property="og:image" content={page.seo.ogImage || ''} />
-                <meta property="og:image:type" content="image/jpg" />
-                <meta property="og:image:width" content="1024" />
-                <meta property="og:image:height" content="1024" />
-                <link rel="shortcut icon" href={page.seo.favicon || ''} />
-            </Head>
+            {page.seo && (
+                <Head>
+                    <title>{page.seo.title || 'title'}</title>
+                    <meta property="og:title" content={page.seo.title || 'title'} key="title" />
+                    <meta name="description" content={page.seo.description || 'description'} />
+                    <meta property="og:image" content={page.seo.ogImage || ''} />
+                    <meta property="og:image:type" content="image/jpg" />
+                    <meta property="og:image:width" content="1024" />
+                    <meta property="og:image:height" content="1024" />
+                    <link rel="shortcut icon" href={page.seo.favicon || ''} />
+                </Head>
+            )}
+
             <Layout moduleData={globalData}>
                 <Renderer config={page.modules} />
             </Layout>

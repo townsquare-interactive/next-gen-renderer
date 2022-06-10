@@ -250,7 +250,7 @@ export interface ModuleData {
     gridData?: GridProps
     modules?: ImagesProps | ListProps | HeaderProps | LabelProps | TextData | CarouselProps | FooterProps | NavProps | VideoProps | GridProps
     name?: string
-    seo: SeoData
+    seo?: SeoData
 }
 
 /*-----------------------------End of Components-------------*/
