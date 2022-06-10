@@ -9,7 +9,7 @@ $sm-block-max: (variables.$max-main-width * 0.25);
 
 .root {
     @include utils.root;
-    /*used for testing |  border-bottom: 30px solid variables.$main-color; */
+    /*used for testing |  border-bottom: 30px solid variables.$main-color; test deploy limit */
 
     .wrapper {
         display: flex;
