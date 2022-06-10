@@ -10,7 +10,7 @@ import data from '../components/moduleData'
 import { useState } from 'react'
 import { Renderer } from '../components/Renderer'
 import { useRouter } from 'next/router'
-import { domainImage, domain } from '../functions'
+import { domainImage, getDomain } from '../functions'
 
 /* export default async function handler(req, res) {
     // Check for secret to confirm this is a valid request
@@ -33,7 +33,7 @@ import { domainImage, domain } from '../functions'
 
 //runs at build time just like static props
 export const getStaticPaths = async () => {
-    const res = await fetch('https://townsquareinteractive.s3.amazonaws.com/' + domain() + '/pages/page-list.json')
+    const res = await fetch(getDomain() + '/pages/page-list.json')
     const data = await res.json()
 
     const paths = data.pages.map((page: PageListProps) => {
@@ -52,8 +52,8 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context: Context) => {
     const slug = context.params.slug
 
-    const resPage = await fetch('https://townsquareinteractive.s3.amazonaws.com/' + domain() + '/pages/' + slug + '.json')
-    const resGlobal = await fetch('https://townsquareinteractive.s3.amazonaws.com/' + domain() + '/global.json')
+    const resPage = await fetch(getDomain() + '/pages/' + slug + '.json')
+    const resGlobal = await fetch(getDomain() + '/global.json')
 
     const page = await resPage.json()
     const globalData = await resGlobal.json()

@@ -1,7 +1,7 @@
-export function domain() {
-    let domain = process.env.NEXT_PUBLIC_BASE_URL
+export function getDomain() {
+    let domain = 'https://townsquareinteractive.s3.amazonaws.com/' + process.env.NEXT_PUBLIC_BASE_URL
     let env = process.env.NEXT_PUBLIC_URL_ENV
-
+    //test
     //let domain = process.env.NEXT_PUBLIC_BASE_URL
     if (process.env.NEXT_PUBLIC_URL_ENV === '1') {
         return encodeURI(domain + '/live')
@@ -17,7 +17,7 @@ export function domain() {
 }
 //Adds current domain name in amazon for image urls
 export function domainImage(url: string) {
-    return 'https://townsquareinteractive.s3.amazonaws.com/' + domain() + '/Assets' + url
+    return getDomain() + '/Assets' + url
 }
 
 //Capitalize first letter of word
