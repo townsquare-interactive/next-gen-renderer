@@ -9,7 +9,7 @@ export function getDomain() {
         return encodeURI('https://townsquareinteractive2.s3.amazonaws.com/' + domain + '/preview')
     } else {
         // console.log('didnt work')
-        return 'travel365.com/live'
+        return 'https://townsquareinteractive2.s3.amazonaws.com/jremodeling.com/live'
     }
 
     // return process.env.NEXT_PUBLIC_BASE_URL ? encodeURI(domain + '') : 'travel365.com/preview'
