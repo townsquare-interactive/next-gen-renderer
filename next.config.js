@@ -6,7 +6,7 @@ const nextConfig = {
 /* module.exports = {
     //nextConfig,
     images: {
-        domains: ['via.placeholder.com', 'unsplash.com', 'images.pexels.com'],
+        domains: ['via.placeholder.com', 'unsplash.com', 'images.pexels.com'], look down
     },
 } */
 module.exports = {
