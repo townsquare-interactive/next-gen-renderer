@@ -70,8 +70,6 @@ export const getStaticProps = async (context: Context) => {
 const Slug = (props: HomeProps) => {
     const { page, globalData } = props
 
-    console.log('code', encodeURI('%0A'))
-
     /* console.log('vercel url', process.env.NEXT_PUBLIC_VERCEL_URL) */
 
     /*  const { asPath } = useRouter()
@@ -90,19 +88,20 @@ const Slug = (props: HomeProps) => {
 
     //console.log(global)
     //console.log('global', global)
+    /*     let fav
+    page.seo.ogImage ?  fav = domainImage(page.seo.ogImage  : fav= '') */
 
     return (
         <div>
             {page.seo && (
                 <Head>
-                    {/*  <title>{page.seo.title || 'title'}</title>
+                    <title>{page.seo.title || 'title'}</title>
                     <meta property="og:title" content={page.seo.title || 'title'} key="title" />
                     <meta name="description" content={page.seo.description || 'description'} />
-                    <meta property="og:image" content={page.seo.ogImage || ''} />
                     <meta property="og:image:type" content="image/jpg" />
                     <meta property="og:image:width" content="1024" />
                     <meta property="og:image:height" content="1024" />
-                    <link rel="shortcut icon" href={page.seo.favicon || ''} /> */}
+                    <link rel="shortcut icon" href={domainImage(page.seo?.favicon || '') || ''} />
                 </Head>
             )}
 

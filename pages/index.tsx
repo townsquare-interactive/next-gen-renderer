@@ -7,7 +7,7 @@ import { HomeProps, PageListProps, Context } from '../components/types'
 import { GetStaticProps } from 'next'
 import Layout from '../components/Layout'
 import { Renderer } from '../components/Renderer'
-import { getDomain } from '../functions'
+import { getDomain, domainImage } from '../functions'
 
 //runs at build time just like static props
 
@@ -38,10 +38,18 @@ const Home = (props: HomeProps) => {
 
     return (
         <div>
-            <Head>
-                <title>{page.name}</title>
-                <meta property="og:title" content="My page title" key="title" />
-            </Head>
+            {page.seo && (
+                <Head>
+                    <title>{page.seo.title || 'title'}</title>
+                    <meta property="og:title" content={page.seo.title || 'title'} key="title" />
+                    <meta name="description" content={page.seo.description || 'description'} />
+                    <meta property="og:image" content={domainImage(page.seo.ogImage) || ''} />
+                    <meta property="og:image:type" content="image/jpg" />
+                    <meta property="og:image:width" content="1024" />
+                    <meta property="og:image:height" content="1024" />
+                    <link rel="shortcut icon" href={page.seo.favicon || ''} />
+                </Head>
+            )}
             <Layout moduleData={globalData}>
                 <Renderer config={page.modules} />
             </Layout>
