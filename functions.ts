@@ -17,7 +17,7 @@ export function getDomain() {
 }
 //Adds current domain name in amazon for image urls
 export function domainImage(url: string) {
-    return getDomain() + '/assets' + url
+    return encodeURI(getDomain() + '/assets' + url)
 }
 
 //Capitalize first letter of word
