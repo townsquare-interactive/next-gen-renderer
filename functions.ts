@@ -10,12 +10,9 @@ export function getDomain() {
         let previewUrl = encodeURI(bucketUrl + domain + '/preview')
         return previewUrl
     } else {
-        // console.log('didnt work')
+        console.log('Environment was not able to be determined')
         return bucketUrl + 'elitesports.com/preview'
     }
-
-    // return process.env.NEXT_PUBLIC_BASE_URL ? encodeURI(domain + '') : 'travel365.com/preview'
-    //return process.env.NEXT_PUBLIC_BASE_URL ? encodeURI(domain + '') : 'jremodeling.com:3000'
 }
 //Adds current domain name in amazon for image urls
 export function domainImage(url: string) {
