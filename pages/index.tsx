@@ -8,6 +8,7 @@ import { GetStaticProps } from 'next'
 import Layout from '../components/Layout'
 import { Renderer } from '../components/Renderer'
 import { getDomain, domainImage } from '../functions'
+import { useRouter } from 'next/router'
 
 //runs at build time just like static props
 
@@ -35,6 +36,11 @@ export const getStaticProps = async (context: Context) => {
 
 const Home = (props: HomeProps) => {
     const { page, globalData } = props
+    const router = useRouter()
+
+    if (router.isFallback) {
+        return <div>Loading...</div>
+    }
 
     return (
         <div>

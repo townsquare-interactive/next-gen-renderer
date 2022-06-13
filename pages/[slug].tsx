@@ -69,6 +69,11 @@ export const getStaticProps = async (context: Context) => {
 
 const Slug = (props: HomeProps) => {
     const { page, globalData } = props
+    const router = useRouter()
+
+    if (router.isFallback) {
+        return <div>Loading...</div>
+    }
 
     /* console.log('vercel url', process.env.NEXT_PUBLIC_VERCEL_URL) */
 
