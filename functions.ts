@@ -1,13 +1,11 @@
 export function getDomain() {
     const bucketUrl = 'https://townsquareinteractive.s3.amazonaws.com/'
-    //const domain = process.env.NEXT_PUBLIC_BASE_URL
-    //const env = process.env.NEXT_PUBLIC_URL_ENV
     const domain = process.env.NEXT_PUBLIC_BASE_URL
-    //test
-    //let domain = process.env.NEXT_PUBLIC_BASE_URL
-    if (process.env.NEXT_PUBLIC_URL_ENV === '1') {
+    //const env = process.env.NEXT_PUBLIC_URL_ENV
+
+    if (process.env.URL_ENV === '1') {
         return encodeURI(bucketUrl + domain + '/live')
-    } else if (process.env.NEXT_PUBLIC_URL_ENV === '0') {
+    } else if (process.env.URL_ENV === '0') {
         return encodeURI(bucketUrl + domain + '/preview')
     } else {
         // console.log('didnt work')
