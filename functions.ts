@@ -3,10 +3,10 @@ export function getDomain() {
     const domain = process.env.NEXT_PUBLIC_BASE_URL
     //const env = process.env.NEXT_PUBLIC_URL_ENV
 
-    if (process.env.URL_ENV === '1') {
+    if (process.env.NEXT_PUBLIC_URL_ENV === '1') {
         let liveUrl = encodeURI(bucketUrl + domain + '/live')
         return liveUrl
-    } else if (process.env.URL_ENV === '0') {
+    } else if (process.env.NEXT_PUBLIC_URL_ENV === '0') {
         let previewUrl = encodeURI(bucketUrl + domain + '/preview')
         return previewUrl
     } else {
