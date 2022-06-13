@@ -4,9 +4,11 @@ export function getDomain() {
     //const env = process.env.NEXT_PUBLIC_URL_ENV
 
     if (process.env.URL_ENV === '1') {
-        return encodeURI(bucketUrl + domain + '/live')
+        let liveUrl = encodeURI(bucketUrl + domain + '/live')
+        return liveUrl
     } else if (process.env.URL_ENV === '0') {
-        return encodeURI(bucketUrl + domain + '/preview')
+        let previewUrl = encodeURI(bucketUrl + domain + '/preview')
+        return previewUrl
     } else {
         // console.log('didnt work')
         return bucketUrl + 'elitesports.com/preview'
