@@ -2,7 +2,7 @@ export function getDomain() {
     const bucketUrl = 'https://townsquareinteractive.s3.amazonaws.com/'
     //const domain = process.env.NEXT_PUBLIC_BASE_URL
     //const env = process.env.NEXT_PUBLIC_URL_ENV
-    const domain = process.env.BASE_URL
+    const domain = process.env.NEXT_PUBLIC_BASE_URL
     //test
     //let domain = process.env.NEXT_PUBLIC_BASE_URL
     if (process.env.NEXT_PUBLIC_URL_ENV === '1') {
