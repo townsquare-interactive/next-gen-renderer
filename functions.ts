@@ -9,7 +9,7 @@ export function getDomain() {
         return encodeURI(bucketUrl + domain + '/preview')
     } else {
         // console.log('didnt work')
-        return bucketUrl + 'jremodeling.com/live'
+        return bucketUrl + 'elitesports.com/preview'
     }
 
     // return process.env.NEXT_PUBLIC_BASE_URL ? encodeURI(domain + '') : 'travel365.com/preview'
@@ -17,7 +17,8 @@ export function getDomain() {
 }
 //Adds current domain name in amazon for image urls
 export function domainImage(url: string) {
-    return encodeURI(getDomain() + '/assets' + url)
+    let imageUrl = encodeURI(getDomain() + '/assets' + url)
+    return imageUrl
 }
 
 //Capitalize first letter of word
