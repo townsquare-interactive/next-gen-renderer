@@ -1,15 +1,16 @@
 export function getDomain() {
-    let domain = process.env.NEXT_PUBLIC_BASE_URL
-    let env = process.env.NEXT_PUBLIC_URL_ENV
+    const bucketUrl = 'https://townsquareinteractive.s3.amazonaws.com/'
+    const domain = process.env.NEXT_PUBLIC_BASE_URLS
+    const env = process.env.NEXT_PUBLIC_URL_ENV
     //test
     //let domain = process.env.NEXT_PUBLIC_BASE_URL
-    if (process.env.NEXT_PUBLIC_URL_ENV === '1') {
-        return encodeURI('https://townsquareinteractive.s3.amazonaws.com/' + domain + '/live')
-    } else if (process.env.NEXT_PUBLIC_URL_ENV === '0') {
-        return encodeURI('https://townsquareinteractive.s3.amazonaws.com/' + domain + '/preview')
+    if (env === '1') {
+        return encodeURI(bucketUrl + domain + '/live')
+    } else if (env === '0') {
+        return encodeURI(bucketUrl + domain + '/preview')
     } else {
         // console.log('didnt work')
-        return 'https://townsquareinteractive.s3.amazonaws.com/jremodeling.com/live'
+        return bucketUrl + 'jremodeling.com/live'
     }
 
     // return process.env.NEXT_PUBLIC_BASE_URL ? encodeURI(domain + '') : 'travel365.com/preview'

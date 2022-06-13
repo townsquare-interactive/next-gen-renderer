@@ -71,6 +71,8 @@ const Slug = (props: HomeProps) => {
     const { page, globalData } = props
     const router = useRouter()
 
+    // If the page is not yet generated, this will be displayed
+    // initially until getStaticProps() finishes running
     if (router.isFallback) {
         return <div>Loading...</div>
     }
