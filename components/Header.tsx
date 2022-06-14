@@ -22,26 +22,26 @@ function Hero(props: HeaderProps) {
                 <div className={styles.gutter}>
                     {backgroundImageUrl && (
                         <div className={styles.backgroundBlock}>
-                            <Image src={backgroundImage} layout="fill" objectFit="cover" alt="" />
+                            <Image src={backgroundImage} layout="fill" objectFit="cover" alt="" quality="50" />
                         </div>
                     )}
                 </div>
                 {imageUrl && (
                     <div className={styles.heroImage}>
-                        <Image src={mainImage} layout="fill" objectFit="cover" alt={altText} priority />
+                        <Image src={mainImage} layout="fill" objectFit="cover" alt={altText} priority quality="50" />
                     </div>
                 )}
 
                 <div className={styles.headline}>
                     <div className={styles.backgroundBlock}>
-                        {backgroundImageUrl && <Image src={backgroundImage} layout="fill" objectFit="cover" alt="" />}
+                        {backgroundImageUrl && <Image src={backgroundImage} layout="fill" objectFit="cover" alt="" quality="50" />}
                         <h1 className={styles.text}>{headline}</h1>
                     </div>
                 </div>
                 <div className={cn(styles.gutter, styles.gutter_alt)}>
                     {backgroundImageUrl && (
                         <div className={styles.backgroundBlock}>
-                            <Image src={backgroundImage} layout="fill" objectFit="cover" alt="" />
+                            <Image src={backgroundImage} layout="fill" objectFit="cover" alt="" quality="50" />
                         </div>
                     )}
                 </div>

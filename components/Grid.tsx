@@ -38,7 +38,7 @@ const GridBlock = (props: GridData) => {
         >
             {imageUrl && (
                 <div className={styles.imageTile}>
-                    <Image src={domainImage(imageUrl)} layout="fill" alt={altText} objectFit="cover" objectPosition="top center" />
+                    <Image src={domainImage(imageUrl)} layout="fill" alt={altText} objectFit="cover" objectPosition="top center" quality="50" />
                 </div>
             )}
 

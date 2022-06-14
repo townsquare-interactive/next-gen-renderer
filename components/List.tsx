@@ -68,7 +68,15 @@ const Article = (props: ListProps) => {
                         <div className={styles.imageBlock}>
                             <div className={styles.blockPicture}>
                                 {imageUrl && (
-                                    <Image src={domainImage(imageUrl)} height="450px" width="600px" layout="responsive" objectFit="cover" alt={altText} />
+                                    <Image
+                                        src={domainImage(imageUrl)}
+                                        height="450px"
+                                        width="600px"
+                                        layout="responsive"
+                                        objectFit="cover"
+                                        alt={altText}
+                                        quality="50"
+                                    />
                                 )}
                             </div>
                         </div>

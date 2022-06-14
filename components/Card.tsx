@@ -30,6 +30,7 @@ function Card(props: CardProps) {
                                     width="400px"
                                     layout="responsive"
                                     alt={title}
+                                    quality="50"
                                 />
                             )}
                         </div>

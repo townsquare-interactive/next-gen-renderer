@@ -59,6 +59,7 @@ const Navbar = (props: NavBarProps) => {
                                 layout="fill"
                                 alt={altText}
                                 objectFit="cover"
+                                quality="50"
                             />
                         </div>
                     )}
