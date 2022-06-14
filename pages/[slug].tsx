@@ -104,6 +104,7 @@ const Slug = (props: HomeProps) => {
                 <Head>
                     <title>{page.seo.title || 'title'}</title>
                     <meta property="og:title" content={page.seo.title} key="title" />
+                    <meta property="og:description" content={page.seo.description} />
                     <meta name="description" content={page.seo.description} />
                     <meta property="og:image" content={domainImage(page.seo.ogImage)} />
                     <meta property="og:image:type" content="image/jpg" />
