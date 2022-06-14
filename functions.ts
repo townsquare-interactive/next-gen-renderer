@@ -10,7 +10,6 @@ export function getDomain() {
         let previewUrl = encodeURI(apiUrl + '/' + domain + '/preview')
         return previewUrl
     } else {
-        console.log('Environment was not able to be determined')
         return apiUrl + '/' + 'jremodeling.com/live'
     }
 }
@@ -28,8 +27,6 @@ export function domainImage(url: string) {
         let previewUrl = encodeURI(assetsApi + '/' + domain + '/preview')
         assetUrl = previewUrl
     } else {
-        console.log('Environment was not able to be determined')
-        //assetUrl = assetsApi + 'elitesports.com/preview'
         assetUrl = 'https://jedwards4044.github.io/website-assets/jremodeling.com/live'
     }
 
