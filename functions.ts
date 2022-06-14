@@ -11,12 +11,12 @@ export function getDomain() {
         return previewUrl
     } else {
         console.log('Environment was not able to be determined')
-        return apiUrl + 'elitesports.com/preview'
+        return apiUrl + '/' + 'jremodeling.com/live'
     }
 }
 //Adds current domain name in amazon for image urls
 export function domainImage(url: string) {
-    const assetsApi = process.env.API_URL_ASSETS || 'https://townsquareinteractive.s3.amazonaws.com'
+    const assetsApi = process.env.NEXT_PUBLIC_API_URL_ASSETS || 'https://townsquareinteractive.s3.amazonaws.com'
     const domain = process.env.NEXT_PUBLIC_BASE_URL
     const env = process.env.NEXT_PUBLIC_URL_ENV
     let assetUrl
@@ -29,7 +29,8 @@ export function domainImage(url: string) {
         assetUrl = previewUrl
     } else {
         console.log('Environment was not able to be determined')
-        assetUrl = assetsApi + 'elitesports.com/preview'
+        //assetUrl = assetsApi + 'elitesports.com/preview'
+        assetUrl = 'https://jedwards4044.github.io/website-assets/jremodeling.com/live'
     }
 
     let imageUrl = assetUrl + '/assets' + url
