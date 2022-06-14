@@ -9,6 +9,7 @@ import Layout from '../components/Layout'
 import { Renderer } from '../components/Renderer'
 import { getDomain, domainImage } from '../functions'
 import { useRouter } from 'next/router'
+import theme from './theme.json'
 
 //runs at build time just like static props
 
@@ -42,21 +43,33 @@ const Home = (props: HomeProps) => {
         return <div>Loading...</div>
     }
 
+    /*     const dynamicCss = `
+    h2{
+        color: ${theme['text-color']};
+        background: ${theme['accent-background-color']}
+
+    }`
+ */
     return (
         <div>
-            {page.seo && (
-                <Head>
-                    <title>{page.seo.title || 'title'}</title>
-                    <meta property="og:title" content={page.seo.title} key="title" />
-                    <meta name="description" content={page.seo.description} />
-                    <meta property="og:image" content={domainImage(page.seo.ogImage)} />
-                    <meta property="og:image:type" content="image/jpg" />
-                    <meta property="og:image:width" content="1024" />
-                    <meta property="og:image:height" content="1024" />
-                    <link rel="shortcut icon" href={domainImage(page.seo.favicon)} />
-                </Head>
-            )}
+            <Head>
+                <title>{page.seo?.title || 'title'}</title>
+                {page.seo?.title && <meta property="og:title" content={page.seo.title} key="title" />}
+                {page.seo?.description && <meta name="description" content={page.seo.description} />}
+                {page.seo?.ogImage && (
+                    <>
+                        <meta property="og:image" content={domainImage(page.seo.ogImage)} />
+                        <meta property="og:image:type" content="image/jpg" />
+                        <meta property="og:image:width" content="1024" />
+                        <meta property="og:image:height" content="1024" />
+                    </>
+                )}
+                {page.seo?.favicon && <link rel="shortcut icon" href={domainImage(page.seo.favicon)} />}
+            </Head>
+
             <Layout moduleData={globalData}>
+                {/*   <style>{dynamicCss}</style> */}
+
                 <Renderer config={page.modules} />
             </Layout>
         </div>
