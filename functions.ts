@@ -1,7 +1,7 @@
 export function getDomain() {
     const bucketUrl = 'https://townsquareinteractive.s3.amazonaws.com/'
     const domain = process.env.NEXT_PUBLIC_BASE_URL
-    const env = process.env.NEXT_PUBLIC_URL_ENV
+    const env = process.env.URL_ENV
 
     if (env === '1') {
         let liveUrl = encodeURI(bucketUrl + domain + '/live')
