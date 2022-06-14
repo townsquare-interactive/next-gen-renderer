@@ -19,13 +19,6 @@ module.exports = {
         // Looks like backward compatibility approach.
     },
     images: {
-        domains: [
-            'via.placeholder.com',
-            'unsplash.com',
-            'images.pexels.com',
-            'townsquareinteractivetest.s3.amazonaws.com',
-            'townsquareinteractive.s3.amazonaws.com',
-            'townsquareinteractive2.s3.amazonaws.com',
-        ],
+        domains: ['via.placeholder.com', 'unsplash.com', 'images.pexels.com', 'townsquareinteractive.s3.amazonaws.com', 'https://jedwards4044.github.io'],
     },
 }

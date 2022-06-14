@@ -1,5 +1,5 @@
 export function getDomain() {
-    const apiUrl = process.env.API_URL || 'https://townsquareinteractive.s3.amazonaws.com'
+    const apiUrl = process.env.API_URL_DATA || 'https://townsquareinteractive.s3.amazonaws.com'
     const domain = process.env.NEXT_PUBLIC_BASE_URL
     const env = process.env.NEXT_PUBLIC_URL_ENV
 
@@ -16,9 +16,27 @@ export function getDomain() {
 }
 //Adds current domain name in amazon for image urls
 export function domainImage(url: string) {
-    let imageUrl = getDomain() + '/assets' + url
+    const assetsApi = process.env.API_URL_ASSETS || 'https://townsquareinteractive.s3.amazonaws.com'
+    const domain = process.env.NEXT_PUBLIC_BASE_URL
+    const env = process.env.NEXT_PUBLIC_URL_ENV
+    let assetUrl
+
+    if (env === '1') {
+        let liveUrl = encodeURI(assetsApi + '/' + domain + '/live')
+        assetUrl = liveUrl
+    } else if (env === '0') {
+        let previewUrl = encodeURI(assetsApi + '/' + domain + '/preview')
+        assetUrl = previewUrl
+    } else {
+        console.log('Environment was not able to be determined')
+        assetUrl = assetsApi + 'elitesports.com/preview'
+    }
+
+    let imageUrl = (assetUrl = +'/assets' + url)
     return encodeURI(imageUrl)
 }
+
+//jedwards4044.github.io/website-assets/jremodeling.com/live/assets/bathroom-1.jpg
 
 //Capitalize first letter of word
 export function capitalize(str: string) {
