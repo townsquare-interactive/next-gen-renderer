@@ -78,7 +78,7 @@ const Burger = (props: BurgerProps) => {
                         [styles.navActive]: navCheck,
                     })}
                 >
-                    <button onClick={navSwitch}>
+                    <button onClick={navSwitch} name="togglenav">
                         <div></div>
                         <div></div>
                         <div></div>
