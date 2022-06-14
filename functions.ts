@@ -32,7 +32,7 @@ export function domainImage(url: string) {
         assetUrl = assetsApi + 'elitesports.com/preview'
     }
 
-    let imageUrl = (assetUrl = +'/assets' + url)
+    let imageUrl = assetUrl + '/assets' + url
     return encodeURI(imageUrl)
 }
 
