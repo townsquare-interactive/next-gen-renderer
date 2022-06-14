@@ -22,15 +22,28 @@ const Footer = (props: FooterProps) => {
     const logo = props.logoUrl && domainImage(props.logoUrl)
 
     function iconConvert(str: string) {
-        str.indexOf('google') !== -1
-
         if (str.indexOf('google') !== -1) {
-            return faGoogle
+            return 'google'
         } else if (str.indexOf('facebook') !== -1) {
-            return faFacebook
+            return 'facebook'
         } else if (str.indexOf('instagram') !== -1) {
-            return faInstagram
+            return 'instagram'
         } else if (str.indexOf('twitter') !== -1) {
+            return 'twitter'
+        } else {
+            return 'social'
+        }
+    }
+
+    function socialConvert(str: string) {
+        let icon = iconConvert(str)
+        if (icon === 'google') {
+            return faGoogle
+        } else if (icon === 'facebok') {
+            return faFacebook
+        } else if (icon === 'instagram') {
+            return faInstagram
+        } else if (icon === 'twitter') {
             return faTwitter
         } else {
             return faRocket
@@ -44,8 +57,8 @@ const Footer = (props: FooterProps) => {
                     <Logo logoUrl={logo} />
                     <div className={styles.social}>
                         {props.socialData.map((item, index) => (
-                            <a href={item.linkUrl} key={index} rel="noopener noreferrer" target="_blank">
-                                <FontAwesomeIcon icon={iconConvert(item.linkUrl)} />
+                            <a href={item.linkUrl} key={index} rel="noopener noreferrer" target="_blank" aria-label={iconConvert(item.linkUrl)}>
+                                <FontAwesomeIcon icon={socialConvert(item.linkUrl)} />
                             </a>
                         ))}
                     </div>
