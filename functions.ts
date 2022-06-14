@@ -1,17 +1,17 @@
 export function getDomain() {
-    const bucketUrl = 'https://townsquareinteractive.s3.amazonaws.com/'
+    const apiUrl = process.env.API_URL || 'https://townsquareinteractive.s3.amazonaws.com'
     const domain = process.env.NEXT_PUBLIC_BASE_URL
     const env = process.env.NEXT_PUBLIC_URL_ENV
 
     if (env === '1') {
-        let liveUrl = encodeURI(bucketUrl + domain + '/live')
+        let liveUrl = encodeURI(apiUrl + '/' + domain + '/live')
         return liveUrl
     } else if (env === '0') {
-        let previewUrl = encodeURI(bucketUrl + domain + '/preview')
+        let previewUrl = encodeURI(apiUrl + '/' + domain + '/preview')
         return previewUrl
     } else {
         console.log('Environment was not able to be determined')
-        return bucketUrl + 'elitesports.com/preview'
+        return apiUrl + 'elitesports.com/preview'
     }
 }
 //Adds current domain name in amazon for image urls
