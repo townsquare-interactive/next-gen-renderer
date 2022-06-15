@@ -1,4 +1,3 @@
-import data from '../components/moduleData'
 import { GetStaticProps } from 'next'
 import { FooterProps, ModuleData, LayoutProps, NavProps, NavigationProps, NavModule, FooterModule } from '../components/types'
 import Footer from '../components/Footer'
