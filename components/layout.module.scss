@@ -1,28 +1,31 @@
 .root {
     &.layout1 {
         @media (min-width: 100px) {
-            padding-top: 70px;
+            padding-top: 55px;
         }
 
         @media (min-width: 240px) {
-            padding-top: 80px;
+            padding-top: 65px;
         }
         @media (min-width: 290px) {
-            padding-top: 100px;
+            padding-top: 82px;
         }
         @media (min-width: 323px) {
-            padding-top: 112px;
+            padding-top: 82px;
         }
         @media (min-width: 363px) {
-            padding-top: 122px;
+            padding-top: 82px;
         }
 
         @media (min-width: 450px) {
-            padding-top: 122px;
+            padding-top: 82px;
         }
 
         @media (min-width: 540px) {
-            padding-top: 120px;
+            padding-top: 82px;
+        }
+        @media (min-width: 620px) {
+            padding-top: 123px;
         }
     }
 }

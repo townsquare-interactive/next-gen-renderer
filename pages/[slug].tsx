@@ -11,6 +11,8 @@ import { Renderer } from '../components/Renderer'
 import { useRouter } from 'next/router'
 import { domainImage, getDomain } from '../functions'
 
+import NextCors from 'nextjs-cors'
+
 /* export default async function handler(req, res) {
     // Check for secret to confirm this is a valid request
     if (req.query.secret !== process.env.MY_SECRET_TOKEN) {
@@ -56,6 +58,16 @@ export const getStaticProps = async (context: Context) => {
 
     const page = await resPage.json()
     const globalData = await resGlobal.json()
+
+    /*const probe = require('probe-image-size')
+
+    let printAddress = async () => {
+        const a = await probe(globalData.modules.logoUrl)
+        let setHeight = a.height
+        let setWidth = a.width
+        console.log(setWidth)
+    }
+    printAddress() */
 
     return {
         props: { page, globalData },
