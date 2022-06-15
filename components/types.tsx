@@ -224,8 +224,8 @@ export interface SeoData {
 }
 
 export interface ModuleData {
-    /* logoUrl?: string
-    imagesData?: ImagesProps
+    logoUrl?: string
+    /*imagesData?: ImagesProps
     listData?: ListProps
     headerData?: HeaderProps
     labelData?: LabelProps
