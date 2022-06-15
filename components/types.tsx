@@ -128,12 +128,6 @@ export interface FooterProps {
     borderNum?: number
 }
 
-/* export interface FooterProps {
-    footerData: FooterData
-    navData: NavProps
-    logoUrl?: string
-} */
-
 export interface VideoProps {
     videoUrl: string
     modLayout: 'ext' | 'local'
@@ -212,13 +206,6 @@ export interface FooterModule {
     attributes: FooterProps
 }
 
-/* export interface NavBarProps {
-    navCheck: boolean
-    navData: NavProps
-    navStyle?: string
-    pageList?: PagesProps
-    
-} */
 export interface NavBarProps {
     navCheck: boolean
     pages: PagesProps[]
@@ -237,7 +224,7 @@ export interface SeoData {
 }
 
 export interface ModuleData {
-    logoUrl?: string
+    /* logoUrl?: string
     imagesData?: ImagesProps
     listData?: ListProps
     headerData?: HeaderProps
@@ -247,7 +234,7 @@ export interface ModuleData {
     footerData?: FooterProps
     navData: NavProps
     videoData?: VideoProps
-    gridData?: GridProps
+    gridData?: GridProps */
     modules?: ImagesProps | ListProps | HeaderProps | LabelProps | TextData | CarouselProps | FooterProps | NavProps | VideoProps | GridProps
     name?: string
     seo?: SeoData

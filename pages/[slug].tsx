@@ -100,19 +100,20 @@ const Slug = (props: HomeProps) => {
 
     return (
         <div>
-            {page.seo && (
-                <Head>
-                    <title>{page.seo.title || 'title'}</title>
-                    <meta property="og:title" content={page.seo.title} key="title" />
-                    <meta property="og:description" content={page.seo.description} />
-                    <meta name="description" content={page.seo.description} />
-                    <meta property="og:image" content={domainImage(page.seo.ogImage)} />
-                    <meta property="og:image:type" content="image/jpg" />
-                    <meta property="og:image:width" content="1024" />
-                    <meta property="og:image:height" content="1024" />
-                    <link rel="shortcut icon" href={domainImage(page.seo.favicon)} />
-                </Head>
-            )}
+            <Head>
+                <title>{page.seo?.title || 'title'}</title>
+                {page.seo?.title && <meta property="og:title" content={page.seo.title} key="title" />}
+                {page.seo?.description && <meta name="description" content={page.seo.description} />}
+                {page.seo?.ogImage && (
+                    <>
+                        <meta property="og:image" content={domainImage(page.seo.ogImage)} />
+                        <meta property="og:image:type" content="image/jpg" />
+                        <meta property="og:image:width" content="1024" />
+                        <meta property="og:image:height" content="1024" />
+                    </>
+                )}
+                {globalData.seo?.favicon && <link rel="shortcut icon" href={domainImage(globalData.seo.favicon)} />}
+            </Head>
 
             <Layout moduleData={globalData}>
                 <Renderer config={page.modules} />

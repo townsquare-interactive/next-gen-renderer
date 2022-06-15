@@ -64,7 +64,7 @@ const Home = (props: HomeProps) => {
                         <meta property="og:image:height" content="1024" />
                     </>
                 )}
-                {page.seo?.favicon && <link rel="shortcut icon" href={domainImage(page.seo.favicon)} />}
+                {globalData.seo?.favicon && <link rel="shortcut icon" href={domainImage(globalData.seo.favicon)} />}
             </Head>
 
             <Layout moduleData={globalData}>
