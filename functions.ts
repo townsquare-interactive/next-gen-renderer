@@ -10,8 +10,7 @@ export function getDomain() {
         let previewUrl = encodeURI(apiUrl + '/' + domain + '/preview')
         return previewUrl
     } else {
-        // return apiUrl + '/' + 'jremodeling.com/live'
-        return apiUrl + '/' + 'travel365.com/live'
+        return apiUrl + '/' + 'jremodeling.com/live'
     }
 }
 //Adds current domain name in amazon for image urls
@@ -28,8 +27,7 @@ export function domainImage(url: string) {
         let previewUrl = encodeURI(assetsApi + '/' + domain + '/preview')
         assetUrl = previewUrl
     } else {
-        /* assetUrl = 'https://jedwards4044.github.io/website-assets/jremodeling.com/live' */
-        assetUrl = 'https://townsquareinteractive.s3.amazonaws.com/travel365.com/live'
+        assetUrl = 'https://jedwards4044.github.io/website-assets/jremodeling.com/live'
     }
 
     let imageUrl = assetUrl + '/assets' + url
