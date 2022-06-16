@@ -18,6 +18,11 @@ $sm-block-max: (variables.$max-main-width * 0.25);
         height: 200px;
         width: 100%;
         position: relative;
+        flex-direction: column;
+
+        @include breakpoints.xs {
+            flex-direction: row;
+        }
 
         @include breakpoints.sm {
             height: 300px;
@@ -98,7 +103,9 @@ $sm-block-max: (variables.$max-main-width * 0.25);
         //option for reversed format
         &.reverse {
             //flex-direction: column;
-            flex-direction: row-reverse;
+            @include breakpoints.xs {
+                flex-direction: row-reverse;
+            }
         }
 
         //alternate layout on mobile
