@@ -78,10 +78,6 @@ export interface ImageItem {
     body?: string
 }
 
-/* export enum ModLayout {
-    ThreeAndOneThird = '3-1/3',
-    ThreeAndTwoThirds = '3-2/3',
-} */
 export interface ImagesProps {
     items: ImageItem[]
     modLayout: '3-1/3' | '3-2/3' | '2-2/3' | '2-1/2' | '1-full' | '1-hero' | '4-plus'
@@ -137,15 +133,11 @@ export interface HomeProps {
     moduleData: ModuleData
     globalData: ModuleData
     page: ModuleData
-    //mods: any
-    //pageList?: any
 }
 
 export interface LayoutProps {
-    //children: React.PropsWithChildren<{}>,
     children: ReactNode
     moduleData: any
-    //pageList?: PagesProps
 }
 
 export interface Params {
@@ -238,79 +230,4 @@ export interface ModuleData {
     modules?: ImagesProps | ListProps | HeaderProps | LabelProps | TextData | CarouselProps | FooterProps | NavProps | VideoProps | GridProps
     name?: string
     seo?: SeoData
-}
-
-/*-----------------------------End of Components-------------*/
-
-export interface imageData {
-    albumId: number
-    id: number
-    title: string
-    url: string
-    thumbnailUrl: string
-}
-
-export interface images {
-    images: imageData[]
-    posts: imageData[]
-}
-
-export interface imageUse {
-    images: imageData[]
-}
-
-export interface HeroHeader {
-    headline?: string
-    imageUrl: string
-}
-
-export interface CardProps {
-    imageUrl?: string
-    title?: string
-    body?: string
-}
-
-export interface photoProps {
-    url: string
-}
-
-export interface postData {
-    userId?: number
-    id?: number
-    title: string
-    body: string
-    border?: boolean
-    imageUrl?: string
-    linkUrl?: string
-    btnText?: string
-}
-
-export interface postComment {
-    body: string
-    email: string
-    id: number
-    name: string
-    postId: number
-}
-
-export interface comments {
-    comments: postComment[]
-    id: number
-}
-
-export interface posts {
-    data: postData[]
-    posts: postData[]
-    //posts:postData,
-}
-
-export interface blogData {
-    id: number
-    title: string
-    date: string
-    body: string
-}
-
-export interface blog {
-    allPostsData: blogData[]
 }

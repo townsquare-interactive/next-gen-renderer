@@ -5,17 +5,6 @@ import Image from 'next/image'
 import ImageSize from 'image-size'
 import { LogoProps } from './types'
 import { useState, useEffect } from 'react'
-//import { useEffect, useState } from 'react'
-
-//import probe from 'probe-image-size'
-
-/* const logo = '/images/company-logo.png'
-const size = probe(logo)
-console.log(size) */
-
-/* var sizeOf = ImageSize
-var dimensions = sizeOf(logo)
-console.log(dimensions.width, dimensions.height) */
 
 const Logo = (props: LogoProps) => {
     const { logoUrl = '' } = props
@@ -23,6 +12,7 @@ const Logo = (props: LogoProps) => {
     const [logoWidth, setWidth] = useState('400')
     const probe = require('probe-image-size')
 
+    //Using probe to determine logo width and height
     useEffect(() => {
         let printAddress = async () => {
             const a = await probe(logoUrl)
