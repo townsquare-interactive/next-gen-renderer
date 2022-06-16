@@ -7,6 +7,12 @@ $aspect-ratio-4_3: math.div(4, 3);
 $aspect-ratio-16_9: math.div(16, 9);
 $aspect-ratio-3_4: math.div(3, 4);
 $gap: 20px;
+$logo-size: 100px;
+$logo-size-2: 60px;
+$logo-padding: 10px;
+$head-padding: 4px;
+$layout-padding: $logo-size + ($logo-padding * 2) + $head-padding;
+$layout-padding-2: $logo-size-2 + ($logo-padding * 2) + $head-padding;
 
 /*Colors*/
 $link-color: rgb(230, 211, 65);

@@ -5,6 +5,7 @@ import cn from 'classnames'
 import { reverse } from 'dns'
 import Parser from 'html-react-parser'
 import { domainImage } from '../functions'
+import theme from '../pages/theme.json'
 
 const Article = (props: ListProps) => {
     const {
@@ -21,6 +22,11 @@ const Article = (props: ListProps) => {
         altText = '',
     } = props
 
+    const themeStyles = {
+        background: border ? `${theme['accent-background-color']}` : 'transparent',
+        color: border ? `${theme['text-color-accent']}` : `${theme['text-color']}`,
+    }
+
     return (
         <div
             className={cn(styles.root, {
@@ -32,14 +38,18 @@ const Article = (props: ListProps) => {
                 [styles.center]: align === 'center',
                 [styles.left]: align === 'left',
                 [styles.right]: align === 'right',
+                [styles.block]: true,
             })}
         >
+            {/* <style>{dynamicCss}</style> */}
+
             <div
                 className={cn(styles.wrapper, {
                     [styles.bordered]: border === true,
                     [styles.imageArticle]: imageUrl && modLayout != 'card',
                     [styles.reverse]: reverse,
                 })}
+                style={themeStyles}
             >
                 {/*change title div layout on card*/}
                 {/*                 <div

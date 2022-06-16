@@ -18,16 +18,23 @@
             width: variables.$content-width;
             margin: 0 auto;
         }
+        /*         @media (min-width: 312px) {
+            height: variables.$layout-padding-2 !important;
+        }
+
+        @media (min-width: 620px) {
+            height: variables.$layout-padding !important;
+        } */
 
         .logoBlock {
             flex-grow: 2;
-            padding: 25px;
-            padding: 15px 15px 15px 4px;
+            //padding: 25px;
+            //padding: 15px 15px 15px 4px;
             z-index: 9999999999;
 
             @include breakpoints.sm {
                 width: variables.$content-width;
-                padding: 15px 15px 15px 4px;
+                //padding: 15px 15px 15px 4px;
             }
         }
 
@@ -67,13 +74,19 @@
                 width: 100%;
                 margin: 0 auto;
                 padding: variables.$gap;
-                padding-top: 80px;
+                padding-top: 50px;
                 box-sizing: border-box;
                 max-width: variables.$max-main-width;
 
                 @include breakpoints.sm {
                     width: variables.$content-width;
-                    padding-top: 140px;
+                }
+
+                @media (min-width: 312px) {
+                    padding-top: variables.$layout-padding-2;
+                }
+                @media (min-width: 620px) {
+                    padding-top: variables.$layout-padding;
                 }
 
                 .navItems {

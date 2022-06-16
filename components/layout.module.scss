@@ -1,6 +1,12 @@
+@use '../styles/utils.module.scss';
+@use './styles/breakpoints.scss';
+@use '../styles/variables.scss';
+@use 'sass:math';
+//Variables
+
 .root {
     &.layout1 {
-        @media (min-width: 100px) {
+        /*  @media (min-width: 100px) {
             padding-top: 55px;
         }
 
@@ -10,22 +16,16 @@
         @media (min-width: 290px) {
             padding-top: 82px;
         }
-        @media (min-width: 323px) {
-            padding-top: 82px;
-        }
-        @media (min-width: 363px) {
-            padding-top: 82px;
-        }
 
-        @media (min-width: 450px) {
-            padding-top: 82px;
-        }
-
-        @media (min-width: 540px) {
-            padding-top: 82px;
-        }
         @media (min-width: 620px) {
             padding-top: 123px;
+        } */
+        padding-top: 50px;
+        @media (min-width: 312px) {
+            padding-top: variables.$layout-padding-2;
+        }
+        @media (min-width: 620px) {
+            padding-top: variables.$layout-padding;
         }
     }
 }

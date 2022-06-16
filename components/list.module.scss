@@ -26,13 +26,13 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
     }
 }
 
-@mixin bordered {
-    background-color: variables.$dark-accent-color;
+/* @mixin bordered {
+    //background-color: variables.$dark-accent-color;
 
     * {
         color: #fff;
-    }
-}
+    } 
+} */
 
 @mixin article {
     .wrapper {
@@ -71,7 +71,7 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
                 align-self: flex-start;
                 display: flex;
                 flex-direction: column;
-                color: variables.$text-color-main;
+                //color: variables.$text-color-main;
                 padding: variables.$gap;
                 //margin-right: variables.$gap;
 
@@ -144,7 +144,7 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
         }
 
         &.bordered {
-            @include bordered;
+            /* @include bordered; */
 
             .features {
                 padding: variables.$gap;
@@ -197,7 +197,7 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
                 }
 
                 .text {
-                    color: variables.$text-color-main;
+                    //color: variables.$text-color-main;
                     padding-left: variables.$gap;
                     width: 100%;
                     padding: 10px 0 10px 20px;
@@ -288,7 +288,7 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
 
                 .cta_btn {
                     @include utils.cta_btn;
-                    color: variables.$text-color-main;
+                    //color: variables.$text-color-main;
                     padding-left: variables.$gap;
                     @include breakpoints.md {
                         margin-left: variables.$gap;
@@ -299,7 +299,7 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
         }
 
         &.bordered .textBlock {
-            @include bordered;
+            /* @include bordered; */
 
             .text {
                 padding: variables.$gap;
