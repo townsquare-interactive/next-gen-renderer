@@ -11,7 +11,7 @@ export function getDomain() {
         return previewUrl
     } else {
         // return apiUrl + '/' + 'jremodeling.com/live'
-        return apiUrl + '/' + 'elitesports.com/preview'
+        return apiUrl + '/' + 'jremodeling.com/preview'
     }
 }
 //Adds current domain name in amazon for image urls
@@ -29,7 +29,7 @@ export function domainImage(url: string) {
         assetUrl = previewUrl
     } else {
         /* assetUrl = 'https://jedwards4044.github.io/website-assets/elitesports.com/live' */
-        assetUrl = 'https://townsquareinteractive.s3.amazonaws.com/elitesports.com/preview'
+        assetUrl = 'https://townsquareinteractive.s3.amazonaws.com/jremodeling.com/preview'
     }
 
     let imageUrl = assetUrl + '/assets' + url

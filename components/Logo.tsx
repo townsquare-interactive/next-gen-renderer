@@ -10,9 +10,9 @@ const Logo = (props: LogoProps) => {
     const { logoUrl = '' } = props
     const [logoHeight, setHeight] = useState('300')
     const [logoWidth, setWidth] = useState('400')
-    const probe = require('probe-image-size')
 
     //Using probe to determine logo width and height in useEffect
+    const probe = require('probe-image-size')
     useEffect(() => {
         let printAddress = async () => {
             const a = await probe(logoUrl)

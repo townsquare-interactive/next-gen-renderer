@@ -13,7 +13,6 @@
             img {
                 width: auto;
                 max-height: 30px;
-                padding: 10px !important;
 
                 @media (min-width: 312px) {
                     max-height: variables.$logo-size-2 !important;
