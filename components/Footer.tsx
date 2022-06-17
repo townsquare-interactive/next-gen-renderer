@@ -7,6 +7,7 @@ import Nav from './Nav'
 import Logo from './Logo'
 import { FooterProps, HomeProps, NavProps, PagesProps } from './types'
 import { domainImage } from '../functions'
+import theme from '../pages/theme.json'
 
 // import the library
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -18,6 +19,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Footer = (props: FooterProps) => {
     //const { moduleData } = props
+
+    const themeStyles = {
+        background: `${theme['footer-background']}`,
+        color: `${theme['text-color-accent']}`,
+    }
+
+    const phoneColor = {
+        color: `${theme['alt-color']}`,
+    }
 
     const logo = props.logoUrl && domainImage(props.logoUrl)
 
@@ -51,7 +61,7 @@ const Footer = (props: FooterProps) => {
     }
 
     return (
-        <div className={styles.root}>
+        <div className={styles.root} style={themeStyles}>
             <div className={styles.wrapper}>
                 <div className={cn(styles.block, styles.logoInfo)}>
                     <Logo logoUrl={logo} />
@@ -62,7 +72,9 @@ const Footer = (props: FooterProps) => {
                             </a>
                         ))}
                     </div>
-                    <h3 className={styles.phone}>{props.phoneNumber}</h3>
+                    <h3 className={styles.phone} style={phoneColor}>
+                        {props.phoneNumber}
+                    </h3>
                 </div>
                 <div className={cn(styles.block, styles.navInfo)}>
                     <Nav pages={props.pages} modLayout="footer" borderNum={props.borderNum} />
@@ -81,38 +93,6 @@ const Footer = (props: FooterProps) => {
             </div>
         </div>
     )
-
-    /*     return (
-        <div className={styles.root}>
-            <div className={styles.wrapper}>
-                <div className={cn(styles.block, styles.logoInfo)}>
-                    <Logo logoUrl={props.logoUrl} />
-                    <div className={styles.social}>
-                        {props.footerData.socialData.map((item, index) => (
-                            <a href={item.linkUrl} key={index} rel="noopener noreferrer" target="_blank">
-                                <FontAwesomeIcon icon={iconConvert(item.linkUrl)} />
-                            </a>
-                        ))}
-                    </div>
-                    <div className={styles.phone}>{props.footerData.phoneNumber}</div>
-                </div>
-                <div className={cn(styles.block, styles.navInfo)}>
-                    <Nav pages={props.navData.pages} modLayout="footer" borderNum={props.navData.borderNum} />
-                </div>
-                <div className={cn(styles.block, styles.addInfo)}>
-                    <div>
-                        <p>{props.footerData.addressData.street}</p>
-                        <p>{props.footerData.addressData.cityState}</p>
-                        <p>{props.footerData.addressData.zip}</p>
-                    </div>
-                </div>
-                <div className={cn(styles.block, styles.siteInfo)}>
-                    <p>{props.footerData.siteName}</p>
-                    <p>&copy; All rights reserved</p>
-                </div>
-            </div>
-        </div>
-    ) */
 }
 
 export default Footer

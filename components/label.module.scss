@@ -22,7 +22,7 @@
 
             .text {
                 margin: 0;
-                color: variables.$label-color;
+                //color: variables.$label-color;
                 text-transform: uppercase;
                 padding-left: variables.$gap;
 
@@ -55,9 +55,9 @@
                 }
             }
 
-            &.bordered {
+            /*             &.bordered {
                 border-bottom: 4px solid variables.$label-color;
-            }
+            } */
 
             &.gap {
                 width: 90%;

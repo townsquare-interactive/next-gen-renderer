@@ -5,6 +5,7 @@ import cn from 'classnames'
 import { reverse } from 'dns'
 import Parser from 'html-react-parser'
 import { domainImage } from '../functions'
+import theme from '../pages/theme.json'
 
 const Grid = (props: GridProps) => {
     const { items } = props
@@ -23,6 +24,15 @@ const Grid = (props: GridProps) => {
 const GridBlock = (props: GridData) => {
     const { headline = '', body = '', border = false, imageUrl, linkUrl, btnText = '', textSize = 'md', align = 'left', altText = '' } = props
 
+    const themeStyles = {
+        color: `${theme['text-color']}`,
+    }
+
+    const borderStyles = {
+        color: `${theme['text-color-accent']}`,
+        backgroundColor: `${theme['alt-color']}`,
+    }
+
     return (
         <div
             className={cn(styles.block, {
@@ -35,6 +45,7 @@ const GridBlock = (props: GridData) => {
                 [styles.left]: align === 'left',
                 [styles.right]: align === 'right',
             })}
+            style={border ? borderStyles : themeStyles}
         >
             {imageUrl && (
                 <div className={styles.imageTile}>

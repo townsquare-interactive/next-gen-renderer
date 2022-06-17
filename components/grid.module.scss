@@ -113,12 +113,8 @@
             }
 
             &.bordered {
-                background-color: variables.$alt-color;
+                //background-color: variables.$alt-color;
                 padding: variables.$gap;
-
-                * {
-                    color: #fff;
-                }
 
                 .cta_btn {
                     & > a:after {

@@ -2,9 +2,19 @@ import styles from './text.module.scss'
 import { TextProps } from './types'
 import cn from 'classnames'
 import Parser from 'html-react-parser'
+import theme from '../pages/theme.json'
 
 function Text(props: TextProps) {
     const { border = false, gap = false, align = 'left', textSize = 'md', text = '' } = props
+
+    const themeStyles = {
+        color: `${theme['text-color']}`,
+    }
+
+    const borderStyles = {
+        color: `${theme['text-color']}`,
+        border: `4px solid ${theme['text-color']}`,
+    }
 
     return (
         <div className={styles.root}>
@@ -15,6 +25,7 @@ function Text(props: TextProps) {
                         [styles.bordered]: border,
                         [styles.gap]: gap,
                     })}
+                    style={border ? borderStyles : themeStyles}
                 >
                     <div
                         className={cn(styles.text, {

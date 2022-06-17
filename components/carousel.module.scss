@@ -48,13 +48,13 @@ $arrowSize: 30px;
 
         &.hasImage {
             line-height: 0 !important;
-            border-left: 2px solid variables.$main-color;
-            border-right: 2px solid variables.$main-color;
+            border-left: 2px solid variables.$link-color;
+            border-right: 2px solid variables.$link-color;
         }
 
         &.hasText {
-            border-bottom: 4px solid variables.$label-color;
-            border-top: 4px solid variables.$label-color;
+            //border-bottom: 4px solid variables.$label-color;
+            //border-top: 4px solid variables.$label-color;
             padding: 0 variables.$gap variables.$gap variables.$gap;
             line-height: auto;
 
@@ -76,7 +76,7 @@ $arrowSize: 30px;
 
             .nextBtn {
                 font-size: 20px;
-                color: #000;
+                //color: #000;
                 line-height: auto;
                 width: 100%;
                 text-align: right;
@@ -126,7 +126,7 @@ $arrowSize: 30px;
             @include breakpoints.sm {
                 height: $arrowSize + 20px;
                 width: $arrowSize;
-                background-color: variables.$main-color;
+                background-color: variables.$link-color;
             }
 
             &:before {

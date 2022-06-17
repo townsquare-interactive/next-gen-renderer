@@ -5,9 +5,8 @@
 
 .root {
     width: 100%;
-    //background: linear-gradient(rgba(variables.$link-color, 0.8) 0%, #000 19%);
-    background: linear-gradient(rgba(0, 0, 0, 0.6) 0%, #000 23%);
-    color: #fff;
+    //background: linear-gradient(rgba(0, 0, 0, 0.6) 0%, #000 23%);
+    //color: #fff;
 
     .wrapper {
         max-width: variables.$max-main-width;
@@ -93,7 +92,7 @@
                 }
 
                 .phone {
-                    color: variables.$alt-color;
+                    //color: variables.$alt-color;
                     font-size: variables.$text-size-body-md;
                     margin: 0;
 

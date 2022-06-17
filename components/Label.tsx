@@ -2,9 +2,19 @@ import styles from './label.module.scss'
 import { LabelProps } from './types'
 import cn from 'classnames'
 import Parser from 'html-react-parser'
+import theme from '../pages/theme.json'
 
 function Label(props: LabelProps) {
     const { text = '', border = false, gap = false, align = 'left', textSize = 'md' } = props
+
+    const themeStyles = {
+        color: `${theme['heading-color']}`,
+    }
+
+    const borderStyles = {
+        color: `${theme['heading-color']}`,
+        borderBottom: `4px solid ${theme['heading-color']}`,
+    }
 
     return (
         <div className={styles.root}>
@@ -15,6 +25,7 @@ function Label(props: LabelProps) {
                         [styles.bordered]: border,
                         [styles.gap]: gap,
                     })}
+                    style={border ? borderStyles : themeStyles}
                 >
                     <h3
                         className={cn(styles.text, {

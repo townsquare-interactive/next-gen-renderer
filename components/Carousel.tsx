@@ -7,8 +7,21 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import { CarouselProps } from './types'
 import { domainImage } from '../functions'
+import theme from '../pages/theme.json'
 
 function Carousel(carouselData: CarouselProps) {
+    const themeStyles = {
+        color: `${theme['text-color']}`,
+        borderColor: `${theme['text-color']}`,
+        borderStyle: 'solid',
+        borderWidth: '4px 0 4px 0',
+    }
+    const imageStyles = {
+        borderColor: `${theme['main-color']}`,
+        borderStyle: 'solid',
+        borderWidth: '0 2px 0 2px',
+    }
+
     //Sets slide count to 1 if there are more slides than items to show, or if text shows
     function setSlide() {
         if (carouselData.modLayout === 'images' && carouselData.items.length >= carouselData.slideCount) {
@@ -47,6 +60,8 @@ function Carousel(carouselData: CarouselProps) {
                     [styles.hasImage]: carouselData.modLayout === 'images',
                     [styles.hasText]: carouselData.modLayout === 'text',
                 })}
+                /* style={carouselData.modLayout === 'images' ? imageStyles : themeStyles} */
+                style={carouselData.modLayout === 'images' ? imageStyles : themeStyles}
             >
                 {carouselData.modLayout === 'images' && (
                     <div className={styles.slideItems}>
@@ -83,9 +98,16 @@ function Carousel(carouselData: CarouselProps) {
 }
 
 function NextArrow(props: any) {
+    const themeStyles = {
+        color: `${theme['text-color']}`,
+    }
+    const themeStyles2 = {
+        color: `${theme['text-color-accent']}`,
+    }
+
     const { className, style, onClick } = props
     return (
-        <div className={cn(className, styles.nextBtn)} style={{ ...style }} onClick={onClick}>
+        <div className={cn(className, styles.nextBtn)} style={{ color: `${theme['text-color']}`, ...style, themeStyles2 }} onClick={onClick}>
             next &gt;
         </div>
     )
@@ -98,12 +120,24 @@ function PrevArrow(props: any) {
 
 function NextArrowImage(props: any) {
     const { className, style, onClick } = props
-    return <div className={cn(className, styles.imageBtns, styles.nextImageBtn)} style={{ ...style }} onClick={onClick}></div>
+    return (
+        <div
+            className={cn(className, styles.imageBtns, styles.nextImageBtn)}
+            style={{ ...style, backgroundColor: `${theme['main-color']}` }}
+            onClick={onClick}
+        ></div>
+    )
 }
 
 function PrevArrowImage(props: any) {
     const { className, style, onClick } = props
-    return <div className={cn(className, styles.imageBtns, styles.prevImageBtn)} style={{ ...style }} onClick={onClick}></div>
+    return (
+        <div
+            className={cn(className, styles.imageBtns, styles.prevImageBtn)}
+            style={{ ...style, backgroundColor: `${theme['main-color']}` }}
+            onClick={onClick}
+        ></div>
+    )
 }
 
 export default Carousel

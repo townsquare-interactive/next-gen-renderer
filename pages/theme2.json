@@ -1,0 +1,13 @@
+{
+    "main-color": "#cb8bfe",
+    "text-color": "rgb(46, 46, 46)",
+    "heading-color": "#a337f9",
+    "text-color-accent": "#fff",
+    "link-color": "#ac0090",
+    "alt-color": "#ac0090",
+    "accent-background-color": "#1a00ae",
+    "header-background": "#cb8bfe",
+    "footer-background": "linear-gradient(rgba(203,139,254, 0.6) 0%, #cb8bfe 23%);",
+    "nav-background": "rgb(203,139,254,.9)",
+    "accent-color-2": "#ac0090"
+}

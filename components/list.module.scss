@@ -226,7 +226,7 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
                 }
 
                 .colorFill {
-                    background-color: variables.$main-color;
+                    //background-color: variables.$main-color;
                     aspect-ratio: math.div($ratio, 2);
                     height: $image-height;
                 }

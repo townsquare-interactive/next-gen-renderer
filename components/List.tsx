@@ -23,8 +23,16 @@ const Article = (props: ListProps) => {
     } = props
 
     const themeStyles = {
-        background: border ? `${theme['accent-background-color']}` : 'transparent',
+        backgroundColor: border ? `${theme['accent-background-color']}` : 'transparent',
         color: border ? `${theme['text-color-accent']}` : `${theme['text-color']}`,
+    }
+
+    const headingColor = {
+        color: border ? `${theme['text-color-accent']}` : `${theme['heading-color']}`,
+    }
+
+    const gutterStyle = {
+        backgroundColor: `${theme['main-color']}`,
     }
 
     return (
@@ -41,8 +49,6 @@ const Article = (props: ListProps) => {
                 [styles.block]: true,
             })}
         >
-            {/* <style>{dynamicCss}</style> */}
-
             <div
                 className={cn(styles.wrapper, {
                     [styles.bordered]: border === true,
@@ -51,14 +57,8 @@ const Article = (props: ListProps) => {
                 })}
                 style={themeStyles}
             >
-                {/*change title div layout on card*/}
-                {/*                 <div
-                    className={cn({
-                        [styles.cardBlock]: modLayout === 'card',
-                    })}
-                > */}
                 {modLayout == 'card' && (
-                    <div className={styles.title}>
+                    <div className={styles.title} style={headingColor}>
                         <div className={styles.textGutter}></div>
                         <div className={styles.insideTextGutter}></div>
                         <div className={styles.titleText}>
@@ -71,7 +71,7 @@ const Article = (props: ListProps) => {
                 <div className={styles.features}>
                     {modLayout === 'card' && (
                         <div className={styles.colorBlock}>
-                            <div className={styles.colorFill}></div>
+                            <div className={styles.colorFill} style={gutterStyle}></div>
                         </div>
                     )}
 
@@ -93,7 +93,7 @@ const Article = (props: ListProps) => {
 
                     {modLayout != 'card' ? (
                         <div className={styles.allText}>
-                            <div className={styles.title}>
+                            <div className={styles.title} style={headingColor}>
                                 <h3 className={styles.text}>{headline}</h3>
                             </div>
                             <div className={styles.textBlock}>
