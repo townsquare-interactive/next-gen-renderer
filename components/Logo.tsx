@@ -11,16 +11,16 @@ const Logo = (props: LogoProps) => {
     const [logoHeight, setHeight] = useState('300')
     const [logoWidth, setWidth] = useState('400')
 
-    //Using probe to determine logo width and height in useEffect
-    const probe = require('probe-image-size')
     useEffect(() => {
+        //Using probe to determine logo width and height in useEffect
+        const probe = require('probe-image-size')
         let printAddress = async () => {
             const a = await probe(logoUrl)
             setHeight(a.height)
             setWidth(a.width)
         }
         printAddress()
-    }, [logoUrl, probe])
+    }, [logoUrl])
 
     return (
         <div className={styles.root}>
