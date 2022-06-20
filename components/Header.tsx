@@ -38,7 +38,7 @@ function Hero(props: HeaderProps) {
                 </div>
                 {imageUrl && (
                     <div className={styles.heroImage}>
-                        <Image src={mainImage} layout="fill" objectFit="cover" alt={altText} priority quality="50" />
+                        <Image src={mainImage} layout="fill" objectFit="cover" alt={altText} quality="50" />
                     </div>
                 )}
 
