@@ -45,8 +45,8 @@ const Home = (props: HomeProps) => {
 
     /*     const dynamicCss = `
     h2{
-        color: ${theme['text-color']};
-        background: ${theme['accent-background-color']}
+        color: ${theme['textColor']};
+        background: ${theme['accentBackgroundColor']}
 
     }`
  */
@@ -70,7 +70,7 @@ const Home = (props: HomeProps) => {
             <Layout moduleData={globalData}>
                 {/*   <style>{dynamicCss}</style> */}
 
-                <Renderer config={page.modules} />
+                <Renderer config={page.modules} themeStyles={globalData.themeStyles} />
             </Layout>
         </div>
     )

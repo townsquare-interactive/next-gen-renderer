@@ -7,18 +7,18 @@ import cn from 'classnames'
 import { NavigationProps, NavBarProps, BurgerProps } from './types'
 import { useState } from 'react'
 import { domainImage } from '../functions'
-import theme from '../pages/theme.json'
+/* import theme from '../pages/theme.json' */
 
 const Navigation = (props: NavigationProps) => {
-    const { navStyle = 'layout1', logoUrl, pages, navImage, borderNum, altText = '' } = props
+    const { navStyle = 'layout1', logoUrl, pages, navImage, borderNum, altText = '', themeStyles } = props
     const [navCheck, setNav] = useState<boolean>(false)
 
     const navImageDomain = navImage && domainImage(navImage)
     const logoDomain = logoUrl && domainImage(logoUrl)
 
-    const themeStyles = {
-        background: `${theme['header-background']}`,
-        color: `${theme['text-color-accent']}`,
+    const themeStylesObj = {
+        background: `${themeStyles['headerBackground']}`,
+        color: `${themeStyles['textColorAccent']}`,
     }
 
     function navSwitch() {
@@ -30,26 +30,34 @@ const Navigation = (props: NavigationProps) => {
             className={cn(styles.root, {
                 [styles.layout2]: navStyle === 'layout2',
             })}
-            style={themeStyles}
+            style={themeStylesObj}
         >
             <div className={styles.wrapper}>
                 <div className={styles.logoBlock}>
                     <Logo logoUrl={logoDomain} />
                 </div>
                 <div className={styles.burgerBlock}>
-                    <Burger navSwitch={navSwitch} navCheck={navCheck} />
+                    <Burger navSwitch={navSwitch} navCheck={navCheck} themeStyles={themeStyles} />
                 </div>
             </div>
-            <Navbar navCheck={navCheck} pages={pages} navStyle={navStyle} navImage={navImageDomain} borderNum={borderNum} altText={altText} />
+            <Navbar
+                navCheck={navCheck}
+                pages={pages}
+                navStyle={navStyle}
+                navImage={navImageDomain}
+                borderNum={borderNum}
+                altText={altText}
+                themeStyles={themeStyles}
+            />
         </div>
     )
 }
 
 const Navbar = (props: NavBarProps) => {
-    const { navCheck = false, navStyle = 'layout1', navImage, pages, borderNum, altText = '' } = props
+    const { navCheck = false, navStyle = 'layout1', navImage, pages, borderNum, altText = '', themeStyles } = props
 
     const navStyles = {
-        background: `${theme['nav-background']}`,
+        background: `${themeStyles['navBackground']}`,
     }
 
     return (
@@ -62,7 +70,7 @@ const Navbar = (props: NavBarProps) => {
         >
             <div className={styles.wrapper}>
                 <div className={styles.navDrop} style={navStyles}>
-                    <div className={styles.navItems}>{<Nav pages={pages} modLayout="header" borderNum={borderNum} />}</div>
+                    <div className={styles.navItems}>{<Nav pages={pages} modLayout="header" borderNum={borderNum} themeStyles={themeStyles} />}</div>
                     {navImage && (
                         <div className={styles.imageTile}>
                             <Image
@@ -82,10 +90,10 @@ const Navbar = (props: NavBarProps) => {
 }
 
 const Burger = (props: BurgerProps) => {
-    const { navSwitch, navCheck = false } = props
+    const { navSwitch, navCheck = false, themeStyles } = props
 
     const burgerStyles = {
-        background: `${theme['text-color-accent']}`,
+        background: `${themeStyles['textColorAccent']}`,
     }
 
     return (

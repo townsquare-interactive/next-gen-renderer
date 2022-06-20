@@ -20,11 +20,11 @@ export default function Layout(props: LayoutProps) {
             })}
         >
             <header>
-                <Renderer config={navigationModule} />{' '}
+                <Renderer config={navigationModule} themeStyles={moduleData.themeStyles} />{' '}
             </header>
             <main>{children}</main>
             <footer>
-                <Renderer config={footerModule} />
+                <Renderer config={footerModule} themeStyles={moduleData.themeStyles} />
             </footer>
         </div>
     )
