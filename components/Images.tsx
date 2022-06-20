@@ -65,7 +65,7 @@ const Images1 = ({ items, modLayout = '1-full', gap = false }: ImagesProps) => {
                         [styles.gap]: gap,
                     })}
                 >
-                    <TileImage itemNumber={items[0]} modLayout={modLayout} isMainImage={true} />
+                    <TileImage itemNumber={items[0]} modLayout={modLayout} isMainImage={true} hero={true} />
                 </div>
             </div>
         </div>
@@ -90,7 +90,7 @@ const ImagesPlus = ({ items, modLayout = '4-plus', gap = false }: ImagesProps) =
     )
 }
 
-const TileImage = ({ itemNumber, modLayout, isMainImage = false }: TileImageProps) => {
+const TileImage = ({ itemNumber, modLayout, isMainImage = false, hero = false }: TileImageProps) => {
     return (
         <div
             className={cn(styles.tileImage, {
@@ -105,9 +105,16 @@ const TileImage = ({ itemNumber, modLayout, isMainImage = false }: TileImageProp
                 [styles.hasBody]: itemNumber.body,
             })}
         >
-            {itemNumber.linkUrl ? (
+            {itemNumber.linkUrl && itemNumber.linkText ? (
                 <div className={cn(styles.linkBlock, styles.linked)}>
-                    <Image src={domainImage(itemNumber.imageUrl)} layout="fill" objectFit="cover" alt={itemNumber.altText} quality="50" />
+                    <Image
+                        src={domainImage(itemNumber.imageUrl)}
+                        layout="fill"
+                        objectFit="cover"
+                        alt={itemNumber.altText}
+                        quality="40"
+                        loading={hero ? 'eager' : 'lazy'}
+                    />
 
                     <Link href={itemNumber.linkUrl}>
                         <a className={styles.link}>
@@ -128,7 +135,14 @@ const TileImage = ({ itemNumber, modLayout, isMainImage = false }: TileImageProp
                 </div>
             ) : (
                 <div className={styles.linkBlock}>
-                    <Image src={domainImage(itemNumber.imageUrl)} layout="fill" objectFit="cover" alt={itemNumber.altText} loading="eager" quality="50" />
+                    <Image
+                        src={domainImage(itemNumber.imageUrl)}
+                        layout="fill"
+                        objectFit="cover"
+                        alt={itemNumber.altText}
+                        quality="40"
+                        loading={hero ? 'eager' : 'lazy'}
+                    />
 
                     {itemNumber.headline ? (
                         <div className={styles.headline}>

@@ -2,36 +2,13 @@ import type { NextPage } from 'next'
 import cn from 'classnames'
 import Head from 'next/head'
 import styles from '../styles/Home.module.scss'
-import Script from 'next/script'
 import { HomeProps, PageListProps, Context } from '../components/types'
 import { GetStaticProps } from 'next'
 import Layout from '../components/Layout'
-import { useState } from 'react'
 import { Renderer } from '../components/Renderer'
 import { useRouter } from 'next/router'
 import { domainImage, getDomain } from '../functions'
-import theme from '../pages/theme.json'
-
-import NextCors from 'nextjs-cors'
-
-/* export default async function handler(req, res) {
-    // Check for secret to confirm this is a valid request
-    if (req.query.secret !== process.env.MY_SECRET_TOKEN) {
-      return res.status(401).json({ message: 'Invalid token' })
-    }
-  
-    try {
-      await res.unstable_revalidate('/path-to-revalidate')
-      return res.json({ revalidated: true })
-    } catch (err) {
-      // If there was an error, Next.js will continue
-      // to show the last successfully generated page
-      return res.status(500).send('Error revalidating')
-    }
-  } */
-
-//elitesports.com/live
-//elitesports.com/preview
+/* import NextCors from 'nextjs-cors' */
 
 //runs at build time just like static props
 export const getStaticPaths = async () => {
@@ -60,16 +37,6 @@ export const getStaticProps = async (context: Context) => {
     const page = await resPage.json()
     const globalData = await resGlobal.json()
 
-    /*const probe = require('probe-image-size')
-
-    let printAddress = async () => {
-        const a = await probe(globalData.modules.logoUrl)
-        let setHeight = a.height
-        let setWidth = a.width
-        console.log(setWidth)
-    }
-    printAddress() */
-
     return {
         props: { page, globalData },
         // Next.js will attempt to re-generate the page:
@@ -88,28 +55,6 @@ const Slug = (props: HomeProps) => {
     if (router.isFallback) {
         return <div>Loading...</div>
     }
-
-    /* console.log('vercel url', process.env.NEXT_PUBLIC_VERCEL_URL) */
-
-    /*  const { asPath } = useRouter()
-    const origin = typeof window !== 'undefined' && window.location.origin ? window.location.origin : ''
-
-    const URL = `${origin}`
-    console.log(URL) */
-
-    /* const [navCheck, setNav] = useState<boolean>(false) */
-
-    /* const { asPath } = useRouter()
-    const origin = typeof window !== 'undefined' && window.location.hostname ? window.location.hostname : ''
-
-    const URL = `${origin}`
-    console.log('url', URL) */
-
-    //console.log(global)
-    //console.log('global', global)
-    /*     let fav
-    page.seo.ogImage ?  fav = domainImage(page.seo.ogImage  : fav= '') */
-
     return (
         <div>
             <Head>
