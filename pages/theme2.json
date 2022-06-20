@@ -8,6 +8,6 @@
     "accentColor2": "rgb(230, 211, 65)",
     "altColor": "rgb(230, 211, 65)",
     "headerBackground": "rgb(64,64,64)",
-    "footerBackground": "linear-gradient(rgb(54,80,112, 0.6) 0%, rgb(54,80,112) 23%);",
+    "footerBackground": "linear-gradient(rgb(54,80,112, 0.6) 0%, rgb(54,80,112) 23%)",
     "navBackground": "rgb(64,64,64,.9)"
 }
