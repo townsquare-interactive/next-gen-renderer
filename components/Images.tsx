@@ -105,7 +105,7 @@ const TileImage = ({ itemNumber, modLayout, isMainImage = false, hero = false }:
                 [styles.hasBody]: itemNumber.body,
             })}
         >
-            {itemNumber.linkUrl ? (
+            {itemNumber.linkUrl && itemNumber.linkText ? (
                 <div className={cn(styles.linkBlock, styles.linked)}>
                     <Image
                         src={domainImage(itemNumber.imageUrl)}
