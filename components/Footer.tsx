@@ -77,7 +77,7 @@ const Footer = (props: FooterProps) => {
                     </h3>
                 </div>
                 <div className={cn(styles.block, styles.navInfo)}>
-                    <Nav pages={props.pages} modLayout="footer" borderNum={props.borderNum} />
+                    <Nav pages={props.pages} modLayout="footer" borderNum={props.borderNum} themeStyles={props.themeStyles} />
                 </div>
                 <div className={cn(styles.block, styles.addInfo)}>
                     <div>
