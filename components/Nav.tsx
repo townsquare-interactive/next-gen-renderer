@@ -15,10 +15,6 @@ const Nav = (props: NavProps) => {
 
     const navHover = `#navLink:hover{color: ${theme['altColor']}}`
 
-    /*     function changeColor(e) {
-        e.target.style.color = 'red'
-    } */
-
     return (
         <nav className={styles.root}>
             <div
