@@ -3,7 +3,7 @@ import { LabelProps } from './types'
 import cn from 'classnames'
 import Parser from 'html-react-parser'
 import theme from '../pages/theme.json'
-
+//test
 function Label(props: LabelProps) {
     const { text = '', border = false, gap = false, align = 'left', textSize = 'md' } = props
 
