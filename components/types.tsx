@@ -9,6 +9,7 @@ export interface HeaderProps {
     backgroundImageUrl?: string
     reverse?: boolean
     modLayout: 'normal' | 'alt-layout'
+    themeStyles: ThemeStyles
 }
 
 export interface LogoProps {
@@ -27,6 +28,7 @@ export interface ListProps {
     textSize?: 'sm' | 'md' | 'lg'
     reverse?: boolean
     align?: 'left' | 'right' | 'center'
+    themeStyles: ThemeStyles
 }
 
 export interface GridData {
@@ -39,10 +41,12 @@ export interface GridData {
     btnText?: string
     textSize?: 'sm' | 'md' | 'lg'
     align?: 'left' | 'right' | 'center'
+    themeStyles: ThemeStyles
 }
 
 export interface GridProps {
     items: GridData[]
+    themeStyles: ThemeStyles
 }
 
 export interface LabelProps {
@@ -51,6 +55,7 @@ export interface LabelProps {
     gap?: boolean
     align?: 'left' | 'right' | 'center'
     textSize?: 'sm' | 'md' | 'lg'
+    themeStyles: ThemeStyles
 }
 
 export interface TextData {
@@ -67,6 +72,7 @@ export interface TextProps {
     align?: 'left' | 'right' | 'center'
     textSize?: 'sm' | 'md' | 'lg'
     text?: string
+    themeStyles: ThemeStyles
 }
 
 export interface ImageItem {
@@ -122,6 +128,7 @@ export interface FooterProps {
     pages: PagesProps[]
     logoUrl?: string
     borderNum?: number
+    themeStyles: ThemeStyles
 }
 
 export interface VideoProps {
@@ -171,11 +178,13 @@ export interface NavProps {
     navStyle?: 'layout1' | 'layout2'
     borderNum?: number
     navImage?: string
+    themeStyles: ThemeStyles
 }
 
 export interface BurgerProps {
     navSwitch: () => void
     navCheck: boolean
+    themeStyles: ThemeStyles
 }
 
 export interface NavigationProps {
@@ -188,6 +197,7 @@ export interface NavigationProps {
     navImage?: string
     altText?: string
     logoUrl?: string
+    themeStyles: ThemeStyles
 }
 export interface NavModule {
     componentType: string
@@ -206,6 +216,7 @@ export interface NavBarProps {
     borderNum?: number
     navImage?: string
     altText?: string
+    themeStyles: ThemeStyles
 }
 
 export interface SeoData {
@@ -213,6 +224,20 @@ export interface SeoData {
     description: string
     favicon: string
     ogImage: string
+}
+
+export interface ThemeStyles {
+    mainColor: string
+    textColor: string
+    headingColor: string
+    textColorAccent: string
+    linkColor: string
+    accentBackgroundColor: string
+    accentColor2: string
+    altColor: string
+    headerBackground: string
+    footerBackground: string
+    navBackground: string
 }
 
 export interface ModuleData {
@@ -230,4 +255,5 @@ export interface ModuleData {
     modules?: ImagesProps | ListProps | HeaderProps | LabelProps | TextData | CarouselProps | FooterProps | NavProps | VideoProps | GridProps
     name?: string
     seo?: SeoData
+    themeStyles?: ThemeStyles
 }

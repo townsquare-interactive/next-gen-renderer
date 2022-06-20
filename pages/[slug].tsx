@@ -10,6 +10,7 @@ import { useState } from 'react'
 import { Renderer } from '../components/Renderer'
 import { useRouter } from 'next/router'
 import { domainImage, getDomain } from '../functions'
+import theme from '../pages/theme.json'
 
 import NextCors from 'nextjs-cors'
 
@@ -127,7 +128,7 @@ const Slug = (props: HomeProps) => {
             </Head>
 
             <Layout moduleData={globalData}>
-                <Renderer config={page.modules} />
+                <Renderer config={page.modules} themeStyles={globalData.themeStyles} />
             </Layout>
         </div>
     )

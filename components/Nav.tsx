@@ -5,17 +5,15 @@ import { PagesProps, NavProps, PagesData } from '../components/types'
 import theme from '../pages/theme.json'
 
 const Nav = (props: NavProps) => {
-    const { pages, modLayout = 'header', borderNum } = props
+    const { pages, modLayout = 'header', borderNum, themeStyles } = props
 
-    const themeStyles = {
-        color: `${theme['text-color-accent']}`,
+    console.log('nav styles', themeStyles)
+
+    const themeStylesObj = {
+        color: themeStyles ? `${theme['textColorAccent']}` : '#fff',
     }
 
-    const navHover = `#navLink:hover{color:${theme['alt-color']}}`
-
-    /*     function changeColor(e) {
-        e.target.style.color = 'red'
-    } */
+    const navHover = `#navLink:hover{color: ${theme['altColor']}}`
 
     return (
         <nav className={styles.root}>
@@ -24,12 +22,10 @@ const Nav = (props: NavProps) => {
                     [styles.footerNav]: modLayout === 'footer',
                     [styles.headerNav]: modLayout === 'header',
                 })}
-                style={themeStyles}
+                style={themeStylesObj}
             >
                 <style>{navHover}</style>
-                {/*                 <style>
-                #navLink:hover {color:'red';}
-  </style> */}
+
                 <ul>
                     {pages.map((item, index) => (
                         <li

@@ -5,19 +5,19 @@ import Image from 'next/image'
 import cn from 'classnames'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import { CarouselProps } from './types'
+import { CarouselProps, ThemeStyles } from './types'
 import { domainImage } from '../functions'
 import theme from '../pages/theme.json'
 
-function Carousel(carouselData: CarouselProps) {
-    const themeStyles = {
-        color: `${theme['text-color']}`,
-        borderColor: `${theme['text-color']}`,
+function Carousel(carouselData: CarouselProps, themeStyles: ThemeStyles) {
+    const themeStylesObj = {
+        color: `${themeStyles['textColor']}`,
+        borderColor: `${themeStyles['textColor']}`,
         borderStyle: 'solid',
         borderWidth: '4px 0 4px 0',
     }
     const imageStyles = {
-        borderColor: `${theme['main-color']}`,
+        borderColor: `${themeStyles['mainColor']}`,
         borderStyle: 'solid',
         borderWidth: '0 2px 0 2px',
     }
@@ -61,7 +61,7 @@ function Carousel(carouselData: CarouselProps) {
                     [styles.hasText]: carouselData.modLayout === 'text',
                 })}
                 /* style={carouselData.modLayout === 'images' ? imageStyles : themeStyles} */
-                style={carouselData.modLayout === 'images' ? imageStyles : themeStyles}
+                style={carouselData.modLayout === 'images' ? imageStyles : themeStylesObj}
             >
                 {carouselData.modLayout === 'images' && (
                     <div className={styles.slideItems}>
@@ -98,16 +98,17 @@ function Carousel(carouselData: CarouselProps) {
 }
 
 function NextArrow(props: any) {
-    const themeStyles = {
-        color: `${theme['text-color']}`,
+    const { className, style, onClick, themeStyles } = props
+
+    const themeStylesObj = {
+        color: `${theme['textColor']}`,
     }
     const themeStyles2 = {
-        color: `${theme['text-color-accent']}`,
+        color: `${theme['textColorAccent']}`,
     }
 
-    const { className, style, onClick } = props
     return (
-        <div className={cn(className, styles.nextBtn)} style={{ color: `${theme['text-color']}`, ...style, themeStyles2 }} onClick={onClick}>
+        <div className={cn(className, styles.nextBtn)} style={{ color: `${theme['textColor']}`, ...style, themeStyles2 }} onClick={onClick}>
             next &gt;
         </div>
     )
@@ -119,22 +120,22 @@ function PrevArrow(props: any) {
 }
 
 function NextArrowImage(props: any) {
-    const { className, style, onClick } = props
+    const { className, style, onClick, themeStyles } = props
     return (
         <div
             className={cn(className, styles.imageBtns, styles.nextImageBtn)}
-            style={{ ...style, backgroundColor: `${theme['main-color']}` }}
+            style={{ ...style, backgroundColor: `${theme['mainColor']}` }}
             onClick={onClick}
         ></div>
     )
 }
 
 function PrevArrowImage(props: any) {
-    const { className, style, onClick } = props
+    const { className, style, onClick, themeStyles } = props
     return (
         <div
             className={cn(className, styles.imageBtns, styles.prevImageBtn)}
-            style={{ ...style, backgroundColor: `${theme['main-color']}` }}
+            style={{ ...style, backgroundColor: `${theme['mainColor']}` }}
             onClick={onClick}
         ></div>
     )

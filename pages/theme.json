@@ -1,13 +1,13 @@
 {
-    "main-color": "#3232bf",
-    "text-color": "rgb(46, 46, 46)",
-    "heading-color": "rgb(46, 46, 46)",
-    "text-color-accent": "#fff",
-    "link-color": "rgb(230, 211, 65)",
-    "alt-color": "#f68a33",
-    "accent-background-color": "#000",
-    "header-background": "#000",
-    "footer-background": "linear-gradient(rgba(0, 0, 0, 0.6) 0%, #000 23%);",
-    "nav-background": "rgb(0,0,0,.9)",
-    "accent-color-2": "rgb(230, 211, 65)"
+    "mainColor": "#3232bf",
+    "textColor": "rgb(46, 46, 46)",
+    "headingColor": "rgb(46, 46, 46)",
+    "textColorAccent": "#fff",
+    "linkColor": "rgb(230, 211, 65)",
+    "accentBackgroundColor": "#000",
+    "accentColor2": "rgb(230, 211, 65)",
+    "altColor": "#f68a33",
+    "headerBackground": "#000",
+    "footerBackground": "linear-gradient(rgba(0, 0, 0, 0.6) 0%, #000 23%)",
+    "navBackground": "rgb(0,0,0,.9)"
 }

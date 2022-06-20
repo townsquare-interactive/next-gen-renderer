@@ -5,9 +5,8 @@ import cn from 'classnames'
 import { reverse } from 'dns'
 import Parser from 'html-react-parser'
 import { domainImage } from '../functions'
-import theme from '../pages/theme.json'
 
-const Article = (props: ListProps) => {
+const List = (props: ListProps) => {
     const {
         headline = '',
         body = '',
@@ -20,19 +19,20 @@ const Article = (props: ListProps) => {
         reverse = false,
         align = 'left',
         altText = '',
+        themeStyles,
     } = props
 
-    const themeStyles = {
-        backgroundColor: border ? `${theme['accent-background-color']}` : 'transparent',
-        color: border ? `${theme['text-color-accent']}` : `${theme['text-color']}`,
+    const themeStylesObj = {
+        backgroundColor: border ? `${themeStyles['accentBackgroundColor']}` : 'transparent',
+        color: border ? `${themeStyles['textColorAccent']}` : `${themeStyles['textColor']}`,
     }
 
     const headingColor = {
-        color: border ? `${theme['text-color-accent']}` : `${theme['heading-color']}`,
+        color: border ? `${themeStyles['textColorAccent']}` : `${themeStyles['headingColor']}`,
     }
 
     const gutterStyle = {
-        backgroundColor: `${theme['main-color']}`,
+        backgroundColor: `${themeStyles['mainColor']}`,
     }
 
     return (
@@ -55,7 +55,7 @@ const Article = (props: ListProps) => {
                     [styles.imageArticle]: imageUrl && modLayout != 'card',
                     [styles.reverse]: reverse,
                 })}
-                style={themeStyles}
+                style={themeStylesObj}
             >
                 {modLayout == 'card' && (
                     <div className={styles.title} style={headingColor}>
@@ -123,4 +123,4 @@ const Article = (props: ListProps) => {
     )
 }
 
-export default Article
+export default List

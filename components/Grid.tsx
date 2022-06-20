@@ -5,16 +5,16 @@ import cn from 'classnames'
 import { reverse } from 'dns'
 import Parser from 'html-react-parser'
 import { domainImage } from '../functions'
-import theme from '../pages/theme.json'
+/* import theme from '../pages/theme.json' */
 
 const Grid = (props: GridProps) => {
-    const { items } = props
+    const { items, themeStyles } = props
 
     return (
         <div className={styles.root}>
             <div className={styles.wrapper}>
                 {items.map((item, index) => (
-                    <GridBlock {...item} key={index} />
+                    <GridBlock {...item} key={index} themeStyles={themeStyles} />
                 ))}
             </div>
         </div>
@@ -22,15 +22,15 @@ const Grid = (props: GridProps) => {
 }
 
 const GridBlock = (props: GridData) => {
-    const { headline = '', body = '', border = false, imageUrl, linkUrl, btnText = '', textSize = 'md', align = 'left', altText = '' } = props
+    const { headline = '', body = '', border = false, imageUrl, linkUrl, btnText = '', textSize = 'md', align = 'left', altText = '', themeStyles } = props
 
-    const themeStyles = {
-        color: `${theme['text-color']}`,
+    const themeStylesObj = {
+        color: `${themeStyles['textColor']}`,
     }
 
     const borderStyles = {
-        color: `${theme['text-color-accent']}`,
-        backgroundColor: `${theme['alt-color']}`,
+        color: `${themeStyles['textColorAccent']}`,
+        backgroundColor: `${themeStyles['altColor']}`,
     }
 
     return (
@@ -45,7 +45,7 @@ const GridBlock = (props: GridData) => {
                 [styles.left]: align === 'left',
                 [styles.right]: align === 'right',
             })}
-            style={border ? borderStyles : themeStyles}
+            style={border ? borderStyles : themeStylesObj}
         >
             {imageUrl && (
                 <div className={styles.imageTile}>

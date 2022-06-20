@@ -7,7 +7,7 @@ import Nav from './Nav'
 import Logo from './Logo'
 import { FooterProps, HomeProps, NavProps, PagesProps } from './types'
 import { domainImage } from '../functions'
-import theme from '../pages/theme.json'
+/* import theme from '../pages/theme.json' */
 
 // import the library
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -20,13 +20,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const Footer = (props: FooterProps) => {
     //const { moduleData } = props
 
-    const themeStyles = {
-        background: `${theme['footer-background']}`,
-        color: `${theme['text-color-accent']}`,
+    const themeStylesObj = {
+        background: `${props.themeStyles['footerBackground']}`,
+        color: `${props.themeStyles['textColorAccent']}`,
     }
 
     const phoneColor = {
-        color: `${theme['alt-color']}`,
+        color: `${props.themeStyles['altColor']}`,
     }
 
     const logo = props.logoUrl && domainImage(props.logoUrl)
@@ -61,7 +61,7 @@ const Footer = (props: FooterProps) => {
     }
 
     return (
-        <div className={styles.root} style={themeStyles}>
+        <div className={styles.root} style={themeStylesObj}>
             <div className={styles.wrapper}>
                 <div className={cn(styles.block, styles.logoInfo)}>
                     <Logo logoUrl={logo} />
@@ -77,7 +77,7 @@ const Footer = (props: FooterProps) => {
                     </h3>
                 </div>
                 <div className={cn(styles.block, styles.navInfo)}>
-                    <Nav pages={props.pages} modLayout="footer" borderNum={props.borderNum} />
+                    <Nav pages={props.pages} modLayout="footer" borderNum={props.borderNum} themeStyles={props.themeStyles} />
                 </div>
                 <div className={cn(styles.block, styles.addInfo)}>
                     <div>

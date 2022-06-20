@@ -48,8 +48,8 @@ $arrowSize: 30px;
 
         &.hasImage {
             line-height: 0 !important;
-            border-left: 2px solid variables.$link-color;
-            border-right: 2px solid variables.$link-color;
+            border-left: 2px solid variables.$linkColor;
+            border-right: 2px solid variables.$linkColor;
         }
 
         &.hasText {
@@ -126,7 +126,7 @@ $arrowSize: 30px;
             @include breakpoints.sm {
                 height: $arrowSize + 20px;
                 width: $arrowSize;
-                background-color: variables.$link-color;
+                background-color: variables.$linkColor;
             }
 
             &:before {

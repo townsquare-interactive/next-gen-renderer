@@ -9,7 +9,7 @@ $sm-block-max: (variables.$max-main-width * 0.25);
 
 .root {
     @include utils.root;
-    /*used for testing |  border-bottom: 30px solid variables.$main-color; test deploy limit */
+    /*used for testing |  border-bottom: 30px solid variables.$mainColor; test deploy limit */
 
     .wrapper {
         display: flex;
@@ -30,7 +30,7 @@ $sm-block-max: (variables.$max-main-width * 0.25);
 
         .gutter {
             flex: 10 0 0;
-            //background-color: variables.$main-color;
+            //background-color: variables.$mainColor;
             height: 100%;
             display: none;
             max-width: 100%;
@@ -55,7 +55,7 @@ $sm-block-max: (variables.$max-main-width * 0.25);
             display: flex;
             justify-content: center;
             align-items: center;
-            //background-color: variables.$main-color;
+            //background-color: variables.$mainColor;
             height: 100%;
             flex: 50 0 0;
             z-index: 9;
