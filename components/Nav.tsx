@@ -25,9 +25,7 @@ const Nav = (props: NavProps) => {
                 style={themeStylesObj}
             >
                 <style>{navHover}</style>
-                {/*                 <style>
-                #navLink:hover {color:'red';}
-  </style> */}
+
                 <ul>
                     {pages.map((item, index) => (
                         <li
