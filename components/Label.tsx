@@ -27,7 +27,7 @@ function Label(props: LabelProps) {
                     })}
                     style={border ? borderStyles : themeStylesObj}
                 >
-                    <h3
+                    <h2
                         className={cn(styles.text, {
                             [styles.center]: align === 'center',
                             [styles.left]: align === 'left',
@@ -38,7 +38,7 @@ function Label(props: LabelProps) {
                         })}
                     >
                         {Parser(text)}
-                    </h3>
+                    </h2>
                 </div>
             </div>
         </div>

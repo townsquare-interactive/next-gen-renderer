@@ -62,7 +62,7 @@ const List = (props: ListProps) => {
                         <div className={styles.textGutter}></div>
                         <div className={styles.insideTextGutter}></div>
                         <div className={styles.titleText}>
-                            <h3 className={styles.text}>{headline || ''}</h3>
+                            <h2 className={styles.text}>{headline || ''}</h2>
                         </div>
                         <div className={cn(styles.textGutter, styles.textGutter_2)}></div>
                     </div>
