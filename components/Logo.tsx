@@ -11,7 +11,7 @@ const Logo = (props: LogoProps) => {
     const [logoHeight, setHeight] = useState('300')
     const [logoWidth, setWidth] = useState('400')
 
-    useEffect(() => {
+    /* useEffect(() => {
         //Using probe to determine logo width and height in useEffect
         const probe = require('probe-image-size')
         let printAddress = async () => {
@@ -20,7 +20,7 @@ const Logo = (props: LogoProps) => {
             setWidth(a.width)
         }
         printAddress()
-    }, [logoUrl])
+    }, [logoUrl]) */
 
     return (
         <div className={styles.root}>
