@@ -128,7 +128,7 @@ const TileImage = ({ itemNumber, modLayout, isMainImage = false }: TileImageProp
                 </div>
             ) : (
                 <div className={styles.linkBlock}>
-                    <Image src={domainImage(itemNumber.imageUrl)} layout="fill" objectFit="cover" alt={itemNumber.altText} quality="50" />
+                    <Image src={domainImage(itemNumber.imageUrl)} layout="fill" objectFit="cover" alt={itemNumber.altText} loading="eager" quality="50" />
 
                     {itemNumber.headline ? (
                         <div className={styles.headline}>
