@@ -32,7 +32,7 @@ function Hero(props: HeaderProps) {
                 <div className={styles.gutter} style={themeStylesObj}>
                     {backgroundImageUrl && (
                         <div className={styles.backgroundBlock}>
-                            <Image src={backgroundImage} layout="fill" objectFit="cover" alt="" quality="50" />
+                            <Image src={backgroundImage} layout="fill" objectFit="cover" alt="" quality="30" />
                         </div>
                     )}
                 </div>
@@ -44,14 +44,14 @@ function Hero(props: HeaderProps) {
 
                 <div className={styles.headline}>
                     <div className={styles.backgroundBlock} style={themeStylesObj}>
-                        {backgroundImageUrl && <Image src={backgroundImage} layout="fill" objectFit="cover" alt="" quality="50" />}
+                        {backgroundImageUrl && <Image src={backgroundImage} layout="fill" objectFit="cover" alt="" quality="30" />}
                         <h1 className={styles.text}>{headline}</h1>
                     </div>
                 </div>
                 <div className={cn(styles.gutter, styles.gutter_alt)} style={gutterAlt}>
                     {backgroundImageUrl && (
                         <div className={styles.backgroundBlock}>
-                            <Image src={backgroundImage} layout="fill" objectFit="cover" alt="" quality="50" />
+                            <Image src={backgroundImage} layout="fill" objectFit="cover" alt="" quality="30" />
                         </div>
                     )}
                 </div>

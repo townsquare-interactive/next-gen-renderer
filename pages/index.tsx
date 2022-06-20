@@ -2,14 +2,12 @@ import type { NextPage } from 'next'
 import cn from 'classnames'
 import Head from 'next/head'
 import styles from '../styles/Home.module.scss'
-import Script from 'next/script'
 import { HomeProps, PageListProps, Context } from '../components/types'
 import { GetStaticProps } from 'next'
 import Layout from '../components/Layout'
 import { Renderer } from '../components/Renderer'
 import { getDomain, domainImage } from '../functions'
 import { useRouter } from 'next/router'
-import theme from './theme.json'
 
 //runs at build time just like static props
 
@@ -43,13 +41,6 @@ const Home = (props: HomeProps) => {
         return <div>Loading...</div>
     }
 
-    /*     const dynamicCss = `
-    h2{
-        color: ${theme['textColor']};
-        background: ${theme['accentBackgroundColor']}
-
-    }`
- */
     return (
         <div>
             <Head>
