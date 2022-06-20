@@ -12,9 +12,6 @@
         max-width: variables.$max-main-width;
         margin: 0 auto;
 
-        /*         @include breakpoints.md {
-            width: variables.$content-width;
-        } */
         @include breakpoints.sm {
             display: grid;
             width: variables.$content-width;
