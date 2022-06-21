@@ -109,6 +109,7 @@ export interface CarouselProps {
     slideCount: 1 | 2 | 3
     autoPlay?: boolean
     items: SlideData[]
+    themeStyles: ThemeStyles
 }
 
 export interface SocialData {

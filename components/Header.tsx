@@ -9,6 +9,8 @@ import { domainImage } from '../functions'
 function Hero(props: HeaderProps) {
     const { reverse = false, backgroundImageUrl = '', imageUrl = '', headline = '', modLayout = 'normal', altText = '', themeStyles } = props
 
+    console.log('the theme2', themeStyles)
+
     const themeStylesObj = {
         backgroundColor: `${themeStyles['mainColor']}`,
         color: `${themeStyles['textColorAccent']}`,
