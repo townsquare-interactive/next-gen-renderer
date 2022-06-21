@@ -29,6 +29,8 @@ const Footer = (props: FooterProps) => {
         color: `${props.themeStyles['altColor']}`,
     }
 
+    const socialHover = `.socialLink:hover{color: ${props.themeStyles['altColor']}}`
+
     const logo = props.logoUrl && domainImage(props.logoUrl)
 
     function iconConvert(str: string) {
@@ -66,8 +68,16 @@ const Footer = (props: FooterProps) => {
                 <div className={cn(styles.block, styles.logoInfo)}>
                     <Logo logoUrl={logo} />
                     <div className={styles.social}>
+                        <style>{socialHover}</style>
                         {props.socialData.map((item, index) => (
-                            <a href={item.linkUrl} key={index} rel="noopener noreferrer" target="_blank" aria-label={iconConvert(item.linkUrl)}>
+                            <a
+                                href={item.linkUrl}
+                                key={index}
+                                rel="noopener noreferrer"
+                                target="_blank"
+                                aria-label={iconConvert(item.linkUrl)}
+                                className="socialLink"
+                            >
                                 <FontAwesomeIcon icon={socialConvert(item.linkUrl)} />
                             </a>
                         ))}
