@@ -7,9 +7,9 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import { CarouselProps, ThemeStyles } from './types'
 import { domainImage } from '../functions'
-import theme from '../pages/theme.json'
 
-function Carousel(carouselData: CarouselProps, themeStyles: ThemeStyles) {
+function Carousel(props: CarouselProps) {
+    const { items, modLayout, slideCount, autoPlay, themeStyles } = props
     const themeStylesObj = {
         color: `${themeStyles['textColor']}`,
         borderColor: `${themeStyles['textColor']}`,
@@ -22,10 +22,12 @@ function Carousel(carouselData: CarouselProps, themeStyles: ThemeStyles) {
         borderWidth: '0 2px 0 2px',
     }
 
+    const arrowBackground = `.arrowNext{background: ${themeStyles['mainColor']}} .arrowNext:hover{background: ${themeStyles['accentColor2']}}`
+
     //Sets slide count to 1 if there are more slides than items to show, or if text shows
     function setSlide() {
-        if (carouselData.modLayout === 'images' && carouselData.items.length >= carouselData.slideCount) {
-            return carouselData.slideCount
+        if (modLayout === 'images' && items.length >= slideCount) {
+            return slideCount
         } else {
             return 1
         }
@@ -39,7 +41,7 @@ function Carousel(carouselData: CarouselProps, themeStyles: ThemeStyles) {
         slidesToScroll: 1,
         nextArrow: <NextArrowImage />,
         prevArrow: <PrevArrowImage />,
-        autoplay: carouselData.autoPlay || false,
+        autoplay: autoPlay || false,
         autoplaySpeed: 2600,
     }
 
@@ -49,24 +51,25 @@ function Carousel(carouselData: CarouselProps, themeStyles: ThemeStyles) {
         speed: 200,
         slidesToShow: setSlide(),
         slidesToScroll: 1,
-        nextArrow: <NextArrow />,
-        prevArrow: <PrevArrow />,
+        nextArrow: <NextArrow themeStyles={themeStyles} />,
+        /* prevArrow: <PrevArrow themeStyles={themeStyles} />, */
     }
 
     return (
         <div className={styles.root}>
             <div
                 className={cn(styles.wrapper, {
-                    [styles.hasImage]: carouselData.modLayout === 'images',
-                    [styles.hasText]: carouselData.modLayout === 'text',
+                    [styles.hasImage]: modLayout === 'images',
+                    [styles.hasText]: modLayout === 'text',
                 })}
-                /* style={carouselData.modLayout === 'images' ? imageStyles : themeStyles} */
-                style={carouselData.modLayout === 'images' ? imageStyles : themeStylesObj}
+                /* style={modLayout === 'images' ? imageStyles : themeStyles} */
+                style={modLayout === 'images' ? imageStyles : themeStylesObj}
             >
-                {carouselData.modLayout === 'images' && (
+                {modLayout === 'images' && (
                     <div className={styles.slideItems}>
+                        <style>{arrowBackground}</style>
                         <Slider {...settingsImage}>
-                            {carouselData.items.map((item, index) => (
+                            {items.map((item, index) => (
                                 <div className={styles.item} key={index}>
                                     {item.imageUrl && (
                                         <div className={styles.imageTile}>
@@ -78,10 +81,10 @@ function Carousel(carouselData: CarouselProps, themeStyles: ThemeStyles) {
                         </Slider>
                     </div>
                 )}
-                {carouselData.modLayout === 'text' && (
+                {modLayout === 'text' && (
                     <div className={styles.slideItems}>
                         <Slider {...settingsText}>
-                            {carouselData.items.map((item, index) => (
+                            {items.map((item, index) => (
                                 <div className={styles.item} key={index}>
                                     <div className={styles.text}>
                                         <p>{item.text}</p>
@@ -101,44 +104,33 @@ function NextArrow(props: any) {
     const { className, style, onClick, themeStyles } = props
 
     const themeStylesObj = {
-        color: `${theme['textColor']}`,
+        color: `${themeStyles['textColor']}`,
     }
     const themeStyles2 = {
-        color: `${theme['textColorAccent']}`,
+        color: `${themeStyles['textColorAccent']}`,
     }
 
     return (
-        <div className={cn(className, styles.nextBtn)} style={{ color: `${theme['textColor']}`, ...style, themeStyles2 }} onClick={onClick}>
+        <div className={cn(className, styles.nextBtn)} style={{ color: `${themeStyles['textColor']}`, ...style, themeStyles2 }} onClick={onClick}>
             next &gt;
         </div>
     )
 }
 
-function PrevArrow(props: any) {
+/* function PrevArrow(props: any) {
     const { className, style, onClick } = props
     return <div className={cn(className, styles.prevBtn)} style={{ ...style }} onClick={onClick}></div>
-}
+} */
 
 function NextArrowImage(props: any) {
-    const { className, style, onClick, themeStyles } = props
-    return (
-        <div
-            className={cn(className, styles.imageBtns, styles.nextImageBtn)}
-            style={{ ...style, backgroundColor: `${theme['mainColor']}` }}
-            onClick={onClick}
-        ></div>
-    )
+    const { className, style, onClick } = props
+
+    return <div className={cn(className, styles.imageBtns, styles.nextImageBtn, 'arrowNext')} style={{ ...style }} onClick={onClick}></div>
 }
 
 function PrevArrowImage(props: any) {
-    const { className, style, onClick, themeStyles } = props
-    return (
-        <div
-            className={cn(className, styles.imageBtns, styles.prevImageBtn)}
-            style={{ ...style, backgroundColor: `${theme['mainColor']}` }}
-            onClick={onClick}
-        ></div>
-    )
+    const { className, style, onClick } = props
+    return <div className={cn(className, styles.imageBtns, styles.prevImageBtn, 'arrowNext')} style={{ ...style }} onClick={onClick}></div>
 }
 
 export default Carousel

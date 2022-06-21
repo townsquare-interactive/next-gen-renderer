@@ -95,15 +95,7 @@
                     margin: 0;
 
                     @include breakpoints.sm {
-                        font-size: variables.$text-size-body-sm;
-                    }
-
-                    @include breakpoints.md {
                         font-size: variables.$text-size-body-md;
-                    }
-
-                    @include breakpoints.lg {
-                        font-size: variables.$text-size-body-lg;
                     }
 
                     @include breakpoints.xl {
@@ -131,10 +123,6 @@
                 @include breakpoints.md {
                     display: flex;
                     justify-content: flex-end;
-                    font-size: 10px;
-                }
-
-                @include breakpoints.md {
                     font-size: 15px;
                 }
 
