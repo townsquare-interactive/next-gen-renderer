@@ -10,7 +10,7 @@ const Nav = (props: NavProps) => {
         color: themeStyles ? `${themeStyles['textColorAccent']}` : '#fff',
     }
 
-    const navHover = `#navLink:hover{color: ${themeStyles['altColor']}}`
+    const navHover = `.navLink:hover{color: ${themeStyles['altColor']}}`
 
     return (
         <nav className={styles.root}>
@@ -30,11 +30,9 @@ const Nav = (props: NavProps) => {
                             className={cn({
                                 [styles.bordered]: index === borderNum,
                             })}
-                            id="navLink"
-                            /*  onMouseOver={changeColor()} */
                         >
                             <Link href={item.slug}>
-                                <a>{item.name}</a>
+                                <a className="navLink">{item.name}</a>
                             </Link>
                         </li>
                     ))}
