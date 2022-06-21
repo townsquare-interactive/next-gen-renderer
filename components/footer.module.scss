@@ -128,7 +128,7 @@
                 line-height: 1;
                 font-size: 15px;
 
-                @include breakpoints.sm {
+                @include breakpoints.md {
                     display: flex;
                     justify-content: flex-end;
                     font-size: 10px;
