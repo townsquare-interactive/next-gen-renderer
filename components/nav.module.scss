@@ -45,8 +45,9 @@
             li {
                 padding: 5px;
 
-                @media (max-width: breakpoints.$screen-sm-min) {
-                    font-size: variables.$text-size-body-sm;
+                @media (max-width: breakpoints.$screen-md-min) {
+                    font-size: variables.$text-size-body-md;
+                    padding: 10px;
                 }
             }
         }
