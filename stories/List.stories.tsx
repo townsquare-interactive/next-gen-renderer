@@ -10,8 +10,8 @@ const Template: ComponentStory<typeof List> = (args) => <List {...args} />
 
 export const Plain = Template.bind({})
 Plain.args = {
-    headline: 'text goes here',
-    body: 'hello',
+    headline: 'Hello',
+    body: 'text goes here, text goes here, text goes here, text goes here, text goes here',
     themeStyles: {
         mainColor: '#365070',
         textColor: 'rgb(46, 46, 46)',
@@ -26,6 +26,8 @@ Plain.args = {
         navBackground: 'rgb(64,64,64,.9)',
     },
     textSize: 'md',
+    border: false,
+    align: 'left',
 }
 
 export const Large = Template.bind({})
@@ -44,4 +46,6 @@ export const Image = Template.bind({})
 Image.args = {
     ...Large.args,
     imageUrl: '/football-1.jpg',
+    //imageUrl: '/juan-test-003.jpg',
+    // imageUrl: '/bathroom-2.jpg',
 }

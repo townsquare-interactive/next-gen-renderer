@@ -42,5 +42,6 @@ Border.args = {
 export const BorderGap = Template.bind({})
 BorderGap.args = {
     ...Border.args,
+    align: 'center',
     gap: true,
 }
