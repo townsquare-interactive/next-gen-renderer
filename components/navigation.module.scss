@@ -8,8 +8,7 @@
     position: fixed;
     top: 0;
     z-index: 99999999999999;
-    //background-color: rgb(0, 0, 0, 0.9);
-    background-color: #000;
+    //background-color: #000;
 
     .wrapper {
         display: flex;
@@ -21,12 +20,14 @@
 
         .logoBlock {
             flex-grow: 2;
-            padding: 15px;
-            padding: 15px 15px 15px 4px;
+            //padding: 25px;
+            //padding: 15px 15px 15px 4px;
             z-index: 9999999999;
+            padding: variables.$logo-padding !important;
 
             @include breakpoints.sm {
                 width: variables.$content-width;
+                //padding: 15px 15px 15px 4px;
             }
         }
 
@@ -41,5 +42,178 @@
 
     &.layout2 {
         position: static;
+    }
+
+    /* Navbar Component */
+    .navBar {
+        width: 100%;
+        z-index: 99;
+        display: none;
+
+        .wrapper {
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .navDrop {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: fixed;
+                z-index: 9999;
+                // background-color: rgba(0, 0, 0, 0.9);
+                top: 0;
+                width: 100%;
+                margin: 0 auto;
+                padding: variables.$gap;
+                padding-top: 50px;
+                box-sizing: border-box;
+                max-width: variables.$max-main-width;
+
+                @include breakpoints.sm {
+                    width: variables.$content-width;
+                }
+
+                @media (min-width: 312px) {
+                    padding-top: variables.$layout-padding-2;
+                }
+                @media (min-width: 620px) {
+                    padding-top: variables.$layout-padding;
+                }
+
+                .navItems {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-self: flex-start;
+                    padding: 10px;
+                    flex-wrap: wrap;
+
+                    @include breakpoints.sm {
+                        padding-left: 20px;
+                    }
+
+                    a {
+                        text-align: center;
+                    }
+
+                    & > div {
+                        max-width: 450px;
+                        margin-left: 0;
+
+                        @include breakpoints.xl {
+                            max-width: 550px;
+                        }
+                    }
+                }
+
+                .imageTile {
+                    flex: 30 0 0;
+                    padding: 20px;
+                    position: relative;
+                    aspect-ratio: variables.$aspect-ratio-4_3;
+                    display: none;
+                    align-self: flex-start;
+                    margin-top: 10px;
+
+                    img {
+                        max-width: 100%;
+                    }
+
+                    @include breakpoints.sm {
+                        flex: 30 0 0;
+                    }
+
+                    @include breakpoints.xs {
+                        display: block;
+                    }
+
+                    span {
+                        margin-top: 10px !important;
+                    }
+                }
+            }
+        }
+
+        &.hasImage {
+            .navItems {
+                flex: 50 0 0;
+                justify-content: center;
+            }
+        }
+
+        &.visible {
+            display: block;
+        }
+
+        &.layout2 .navDrop {
+            position: absolute;
+            top: 0;
+        }
+    }
+
+    .burger {
+        z-index: 99999;
+
+        .wrapper {
+            height: 100%;
+
+            .burgerBtn {
+                z-index: 9999999;
+
+                div {
+                    position: relative;
+                    //background-color: variables.$textColorAccent;
+
+                    width: 25px;
+                    height: 2px;
+                    border-radius: 3px;
+                    margin-top: 4px;
+
+                    @include breakpoints.sm {
+                        width: 40px;
+                        height: 4px;
+                        border-radius: 3px;
+                        margin-top: 5px;
+                    }
+                }
+
+                button {
+                    background-color: transparent;
+                    border: none;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+                &.navActive {
+                    div:first-of-type {
+                        transform: rotate(-45deg);
+                        -webkit-transform: rotate(-45deg);
+                        transition: transform 0.5s ease-in-out;
+                        top: 6px;
+
+                        @include breakpoints.sm {
+                            top: 11px;
+                        }
+                    }
+
+                    div:nth-child(2) {
+                        opacity: 0;
+                    }
+
+                    div:last-of-type {
+                        transform: rotate(-5deg);
+                        -webkit-transform: rotate(45deg);
+                        transition: transform 0.5s ease-in-out;
+                        top: -6px;
+
+                        @include breakpoints.sm {
+                            top: -6px;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

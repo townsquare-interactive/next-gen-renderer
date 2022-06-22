@@ -3,20 +3,24 @@ import Link from 'next/dist/client/link'
 import cn from 'classnames'
 import Image from 'next/image'
 import ImageSize from 'image-size'
-import probe from 'probe-image-size'
-import { useEffect, useState } from 'react'
 import { LogoProps } from './types'
-
-/* const logo = '/images/company-logo.png'
-const size = probe(logo)
-console.log(size) */
-
-/* var sizeOf = ImageSize
-var dimensions = sizeOf(logo)
-console.log(dimensions.width, dimensions.height) */
+import { useState, useEffect } from 'react'
 
 const Logo = (props: LogoProps) => {
     const { logoUrl = '' } = props
+    const [logoHeight, setHeight] = useState('300')
+    const [logoWidth, setWidth] = useState('400')
+
+    useEffect(() => {
+        //Using probe to determine logo width and height in useEffect
+        const probe = require('probe-image-size')
+        let printAddress = async () => {
+            const a = await probe(logoUrl)
+            setHeight(a.height)
+            setWidth(a.width)
+        }
+        printAddress()
+    }, [logoUrl])
 
     return (
         <div className={styles.root}>
@@ -24,8 +28,9 @@ const Logo = (props: LogoProps) => {
                 <div className={styles.logo}>
                     <Link href="/">
                         <a>
-                            {/*  <Image src={logoUrl} layout="fill" alt="logo" className={styles.image} /> */}
-                            <Image src={logoUrl} width="722" height="156px" alt="logo" className={styles.image} objectFit="contain" />
+                            {/*  <Image src={logoUrl} layout="fill" alt="logo" className={styles.image} objectFit="contain" objectPosition="left" /> */}
+                            {/*                             <Image src={logoUrl} width="522" height="156px" alt="logo" className={styles.image} objectFit="contain" objectPosition="left" /> */}
+                            <Image src={logoUrl} width={logoWidth} height={logoHeight} alt="logo" className={styles.image} />
                         </a>
                     </Link>
                 </div>

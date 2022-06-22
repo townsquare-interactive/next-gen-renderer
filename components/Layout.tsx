@@ -1,35 +1,31 @@
-import data from '../components/moduleData'
 import { GetStaticProps } from 'next'
-import { FooterProps, ModuleData, LayoutProps, FooterData, NavProps } from '../components/types'
+import { FooterProps, ModuleData, LayoutProps, NavProps, NavigationProps, NavModule, FooterModule } from '../components/types'
 import Footer from '../components/Footer'
-import Navbar from '../components/Navbar'
 import Navigation from '../components/Navigation'
-import useSWR, { Key, Fetcher } from 'swr'
-import { useState } from 'react'
+
 import styles from './layout.module.scss'
 import cn from 'classnames'
+import { Renderer } from '../components/Renderer'
 
 export default function Layout(props: LayoutProps) {
     const { children, moduleData } = props
-    const [navCheck, setNav] = useState<boolean>(false)
-
-    //Flipping state value for navbar visibility
-    function navSwitch() {
-        setNav(!navCheck)
-        console.log(navCheck)
-    }
+    //Placing nav data na footer data into two different arrays
+    const navigationModule = moduleData.modules.filter((module: NavModule) => module.componentType === 'navigation')
+    const footerModule = moduleData.modules.filter((module: FooterModule) => module.componentType === 'footer')
 
     return (
         <div
             className={cn(styles.root, {
-                [styles.layout1]: moduleData.navData.navStyle === 'layout1',
+                [styles.layout1]: moduleData.modules[0].attributes.navStyle === 'layout1',
             })}
         >
-            <Navbar navCheck={navCheck} navData={moduleData.navData} navStyle={moduleData.navData.navStyle} />
-            <Navigation navSwitch={navSwitch} navCheck={navCheck} navStyle={moduleData.navData.navStyle} logoUrl={moduleData.logoUrl} />
-
+            <header>
+                <Renderer config={navigationModule} themeStyles={moduleData.themeStyles} />{' '}
+            </header>
             <main>{children}</main>
-            <Footer footerData={moduleData.footerData as FooterData} navData={moduleData.navData} logoUrl={moduleData.logoUrl} />
+            <footer>
+                <Renderer config={footerModule} themeStyles={moduleData.themeStyles} />
+            </footer>
         </div>
     )
 }

@@ -4,8 +4,11 @@ import Image from 'next/image'
 import cn from 'classnames'
 import { reverse } from 'dns'
 import Parser from 'html-react-parser'
+import RendererContext from './RendererContext'
+import { useContext } from 'react'
 
-const Article = (props: ListProps) => {
+const List = (props: ListProps) => {
+    const { domainImage } = useContext(RendererContext)
     const {
         headline = '',
         body = '',
@@ -17,7 +20,22 @@ const Article = (props: ListProps) => {
         textSize = 'md',
         reverse = false,
         align = 'left',
+        altText = '',
+        themeStyles,
     } = props
+
+    const themeStylesObj = {
+        backgroundColor: border ? `${themeStyles['accentBackgroundColor']}` : 'transparent',
+        color: border ? `${themeStyles['textColorAccent']}` : `${themeStyles['textColor']}`,
+    }
+
+    const headingColor = {
+        color: border ? `${themeStyles['textColorAccent']}` : `${themeStyles['headingColor']}`,
+    }
+
+    const gutterStyle = {
+        backgroundColor: `${themeStyles['mainColor']}`,
+    }
 
     return (
         <div
@@ -30,6 +48,7 @@ const Article = (props: ListProps) => {
                 [styles.center]: align === 'center',
                 [styles.left]: align === 'left',
                 [styles.right]: align === 'right',
+                [styles.block]: true,
             })}
         >
             <div
@@ -38,14 +57,14 @@ const Article = (props: ListProps) => {
                     [styles.imageArticle]: imageUrl && modLayout != 'card',
                     [styles.reverse]: reverse,
                 })}
+                style={themeStylesObj}
             >
-                {/*change title div layout on card*/}
                 {modLayout == 'card' && (
-                    <div className={styles.title}>
+                    <div className={styles.title} style={headingColor}>
                         <div className={styles.textGutter}></div>
                         <div className={styles.insideTextGutter}></div>
                         <div className={styles.titleText}>
-                            <div className={styles.text}>{headline}</div>
+                            <h3 className={styles.text}>{headline || ''}</h3>
                         </div>
                         <div className={cn(styles.textGutter, styles.textGutter_2)}></div>
                     </div>
@@ -54,7 +73,7 @@ const Article = (props: ListProps) => {
                 <div className={styles.features}>
                     {modLayout === 'card' && (
                         <div className={styles.colorBlock}>
-                            <div className={styles.colorFill}></div>
+                            <div className={styles.colorFill} style={gutterStyle}></div>
                         </div>
                     )}
 
@@ -62,13 +81,13 @@ const Article = (props: ListProps) => {
                         <div className={styles.blockPicture}>
                             {imageUrl && (
                                 <Image
-                                    src={imageUrl}
+                                    src={domainImage(imageUrl)}
                                     height="450px"
                                     width="600px"
                                     layout="responsive"
-                                    //layout="fill"
                                     objectFit="cover"
-                                    alt={headline}
+                                    alt={altText}
+                                    quality="50"
                                 />
                             )}
                         </div>
@@ -76,8 +95,8 @@ const Article = (props: ListProps) => {
 
                     {modLayout != 'card' ? (
                         <div className={styles.allText}>
-                            <div className={styles.title}>
-                                <div className={styles.text}>{headline}</div>
+                            <div className={styles.title} style={headingColor}>
+                                <h3 className={styles.text}>{headline}</h3>
                             </div>
                             <div className={styles.textBlock}>
                                 <div className={styles.text}>{Parser(body)}</div>
@@ -106,4 +125,4 @@ const Article = (props: ListProps) => {
     )
 }
 
-export default Article
+export default List

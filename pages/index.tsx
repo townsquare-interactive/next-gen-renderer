@@ -1,144 +1,79 @@
 import type { NextPage } from 'next'
 import cn from 'classnames'
 import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/Home.module.scss'
 import Script from 'next/script'
-import List from '../components/List'
-import Header from '../components/Header'
-import Images from '../components/Images'
-import Label from '../components/Label'
-import Card from '../components/Card'
-import Text from '../components/Text'
-import Navbar from '../components/Navbar'
-import Navigation from '../components/Navigation'
-import Grid from '../components/Grid'
-
-import {
-    ImagesProps,
-    ListProps,
-    HomeProps,
-    ModuleData,
-    TextProps,
-    HeaderProps,
-    CarouselProps,
-    FooterProps,
-    PagesProps,
-    VideoProps,
-    NavProps,
-    FooterData,
-    GridProps,
-} from '../components/types'
+import { HomeProps, PageListProps, Context } from '../components/types'
 import { GetStaticProps } from 'next'
-import Carousel from '../components/Carousel'
 import Layout from '../components/Layout'
-import Footer from '../components/Footer'
-import data from '../components/moduleData'
-import Burger from '../components/Burger'
-import Video from '../components/Video'
-import { useState } from 'react'
+import { Renderer } from '../components/Renderer'
+import { getDomain, domainImage } from '../functions'
+import { useRouter } from 'next/router'
+import theme from './theme.json'
+import RendererContext from '../components/RendererContext'
+import { useContext } from 'react'
 
-export const getStaticProps: GetStaticProps = async () => {
+//runs at build time just like static props
+
+//const domain = encodeURI('localhost:3000')
+/* const domain = encodeURI(process.env.NEXT_PUBLIC_BASE_URL + '')*/
+
+export const getStaticProps = async (context: Context) => {
+    //grabs 1 item each time
+    const domain = getDomain()
+    console.log('The URL of this page is: ' + domain)
+    const resPage = await fetch(getDomain() + '/pages/home.json')
+    const resGlobal = await fetch(getDomain() + '/global.json')
+
+    const page = await resPage.json()
+    const globalData = await resGlobal.json()
+
     return {
-        props: { moduleData: data },
+        props: { page, globalData },
+        // Next.js will attempt to re-generate the page:
+        // - When a request comes in
+        // - At most once every 10 seconds
+        revalidate: 10, // In seconds
     }
 }
 
-const Home = ({ moduleData }: HomeProps) => {
-    const [navCheck, setNav] = useState<boolean>(false)
+const Home = (props: HomeProps) => {
+    const { domainImage } = useContext(RendererContext)
+    const { page, globalData } = props
+    const router = useRouter()
 
-    const imageData1: ImagesProps = {
-        gap: true,
-        modLayout: '2-2/3',
-        items: [
-            {
-                imageUrl: 'https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg',
-                linkText: 'Menu',
-                linkUrl: '/menu',
-            },
-            {
-                imageUrl: 'https://images.pexels.com/photos/219692/pexels-photo-219692.jpeg',
-                linkText: 'Images',
-                linkUrl: '/images',
-            },
-        ],
-    }
-    const imageData2: ImagesProps = {
-        modLayout: '1-hero',
-        items: [
-            {
-                imageUrl: 'https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg',
-                //linkText: 'Menu',
-                linkUrl: '/menu',
-                headline: 'Now Hero',
-            },
-        ],
+    if (router.isFallback) {
+        return <div>Loading...</div>
     }
 
+    /*     const dynamicCss = `
+    h2{
+        color: ${theme['textColor']};
+        background: ${theme['accentBackgroundColor']}
+
+    }`
+ */
     return (
-        <div className={styles.root}>
+        <div>
             <Head>
-                <title>Home Page</title>
-                <meta property="og:title" content="My page title" key="title" />
+                <title>{page.seo?.title || 'title'}</title>
+                {page.seo?.title && <meta property="og:title" content={page.seo.title} key="title" />}
+                {page.seo?.description && <meta name="description" content={page.seo.description} />}
+                {page.seo?.ogImage && (
+                    <>
+                        <meta property="og:image" content={domainImage(page.seo.ogImage)} />
+                        <meta property="og:image:type" content="image/jpg" />
+                        <meta property="og:image:width" content="1024" />
+                        <meta property="og:image:height" content="1024" />
+                    </>
+                )}
+                {globalData.seo?.favicon && <link rel="shortcut icon" href={domainImage(globalData.seo.favicon)} />}
             </Head>
 
-            <Layout moduleData={moduleData}>
-                <div
-                    className={cn(styles.wrapper, {
-                        [styles.layout1]: moduleData.navData.navStyle === 'layout1',
-                        [styles.layout2]: moduleData.navData.navStyle === 'layout2',
-                    })}
-                >
-                    <Header {...(moduleData.headerData as HeaderProps)} />
+            <Layout moduleData={globalData}>
+                {/*   <style>{dynamicCss}</style> */}
 
-                    <Label {...moduleData.labelData} text="List Module: Article Layout" gap={false} />
-
-                    <List {...moduleData.listData} />
-
-                    <List {...moduleData.listData} reverse={true} border={false} headline="No border option" />
-
-                    <Label {...moduleData.labelData} text="List Module: Card layout" gap={false} />
-
-                    <List {...moduleData.listData} modLayout="card" border={false} />
-
-                    <List {...moduleData.listData} modLayout="card" border={false} />
-
-                    <List {...moduleData.listData} modLayout="card" border={false} />
-
-                    <Label {...moduleData.labelData} text="Images Module" gap={false} />
-
-                    <Images {...(moduleData.imagesData as ImagesProps)} />
-
-                    <Images {...(moduleData.imagesData as ImagesProps)} modLayout="3-1/3" />
-
-                    <Images {...imageData1} gap={false} />
-
-                    <Images {...imageData1} modLayout="2-1/2" />
-
-                    <Images {...imageData2} />
-
-                    <Label {...moduleData.labelData} gap={false} />
-
-                    <Text {...(moduleData.textData as TextProps)} />
-
-                    <Label {...moduleData.labelData} text="Quotes" gap={false} border={false} />
-
-                    <Carousel {...(moduleData.carouselData as CarouselProps)} modLayout="text" />
-
-                    <Carousel {...(moduleData.carouselData as CarouselProps)} modLayout="images" />
-
-                    <Carousel {...(moduleData.carouselData as CarouselProps)} modLayout="images" slideCount={2} />
-
-                    <Carousel {...(moduleData.carouselData as CarouselProps)} modLayout="images" slideCount={1} />
-
-                    <Video {...(moduleData.videoData as VideoProps)} />
-
-                    <Label {...moduleData.labelData} text="Grid Module" gap={false} />
-
-                    <Grid {...(moduleData.gridData as GridProps)} />
-
-                    <Label {...moduleData.labelData} text="<a href='/module-descriptions'> Module Descriptions</a> " align="center" border={false} />
-                </div>
+                <Renderer config={page.modules} themeStyles={globalData.themeStyles} />
             </Layout>
         </div>
     )

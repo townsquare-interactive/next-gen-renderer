@@ -14,5 +14,8 @@ Plain.args = {
   border: false,
   gap: false,
   align: 'left',
-  textSize: 'sm'
+  textSize: 'sm',
+  themeStyles: {
+    headingColor: '#000'
+  }
 }

@@ -5,9 +5,11 @@ import { ReactNode } from 'react'
 export interface HeaderProps {
     headline?: string
     imageUrl?: string
+    altText?: string
     backgroundImageUrl?: string
     reverse?: boolean
     modLayout: 'normal' | 'alt-layout'
+    themeStyles: ThemeStyles
 }
 
 export interface LogoProps {
@@ -19,12 +21,14 @@ export interface ListProps {
     body?: string
     border?: boolean
     imageUrl?: string
+    altText?: string
     linkUrl?: string
     btnText?: string
     modLayout?: 'card' | 'article'
     textSize?: 'sm' | 'md' | 'lg'
     reverse?: boolean
     align?: 'left' | 'right' | 'center'
+    themeStyles: ThemeStyles
 }
 
 export interface GridData {
@@ -32,14 +36,17 @@ export interface GridData {
     body?: string
     border?: boolean
     imageUrl?: string
+    altText?: string
     linkUrl?: string
     btnText?: string
     textSize?: 'sm' | 'md' | 'lg'
     align?: 'left' | 'right' | 'center'
+    themeStyles: ThemeStyles
 }
 
 export interface GridProps {
     items: GridData[]
+    themeStyles: ThemeStyles
 }
 
 export interface LabelProps {
@@ -48,6 +55,7 @@ export interface LabelProps {
     gap?: boolean
     align?: 'left' | 'right' | 'center'
     textSize?: 'sm' | 'md' | 'lg'
+    themeStyles: ThemeStyles
 }
 
 export interface TextData {
@@ -64,27 +72,25 @@ export interface TextProps {
     align?: 'left' | 'right' | 'center'
     textSize?: 'sm' | 'md' | 'lg'
     text?: string
+    themeStyles: ThemeStyles
 }
 
 export interface ImageItem {
     imageUrl: string
+    altText?: string
     linkText?: string
     linkUrl?: string
     headline?: string
     body?: string
 }
 
-/* export enum ModLayout {
-    ThreeAndOneThird = '3-1/3',
-    ThreeAndTwoThirds = '3-2/3',
-} */
 export interface ImagesProps {
     items: ImageItem[]
     modLayout: '3-1/3' | '3-2/3' | '2-2/3' | '2-1/2' | '1-full' | '1-hero' | '4-plus'
     gap?: boolean
 }
 
-export interface TileImage {
+export interface TileImageProps {
     itemNumber: ImageItem
     modLayout: '3-1/3' | '3-2/3' | '2-2/3' | '2-1/2' | '1-full' | '1-hero' | '4-plus'
     isMainImage: boolean
@@ -92,6 +98,7 @@ export interface TileImage {
 
 export interface SlideData {
     imageUrl?: string
+    altText?: string
     text?: string
     byline?: string
 }
@@ -113,17 +120,15 @@ export interface AddressData {
     zip: string
 }
 
-export interface FooterData {
+export interface FooterProps {
     socialData: SocialData[]
     addressData: AddressData
     siteName: string
     phoneNumber: string
-}
-
-export interface FooterProps {
-    footerData: FooterData
-    navData: NavProps
+    pages: PagesProps[]
     logoUrl?: string
+    borderNum?: number
+    themeStyles: ThemeStyles
 }
 
 export interface VideoProps {
@@ -133,12 +138,27 @@ export interface VideoProps {
 
 export interface HomeProps {
     moduleData: ModuleData
+    globalData: ModuleData
+    page: ModuleData
 }
 
 export interface LayoutProps {
-    //children: React.PropsWithChildren<{}>,
     children: ReactNode
-    moduleData: ModuleData
+    moduleData: any
+}
+
+export interface Params {
+    slug: 'string'
+}
+
+export interface Context {
+    params: Params
+}
+
+export interface PageListProps {
+    name: string
+    slug: string
+    id: string
 }
 
 export interface PagesData {
@@ -147,8 +167,9 @@ export interface PagesData {
 }
 
 export interface PagesProps {
-    text: string
-    linkUrl: string
+    name: string
+    slug: string
+    id: string
 }
 
 export interface NavProps {
@@ -156,112 +177,83 @@ export interface NavProps {
     modLayout?: 'header' | 'footer'
     navStyle?: 'layout1' | 'layout2'
     borderNum?: number
+    navImage?: string
+    themeStyles: ThemeStyles
 }
 
 export interface BurgerProps {
     navSwitch: () => void
     navCheck: boolean
+    themeStyles: ThemeStyles
 }
 
 export interface NavigationProps {
-    navSwitch: () => void
+    navSwitch?: () => void
     navCheck: boolean
-    navStyle?: string
+    pages: PagesProps[]
+    modLayout?: 'header' | 'footer'
+    navStyle?: 'layout1' | 'layout2'
+    borderNum?: number
+    navImage?: string
+    altText?: string
     logoUrl?: string
+    themeStyles: ThemeStyles
+}
+export interface NavModule {
+    componentType: string
+    attributes: NavigationProps
+}
+export interface FooterModule {
+    componentType: string
+    attributes: FooterProps
 }
 
 export interface NavBarProps {
     navCheck: boolean
-    navData: NavProps
-    navStyle?: string
+    pages: PagesProps[]
+    modLayout?: 'header' | 'footer'
+    navStyle?: 'layout1' | 'layout2'
     borderNum?: number
+    navImage?: string
+    altText?: string
+    themeStyles: ThemeStyles
+}
+
+export interface SeoData {
+    title: string
+    description: string
+    favicon: string
+    ogImage: string
+}
+
+export interface ThemeStyles {
+    mainColor: string
+    textColor: string
+    headingColor: string
+    textColorAccent: string
+    linkColor: string
+    accentBackgroundColor: string
+    accentColor2: string
+    altColor: string
+    headerBackground: string
+    footerBackground: string
+    navBackground: string
 }
 
 export interface ModuleData {
     logoUrl?: string
-    imagesData?: ImagesProps
+    /*imagesData?: ImagesProps
     listData?: ListProps
     headerData?: HeaderProps
     labelData?: LabelProps
     textData?: TextData
     carouselData?: CarouselProps
-    footerData?: FooterData
+    footerData?: FooterProps
     navData: NavProps
     videoData?: VideoProps
-    gridData?: GridProps
-}
-
-/*-----------------------------End of Components-------------*/
-
-export interface imageData {
-    albumId: number
-    id: number
-    title: string
-    url: string
-    thumbnailUrl: string
-}
-
-export interface images {
-    images: imageData[]
-    posts: imageData[]
-}
-
-export interface imageUse {
-    images: imageData[]
-}
-
-export interface HeroHeader {
-    headline?: string
-    imageUrl: string
-}
-
-export interface CardProps {
-    imageUrl?: string
-    title?: string
-    body?: string
-}
-
-export interface photoProps {
-    url: string
-}
-
-export interface postData {
-    userId?: number
-    id?: number
-    title: string
-    body: string
-    border?: boolean
-    imageUrl?: string
-    linkUrl?: string
-    btnText?: string
-}
-
-export interface postComment {
-    body: string
-    email: string
-    id: number
-    name: string
-    postId: number
-}
-
-export interface comments {
-    comments: postComment[]
-    id: number
-}
-
-export interface posts {
-    data: postData[]
-    posts: postData[]
-    //posts:postData,
-}
-
-export interface blogData {
-    id: number
-    title: string
-    date: string
-    body: string
-}
-
-export interface blog {
-    allPostsData: blogData[]
+    gridData?: GridProps */
+    modules?: ImagesProps | ListProps | HeaderProps | LabelProps | TextData | CarouselProps | FooterProps | NavProps | VideoProps | GridProps
+    name?: string
+    seo?: SeoData
+    themeStyles?: ThemeStyles
 }

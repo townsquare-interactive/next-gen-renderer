@@ -6,6 +6,9 @@ import Image from 'next/image'
 import Nav from './Nav'
 import Logo from './Logo'
 import { FooterProps, HomeProps, NavProps, PagesProps } from './types'
+/* import theme from '../pages/theme.json' */
+import RendererContext from './RendererContext'
+import { useContext } from 'react'
 
 // import the library
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -16,16 +19,43 @@ import { faRocket } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Footer = (props: FooterProps) => {
-    function iconConvert(str: string) {
-        str.indexOf('google') !== -1
+    const { domainImage } = useContext(RendererContext)
+    //const { moduleData } = props
 
+    const themeStylesObj = {
+        background: `${props.themeStyles['footerBackground']}`,
+        color: `${props.themeStyles['textColorAccent']}`,
+    }
+
+    const phoneColor = {
+        color: `${props.themeStyles['altColor']}`,
+    }
+
+    const logo = props.logoUrl && domainImage(props.logoUrl)
+
+    function iconConvert(str: string) {
         if (str.indexOf('google') !== -1) {
-            return faGoogle
+            return 'google'
         } else if (str.indexOf('facebook') !== -1) {
-            return faFacebook
+            return 'facebook'
         } else if (str.indexOf('instagram') !== -1) {
-            return faInstagram
+            return 'instagram'
         } else if (str.indexOf('twitter') !== -1) {
+            return 'twitter'
+        } else {
+            return 'social'
+        }
+    }
+
+    function socialConvert(str: string) {
+        let icon = iconConvert(str)
+        if (icon === 'google') {
+            return faGoogle
+        } else if (icon === 'facebok') {
+            return faFacebook
+        } else if (icon === 'instagram') {
+            return faInstagram
+        } else if (icon === 'twitter') {
             return faTwitter
         } else {
             return faRocket
@@ -33,31 +63,33 @@ const Footer = (props: FooterProps) => {
     }
 
     return (
-        <div className={styles.root}>
+        <div className={styles.root} style={themeStylesObj}>
             <div className={styles.wrapper}>
                 <div className={cn(styles.block, styles.logoInfo)}>
-                    <Logo logoUrl={props.logoUrl} />
+                    <Logo logoUrl={logo} />
                     <div className={styles.social}>
-                        {props.footerData.socialData.map((item, index) => (
-                            <a href={item.linkUrl} key={index} rel="noopener noreferrer" target="_blank">
-                                <FontAwesomeIcon icon={iconConvert(item.linkUrl)} />
+                        {props.socialData.map((item, index) => (
+                            <a href={item.linkUrl} key={index} rel="noopener noreferrer" target="_blank" aria-label={iconConvert(item.linkUrl)}>
+                                <FontAwesomeIcon icon={socialConvert(item.linkUrl)} />
                             </a>
                         ))}
                     </div>
-                    <div className={styles.phone}>{props.footerData.phoneNumber}</div>
+                    <h3 className={styles.phone} style={phoneColor}>
+                        {props.phoneNumber}
+                    </h3>
                 </div>
                 <div className={cn(styles.block, styles.navInfo)}>
-                    <Nav pages={props.navData.pages} modLayout="footer" borderNum={props.navData.borderNum} />
+                    <Nav pages={props.pages} modLayout="footer" borderNum={props.borderNum} themeStyles={props.themeStyles} />
                 </div>
                 <div className={cn(styles.block, styles.addInfo)}>
                     <div>
-                        <p>{props.footerData.addressData.street}</p>
-                        <p>{props.footerData.addressData.cityState}</p>
-                        <p>{props.footerData.addressData.zip}</p>
+                        <p>{props.addressData.street}</p>
+                        <p>{props.addressData.cityState}</p>
+                        <p>{props.addressData.zip}</p>
                     </div>
                 </div>
                 <div className={cn(styles.block, styles.siteInfo)}>
-                    <p>{props.footerData.siteName}</p>
+                    <p>{props.siteName}</p>
                     <p>&copy; All rights reserved</p>
                 </div>
             </div>

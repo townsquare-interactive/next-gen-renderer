@@ -2,7 +2,9 @@ import styles from './images.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
 import cn from 'classnames'
-import { ImagesProps, TileImage as TileImageType } from './types'
+import { ImagesProps, TileImageProps } from './types'
+import RendererContext from './RendererContext'
+import { useContext } from 'react'
 
 const Images = ({ items, modLayout = '3-2/3', gap = false }: ImagesProps) => {
     if (items.length === 3) {
@@ -89,7 +91,8 @@ const ImagesPlus = ({ items, modLayout = '4-plus', gap = false }: ImagesProps) =
     )
 }
 
-const TileImage = ({ itemNumber, modLayout, isMainImage = false }: TileImageType) => {
+const TileImage = ({ itemNumber, modLayout, isMainImage = false }: TileImageProps) => {
+    const { domainImage } = useContext(RendererContext)
     return (
         <div
             className={cn(styles.tileImage, {
@@ -106,15 +109,16 @@ const TileImage = ({ itemNumber, modLayout, isMainImage = false }: TileImageType
         >
             {itemNumber.linkUrl ? (
                 <div className={cn(styles.linkBlock, styles.linked)}>
-                    <Image src={itemNumber.imageUrl} layout="fill" objectFit="cover" alt={itemNumber.linkText} />
+                    <Image src={domainImage(itemNumber.imageUrl)} layout="fill" objectFit="cover" alt={itemNumber.altText} quality="50" />
+
                     <Link href={itemNumber.linkUrl}>
                         <a className={styles.link}>
                             {itemNumber.headline ? (
                                 <div className={styles.headline}>
-                                    <h3>{itemNumber.headline || ''}</h3>
+                                    <h2>{itemNumber.headline || ''}</h2>
                                 </div>
                             ) : (
-                                <div className={styles.text}>{itemNumber.linkText}</div>
+                                itemNumber.linkText && <div className={styles.text}>{itemNumber.linkText}</div>
                             )}
                             {itemNumber.body && (
                                 <div className={styles.description}>
@@ -126,13 +130,14 @@ const TileImage = ({ itemNumber, modLayout, isMainImage = false }: TileImageType
                 </div>
             ) : (
                 <div className={styles.linkBlock}>
-                    <Image src={itemNumber.imageUrl} layout="fill" objectFit="cover" alt={itemNumber.linkText} />
+                    <Image src={domainImage(itemNumber.imageUrl)} layout="fill" objectFit="cover" alt={itemNumber.altText} loading="eager" quality="50" />
+
                     {itemNumber.headline ? (
                         <div className={styles.headline}>
-                            <h3>{itemNumber.headline || ''}</h3>
+                            <h2>{itemNumber.headline || ''}</h2>
                         </div>
                     ) : (
-                        <div className={styles.text}>{itemNumber.linkText}</div>
+                        itemNumber.linkText && <div className={styles.text}>{itemNumber.linkText}</div>
                     )}
                     {itemNumber.body && (
                         <div className={styles.description}>

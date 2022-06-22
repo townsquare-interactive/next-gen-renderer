@@ -7,19 +7,25 @@ $aspect-ratio-4_3: math.div(4, 3);
 $aspect-ratio-16_9: math.div(16, 9);
 $aspect-ratio-3_4: math.div(3, 4);
 $gap: 20px;
+$logo-size: 100px;
+$logo-size-2: 60px;
+$logo-padding: 10px;
+$head-padding: 4px;
+$layout-padding: $logo-size + ($logo-padding * 2) + $head-padding;
+$layout-padding-2: $logo-size-2 + ($logo-padding * 2) + $head-padding;
 
 /*Colors*/
-$link-color: rgb(230, 211, 65);
-$main-color: rgb(50, 50, 191);
+$linkColor: rgb(230, 211, 65);
+$mainColor: rgb(50, 50, 191);
 //$dark-accent-color: #040941;
 $dark-accent-color: #000;
-$alt-color: #f68a33;
-$text-color-accent: #fff;
-$text-color-main: rgb(46, 46, 46);
+$altColor: #f68a33;
+$textColorAccent: #fff;
+$textColor-main: rgb(46, 46, 46);
 $label-color: rgb(104, 104, 104);
 
 /*Text sizes*/
-$text-size-body-xsm: 10px;
+$text-size-body-xsm: 13px;
 $text-size-body-sm: 15px;
 $text-size-body-md: 20px;
 $text-size-body-lg: 30px;

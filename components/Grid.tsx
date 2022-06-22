@@ -4,15 +4,18 @@ import Image from 'next/image'
 import cn from 'classnames'
 import { reverse } from 'dns'
 import Parser from 'html-react-parser'
+/* import theme from '../pages/theme.json' */
+import RendererContext from './RendererContext'
+import { useContext } from 'react'
 
 const Grid = (props: GridProps) => {
-    const { items } = props
+    const { items, themeStyles } = props
 
     return (
         <div className={styles.root}>
             <div className={styles.wrapper}>
                 {items.map((item, index) => (
-                    <GridBlock {...item} key={index} />
+                    <GridBlock {...item} key={index} themeStyles={themeStyles} />
                 ))}
             </div>
         </div>
@@ -20,7 +23,17 @@ const Grid = (props: GridProps) => {
 }
 
 const GridBlock = (props: GridData) => {
-    const { headline = '', body = '', border = false, imageUrl, linkUrl, btnText = '', textSize = 'md', align = 'left' } = props
+    const { domainImage } = useContext(RendererContext)
+    const { headline = '', body = '', border = false, imageUrl, linkUrl, btnText = '', textSize = 'md', align = 'left', altText = '', themeStyles } = props
+
+    const themeStylesObj = {
+        color: `${themeStyles['textColor']}`,
+    }
+
+    const borderStyles = {
+        color: `${themeStyles['textColorAccent']}`,
+        backgroundColor: `${themeStyles['altColor']}`,
+    }
 
     return (
         <div
@@ -34,21 +47,18 @@ const GridBlock = (props: GridData) => {
                 [styles.left]: align === 'left',
                 [styles.right]: align === 'right',
             })}
+            style={border ? borderStyles : themeStylesObj}
         >
             {imageUrl && (
                 <div className={styles.imageTile}>
-                    <Image src={imageUrl} layout="fill" alt="" objectFit="cover" objectPosition="top center" />
+                    <Image src={domainImage(imageUrl)} layout="fill" alt={altText} objectFit="cover" objectPosition="top center" quality="50" />
                 </div>
             )}
 
             <div className={styles.textBlock}>
-                {headline && (
-                    <div className={styles.title}>
-                        <div className={styles.text}>{headline}</div>
-                    </div>
-                )}
+                {headline && <h3 className={styles.title}>{headline}</h3>}
 
-                <p className={styles.text}>{Parser(body)}</p>
+                <div className={styles.text}>{Parser(body)}</div>
 
                 {linkUrl && btnText && (
                     <div className={styles.cta_btn}>

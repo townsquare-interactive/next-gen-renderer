@@ -23,13 +23,18 @@
         }
 
         .block {
-            flex-basis: 28%;
             flex-grow: 1;
             box-sizing: border-box;
             padding: 0 variables.$gap;
+            width: 100%;
 
             @include breakpoints.sm {
                 padding: 0;
+            }
+
+            @include breakpoints.md {
+                padding: 0;
+                flex-basis: 28%;
             }
 
             .imageTile {
@@ -42,13 +47,19 @@
                 .cta_btn {
                     @include utils.cta_btn;
                 }
+
+                .title {
+                    margin: 0;
+                }
+
+                .text {
+                    margin: 10px 0;
+                }
             }
 
             &.left {
                 .textBlock .text,
-                .titleText .text,
-                .title .text,
-                .allText,
+                .title,
                 .cta_btn {
                     text-align: left;
                 }
@@ -56,9 +67,7 @@
 
             &.right {
                 .textBlock .text,
-                .titleText .text,
-                .title .text,
-                .allText,
+                .title,
                 .cta_btn {
                     text-align: right;
                 }
@@ -66,9 +75,7 @@
 
             &.center {
                 .textBlock .text,
-                .titleText .text,
-                .title .text,
-                .allText,
+                .title,
                 .cta_btn {
                     text-align: center;
                 }
@@ -106,12 +113,8 @@
             }
 
             &.bordered {
-                background-color: variables.$alt-color;
+                //background-color: variables.$altColor;
                 padding: variables.$gap;
-
-                * {
-                    color: #fff;
-                }
 
                 .cta_btn {
                     & > a:after {

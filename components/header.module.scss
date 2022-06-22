@@ -9,6 +9,7 @@ $sm-block-max: (variables.$max-main-width * 0.25);
 
 .root {
     @include utils.root;
+    /*used for testing |  border-bottom: 30px solid variables.$mainColor; test deploy limit */
 
     .wrapper {
         display: flex;
@@ -17,6 +18,11 @@ $sm-block-max: (variables.$max-main-width * 0.25);
         height: 200px;
         width: 100%;
         position: relative;
+        flex-direction: column;
+
+        @include breakpoints.xs {
+            flex-direction: row;
+        }
 
         @include breakpoints.sm {
             height: 300px;
@@ -24,17 +30,13 @@ $sm-block-max: (variables.$max-main-width * 0.25);
 
         .gutter {
             flex: 10 0 0;
-            background-color: variables.$main-color;
+            //background-color: variables.$mainColor;
             height: 100%;
             display: none;
             max-width: 100%;
 
             @include breakpoints.md {
                 display: block;
-            }
-
-            &.gutter_alt {
-                background-color: variables.$link-color;
             }
         }
 
@@ -53,7 +55,7 @@ $sm-block-max: (variables.$max-main-width * 0.25);
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: variables.$main-color;
+            //background-color: variables.$mainColor;
             height: 100%;
             flex: 50 0 0;
             z-index: 9;
@@ -67,11 +69,14 @@ $sm-block-max: (variables.$max-main-width * 0.25);
                 .text {
                     font-weight: bold;
                     z-index: 9999999;
-                    color: #fff;
+                    // color: #fff;
                     font-size: variables.$text-size-head-xsm;
                     text-align: center;
                     position: absolute;
                     @include utils.headline-sizes-sm;
+                    @include breakpoints.md {
+                        padding: 10px;
+                    }
                 }
             }
         }
@@ -91,6 +96,14 @@ $sm-block-max: (variables.$max-main-width * 0.25);
             }
         }
 
+        //option for reversed format
+        &.reverse {
+            //flex-direction: column;
+            @include breakpoints.xs {
+                flex-direction: row-reverse;
+            }
+        }
+
         //alternate layout on mobile
         &.altLayout {
             flex-direction: column;
@@ -106,13 +119,6 @@ $sm-block-max: (variables.$max-main-width * 0.25);
                 @include breakpoints.md {
                     max-width: $sm-block-max;
                 }
-            }
-        }
-        //option for reversed format
-        &.reverse {
-            flex-direction: column;
-            @include breakpoints.md {
-                flex-direction: row-reverse;
             }
         }
     }

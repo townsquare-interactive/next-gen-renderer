@@ -14,7 +14,10 @@ Plain.args = {
   gap: false,
   align: 'left',
   textSize: 'sm',
-  text: 'Travel and explore the great outdoors. See the big cities you never thought you\'d visit. And experience everything in between. Travel the world! "The best way to show a child just how far our earth can go is through walking." - Tom Cruise. Please come back tomorrow for more exciting adventure stories from around all over the globe!!!'
+  text: 'Travel and explore the great outdoors. See the big cities you never thought you\'d visit. And experience everything in between. Travel the world! "The best way to show a child just how far our earth can go is through walking." - Tom Cruise. Please come back tomorrow for more exciting adventure stories from around all over the globe!!!',
+  themeStyles: {
+    textColor: '#000'
+  }
 }
 
 export const Quote = Template.bind({})
