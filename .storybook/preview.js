@@ -7,7 +7,7 @@ Object.defineProperty(NextImage, 'default', {
     configurable: true,
     value: (props) => <OriginalNextImage {...props} unoptimized />,
 }) */
-import Image from 'next/image'
+/* import Image from 'next/image'
 
 Image.propTypes = {
     unoptimized: null,
@@ -15,7 +15,7 @@ Image.propTypes = {
 
 Image.defaultProps = {
     unoptimized: true,
-}
+} */
 
 export const parameters = {
     actions: { argTypesRegex: '^on[A-Z].*' },
