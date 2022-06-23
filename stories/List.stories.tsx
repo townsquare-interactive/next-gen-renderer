@@ -46,6 +46,16 @@ export const Image = Template.bind({})
 Image.args = {
     ...Large.args,
     imageUrl: '/football-1.jpg',
-    //imageUrl: '/juan-test-003.jpg',
-    // imageUrl: '/bathroom-2.jpg',
+}
+export const Card = Template.bind({})
+Card.args = {
+    ...Large.args,
+    imageUrl: '/football-1.jpg',
+    modLayout: 'card',
+}
+export const CardReverse = Template.bind({})
+CardReverse.args = {
+    ...Card.args,
+    imageUrl: '/football-1.jpg',
+    reverse: true,
 }
