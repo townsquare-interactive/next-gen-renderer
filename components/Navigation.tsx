@@ -33,9 +33,7 @@ const Navigation = (props: NavigationProps) => {
             style={themeStylesObj}
         >
             <div className={styles.wrapper}>
-                <div className={styles.logoBlock}>
-                    <Logo logoUrl={logoDomain} />
-                </div>
+                <div className={styles.logoBlock}>{logoUrl && <Logo logoUrl={logoDomain} />}</div>
                 <div className={styles.burgerBlock}>
                     <Burger navSwitch={navSwitch} navCheck={navCheck} themeStyles={themeStyles} />
                 </div>
