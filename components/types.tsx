@@ -41,6 +41,7 @@ export interface GridData {
     btnText?: string
     textSize?: 'sm' | 'md' | 'lg'
     align?: 'left' | 'right' | 'center'
+    themeStyles: ThemeStyles
 }
 
 export interface GridProps {
