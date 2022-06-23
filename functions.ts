@@ -28,6 +28,7 @@ export function domainImage(url: string) {
         let previewUrl = encodeURI(assetsApi + '/' + domain + '/preview')
         assetUrl = previewUrl
     } else {
+        //github domain available for hosting images as well
         /* assetUrl = 'https://jedwards4044.github.io/website-assets/travel365.com/live' */
         assetUrl = 'https://townsquareinteractive.s3.amazonaws.com/travel365.com/preview'
     }
