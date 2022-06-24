@@ -1,38 +1,30 @@
-export function getDomain() {
-    const apiUrl = process.env.API_URL_DATA || 'https://townsquareinteractive.s3.amazonaws.com'
-    const domain = process.env.NEXT_PUBLIC_BASE_URL
-    const env = process.env.NEXT_PUBLIC_URL_ENV
+const bucketUrl = 'https://townsquareinteractive.s3.amazonaws.com'
+const localUrl = 'elitesports.com/preview'
+const env = process.env.NEXT_PUBLIC_URL_ENV
+const domain = process.env.NEXT_PUBLIC_BASE_URL
 
+function envCheck(api: string) {
     if (env === '1') {
-        let liveUrl = encodeURI(apiUrl + '/' + domain + '/live')
+        let liveUrl = encodeURI(api + '/' + domain + '/live')
         return liveUrl
     } else if (env === '0') {
-        let previewUrl = encodeURI(apiUrl + '/' + domain + '/preview')
+        let previewUrl = encodeURI(api + '/' + domain + '/preview')
         return previewUrl
     } else {
-        // return apiUrl + '/' + 'jremodeling.com/live'
-        return apiUrl + '/' + 'elitesports.com/preview'
+        return api + '/' + localUrl
     }
+}
+
+export function getDomain() {
+    const apiUrl = process.env.API_URL_DATA || bucketUrl
+    let domainUrl = process.env.NEXT_PUBLIC_URL_ENV ? envCheck(apiUrl) : apiUrl + '/' + localUrl
+    return domainUrl
 }
 //Adds current domain name in amazon for image urls
 export function domainImage(url: string) {
-    const assetsApi = process.env.NEXT_PUBLIC_API_URL_ASSETS || 'https://townsquareinteractive.s3.amazonaws.com'
-    const domain = process.env.NEXT_PUBLIC_BASE_URL
-    const env = process.env.NEXT_PUBLIC_URL_ENV
-    let assetUrl
-
-    if (env === '1') {
-        let liveUrl = encodeURI(assetsApi + '/' + domain + '/live')
-        assetUrl = liveUrl
-    } else if (env === '0') {
-        let previewUrl = encodeURI(assetsApi + '/' + domain + '/preview')
-        assetUrl = previewUrl
-    } else {
-        /* assetUrl = 'https://jedwards4044.github.io/website-assets/elitesports.com/live' */
-        assetUrl = 'https://townsquareinteractive.s3.amazonaws.com/elitesports.com/preview'
-    }
-
-    let imageUrl = assetUrl + '/assets' + url
+    const assetsApi = process.env.NEXT_PUBLIC_API_URL_ASSETS || bucketUrl
+    let imageUrl = process.env.NEXT_PUBLIC_URL_ENV ? envCheck(assetsApi) + '/assets' + url : assetsApi + '/' + localUrl + '/assets' + url
+    /* let imageUrl = assetUrl + '/assets' + url */
     return encodeURI(imageUrl)
 }
 
