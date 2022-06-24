@@ -66,7 +66,7 @@ const Footer = (props: FooterProps) => {
         <div className={styles.root} style={themeStylesObj}>
             <div className={styles.wrapper}>
                 <div className={cn(styles.block, styles.logoInfo)}>
-                    <Logo logoUrl={logo} />
+                    {props.logoUrl && <Logo logoUrl={logo} />}
                     <div className={styles.social}>
                         <style>{socialHover}</style>
                         {props.socialData.map((item, index) => (
