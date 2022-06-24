@@ -29,6 +29,9 @@
                 width: variables.$content-width;
                 //padding: 15px 15px 15px 4px;
             }
+            img {
+                margin: 0 !important;
+            }
         }
 
         .burgerBlock {
@@ -67,18 +70,22 @@
                 width: 100%;
                 margin: 0 auto;
                 padding: variables.$gap;
-                padding-top: 50px;
+                /* padding-top: 50px; */
                 box-sizing: border-box;
                 max-width: variables.$max-main-width;
-
                 @include breakpoints.sm {
                     width: variables.$content-width;
                 }
 
-                @media (min-width: 312px) {
+                padding-top: variables.$layout-padding-4;
+                @media (min-width: 500px) {
+                    padding-top: variables.$layout-padding-3;
+                }
+
+                @media (min-width: 500px) {
                     padding-top: variables.$layout-padding-2;
                 }
-                @media (min-width: 620px) {
+                @media (min-width: 920px) {
                     padding-top: variables.$layout-padding;
                 }
 

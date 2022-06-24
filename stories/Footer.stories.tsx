@@ -64,6 +64,7 @@ Default.args = {
     },
     siteName: 'EliteSports',
     phoneNumber: '913-452-2295',
+    logoUrl: '/sports.png',
 
     /* logoUrl: '/sports.png', */
     themeStyles: {

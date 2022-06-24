@@ -45,7 +45,7 @@ Default.args = {
             id: '7',
         },
     ],
-    /* logoUrl: '/sports.png', */
+    logoUrl: '/sports.png',
     themeStyles: {
         mainColor: '#365070',
         textColor: 'rgb(46, 46, 46)',
