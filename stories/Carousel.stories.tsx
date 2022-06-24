@@ -4,6 +4,20 @@ import Carousel from '../components/Carousel'
 export default {
     title: 'Modules/Carousel',
     component: Carousel,
+    argTypes: {
+        slideCount: {
+            options: [1, 2, 3],
+            control: { type: 'radio' },
+        },
+        modLayout: {
+            options: ['images', 'text'],
+            control: { type: 'radio' },
+        },
+        autoPlay: {
+            options: [true, false],
+            control: { type: 'radio' },
+        },
+    },
 } as ComponentMeta<typeof Carousel>
 
 const Template: ComponentStory<typeof Carousel> = (args) => <Carousel {...args} />

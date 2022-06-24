@@ -4,6 +4,16 @@ import Label from '../components/Label'
 export default {
     title: 'Modules/Label',
     component: Label,
+    argTypes: {
+        textSize: {
+            options: ['sm', 'md', 'lg'],
+            control: { type: 'radio' },
+        },
+        align: {
+            options: ['left', 'right', 'center'],
+            control: { type: 'radio' },
+        },
+    },
 } as ComponentMeta<typeof Label>
 
 const Template: ComponentStory<typeof Label> = (args) => <Label {...args} />

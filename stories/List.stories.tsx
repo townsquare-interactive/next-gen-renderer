@@ -4,6 +4,16 @@ import List from '../components/List'
 export default {
     title: 'Modules/List',
     component: List,
+    argTypes: {
+        textSize: {
+            options: ['sm', 'md', 'lg'],
+            control: { type: 'radio' },
+        },
+        align: {
+            options: ['left', 'right', 'center'],
+            control: { type: 'radio' },
+        },
+    },
 } as ComponentMeta<typeof List>
 
 const Template: ComponentStory<typeof List> = (args) => <List {...args} />
@@ -47,15 +57,32 @@ Image.args = {
     ...Large.args,
     imageUrl: '/football-1.jpg',
 }
+export const ImageReverse = Template.bind({})
+ImageReverse.args = {
+    ...Image.args,
+    reverse: true,
+}
+export const WithButton = Template.bind({})
+WithButton.args = {
+    ...Large.args,
+    imageUrl: '/football-1.jpg',
+    border: true,
+    btnText: 'contact us',
+    linkUrl: '/',
+}
 export const Card = Template.bind({})
 Card.args = {
     ...Large.args,
     imageUrl: '/football-1.jpg',
     modLayout: 'card',
+    btnText: 'contact us',
+    linkUrl: '/',
 }
 export const CardReverse = Template.bind({})
 CardReverse.args = {
     ...Card.args,
     imageUrl: '/football-1.jpg',
     reverse: true,
+    btnText: 'contact us',
+    linkUrl: '/',
 }

@@ -17,6 +17,9 @@ export interface LogoProps {
 }
 
 export interface ListProps {
+    /**
+     * This is the headline
+     */
     headline?: string
     body?: string
     border?: boolean

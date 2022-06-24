@@ -4,6 +4,16 @@ import Text from '../components/Text'
 export default {
     title: 'Modules/Text',
     component: Text,
+    argTypes: {
+        textSize: {
+            options: ['sm', 'md', 'lg'],
+            control: { type: 'radio' },
+        },
+        align: {
+            options: ['left', 'right', 'center'],
+            control: { type: 'radio' },
+        },
+    },
 } as ComponentMeta<typeof Text>
 
 const Template: ComponentStory<typeof Text> = (args) => <Text {...args} />

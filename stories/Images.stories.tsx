@@ -4,6 +4,12 @@ import Images from '../components/Images'
 export default {
     title: 'Modules/Images',
     component: Images,
+    argTypes: {
+        modLayout: {
+            options: ['3-1/3', '3-2/3', '2-1/2', '2-2/3', '1-full', '1-hero'],
+            control: { type: 'radio' },
+        },
+    },
 } as ComponentMeta<typeof Images>
 
 const Template: ComponentStory<typeof Images> = (args) => <Images {...args} />
