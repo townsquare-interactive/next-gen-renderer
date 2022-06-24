@@ -59,7 +59,11 @@ $sm-block-max: (variables.$max-main-width * 0.25);
             height: 100%;
             flex: 50 0 0;
             z-index: 9;
-            max-width: $sm-block-max;
+
+            max-width: 100%;
+            @include breakpoints.md {
+                max-width: $sm-block-max;
+            }
 
             @include breakpoints.md {
                 flex: 20 0 0;
@@ -112,13 +116,6 @@ $sm-block-max: (variables.$max-main-width * 0.25);
             }
             .gutter_alt {
                 display: block;
-            }
-
-            .headline {
-                max-width: 100%;
-                @include breakpoints.md {
-                    max-width: $sm-block-max;
-                }
             }
         }
     }

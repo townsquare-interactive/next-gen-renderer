@@ -2,29 +2,18 @@
 @use './styles/breakpoints.scss';
 @use '../styles/variables.scss';
 @use 'sass:math';
-//Variables
 
 .root {
     &.layout1 {
-        /*  @media (min-width: 100px) {
-            padding-top: 55px;
+        padding-top: variables.$layout-padding-4;
+        @media (min-width: 500px) {
+            padding-top: variables.$layout-padding-3;
         }
 
-        @media (min-width: 240px) {
-            padding-top: 65px;
-        }
-        @media (min-width: 290px) {
-            padding-top: 82px;
-        }
-
-        @media (min-width: 620px) {
-            padding-top: 123px;
-        } */
-        padding-top: 50px;
-        @media (min-width: 312px) {
+        @media (min-width: 500px) {
             padding-top: variables.$layout-padding-2;
         }
-        @media (min-width: 620px) {
+        @media (min-width: 920px) {
             padding-top: variables.$layout-padding;
         }
     }

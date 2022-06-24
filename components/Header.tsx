@@ -4,12 +4,9 @@ import Image from 'next/image'
 import { HeaderProps } from './types'
 import cn from 'classnames'
 import { domainImage } from '../functions'
-/* import theme from '../pages/theme.json' */
 
 function Hero(props: HeaderProps) {
     const { reverse = false, backgroundImageUrl = '', imageUrl = '', headline = '', modLayout = 'normal', altText = '', themeStyles } = props
-
-    console.log('the theme2', themeStyles)
 
     const themeStylesObj = {
         backgroundColor: `${themeStyles['mainColor']}`,
