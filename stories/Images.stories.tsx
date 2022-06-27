@@ -80,14 +80,24 @@ OneFull.args = {
         {
             imageUrl: '/football-2.jpg',
             altText: 'Pond under the Northern Lights',
-            linkText: 'Destinations',
-            linkUrl: '/destinations',
         },
     ],
 }
 
-export const Hero = Template.bind({})
-Hero.args = {
+export const HeroNoLink = Template.bind({})
+HeroNoLink.args = {
+    ...OneFull.args,
+    modLayout: '1-hero',
+    items: [
+        {
+            imageUrl: '/football-2.jpg',
+            altText: 'Pond under the Northern Lights',
+            headline: 'Destinations',
+        },
+    ],
+}
+export const HeroWithLink = Template.bind({})
+HeroWithLink.args = {
     ...OneFull.args,
     modLayout: '1-hero',
     items: [
@@ -115,6 +125,30 @@ NoLink.args = {
         {
             imageUrl: '/football-4.jpg',
             altText: 'Man camping under the Northern Lights',
+        },
+    ],
+}
+
+export const LinkNoText = Template.bind({})
+LinkNoText.args = {
+    ...Plain.args,
+    items: [
+        {
+            imageUrl: '/football-2.jpg',
+            altText: 'Pond under the Northern Lights',
+            linkUrl: '/',
+            headline: 'hello',
+            linkText: 'hello',
+        },
+        {
+            imageUrl: '/football-3.jpg',
+            altText: 'The Northern Lights in a snowy landscape',
+            linkUrl: '/',
+        },
+        {
+            imageUrl: '/football-4.jpg',
+            altText: 'Man camping under the Northern Lights',
+            linkUrl: '/',
         },
     ],
 }
