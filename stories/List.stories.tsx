@@ -2,6 +2,9 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import List from '../components/List'
 
 export default {
+    /**
+     * The is the list component.
+     */
     title: 'Modules/List',
     component: List,
     argTypes: {
