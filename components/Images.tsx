@@ -105,7 +105,7 @@ const TileImage = ({ itemNumber, modLayout, isMainImage = false, hero = false }:
                 [styles.hasBody]: itemNumber.body,
             })}
         >
-            {itemNumber.linkUrl && itemNumber.linkText ? (
+            {itemNumber.linkUrl ? (
                 <div className={cn(styles.linkBlock, styles.linked)}>
                     <Image
                         src={domainImage(itemNumber.imageUrl)}
@@ -126,6 +126,7 @@ const TileImage = ({ itemNumber, modLayout, isMainImage = false, hero = false }:
                             ) : (
                                 itemNumber.linkText && <div className={styles.text}>{itemNumber.linkText}</div>
                             )}
+
                             {itemNumber.body && (
                                 <div className={styles.description}>
                                     <p>{itemNumber.body}</p>

@@ -4,26 +4,13 @@ import cn from 'classnames'
 import Image from 'next/image'
 import ImageSize from 'image-size'
 import { LogoProps } from './types'
-import { useState, useEffect } from 'react'
-import probe from 'probe-image-size'
+import { useState } from 'react'
+/* import probe from 'probe-image-size' */
 
 const Logo = (props: LogoProps) => {
     const { logoUrl = '' } = props
     const [logoHeight, setHeight] = useState('100')
     const [logoWidth, setWidth] = useState('300')
-
-    useEffect(() => {
-        //Using probe to determine logo width and height in useEffect
-        /* const probe = require('probe-image-size') */
-        /*         let printAddress = async () => {
-            const a = await probe(logoUrl) {
-                
-            }
-            setHeight(a.height)
-            setWidth(a.width)
-        }
-        printAddress() */
-    }, [logoUrl])
 
     const calcAspectRatio = (loadedMedia: any) => {
         console.log('loadedMedia', loadedMedia)
