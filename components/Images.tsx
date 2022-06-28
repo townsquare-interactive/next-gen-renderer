@@ -113,7 +113,6 @@ const TileImage = ({ itemNumber, modLayout, isMainImage = false, hero = false }:
                         objectFit="cover"
                         alt={itemNumber.altText}
                         quality="40"
-                        //loading={hero ? 'eager' : 'lazy'}
                         priority={hero ? true : false}
                     />
 
@@ -143,7 +142,6 @@ const TileImage = ({ itemNumber, modLayout, isMainImage = false, hero = false }:
                         objectFit="cover"
                         alt={itemNumber.altText}
                         quality="40"
-                        /* loading={hero ? 'eager' : 'lazy'} */
                         priority={hero ? true : false}
                     />
 

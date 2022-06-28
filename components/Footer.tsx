@@ -1,13 +1,9 @@
 import styles from './footer.module.scss'
-import Link from 'next/dist/client/link'
-import Script from 'next/script'
 import cn from 'classnames'
-import Image from 'next/image'
 import Nav from './Nav'
 import Logo from './Logo'
 import { FooterProps, HomeProps, NavProps, PagesProps } from './types'
 import { domainImage } from '../functions'
-/* import theme from '../pages/theme.json' */
 
 // import the library
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -18,8 +14,6 @@ import { faRocket } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Footer = (props: FooterProps) => {
-    //const { moduleData } = props
-
     const themeStylesObj = {
         background: `${props.themeStyles['footerBackground']}`,
         color: `${props.themeStyles['textColorAccent']}`,

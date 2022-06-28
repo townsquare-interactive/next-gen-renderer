@@ -2,7 +2,6 @@ import styles from './list.module.scss'
 import { ListProps } from './types'
 import Image from 'next/image'
 import cn from 'classnames'
-import { reverse } from 'dns'
 import Parser from 'html-react-parser'
 import { domainImage } from '../functions'
 
