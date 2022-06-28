@@ -15,12 +15,14 @@ Default.args = {
 }
 
 export const External = Template.bind({})
+/**Video file hosted on a video providing service*/
 External.args = {
     ...Default.args,
 }
 
-/* export const Local = Template.bind({})
+export const Local = Template.bind({})
+/** Video file in assets bucket*/
 Local.args = {
-    videoUrl: 'https://youtu.be/cTCgU4Vz0rE',
-    modLayout: 'ext',
-} */
+    videoUrl: '/soccervid.mp4',
+    modLayout: 'local',
+}

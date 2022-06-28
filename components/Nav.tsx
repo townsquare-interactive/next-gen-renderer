@@ -1,7 +1,7 @@
 import styles from './nav.module.scss'
 import Link from 'next/dist/client/link'
 import cn from 'classnames'
-import { PagesProps, NavProps, PagesData } from '../components/types'
+import { NavProps } from '../components/types'
 
 const Nav = (props: NavProps) => {
     const { pages, modLayout = 'header', borderNum, themeStyles } = props

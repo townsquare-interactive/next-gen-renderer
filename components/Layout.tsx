@@ -1,8 +1,4 @@
-import { GetStaticProps } from 'next'
-import { FooterProps, ModuleData, LayoutProps, NavProps, NavigationProps, NavModule, FooterModule } from '../components/types'
-import Footer from '../components/Footer'
-import Navigation from '../components/Navigation'
-
+import { LayoutProps, NavModule, FooterModule } from '../components/types'
 import styles from './layout.module.scss'
 import cn from 'classnames'
 import { Renderer } from '../components/Renderer'

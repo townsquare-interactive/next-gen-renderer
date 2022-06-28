@@ -1,5 +1,4 @@
 import styles from './navigation.module.scss'
-import Link from 'next/dist/client/link'
 import Image from 'next/image'
 import Logo from './Logo'
 import Nav from './Nav'
@@ -7,7 +6,6 @@ import cn from 'classnames'
 import { NavigationProps, NavBarProps, BurgerProps } from './types'
 import { useState } from 'react'
 import { domainImage } from '../functions'
-/* import theme from '../pages/theme.json' */
 
 const Navigation = (props: NavigationProps) => {
     const { navStyle = 'layout1', logoUrl, pages, navImage, borderNum, altText = '', themeStyles } = props
@@ -66,19 +64,12 @@ const Navbar = (props: NavBarProps) => {
                 [styles.hasImage]: navImage,
             })}
         >
-            <div className={styles.wrapper}>
+            <div className={styles.navBar_wrapper}>
                 <div className={styles.navDrop} style={navStyles}>
                     <div className={styles.navItems}>{<Nav pages={pages} modLayout="header" borderNum={borderNum} themeStyles={themeStyles} />}</div>
                     {navImage && (
                         <div className={styles.imageTile}>
-                            <Image
-                                //src={'https://townsquareinteractive.s3.amazonaws.com/' + domain + '/Assets' + navImage}
-                                src={navImage}
-                                layout="fill"
-                                alt={altText}
-                                objectFit="cover"
-                                quality="50"
-                            />
+                            <Image src={navImage} layout="fill" alt={altText} objectFit="cover" quality="50" />
                         </div>
                     )}
                 </div>
@@ -96,7 +87,7 @@ const Burger = (props: BurgerProps) => {
 
     return (
         <div className={styles.burger}>
-            <div className={styles.wrapper}>
+            <div className={styles.burger_wrapper}>
                 <div
                     className={cn(styles.burgerBtn, {
                         [styles.navActive]: navCheck,

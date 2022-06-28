@@ -1,13 +1,9 @@
 import styles from './footer.module.scss'
-import Link from 'next/dist/client/link'
-import Script from 'next/script'
 import cn from 'classnames'
-import Image from 'next/image'
 import Nav from './Nav'
 import Logo from './Logo'
 import { FooterProps, HomeProps, NavProps, PagesProps } from './types'
 import { domainImage } from '../functions'
-/* import theme from '../pages/theme.json' */
 
 // import the library
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -18,8 +14,6 @@ import { faRocket } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Footer = (props: FooterProps) => {
-    //const { moduleData } = props
-
     const themeStylesObj = {
         background: `${props.themeStyles['footerBackground']}`,
         color: `${props.themeStyles['textColorAccent']}`,
@@ -67,35 +61,42 @@ const Footer = (props: FooterProps) => {
             <div className={styles.wrapper}>
                 <div className={cn(styles.block, styles.logoInfo)}>
                     {props.logoUrl && <Logo logoUrl={logo} />}
-                    <div className={styles.social}>
-                        <style>{socialHover}</style>
-                        {props.socialData.map((item, index) => (
-                            <a
-                                href={item.linkUrl}
-                                key={index}
-                                rel="noopener noreferrer"
-                                target="_blank"
-                                aria-label={iconConvert(item.linkUrl)}
-                                className="socialLink"
-                            >
-                                <FontAwesomeIcon icon={socialConvert(item.linkUrl)} />
-                            </a>
-                        ))}
-                    </div>
+                    {props.socialData && (
+                        <div className={styles.social}>
+                            <style>{socialHover}</style>
+                            {props.socialData.map((item, index) => (
+                                <a
+                                    href={item.linkUrl}
+                                    key={index}
+                                    rel="noopener noreferrer"
+                                    target="_blank"
+                                    aria-label={iconConvert(item.linkUrl)}
+                                    className="socialLink"
+                                >
+                                    <FontAwesomeIcon icon={socialConvert(item.linkUrl)} />
+                                </a>
+                            ))}
+                        </div>
+                    )}
                     <h3 className={styles.phone} style={phoneColor}>
                         {props.phoneNumber}
                     </h3>
                 </div>
-                <div className={cn(styles.block, styles.navInfo)}>
-                    <Nav pages={props.pages} modLayout="footer" borderNum={props.borderNum} themeStyles={props.themeStyles} />
-                </div>
-                <div className={cn(styles.block, styles.addInfo)}>
-                    <div>
-                        <p>{props.addressData.street}</p>
-                        <p>{props.addressData.cityState}</p>
-                        <p>{props.addressData.zip}</p>
+                {props.pages && (
+                    <div className={cn(styles.block, styles.navInfo)}>
+                        <Nav pages={props.pages} modLayout="footer" borderNum={props.borderNum} themeStyles={props.themeStyles} />
                     </div>
-                </div>
+                )}
+                {props.addressData && (
+                    <div className={cn(styles.block, styles.addInfo)}>
+                        <div>
+                            <p>{props.addressData.street}</p>
+                            <p>{props.addressData.cityState}</p>
+                            <p>{props.addressData.zip}</p>
+                        </div>
+                    </div>
+                )}
+
                 <div className={cn(styles.block, styles.siteInfo)}>
                     <p>{props.siteName}</p>
                     <p>&copy; All rights reserved</p>

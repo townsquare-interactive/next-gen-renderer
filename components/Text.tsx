@@ -2,7 +2,6 @@ import styles from './text.module.scss'
 import { TextProps } from './types'
 import cn from 'classnames'
 import Parser from 'html-react-parser'
-/* import theme from '../pages/theme.json' */
 
 function Text(props: TextProps) {
     const { border = false, gap = false, align = 'left', textSize = 'md', text = '', themeStyles } = props

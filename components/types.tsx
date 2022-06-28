@@ -3,6 +3,7 @@
 import { ReactNode } from 'react'
 
 export interface HeaderProps {
+    /**Headline content to appear */
     headline?: string
     /**Main image file url*/
     imageUrl?: string
@@ -23,7 +24,9 @@ export interface LogoProps {
 }
 
 export interface ListProps {
+    /**Headline to appear at top*/
     headline?: string
+    /**Body text content*/
     body?: string
     /**Background border around conent and image*/
     border?: boolean
@@ -33,6 +36,7 @@ export interface ListProps {
     altText?: string
     /**URL to link to from optional button*/
     linkUrl?: string
+    /**Text label for button*/
     btnText?: string
     /**Style layout of component*/
     modLayout?: 'card' | 'article'
@@ -47,7 +51,9 @@ export interface ListProps {
 }
 
 export interface GridData {
+    /**Headline content to appear at top*/
     headline?: string
+    /**Body text content*/
     body?: string
     /**Background border around conent and image*/
     border?: boolean
@@ -75,6 +81,7 @@ export interface GridProps {
 }
 
 export interface LabelProps {
+    /**Text content*/
     text?: string
     /**Bottom border under text*/
     border?: boolean
@@ -109,6 +116,7 @@ export interface TextProps {
     align?: 'left' | 'right' | 'center'
     /**Size of text*/
     textSize?: 'sm' | 'md' | 'lg'
+    /**Text content*/
     text: string
     /**Global site styles*/
     themeStyles: ThemeStyles
@@ -123,7 +131,9 @@ export interface ImageItem {
     linkText?: string
     /**Optional link URL for image*/
     linkUrl?: string
+    /**Headline content to appear */
     headline?: string
+    /**Slide up text content*/
     body?: string
 }
 
@@ -163,6 +173,7 @@ export interface CarouselProps {
     slideCount: 1 | 2 | 3
     /**Slides csn automatically scroll or not move until button is pressed*/
     autoPlay?: boolean
+    /**Object with data for each item in carousel*/
     items: SlideData[]
     /**Global site styles*/
     themeStyles: ThemeStyles
@@ -180,6 +191,7 @@ export interface AddressData {
 }
 
 export interface FooterProps {
+    /**Data for links to social platforms*/
     socialData: SocialData[]
     addressData: AddressData
     siteName: string
@@ -217,6 +229,10 @@ export interface Params {
 
 export interface Context {
     params: Params
+}
+export interface Media {
+    naturalHeight: number
+    naturalWidth: number
 }
 
 export interface PageListProps {

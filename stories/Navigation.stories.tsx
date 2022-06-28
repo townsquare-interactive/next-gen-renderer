@@ -45,7 +45,7 @@ Default.args = {
             id: '7',
         },
     ],
-    logoUrl: '/sports.png',
+
     themeStyles: {
         mainColor: '#365070',
         textColor: 'rgb(46, 46, 46)',
@@ -59,12 +59,31 @@ Default.args = {
         footerBackground: 'linear-gradient(rgb(54,80,112, 0.6) 0%, rgb(54,80,112) 23%)',
         navBackground: 'rgb(64,64,64,.9)',
     },
-    navImage: 'football-1.jpg',
 }
 
 export const Plain = Template.bind({})
 Plain.args = {
     ...Default.args,
+    logoUrl: '/sports.png',
+    navImage: '/football-1.jpg',
+}
+/* export const NotFixed = Template.bind({})
+NotFixed.args = {
+    ...Default.args,
+    logoUrl: '/sports.png',
+    navImage: '/football-1.jpg',
+    navStyle: 'layout2',
+} */
+export const NoNavbarImage = Template.bind({})
+NoNavbarImage.args = {
+    ...Default.args,
+    logoUrl: '/sports.png',
+}
+
+export const NoLogo = Template.bind({})
+NoLogo.args = {
+    ...Default.args,
+    navImage: '/football-1.jpg',
 }
 
 /* export const Local = Template.bind({})

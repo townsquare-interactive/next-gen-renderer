@@ -1,4 +1,3 @@
-import dl1 from '../images/pexels-pixabay-260922.jpg'
 import styles from './header.module.scss'
 import Image from 'next/image'
 import { HeaderProps } from './types'

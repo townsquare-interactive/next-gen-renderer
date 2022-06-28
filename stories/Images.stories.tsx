@@ -14,8 +14,8 @@ export default {
 
 const Template: ComponentStory<typeof Images> = (args) => <Images {...args} />
 
-export const Plain = Template.bind({})
-Plain.args = {
+export const ThreeTwoThirds = Template.bind({})
+ThreeTwoThirds.args = {
     gap: true,
     modLayout: '3-2/3',
 
@@ -23,7 +23,7 @@ Plain.args = {
         {
             imageUrl: '/football-2.jpg',
             altText: 'Pond under the Northern Lights',
-            linkText: 'Destinations',
+            linkText: 'Football',
             linkUrl: '/destinations',
         },
         {
@@ -42,19 +42,19 @@ Plain.args = {
 }
 export const ThreeOneThird = Template.bind({})
 ThreeOneThird.args = {
-    ...Plain.args,
+    ...ThreeTwoThirds.args,
     modLayout: '3-1/3',
 }
 
 export const TwoTwoThird = Template.bind({})
 TwoTwoThird.args = {
-    ...Plain.args,
+    ...ThreeTwoThirds.args,
     modLayout: '2-2/3',
     items: [
         {
             imageUrl: '/football-2.jpg',
             altText: 'Pond under the Northern Lights',
-            linkText: 'Destinations',
+            linkText: 'Football',
             linkUrl: '/destinations',
         },
         {
@@ -74,7 +74,7 @@ TwoOneHalf.args = {
 
 export const OneFull = Template.bind({})
 OneFull.args = {
-    ...Plain.args,
+    ...ThreeTwoThirds.args,
     modLayout: '1-full',
     items: [
         {
@@ -92,7 +92,7 @@ HeroNoLink.args = {
         {
             imageUrl: '/football-2.jpg',
             altText: 'Pond under the Northern Lights',
-            headline: 'Destinations',
+            headline: 'Football',
         },
     ],
 }
@@ -104,7 +104,7 @@ HeroWithLink.args = {
         {
             imageUrl: '/football-2.jpg',
             altText: 'Pond under the Northern Lights',
-            headline: 'Destinations',
+            headline: 'Football',
             linkUrl: '/destinations',
         },
     ],
@@ -112,7 +112,7 @@ HeroWithLink.args = {
 
 export const NoLink = Template.bind({})
 NoLink.args = {
-    ...Plain.args,
+    ...ThreeTwoThirds.args,
     items: [
         {
             imageUrl: '/football-2.jpg',
@@ -131,14 +131,12 @@ NoLink.args = {
 
 export const LinkNoText = Template.bind({})
 LinkNoText.args = {
-    ...Plain.args,
+    ...ThreeTwoThirds.args,
     items: [
         {
             imageUrl: '/football-2.jpg',
             altText: 'Pond under the Northern Lights',
             linkUrl: '/',
-            headline: 'hello',
-            linkText: 'hello',
         },
         {
             imageUrl: '/football-3.jpg',
@@ -149,6 +147,36 @@ LinkNoText.args = {
             imageUrl: '/football-4.jpg',
             altText: 'Man camping under the Northern Lights',
             linkUrl: '/',
+        },
+    ],
+}
+
+export const WithTextBox = Template.bind({})
+WithTextBox.args = {
+    gap: true,
+    modLayout: '3-2/3',
+
+    items: [
+        {
+            imageUrl: '/football-2.jpg',
+            altText: 'Pond under the Northern Lights',
+            linkText: 'Football',
+            linkUrl: '/destinations',
+            body: 'Guy holding football',
+        },
+        {
+            imageUrl: '/football-3.jpg',
+            altText: 'The Northern Lights in a snowy landscape',
+            linkText: 'Leagues',
+            linkUrl: '/media',
+            body: 'Guy about to throw football',
+        },
+        {
+            imageUrl: '/football-4.jpg',
+            altText: 'Man camping under the Northern Lights',
+            linkText: 'Reviews',
+            linkUrl: '/reviews',
+            body: 'Diving into the endzone for the touchdown',
         },
     ],
 }
