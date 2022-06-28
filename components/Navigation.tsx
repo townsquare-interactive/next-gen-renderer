@@ -66,7 +66,7 @@ const Navbar = (props: NavBarProps) => {
                 [styles.hasImage]: navImage,
             })}
         >
-            <div className={styles.wrapper}>
+            <div className={styles.navBar_wrapper}>
                 <div className={styles.navDrop} style={navStyles}>
                     <div className={styles.navItems}>{<Nav pages={pages} modLayout="header" borderNum={borderNum} themeStyles={themeStyles} />}</div>
                     {navImage && (
@@ -96,7 +96,7 @@ const Burger = (props: BurgerProps) => {
 
     return (
         <div className={styles.burger}>
-            <div className={styles.wrapper}>
+            <div className={styles.burger_wrapper}>
                 <div
                     className={cn(styles.burgerBtn, {
                         [styles.navActive]: navCheck,

@@ -13,6 +13,7 @@
     .wrapper {
         display: flex;
         max-width: variables.$max-main-width;
+        padding: variables.$logo-padding;
         @include breakpoints.sm {
             width: variables.$content-width;
             margin: 0 auto;
@@ -20,10 +21,8 @@
 
         .logoBlock {
             flex-grow: 2;
-            //padding: 25px;
-            //padding: 15px 15px 15px 4px;
             z-index: 9999999999;
-            padding: variables.$logo-padding !important;
+            //padding: variables.$logo-padding;
 
             @include breakpoints.sm {
                 width: variables.$content-width;
@@ -53,7 +52,7 @@
         z-index: 99;
         display: none;
 
-        .wrapper {
+        .navBar_wrapper {
             z-index: 9999;
             display: flex;
             align-items: center;
@@ -96,10 +95,6 @@
                     padding: 10px;
                     flex-wrap: wrap;
 
-                    @include breakpoints.sm {
-                        padding-left: 20px;
-                    }
-
                     a {
                         text-align: center;
                     }
@@ -111,6 +106,9 @@
                         @include breakpoints.xl {
                             max-width: 550px;
                         }
+                    }
+                    li {
+                        padding: 20px;
                     }
                 }
 
@@ -146,6 +144,14 @@
             .navItems {
                 flex: 50 0 0;
                 justify-content: center;
+
+                li {
+                    padding: 10px !important;
+                }
+
+                @include breakpoints.sm {
+                    padding-left: 20px;
+                }
             }
         }
 
@@ -162,7 +168,7 @@
     .burger {
         z-index: 99999;
 
-        .wrapper {
+        .burger_wrapper {
             height: 100%;
 
             .burgerBtn {
