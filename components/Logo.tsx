@@ -3,17 +3,16 @@ import Link from 'next/dist/client/link'
 import cn from 'classnames'
 import Image from 'next/image'
 import ImageSize from 'image-size'
-import { LogoProps } from './types'
-import { useState } from 'react'
+import { LogoProps, Media } from './types'
+import { ReactNode, useState } from 'react'
 /* import probe from 'probe-image-size' */
 
 const Logo = (props: LogoProps) => {
     const { logoUrl = '' } = props
-    const [logoHeight, setHeight] = useState('100')
-    const [logoWidth, setWidth] = useState('300')
+    const [logoHeight, setHeight] = useState(100)
+    const [logoWidth, setWidth] = useState(300)
 
-    const calcAspectRatio = (loadedMedia: any) => {
-        console.log('loadedMedia', loadedMedia)
+    const calcAspectRatio = (loadedMedia: Media) => {
         setWidth(loadedMedia.naturalWidth)
         setHeight(loadedMedia.naturalHeight)
     }

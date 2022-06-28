@@ -67,6 +67,13 @@ Plain.args = {
     logoUrl: '/sports.png',
     navImage: '/football-1.jpg',
 }
+/* export const NotFixed = Template.bind({})
+NotFixed.args = {
+    ...Default.args,
+    logoUrl: '/sports.png',
+    navImage: '/football-1.jpg',
+    navStyle: 'layout2',
+} */
 export const NoNavbarImage = Template.bind({})
 NoNavbarImage.args = {
     ...Default.args,

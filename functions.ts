@@ -25,7 +25,6 @@ export function getDomain() {
 export function domainImage(url: string) {
     const assetsApi = process.env.NEXT_PUBLIC_API_URL_ASSETS || bucketUrl
     let imageUrl = process.env.NEXT_PUBLIC_URL_ENV ? envCheck(assetsApi) + '/assets' + url : assetsApi + '/' + localUrl + '/assets' + url
-    /* let imageUrl = assetUrl + '/assets' + url */
     return encodeURI(imageUrl)
     //jedwards4044.github.io/website-assets/jremodeling.com/live/assets/bathroom-1.jpg
 }
