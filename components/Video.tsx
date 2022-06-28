@@ -4,6 +4,7 @@ import cn from 'classnames'
 import { VideoProps } from './types'
 import ReactPlayer from 'react-player/lazy'
 import { useEffect, useState } from 'react'
+import { domainImage } from '../functions'
 
 const Video = (props: VideoProps) => {
     const { videoUrl, modLayout = 'local' } = props
@@ -27,14 +28,12 @@ const Video = (props: VideoProps) => {
                     <div className={styles.videoBlock}>
                         {modLayout === 'ext' && (
                             <>
-                                <ReactPlayer url={videoUrl} light controls={true}>
-                                    {/* {getThumb(videoUrl)} */}
-                                </ReactPlayer>
+                                <ReactPlayer url={videoUrl} light controls={true}></ReactPlayer>
                             </>
                         )}
                         {modLayout === 'local' && (
                             <>
-                                <ReactPlayer url={videoUrl} controls={true}></ReactPlayer>
+                                <ReactPlayer url={domainImage(videoUrl)} controls={true}></ReactPlayer>
                             </>
                         )}
                     </div>
