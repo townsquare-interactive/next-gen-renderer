@@ -4,6 +4,7 @@ import Image from 'next/image'
 import cn from 'classnames'
 import Parser from 'html-react-parser'
 import { domainImage } from '../functions'
+import Button from '../elements/Button'
 
 const Grid = (props: GridProps) => {
     const { items, themeStyles } = props
@@ -23,12 +24,19 @@ const GridBlock = (props: GridData) => {
     const { headline = '', body = '', border = false, imageUrl, linkUrl, btnText = '', textSize = 'md', align = 'left', altText = '', themeStyles } = props
 
     const themeStylesObj = {
-        color: `${themeStyles['textColor']}`,
+        /* color: `${themeStyles['textColor']}`, */
     }
 
     const borderStyles = {
-        color: `${themeStyles['textColorAccent']}`,
+        /* color: `${themeStyles['textColorAccent']}`, */
         backgroundColor: `${themeStyles['altColor']}`,
+    }
+
+    const headingColor = {
+        color: border ? `${themeStyles['textColorAccent']}` : `${themeStyles['headingColor']}`,
+    }
+    const textColor = {
+        color: border ? `${themeStyles['textColorAccent']}` : `${themeStyles['textColor']}`,
     }
 
     return (
@@ -52,13 +60,22 @@ const GridBlock = (props: GridData) => {
             )}
 
             <div className={styles.textBlock}>
-                {headline && <h3 className={styles.title}>{headline}</h3>}
+                {headline && (
+                    <h3 className={styles.title} style={headingColor}>
+                        {headline}
+                    </h3>
+                )}
 
-                <div className={styles.text}>{Parser(body)}</div>
+                <div className={styles.text} style={textColor}>
+                    {Parser(body)}
+                </div>
 
                 {linkUrl && btnText && (
-                    <div className={styles.cta_btn}>
+                    /*                     <div className={styles.cta_btn}>
                         <a href={linkUrl}>{btnText}</a>
+                    </div> */
+                    <div className={styles.cta_btn}>
+                        <Button linkUrl="/" text="contact" themeStyles={themeStyles} modLayout={border ? 'accent' : 'normal'} />
                     </div>
                 )}
             </div>

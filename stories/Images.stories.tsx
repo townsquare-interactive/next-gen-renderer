@@ -18,6 +18,19 @@ export const ThreeTwoThirds = Template.bind({})
 ThreeTwoThirds.args = {
     gap: true,
     modLayout: '3-2/3',
+    themeStyles: {
+        mainColor: '#365070',
+        textColor: 'rgb(46, 46, 46)',
+        headingColor: 'rgb(46, 46, 46)',
+        textColorAccent: '#fff',
+        linkColor: 'rgb(230, 211, 65)',
+        accentBackgroundColor: '#000',
+        accentColor2: 'rgb(230, 211, 65)',
+        altColor: 'rgb(230, 211, 65)',
+        headerBackground: 'rgb(64,64,64)',
+        footerBackground: 'linear-gradient(rgb(54,80,112, 0.6) 0%, rgb(54,80,112) 23%)',
+        navBackground: 'rgb(64,64,64,.9)',
+    },
 
     items: [
         {
@@ -155,6 +168,19 @@ export const WithTextBox = Template.bind({})
 WithTextBox.args = {
     gap: true,
     modLayout: '3-2/3',
+    themeStyles: {
+        mainColor: '#365070',
+        textColor: 'rgb(46, 46, 46)',
+        headingColor: 'rgb(46, 46, 46)',
+        textColorAccent: '#fff',
+        linkColor: 'rgb(230, 211, 65)',
+        accentBackgroundColor: '#000',
+        accentColor2: 'rgb(230, 211, 65)',
+        altColor: 'rgb(230, 211, 65)',
+        headerBackground: 'rgb(64,64,64)',
+        footerBackground: 'linear-gradient(rgb(54,80,112, 0.6) 0%, rgb(54,80,112) 23%)',
+        navBackground: 'rgb(64,64,64,.9)',
+    },
 
     items: [
         {

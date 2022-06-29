@@ -5,7 +5,7 @@ import styles from '../elements/button.module.scss'
 import { useEffect } from 'react'
 
 function Button(props: ButtonProps) {
-    const { text, linkUrl, themeStyles, modLayout } = props
+    const { text = '', linkUrl = '/', themeStyles, modLayout = 'normal' } = props
     /* let afterColor */
 
     // Similar to componentDidMount and componentDidUpdate:
@@ -50,11 +50,17 @@ function Button(props: ButtonProps) {
                     })}
                 >
                     {/* <style>{findStyle()}</style> */}
-                    <Link href={linkUrl}>
-                        <a style={modLayout === 'normal' ? themeStylesNormal : modLayout === 'accent' ? themeStylesAccent : themeStylesAlt} href={linkUrl}>
-                            {text}
-                        </a>
-                    </Link>
+                    {themeStyles ? (
+                        <Link href={linkUrl}>
+                            <a style={modLayout === 'normal' ? themeStylesNormal : modLayout === 'accent' ? themeStylesAccent : themeStylesAlt} href={linkUrl}>
+                                {text}
+                            </a>
+                        </Link>
+                    ) : (
+                        <Link href={linkUrl}>
+                            <a href={linkUrl}>{text}</a>
+                        </Link>
+                    )}
                 </div>
             </div>
         </div>

@@ -143,6 +143,7 @@ export interface ImagesProps {
     modLayout: '3-1/3' | '3-2/3' | '2-2/3' | '2-1/2' | '1-full' | '1-hero' | '4-plus'
     /**Space around each image*/
     gap?: boolean
+    themeStyles: ThemeStyles
 }
 
 export interface TileImageProps {
@@ -153,6 +154,7 @@ export interface TileImageProps {
     isMainImage: boolean
     /**Determines if item is a hero image*/
     hero?: boolean
+    themeStyles: ThemeStyles
 }
 
 export interface SlideData {
