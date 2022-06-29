@@ -141,6 +141,27 @@ NoLink.args = {
         },
     ],
 }
+export const NoLinkWithLabel = Template.bind({})
+NoLinkWithLabel.args = {
+    ...ThreeTwoThirds.args,
+    items: [
+        {
+            imageUrl: '/football-2.jpg',
+            altText: 'Pond under the Northern Lights',
+            linkText: 'football',
+        },
+        {
+            imageUrl: '/football-3.jpg',
+            altText: 'The Northern Lights in a snowy landscape',
+            linkText: 'media',
+        },
+        {
+            imageUrl: '/football-4.jpg',
+            altText: 'Man camping under the Northern Lights',
+            linkText: 'contact',
+        },
+    ],
+}
 
 export const LinkNoText = Template.bind({})
 LinkNoText.args = {

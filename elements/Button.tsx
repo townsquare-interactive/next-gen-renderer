@@ -28,6 +28,11 @@ function Button(props: ButtonProps) {
     }
     const afterColorAlt = `.btnAfter a:after{color:${themeStyles['textColorAccent']}}`
 
+    const themeStylesAlt2 = {
+        color: `${themeStyles['mainColor']}`,
+        border: `2px solid ${themeStyles['mainColor']}`,
+    }
+
     /* function findStyle() {
         if (modLayout === 'normal') {
             console.log('aftercoloralt')
@@ -39,6 +44,17 @@ function Button(props: ButtonProps) {
             return afterColorAlt
         }
     } */
+    function findStyle() {
+        if (modLayout === 'normal') {
+            return themeStylesNormal
+        } else if (modLayout === 'accent') {
+            return themeStylesAccent
+        } else if (modLayout === 'alt') {
+            return themeStylesAlt
+        } else if (modLayout === 'alt2') {
+            return themeStylesAlt2
+        }
+    }
 
     return (
         <div className={styles.root}>
@@ -46,13 +62,16 @@ function Button(props: ButtonProps) {
                 <div
                     className={cn('btnAfter', styles.btn, {
                         [styles.accentBtn]: modLayout === 'accent',
-                        [styles.altBtn]: modLayout === 'alt',
+                        [styles.altBtn]: modLayout === 'alt' || modLayout === 'alt2',
                     })}
                 >
                     {/* <style>{findStyle()}</style> */}
                     {themeStyles ? (
                         <Link href={linkUrl}>
-                            <a style={modLayout === 'normal' ? themeStylesNormal : modLayout === 'accent' ? themeStylesAccent : themeStylesAlt} href={linkUrl}>
+                            <a
+                                /* style={modLayout === 'normal' ? themeStylesNormal : modLayout === 'accent' ? themeStylesAccent : themeStylesAlt} */ style={findStyle()}
+                                href={linkUrl}
+                            >
                                 {text}
                             </a>
                         </Link>

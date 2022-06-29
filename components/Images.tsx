@@ -156,11 +156,7 @@ const TileImage = ({ itemNumber, modLayout, isMainImage = false, hero = false, t
                             <h2>{itemNumber.headline || ''}</h2>
                         </div>
                     ) : (
-                        itemNumber.linkText /*<div className={styles.text}>{itemNumber.linkText}</div> */ && (
-                            <div className={styles.cta_btn}>
-                                <Button linkUrl="/" text={itemNumber.linkText} modLayout="accent" themeStyles={themeStyles} />
-                            </div>
-                        )
+                        itemNumber.linkText && <div className={styles.text}>{itemNumber.linkText}</div>
                     )}
                     {itemNumber.body && (
                         <div className={styles.description}>
