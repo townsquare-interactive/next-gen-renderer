@@ -368,5 +368,5 @@ export interface ButtonProps {
     linkUrl: string
     text: string
     themeStyles: ThemeStyles
-    modLayout: 'normal' | 'accent' | 'alt' | 'alt2'
+    modLayout: 'normal' | 'accent' | 'alt' | 'alt2' | 'accent2'
 }

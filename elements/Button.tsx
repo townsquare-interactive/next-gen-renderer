@@ -33,6 +33,11 @@ function Button(props: ButtonProps) {
         border: `2px solid ${themeStyles['mainColor']}`,
     }
 
+    const themeStylesAlt3 = {
+        color: `${themeStyles['textColorAccent']}`,
+        border: `2px solid ${themeStyles['textColorAccent']}`,
+    }
+
     /* function findStyle() {
         if (modLayout === 'normal') {
             console.log('aftercoloralt')
@@ -53,6 +58,8 @@ function Button(props: ButtonProps) {
             return themeStylesAlt
         } else if (modLayout === 'alt2') {
             return themeStylesAlt2
+        } else if (modLayout === 'accent2') {
+            return themeStylesAlt3
         }
     }
 
@@ -62,7 +69,7 @@ function Button(props: ButtonProps) {
                 <div
                     className={cn('btnAfter', styles.btn, {
                         [styles.accentBtn]: modLayout === 'accent',
-                        [styles.altBtn]: modLayout === 'alt' || modLayout === 'alt2',
+                        [styles.altBtn]: modLayout === 'alt' || modLayout === 'alt2' || modLayout === 'accent2',
                     })}
                 >
                     {/* <style>{findStyle()}</style> */}
