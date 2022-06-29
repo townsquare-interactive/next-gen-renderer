@@ -1,0 +1,21 @@
+@use '../styles/utils.module.scss';
+@use './styles/breakpoints.scss';
+@use '../styles/variables.scss';
+
+.root {
+    // width: 100%;
+    .wrapper {
+        .btn {
+            box-sizing: border-box;
+            @include utils.cta_btn;
+
+            &.altBtn {
+                margin: 30px 0;
+                a {
+                    padding: 15px;
+                    border-radius: 35px;
+                }
+            }
+        }
+    }
+}

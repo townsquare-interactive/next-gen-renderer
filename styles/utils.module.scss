@@ -31,11 +31,12 @@ $root-bottom-margin: 30px;
     a {
         font-weight: bold;
         text-transform: uppercase;
+        letter-spacing: 1.5px;
 
         &:after {
             padding: 10px;
             content: '>';
-            color: variables.$linkColor;
+            /* color: variables.$linkColor; */
         }
     }
 }

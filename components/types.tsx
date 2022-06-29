@@ -359,3 +359,12 @@ export interface ModuleData {
     seo?: SeoData
     themeStyles?: ThemeStyles
 }
+
+/*----------------------------Elements--------------------------------------*/
+
+export interface ButtonProps {
+    linkUrl: string
+    text: string
+    themeStyles: ThemeStyles
+    modLayout: 'normal' | 'accent' | 'alt'
+}
