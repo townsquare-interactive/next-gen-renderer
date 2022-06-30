@@ -19,6 +19,8 @@ function Button(props: ButtonProps) {
         color: `${themeStyles['textColorAccent']}`,
     }
 
+    /*  const themeStylesAlt = `.btn{backgroundColor: ${themeStyles['mainColor']}} color: ${themeStyles['textColorAccent']}} .btn:hover{background-color:transparent; color:red;height:2px;}` */
+
     const themeStylesAlt2 = {
         color: `${themeStyles['mainColor']}`,
         border: `2px solid ${themeStyles['mainColor']}`,
@@ -28,20 +30,6 @@ function Button(props: ButtonProps) {
         color: `${themeStyles['textColorAccent']}`,
         border: `2px solid ${themeStyles['textColorAccent']}`,
     }
-
-    /*     function findStyle(btnType: string) {
-        if (btnType === 'normal') {
-            return themeStylesNormal
-        } else if (btnType === 'accent') {
-            return themeStylesAccent
-        } else if (btnType === 'alt') {
-            return themeStylesAlt
-        } else if (btnType === 'alt2') {
-            return themeStylesAlt2
-        } else if (btnType === 'accent2') {
-            return themeStylesAlt3
-        }
-    } */
 
     const [hasMounted, setHasMounted] = useState(false)
     const [usedStyle, setStyle] = useState(themeStylesNormal)
@@ -58,7 +46,7 @@ function Button(props: ButtonProps) {
         } else if (btnType === 'accent2') {
             setStyle(themeStylesAlt3)
         }
-    }, [])
+    }, [btnType])
     if (!hasMounted) {
         return null
     }
@@ -72,7 +60,7 @@ function Button(props: ButtonProps) {
                         [styles.altBtn]: btnType === 'alt' || btnType === 'alt2' || btnType === 'accent2',
                     })}
                 >
-                    {/* <style>{findStyle()}</style> */}
+                    {/* {btnType === 'alt' && <style>{altHover}</style> */}
                     {themeStyles ? (
                         <Link href={linkUrl}>
                             <a style={usedStyle} href={linkUrl}>

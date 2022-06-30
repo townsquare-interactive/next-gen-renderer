@@ -374,3 +374,35 @@ export interface ButtonProps {
     themeStyles: ThemeStyles
     btnType?: 'normal' | 'accent' | 'alt' | 'alt2' | 'accent2'
 }
+
+/*-----------------------------TSI Modules ----------------------------------*/
+export interface ArticleProps {
+    id: string
+    headline: string
+    subheader: string
+    image: string
+    captionOn: 0 | 1
+    icon: string
+    icon2: string
+    icon3: string
+    bkgrd_color: string
+    btnType: string
+    btnType2: string
+    btnSize: string
+    btnSize2: string
+    desc: string
+    pagelink: string
+    weblink: string
+    actionlbl: string
+    newwindow: string
+    pagelink2: string
+    weblink2: string
+    actionlbl2: string
+    newwindow2: string
+    align: 'center' | 'left' | 'right'
+    isFeatured: string
+    isPlugin: string
+    headerTag: string
+    plugin: string
+    disabled: string
+}

@@ -1,5 +1,5 @@
 const bucketUrl = 'https://townsquareinteractive.s3.amazonaws.com'
-const localUrl = 'travel365.com/preview'
+const localUrl = 'elitesports.com/preview'
 const env = process.env.NEXT_PUBLIC_URL_ENV
 const domain = process.env.NEXT_PUBLIC_BASE_URL
 
