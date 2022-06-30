@@ -5,7 +5,7 @@ export default {
     title: 'Elements/Button',
     component: Button,
     argTypes: {
-        modLayout: {
+        btnType: {
             options: ['normal', 'accent', 'alt', 'alt2', 'accent2'],
             control: { type: 'radio' },
         },
@@ -21,7 +21,7 @@ const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />
 export const Plain = Template.bind({})
 Plain.args = {
     text: 'CONTACT',
-    modLayout: 'normal',
+    btnType: 'normal',
     linkUrl: '/',
     themeStyles: {
         mainColor: '#365070',
@@ -41,21 +41,21 @@ Plain.args = {
 export const Accent = Template.bind({})
 Accent.args = {
     ...Plain.args,
-    modLayout: 'accent',
+    btnType: 'accent',
 }
 
 export const Alt = Template.bind({})
 Alt.args = {
     ...Plain.args,
-    modLayout: 'alt',
+    btnType: 'alt',
 }
 export const Alt2 = Template.bind({})
 Alt2.args = {
     ...Plain.args,
-    modLayout: 'alt2',
+    btnType: 'alt2',
 }
 export const Accent2 = Template.bind({})
 Accent2.args = {
     ...Plain.args,
-    modLayout: 'accent2',
+    btnType: 'accent2',
 }
