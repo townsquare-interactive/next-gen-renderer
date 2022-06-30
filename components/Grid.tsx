@@ -21,7 +21,19 @@ const Grid = (props: GridProps) => {
 }
 
 const GridBlock = (props: GridData) => {
-    const { headline = '', body = '', border = false, imageUrl, linkUrl, btnText = '', textSize = 'md', align = 'left', altText = '', themeStyles } = props
+    const {
+        headline = '',
+        body = '',
+        border = false,
+        imageUrl,
+        linkUrl,
+        btnText = '',
+        textSize = 'md',
+        align = 'left',
+        altText = '',
+        themeStyles,
+        btnType = 'normal',
+    } = props
 
     const themeStylesObj = {
         /* color: `${themeStyles['textColor']}`, */
@@ -71,11 +83,8 @@ const GridBlock = (props: GridData) => {
                 </div>
 
                 {linkUrl && btnText && (
-                    /*                     <div className={styles.cta_btn}>
-                        <a href={linkUrl}>{btnText}</a>
-                    </div> */
                     <div className={styles.cta_btn}>
-                        <Button linkUrl="/" text="contact" themeStyles={themeStyles} modLayout={border ? 'accent' : 'normal'} />
+                        <Button linkUrl="/" text="contact" themeStyles={themeStyles} btnType={border ? 'accent' : btnType} />
                     </div>
                 )}
             </div>

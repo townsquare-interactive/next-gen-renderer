@@ -2,31 +2,22 @@ import { ButtonProps } from '../components/types'
 import cn from 'classnames'
 import Link from 'next/link'
 import styles from '../elements/button.module.scss'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 function Button(props: ButtonProps) {
-    const { text = '', linkUrl = '/', themeStyles, modLayout = 'normal' } = props
-    /* let afterColor */
-
-    // Similar to componentDidMount and componentDidUpdate:
-
+    const { text = '', linkUrl = '/', themeStyles, btnType = 'normal' } = props
     const themeStylesNormal = {
         color: `${themeStyles['textColor']}`,
     }
-    const afterColorNormal = `.btnAfter a:after{color:${themeStyles['linkColor']}}`
 
     const themeStylesAccent = {
         color: `${themeStyles['textColorAccent']}`,
     }
 
-    const afterColorAccent = `.btn:after{color:${themeStyles['textColorAccent']}}`
-    /* const afterColorAccent = `.btnAfter a:after{color:red']}}` */
-
     const themeStylesAlt = {
         backgroundColor: `${themeStyles['mainColor']}`,
         color: `${themeStyles['textColorAccent']}`,
     }
-    const afterColorAlt = `.btnAfter a:after{color:${themeStyles['textColorAccent']}}`
 
     const themeStylesAlt2 = {
         color: `${themeStyles['mainColor']}`,
@@ -38,29 +29,38 @@ function Button(props: ButtonProps) {
         border: `2px solid ${themeStyles['textColorAccent']}`,
     }
 
-    /* function findStyle() {
-        if (modLayout === 'normal') {
-            console.log('aftercoloralt')
-            return afterColorNormal
-        } else if (modLayout === 'accent') {
-            return afterColorAccent
-        } else if (modLayout === 'alt') {
-            console.log('aftercoloralt')
-            return afterColorAlt
-        }
-    } */
-    function findStyle() {
-        if (modLayout === 'normal') {
+    /*     function findStyle(btnType: string) {
+        if (btnType === 'normal') {
             return themeStylesNormal
-        } else if (modLayout === 'accent') {
+        } else if (btnType === 'accent') {
             return themeStylesAccent
-        } else if (modLayout === 'alt') {
+        } else if (btnType === 'alt') {
             return themeStylesAlt
-        } else if (modLayout === 'alt2') {
+        } else if (btnType === 'alt2') {
             return themeStylesAlt2
-        } else if (modLayout === 'accent2') {
+        } else if (btnType === 'accent2') {
             return themeStylesAlt3
         }
+    } */
+
+    const [hasMounted, setHasMounted] = useState(false)
+    const [usedStyle, setStyle] = useState(themeStylesNormal)
+    useEffect(() => {
+        setHasMounted(true)
+        if (btnType === 'normal') {
+            setStyle(themeStylesNormal)
+        } else if (btnType === 'accent') {
+            setStyle(themeStylesAccent)
+        } else if (btnType === 'alt') {
+            setStyle(themeStylesAlt)
+        } else if (btnType === 'alt2') {
+            setStyle(themeStylesAlt2)
+        } else if (btnType === 'accent2') {
+            setStyle(themeStylesAlt3)
+        }
+    }, [])
+    if (!hasMounted) {
+        return null
     }
 
     return (
@@ -68,17 +68,14 @@ function Button(props: ButtonProps) {
             <div className={styles.wrapper}>
                 <div
                     className={cn('btnAfter', styles.btn, {
-                        [styles.accentBtn]: modLayout === 'accent',
-                        [styles.altBtn]: modLayout === 'alt' || modLayout === 'alt2' || modLayout === 'accent2',
+                        [styles.accentBtn]: btnType === 'accent',
+                        [styles.altBtn]: btnType === 'alt' || btnType === 'alt2' || btnType === 'accent2',
                     })}
                 >
                     {/* <style>{findStyle()}</style> */}
                     {themeStyles ? (
                         <Link href={linkUrl}>
-                            <a
-                                /* style={modLayout === 'normal' ? themeStylesNormal : modLayout === 'accent' ? themeStylesAccent : themeStylesAlt} */ style={findStyle()}
-                                href={linkUrl}
-                            >
+                            <a style={usedStyle} href={linkUrl}>
                                 {text}
                             </a>
                         </Link>

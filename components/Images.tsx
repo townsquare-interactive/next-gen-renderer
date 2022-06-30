@@ -127,7 +127,7 @@ const TileImage = ({ itemNumber, modLayout, isMainImage = false, hero = false, t
                                 /* itemNumber.linkText && <div className={styles.text}>{itemNumber.linkText}</div> */
                                 itemNumber.linkText && (
                                     <div className={styles.text}>
-                                        <Button linkUrl="/" text={itemNumber.linkText} modLayout="accent" themeStyles={themeStyles} />
+                                        <Button linkUrl="/" text={itemNumber.linkText} btnType="accent" themeStyles={themeStyles} />
                                     </div>
                                 )
                             )}

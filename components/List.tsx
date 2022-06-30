@@ -19,6 +19,7 @@ const List = (props: ListProps) => {
         reverse = false,
         align = 'left',
         altText = '',
+        btnType = 'normal',
         themeStyles,
     } = props
 
@@ -108,7 +109,7 @@ const List = (props: ListProps) => {
                                         <a href={linkUrl}>{btnText}</a>
                                     </div>  */
                                     <div className={styles.cta_btn}>
-                                        <Button linkUrl="/" text="contact" themeStyles={themeStyles} modLayout={border ? 'accent' : 'normal'} />
+                                        <Button linkUrl="/" text="contact" themeStyles={themeStyles} btnType={border ? 'accent' : btnType} />
                                     </div>
                                 )}
                             </div>
@@ -121,7 +122,7 @@ const List = (props: ListProps) => {
                                     <a href={linkUrl}>{btnText}</a>
                                 </div> */
                                 <div className={styles.cta_btn}>
-                                    <Button linkUrl="/" text="contact" themeStyles={themeStyles} modLayout={border ? 'accent' : 'normal'} />
+                                    <Button linkUrl="/" text="contact" themeStyles={themeStyles} btnType={border ? 'accent' : btnType} />
                                 </div>
                             )}
                         </div>

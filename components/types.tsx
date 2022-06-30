@@ -48,6 +48,8 @@ export interface ListProps {
     align?: 'left' | 'right' | 'center'
     /**Global site styles*/
     themeStyles: ThemeStyles
+    /**Type of button style used */
+    btnType?: 'normal' | 'accent' | 'alt' | 'alt2' | 'accent2'
 }
 
 export interface GridData {
@@ -71,6 +73,8 @@ export interface GridData {
     align?: 'left' | 'right' | 'center'
     /**Global site styles*/
     themeStyles: ThemeStyles
+    /**Type of button style used */
+    btnType?: 'normal' | 'accent' | 'alt' | 'alt2' | 'accent2'
 }
 
 export interface GridProps {
@@ -368,5 +372,5 @@ export interface ButtonProps {
     linkUrl: string
     text: string
     themeStyles: ThemeStyles
-    modLayout: 'normal' | 'accent' | 'alt' | 'alt2' | 'accent2'
+    btnType?: 'normal' | 'accent' | 'alt' | 'alt2' | 'accent2'
 }
