@@ -376,7 +376,7 @@ export interface ButtonProps {
 }
 
 /*-----------------------------TSI Modules ----------------------------------*/
-export interface ArticleProps {
+export interface ArticleItems {
     id: string
     headline: string
     subheader: string
@@ -405,4 +405,12 @@ export interface ArticleProps {
     headerTag: string
     plugin: string
     disabled: string
+    imgSize: string
+}
+export interface ArticleProps {
+    uid: string
+    type: string
+    well: string
+    align: string
+    items: ArticleItems[]
 }

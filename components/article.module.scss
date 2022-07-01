@@ -23,7 +23,7 @@
         vertical-align: top;
         width: 100%;
         //font-size: 0;
-        //float: left;
+        float: left;
         display: block;
         margin-bottom: 3rem;
 
@@ -71,7 +71,17 @@
         .the_list_item_image {
             position: relative;
             width: 100%;
-            aspect-ratio: math.div(4, 3);
+            aspect-ratio: math.div(3, 3);
+
+            &.landscape_4_3 {
+                aspect-ratio: math.div(4, 3);
+            }
+            &.landscape_3_2 {
+                aspect-ratio: math.div(3, 2);
+            }
+            &.portrait_3_4 {
+                aspect-ratio: math.div(3, 4);
+            }
 
             &.right {
                 @media (min-width: 801px) {

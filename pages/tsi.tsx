@@ -29,9 +29,9 @@ const Slug = (props: HomeProps) => {
 
     return (
         <div>
-            <Layout moduleData={globalData}>
-                <Renderer config={page.modules} themeStyles={globalData.themeStyles} />
-            </Layout>
+            {/* <Layout moduleData={globalData}> */}
+            <Renderer config={page.modules} themeStyles={globalData.themeStyles} />
+            {/* </Layout> */}
         </div>
     )
 }
