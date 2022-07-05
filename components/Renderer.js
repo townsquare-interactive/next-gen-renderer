@@ -9,6 +9,7 @@ import Grid from './Grid'
 import Footer from './Footer'
 import Carousel from './Carousel'
 import Video from './Video'
+import Article from './Article'
 import { capitalize } from '../functions'
 
 const keysToComponentMap = {
@@ -22,6 +23,7 @@ const keysToComponentMap = {
     Carousel,
     Video,
     Navigation,
+    Article,
 }
 
 const mapPropsToConfig = (config) => {

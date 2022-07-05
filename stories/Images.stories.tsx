@@ -18,6 +18,19 @@ export const ThreeTwoThirds = Template.bind({})
 ThreeTwoThirds.args = {
     gap: true,
     modLayout: '3-2/3',
+    themeStyles: {
+        mainColor: '#365070',
+        textColor: 'rgb(46, 46, 46)',
+        headingColor: 'rgb(46, 46, 46)',
+        textColorAccent: '#fff',
+        linkColor: 'rgb(230, 211, 65)',
+        accentBackgroundColor: '#000',
+        accentColor2: 'rgb(230, 211, 65)',
+        altColor: 'rgb(230, 211, 65)',
+        headerBackground: 'rgb(64,64,64)',
+        footerBackground: 'linear-gradient(rgb(54,80,112, 0.6) 0%, rgb(54,80,112) 23%)',
+        navBackground: 'rgb(64,64,64,.9)',
+    },
 
     items: [
         {
@@ -128,6 +141,27 @@ NoLink.args = {
         },
     ],
 }
+export const NoLinkWithLabel = Template.bind({})
+NoLinkWithLabel.args = {
+    ...ThreeTwoThirds.args,
+    items: [
+        {
+            imageUrl: '/football-2.jpg',
+            altText: 'Pond under the Northern Lights',
+            linkText: 'football',
+        },
+        {
+            imageUrl: '/football-3.jpg',
+            altText: 'The Northern Lights in a snowy landscape',
+            linkText: 'media',
+        },
+        {
+            imageUrl: '/football-4.jpg',
+            altText: 'Man camping under the Northern Lights',
+            linkText: 'contact',
+        },
+    ],
+}
 
 export const LinkNoText = Template.bind({})
 LinkNoText.args = {
@@ -155,6 +189,19 @@ export const WithTextBox = Template.bind({})
 WithTextBox.args = {
     gap: true,
     modLayout: '3-2/3',
+    themeStyles: {
+        mainColor: '#365070',
+        textColor: 'rgb(46, 46, 46)',
+        headingColor: 'rgb(46, 46, 46)',
+        textColorAccent: '#fff',
+        linkColor: 'rgb(230, 211, 65)',
+        accentBackgroundColor: '#000',
+        accentColor2: 'rgb(230, 211, 65)',
+        altColor: 'rgb(230, 211, 65)',
+        headerBackground: 'rgb(64,64,64)',
+        footerBackground: 'linear-gradient(rgb(54,80,112, 0.6) 0%, rgb(54,80,112) 23%)',
+        navBackground: 'rgb(64,64,64,.9)',
+    },
 
     items: [
         {

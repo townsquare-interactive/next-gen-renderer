@@ -108,7 +108,8 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
                 } */
 
                 .cta_btn {
-                    @include utils.cta_btn;
+                    text-transform: uppercase;
+                    margin-top: variables.$gap;
                 }
             }
         }
@@ -287,9 +288,11 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
                 }
 
                 .cta_btn {
-                    @include utils.cta_btn;
+                    /* @include utils.cta_btn; */
                     //color: variables.$textColor-main;
                     padding-left: variables.$gap;
+                    text-transform: uppercase;
+                    margin-top: variables.$gap;
                     @include breakpoints.md {
                         margin-left: variables.$gap;
                         padding: 0;

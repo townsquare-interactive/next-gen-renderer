@@ -45,7 +45,8 @@
 
             .textBlock {
                 .cta_btn {
-                    @include utils.cta_btn;
+                    text-transform: uppercase;
+                    margin-top: variables.$gap;
                 }
 
                 .title {
@@ -116,11 +117,11 @@
                 //background-color: variables.$altColor;
                 padding: variables.$gap;
 
-                .cta_btn {
+                /* .cta_btn {
                     & > a:after {
                         color: #fff;
                     }
-                }
+                } */
             }
 
             &.imageArticle {

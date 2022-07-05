@@ -4,6 +4,7 @@ import Image from 'next/image'
 import cn from 'classnames'
 import Parser from 'html-react-parser'
 import { domainImage } from '../functions'
+import Button from '../elements/Button'
 
 const List = (props: ListProps) => {
     const {
@@ -18,16 +19,20 @@ const List = (props: ListProps) => {
         reverse = false,
         align = 'left',
         altText = '',
+        btnType = 'normal',
         themeStyles,
     } = props
 
     const themeStylesObj = {
         backgroundColor: border ? `${themeStyles['accentBackgroundColor']}` : 'transparent',
-        color: border ? `${themeStyles['textColorAccent']}` : `${themeStyles['textColor']}`,
+        /* color: border ? `${themeStyles['textColorAccent']}` : `${themeStyles['textColor']}`, */
     }
 
     const headingColor = {
         color: border ? `${themeStyles['textColorAccent']}` : `${themeStyles['headingColor']}`,
+    }
+    const textColor = {
+        color: border ? `${themeStyles['textColorAccent']}` : `${themeStyles['textColor']}`,
     }
 
     const gutterStyle = {
@@ -96,10 +101,15 @@ const List = (props: ListProps) => {
                                 <h3 className={styles.text}>{headline}</h3>
                             </div>
                             <div className={styles.textBlock}>
-                                <div className={styles.text}>{Parser(body)}</div>
+                                <div className={styles.text} style={textColor}>
+                                    {Parser(body)}
+                                </div>
                                 {linkUrl && btnText && (
-                                    <div className={styles.cta_btn}>
+                                    /* <div className={styles.cta_btn}>
                                         <a href={linkUrl}>{btnText}</a>
+                                    </div>  */
+                                    <div className={styles.cta_btn}>
+                                        <Button linkUrl="/" text="contact" themeStyles={themeStyles} btnType={border ? 'accent' : btnType} />
                                     </div>
                                 )}
                             </div>
@@ -108,8 +118,11 @@ const List = (props: ListProps) => {
                         <div className={styles.textBlock}>
                             <div className={styles.text}>{Parser(body)}</div>
                             {linkUrl && btnText && (
-                                <div className={styles.cta_btn}>
+                                /*                                 <div className={styles.cta_btn}>
                                     <a href={linkUrl}>{btnText}</a>
+                                </div> */
+                                <div className={styles.cta_btn}>
+                                    <Button linkUrl="/" text="contact" themeStyles={themeStyles} btnType={border ? 'accent' : btnType} />
                                 </div>
                             )}
                         </div>

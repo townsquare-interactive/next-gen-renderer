@@ -48,6 +48,8 @@ export interface ListProps {
     align?: 'left' | 'right' | 'center'
     /**Global site styles*/
     themeStyles: ThemeStyles
+    /**Type of button style used */
+    btnType?: 'normal' | 'accent' | 'alt' | 'alt2' | 'accent2'
 }
 
 export interface GridData {
@@ -71,6 +73,8 @@ export interface GridData {
     align?: 'left' | 'right' | 'center'
     /**Global site styles*/
     themeStyles: ThemeStyles
+    /**Type of button style used */
+    btnType?: 'normal' | 'accent' | 'alt' | 'alt2' | 'accent2'
 }
 
 export interface GridProps {
@@ -143,6 +147,7 @@ export interface ImagesProps {
     modLayout: '3-1/3' | '3-2/3' | '2-2/3' | '2-1/2' | '1-full' | '1-hero' | '4-plus'
     /**Space around each image*/
     gap?: boolean
+    themeStyles: ThemeStyles
 }
 
 export interface TileImageProps {
@@ -153,6 +158,7 @@ export interface TileImageProps {
     isMainImage: boolean
     /**Determines if item is a hero image*/
     hero?: boolean
+    themeStyles: ThemeStyles
 }
 
 export interface SlideData {
@@ -358,4 +364,60 @@ export interface ModuleData {
     name?: string
     seo?: SeoData
     themeStyles?: ThemeStyles
+}
+
+/*----------------------------Elements--------------------------------------*/
+
+export interface ButtonProps {
+    linkUrl: string
+    text: string
+    themeStyles: ThemeStyles
+    btnType?: 'normal' | 'accent' | 'alt' | 'alt2' | 'accent2'
+}
+
+/*-----------------------------TSI Modules ----------------------------------*/
+export interface ArticleItems {
+    id: string
+    headline: string
+    subheader: string
+    image: string
+    captionOn: 0 | 1
+    icon: string
+    icon2: string
+    icon3: string
+    bkgrd_color: string
+    btnType: string
+    btnType2: string
+    btnSize: string
+    btnSize2: string
+    desc: string
+    pagelink: string
+    weblink: string
+    actionlbl: string
+    newwindow: string
+    pagelink2: string
+    weblink2: string
+    actionlbl2: string
+    newwindow2: string
+    align: 'center' | 'left' | 'right'
+    isFeatured: string
+    isPlugin: string
+    headerTag: string
+    plugin: string
+    disabled: string
+}
+export interface ArticleProps {
+    uid: string
+    type: string
+    well: string
+    align: string
+    items: ArticleItems[]
+    imgSize: string
+    class: string
+    title: string
+    export: number
+    columns: number
+    lightbox: string
+    blockSwitch1: number
+    scale_to_fit: string
 }

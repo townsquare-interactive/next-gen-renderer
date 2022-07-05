@@ -1,0 +1,299 @@
+@use '../styles/utils.module.scss';
+@use './styles/breakpoints.scss';
+@use '../styles/variables.scss';
+@use 'sass:math';
+
+//Variables
+$column-margin: 2.0242915%;
+$two-item-width: math.div((100- ($column-margin * 2)), 2);
+$three-item-width: math.div((100- ($column-margin * 3)), 3);
+
+.list_block {
+    /* margin: 0 0.99206349%;
+    padding: 3rem 2.6rem 2rem; */
+    margin: 0;
+    padding: 0;
+    clear: both;
+
+    * {
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+    }
+
+    &.type_article:first-child {
+        padding-top: 6.6rem;
+    }
+    &.column_amt_1.large {
+        margin-left: 0;
+        margin-right: 0;
+        display: block;
+    }
+
+    .the_list_item {
+        vertical-align: top;
+        width: 100%;
+        //font-size: 0;
+        float: left;
+        display: block;
+        margin-bottom: 3rem;
+        @media only screen and (min-width: 801px) {
+            margin-right: $column-margin;
+        }
+
+        @media only screen and (max-width: 568px) {
+            margin-bottom: 2rem;
+        }
+
+        .the_list_item_headline {
+            font-size: 3rem;
+            margin: 0 0 1rem;
+            padding: 2rem 0 0;
+            line-height: 1.125;
+            font-weight: 700;
+
+            @media only screen and (max-width: 568px) {
+                font-size: 2rem;
+                margin: 0 0 1.2rem;
+                line-height: 1.25;
+                padding: 1.4rem 0 0;
+            }
+        }
+
+        .the_list_item_subheadline {
+            font-size: 2rem;
+            font-weight: 400;
+            margin: 0 0 2rem;
+            text-transform: uppercase;
+
+            @media only screen and (max-width: 568px) {
+                font-size: 1.4rem;
+                font-weight: 400;
+                margin: 0.4rem 0 0.8rem;
+                text-transform: uppercase;
+            }
+        }
+
+        .the_list_item_desc {
+            font-size: 1.6rem;
+
+            @media only screen and (max-width: 800px) {
+                font-size: 1.2rem;
+            }
+        }
+
+        .the_list_item_image {
+            position: relative;
+            width: 100%;
+            // aspect-ratio: math.div(3, 3);
+
+            &.right {
+                @media (min-width: 801px) {
+                    width: 50%;
+                    float: right;
+                    margin: 0 0 10px 20px;
+                    margin: 0 0 1rem 2rem;
+                }
+            }
+            &.left {
+                @media (min-width: 801px) {
+                    width: 50%;
+                    float: left;
+                    margin: 0;
+                    margin: 0 20px 10px 0;
+                    margin: 0 2rem 1rem 0;
+                }
+            }
+            //This query does not overrwrite styles above in .right/.left (had to include min width query in there
+            @media only screen and (max-width: 800px) {
+                width: 100%;
+                float: none;
+                margin: 0;
+            }
+        }
+
+        &.the_list_item_right .the_list_item_headline,
+        &.the_list_item_left .the_list_item_headline {
+            @media (min-width: 801px) {
+                padding: 0;
+            }
+        }
+
+        &.hero {
+            padding: 38px;
+            padding: 3.8rem;
+
+            .the_list_wrap {
+                padding: 16px;
+                padding: 1.6rem;
+                overflow: auto;
+                background-color: #dc255a;
+                color: #fff;
+            }
+
+            a {
+                color: #fff;
+            }
+        }
+
+        &.yes_image {
+        }
+        &.no_image {
+            .the_list_item_headline {
+                padding-top: 0;
+            }
+        }
+    }
+    &.large {
+        .the_list_item .the_list_item_headline {
+            margin: 0 0 1rem;
+            line-height: 1.125;
+        }
+
+        .the_list_item .the_list_item_desc {
+            font-size: 1.6rem;
+            p {
+                margin: 14px 0;
+                margin: 1.4rem 0;
+            }
+        }
+    }
+    &.medium {
+        .the_list_item .the_list_item_headline {
+            font-size: 24px;
+            margin: 0 0 10px;
+            padding: 14px 0 0;
+            font-size: 2.4rem;
+            margin: 0 0 1rem;
+            line-height: 1.25;
+            padding: 1.4rem 0 0;
+        }
+        .the_list_item .the_list_item_subheadline {
+            font-size: 14px;
+            margin: 4px 0 10px;
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin: 0.4rem 0 1rem;
+            text-transform: uppercase;
+        }
+        .the_list_item .the_list_item_desc {
+            font-size: 14px;
+            font-size: 1.4rem;
+
+            p {
+                margin: 14px 0;
+                margin: 1.4rem 0;
+            }
+        }
+    }
+    &.small {
+        .the_list_item .the_list_item_headline {
+            font-size: 18px;
+            margin: 0 0 5px;
+            padding: 15px 0 0;
+            font-size: 1.8rem;
+            margin: 0 0 0.5rem;
+            padding: 1.5rem 0 0;
+            line-height: 1.25;
+        }
+        .the_list_item .the_list_item_subheadline {
+            font-size: 11px;
+            margin: 11px 0;
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin: 1.1rem 0;
+            text-transform: uppercase;
+        }
+        .the_list_item .the_list_item_desc {
+            font-size: 12px;
+            font-size: 1.2rem;
+
+            p {
+                margin: 12px 0;
+                margin: 1.2rem 0;
+            }
+        }
+    }
+
+    &.the_list_item.right .the_list_item_headline {
+        font-size: 30px;
+        font-size: 3rem;
+    }
+    &.the_list_item.left .the_list_item_headline {
+        font-size: 30px;
+        font-size: 3rem;
+    }
+    &.square_1_1 .the_list_item_image {
+        aspect-ratio: math.div(1, 1);
+    }
+
+    &.landscape_4_3 .the_list_item_image {
+        aspect-ratio: math.div(4, 3);
+    }
+    &.landscape_3_2 .the_list_item_image {
+        aspect-ratio: math.div(3, 2);
+    }
+    &.portrait_3_4 .the_list_item_image {
+        aspect-ratio: math.div(3, 4);
+    }
+    &.portrait_2_3 .the_list_item_image {
+        aspect-ratio: math.div(2, 3);
+    }
+    &.widescreen_16_9 .the_list_item_image {
+        aspect-ratio: math.div(16, 9);
+    }
+    &.widescreen_3_1 .the_list_item_image {
+        aspect-ratio: math.div(3, 1);
+    }
+    &.widescreen_2_4_1 .the_list_item_image {
+        aspect-ratio: math.div(2000, 830);
+    }
+    &.well {
+        .the_list_item {
+            border-width: 0;
+            box-shadow: none;
+
+            &:last-child {
+                border-bottom-width: 0;
+                padding: 0;
+            }
+
+            @media only screen and (min-width: 801px) {
+                border-bottom: 1px solid rgba(100, 100, 100, 0.5);
+            }
+
+            .the_list_wrap {
+                padding: 1.6rem;
+                overflow: auto;
+                background-color: grey;
+            }
+        }
+        &:not(.type_plugin) .the_list_item {
+            border-style: outset;
+            border-color: rgba(150, 150, 150, 0.3);
+        }
+    }
+    @media only screen and (min-width: 801px) {
+        &.column_amt_2 .the_list_item:nth-of-type(2n + 1),
+        &.column_amt_3 .the_list_item:nth-of-type(3n + 1),
+        &.column_amt_4 .the_list_item:nth-of-type(4n + 1) {
+            clear: both;
+        }
+        //removes margin on last item when more than one
+        &.column_amt_2 .the_list_item:nth-of-type(2n + 0),
+        &.column_amt_3 .the_list_item:nth-of-type(3n + 0),
+        &.column_amt_4 .the_list_item:nth-of-type(4n + 0) {
+            margin-right: 0;
+        }
+        &.column_amt_2 .the_list_item {
+            width: 48.98785425%;
+            //width: $two-item-width;
+        }
+        &.column_amt_3 .the_list_item {
+            width: 31.98380567%;
+            //width: $three-item-width;
+        }
+        &.column_amt_1 .the_list_item {
+            margin-right: 0;
+        }
+    }
+}

@@ -31,9 +31,14 @@ export const Plain = Template.bind({})
 Plain.args = {
     ...Default.args,
     imageUrl: '/soccer-3.jpg',
-    backgroundImageUrl: '/seamless-5178982.png',
+
     reverse: false,
     modLayout: 'normal',
+}
+export const BackgroundTexture = Template.bind({})
+BackgroundTexture.args = {
+    ...Plain.args,
+    backgroundImageUrl: '/seamless-5178982.png',
 }
 
 export const Reverse = Template.bind({})
@@ -41,16 +46,10 @@ Reverse.args = {
     ...Plain.args,
     reverse: true,
 }
-export const NoBgImage = Template.bind({})
-NoBgImage.args = {
-    ...Default.args,
-    imageUrl: '/soccer-3.jpg',
-}
 
 export const NoImage = Template.bind({})
 NoImage.args = {
     ...Default.args,
-    backgroundImageUrl: '/seamless-5178982.png',
 }
 export const Layout2Mobile = Template.bind({})
 Layout2Mobile.args = {

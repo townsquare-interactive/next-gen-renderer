@@ -4,20 +4,21 @@ import Link from 'next/link'
 import cn from 'classnames'
 import { ImagesProps, TileImageProps } from './types'
 import { domainImage } from '../functions'
+import Button from '../elements/Button'
 
-const Images = ({ items, modLayout = '3-2/3', gap = false }: ImagesProps) => {
+const Images = ({ items, modLayout = '3-2/3', gap = false, themeStyles }: ImagesProps) => {
     if (items.length === 3) {
-        return <Images3 items={items} gap={gap} modLayout={modLayout} />
+        return <Images3 items={items} gap={gap} modLayout={modLayout} themeStyles={themeStyles} />
     } else if (items.length === 2) {
-        return <Images2 items={items} gap={gap} modLayout={modLayout} />
+        return <Images2 items={items} gap={gap} modLayout={modLayout} themeStyles={themeStyles} />
     } else if (items.length === 1) {
-        return <Images1 items={items} gap={gap} modLayout={modLayout} />
+        return <Images1 items={items} gap={gap} modLayout={modLayout} themeStyles={themeStyles} />
     } else {
-        return <ImagesPlus items={items} gap={gap} modLayout="4-plus" />
+        return <ImagesPlus items={items} gap={gap} modLayout="4-plus" themeStyles={themeStyles} />
     }
 }
 
-const Images3 = ({ items, modLayout = '3-2/3', gap = false }: ImagesProps) => {
+const Images3 = ({ items, modLayout = '3-2/3', gap = false, themeStyles }: ImagesProps) => {
     return (
         <div className={styles.root}>
             <div className={styles.wrapper}>
@@ -26,18 +27,18 @@ const Images3 = ({ items, modLayout = '3-2/3', gap = false }: ImagesProps) => {
                         [styles.gap]: gap,
                     })}
                 >
-                    <TileImage itemNumber={items[0]} modLayout={modLayout} isMainImage={true} />
+                    <TileImage itemNumber={items[0]} modLayout={modLayout} isMainImage={true} themeStyles={themeStyles} />
 
-                    <TileImage itemNumber={items[1]} modLayout={modLayout} isMainImage={false} />
+                    <TileImage itemNumber={items[1]} modLayout={modLayout} isMainImage={false} themeStyles={themeStyles} />
 
-                    <TileImage itemNumber={items[2]} modLayout={modLayout} isMainImage={false} />
+                    <TileImage itemNumber={items[2]} modLayout={modLayout} isMainImage={false} themeStyles={themeStyles} />
                 </div>
             </div>
         </div>
     )
 }
 
-const Images2 = ({ items, modLayout = '2-2/3', gap = false }: ImagesProps) => {
+const Images2 = ({ items, modLayout = '2-2/3', gap = false, themeStyles }: ImagesProps) => {
     return (
         <div className={styles.root}>
             <div className={styles.wrapper}>
@@ -47,16 +48,16 @@ const Images2 = ({ items, modLayout = '2-2/3', gap = false }: ImagesProps) => {
                         [styles.tileBlock_2_half]: modLayout === '2-1/2',
                     })}
                 >
-                    <TileImage itemNumber={items[0]} modLayout={modLayout} isMainImage={true} />
+                    <TileImage itemNumber={items[0]} modLayout={modLayout} isMainImage={true} themeStyles={themeStyles} />
 
-                    <TileImage itemNumber={items[1]} modLayout={modLayout} isMainImage={false} />
+                    <TileImage itemNumber={items[1]} modLayout={modLayout} isMainImage={false} themeStyles={themeStyles} />
                 </div>
             </div>
         </div>
     )
 }
 
-const Images1 = ({ items, modLayout = '1-full', gap = false }: ImagesProps) => {
+const Images1 = ({ items, modLayout = '1-full', gap = false, themeStyles }: ImagesProps) => {
     return (
         <div className={styles.root}>
             <div className={styles.wrapper}>
@@ -65,14 +66,14 @@ const Images1 = ({ items, modLayout = '1-full', gap = false }: ImagesProps) => {
                         [styles.gap]: gap,
                     })}
                 >
-                    <TileImage itemNumber={items[0]} modLayout={modLayout} isMainImage={true} hero={true} />
+                    <TileImage itemNumber={items[0]} modLayout={modLayout} isMainImage={true} hero={true} themeStyles={themeStyles} />
                 </div>
             </div>
         </div>
     )
 }
 
-const ImagesPlus = ({ items, modLayout = '4-plus', gap = false }: ImagesProps) => {
+const ImagesPlus = ({ items, modLayout = '4-plus', gap = false, themeStyles }: ImagesProps) => {
     return (
         <div className={styles.root}>
             <div className={styles.wrapper}>
@@ -82,7 +83,7 @@ const ImagesPlus = ({ items, modLayout = '4-plus', gap = false }: ImagesProps) =
                     })}
                 >
                     {items.map((item, index) => (
-                        <TileImage itemNumber={item} modLayout={modLayout} isMainImage={false} key={index} />
+                        <TileImage itemNumber={item} modLayout={modLayout} isMainImage={false} key={index} themeStyles={themeStyles} />
                     ))}
                 </div>
             </div>
@@ -90,7 +91,7 @@ const ImagesPlus = ({ items, modLayout = '4-plus', gap = false }: ImagesProps) =
     )
 }
 
-const TileImage = ({ itemNumber, modLayout, isMainImage = false, hero = false }: TileImageProps) => {
+const TileImage = ({ itemNumber, modLayout, isMainImage = false, hero = false, themeStyles }: TileImageProps) => {
     return (
         <div
             className={cn(styles.tileImage, {
@@ -123,7 +124,12 @@ const TileImage = ({ itemNumber, modLayout, isMainImage = false, hero = false }:
                                     <h2>{itemNumber.headline || ''}</h2>
                                 </div>
                             ) : (
-                                itemNumber.linkText && <div className={styles.text}>{itemNumber.linkText}</div>
+                                /* itemNumber.linkText && <div className={styles.text}>{itemNumber.linkText}</div> */
+                                itemNumber.linkText && (
+                                    <div className={styles.text}>
+                                        <Button linkUrl="/" text={itemNumber.linkText} btnType="accent" themeStyles={themeStyles} />
+                                    </div>
+                                )
                             )}
 
                             {itemNumber.body && (
