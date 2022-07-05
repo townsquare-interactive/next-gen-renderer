@@ -73,16 +73,6 @@
             width: 100%;
             aspect-ratio: math.div(3, 3);
 
-            &.landscape_4_3 {
-                aspect-ratio: math.div(4, 3);
-            }
-            &.landscape_3_2 {
-                aspect-ratio: math.div(3, 2);
-            }
-            &.portrait_3_4 {
-                aspect-ratio: math.div(3, 4);
-            }
-
             &.right {
                 @media (min-width: 801px) {
                     width: 50%;
@@ -133,5 +123,18 @@
     &.the_list_item.left .the_list_item_headline {
         font-size: 30px;
         font-size: 3rem;
+    }
+    &.square_1_1 .the_list_item_image {
+        aspect-ratio: math.div(1, 1);
+    }
+
+    &.landscape_4_3 .the_list_item_image {
+        aspect-ratio: math.div(4, 3);
+    }
+    &.landscape_3_2 .the_list_item_image {
+        aspect-ratio: math.div(3, 2);
+    }
+    &.portrait_3_4 .the_list_item_image {
+        aspect-ratio: math.div(3, 4);
     }
 }

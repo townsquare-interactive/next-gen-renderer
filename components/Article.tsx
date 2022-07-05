@@ -30,9 +30,15 @@ const Article = (props: ArticleProps) => {
                 styles['type_article'],
                 styles['a1'],
                 styles['column_amt_1 '],
-                styles['landscape_4_3 '],
+
                 styles['large '],
-                styles['not_well ']
+                styles['not_well '],
+                {
+                    [styles.square_1_1]: props.imgSize === 'square_1_1',
+                    [styles.landscape_4_3]: props.imgSize === 'landscape_4_3',
+                    [styles.landscape_3_2]: props.imgSize === 'landscape_3_2',
+                    [styles.portrait_3_4]: props.imgSize === 'portrait_3_4',
+                }
             )}
         >
             {props.items.map((item, index) => (
@@ -50,9 +56,6 @@ const Article = (props: ArticleProps) => {
                                 className={cn(styles['the_list_item_image'], {
                                     [styles.right]: item.align === 'right',
                                     [styles.left]: item.align === 'left',
-                                    [styles.landscape_4_3]: item.imgSize === 'landscape_4_3',
-                                    [styles.landscape_3_2]: item.imgSize === 'landscape_3_2',
-                                    [styles.portrait_3_4]: item.imgSize === 'portrait_3_4',
                                 })}
                             >
                                 <a data-title="This is our article page : first element">

@@ -405,7 +405,6 @@ export interface ArticleItems {
     headerTag: string
     plugin: string
     disabled: string
-    imgSize: string
 }
 export interface ArticleProps {
     uid: string
@@ -413,4 +412,5 @@ export interface ArticleProps {
     well: string
     align: string
     items: ArticleItems[]
+    imgSize: string
 }

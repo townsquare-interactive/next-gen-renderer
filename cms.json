@@ -7,6 +7,7 @@
                 "type": "article",
                 "well": "",
                 "align": "left",
+                "imgSize": "landscape_4_3",
                 "items": [
                     {
                         "id": "6574f9b4_f1d5_4b10_feb6_928e62803df3",
@@ -126,40 +127,20 @@
                         "isPlugin": "",
                         "headerTag": "",
                         "plugin": "",
-                        "disabled": "",
-                        "imgSize": "landscape_4_3"
-                    },
-                    {
-                        "id": "6574f9b4_f1d5_4b10_feb6_928e62803df3",
-                        "headline": "Image 3_2",
-                        "subheader": "Subheader",
-                        "image": "/football-2.jpg",
-                        "captionOn": 0,
-                        "icon": "",
-                        "icon2": "",
-                        "icon3": "",
-                        "bkgrd_color": "",
-                        "btnType": "",
-                        "btnType2": "",
-                        "btnSize": "",
-                        "btnSize2": "",
-                        "desc": "This is the desc",
-                        "pagelink": "",
-                        "weblink": "",
-                        "actionlbl": "",
-                        "newwindow": "",
-                        "pagelink2": "",
-                        "weblink2": "",
-                        "actionlbl2": "",
-                        "newwindow2": "",
-                        "align": "left",
-                        "isFeatured": "",
-                        "isPlugin": "",
-                        "headerTag": "",
-                        "plugin": "",
-                        "disabled": "",
-                        "imgSize": "landscape_3_2"
-                    },
+                        "disabled": ""
+                    }
+                ]
+            }
+        },
+        {
+            "componentType": "article",
+            "attributes": {
+                "uid": "1",
+                "type": "article",
+                "well": "",
+                "align": "left",
+                "imgSize": "portrait_3_4",
+                "items": [
                     {
                         "id": "6574f9b4_f1d5_4b10_feb6_928e62803df3",
                         "headline": "Image 3_4",
@@ -188,8 +169,134 @@
                         "isPlugin": "",
                         "headerTag": "",
                         "plugin": "",
-                        "disabled": "",
-                        "imgSize": "portrait_3_4"
+                        "disabled": ""
+                    }
+                ]
+            }
+        },
+        {
+            "componentType": "article",
+            "attributes": {
+                "uid": "1",
+                "type": "article",
+                "well": "",
+                "align": "left",
+                "imgSize": "landscape_3_2",
+                "items": [
+                    {
+                        "id": "6574f9b4_f1d5_4b10_feb6_928e62803df3",
+                        "headline": "Image 3_2",
+                        "subheader": "Subheader",
+                        "image": "/football-2.jpg",
+                        "captionOn": 0,
+                        "icon": "",
+                        "icon2": "",
+                        "icon3": "",
+                        "bkgrd_color": "",
+                        "btnType": "",
+                        "btnType2": "",
+                        "btnSize": "",
+                        "btnSize2": "",
+                        "desc": "This is the desc",
+                        "pagelink": "",
+                        "weblink": "",
+                        "actionlbl": "",
+                        "newwindow": "",
+                        "pagelink2": "",
+                        "weblink2": "",
+                        "actionlbl2": "",
+                        "newwindow2": "",
+                        "align": "left",
+                        "isFeatured": "",
+                        "isPlugin": "",
+                        "headerTag": "",
+                        "plugin": "",
+                        "disabled": ""
+                    }
+                ]
+            }
+        },
+
+        {
+            "componentType": "article",
+            "attributes": {
+                "uid": "1",
+                "type": "article",
+                "well": "",
+                "align": "left",
+                "imgSize": "portrait_3_4",
+                "items": [
+                    {
+                        "id": "6574f9b4_f1d5_4b10_feb6_928e62803df3",
+                        "headline": "Image portrait 3_4",
+                        "subheader": "Subheader",
+                        "image": "/football-2.jpg",
+                        "captionOn": 0,
+                        "icon": "",
+                        "icon2": "",
+                        "icon3": "",
+                        "bkgrd_color": "",
+                        "btnType": "",
+                        "btnType2": "",
+                        "btnSize": "",
+                        "btnSize2": "",
+                        "desc": "This is the desc",
+                        "pagelink": "",
+                        "weblink": "",
+                        "actionlbl": "",
+                        "newwindow": "",
+                        "pagelink2": "",
+                        "weblink2": "",
+                        "actionlbl2": "",
+                        "newwindow2": "",
+                        "align": "left",
+                        "isFeatured": "",
+                        "isPlugin": "",
+                        "headerTag": "",
+                        "plugin": "",
+                        "disabled": ""
+                    }
+                ]
+            }
+        },
+        {
+            "componentType": "article",
+            "attributes": {
+                "uid": "1",
+                "type": "article",
+                "well": "",
+                "align": "left",
+                "imgSize": "square_1_1",
+                "items": [
+                    {
+                        "id": "6574f9b4_f1d5_4b10_feb6_928e62803df3",
+                        "headline": "Image square_1_1",
+                        "subheader": "Subheader",
+                        "image": "/football-2.jpg",
+                        "captionOn": 0,
+                        "icon": "",
+                        "icon2": "",
+                        "icon3": "",
+                        "bkgrd_color": "",
+                        "btnType": "",
+                        "btnType2": "",
+                        "btnSize": "",
+                        "btnSize2": "",
+                        "desc": "This is the desc",
+                        "pagelink": "",
+                        "weblink": "",
+                        "actionlbl": "",
+                        "newwindow": "",
+                        "pagelink2": "",
+                        "weblink2": "",
+                        "actionlbl2": "",
+                        "newwindow2": "",
+                        "align": "left",
+                        "isFeatured": "",
+                        "isPlugin": "",
+                        "headerTag": "",
+                        "plugin": "",
+                        "disabled": ""
                     }
                 ]
             }
