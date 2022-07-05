@@ -71,7 +71,7 @@
         .the_list_item_image {
             position: relative;
             width: 100%;
-            aspect-ratio: math.div(3, 3);
+            // aspect-ratio: math.div(3, 3);
 
             &.right {
                 @media (min-width: 801px) {
@@ -102,6 +102,23 @@
         &.the_list_item_left .the_list_item_headline {
             @media (min-width: 801px) {
                 padding: 0;
+            }
+        }
+
+        &.hero {
+            padding: 38px;
+            padding: 3.8rem;
+
+            .the_list_wrap {
+                padding: 16px;
+                padding: 1.6rem;
+                overflow: auto;
+                background-color: #dc255a;
+                color: #fff;
+            }
+
+            a {
+                color: #fff;
             }
         }
     }
@@ -136,5 +153,17 @@
     }
     &.portrait_3_4 .the_list_item_image {
         aspect-ratio: math.div(3, 4);
+    }
+    &.portrait_2_3 .the_list_item_image {
+        aspect-ratio: math.div(2, 3);
+    }
+    &.widescreen_16_9 .the_list_item_image {
+        aspect-ratio: math.div(16, 9);
+    }
+    &.widescreen_3_1 .the_list_item_image {
+        aspect-ratio: math.div(3, 1);
+    }
+    &.widescreen_2_4_1 .the_list_item_image {
+        aspect-ratio: math.div(2000, 830);
     }
 }
