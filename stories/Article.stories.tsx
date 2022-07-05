@@ -27,6 +27,12 @@ Default.args = {
     well: '',
     align: 'left',
     imgSize: 'square_4_3',
+    title: '',
+    export: 1,
+    columns: 1,
+    lightbox: '',
+    blockSwitch1: 1,
+    scale_to_fit: '',
     items: [
         {
             id: '6574f9b4_f1d5_4b10_feb6_928e62803df3',

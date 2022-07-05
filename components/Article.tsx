@@ -40,10 +40,7 @@ const Article = (props: ArticleProps) => {
                 styles['list_block'],
                 styles['type_article'],
                 styles['a1'],
-                styles['column_amt_1 '],
 
-                styles['large '],
-                styles['not_well '],
                 {
                     [styles.square_1_1]: props.imgSize === 'square_1_1',
                     [styles.landscape_4_3]: props.imgSize === 'landscape_4_3',
@@ -55,15 +52,30 @@ const Article = (props: ArticleProps) => {
                     [styles.widescreen_2_4_1]: props.imgSize === 'widescreen_2_4_1',
                     [styles.no_sizing]: props.imgSize === 'no_sizing',
                     [styles.no_set_height]: props.imgSize === 'no_set_height',
+                    [styles.no_set_height]: props.imgSize === 'no_set_height',
+                    [styles.well]: props.well === '1',
+                    [styles.not_well]: props.well === '',
+                    [styles.large]: props.columns === 1,
+                    [styles.medium]: props.columns === 2,
+                    [styles.small]: props.columns === 3,
+                    [styles.column_amt_1]: props.columns === 1,
+                    [styles.column_amt_2]: props.columns === 2,
+                    [styles.column_amt_3]: props.columns === 3,
                 }
             )}
         >
             {props.items.map((item, index) => (
                 <div
-                    className={cn(styles['the_list_item'], 'item_1', 'the_list_item', 'yes_image', 'yes_heads', 'yes_desc', {
+                    className={cn(styles['the_list_item'], 'item_1', {
                         [styles.the_list_item_right]: item.align === 'right',
                         [styles.the_list_item_left]: item.align === 'left',
                         [styles.hero]: item.isFeatured === 'active',
+                        [styles.not_hero]: item.isFeatured === '',
+                        [styles.yes_heads]: item.headline || item.subheader,
+                        [styles.yes_desc]: item.desc,
+                        [styles.no_desc]: !item.desc,
+                        [styles.yes_image]: item.image,
+                        [styles.no_image]: !item.image,
                     })}
                     lang="en"
                     key={index}
@@ -110,11 +122,11 @@ const Article = (props: ArticleProps) => {
                             </div>
                         )}
                         <div className="the_list_item_heads">
-                            <h1 className={cn(styles['the_list_item_headline'], 'hds_color')}>{Parser(item.headline)}</h1>
-                            <h3 className={cn(styles['the_list_item_subheadline'], 'hds_color')}>{Parser(item.subheader)}</h3>
+                            <h1 className={cn(styles['the_list_item_headline'], styles['hds_color'])}>{Parser(item.headline)}</h1>
+                            <h3 className={cn(styles['the_list_item_subheadline'], styles['hds_color'])}>{Parser(item.subheader)}</h3>
                         </div>
-                        <div className={cn(styles['the_list_item_desc'], 'txt_color')}>
-                            <p>{item.desc}</p>
+                        <div className={cn(styles['the_list_item_desc'], styles['txt_color'])}>
+                            <p>{Parser(item.desc)}</p>
                         </div>
                     </div>
                 </div>

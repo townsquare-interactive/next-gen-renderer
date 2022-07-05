@@ -413,4 +413,11 @@ export interface ArticleProps {
     align: string
     items: ArticleItems[]
     imgSize: string
+    class: string
+    title: string
+    export: number
+    columns: number
+    lightbox: string
+    blockSwitch1: number
+    scale_to_fit: string
 }
