@@ -228,6 +228,9 @@ export interface LayoutProps {
     children: ReactNode
     moduleData: any
 }
+export interface tsiLayoutProps {
+    children: ReactNode
+}
 
 export interface Params {
     slug: 'string'
@@ -394,11 +397,11 @@ export interface ArticleItems {
     pagelink: string
     weblink: string
     actionlbl: string
-    newwindow: string
+    newwindow: number
     pagelink2: string
     weblink2: string
     actionlbl2: string
-    newwindow2: string
+    newwindow2: number
     align: 'center' | 'left' | 'right'
     isFeatured: string
     isPlugin: string

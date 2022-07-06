@@ -5,6 +5,7 @@ import cn from 'classnames'
 import Parser from 'html-react-parser'
 import { domainImage } from '../functions'
 import { useState } from 'react'
+import Link from 'next/link'
 
 const Article = (props: ArticleProps) => {
     /*  const themeStylesObj = {
@@ -57,10 +58,11 @@ const Article = (props: ArticleProps) => {
                     [styles.not_well]: props.well === '',
                     [styles.large]: props.columns === 1,
                     [styles.medium]: props.columns === 2,
-                    [styles.small]: props.columns === 3,
+                    [styles.small]: props.columns === 3 || props.columns === 4,
                     [styles.column_amt_1]: props.columns === 1,
                     [styles.column_amt_2]: props.columns === 2,
                     [styles.column_amt_3]: props.columns === 3,
+                    [styles.column_amt_4]: props.columns === 4,
                 }
             )}
         >
@@ -81,24 +83,7 @@ const Article = (props: ArticleProps) => {
                     key={index}
                 >
                     <div className={styles.the_list_wrap}>
-                        {item.image && (
-                            <div
-                                className={cn(styles['the_list_item_image'], {
-                                    [styles.right]: item.align === 'right',
-                                    [styles.left]: item.align === 'left',
-                                })}
-                            >
-                                <a data-title="This is our article page : first element">
-                                    {/*                       <img
-                                    alt="This is our article page : first element"
-                                    data-src=""
-                                    data-lazy-load-img-src="/files/2019/03/1553524133677_pasta_with_meatballs_and_parsl_57257360.jpg?w=1440&amp;h=1080&amp;a=t"
-                                     border="0" 
-                                    className="item_image beacon-lazy-load"
-                                    src="/files/2019/03/1553524133677_pasta_with_meatballs_and_parsl_57257360.jpg?w=1440&amp;h=1080&amp;a=t"
-                                     style="display: inline;" 
-                                /> */}
-                                    {/* {props.imgSize != 'nosizing' ? ( */}
+                        {/*  <a data-title="This is our article page : first element">
                                     {!imageNoSizings.includes(props.imgSize) ? (
                                         <Image
                                             className={cn(styles['item_image'], 'item_image', 'beacon-lazy-load')}
@@ -118,7 +103,62 @@ const Article = (props: ArticleProps) => {
                                             layout="responsive"
                                         />
                                     )}
-                                </a>
+                                    </a> */}
+                        {item.image && (
+                            <div
+                                className={cn(styles['the_list_item_image'], {
+                                    [styles.right]: item.align === 'right',
+                                    [styles.left]: item.align === 'left',
+                                })}
+                            >
+                                {item.pagelink ? (
+                                    <Link href={item.pagelink}>
+                                        <a target={item.newwindow === 1 ? '_blank' : '_self'} className="accent_color_bg accent_txt_color">
+                                            {!imageNoSizings.includes(props.imgSize) ? (
+                                                <Image
+                                                    className={cn(styles['item_image'], 'item_image', 'beacon-lazy-load')}
+                                                    src={domainImage(item.image)}
+                                                    layout="fill"
+                                                    alt="unsure"
+                                                    objectFit="cover"
+                                                />
+                                            ) : (
+                                                //Setting width and height to image props if nosizing added
+                                                <Image
+                                                    src={domainImage(item.image)}
+                                                    alt="logo"
+                                                    onLoadingComplete={calcImageSize}
+                                                    width={imageWidth}
+                                                    height={imageHeight}
+                                                    layout="responsive"
+                                                />
+                                            )}
+                                        </a>
+                                    </Link>
+                                ) : (
+                                    //had to add an extra div here
+                                    <>
+                                        {!imageNoSizings.includes(props.imgSize) ? (
+                                            <Image
+                                                className={cn(styles['item_image'], 'item_image', 'beacon-lazy-load')}
+                                                src={domainImage(item.image)}
+                                                layout="fill"
+                                                alt="unsure"
+                                                objectFit="cover"
+                                            />
+                                        ) : (
+                                            //Setting width and height to image props if nosizing added
+                                            <Image
+                                                src={domainImage(item.image)}
+                                                alt="logo"
+                                                onLoadingComplete={calcImageSize}
+                                                width={imageWidth}
+                                                height={imageHeight}
+                                                layout="responsive"
+                                            />
+                                        )}
+                                    </>
+                                )}
                             </div>
                         )}
                         <div className="the_list_item_heads">
@@ -128,9 +168,24 @@ const Article = (props: ArticleProps) => {
                         <div className={cn(styles['the_list_item_desc'], styles['txt_color'])}>
                             <p>{Parser(item.desc)}</p>
                         </div>
+                        {item.pagelink && item.actionlbl && (
+                            <TheListItemAction pagelink={item.pagelink} actionlbl={item.actionlbl} newwindow={item.newwindow} />
+                        )}
                     </div>
                 </div>
             ))}
+        </div>
+    )
+}
+
+const TheListItemAction = (props: any) => {
+    return (
+        <div className={styles.the_list_item_action}>
+            <Link href={props.pagelink}>
+                <a target={props.newwindow === 1 ? '_blank' : '_self'} className="accent_color_bg accent_txt_color">
+                    {props.actionlbl}
+                </a>
+            </Link>
         </div>
     )
 }
