@@ -397,17 +397,18 @@ export interface ArticleItems {
     pagelink: string
     weblink: string
     actionlbl: string
-    newwindow: number
+    newwindow: number | null
     pagelink2: string
     weblink2: string
     actionlbl2: string
-    newwindow2: number
+    newwindow2: number | null
     align: 'center' | 'left' | 'right'
     isFeatured: string
     isPlugin: string
     headerTag: string
     plugin: string
     disabled: string
+    img_alt_tag?: string
 }
 export interface ArticleProps {
     uid: string

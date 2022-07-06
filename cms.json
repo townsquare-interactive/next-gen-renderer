@@ -18,7 +18,7 @@
                 "items": [
                     {
                         "id": "6574f9b4_f1d5_4b10_feb6_928e62803df3",
-                        "headline": "This is the headline",
+                        "headline": "This is the Article",
                         "subheader": "Subheader",
                         "image": "/football-2.jpg",
                         "captionOn": 0,
@@ -44,7 +44,8 @@
                         "isPlugin": "",
                         "headerTag": "",
                         "plugin": "",
-                        "disabled": ""
+                        "disabled": "",
+                        "img_alt_tag": "alt tag for pic"
                     },
                     {
                         "id": "6574f9b4_f1d5_4b10_feb6_928e62803df3",
@@ -74,7 +75,8 @@
                         "isPlugin": "",
                         "headerTag": "",
                         "plugin": "",
-                        "disabled": ""
+                        "disabled": "",
+                        "img_alt_tag": "alt tag for pic"
                     },
                     {
                         "id": "6574f9b4_f1d5_4b10_feb6_928e62803df3",
@@ -104,7 +106,8 @@
                         "isPlugin": "",
                         "headerTag": "",
                         "plugin": "",
-                        "disabled": ""
+                        "disabled": "",
+                        "img_alt_tag": "alt tag for pic"
                     },
                     {
                         "id": "6574f9b4_f1d5_4b10_feb6_928e62803df3",
@@ -134,7 +137,8 @@
                         "isPlugin": "",
                         "headerTag": "",
                         "plugin": "",
-                        "disabled": ""
+                        "disabled": "",
+                        "img_alt_tag": "alt tag for pic"
                     }
                 ]
             }
@@ -241,7 +245,7 @@
                 "type": "article",
                 "well": "",
                 "align": "left",
-                "imgSize": "portrait_3_4",
+                "imgSize": "portrait_2_3",
                 "export": 1,
                 "columns": 1,
                 "lightbox": "",
@@ -250,7 +254,7 @@
                 "items": [
                     {
                         "id": "6574f9b4_f1d5_4b10_feb6_928e62803df3",
-                        "headline": "Image portrait 3_4",
+                        "headline": "Image portrait 2_3",
                         "subheader": "Subheader",
                         "image": "/football-2.jpg",
                         "captionOn": 0,

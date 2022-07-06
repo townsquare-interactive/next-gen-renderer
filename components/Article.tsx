@@ -119,18 +119,18 @@ const Article = (props: ArticleProps) => {
                                                     className={cn(styles['item_image'], 'item_image', 'beacon-lazy-load')}
                                                     src={domainImage(item.image)}
                                                     layout="fill"
-                                                    alt="unsure"
                                                     objectFit="cover"
+                                                    alt={item.img_alt_tag || ''}
                                                 />
                                             ) : (
                                                 //Setting width and height to image props if nosizing added
                                                 <Image
                                                     src={domainImage(item.image)}
-                                                    alt="logo"
                                                     onLoadingComplete={calcImageSize}
                                                     width={imageWidth}
                                                     height={imageHeight}
                                                     layout="responsive"
+                                                    alt={item.img_alt_tag || ''}
                                                 />
                                             )}
                                         </a>
@@ -143,14 +143,14 @@ const Article = (props: ArticleProps) => {
                                                 className={cn(styles['item_image'], 'item_image', 'beacon-lazy-load')}
                                                 src={domainImage(item.image)}
                                                 layout="fill"
-                                                alt="unsure"
+                                                alt={item.img_alt_tag || ''}
                                                 objectFit="cover"
                                             />
                                         ) : (
                                             //Setting width and height to image props if nosizing added
                                             <Image
                                                 src={domainImage(item.image)}
-                                                alt="logo"
+                                                alt={item.img_alt_tag || ''}
                                                 onLoadingComplete={calcImageSize}
                                                 width={imageWidth}
                                                 height={imageHeight}
