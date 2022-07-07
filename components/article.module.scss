@@ -3,10 +3,9 @@
 @use '../styles/variables.scss';
 @use 'sass:math';
 
-//Variables
 $column-margin: 2.0242915%;
-$two-item-width: math.div((100- ($column-margin * 2)), 2);
-$three-item-width: math.div((100- ($column-margin * 3)), 3);
+/*$two-item-width: math.div((100- ($column-margin * 2)), 2);
+$three-item-width: math.div((100- ($column-margin * 3)), 3); */
 
 .list_block {
     /* margin: 0 0.99206349%;
@@ -39,9 +38,6 @@ $three-item-width: math.div((100- ($column-margin * 3)), 3);
         height: 0;
     }
 
-    /*     &.type_article:first-child {
-        padding-top: 6.6rem;
-    } */
     &:first-child {
         padding-top: 6.6rem;
     }
@@ -58,6 +54,7 @@ $three-item-width: math.div((100- ($column-margin * 3)), 3);
         float: left;
         display: block;
         margin-bottom: 3rem;
+
         @media only screen and (min-width: 801px) {
             margin-right: $column-margin;
         }
@@ -107,7 +104,7 @@ $three-item-width: math.div((100- ($column-margin * 3)), 3);
             border-radius: 0.3rem;
             -webkit-border-radius: 0.3rem;
             display: inline-block;
-            background: red;
+
             a {
                 border: 1px solid rgba(0, 0, 0, 0.4);
                 border-width: 0 0 1px;
@@ -119,7 +116,6 @@ $three-item-width: math.div((100- ($column-margin * 3)), 3);
                 border-radius: 0.2rem;
                 background: linear-gradient(to bottom, transparent 0, rgba(0, 0, 0, 0.1) 100%);
                 box-shadow: inset 0 1px 0 0 rgb(255 255 255 / 20%);
-                //color: #fff;
 
                 &:after {
                     content: ' \003E';
@@ -132,7 +128,7 @@ $three-item-width: math.div((100- ($column-margin * 3)), 3);
         .the_list_item_image {
             position: relative;
             width: 100%;
-            // aspect-ratio: math.div(3, 3);
+            aspect-ratio: math.div(3, 3);
 
             &.right {
                 @media (min-width: 801px) {
@@ -151,7 +147,7 @@ $three-item-width: math.div((100- ($column-margin * 3)), 3);
                     margin: 0 2rem 1rem 0;
                 }
             }
-            //This query does not overrwrite styles above in .right/.left (had to include min width query in there
+            //This query does not overwrite styles above in .right/.left (had to include min width query in there
             @media only screen and (max-width: 800px) {
                 width: 100%;
                 float: none;
@@ -175,17 +171,9 @@ $three-item-width: math.div((100- ($column-margin * 3)), 3);
                 padding: 16px;
                 padding: 1.6rem;
                 overflow: auto;
-                //background-color: #dc255a;
-                //color: #fff;
-            }
-
-            a {
-                //color: #fff;
             }
         }
 
-        &.yes_image {
-        }
         &.no_image {
             .the_list_item_headline {
                 padding-top: 0;
@@ -373,15 +361,12 @@ $three-item-width: math.div((100- ($column-margin * 3)), 3);
         }
         &.column_amt_2 .the_list_item {
             width: 48.98785425%;
-            //width: $two-item-width;
         }
         &.column_amt_3 .the_list_item {
             width: 31.98380567%;
-            //width: $three-item-width;
         }
         &.column_amt_4 .the_list_item {
             width: 23.48178138%;
-            //width: $three-item-width;
         }
     }
 }
