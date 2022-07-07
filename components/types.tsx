@@ -384,7 +384,7 @@ export interface ArticleItems {
     headline: string
     subheader: string
     image: string
-    captionOn: 0 | 1
+    captionOn?: 0 | 1
     icon: string
     icon2: string
     icon3: string

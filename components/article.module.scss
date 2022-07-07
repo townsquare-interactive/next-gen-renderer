@@ -190,6 +190,61 @@ $three-item-width: math.div((100- ($column-margin * 3)), 3); */
                 padding-top: 0;
             }
         }
+
+        .lightboxOverlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgb(0, 0, 0, 0.6);
+
+            .lightbox {
+                z-index: 10000;
+                text-align: center;
+                color: #fff;
+
+                .lb-container {
+                    max-width: 70%;
+                    margin: 0 auto;
+
+                    .lb-image {
+                        position: relative;
+                        aspect-ratio: math.div(4, 3);
+                        width: 100%;
+                    }
+                    .lb-data {
+                        .lb-details {
+                            width: 85%;
+                            float: left;
+                            text-align: left;
+                            line-height: 1.5em;
+                            padding: 0.4em 0;
+                        }
+
+                        .lb-close {
+                            display: block;
+                            text-align: right;
+                            outline: 0;
+
+                            &:before {
+                                font-family: 'tsi-cms';
+                                content: '\78';
+                                font-size: 3em;
+                                line-height: 0.75;
+                            }
+                            &:hover {
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.active {
+                display: block;
+            }
+        }
     }
     &.large {
         .the_list_item {

@@ -10,6 +10,12 @@ import Link from 'next/link'
 const Article = (props: ArticleProps) => {
     const [imageHeight, setHeight] = useState(100)
     const [imageWidth, setWidth] = useState(300)
+    const [lightbox, setLightbox] = useState(false)
+
+    function toggleSwitch() {
+        setLightbox(!lightbox)
+        console.log(lightbox)
+    }
 
     const calcImageSize = (loadedMedia: Media) => {
         setWidth(loadedMedia.naturalWidth)
@@ -95,8 +101,22 @@ const Article = (props: ArticleProps) => {
                     key={index}
                 >
                     <div className={styles.the_list_wrap} style={item.isFeatured ? accentBackground : props.well ? borderBackground : noBackground}>
-                        {item.image && (
-                            <div
+                        {
+                            item.image && (
+                                <div onClick={toggleSwitch}>
+                                    <TheListItemImage
+                                        item={item}
+                                        imageNoSizings={imageNoSizings}
+                                        calcImageSize={calcImageSize}
+                                        imageWidth={imageWidth}
+                                        imageHeight={imageHeight}
+                                        textColorAccent={textColorAccent}
+                                        textColor={textColor}
+                                    />
+                                </div>
+                            )
+
+                            /* <div
                                 className={cn(styles['the_list_item_image'], {
                                     [styles.right]: item.align === 'right',
                                     [styles.left]: item.align === 'left',
@@ -156,13 +176,16 @@ const Article = (props: ArticleProps) => {
                                         </>
                                     )}
                                 </div>
+
                                 {item.caption_tag && (
                                     <div className={styles['the_list_item_caption']} style={props.well || item.isFeatured ? textColorAccent : textColor}>
                                         caption
                                     </div>
                                 )}
-                            </div>
-                        )}
+                            </div> */
+                        }
+                        {props.lightbox === '1' && <Lightbox item={item} lightbox={lightbox} toggleSwitch={toggleSwitch} />}
+
                         <div className={styles['the_list_item_heads']}>
                             {item.headerTag === '1' ? (
                                 <h1
@@ -211,6 +234,121 @@ const TheListItemAction = (props: any) => {
                     {props.actionlbl}
                 </a>
             </Link>
+        </div>
+    )
+}
+const TheListItemImage = (props: any) => {
+    const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor } = props
+
+    return (
+        <div
+            className={cn(styles['the_list_item_image'], {
+                [styles.right]: item.align === 'right',
+                [styles.left]: item.align === 'left',
+            })}
+        >
+            <div className={styles.image}>
+                {item.pagelink ? (
+                    <Link href={item.pagelink}>
+                        <a target={item.newwindow === 1 ? '_blank' : '_self'} className="accent_color_bg accent_txt_color">
+                            {!imageNoSizings.includes(props.imgSize) ? (
+                                <Image
+                                    className={cn(styles['item_image'], 'item_image', 'beacon-lazy-load')}
+                                    src={domainImage(item.image)}
+                                    layout="fill"
+                                    objectFit="cover"
+                                    alt={item.img_alt_tag || ''}
+                                    objectPosition="top"
+                                />
+                            ) : (
+                                //Setting width and height to image props if nosizing added
+                                <Image
+                                    src={domainImage(item.image)}
+                                    onLoadingComplete={calcImageSize}
+                                    width={imageWidth}
+                                    height={imageHeight}
+                                    layout="responsive"
+                                    alt={item.img_alt_tag || ''}
+                                    objectPosition="top"
+                                />
+                            )}
+                        </a>
+                    </Link>
+                ) : (
+                    //had to add an extra div here
+                    <>
+                        {!imageNoSizings.includes(props.imgSize) ? (
+                            <Image
+                                className={cn(styles['item_image'], 'item_image', 'beacon-lazy-load')}
+                                src={domainImage(item.image)}
+                                layout="fill"
+                                alt={item.img_alt_tag || ''}
+                                objectFit="cover"
+                                objectPosition="top"
+                            />
+                        ) : (
+                            //Setting width and height to image props if nosizing added
+                            <Image
+                                src={domainImage(item.image)}
+                                alt={item.img_alt_tag || ''}
+                                onLoadingComplete={calcImageSize}
+                                width={imageWidth}
+                                height={imageHeight}
+                                layout="responsive"
+                                objectPosition="top"
+                            />
+                        )}
+                    </>
+                )}
+            </div>
+
+            {item.caption_tag && (
+                <div className={styles['the_list_item_caption']} style={props.well || item.isFeatured ? textColorAccent : textColor}>
+                    caption
+                </div>
+            )}
+        </div>
+    )
+}
+
+const Lightbox = (props: any) => {
+    const { item, lightbox, toggleSwitch } = props
+
+    return (
+        <div
+            className={cn(styles.lightboxOverlay, {
+                [styles.active]: lightbox === true,
+            })}
+        >
+            <div onClick={toggleSwitch}>
+                <div className={styles.lightbox}>
+                    <div className={styles['lb-container']}>
+                        <div className={styles['lb-image']}>
+                            <Image
+                                className={cn(styles['item_image'], 'item_image', 'beacon-lazy-load')}
+                                src={domainImage(item.image)}
+                                layout="fill"
+                                alt={item.img_alt_tag || ''}
+                                objectFit="cover"
+                                objectPosition="top"
+                            />
+                        </div>
+
+                        <div className={styles['lb-dataContainer']}>
+                            <div className={styles['lb-data']}>
+                                <div className={styles['lb-details']}>
+                                    <span className={styles['lb-caption']}>lightbox</span>
+
+                                    <span className={styles['lb-number']}></span>
+                                </div>
+                                <div className={styles['lb-closeContainer']}>
+                                    <a className={styles['lb-close']}></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

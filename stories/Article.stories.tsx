@@ -27,7 +27,6 @@ const item1: ArticleItems = {
     headline: 'Article Module',
     subheader: 'Subheader',
     image: '/football-2.jpg',
-    captionOn: 0,
     icon: '',
     icon2: '',
     icon3: '',
@@ -243,5 +242,11 @@ export const Caption = Template.bind({})
 Caption.args = {
     ...Plain.args,
 
-    items: [{ ...item1, caption_tag: 'caption' }],
+    items: [{ ...item1, caption_tag: 'caption', captionOn: 0 }],
+}
+export const CaptionLeft = Template.bind({})
+CaptionLeft.args = {
+    ...Plain.args,
+
+    items: [{ ...item1, caption_tag: 'caption', captionOn: 0, align: 'left' }],
 }
