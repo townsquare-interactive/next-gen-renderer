@@ -8,21 +8,27 @@ import { useState } from 'react'
 import Link from 'next/link'
 
 const Article = (props: ArticleProps) => {
-    /*  const themeStylesObj = {
-        backgroundColor: border ? `${themeStyles['accentBackgroundColor']}` : 'transparent',
-      
-    }
-
-    const headingColor = {
-        color: border ? `${themeStyles['textColorAccent']}` : `${themeStyles['headingColor']}`,
-    }
+    //Defining style objects
     const textColor = {
-        color: border ? `${themeStyles['textColorAccent']}` : `${themeStyles['textColor']}`,
+        color: props.themeStyles['textColor'],
     }
 
-    const gutterStyle = {
-        backgroundColor: `${themeStyles['mainColor']}`,
-    } */
+    const textColorHeading = {
+        color: props.themeStyles['headingColor'],
+    }
+    const textColorAccent = {
+        color: props.themeStyles['textColorAccent'],
+    }
+    const accentBackground = {
+        backgroundColor: props.themeStyles['mainColor'],
+    }
+    const noBackground = {
+        backgroundColor: 'transparent',
+    }
+    const borderBackground = {
+        backgroundColor: props.themeStyles['headerBackground'],
+    }
+
     const [imageHeight, setHeight] = useState(100)
     const [imageWidth, setWidth] = useState(300)
 
@@ -72,6 +78,7 @@ const Article = (props: ArticleProps) => {
                         [styles.the_list_item_right]: item.align === 'right',
                         [styles.the_list_item_left]: item.align === 'left',
                         [styles.hero]: item.isFeatured === 'active',
+                        ['hero']: item.isFeatured === 'active',
                         [styles.not_hero]: item.isFeatured === '',
                         [styles.yes_heads]: item.headline || item.subheader,
                         [styles.yes_desc]: item.desc,
@@ -82,7 +89,8 @@ const Article = (props: ArticleProps) => {
                     lang="en"
                     key={index}
                 >
-                    <div className={styles.the_list_wrap}>
+                    {/* <style>{themeStyles}</style> */}
+                    <div className={styles.the_list_wrap} style={item.isFeatured ? accentBackground : props.well ? borderBackground : noBackground}>
                         {/*  <a data-title="This is our article page : first element">
                                     {!imageNoSizings.includes(props.imgSize) ? (
                                         <Image
@@ -103,6 +111,8 @@ const Article = (props: ArticleProps) => {
                                             layout="responsive"
                                         />
                                     )}
+
+
                                     </a> */}
                         {item.image && (
                             <div
@@ -162,14 +172,32 @@ const Article = (props: ArticleProps) => {
                             </div>
                         )}
                         <div className="the_list_item_heads">
-                            <h1 className={cn(styles['the_list_item_headline'], styles['hds_color'])}>{Parser(item.headline)}</h1>
-                            <h3 className={cn(styles['the_list_item_subheadline'], styles['hds_color'])}>{Parser(item.subheader)}</h3>
+                            <h1
+                                className={cn(styles['the_list_item_headline'], styles['hds_color'])}
+                                style={props.well || item.isFeatured ? textColorAccent : textColorHeading}
+                            >
+                                {Parser(item.headline)}
+                            </h1>
+                            <h3
+                                className={cn(styles['the_list_item_subheadline'], styles['hds_color'])}
+                                style={props.well || item.isFeatured ? textColorAccent : textColorHeading}
+                            >
+                                {Parser(item.subheader)}
+                            </h3>
                         </div>
-                        <div className={cn(styles['the_list_item_desc'], styles['txt_color'])}>
+                        <div
+                            className={cn(styles['the_list_item_desc'], styles['txt_color'])}
+                            style={props.well || item.isFeatured ? textColorAccent : textColor}
+                        >
                             <p>{Parser(item.desc)}</p>
                         </div>
                         {item.pagelink && item.actionlbl && (
-                            <TheListItemAction pagelink={item.pagelink} actionlbl={item.actionlbl} newwindow={item.newwindow} />
+                            <TheListItemAction
+                                pagelink={item.pagelink}
+                                actionlbl={item.actionlbl}
+                                newwindow={item.newwindow}
+                                textColorAccent={textColorAccent}
+                            />
                         )}
                     </div>
                 </div>
@@ -182,7 +210,7 @@ const TheListItemAction = (props: any) => {
     return (
         <div className={styles.the_list_item_action}>
             <Link href={props.pagelink}>
-                <a target={props.newwindow === 1 ? '_blank' : '_self'} className="accent_color_bg accent_txt_color">
+                <a target={props.newwindow === 1 ? '_blank' : '_self'} className="accent_color_bg accent_txt_color" style={props.textColorAccent}>
                     {props.actionlbl}
                 </a>
             </Link>

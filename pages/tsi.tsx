@@ -10,7 +10,7 @@ export const getStaticProps = async (context: Context) => {
     const globalData = await resGlobal.json()
 
     return {
-        props: { page, globalData },
+        props: { globalData },
         // Next.js will attempt to re-generate the page:
         // - When a request comes in
         // - At most once every 10 seconds
@@ -20,7 +20,7 @@ export const getStaticProps = async (context: Context) => {
 
 const Slug = (props: HomeProps) => {
     //const { page, globalData } = props
-    const { page, globalData } = props
+    const { globalData } = props
 
     return (
         <div>

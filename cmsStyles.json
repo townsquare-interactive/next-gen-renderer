@@ -1,0 +1,124 @@
+{
+    "colors": {
+        "color_1": {
+            "key": "color_1",
+            "type": "hex",
+            "label": "HEADLINES",
+            "value": "#dc255a"
+        },
+        "color_2": {
+            "key": "color_2",
+            "type": "hex",
+            "label": "TEXT",
+            "value": "#fdfdfd"
+        },
+        "color_3a": {
+            "key": "color_3a",
+            "type": "hex",
+            "label": "LINKS",
+            "value": "#ca0202"
+        },
+        "color_3": {
+            "key": "color_3",
+            "type": "hex",
+            "label": "ACCENT BKG",
+            "value": "#dc255a"
+        },
+        "color_4": {
+            "key": "color_4",
+            "type": "hex",
+            "label": "ACCENT TEXT",
+            "value": "#ffffff"
+        },
+        "color_5": {
+            "key": "color_5",
+            "type": "hex",
+            "label": "SOCIAL TEXT",
+            "value": "#d4d1d1"
+        },
+        "color_6": {
+            "key": "color_6",
+            "type": "hex",
+            "label": "NAV LINKS",
+            "value": "#17e9e9"
+        },
+        "color_7": {
+            "key": "color_7",
+            "type": "hex",
+            "label": "NAV TAB BKG",
+            "value": "#ff0062"
+        },
+        "color_8": {
+            "key": "color_8",
+            "type": "hex",
+            "label": "NAV TAB TEXT",
+            "value": "#17e9e9"
+        },
+        "color_9": {
+            "key": "color_9",
+            "type": "hex",
+            "label": "LOGO",
+            "value": "#ffffff"
+        },
+        "color_12": {
+            "key": "color_12",
+            "type": "hex",
+            "label": "FOOTER TEXT",
+            "value": "#ffffff"
+        },
+        "color_13": {
+            "key": "color_13",
+            "type": "hex",
+            "label": "FOOTER LINKS",
+            "value": "#ff0062"
+        },
+        "color_21": {
+            "key": "color_21",
+            "type": "rgba",
+            "label": "IMAGE BKG",
+            "value": "rgba(56,55,55,1)"
+        },
+        "color_14": {
+            "key": "color_14",
+            "type": "hex",
+            "label": "MAIN BKG",
+            "value": "#000000"
+        },
+        "color_15": {
+            "key": "color_15",
+            "type": "hex",
+            "label": "SOCIAL BAR BKG",
+            "value": "#000000"
+        },
+        "color_16": {
+            "key": "color_16",
+            "type": "rgba",
+            "label": "NAV BKG",
+            "value": "rgba(222,57,97,1)"
+        },
+        "color_17": {
+            "key": "color_17",
+            "type": "rgba",
+            "label": "HEADER BKG",
+            "value": "rgba(43,43,43,1)"
+        },
+        "color_18": {
+            "key": "color_18",
+            "type": "rgba",
+            "label": "CONTENT BKG",
+            "value": "#000000"
+        },
+        "color_19": {
+            "key": "color_19",
+            "type": "hex",
+            "label": "CONTENT ITEM BKG",
+            "value": "#00c2d8"
+        },
+        "color_20": {
+            "key": "color_20",
+            "type": "rgba",
+            "label": "FOOTER BKG",
+            "value": "rgba(61,61,61,1)"
+        }
+    }
+}

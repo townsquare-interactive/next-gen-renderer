@@ -424,4 +424,5 @@ export interface ArticleProps {
     lightbox: string
     blockSwitch1: number
     scale_to_fit: string
+    themeStyles: ThemeStyles
 }
