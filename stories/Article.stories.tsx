@@ -108,7 +108,17 @@ AlignLeft.args = {
     items: [
         {
             ...item1,
-
+            align: 'left',
+        },
+    ],
+}
+export const H1 = Template.bind({})
+H1.args = {
+    ...Plain.args,
+    items: [
+        {
+            ...item1,
+            headerTag: '1',
             align: 'left',
         },
     ],
@@ -227,4 +237,11 @@ export const MultipleBorder = Template.bind({})
 MultipleBorder.args = {
     ...ThreeColumns.args,
     well: '1',
+}
+
+export const Caption = Template.bind({})
+Caption.args = {
+    ...Plain.args,
+
+    items: [{ ...item1, caption_tag: 'caption' }],
 }

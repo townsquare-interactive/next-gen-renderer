@@ -42,7 +42,7 @@
                         "align": "center",
                         "isFeatured": "",
                         "isPlugin": "",
-                        "headerTag": "",
+                        "headerTag": "1",
                         "plugin": "",
                         "disabled": "",
                         "img_alt_tag": "alt tag for pic"

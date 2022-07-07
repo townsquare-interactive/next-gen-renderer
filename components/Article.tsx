@@ -77,20 +77,23 @@ const Article = (props: ArticleProps) => {
         >
             {props.items.map((item, index) => (
                 <div
-                    className={cn(styles['the_list_item'], {
-                        [styles.the_list_item_right]: item.align === 'right',
-                        [styles.the_list_item_left]: item.align === 'left',
-                        [styles.hero]: item.isFeatured === 'active',
-                        [styles.not_hero]: !item.isFeatured,
-                        [styles.yes_desc]: item.desc,
-                        [styles.no_desc]: !item.desc,
-                        [styles.no_image]: !item.image,
-                        [styles.yes_image]: item.image,
-                    })}
+                    className={cn(
+                        styles['the_list_item'],
+                        {
+                            [styles.the_list_item_right]: item.align === 'right',
+                            [styles.the_list_item_left]: item.align === 'left',
+                            [styles.hero]: item.isFeatured === 'active',
+                            [styles.not_hero]: !item.isFeatured,
+                            [styles.yes_desc]: item.desc,
+                            [styles.no_desc]: !item.desc,
+                            [styles.no_image]: !item.image,
+                            [styles.yes_image]: item.image,
+                        },
+                        styles[`item_${index + 1}`]
+                    )}
                     lang="en"
                     key={index}
                 >
-                    {/* <style>{themeStyles}</style> */}
                     <div className={styles.the_list_wrap} style={item.isFeatured ? accentBackground : props.well ? borderBackground : noBackground}>
                         {item.image && (
                             <div
@@ -99,63 +102,84 @@ const Article = (props: ArticleProps) => {
                                     [styles.left]: item.align === 'left',
                                 })}
                             >
-                                {item.pagelink ? (
-                                    <Link href={item.pagelink}>
-                                        <a target={item.newwindow === 1 ? '_blank' : '_self'} className="accent_color_bg accent_txt_color">
+                                <div className={styles.image}>
+                                    {item.pagelink ? (
+                                        <Link href={item.pagelink}>
+                                            <a target={item.newwindow === 1 ? '_blank' : '_self'} className="accent_color_bg accent_txt_color">
+                                                {!imageNoSizings.includes(props.imgSize) ? (
+                                                    <Image
+                                                        className={cn(styles['item_image'], 'item_image', 'beacon-lazy-load')}
+                                                        src={domainImage(item.image)}
+                                                        layout="fill"
+                                                        objectFit="cover"
+                                                        alt={item.img_alt_tag || ''}
+                                                        objectPosition="top"
+                                                    />
+                                                ) : (
+                                                    //Setting width and height to image props if nosizing added
+                                                    <Image
+                                                        src={domainImage(item.image)}
+                                                        onLoadingComplete={calcImageSize}
+                                                        width={imageWidth}
+                                                        height={imageHeight}
+                                                        layout="responsive"
+                                                        alt={item.img_alt_tag || ''}
+                                                        objectPosition="top"
+                                                    />
+                                                )}
+                                            </a>
+                                        </Link>
+                                    ) : (
+                                        //had to add an extra div here
+                                        <>
                                             {!imageNoSizings.includes(props.imgSize) ? (
                                                 <Image
                                                     className={cn(styles['item_image'], 'item_image', 'beacon-lazy-load')}
                                                     src={domainImage(item.image)}
                                                     layout="fill"
-                                                    objectFit="cover"
                                                     alt={item.img_alt_tag || ''}
+                                                    objectFit="cover"
+                                                    objectPosition="top"
                                                 />
                                             ) : (
                                                 //Setting width and height to image props if nosizing added
                                                 <Image
                                                     src={domainImage(item.image)}
+                                                    alt={item.img_alt_tag || ''}
                                                     onLoadingComplete={calcImageSize}
                                                     width={imageWidth}
                                                     height={imageHeight}
                                                     layout="responsive"
-                                                    alt={item.img_alt_tag || ''}
+                                                    objectPosition="top"
                                                 />
                                             )}
-                                        </a>
-                                    </Link>
-                                ) : (
-                                    //had to add an extra div here
-                                    <>
-                                        {!imageNoSizings.includes(props.imgSize) ? (
-                                            <Image
-                                                className={cn(styles['item_image'], 'item_image', 'beacon-lazy-load')}
-                                                src={domainImage(item.image)}
-                                                layout="fill"
-                                                alt={item.img_alt_tag || ''}
-                                                objectFit="cover"
-                                            />
-                                        ) : (
-                                            //Setting width and height to image props if nosizing added
-                                            <Image
-                                                src={domainImage(item.image)}
-                                                alt={item.img_alt_tag || ''}
-                                                onLoadingComplete={calcImageSize}
-                                                width={imageWidth}
-                                                height={imageHeight}
-                                                layout="responsive"
-                                            />
-                                        )}
-                                    </>
+                                        </>
+                                    )}
+                                </div>
+                                {item.caption_tag && (
+                                    <div className={styles['the_list_item_caption']} style={props.well || item.isFeatured ? textColorAccent : textColor}>
+                                        caption
+                                    </div>
                                 )}
                             </div>
                         )}
                         <div className={styles['the_list_item_heads']}>
-                            <h1
-                                className={cn(styles['the_list_item_headline'], styles['hds_color'])}
-                                style={props.well || item.isFeatured ? textColorAccent : textColorHeading}
-                            >
-                                {Parser(item.headline)}
-                            </h1>
+                            {item.headerTag === '1' ? (
+                                <h1
+                                    className={cn(styles['the_list_item_headline'], styles['hds_color'])}
+                                    style={props.well || item.isFeatured ? textColorAccent : textColorHeading}
+                                >
+                                    {Parser(item.headline)}
+                                </h1>
+                            ) : (
+                                <h3
+                                    className={cn(styles['the_list_item_headline'], styles['hds_color'])}
+                                    style={props.well || item.isFeatured ? textColorAccent : textColorHeading}
+                                >
+                                    {Parser(item.headline)}
+                                </h3>
+                            )}
+
                             <h3
                                 className={cn(styles['the_list_item_subheadline'], styles['hds_color'])}
                                 style={props.well || item.isFeatured ? textColorAccent : textColorHeading}

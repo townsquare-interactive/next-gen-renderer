@@ -126,9 +126,20 @@ $three-item-width: math.div((100- ($column-margin * 3)), 3); */
         }
 
         .the_list_item_image {
-            position: relative;
             width: 100%;
-            aspect-ratio: math.div(3, 3);
+            .image {
+                position: relative;
+                position: relative;
+                width: 100%;
+                aspect-ratio: math.div(3, 3);
+            }
+
+            .the_list_item_caption {
+                /* background: rgba(0,0,0,.1); */
+                font-size: 1.1rem;
+                padding: 0.5rem 1rem;
+                text-align: center;
+            }
 
             &.right {
                 @media (min-width: 801px) {
@@ -294,29 +305,29 @@ $three-item-width: math.div((100- ($column-margin * 3)), 3); */
         font-size: 30px;
         font-size: 3rem;
     }
-    &.square_1_1 .the_list_item_image {
+    &.square_1_1 .the_list_item_image .image {
         aspect-ratio: math.div(1, 1);
     }
 
-    &.landscape_4_3 .the_list_item_image {
+    &.landscape_4_3 .the_list_item_image .image {
         aspect-ratio: math.div(4, 3);
     }
-    &.landscape_3_2 .the_list_item_image {
+    &.landscape_3_2 .the_list_item_image .image {
         aspect-ratio: math.div(3, 2);
     }
-    &.portrait_3_4 .the_list_item_image {
+    &.portrait_3_4 .the_list_item_image .image {
         aspect-ratio: math.div(3, 4);
     }
-    &.portrait_2_3 .the_list_item_image {
+    &.portrait_2_3 .the_list_item_image .image {
         aspect-ratio: math.div(2, 3);
     }
-    &.widescreen_16_9 .the_list_item_image {
+    &.widescreen_16_9 .the_list_item_image .image {
         aspect-ratio: math.div(16, 9);
     }
-    &.widescreen_3_1 .the_list_item_image {
+    &.widescreen_3_1 .the_list_item_image .image {
         aspect-ratio: math.div(3, 1);
     }
-    &.widescreen_2_4_1 .the_list_item_image {
+    &.widescreen_2_4_1 .the_list_item_image .image {
         aspect-ratio: math.div(2000, 830);
     }
     &.well {

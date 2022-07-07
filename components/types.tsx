@@ -409,6 +409,7 @@ export interface ArticleItems {
     plugin: string
     disabled: string
     img_alt_tag?: string
+    caption_tag?: string
 }
 export interface ArticleProps {
     uid: string
