@@ -9,10 +9,10 @@ export default function Layout(props: tsiLayoutProps) {
     /*     const [lightbox, setLightbox] = useState(false)
     const [currentImage, setCurrentImage] = useState() */
 
-    function toggleLightbox() {
+    /*     function toggleLightbox() {
         setLightbox((lightbox) => !lightbox)
     }
-
+ */
     return (
         <div className={styles.container}>
             {children}
