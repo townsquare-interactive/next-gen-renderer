@@ -1,5 +1,5 @@
 import styles from './CharlotteArticle.module.scss'
-import { ArticleProps, Media } from './types'
+import { ArticleProps, Media, TheListItemImageProps, TheListItemActionProps } from './types'
 import Image from 'next/image'
 import cn from 'classnames'
 import Parser from 'html-react-parser'
@@ -75,48 +75,50 @@ const CharlotteArticle = (props: ArticleProps) => {
                     [styles.large]: props.columns === 1,
                     [styles.medium]: props.columns === 2,
                     [styles.small]: props.columns === 3 || props.columns === 4,
-                    [styles.column_amt_1]: props.columns === 1,
-                    [styles.column_amt_2]: props.columns === 2,
-                    [styles.column_amt_3]: props.columns === 3,
-                    [styles.column_amt_4]: props.columns === 4,
+                    [styles.col_1]: props.columns === 1,
+                    [styles.col_2]: props.columns === 2,
+                    [styles.col_3]: props.columns === 3,
+                    [styles.col_4]: props.columns === 4,
+                    [styles[`tsD_${props.class}`]]: props.class,
                 }
             )}
         >
             <div className={styles.tsR}>
-                {props.items.map((item, index) => (
-                    <article
-                        className={cn(
-                            styles['tsI'],
-                            {
-                                [styles.the_list_item_right]: item.align === 'right',
-                                [styles.the_list_item_left]: item.align === 'left',
-                                [styles.hero]: item.isFeatured === 'active',
-                                [styles.nHero]: !item.isFeatured,
-                                [styles.yDsc]: item.desc,
-                                [styles.nDsc]: !item.desc,
-                                [styles.nImg]: !item.image,
-                                [styles.yImg]: item.image,
-                                [styles.yHeads]: item.headline || item.subheader,
-                                [styles.nHeads]: !item.headline || !item.subheader,
-                                [styles.center]: item.align === 'center',
-                            },
-                            styles[`item_${index + 1}`]
-                        )}
-                        lang="en"
-                        key={index}
-                        data-aos="fade-up"
-                        data-aos-once="true"
-                    >
-                        <div className={styles['tsI_wrp']}>
-                            {item.image && (
-                                <figure
-                                    className={cn(styles['tsI_img'], 'theframe', 'imgtag', 'imgbase', 'img-loaded')}
-                                    data-image=""
-                                    data-alt="Headline"
-                                    /*  style="margin-bottom: 0.5625em;" */
-                                    data-image-loaded=""
-                                >
-                                    {/*                                     <img
+                {props.items.map((item, index) =>
+                    item.disabled != 'disabled' ? (
+                        <article
+                            className={cn(
+                                styles['tsI'],
+                                {
+                                    [styles.the_list_item_right]: item.align === 'right',
+                                    [styles.the_list_item_left]: item.align === 'left',
+                                    [styles.hero]: item.isFeatured === 'active',
+                                    [styles.nHero]: !item.isFeatured,
+                                    [styles.yDsc]: item.desc,
+                                    [styles.nDsc]: !item.desc,
+                                    [styles.nImg]: !item.image,
+                                    [styles.yImg]: item.image,
+                                    [styles.yHeads]: item.headline || item.subheader,
+                                    [styles.nHeads]: !item.headline || !item.subheader,
+                                    [styles.center]: item.align === 'center',
+                                },
+                                styles[`item_${index + 1}`]
+                            )}
+                            lang="en"
+                            key={index}
+                            data-aos="fade-up"
+                            data-aos-once="true"
+                        >
+                            <div className={styles['tsI_wrp']}>
+                                {item.image && (
+                                    <figure
+                                        className={cn(styles['tsI_img'], styles['theframe'], styles['imgtag'], styles['imgbase'], styles['img-loaded'])}
+                                        data-image=""
+                                        data-alt="Headline"
+                                        /*  style="margin-bottom: 0.5625em;" */
+                                        data-image-loaded=""
+                                    >
+                                        {/*                                     <img
                                         alt="Headline"
                                         className={styles['item_image']}
                                         src={domainImage(item.image)}
@@ -124,39 +126,44 @@ const CharlotteArticle = (props: ArticleProps) => {
                                         data-aos-offset="150"
                                         data-aos-once="true"
                                     /> */}
-                                    <TheListItemImage
-                                        item={item}
-                                        imageNoSizings={imageNoSizings}
-                                        calcImageSize={calcImageSize}
-                                        imageWidth={imageWidth}
-                                        imageHeight={imageHeight}
-                                        textColorAccent={textColorAccent}
-                                        textColor={textColor}
-                                    />
-                                </figure>
-                            )}
+                                        <TheListItemImage
+                                            item={item}
+                                            imageNoSizings={imageNoSizings}
+                                            calcImageSize={calcImageSize}
+                                            imageWidth={imageWidth}
+                                            imageHeight={imageHeight}
+                                            textColorAccent={textColorAccent}
+                                            textColor={textColor}
+                                            imgSize={props.imgSize}
+                                            well={props.well}
+                                        />
+                                    </figure>
+                                )}
 
-                            <div className={styles['tsI_txt']}>
-                                <header className={styles['tsI_hds']}>
-                                    <h2 className={styles['tsI_hd']}>{item.headline}</h2>
-                                    <h2 className={styles['tsI_sh']}>{item.subheader}</h2>
-                                </header>
+                                <div className={styles['tsI_txt']}>
+                                    <header className={styles['tsI_hds']}>
+                                        <h2 className={styles['tsI_hd']}>{item.headline}</h2>
+                                        <h2 className={styles['tsI_sh']}>{item.subheader}</h2>
+                                    </header>
 
-                                <div className={styles['tsI_dsc_wrp']}>
-                                    <div className={styles['tsI_dsc']}>
-                                        <p>{item.desc}</p>
+                                    <div className={styles['tsI_dsc_wrp']}>
+                                        <div className={styles['tsI_dsc']}>
+                                            <p>{item.desc}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </article>
-                ))}
+                        </article>
+                    ) : (
+                        <></>
+                    )
+                )}
             </div>
         </div>
     )
 }
 
-const TheListItemAction = (props: any) => {
+const TheListItemAction = (props: TheListItemActionProps) => {
     return (
         <div className={styles.the_list_item_action}>
             <Link href={props.pagelink}>
@@ -167,7 +174,7 @@ const TheListItemAction = (props: any) => {
         </div>
     )
 }
-const TheListItemImage = (props: any) => {
+const TheListItemImage = (props: TheListItemImageProps) => {
     const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor } = props
 
     return (
@@ -233,9 +240,10 @@ const TheListItemImage = (props: any) => {
             </div>
 
             {item.caption_tag && (
-                <div className={styles['the_list_item_caption']} style={props.well || item.isFeatured ? textColorAccent : textColor}>
+                /* <div className={styles['the_list_item_caption']} style={props.well || item.isFeatured ? textColorAccent : textColor}>
                     caption
-                </div>
+                </div> */
+                <figcaption style={textColorAccent}>{item.caption_tag}</figcaption>
             )}
         </div>
     )

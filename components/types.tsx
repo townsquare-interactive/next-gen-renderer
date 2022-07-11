@@ -427,5 +427,28 @@ export interface ArticleProps {
     scale_to_fit: string
     themeStyles: ThemeStyles
     /**Check to see if element is hidden */
-    disabled?: string
+}
+
+export interface Colors {
+    color?: string
+    backgroundColor?: string
+}
+
+export interface TheLIstItemActionProps {
+    pagelink: string
+    actionlbl: string
+    newwindow: number | null
+    accentColors: Colors
+}
+
+export interface TheListItemImageProps {
+    item: ArticleItems
+    imageNoSizings: any
+    calcImageSize: (loadedMedia: any) => void
+    imageWidth: number
+    imageHeight: number
+    textColorAccent: Colors
+    textColor: Colors
+    imgSize: string
+    well: string
 }

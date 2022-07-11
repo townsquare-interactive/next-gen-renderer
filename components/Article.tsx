@@ -1,5 +1,5 @@
 import styles from './article.module.scss'
-import { ArticleProps, Media } from './types'
+import { ArticleProps, Media, TheListItemActionProps, TheListItemImageProps } from './types'
 import Image from 'next/image'
 import cn from 'classnames'
 import Parser from 'html-react-parser'
@@ -50,42 +50,40 @@ const Article = (props: ArticleProps) => {
     //non constrained images
     const imageNoSizings = ['no_sizing', 'no_set_height']
 
-    if (props.disabled === 'disabled') {
-        return <></>
-    } else {
-        return (
-            <div
-                id="section_1"
-                className={cn(
-                    styles['list_block'],
-                    styles['type_article'],
-                    styles['a1'],
+    return (
+        <div
+            id="section_1"
+            className={cn(
+                styles['list_block'],
+                styles['type_article'],
+                styles['a1'],
 
-                    {
-                        [styles.square_1_1]: props.imgSize === 'square_1_1',
-                        [styles.landscape_4_3]: props.imgSize === 'landscape_4_3',
-                        [styles.landscape_3_2]: props.imgSize === 'landscape_3_2',
-                        [styles.portrait_3_4]: props.imgSize === 'portrait_3_4',
-                        [styles.portrait_2_3]: props.imgSize === 'portrait_2_3',
-                        [styles.widescreen_16_9]: props.imgSize === 'widescreen_16_9',
-                        [styles.widescreen_3_1]: props.imgSize === 'widescreen_3_1',
-                        [styles.widescreen_2_4_1]: props.imgSize === 'widescreen_2_4_1',
-                        [styles.no_sizing]: props.imgSize === 'no_sizing',
-                        [styles.no_set_height]: props.imgSize === 'no_set_height',
-                        [styles.well]: props.well === '1',
-                        [styles.not_well]: !props.well,
-                        [styles.large]: props.columns === 1,
-                        [styles.medium]: props.columns === 2,
-                        [styles.small]: props.columns === 3 || props.columns === 4,
-                        [styles.column_amt_1]: props.columns === 1,
-                        [styles.column_amt_2]: props.columns === 2,
-                        [styles.column_amt_3]: props.columns === 3,
-                        [styles.column_amt_4]: props.columns === 4,
-                        [styles[`tsidesign_${props.class}`]]: props.class,
-                    }
-                )}
-            >
-                {props.items.map((item, index) => (
+                {
+                    [styles.square_1_1]: props.imgSize === 'square_1_1',
+                    [styles.landscape_4_3]: props.imgSize === 'landscape_4_3',
+                    [styles.landscape_3_2]: props.imgSize === 'landscape_3_2',
+                    [styles.portrait_3_4]: props.imgSize === 'portrait_3_4',
+                    [styles.portrait_2_3]: props.imgSize === 'portrait_2_3',
+                    [styles.widescreen_16_9]: props.imgSize === 'widescreen_16_9',
+                    [styles.widescreen_3_1]: props.imgSize === 'widescreen_3_1',
+                    [styles.widescreen_2_4_1]: props.imgSize === 'widescreen_2_4_1',
+                    [styles.no_sizing]: props.imgSize === 'no_sizing',
+                    [styles.no_set_height]: props.imgSize === 'no_set_height',
+                    [styles.well]: props.well === '1',
+                    [styles.not_well]: !props.well,
+                    [styles.large]: props.columns === 1,
+                    [styles.medium]: props.columns === 2,
+                    [styles.small]: props.columns === 3 || props.columns === 4,
+                    [styles.column_amt_1]: props.columns === 1,
+                    [styles.column_amt_2]: props.columns === 2,
+                    [styles.column_amt_3]: props.columns === 3,
+                    [styles.column_amt_4]: props.columns === 4,
+                    [styles[`tsidesign_${props.class}`]]: props.class,
+                }
+            )}
+        >
+            {props.items.map((item, index) =>
+                item.disabled != 'disabled' ? (
                     <div
                         className={cn(
                             styles['the_list_item'],
@@ -115,6 +113,8 @@ const Article = (props: ArticleProps) => {
                                         imageHeight={imageHeight}
                                         textColorAccent={textColorAccent}
                                         textColor={textColor}
+                                        imgSize={props.imgSize}
+                                        well={props.well}
                                     />
                                 </div>
                             )}
@@ -155,13 +155,15 @@ const Article = (props: ArticleProps) => {
                             )}
                         </div>
                     </div>
-                ))}
-            </div>
-        )
-    }
+                ) : (
+                    <></>
+                )
+            )}
+        </div>
+    )
 }
 
-const TheListItemAction = (props: any) => {
+const TheListItemAction = (props: TheListItemActionProps) => {
     return (
         <div className={styles.the_list_item_action}>
             <Link href={props.pagelink}>
@@ -172,8 +174,8 @@ const TheListItemAction = (props: any) => {
         </div>
     )
 }
-const TheListItemImage = (props: any) => {
-    const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor } = props
+const TheListItemImage = (props: TheListItemImageProps) => {
+    const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgSize, well } = props
 
     return (
         <div
@@ -186,7 +188,7 @@ const TheListItemImage = (props: any) => {
                 {item.pagelink ? (
                     <Link href={item.pagelink}>
                         <a target={item.newwindow === 1 ? '_blank' : '_self'} className="accent_color_bg accent_txt_color">
-                            {!imageNoSizings.includes(props.imgSize) ? (
+                            {!imageNoSizings.includes(imgSize) ? (
                                 <Image
                                     className={cn(styles['item_image'], 'item_image', 'beacon-lazy-load')}
                                     src={domainImage(item.image)}
@@ -238,7 +240,7 @@ const TheListItemImage = (props: any) => {
             </div>
 
             {item.caption_tag && (
-                <div className={styles['the_list_item_caption']} style={props.well || item.isFeatured ? textColorAccent : textColor}>
+                <div className={styles['the_list_item_caption']} style={well || item.isFeatured ? textColorAccent : textColor}>
                     caption
                 </div>
             )}
