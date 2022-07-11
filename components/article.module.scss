@@ -11,9 +11,10 @@ $three-item-width: math.div((100- ($column-margin * 3)), 3); */
     padding: 0;
     clear: both;
 
-    /* .type_article {
-
-    } */
+    //custom class test
+    &.tsidesign_hello {
+        background-color: black;
+    }
     margin: 0 0.99206349%;
     padding: 30px 26px 20px;
     padding: 3rem 2.6rem 2rem;

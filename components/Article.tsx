@@ -73,7 +73,7 @@ const Article = (props: ArticleProps) => {
                         [styles.no_sizing]: props.imgSize === 'no_sizing',
                         [styles.no_set_height]: props.imgSize === 'no_set_height',
                         [styles.well]: props.well === '1',
-                        [styles.not_well]: props.well === '',
+                        [styles.not_well]: !props.well,
                         [styles.large]: props.columns === 1,
                         [styles.medium]: props.columns === 2,
                         [styles.small]: props.columns === 3 || props.columns === 4,
@@ -81,6 +81,7 @@ const Article = (props: ArticleProps) => {
                         [styles.column_amt_2]: props.columns === 2,
                         [styles.column_amt_3]: props.columns === 3,
                         [styles.column_amt_4]: props.columns === 4,
+                        [styles[`tsidesign_${props.class}`]]: props.class,
                     }
                 )}
             >

@@ -237,6 +237,12 @@ MultipleBorder.args = {
     ...ThreeColumns.args,
     well: '1',
 }
+export const CustomClass = Template.bind({})
+CustomClass.args = {
+    ...AlignLeft.args,
+    well: '1',
+    class: 'hello',
+}
 
 export const Caption = Template.bind({})
 Caption.args = {
