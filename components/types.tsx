@@ -426,4 +426,6 @@ export interface ArticleProps {
     blockSwitch1: number
     scale_to_fit: string
     themeStyles: ThemeStyles
+    /**Check to see if element is hidden */
+    disabled?: string
 }
