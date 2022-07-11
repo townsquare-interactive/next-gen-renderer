@@ -228,6 +228,9 @@ export interface LayoutProps {
     children: ReactNode
     moduleData: any
 }
+export interface tsiLayoutProps {
+    children: ReactNode
+}
 
 export interface Params {
     slug: 'string'
@@ -381,7 +384,7 @@ export interface ArticleItems {
     headline: string
     subheader: string
     image: string
-    captionOn: 0 | 1
+    captionOn?: 0 | 1
     icon: string
     icon2: string
     icon3: string
@@ -394,17 +397,19 @@ export interface ArticleItems {
     pagelink: string
     weblink: string
     actionlbl: string
-    newwindow: string
+    newwindow: number | null
     pagelink2: string
     weblink2: string
     actionlbl2: string
-    newwindow2: string
+    newwindow2: number | null
     align: 'center' | 'left' | 'right'
     isFeatured: string
     isPlugin: string
     headerTag: string
     plugin: string
     disabled: string
+    img_alt_tag?: string
+    caption_tag?: string
 }
 export interface ArticleProps {
     uid: string
@@ -420,4 +425,30 @@ export interface ArticleProps {
     lightbox: string
     blockSwitch1: number
     scale_to_fit: string
+    themeStyles: ThemeStyles
+    /**Check to see if element is hidden */
+}
+
+export interface Colors {
+    color?: string
+    backgroundColor?: string
+}
+
+export interface TheListItemActionProps {
+    pagelink: string
+    actionlbl: string
+    newwindow: number | null
+    accentColors: Colors
+}
+
+export interface TheListItemImageProps {
+    item: ArticleItems
+    imageNoSizings: any
+    calcImageSize: (loadedMedia: any) => void
+    imageWidth: number
+    imageHeight: number
+    textColorAccent: Colors
+    textColor: Colors
+    imgSize: string
+    well: string
 }
