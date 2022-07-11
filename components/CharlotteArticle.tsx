@@ -142,7 +142,11 @@ const CharlotteArticle = (props: ArticleProps) => {
 
                                 <div className={styles['tsI_txt']}>
                                     <header className={styles['tsI_hds']}>
-                                        <h2 className={styles['tsI_hd']}>{item.headline}</h2>
+                                        {item.headerTag === '1' ? (
+                                            <h1 className={styles['tsI_hd']}>{item.headline}</h1>
+                                        ) : (
+                                            <h2 className={styles['tsI_hd']}>{item.headline}</h2>
+                                        )}
                                         <h2 className={styles['tsI_sh']}>{item.subheader}</h2>
                                     </header>
 
