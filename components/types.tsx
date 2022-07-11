@@ -434,7 +434,7 @@ export interface Colors {
     backgroundColor?: string
 }
 
-export interface TheLIstItemActionProps {
+export interface TheListItemActionProps {
     pagelink: string
     actionlbl: string
     newwindow: number | null
