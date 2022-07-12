@@ -82,6 +82,15 @@ const Article = (props: ArticleProps) => {
                 }
             )}
         >
+            {props.title && (
+                <h2
+                    className={cn(styles['list_block_headline'], { [styles.ts_hidden]: props.hideTitle === 0 })}
+                    data-title="With Button"
+                    style={textColorHeading}
+                >
+                    <span>{props.title}</span>
+                </h2>
+            )}
             {props.items.map((item, index) =>
                 item.disabled != 'disabled' ? (
                     <div
@@ -121,28 +130,30 @@ const Article = (props: ArticleProps) => {
                             {props.lightbox === '1' && <Lightbox item={item} lightbox={lightbox} toggleSwitch={toggleSwitch} />}
 
                             <div className={styles['the_list_item_heads']}>
-                                {item.headerTag === '1' ? (
-                                    <h1
-                                        className={cn(styles['the_list_item_headline'], styles['hds_color'])}
-                                        style={props.well || item.isFeatured ? textColorAccent : textColorHeading}
-                                    >
-                                        {Parser(item.headline)}
-                                    </h1>
-                                ) : (
+                                {item.headline &&
+                                    (item.headerTag === '1' ? (
+                                        <h1
+                                            className={cn(styles['the_list_item_headline'], styles['hds_color'])}
+                                            style={props.well || item.isFeatured ? textColorAccent : textColorHeading}
+                                        >
+                                            {Parser(item.headline)}
+                                        </h1>
+                                    ) : (
+                                        <h3
+                                            className={cn(styles['the_list_item_headline'], styles['hds_color'])}
+                                            style={props.well || item.isFeatured ? textColorAccent : textColorHeading}
+                                        >
+                                            {Parser(item.headline)}
+                                        </h3>
+                                    ))}
+                                {item.subheader && (
                                     <h3
-                                        className={cn(styles['the_list_item_headline'], styles['hds_color'])}
+                                        className={cn(styles['the_list_item_subheadline'], styles['hds_color'])}
                                         style={props.well || item.isFeatured ? textColorAccent : textColorHeading}
                                     >
-                                        {Parser(item.headline)}
+                                        {Parser(item.subheader)}
                                     </h3>
                                 )}
-
-                                <h3
-                                    className={cn(styles['the_list_item_subheadline'], styles['hds_color'])}
-                                    style={props.well || item.isFeatured ? textColorAccent : textColorHeading}
-                                >
-                                    {Parser(item.subheader)}
-                                </h3>
                             </div>
                             <div
                                 className={cn(styles['the_list_item_desc'], styles['txt_color'])}

@@ -111,17 +111,6 @@ AlignLeft.args = {
         },
     ],
 }
-export const H1 = Template.bind({})
-H1.args = {
-    ...Plain.args,
-    items: [
-        {
-            ...item1,
-            headerTag: '1',
-            align: 'left',
-        },
-    ],
-}
 export const AlignRight = Template.bind({})
 AlignRight.args = {
     ...Plain.args,
@@ -133,6 +122,74 @@ AlignRight.args = {
         },
     ],
 }
+export const H1 = Template.bind({})
+H1.args = {
+    ...Plain.args,
+    items: [
+        {
+            ...item1,
+            headerTag: '1',
+            align: 'left',
+        },
+    ],
+}
+export const OnlySub = Template.bind({})
+OnlySub.args = {
+    ...Plain.args,
+    items: [
+        {
+            ...item1,
+            subheader: 'Only Subheadline',
+            headline: '',
+            desc: '',
+            image: '',
+        },
+    ],
+}
+export const OnlyHeadline = Template.bind({})
+OnlyHeadline.args = {
+    ...Plain.args,
+    items: [
+        {
+            ...item1,
+            subheader: '',
+            headline: 'Only Headline',
+            desc: '',
+            image: '',
+        },
+    ],
+}
+export const OnlyDesc = Template.bind({})
+OnlyDesc.args = {
+    ...Plain.args,
+    items: [
+        {
+            ...item1,
+            subheader: '',
+            headline: '',
+            desc: 'Only Desc',
+            image: '',
+        },
+    ],
+}
+export const OnlyImage = Template.bind({})
+OnlyImage.args = {
+    ...Plain.args,
+    items: [
+        {
+            ...item1,
+            subheader: '',
+            headline: '',
+            desc: '',
+        },
+    ],
+}
+export const ModuleTitle = Template.bind({})
+ModuleTitle.args = {
+    ...AlignLeft.args,
+    title: 'Module Title',
+}
+
 export const ImageSquare = Template.bind({})
 ImageSquare.args = {
     ...AlignLeft.args,
@@ -249,12 +306,6 @@ Caption.args = {
     ...Plain.args,
 
     items: [{ ...item1, caption_tag: 'caption', captionOn: 0 }],
-}
-export const CaptionLeft = Template.bind({})
-CaptionLeft.args = {
-    ...Plain.args,
-
-    items: [{ ...item1, caption_tag: 'caption', captionOn: 0, align: 'left' }],
 }
 
 export const Hidden = Template.bind({})

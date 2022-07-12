@@ -420,6 +420,7 @@ export interface ArticleProps {
     imgSize: string
     class: string
     title: string
+    hideTitle?: number
     export: number
     columns: number
     lightbox: string
