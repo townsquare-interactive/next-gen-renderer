@@ -402,7 +402,7 @@ export interface ArticleItems {
     weblink2: string
     actionlbl2: string
     newwindow2: number | null
-    align: 'center' | 'left' | 'right'
+    align: string
     isFeatured: string
     isPlugin: string
     headerTag: string

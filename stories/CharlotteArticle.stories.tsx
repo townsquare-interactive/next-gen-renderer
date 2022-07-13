@@ -44,7 +44,7 @@ const item1: ArticleItems = {
     weblink2: '',
     actionlbl2: '',
     newwindow2: null,
-    align: 'center',
+    align: '',
     isFeatured: '',
     isPlugin: '',
     headerTag: '',
@@ -111,17 +111,6 @@ AlignLeft.args = {
         },
     ],
 }
-export const H1 = Template.bind({})
-H1.args = {
-    ...Plain.args,
-    items: [
-        {
-            ...item1,
-            headerTag: '1',
-            align: 'left',
-        },
-    ],
-}
 export const AlignRight = Template.bind({})
 AlignRight.args = {
     ...Plain.args,
@@ -133,6 +122,78 @@ AlignRight.args = {
         },
     ],
 }
+export const H1 = Template.bind({})
+H1.args = {
+    ...Plain.args,
+    items: [
+        {
+            ...item1,
+            headerTag: '1',
+            align: 'left',
+        },
+    ],
+}
+export const OnlySub = Template.bind({})
+OnlySub.args = {
+    ...Plain.args,
+    items: [
+        {
+            ...item1,
+            subheader: 'Only Subheadline',
+            headline: '',
+            desc: '',
+            image: '',
+            align: '',
+        },
+    ],
+}
+export const OnlyHeadline = Template.bind({})
+OnlyHeadline.args = {
+    ...Plain.args,
+    items: [
+        {
+            ...item1,
+            subheader: '',
+            headline: 'Only Headline',
+            desc: '',
+            image: '',
+            align: '',
+        },
+    ],
+}
+export const OnlyDesc = Template.bind({})
+OnlyDesc.args = {
+    ...Plain.args,
+    items: [
+        {
+            ...item1,
+            subheader: '',
+            headline: '',
+            desc: 'Only Desc',
+            image: '',
+            align: '',
+        },
+    ],
+}
+export const OnlyImage = Template.bind({})
+OnlyImage.args = {
+    ...Plain.args,
+    items: [
+        {
+            ...item1,
+            subheader: '',
+            headline: '',
+            desc: '',
+            align: '',
+        },
+    ],
+}
+export const ModuleTitle = Template.bind({})
+ModuleTitle.args = {
+    ...AlignLeft.args,
+    title: 'Module Title',
+}
+
 export const ImageSquare = Template.bind({})
 ImageSquare.args = {
     ...AlignLeft.args,
@@ -175,6 +236,12 @@ ImageWideScreen_3_1.args = {
     ...AlignLeft.args,
     imgSize: 'widescreen_3_1',
 }
+export const ImageNoSizing = Template.bind({})
+ImageNoSizing.args = {
+    ...AlignLeft.args,
+    imgSize: 'no_sizing',
+}
+
 export const Button = Template.bind({})
 Button.args = {
     ...Default.args,
@@ -249,12 +316,6 @@ Caption.args = {
     ...Plain.args,
 
     items: [{ ...item1, caption_tag: 'caption', captionOn: 0 }],
-}
-export const CaptionLeft = Template.bind({})
-CaptionLeft.args = {
-    ...Plain.args,
-
-    items: [{ ...item1, caption_tag: 'caption', captionOn: 0, align: 'left' }],
 }
 
 export const Hidden = Template.bind({})

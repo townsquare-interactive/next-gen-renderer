@@ -84,14 +84,19 @@ const CharlotteArticle = (props: ArticleProps) => {
             )}
         >
             <div className={styles.tsR}>
+                {props.title && (
+                    <h2 className={cn(styles['tsB_hd'], styles['section_title'])} data-title="module headline" style={textColorHeading}>
+                        <span>{props.title}</span>
+                    </h2>
+                )}
                 {props.items.map((item, index) =>
                     item.disabled != 'disabled' ? (
                         <article
                             className={cn(
                                 styles['tsI'],
                                 {
-                                    [styles.the_list_item_right]: item.align === 'right',
-                                    [styles.the_list_item_left]: item.align === 'left',
+                                    [styles.right]: item.align === 'right',
+                                    [styles.left]: item.align === 'left',
                                     [styles.hero]: item.isFeatured === 'active',
                                     [styles.nHero]: !item.isFeatured,
                                     [styles.yDsc]: item.desc,
@@ -108,6 +113,7 @@ const CharlotteArticle = (props: ArticleProps) => {
                             key={index}
                             data-aos="fade-up"
                             data-aos-once="true"
+                            style={item.isFeatured ? accentBackground : props.well ? borderBackground : noBackground}
                         >
                             <div className={styles['tsI_wrp']}>
                                 {item.image && (
@@ -143,15 +149,21 @@ const CharlotteArticle = (props: ArticleProps) => {
                                 <div className={styles['tsI_txt']}>
                                     <header className={styles['tsI_hds']}>
                                         {item.headerTag === '1' ? (
-                                            <h1 className={styles['tsI_hd']}>{item.headline}</h1>
+                                            <h1 className={styles['tsI_hd']} style={props.well || item.isFeatured ? textColorAccent : textColorHeading}>
+                                                {item.headline}
+                                            </h1>
                                         ) : (
-                                            <h2 className={styles['tsI_hd']}>{item.headline}</h2>
+                                            <h2 className={styles['tsI_hd']} style={props.well || item.isFeatured ? textColorAccent : textColorHeading}>
+                                                {item.headline}
+                                            </h2>
                                         )}
-                                        <h2 className={styles['tsI_sh']}>{item.subheader}</h2>
+                                        <h2 className={styles['tsI_sh']} style={props.well || item.isFeatured ? textColorAccent : textColorHeading}>
+                                            {item.subheader}
+                                        </h2>
                                     </header>
 
                                     <div className={styles['tsI_dsc_wrp']}>
-                                        <div className={styles['tsI_dsc']}>
+                                        <div className={styles['tsI_dsc']} style={props.well || item.isFeatured ? textColorAccent : textColorHeading}>
                                             <p>{item.desc}</p>
                                         </div>
                                     </div>

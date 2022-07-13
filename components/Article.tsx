@@ -127,7 +127,7 @@ const Article = (props: ArticleProps) => {
                                     />
                                 </div>
                             )}
-                            {props.lightbox === '1' && <Lightbox item={item} lightbox={lightbox} toggleSwitch={toggleSwitch} />}
+                            {/* {props.lightbox === '1' && <Lightbox item={item} lightbox={lightbox} toggleSwitch={toggleSwitch} />} */}
 
                             <div className={styles['the_list_item_heads']}>
                                 {item.headline &&
@@ -237,6 +237,7 @@ const TheListItemImage = (props: TheListItemImageProps) => {
                         ) : (
                             //Setting width and height to image props if nosizing added
                             <Image
+                                className={cn(styles['item_image'], 'item_image', 'beacon-lazy-load')}
                                 src={domainImage(item.image)}
                                 alt={item.img_alt_tag || ''}
                                 onLoadingComplete={calcImageSize}
@@ -259,7 +260,7 @@ const TheListItemImage = (props: TheListItemImageProps) => {
     )
 }
 
-const Lightbox = (props: any) => {
+/* const Lightbox = (props: any) => {
     const { item, lightbox, toggleSwitch } = props
 
     return (
@@ -300,5 +301,5 @@ const Lightbox = (props: any) => {
         </div>
     )
 }
-
+ */
 export default Article

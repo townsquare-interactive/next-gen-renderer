@@ -232,6 +232,12 @@ ImageWideScreen_3_1.args = {
     ...AlignLeft.args,
     imgSize: 'widescreen_3_1',
 }
+export const ImageNoSizing = Template.bind({})
+ImageNoSizing.args = {
+    ...AlignLeft.args,
+    imgSize: 'no_sizing',
+}
+
 export const Button = Template.bind({})
 Button.args = {
     ...Default.args,
