@@ -95,17 +95,17 @@
                     z-index: 1;
                     position: relative;
                 }
+                //moving out of tsi_txt for v2
+                .tsI_heads {
+                    //header
+                    display: block;
+
+                    .tsI_hd {
+                        font-weight: 700;
+                    }
+                }
 
                 .tsI_txt {
-                    .tsI_heads {
-                        //header
-                        display: block;
-
-                        .tsI_hd {
-                            font-weight: 700;
-                        }
-                    }
-
                     .tsI_dsc_wrap {
                         .tsI_dsc {
                             font-weight: lighter !important;
@@ -113,37 +113,6 @@
                             width: 100%;
                         }
                     }
-                }
-            }
-            &.center {
-                .tsI_txt,
-                .tsI_hd,
-                .tsI_sh {
-                    text-align: center;
-                }
-                .tsI_dsc {
-                    max-width: 97%;
-                }
-            }
-            &.left {
-                .tsI_txt,
-                .tsI_hd,
-                .tsI_sh {
-                    text-align: left;
-                }
-                .tsI_dsc {
-                    max-width: 97%;
-                }
-            }
-            &.right {
-                .tsI_txt,
-                .tsI_hd,
-                .tsI_sh {
-                    text-align: right;
-                }
-                .tsI_dsc {
-                    max-width: 97%;
-                    margin-left: auto;
                 }
             }
         }
@@ -369,20 +338,54 @@
             width: 20.7558781088%;
         }
     }
+    &.a1,
+    &.a1 {
+        .center {
+            .tsI_txt,
+            .tsI_hd,
+            .tsI_sh {
+                text-align: center;
+            }
+            .tsI_dsc {
+                max-width: 97%;
+            }
+        }
+        .left {
+            .tsI_txt,
+            .tsI_hd,
+            .tsI_sh {
+                text-align: left;
+            }
+            .tsI_dsc {
+                max-width: 97%;
+            }
+        }
+        .right {
+            .tsI_txt,
+            .tsI_hd,
+            .tsI_sh {
+                text-align: right;
+            }
+            .tsI_dsc {
+                max-width: 97%;
+                margin-left: auto;
+            }
+        }
+    }
 
     &.a2 {
-        .tsI_img {
+        /* .tsI_img {
             order: 2;
         }
         .tsI_text {
             order: 1;
-        }
+        } */
         &.not_well {
             .yImg .tsI_hds {
                 padding-bottom: 1rem;
             }
         }
-        &.large {
+        /* &.large {
             .tsI_hd {
                 font-size: 2.25em;
                 margin-top: 0.6666666667em;
@@ -397,7 +400,7 @@
                 line-height: 1.1666666667em;
                 letter-spacing: -0.0125rem;
             }
-        }
+        } */
         @media print, screen and (min-width: 481px) {
             &.large:not(.tsD_wide) .tsI {
                 &:nhero:first-of-type {
@@ -408,6 +411,41 @@
                     width: 79.0892114422%;
                     margin-left: 9.9248790425%;
                     margin-bottom: 4rem;
+                }
+            }
+        }
+    }
+    &.a3 {
+        .tsI_txt_wrap {
+            box-align: baseline;
+            -moz-align-items: baseline;
+            -ms-align-items: baseline;
+            -o-align-items: baseline;
+            align-items: baseline;
+            -ms-flex-align: baseline;
+            align-self: stretch;
+            -ms-flex-item-align: stretch;
+            width: 100%;
+        }
+
+        .tsI_txt {
+            width: 100%;
+        }
+
+        &.large {
+            @media print, screen and (min-width: 481px) {
+                .tsI.mod_left .tsI_img,
+                .tsI.mod_right .tsI_img {
+                    width: 41.6666666667%;
+                    display: block;
+                }
+                .tsI.mod_left .tsI_img {
+                    float: left;
+                    margin-right: 2rem;
+                }
+                .tsI.mod_right .tsI_img {
+                    float: right;
+                    margin-left: 2rem;
                 }
             }
         }
