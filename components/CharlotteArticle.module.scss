@@ -198,15 +198,18 @@
 
     &.large {
         @media print, screen and (min-width: 481px) {
-            &:not(.tsD_wide) .tsI.nHero {
-                margin-left: 2.1220609456%;
-                margin-right: 2.1220609456%;
-                width: 79.0892114422%;
-                margin-left: 9.9248790425%;
-                margin-bottom: 4rem;
+            //&:not(.tsD_wide) .tsI.nHero {
+            .tsI {
+                &.nHero {
+                    margin-left: 2.1220609456%;
+                    margin-right: 2.1220609456%;
+                    width: 79.0892114422%;
+                    margin-left: 9.9248790425%;
+                    margin-bottom: 4rem;
 
-                &:last-of-type {
-                    margin-bottom: 2rem;
+                    &:last-of-type {
+                        margin-bottom: 2rem;
+                    }
                 }
             }
         }
@@ -295,6 +298,7 @@
     }
 
     @media print, screen and (min-width: 481px) and (max-width: 850px) {
+        //w1060
         &.col_1 .tsI {
             margin-left: 2.1220609456%;
             margin-right: 2.1220609456%;
@@ -310,9 +314,11 @@
             margin-right: 2.1220609456%;
             width: 45.7558781088%;
         }
-    }
-
-    @media print, screen and (min-width: 481px) {
+        &.col2 .tsI {
+            margin-left: 2.1220609456%;
+            margin-right: 2.1220609456%;
+            width: 95.7558781088%;
+        }
     }
 
     @media print, screen and (min-width: 481px) and (max-width: 1024px) {
@@ -323,6 +329,16 @@
         }
     }
     @media print, screen and (min-width: 851px) and (max-width: 1024px) {
+        &.col_1 .tsI {
+            margin-left: 2.1220609456%;
+            margin-right: 2.1220609456%;
+            width: 95.7558781088%;
+        }
+        &.col_2 .tsI {
+            margin-left: 2.1220609456%;
+            margin-right: 2.1220609456%;
+            width: 45.7558781088%;
+        }
         &.col_3 .tsI {
             margin-left: 2.1220609456%;
             margin-right: 2.1220609456%;
@@ -351,6 +367,49 @@
             margin-left: 2.1220609456%;
             margin-right: 2.1220609456%;
             width: 20.7558781088%;
+        }
+    }
+
+    &.a2 {
+        .tsI_img {
+            order: 2;
+        }
+        .tsI_text {
+            order: 1;
+        }
+        &.not_well {
+            .yImg .tsI_hds {
+                padding-bottom: 1rem;
+            }
+        }
+        &.large {
+            .tsI_hd {
+                font-size: 2.25em;
+                margin-top: 0.6666666667em;
+                margin-bottom: 0.4444444444em;
+                line-height: 1.1111111111em;
+                letter-spacing: -0.0125rem;
+            }
+            .tsI_sh {
+                font-size: 1.5em;
+                margin-top: 0.6666666667em;
+                margin-bottom: 0.5em;
+                line-height: 1.1666666667em;
+                letter-spacing: -0.0125rem;
+            }
+        }
+        @media print, screen and (min-width: 481px) {
+            &.large:not(.tsD_wide) .tsI {
+                &:nhero:first-of-type {
+                    margin-top: 2rem;
+
+                    margin-left: 2.1220609456%;
+                    margin-right: 2.1220609456%;
+                    width: 79.0892114422%;
+                    margin-left: 9.9248790425%;
+                    margin-bottom: 4rem;
+                }
+            }
         }
     }
 }

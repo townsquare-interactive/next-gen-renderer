@@ -57,9 +57,11 @@ const CharlotteArticle = (props: ArticleProps) => {
                 styles['tsB'],
                 styles['tsT_article'],
                 styles['tsflex'],
-                styles['a1'],
 
                 {
+                    [styles.a1]: props.type === 'article_1',
+                    [styles.a2]: props.type === 'article_2',
+                    [styles.a3]: props.type === 'article_3',
                     [styles.square_1_1]: props.imgSize === 'square_1_1',
                     [styles.landscape_4_3]: props.imgSize === 'landscape_4_3',
                     [styles.landscape_3_2]: props.imgSize === 'landscape_3_2',
@@ -97,7 +99,7 @@ const CharlotteArticle = (props: ArticleProps) => {
                                 {
                                     [styles.right]: item.align === 'right',
                                     [styles.left]: item.align === 'left',
-                                    [styles.hero]: item.isFeatured === 'active',
+                                    [styles.yHero]: item.isFeatured === 'active',
                                     [styles.nHero]: !item.isFeatured,
                                     [styles.yDsc]: item.desc,
                                     [styles.nDsc]: !item.desc,
@@ -113,7 +115,7 @@ const CharlotteArticle = (props: ArticleProps) => {
                             key={index}
                             data-aos="fade-up"
                             data-aos-once="true"
-                            style={item.isFeatured ? accentBackground : props.well ? borderBackground : noBackground}
+                            style={props.well ? borderBackground : noBackground}
                         >
                             <div className={styles['tsI_wrp']}>
                                 {item.image && (
@@ -149,15 +151,15 @@ const CharlotteArticle = (props: ArticleProps) => {
                                 <div className={styles['tsI_txt']}>
                                     <header className={styles['tsI_hds']}>
                                         {item.headerTag === '1' ? (
-                                            <h1 className={styles['tsI_hd']} style={props.well || item.isFeatured ? textColorAccent : textColorHeading}>
+                                            <h1 className={styles['tsI_hd']} style={props.well ? textColorAccent : textColorHeading}>
                                                 {item.headline}
                                             </h1>
                                         ) : (
-                                            <h2 className={styles['tsI_hd']} style={props.well || item.isFeatured ? textColorAccent : textColorHeading}>
+                                            <h2 className={styles['tsI_hd']} style={props.well ? textColorAccent : textColorHeading}>
                                                 {item.headline}
                                             </h2>
                                         )}
-                                        <h2 className={styles['tsI_sh']} style={props.well || item.isFeatured ? textColorAccent : textColorHeading}>
+                                        <h2 className={styles['tsI_sh']} style={props.well ? textColorAccent : textColorHeading}>
                                             {item.subheader}
                                         </h2>
                                     </header>

@@ -56,7 +56,7 @@ const item3 = item1
 
 Default.args = {
     uid: '1',
-    type: 'article',
+    type: 'article_1',
     well: '',
     align: 'left',
     imgSize: 'landscape_4_3',
