@@ -339,7 +339,7 @@
         }
     }
     &.a1,
-    &.a1 {
+    &.a2 {
         .center {
             .tsI_txt,
             .tsI_hd,
@@ -449,5 +449,21 @@
                 }
             }
         }
+    }
+    //font sizes
+    .font_xs {
+        font-size: 62.5%;
+    }
+    .font_sm {
+        font-size: 75%;
+    }
+    .font_md {
+        font-size: 87.5%;
+    }
+    .font_lg {
+        font-size: 112.5%;
+    }
+    .font_xl {
+        font-size: 125%;
     }
 }

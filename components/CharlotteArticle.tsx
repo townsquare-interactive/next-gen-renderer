@@ -199,7 +199,15 @@ const TheListWrapV1 = (props: any) => {
             )}
 
             <div className={styles['tsI_txt']}>
-                <header className={styles['tsI_hds']}>
+                <header
+                    className={cn(styles['tsI_hds'], {
+                        [styles.font_xs]: item.headSize === 'font_xs',
+                        [styles.font_sm]: item.headSize === 'font_sm',
+                        [styles.font_md]: item.headSize === 'font_md',
+                        [styles.font_lg]: item.headSize === 'font_lg',
+                        [styles.font_xl]: item.headSize === 'font_xl',
+                    })}
+                >
                     {item.headerTag === '1' ? (
                         <h1 className={styles['tsI_hd']} style={props.well ? textColorAccent : textColorHeading}>
                             {item.headline}
@@ -215,7 +223,16 @@ const TheListWrapV1 = (props: any) => {
                 </header>
 
                 <div className={styles['tsI_dsc_wrp']}>
-                    <div className={styles['tsI_dsc']} style={props.well || item.isFeatured ? textColorAccent : textColorHeading}>
+                    <div
+                        className={cn(styles['tsI_dsc'], {
+                            [styles.font_xs]: item.descSize === 'font_xs',
+                            [styles.font_sm]: item.descSize === 'font_sm',
+                            [styles.font_md]: item.descSize === 'font_md',
+                            [styles.font_lg]: item.descSize === 'font_lg',
+                            [styles.font_xl]: item.descSize === 'font_xl',
+                        })}
+                        style={props.well || item.isFeatured ? textColorAccent : textColorHeading}
+                    >
                         <p>{item.desc}</p>
                     </div>
                 </div>
@@ -228,7 +245,15 @@ const TheListWrapV2 = (props: any) => {
     const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgSize, well, textColorHeading } = props
     return (
         <div className={styles['tsI_wrp']}>
-            <header className={styles['tsI_hds']}>
+            <header
+                className={cn(styles['tsI_hds'], {
+                    [styles.font_xs]: item.headSize === 'font_xs',
+                    [styles.font_sm]: item.headSize === 'font_sm',
+                    [styles.font_md]: item.headSize === 'font_md',
+                    [styles.font_lg]: item.headSize === 'font_lg',
+                    [styles.font_xl]: item.headSize === 'font_xl',
+                })}
+            >
                 {item.headerTag === '1' ? (
                     <h1 className={styles['tsI_hd']} style={props.well ? textColorAccent : textColorHeading}>
                         {item.headline}
@@ -265,7 +290,16 @@ const TheListWrapV2 = (props: any) => {
 
             <div className={styles['tsI_txt']}>
                 <div className={styles['tsI_dsc_wrp']}>
-                    <div className={styles['tsI_dsc']} style={props.well || item.isFeatured ? textColorAccent : textColorHeading}>
+                    <div
+                        className={cn(styles['tsI_dsc'], {
+                            [styles.font_xs]: item.descSize === 'font_xs',
+                            [styles.font_sm]: item.descSize === 'font_sm',
+                            [styles.font_md]: item.descSize === 'font_md',
+                            [styles.font_lg]: item.descSize === 'font_lg',
+                            [styles.font_xl]: item.descSize === 'font_xl',
+                        })}
+                        style={props.well || item.isFeatured ? textColorAccent : textColorHeading}
+                    >
                         <p>{item.desc}</p>
                     </div>
                 </div>
@@ -301,7 +335,15 @@ const TheListWrapV3 = (props: any) => {
                 )}
 
                 <div className={styles['tsI_txt']}>
-                    <header className={styles['tsI_hds']}>
+                    <header
+                        className={cn(styles['tsI_hds'], {
+                            [styles.font_xs]: item.headSize === 'font_xs',
+                            [styles.font_sm]: item.headSize === 'font_sm',
+                            [styles.font_md]: item.headSize === 'font_md',
+                            [styles.font_lg]: item.headSize === 'font_lg',
+                            [styles.font_xl]: item.headSize === 'font_xl',
+                        })}
+                    >
                         {item.headerTag === '1' ? (
                             <h1 className={styles['tsI_hd']} style={props.well ? textColorAccent : textColorHeading}>
                                 {item.headline}
@@ -317,7 +359,16 @@ const TheListWrapV3 = (props: any) => {
                     </header>
 
                     <div className={styles['tsI_dsc_wrp']}>
-                        <div className={styles['tsI_dsc']} style={props.well || item.isFeatured ? textColorAccent : textColorHeading}>
+                        <div
+                            className={cn(styles['tsI_dsc'], {
+                                [styles.font_xs]: item.descSize === 'font_xs',
+                                [styles.font_sm]: item.descSize === 'font_sm',
+                                [styles.font_md]: item.descSize === 'font_md',
+                                [styles.font_lg]: item.descSize === 'font_lg',
+                                [styles.font_xl]: item.descSize === 'font_xl',
+                            })}
+                            style={props.well || item.isFeatured ? textColorAccent : textColorHeading}
+                        >
                             <p>{item.desc}</p>
                         </div>
                     </div>

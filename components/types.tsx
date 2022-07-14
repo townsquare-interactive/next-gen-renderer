@@ -410,6 +410,8 @@ export interface ArticleItems {
     disabled: string
     img_alt_tag?: string
     caption_tag?: string
+    headSize?: string
+    descSize?: string
 }
 export interface ArticleProps {
     uid: string

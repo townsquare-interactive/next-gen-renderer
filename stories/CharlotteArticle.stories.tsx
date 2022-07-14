@@ -323,3 +323,20 @@ Hidden.args = {
     ...Plain.args,
     items: [{ ...item1, disabled: 'disabled' }],
 }
+export const V2 = Template.bind({})
+V2.args = {
+    ...Plain.args,
+    type: 'article_2',
+}
+export const V3 = Template.bind({})
+V3.args = {
+    ...Plain.args,
+    type: 'article_3',
+    items: [{ ...item1, align: 'left' }],
+}
+export const V3Small = Template.bind({})
+V3Small.args = {
+    ...Plain.args,
+    type: 'article_3',
+    items: [{ ...item1, align: 'left', headSize: 'font_xs', descSize: 'font_lg' }],
+}
