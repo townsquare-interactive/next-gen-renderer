@@ -72,14 +72,16 @@
                     display: block;
                     //----done
                     margin-bottom: 0.5625em;
-                    position: relative;
 
-                    img {
-                        display: block;
-                        margin: 0;
-                        width: 100%;
-                        max-width: 100%;
-                        border: 0;
+                    .image {
+                        position: relative;
+                        img {
+                            display: block;
+                            margin: 0;
+                            width: 100%;
+                            max-width: 100%;
+                            border: 0;
+                        }
                     }
 
                     figcaption {
@@ -214,29 +216,32 @@
         }
     }
 
-    &.square_1_1 .the_list_item_image .image {
+    /*     &.square_1_1 .the_list_item_image .image {
+        aspect-ratio: math.div(1, 1);
+    } */
+    &.square_1_1 .tsI_img .image {
         aspect-ratio: math.div(1, 1);
     }
 
-    &.landscape_4_3 .tsI_img {
+    &.landscape_4_3 .tsI_img .image {
         aspect-ratio: math.div(4, 3);
     }
-    &.landscape_3_2 .tsI_img {
+    &.landscape_3_2 .tsI_img .image {
         aspect-ratio: math.div(3, 2);
     }
-    &.portrait_3_4 .tsI_img {
+    &.portrait_3_4 .tsI_img .image {
         aspect-ratio: math.div(3, 4);
     }
-    &.portrait_2_3 .tsI_img {
+    &.portrait_2_3 .tsI_img .image {
         aspect-ratio: math.div(2, 3);
     }
-    &.widescreen_16_9 .tsI_img {
+    &.widescreen_16_9 .tsI_img .image {
         aspect-ratio: math.div(16, 9);
     }
-    &.widescreen_3_1 .tsI_img {
+    &.widescreen_3_1 .tsI_img .image {
         aspect-ratio: math.div(3, 1);
     }
-    &.widescreen_2_4_1 .tsI_img {
+    &.widescreen_2_4_1 .tsI_img .image {
         aspect-ratio: math.div(2000, 830);
     }
 
