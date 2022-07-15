@@ -402,7 +402,7 @@ export interface ArticleItems {
     weblink2: string
     actionlbl2: string
     newwindow2: number | null
-    align: 'center' | 'left' | 'right'
+    align: string
     isFeatured: string
     isPlugin: string
     headerTag: string
@@ -410,6 +410,8 @@ export interface ArticleItems {
     disabled: string
     img_alt_tag?: string
     caption_tag?: string
+    headSize?: string
+    descSize?: string
 }
 export interface ArticleProps {
     uid: string
@@ -420,6 +422,7 @@ export interface ArticleProps {
     imgSize: string
     class: string
     title: string
+    hideTitle?: number
     export: number
     columns: number
     lightbox: string

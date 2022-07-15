@@ -15,6 +15,7 @@ $three-item-width: math.div((100- ($column-margin * 3)), 3); */
     &.tsidesign_hello {
         background-color: black;
     }
+
     margin: 0 0.99206349%;
     padding: 30px 26px 20px;
     padding: 3rem 2.6rem 2rem;
@@ -43,6 +44,32 @@ $three-item-width: math.div((100- ($column-margin * 3)), 3); */
         margin-left: 0;
         margin-right: 0;
         display: block;
+    }
+
+    .list_block_headline {
+        border-bottom: none;
+        height: auto;
+        margin: 0 0 10px;
+        margin: 0 0 1rem;
+
+        span {
+            display: inline-block;
+            font-size: 16px;
+            font-size: 1.6rem;
+            font-weight: 400;
+            line-height: 1;
+            text-transform: inherit;
+            padding: 5px 0 10px;
+            padding: 0.5rem 0 1rem;
+            vertical-align: top;
+        }
+
+        &.ts_hidden {
+            visibility: hidden;
+            height: 0 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
     }
 
     .the_list_item {
@@ -432,5 +459,9 @@ $three-item-width: math.div((100- ($column-margin * 3)), 3); */
         &.column_amt_4 .the_list_item {
             width: 23.48178138%;
         }
+    }
+
+    h2 {
+        font-weight: 700;
     }
 }

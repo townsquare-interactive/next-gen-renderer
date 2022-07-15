@@ -57,9 +57,11 @@ const CharlotteArticle = (props: ArticleProps) => {
                 styles['tsB'],
                 styles['tsT_article'],
                 styles['tsflex'],
-                styles['a1'],
 
                 {
+                    [styles.a1]: props.type === 'article_1',
+                    [styles.a2]: props.type === 'article_2',
+                    [styles.a3]: props.type === 'article_3',
                     [styles.square_1_1]: props.imgSize === 'square_1_1',
                     [styles.landscape_4_3]: props.imgSize === 'landscape_4_3',
                     [styles.landscape_3_2]: props.imgSize === 'landscape_3_2',
@@ -84,15 +86,20 @@ const CharlotteArticle = (props: ArticleProps) => {
             )}
         >
             <div className={styles.tsR}>
+                {props.title && (
+                    <h2 className={cn(styles['tsB_hd'], styles['section_title'])} data-title="module headline" style={textColorHeading}>
+                        <span>{props.title}</span>
+                    </h2>
+                )}
                 {props.items.map((item, index) =>
                     item.disabled != 'disabled' ? (
                         <article
                             className={cn(
                                 styles['tsI'],
                                 {
-                                    [styles.the_list_item_right]: item.align === 'right',
-                                    [styles.the_list_item_left]: item.align === 'left',
-                                    [styles.hero]: item.isFeatured === 'active',
+                                    [styles.right]: item.align === 'right',
+                                    [styles.left]: item.align === 'left',
+                                    [styles.yHero]: item.isFeatured === 'active',
                                     [styles.nHero]: !item.isFeatured,
                                     [styles.yDsc]: item.desc,
                                     [styles.nDsc]: !item.desc,
@@ -101,6 +108,9 @@ const CharlotteArticle = (props: ArticleProps) => {
                                     [styles.yHeads]: item.headline || item.subheader,
                                     [styles.nHeads]: !item.headline || !item.subheader,
                                     [styles.center]: item.align === 'center',
+                                    [styles.mod_left]: item.align === 'left' && props.type === 'article_3',
+                                    [styles.mod_right]: item.align === 'right' && props.type === 'article_3',
+                                    [styles.mod_center]: item.align === 'center' && props.type === 'article_3',
                                 },
                                 styles[`item_${index + 1}`]
                             )}
@@ -108,60 +118,261 @@ const CharlotteArticle = (props: ArticleProps) => {
                             key={index}
                             data-aos="fade-up"
                             data-aos-once="true"
+                            style={props.well ? borderBackground : noBackground}
                         >
-                            <div className={styles['tsI_wrp']}>
-                                {item.image && (
-                                    <figure
-                                        className={cn(styles['tsI_img'], styles['theframe'], styles['imgtag'], styles['imgbase'], styles['img-loaded'])}
-                                        data-image=""
-                                        data-alt="Headline"
-                                        /*  style="margin-bottom: 0.5625em;" */
-                                        data-image-loaded=""
-                                    >
-                                        {/*                                     <img
-                                        alt="Headline"
-                                        className={styles['item_image']}
-                                        src={domainImage(item.image)}
-                                        data-aos="fade"
-                                        data-aos-offset="150"
-                                        data-aos-once="true"
-                                    /> */}
-                                        <TheListItemImage
-                                            item={item}
-                                            imageNoSizings={imageNoSizings}
-                                            calcImageSize={calcImageSize}
-                                            imageWidth={imageWidth}
-                                            imageHeight={imageHeight}
-                                            textColorAccent={textColorAccent}
-                                            textColor={textColor}
-                                            imgSize={props.imgSize}
-                                            well={props.well}
-                                        />
-                                    </figure>
-                                )}
-
-                                <div className={styles['tsI_txt']}>
-                                    <header className={styles['tsI_hds']}>
-                                        {item.headerTag === '1' ? (
-                                            <h1 className={styles['tsI_hd']}>{item.headline}</h1>
-                                        ) : (
-                                            <h2 className={styles['tsI_hd']}>{item.headline}</h2>
-                                        )}
-                                        <h2 className={styles['tsI_sh']}>{item.subheader}</h2>
-                                    </header>
-
-                                    <div className={styles['tsI_dsc_wrp']}>
-                                        <div className={styles['tsI_dsc']}>
-                                            <p>{item.desc}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            {props.type === 'article_1' ? (
+                                <TheListWrapV1
+                                    item={item}
+                                    imageNoSizings={imageNoSizings}
+                                    calcImageSize={calcImageSize}
+                                    imageWidth={imageWidth}
+                                    imageHeight={imageHeight}
+                                    textColorAccent={textColorAccent}
+                                    textColor={textColor}
+                                    imgSize={props.imgSize}
+                                    well={props.well}
+                                    textColorHeading={textColorHeading}
+                                />
+                            ) : props.type === 'article_2' ? (
+                                <TheListWrapV2
+                                    item={item}
+                                    imageNoSizings={imageNoSizings}
+                                    calcImageSize={calcImageSize}
+                                    imageWidth={imageWidth}
+                                    imageHeight={imageHeight}
+                                    textColorAccent={textColorAccent}
+                                    textColor={textColor}
+                                    imgSize={props.imgSize}
+                                    well={props.well}
+                                    textColorHeading={textColorHeading}
+                                />
+                            ) : props.type === 'article_3' ? (
+                                <TheListWrapV3
+                                    item={item}
+                                    imageNoSizings={imageNoSizings}
+                                    calcImageSize={calcImageSize}
+                                    imageWidth={imageWidth}
+                                    imageHeight={imageHeight}
+                                    textColorAccent={textColorAccent}
+                                    textColor={textColor}
+                                    imgSize={props.imgSize}
+                                    well={props.well}
+                                    textColorHeading={textColorHeading}
+                                />
+                            ) : (
+                                ''
+                            )}
                         </article>
                     ) : (
                         <></>
                     )
                 )}
+            </div>
+        </div>
+    )
+}
+
+const TheListWrapV1 = (props: any) => {
+    const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgSize, well, textColorHeading } = props
+    return (
+        <div className={styles['tsI_wrp']}>
+            {item.image && (
+                <figure
+                    className={cn(styles['tsI_img'], styles['theframe'], styles['imgtag'], styles['imgbase'], styles['img-loaded'])}
+                    data-image=""
+                    data-alt="Headline"
+                    /*  style="margin-bottom: 0.5625em;" */
+                    data-image-loaded=""
+                >
+                    <TheListItemImage
+                        item={item}
+                        imageNoSizings={imageNoSizings}
+                        calcImageSize={calcImageSize}
+                        imageWidth={imageWidth}
+                        imageHeight={imageHeight}
+                        textColorAccent={textColorAccent}
+                        textColor={textColor}
+                        imgSize={props.imgSize}
+                        well={props.well}
+                    />
+                </figure>
+            )}
+
+            <div className={styles['tsI_txt']}>
+                <header
+                    className={cn(styles['tsI_hds'], {
+                        [styles.font_xs]: item.headSize === 'font_xs',
+                        [styles.font_sm]: item.headSize === 'font_sm',
+                        [styles.font_md]: item.headSize === 'font_md',
+                        [styles.font_lg]: item.headSize === 'font_lg',
+                        [styles.font_xl]: item.headSize === 'font_xl',
+                    })}
+                >
+                    {item.headerTag === '1' ? (
+                        <h1 className={styles['tsI_hd']} style={props.well ? textColorAccent : textColorHeading}>
+                            {item.headline}
+                        </h1>
+                    ) : (
+                        <h2 className={styles['tsI_hd']} style={props.well ? textColorAccent : textColorHeading}>
+                            {item.headline}
+                        </h2>
+                    )}
+                    <h2 className={styles['tsI_sh']} style={props.well ? textColorAccent : textColorHeading}>
+                        {item.subheader}
+                    </h2>
+                </header>
+
+                <div className={styles['tsI_dsc_wrp']}>
+                    <div
+                        className={cn(styles['tsI_dsc'], {
+                            [styles.font_xs]: item.descSize === 'font_xs',
+                            [styles.font_sm]: item.descSize === 'font_sm',
+                            [styles.font_md]: item.descSize === 'font_md',
+                            [styles.font_lg]: item.descSize === 'font_lg',
+                            [styles.font_xl]: item.descSize === 'font_xl',
+                        })}
+                        style={props.well || item.isFeatured ? textColorAccent : textColorHeading}
+                    >
+                        <p>{item.desc}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+const TheListWrapV2 = (props: any) => {
+    const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgSize, well, textColorHeading } = props
+    return (
+        <div className={styles['tsI_wrp']}>
+            <header
+                className={cn(styles['tsI_hds'], {
+                    [styles.font_xs]: item.headSize === 'font_xs',
+                    [styles.font_sm]: item.headSize === 'font_sm',
+                    [styles.font_md]: item.headSize === 'font_md',
+                    [styles.font_lg]: item.headSize === 'font_lg',
+                    [styles.font_xl]: item.headSize === 'font_xl',
+                })}
+            >
+                {item.headerTag === '1' ? (
+                    <h1 className={styles['tsI_hd']} style={props.well ? textColorAccent : textColorHeading}>
+                        {item.headline}
+                    </h1>
+                ) : (
+                    <h2 className={styles['tsI_hd']} style={props.well ? textColorAccent : textColorHeading}>
+                        {item.headline}
+                    </h2>
+                )}
+                <h2 className={styles['tsI_sh']} style={props.well ? textColorAccent : textColorHeading}>
+                    {item.subheader}
+                </h2>
+            </header>
+            {item.image && (
+                <figure
+                    className={cn(styles['tsI_img'], styles['theframe'], styles['imgtag'], styles['imgbase'], styles['img-loaded'])}
+                    data-image=""
+                    data-alt="Headline"
+                    data-image-loaded=""
+                >
+                    <TheListItemImage
+                        item={item}
+                        imageNoSizings={imageNoSizings}
+                        calcImageSize={calcImageSize}
+                        imageWidth={imageWidth}
+                        imageHeight={imageHeight}
+                        textColorAccent={textColorAccent}
+                        textColor={textColor}
+                        imgSize={props.imgSize}
+                        well={props.well}
+                    />
+                </figure>
+            )}
+
+            <div className={styles['tsI_txt']}>
+                <div className={styles['tsI_dsc_wrp']}>
+                    <div
+                        className={cn(styles['tsI_dsc'], {
+                            [styles.font_xs]: item.descSize === 'font_xs',
+                            [styles.font_sm]: item.descSize === 'font_sm',
+                            [styles.font_md]: item.descSize === 'font_md',
+                            [styles.font_lg]: item.descSize === 'font_lg',
+                            [styles.font_xl]: item.descSize === 'font_xl',
+                        })}
+                        style={props.well || item.isFeatured ? textColorAccent : textColorHeading}
+                    >
+                        <p>{item.desc}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+const TheListWrapV3 = (props: any) => {
+    const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgSize, well, textColorHeading } = props
+    return (
+        <div className={styles['tsI_wrp']}>
+            <div className={styles['tsI_txt_wrap']}>
+                {item.image && (
+                    <figure
+                        className={cn(styles['tsI_img'], styles['theframe'], styles['imgtag'], styles['imgbase'], styles['img-loaded'])}
+                        data-image=""
+                        data-alt="Headline"
+                        data-image-loaded=""
+                    >
+                        <TheListItemImage
+                            item={item}
+                            imageNoSizings={imageNoSizings}
+                            calcImageSize={calcImageSize}
+                            imageWidth={imageWidth}
+                            imageHeight={imageHeight}
+                            textColorAccent={textColorAccent}
+                            textColor={textColor}
+                            imgSize={props.imgSize}
+                            well={props.well}
+                        />
+                    </figure>
+                )}
+
+                <div className={styles['tsI_txt']}>
+                    <header
+                        className={cn(styles['tsI_hds'], {
+                            [styles.font_xs]: item.headSize === 'font_xs',
+                            [styles.font_sm]: item.headSize === 'font_sm',
+                            [styles.font_md]: item.headSize === 'font_md',
+                            [styles.font_lg]: item.headSize === 'font_lg',
+                            [styles.font_xl]: item.headSize === 'font_xl',
+                        })}
+                    >
+                        {item.headerTag === '1' ? (
+                            <h1 className={styles['tsI_hd']} style={props.well ? textColorAccent : textColorHeading}>
+                                {item.headline}
+                            </h1>
+                        ) : (
+                            <h2 className={styles['tsI_hd']} style={props.well ? textColorAccent : textColorHeading}>
+                                {item.headline}
+                            </h2>
+                        )}
+                        <h2 className={styles['tsI_sh']} style={props.well ? textColorAccent : textColorHeading}>
+                            {item.subheader}
+                        </h2>
+                    </header>
+
+                    <div className={styles['tsI_dsc_wrp']}>
+                        <div
+                            className={cn(styles['tsI_dsc'], {
+                                [styles.font_xs]: item.descSize === 'font_xs',
+                                [styles.font_sm]: item.descSize === 'font_sm',
+                                [styles.font_md]: item.descSize === 'font_md',
+                                [styles.font_lg]: item.descSize === 'font_lg',
+                                [styles.font_xl]: item.descSize === 'font_xl',
+                            })}
+                            style={props.well || item.isFeatured ? textColorAccent : textColorHeading}
+                        >
+                            <p>{item.desc}</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     )
@@ -182,12 +393,13 @@ const TheListItemImage = (props: TheListItemImageProps) => {
     const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor } = props
 
     return (
-        <div
+        /*  <div
             className={cn(styles['tsI_img'], {
                 [styles.right]: item.align === 'right',
                 [styles.left]: item.align === 'left',
             })}
-        >
+        > */
+        <>
             <div className={styles.image}>
                 {item.pagelink ? (
                     <Link href={item.pagelink}>
@@ -249,7 +461,7 @@ const TheListItemImage = (props: TheListItemImageProps) => {
                 </div> */
                 <figcaption style={textColorAccent}>{item.caption_tag}</figcaption>
             )}
-        </div>
+        </>
     )
 }
 
