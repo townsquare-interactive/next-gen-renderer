@@ -1,4 +1,4 @@
-import styles from './CharlotteArticle.module.scss'
+import styles from './myArticle.module.scss'
 import { ArticleProps, Media, TheListItemImageProps, TheListItemActionProps } from './types'
 import Image from 'next/image'
 import cn from 'classnames'
@@ -7,7 +7,7 @@ import { domainImage } from '../functions'
 import { useState } from 'react'
 import Link from 'next/link'
 
-const CharlotteArticle = (props: ArticleProps) => {
+const MyArticle = (props: ArticleProps) => {
     const [imageHeight, setHeight] = useState(100)
     const [imageWidth, setWidth] = useState(300)
     const [lightbox, setLightbox] = useState(false)
@@ -54,7 +54,7 @@ const CharlotteArticle = (props: ArticleProps) => {
         <div
             id="section_1"
             className={cn(
-                styles['tsB'],
+                styles['root'],
                 styles['tsT_article'],
                 styles['tsflex'],
 
@@ -62,16 +62,6 @@ const CharlotteArticle = (props: ArticleProps) => {
                     [styles.a1]: props.type === 'article_1',
                     [styles.a2]: props.type === 'article_2',
                     [styles.a3]: props.type === 'article_3',
-                    [styles.square_1_1]: props.imgSize === 'square_1_1',
-                    [styles.landscape_4_3]: props.imgSize === 'landscape_4_3',
-                    [styles.landscape_3_2]: props.imgSize === 'landscape_3_2',
-                    [styles.portrait_3_4]: props.imgSize === 'portrait_3_4',
-                    [styles.portrait_2_3]: props.imgSize === 'portrait_2_3',
-                    [styles.widescreen_16_9]: props.imgSize === 'widescreen_16_9',
-                    [styles.widescreen_3_1]: props.imgSize === 'widescreen_3_1',
-                    [styles.widescreen_2_4_1]: props.imgSize === 'widescreen_2_4_1',
-                    [styles.no_sizing]: props.imgSize === 'no_sizing',
-                    [styles.no_set_height]: props.imgSize === 'no_set_height',
                     [styles.well]: props.well === '1',
                     [styles.not_well]: props.well === '',
                     [styles.large]: props.columns === 1,
@@ -85,9 +75,9 @@ const CharlotteArticle = (props: ArticleProps) => {
                 }
             )}
         >
-            <div className={styles.tsR}>
+            <div className={styles.wrapper}>
                 {props.title && (
-                    <h2 className={cn(styles['tsB_hd'], styles['section_title'])} data-title="module headline" style={textColorHeading}>
+                    <h2 className={cn(styles['hd'], styles['section_title'])} data-title="module headline" style={textColorHeading}>
                         <span>{props.title}</span>
                     </h2>
                 )}
@@ -95,7 +85,7 @@ const CharlotteArticle = (props: ArticleProps) => {
                     item.disabled != 'disabled' ? (
                         <article
                             className={cn(
-                                styles['tsI'],
+                                styles['item'],
                                 {
                                     [styles.right]: item.align === 'right',
                                     [styles.left]: item.align === 'left',
@@ -120,98 +110,47 @@ const CharlotteArticle = (props: ArticleProps) => {
                             data-aos-once="true"
                             style={props.well === '1' ? borderBackground : noBackground}
                         >
-                            {!item.pagelink ? (
-                                <div className={styles['tsI_wrp']}>
-                                    {props.type === 'article_1' ? (
-                                        <TheListWrapV1
-                                            item={item}
-                                            imageNoSizings={imageNoSizings}
-                                            calcImageSize={calcImageSize}
-                                            imageWidth={imageWidth}
-                                            imageHeight={imageHeight}
-                                            textColorAccent={textColorAccent}
-                                            textColor={textColor}
-                                            imgSize={props.imgSize}
-                                            well={props.well}
-                                            textColorHeading={textColorHeading}
-                                        />
-                                    ) : props.type === 'article_2' ? (
-                                        <TheListWrapV2
-                                            item={item}
-                                            imageNoSizings={imageNoSizings}
-                                            calcImageSize={calcImageSize}
-                                            imageWidth={imageWidth}
-                                            imageHeight={imageHeight}
-                                            textColorAccent={textColorAccent}
-                                            textColor={textColor}
-                                            imgSize={props.imgSize}
-                                            well={props.well}
-                                            textColorHeading={textColorHeading}
-                                        />
-                                    ) : props.type === 'article_3' ? (
-                                        <TheListWrapV3
-                                            item={item}
-                                            imageNoSizings={imageNoSizings}
-                                            calcImageSize={calcImageSize}
-                                            imageWidth={imageWidth}
-                                            imageHeight={imageHeight}
-                                            textColorAccent={textColorAccent}
-                                            textColor={textColor}
-                                            imgSize={props.imgSize}
-                                            well={props.well}
-                                            textColorHeading={textColorHeading}
-                                        />
-                                    ) : (
-                                        ''
-                                    )}
-                                </div>
+                            {props.type === 'article_1' ? (
+                                <TheListWrapV1
+                                    item={item}
+                                    imageNoSizings={imageNoSizings}
+                                    calcImageSize={calcImageSize}
+                                    imageWidth={imageWidth}
+                                    imageHeight={imageHeight}
+                                    textColorAccent={textColorAccent}
+                                    textColor={textColor}
+                                    imgSize={props.imgSize}
+                                    well={props.well}
+                                    textColorHeading={textColorHeading}
+                                />
+                            ) : props.type === 'article_2' ? (
+                                <TheListWrapV2
+                                    item={item}
+                                    imageNoSizings={imageNoSizings}
+                                    calcImageSize={calcImageSize}
+                                    imageWidth={imageWidth}
+                                    imageHeight={imageHeight}
+                                    textColorAccent={textColorAccent}
+                                    textColor={textColor}
+                                    imgSize={props.imgSize}
+                                    well={props.well}
+                                    textColorHeading={textColorHeading}
+                                />
+                            ) : props.type === 'article_3' ? (
+                                <TheListWrapV3
+                                    item={item}
+                                    imageNoSizings={imageNoSizings}
+                                    calcImageSize={calcImageSize}
+                                    imageWidth={imageWidth}
+                                    imageHeight={imageHeight}
+                                    textColorAccent={textColorAccent}
+                                    textColor={textColor}
+                                    imgSize={props.imgSize}
+                                    well={props.well}
+                                    textColorHeading={textColorHeading}
+                                />
                             ) : (
-                                <Link href={item.pagelink}>
-                                    <a className={styles['tsI_wrp']} target={item.newwindow === 1 ? '_blank' : '_self'}>
-                                        {props.type === 'article_1' ? (
-                                            <TheListWrapV1
-                                                item={item}
-                                                imageNoSizings={imageNoSizings}
-                                                calcImageSize={calcImageSize}
-                                                imageWidth={imageWidth}
-                                                imageHeight={imageHeight}
-                                                textColorAccent={textColorAccent}
-                                                textColor={textColor}
-                                                imgSize={props.imgSize}
-                                                well={props.well}
-                                                textColorHeading={textColorHeading}
-                                            />
-                                        ) : props.type === 'article_2' ? (
-                                            <TheListWrapV2
-                                                item={item}
-                                                imageNoSizings={imageNoSizings}
-                                                calcImageSize={calcImageSize}
-                                                imageWidth={imageWidth}
-                                                imageHeight={imageHeight}
-                                                textColorAccent={textColorAccent}
-                                                textColor={textColor}
-                                                imgSize={props.imgSize}
-                                                well={props.well}
-                                                textColorHeading={textColorHeading}
-                                            />
-                                        ) : props.type === 'article_3' ? (
-                                            <TheListWrapV3
-                                                item={item}
-                                                imageNoSizings={imageNoSizings}
-                                                calcImageSize={calcImageSize}
-                                                imageWidth={imageWidth}
-                                                imageHeight={imageHeight}
-                                                textColorAccent={textColorAccent}
-                                                textColor={textColor}
-                                                imgSize={props.imgSize}
-                                                well={props.well}
-                                                textColorHeading={textColorHeading}
-                                            />
-                                        ) : (
-                                            ''
-                                        )}
-                                    </a>
-                                </Link>
+                                ''
                             )}
                         </article>
                     ) : (
@@ -226,7 +165,7 @@ const CharlotteArticle = (props: ArticleProps) => {
 const TheListWrapV1 = (props: any) => {
     const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgSize, well, textColorHeading } = props
     return (
-        <>
+        <div className={styles['tsI_wrp']}>
             {item.image && (
                 <figure
                     className={cn(styles['tsI_img'], styles['theframe'], styles['imgtag'], styles['imgbase'], styles['img-loaded'])}
@@ -288,18 +227,14 @@ const TheListWrapV1 = (props: any) => {
                     </div>
                 </div>
             </div>
-
-            {item.pagelink && item.actionlbl && (
-                <TheListItemAction pagelink={item.pagelink} actionlbl={item.actionlbl} newwindow={item.newwindow} accentColors={props.accentColors} />
-            )}
-        </>
+        </div>
     )
 }
 
 const TheListWrapV2 = (props: any) => {
     const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgSize, well, textColorHeading } = props
     return (
-        <>
+        <div className={styles['tsI_wrp']}>
             <header
                 className={cn(styles['tsI_hds'], {
                     [styles.font_xs]: item.headSize === 'font_xs',
@@ -359,14 +294,14 @@ const TheListWrapV2 = (props: any) => {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 
 const TheListWrapV3 = (props: any) => {
     const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgSize, well, textColorHeading } = props
     return (
-        <>
+        <div className={styles['tsI_wrp']}>
             <div className={styles['tsI_txt_wrp']}>
                 {item.image && (
                     <figure
@@ -429,21 +364,19 @@ const TheListWrapV3 = (props: any) => {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 
 const TheListItemAction = (props: TheListItemActionProps) => {
     return (
-        /*         <div className={styles.the_list_item_action}>
+        <div className={styles.the_list_item_action}>
             <Link href={props.pagelink}>
                 <a target={props.newwindow === 1 ? '_blank' : '_self'} className="accent_color_bg accent_txt_color" style={props.accentColors}>
                     {props.actionlbl}
                 </a>
             </Link>
-        </div> */
-
-        <div className={cn(styles['tsI_btn'], styles['btn_1'], styles['btn_md'], styles['transition'])}>{props.actionlbl}</div>
+        </div>
     )
 }
 const TheListItemImage = (props: TheListItemImageProps) => {
@@ -457,7 +390,20 @@ const TheListItemImage = (props: TheListItemImageProps) => {
             })}
         > */
         <>
-            <div className={styles.image}>
+            <div
+                className={cn(styles.image, {
+                    [styles.square_1_1]: props.imgSize === 'square_1_1',
+                    [styles.landscape_4_3]: props.imgSize === 'landscape_4_3',
+                    [styles.landscape_3_2]: props.imgSize === 'landscape_3_2',
+                    [styles.portrait_3_4]: props.imgSize === 'portrait_3_4',
+                    [styles.portrait_2_3]: props.imgSize === 'portrait_2_3',
+                    [styles.widescreen_16_9]: props.imgSize === 'widescreen_16_9',
+                    [styles.widescreen_3_1]: props.imgSize === 'widescreen_3_1',
+                    [styles.widescreen_2_4_1]: props.imgSize === 'widescreen_2_4_1',
+                    [styles.no_sizing]: props.imgSize === 'no_sizing',
+                    [styles.no_set_height]: props.imgSize === 'no_set_height',
+                })}
+            >
                 {item.pagelink ? (
                     <Link href={item.pagelink}>
                         <a target={item.newwindow === 1 ? '_blank' : '_self'} className="accent_color_bg accent_txt_color">
@@ -564,4 +510,4 @@ const Lightbox = (props: any) => {
     )
 }
 
-export default CharlotteArticle
+export default MyArticle

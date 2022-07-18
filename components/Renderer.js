@@ -11,6 +11,7 @@ import Carousel from './Carousel'
 import Video from './Video'
 import Article from './Article'
 import CharlotteArticle from './CharlotteArticle'
+import MyArticle from './MyArticle'
 import { capitalize } from '../functions'
 
 const keysToComponentMap = {
@@ -26,6 +27,7 @@ const keysToComponentMap = {
     Navigation,
     Article,
     CharlotteArticle,
+    MyArticle,
 }
 
 const mapPropsToConfig = (config) => {
