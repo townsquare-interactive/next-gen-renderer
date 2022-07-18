@@ -449,6 +449,8 @@ export interface TheListItemActionProps {
     newwindow: number | null
     accentColors: Colors
     btn2Styles?: btnColors
+    icon?: string
+    icon2?: string
 }
 
 export interface TheListItemImageProps {

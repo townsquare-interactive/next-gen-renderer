@@ -7,6 +7,13 @@ import { domainImage } from '../functions'
 import { useState } from 'react'
 import Link from 'next/link'
 
+// importing fontAwesome
+import { library } from '@fortawesome/fontawesome-svg-core'
+// import your icons
+import { faGoogle, faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons'
+import { faRocket, faAnchor, faArchway } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 const CharlotteArticle = (props: ArticleProps) => {
     const [imageHeight, setHeight] = useState(100)
     const [imageWidth, setWidth] = useState(300)
@@ -183,6 +190,8 @@ const CharlotteArticle = (props: ArticleProps) => {
                                                 actionlbl2={item.actionlbl2}
                                                 pagelink2={item.pagelink2}
                                                 btn2Styles={btn2Styles}
+                                                icon={item.icon}
+                                                icon2={item.icon2}
                                             />
                                         ) : (
                                             <TheListItemAction
@@ -190,6 +199,8 @@ const CharlotteArticle = (props: ArticleProps) => {
                                                 actionlbl={item.actionlbl}
                                                 newwindow={item.newwindow}
                                                 accentColors={accentColors}
+                                                icon={item.icon}
+                                                icon2={item.icon2}
                                             />
                                         ))}
                                 </div>
@@ -249,6 +260,8 @@ const CharlotteArticle = (props: ArticleProps) => {
                                                     actionlbl2={item.actionlbl2}
                                                     pagelink2={item.pagelink2}
                                                     btn2Styles={btn2Styles}
+                                                    icon={item.icon}
+                                                    icon2={item.icon2}
                                                 />
                                             ) : (
                                                 <TheListItemAction
@@ -256,6 +269,8 @@ const CharlotteArticle = (props: ArticleProps) => {
                                                     actionlbl={item.actionlbl}
                                                     newwindow={item.newwindow}
                                                     accentColors={accentColors}
+                                                    icon={item.icon}
+                                                    icon2={item.icon2}
                                                 />
                                             ))}
                                     </a>
@@ -478,7 +493,15 @@ const TheListWrapV3 = (props: any) => {
 }
 
 const TheListItemAction = (props: TheListItemActionProps) => {
-    console.log(props.btn2Styles)
+    const icons: { [key: string]: any } = {
+        faRocket,
+        faAnchor,
+        faArchway,
+    }
+
+    let icon = props.icon ? icons[props.icon] : faRocket
+    let icon2 = props.icon2 ? icons[props.icon2] : faRocket
+
     return (
         /*         <div className={styles.the_list_item_action}>
             <Link href={props.pagelink}>
@@ -494,21 +517,21 @@ const TheListItemAction = (props: TheListItemActionProps) => {
                     <Link href={props.pagelink}>
                         <a target={props.newwindow === 1 ? '_blank' : '_self'} className="accent_color_bg accent_txt_color">
                             <div className={cn(styles['tsI_btn'], styles['btn_1'], styles['btn_md'], styles['transition'])} style={props.accentColors}>
-                                {props.actionlbl}
+                                {props.icon && <FontAwesomeIcon icon={icon || faRocket} />} {props.actionlbl}
                             </div>
                         </a>
                     </Link>
                     <Link href={props.pagelink2}>
                         <a target={props.newwindow === 1 ? '_blank' : '_self'} className="accent_color_bg accent_txt_color">
                             <div className={cn(styles['tsI_btn'], styles['btn_2'], styles['btn_md'], styles['transition'])} style={props.btn2Styles}>
-                                {props.actionlbl2}
+                                {props.icon2 && <FontAwesomeIcon icon={icon2 || faRocket} />} {props.actionlbl2}
                             </div>
                         </a>
                     </Link>
                 </div>
             ) : (
                 <div className={cn(styles['tsI_btn'], styles['btn_1'], styles['btn_md'], styles['transition'])} style={props.accentColors}>
-                    {props.actionlbl}
+                    {props.icon && <FontAwesomeIcon icon={icon || faRocket} />} {props.actionlbl}
                 </div>
             )}
         </>

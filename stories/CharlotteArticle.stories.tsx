@@ -253,6 +253,8 @@ Button.args = {
             actionlbl2: 'Contact 2',
             pagelink2: '/',
             align: 'center',
+            icon: 'faArchway',
+            icon2: 'faAnchor',
         },
     ],
 }
