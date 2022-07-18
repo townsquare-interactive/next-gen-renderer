@@ -250,6 +250,8 @@ Button.args = {
             ...item1,
             actionlbl: 'Contact Us',
             pagelink: '/',
+            actionlbl2: 'Contact 2',
+            pagelink2: '/',
             align: 'center',
         },
     ],

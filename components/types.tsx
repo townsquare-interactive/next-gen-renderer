@@ -436,12 +436,19 @@ export interface Colors {
     color?: string
     backgroundColor?: string
 }
+export interface btnColors {
+    color?: string
+    borderColor?: string
+}
 
 export interface TheListItemActionProps {
     pagelink: string
+    pagelink2?: string
     actionlbl: string
+    actionlbl2?: string
     newwindow: number | null
     accentColors: Colors
+    btn2Styles?: btnColors
 }
 
 export interface TheListItemImageProps {

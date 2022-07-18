@@ -47,6 +47,11 @@ const CharlotteArticle = (props: ArticleProps) => {
         backgroundColor: props.themeStyles['mainColor'],
     }
 
+    const btn2Styles = {
+        color: props.themeStyles['altColor'],
+        borderColor: props.themeStyles['altColor'],
+    }
+
     //non constrained images
     const imageNoSizings = ['no_sizing', 'no_set_height']
 
@@ -120,7 +125,7 @@ const CharlotteArticle = (props: ArticleProps) => {
                             data-aos-once="true"
                             style={props.well === '1' ? borderBackground : noBackground}
                         >
-                            {!item.pagelink ? (
+                            {!item.pagelink || (item.pagelink && item.pagelink2) ? (
                                 <div className={styles['tsI_wrp']}>
                                     {props.type === 'article_1' ? (
                                         <TheListWrapV1
@@ -134,6 +139,7 @@ const CharlotteArticle = (props: ArticleProps) => {
                                             imgSize={props.imgSize}
                                             well={props.well}
                                             textColorHeading={textColorHeading}
+                                            btnStyles2={btn2Styles}
                                         />
                                     ) : props.type === 'article_2' ? (
                                         <TheListWrapV2
@@ -147,6 +153,7 @@ const CharlotteArticle = (props: ArticleProps) => {
                                             imgSize={props.imgSize}
                                             well={props.well}
                                             textColorHeading={textColorHeading}
+                                            btnStyles2={btn2Styles}
                                         />
                                     ) : props.type === 'article_3' ? (
                                         <TheListWrapV3
@@ -160,10 +167,31 @@ const CharlotteArticle = (props: ArticleProps) => {
                                             imgSize={props.imgSize}
                                             well={props.well}
                                             textColorHeading={textColorHeading}
+                                            btnStyles2={btn2Styles}
                                         />
                                     ) : (
                                         ''
                                     )}
+                                    {item.pagelink &&
+                                        item.actionlbl &&
+                                        (item.actionlbl2 ? (
+                                            <TheListItemAction
+                                                pagelink={item.pagelink}
+                                                actionlbl={item.actionlbl}
+                                                newwindow={item.newwindow}
+                                                accentColors={accentColors}
+                                                actionlbl2={item.actionlbl2}
+                                                pagelink2={item.pagelink2}
+                                                btn2Styles={btn2Styles}
+                                            />
+                                        ) : (
+                                            <TheListItemAction
+                                                pagelink={item.pagelink}
+                                                actionlbl={item.actionlbl}
+                                                newwindow={item.newwindow}
+                                                accentColors={accentColors}
+                                            />
+                                        ))}
                                 </div>
                             ) : (
                                 <Link href={item.pagelink}>
@@ -210,6 +238,26 @@ const CharlotteArticle = (props: ArticleProps) => {
                                         ) : (
                                             ''
                                         )}
+                                        {item.pagelink &&
+                                            item.actionlbl &&
+                                            (item.actionlbl2 ? (
+                                                <TheListItemAction
+                                                    pagelink={item.pagelink}
+                                                    actionlbl={item.actionlbl}
+                                                    newwindow={item.newwindow}
+                                                    accentColors={accentColors}
+                                                    actionlbl2={item.actionlbl2}
+                                                    pagelink2={item.pagelink2}
+                                                    btn2Styles={btn2Styles}
+                                                />
+                                            ) : (
+                                                <TheListItemAction
+                                                    pagelink={item.pagelink}
+                                                    actionlbl={item.actionlbl}
+                                                    newwindow={item.newwindow}
+                                                    accentColors={accentColors}
+                                                />
+                                            ))}
                                     </a>
                                 </Link>
                             )}
@@ -249,7 +297,7 @@ const TheListWrapV1 = (props: any) => {
                 </figure>
             )}
 
-            <div className={styles['tsI_txt']}>
+            <div className={cn(styles['tsI_txt'])}>
                 <header
                     className={cn(styles['tsI_hds'], {
                         [styles.font_xs]: item.headSize === 'font_xs',
@@ -288,10 +336,6 @@ const TheListWrapV1 = (props: any) => {
                     </div>
                 </div>
             </div>
-
-            {item.pagelink && item.actionlbl && (
-                <TheListItemAction pagelink={item.pagelink} actionlbl={item.actionlbl} newwindow={item.newwindow} accentColors={props.accentColors} />
-            )}
         </>
     )
 }
@@ -343,7 +387,7 @@ const TheListWrapV2 = (props: any) => {
                 </figure>
             )}
 
-            <div className={styles['tsI_txt']}>
+            <div className={cn(styles['tsI_txt'])}>
                 <div className={styles['tsI_dsc_wrp']}>
                     <div
                         className={cn(styles['tsI_dsc'], {
@@ -389,7 +433,7 @@ const TheListWrapV3 = (props: any) => {
                     </figure>
                 )}
 
-                <div className={styles['tsI_txt']}>
+                <div className={cn(styles['tsI_txt'])}>
                     <header
                         className={cn(styles['tsI_hds'], {
                             [styles.font_xs]: item.headSize === 'font_xs',
@@ -434,6 +478,7 @@ const TheListWrapV3 = (props: any) => {
 }
 
 const TheListItemAction = (props: TheListItemActionProps) => {
+    console.log(props.btn2Styles)
     return (
         /*         <div className={styles.the_list_item_action}>
             <Link href={props.pagelink}>
@@ -443,7 +488,30 @@ const TheListItemAction = (props: TheListItemActionProps) => {
             </Link>
         </div> */
 
-        <div className={cn(styles['tsI_btn'], styles['btn_1'], styles['btn_md'], styles['transition'])}>{props.actionlbl}</div>
+        <>
+            {props.actionlbl2 && props.pagelink2 ? (
+                <div className={cn(styles['tsI_btn_std_wrp'], styles['tsI_text'])}>
+                    <Link href={props.pagelink}>
+                        <a target={props.newwindow === 1 ? '_blank' : '_self'} className="accent_color_bg accent_txt_color">
+                            <div className={cn(styles['tsI_btn'], styles['btn_1'], styles['btn_md'], styles['transition'])} style={props.accentColors}>
+                                {props.actionlbl}
+                            </div>
+                        </a>
+                    </Link>
+                    <Link href={props.pagelink2}>
+                        <a target={props.newwindow === 1 ? '_blank' : '_self'} className="accent_color_bg accent_txt_color">
+                            <div className={cn(styles['tsI_btn'], styles['btn_2'], styles['btn_md'], styles['transition'])} style={props.btn2Styles}>
+                                {props.actionlbl2}
+                            </div>
+                        </a>
+                    </Link>
+                </div>
+            ) : (
+                <div className={cn(styles['tsI_btn'], styles['btn_1'], styles['btn_md'], styles['transition'])} style={props.accentColors}>
+                    {props.actionlbl}
+                </div>
+            )}
+        </>
     )
 }
 const TheListItemImage = (props: TheListItemImageProps) => {
@@ -458,57 +526,26 @@ const TheListItemImage = (props: TheListItemImageProps) => {
         > */
         <>
             <div className={styles.image}>
-                {item.pagelink ? (
-                    <Link href={item.pagelink}>
-                        <a target={item.newwindow === 1 ? '_blank' : '_self'} className="accent_color_bg accent_txt_color">
-                            {!imageNoSizings.includes(props.imgSize) ? (
-                                <Image
-                                    className={cn(styles['item_image'], 'item_image', 'beacon-lazy-load')}
-                                    src={domainImage(item.image)}
-                                    layout="fill"
-                                    objectFit="cover"
-                                    alt={item.img_alt_tag || ''}
-                                    objectPosition="top"
-                                />
-                            ) : (
-                                //Setting width and height to image props if nosizing added
-                                <Image
-                                    src={domainImage(item.image)}
-                                    onLoadingComplete={calcImageSize}
-                                    width={imageWidth}
-                                    height={imageHeight}
-                                    layout="responsive"
-                                    alt={item.img_alt_tag || ''}
-                                    objectPosition="top"
-                                />
-                            )}
-                        </a>
-                    </Link>
+                {!imageNoSizings.includes(props.imgSize) ? (
+                    <Image
+                        className={cn(styles['item_image'], 'item_image', 'beacon-lazy-load')}
+                        src={domainImage(item.image)}
+                        layout="fill"
+                        objectFit="cover"
+                        alt={item.img_alt_tag || ''}
+                        objectPosition="top"
+                    />
                 ) : (
-                    //had to add an extra div here
-                    <>
-                        {!imageNoSizings.includes(props.imgSize) ? (
-                            <Image
-                                className={cn(styles['item_image'], 'item_image', 'beacon-lazy-load')}
-                                src={domainImage(item.image)}
-                                layout="fill"
-                                alt={item.img_alt_tag || ''}
-                                objectFit="cover"
-                                objectPosition="top"
-                            />
-                        ) : (
-                            //Setting width and height to image props if nosizing added
-                            <Image
-                                src={domainImage(item.image)}
-                                alt={item.img_alt_tag || ''}
-                                onLoadingComplete={calcImageSize}
-                                width={imageWidth}
-                                height={imageHeight}
-                                layout="responsive"
-                                objectPosition="top"
-                            />
-                        )}
-                    </>
+                    //Setting width and height to image props if nosizing added
+                    <Image
+                        src={domainImage(item.image)}
+                        onLoadingComplete={calcImageSize}
+                        width={imageWidth}
+                        height={imageHeight}
+                        layout="responsive"
+                        alt={item.img_alt_tag || ''}
+                        objectPosition="top"
+                    />
                 )}
             </div>
 
