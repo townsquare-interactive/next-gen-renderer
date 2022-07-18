@@ -98,12 +98,15 @@
                     position: relative;
                 }
                 //moving out of tsi_txt for v2
-                .tsI_heads {
+                .tsI_hds {
                     //header
                     display: block;
 
                     .tsI_hd {
                         font-weight: 700;
+                    }
+                    .tsI_sh {
+                        font-weight: 400;
                     }
                 }
 
@@ -260,6 +263,12 @@
                 }
             }
         }
+        &.a2 {
+            .yHds .tsI_hds {
+                padding: 1rem 2rem;
+                width: 100%;
+            }
+        }
     }
 
     //media queries for columns
@@ -406,6 +415,16 @@
                 letter-spacing: -0.0125rem;
             }
         } */
+        &.well {
+            .tsI_txt {
+                padding: 1rem 2rem 1.5rem;
+                width: 100%;
+            }
+            .yHds .tsI_hds {
+                padding: 1rem 2rem;
+                width: 100%;
+            }
+        }
         @media print, screen and (min-width: 481px) {
             &.large:not(.tsD_wide) .tsI {
                 &:nhero:first-of-type {
@@ -419,9 +438,16 @@
                 }
             }
         }
+
+        @media print, screen and (min-width: 1025px) {
+            &.well.large .tsI_txt {
+                padding-top: 2rem;
+                padding-bottom: 3rem;
+            }
+        }
     }
     &.a3 {
-        .tsI_txt_wrap {
+        .tsI_txt_wrp {
             box-align: baseline;
             -moz-align-items: baseline;
             -ms-align-items: baseline;
@@ -435,6 +461,36 @@
 
         .tsI_txt {
             width: 100%;
+        }
+
+        .tsI_img {
+            align-self: stretch;
+            -ms-flex-item-align: stretch;
+        }
+
+        &.small {
+            &.well {
+                .tsI_txt_wrp {
+                    padding: 1.5rem;
+                }
+            }
+        }
+        &.medium {
+            &.well {
+                .tsI_txt_wrp {
+                    padding: 3rem 2rem 2rem;
+                }
+            }
+
+            .nHero {
+                @media print, screen and (min-width: 1025px) {
+                    .tst_wrp {
+                        max-width: 100%;
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+                }
+            }
         }
 
         &.large {
@@ -453,8 +509,71 @@
                     margin-left: 2rem;
                 }
             }
+
+            &.well {
+                .tsI_txt_wrp {
+                    @media print, screen and (min-width: 1025px) {
+                        max-width: 100%;
+                        margin-left: auto;
+                        margin-right: auto;
+                        padding: 4rem 1.5rem;
+                    }
+                }
+            }
+
+            &.mod_center {
+                .tsI_text {
+                    display: inline-block;
+                }
+            }
         }
     }
+    &.small {
+        .nHero {
+            .tsI_sh {
+                font-size: 0.875em;
+                margin-top: 0.5714285714em;
+                margin-bottom: 0.5714285714em;
+                line-height: 1.1428571429em;
+            }
+            .tsI_hd {
+                font-size: 1.0625em;
+                margin-top: 0.7058823529em;
+                margin-bottom: 0.4705882353em;
+                line-height: 1.1764705882em;
+            }
+            .tsI_dsc {
+                font-size: 1.0625em;
+                margin-top: 0.9411764706em;
+                margin-bottom: 0.9411764706em;
+                line-height: 1.4117647059em;
+            }
+        }
+    }
+    &.medium {
+        .nHero {
+            .tsI_sh {
+                font-size: 1.0625em;
+                margin-top: 0.7058823529em;
+                margin-bottom: 0.4705882353em;
+                line-height: 1.1764705882em;
+            }
+            .tsI_hd {
+                font-size: 1.5em;
+                margin-top: 0.6666666667em;
+                margin-bottom: 0.5em;
+                line-height: 1.1666666667em;
+                letter-spacing: -0.0125rem;
+            }
+            .tsI_dsc {
+                font-size: 1.0625em;
+                margin-top: 0.9411764706em;
+                margin-bottom: 0.9411764706em;
+                line-height: 1.4117647059em;
+            }
+        }
+    }
+
     //font sizes
     .font_xs {
         font-size: 62.5%;

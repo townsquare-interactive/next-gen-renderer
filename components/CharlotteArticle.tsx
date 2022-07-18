@@ -105,8 +105,8 @@ const CharlotteArticle = (props: ArticleProps) => {
                                     [styles.nDsc]: !item.desc,
                                     [styles.nImg]: !item.image,
                                     [styles.yImg]: item.image,
-                                    [styles.yHeads]: item.headline || item.subheader,
-                                    [styles.nHeads]: !item.headline || !item.subheader,
+                                    [styles.yHds]: item.headline || item.subheader,
+                                    [styles.nHds]: !item.headline || !item.subheader,
                                     [styles.center]: item.align === 'center',
                                     [styles.mod_left]: item.align === 'left' && props.type === 'article_3',
                                     [styles.mod_right]: item.align === 'right' && props.type === 'article_3',
@@ -118,7 +118,7 @@ const CharlotteArticle = (props: ArticleProps) => {
                             key={index}
                             data-aos="fade-up"
                             data-aos-once="true"
-                            style={props.well ? borderBackground : noBackground}
+                            style={props.well === '1' ? borderBackground : noBackground}
                         >
                             {props.type === 'article_1' ? (
                                 <TheListWrapV1
@@ -312,7 +312,7 @@ const TheListWrapV3 = (props: any) => {
     const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgSize, well, textColorHeading } = props
     return (
         <div className={styles['tsI_wrp']}>
-            <div className={styles['tsI_txt_wrap']}>
+            <div className={styles['tsI_txt_wrp']}>
                 {item.image && (
                     <figure
                         className={cn(styles['tsI_img'], styles['theframe'], styles['imgtag'], styles['imgbase'], styles['img-loaded'])}

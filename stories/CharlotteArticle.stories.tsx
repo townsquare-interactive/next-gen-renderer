@@ -328,14 +328,28 @@ V2.args = {
     ...Plain.args,
     type: 'article_2',
 }
+export const V2Multiple = Template.bind({})
+V2Multiple.args = {
+    ...Plain.args,
+    type: 'article_2',
+    columns: 2,
+    items: [{ ...item1 }, { ...item1 }, { ...item1 }],
+}
 export const V3 = Template.bind({})
 V3.args = {
     ...Plain.args,
     type: 'article_3',
     items: [{ ...item1, align: 'left' }],
 }
-export const V3Small = Template.bind({})
-V3Small.args = {
+export const V3Multiple = Template.bind({})
+V3Multiple.args = {
+    ...Plain.args,
+    type: 'article_3',
+    columns: 3,
+    items: [{ ...item1, align: 'right' }, { ...item1 }, { ...item1 }],
+}
+export const V3SmallText = Template.bind({})
+V3SmallText.args = {
     ...Plain.args,
     type: 'article_3',
     items: [{ ...item1, align: 'left', headSize: 'font_xs', descSize: 'font_lg' }],
