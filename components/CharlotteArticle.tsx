@@ -1,5 +1,5 @@
 import styles from './CharlotteArticle.module.scss'
-import { ArticleProps, Media, TheListItemImageProps, TheListItemActionProps } from './types'
+import { ArticleProps, Media, TheListItemImageProps, TheListItemActionProps, TsiWrp } from './types'
 import Image from 'next/image'
 import cn from 'classnames'
 import Parser from 'html-react-parser'
@@ -317,7 +317,7 @@ const CharlotteArticle = (props: ArticleProps) => {
     )
 }
 
-const TheListWrapV1 = (props: any) => {
+const TheListWrapV1 = (props: TsiWrp) => {
     const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgSize, well, textColorHeading, icons, icon3 } = props
     return (
         <>
@@ -390,7 +390,7 @@ const TheListWrapV1 = (props: any) => {
     )
 }
 
-const TheListWrapV2 = (props: any) => {
+const TheListWrapV2 = (props: TsiWrp) => {
     const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgSize, well, textColorHeading, icons, icon3 } = props
     return (
         <>
@@ -436,11 +436,7 @@ const TheListWrapV2 = (props: any) => {
                         icons={icons}
                         icon3={icon3}
                     />
-                    {item.icon3 && (
-                        <div className={cn(styles.tsI_icon, styles.icon_block)}>
-                            <FontAwesomeIcon icon={item.icon3} />
-                        </div>
-                    )}
+
                     {item.caption_tag && <figcaption style={textColorAccent}>{item.caption_tag}</figcaption>}
                 </figure>
             )}
@@ -465,7 +461,7 @@ const TheListWrapV2 = (props: any) => {
     )
 }
 
-const TheListWrapV3 = (props: any) => {
+const TheListWrapV3 = (props: TsiWrp) => {
     const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgSize, well, textColorHeading, icons, icon3 } = props
     return (
         <>
@@ -568,15 +564,21 @@ const TheListItemAction = (props: TheListItemActionProps) => {
             {props.actionlbl2 ? (
                 <div className={cn(styles['tsI_btn_std_wrp'], styles['tsI_text'])}>
                     <Link href={props.pagelink || props.weblink || ''}>
-                        <a target={props.newwindow === 1 ? '_blank' : '_self'} className="accent_color_bg accent_txt_color">
+                        <a
+                            target={props.newwindow === 1 ? '_blank' : '_self'}
+                            className={cn({
+                                [styles.btn_block]: props.btnSize.includes('btn_block'),
+                            })}
+                        >
                             <div
                                 className={cn(styles['tsI_btn'], styles['transition'], {
                                     [styles.btn_1]: props.btnType === 'btn_1' || !props.btnType,
                                     [styles.btn_2]: props.btnType === 'btn_2',
-                                    [styles.btn_md]: props.btnSize === 'md' || !props.btnSize,
-                                    [styles.btn_lg]: props.btnSize === 'lg',
-                                    [styles.btn_sm]: props.btnSize === 'sm',
-                                    [styles.btn_xs]: props.btnSize === 'xs',
+                                    [styles.btn_md]: props.btnSize === 'md' || props.btnSize === 'md btn_block' || !props.btnSize,
+                                    [styles.btn_lg]: props.btnSize === 'lg' || props.btnSize === 'lg btn_block',
+                                    [styles.btn_sm]: props.btnSize === 'sm' || props.btnSize === 'sm btn_block',
+                                    [styles.btn_xs]: props.btnSize === 'xs' || props.btnSize === 'xs btn_block',
+                                    [styles.btn_block]: props.btnSize.includes('btn_block'),
                                 })}
                                 style={determineStyles(props.btnType || 'btn_1')}
                             >
@@ -585,15 +587,21 @@ const TheListItemAction = (props: TheListItemActionProps) => {
                         </a>
                     </Link>
                     <Link href={props.pagelink2 || props.weblink2 || ''}>
-                        <a target={props.newwindow2 === 1 ? '_blank' : '_self'} className="accent_color_bg accent_txt_color">
+                        <a
+                            target={props.newwindow2 === 1 ? '_blank' : '_self'}
+                            className={cn({
+                                [styles.btn_block]: props.btnSize2.includes('btn_block'),
+                            })}
+                        >
                             <div
                                 className={cn(styles['tsI_btn'], styles['transition'], {
                                     [styles.btn_1]: props.btnType === 'btn_1',
                                     [styles.btn_2]: props.btnType === 'btn_2' || !props.btnType2,
-                                    [styles.btn_md]: props.btnSize2 === 'md' || !props.btnSize2,
-                                    [styles.btn_lg]: props.btnSize2 === 'lg',
-                                    [styles.btn_sm]: props.btnSize2 === 'sm',
-                                    [styles.btn_xs]: props.btnSize2 === 'xs',
+                                    [styles.btn_md]: props.btnSize2 === 'md' || props.btnSize2 === 'md btn_block' || !props.btnSize2,
+                                    [styles.btn_lg]: props.btnSize2 === 'lg' || props.btnSize2 === 'lg btn_block',
+                                    [styles.btn_sm]: props.btnSize2 === 'sm' || props.btnSize2 === 'sm btn_block',
+                                    [styles.btn_xs]: props.btnSize2 === 'xs' || props.btnSize2 === 'xs btn_block',
+                                    [styles.btn_block]: props.btnSize2.includes('btn_block'),
                                 })}
                                 style={determineStyles(props.btnType2 || 'btn_2')}
                             >
@@ -607,10 +615,11 @@ const TheListItemAction = (props: TheListItemActionProps) => {
                     className={cn(styles['tsI_btn'], styles['btn_1'], styles['transition'], {
                         [styles.btn_1]: props.btnType === 'btn_1' || !props.btnType,
                         [styles.btn_2]: props.btnType === 'btn_2',
-                        [styles.btn_md]: props.btnSize === 'md' || !props.btnSize,
-                        [styles.btn_lg]: props.btnSize === 'lg',
-                        [styles.btn_sm]: props.btnSize === 'sm',
-                        [styles.btn_xs]: props.btnSize === 'xs',
+                        [styles.btn_md]: props.btnSize === 'md' || props.btnSize === 'md btn_block' || !props.btnSize,
+                        [styles.btn_lg]: props.btnSize === 'lg' || props.btnSize === 'lg btn_block',
+                        [styles.btn_sm]: props.btnSize === 'sm' || props.btnSize === 'sm btn_block',
+                        [styles.btn_xs]: props.btnSize === 'xs' || props.btnSize === 'xs btn_block',
+                        [styles.btn_block]: props.btnSize.includes('btn_block'),
                     })}
                     style={determineStyles(props.btnType || 'btn_1')}
                 >

@@ -474,3 +474,18 @@ export interface TheListItemImageProps {
     icons: { [key: string]: any }
     icon3?: string
 }
+
+export interface TsiWrp {
+    imageNoSizings: any
+    calcImageSize: (loadedMedia: any) => void
+    imageWidth: number
+    imageHeight: number
+    textColorAccent: Colors
+    textColor: Colors
+    imgSize: string
+    well: string
+    icons: { [key: string]: any }
+    icon3?: string
+    item: ArticleItems
+    textColorHeading: any
+}

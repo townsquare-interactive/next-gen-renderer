@@ -176,6 +176,12 @@
                     display: flex;
                     flex-wrap: wrap;
                     margin: 0 -0.25rem;
+                    a {
+                        &.btn_block {
+                            display: block;
+                            width: 100%;
+                        }
+                    }
 
                     .tsI_btn {
                         flex: 0 1 auto;
@@ -261,9 +267,16 @@
                             display: inline-block;
                         }
                     }
+
+                    &.btn_block {
+                        display: block;
+                        width: 100%;
+                    }
+
                     &.btn_1 {
                         box-shadow: 0 2px 10px rgb(0 0 0 / 25%);
                     }
+
                     &.btn_2 {
                         border-style: solid;
                         border-width: 1px;

@@ -258,6 +258,7 @@ Button.args = {
             btnType: 'btn_1',
             btnType2: 'btn_2',
             btnSize: 'md',
+            // btnSize:'md btn_block',
             btnSize2: 'md',
         },
     ],
