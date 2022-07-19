@@ -457,6 +457,8 @@ export interface TheListItemActionProps {
     btnType?: string
     btnType2?: string
     themeStyles: ThemeStyles
+    btnSize: string
+    btnSize2: string
 }
 
 export interface TheListItemImageProps {

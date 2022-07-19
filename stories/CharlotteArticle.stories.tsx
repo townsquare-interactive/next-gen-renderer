@@ -257,6 +257,8 @@ Button.args = {
             icon2: 'faAnchor',
             btnType: 'btn_1',
             btnType2: 'btn_2',
+            btnSize: 'md',
+            btnSize2: 'md',
         },
     ],
 }

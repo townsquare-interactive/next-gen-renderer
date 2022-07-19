@@ -198,6 +198,8 @@ const CharlotteArticle = (props: ArticleProps) => {
                                                 btnType={item.btnType}
                                                 btnType2={item.btnType2}
                                                 themeStyles={props.themeStyles}
+                                                btnSize={item.btnSize}
+                                                btnSize2={item.btnSize2}
                                             />
                                         ) : (
                                             <TheListItemAction
@@ -210,6 +212,8 @@ const CharlotteArticle = (props: ArticleProps) => {
                                                 icons={icons}
                                                 btnType={item.btnType}
                                                 themeStyles={props.themeStyles}
+                                                btnSize={item.btnSize}
+                                                btnSize2={item.btnSize2}
                                             />
                                         ))}
                                 </div>
@@ -282,6 +286,8 @@ const CharlotteArticle = (props: ArticleProps) => {
                                                         btnType={item.btnType}
                                                         btnType2={item.btnType2}
                                                         themeStyles={props.themeStyles}
+                                                        btnSize={item.btnSize}
+                                                        btnSize2={item.btnSize2}
                                                     />
                                                 ) : (
                                                     <TheListItemAction
@@ -294,6 +300,8 @@ const CharlotteArticle = (props: ArticleProps) => {
                                                         icons={icons}
                                                         btnType={item.btnType}
                                                         themeStyles={props.themeStyles}
+                                                        btnSize={item.btnSize}
+                                                        btnSize2={item.btnSize2}
                                                     />
                                                 )))}
                                     </a>
@@ -555,8 +563,6 @@ const TheListItemAction = (props: TheListItemActionProps) => {
         }
     }
 
-    console.log(props.btnType)
-
     return (
         <>
             {props.actionlbl2 ? (
@@ -564,8 +570,13 @@ const TheListItemAction = (props: TheListItemActionProps) => {
                     <Link href={props.pagelink || props.weblink || ''}>
                         <a target={props.newwindow === 1 ? '_blank' : '_self'} className="accent_color_bg accent_txt_color">
                             <div
-                                className={cn(styles['tsI_btn'], styles['btn_md'], styles['transition'], {
+                                className={cn(styles['tsI_btn'], styles['transition'], {
                                     [styles.btn_1]: props.btnType === 'btn_1' || !props.btnType,
+                                    [styles.btn_2]: props.btnType === 'btn_2',
+                                    [styles.btn_md]: props.btnSize === 'md' || !props.btnSize,
+                                    [styles.btn_lg]: props.btnSize === 'lg',
+                                    [styles.btn_sm]: props.btnSize === 'sm',
+                                    [styles.btn_xs]: props.btnSize === 'xs',
                                 })}
                                 style={determineStyles(props.btnType || 'btn_1')}
                             >
@@ -576,9 +587,13 @@ const TheListItemAction = (props: TheListItemActionProps) => {
                     <Link href={props.pagelink2 || props.weblink2 || ''}>
                         <a target={props.newwindow2 === 1 ? '_blank' : '_self'} className="accent_color_bg accent_txt_color">
                             <div
-                                className={cn(styles['tsI_btn'], styles['btn_2'], styles['btn_md'], styles['transition'], {
+                                className={cn(styles['tsI_btn'], styles['transition'], {
                                     [styles.btn_1]: props.btnType === 'btn_1',
                                     [styles.btn_2]: props.btnType === 'btn_2' || !props.btnType2,
+                                    [styles.btn_md]: props.btnSize2 === 'md' || !props.btnSize2,
+                                    [styles.btn_lg]: props.btnSize2 === 'lg',
+                                    [styles.btn_sm]: props.btnSize2 === 'sm',
+                                    [styles.btn_xs]: props.btnSize2 === 'xs',
                                 })}
                                 style={determineStyles(props.btnType2 || 'btn_2')}
                             >
@@ -589,7 +604,14 @@ const TheListItemAction = (props: TheListItemActionProps) => {
                 </div>
             ) : (
                 <div
-                    className={cn(styles['tsI_btn'], styles['btn_1'], styles['btn_md'], styles['transition'])}
+                    className={cn(styles['tsI_btn'], styles['btn_1'], styles['transition'], {
+                        [styles.btn_1]: props.btnType === 'btn_1' || !props.btnType,
+                        [styles.btn_2]: props.btnType === 'btn_2',
+                        [styles.btn_md]: props.btnSize === 'md' || !props.btnSize,
+                        [styles.btn_lg]: props.btnSize === 'lg',
+                        [styles.btn_sm]: props.btnSize === 'sm',
+                        [styles.btn_xs]: props.btnSize === 'xs',
+                    })}
                     style={determineStyles(props.btnType || 'btn_1')}
                 >
                     {props.icon && <FontAwesomeIcon icon={icon || faRocket} />} {props.actionlbl}
@@ -634,48 +656,6 @@ const TheListItemImage = (props: TheListItemImageProps) => {
                 )}
             </div>
         </>
-    )
-}
-
-const Lightbox = (props: any) => {
-    const { item, lightbox, toggleSwitch } = props
-
-    return (
-        <div
-            className={cn(styles.lightboxOverlay, {
-                [styles.active]: lightbox === true,
-            })}
-        >
-            <div onClick={toggleSwitch}>
-                <div className={styles.lightbox}>
-                    <div className={styles['lb-container']}>
-                        <div className={styles['lb-image']}>
-                            <Image
-                                className={cn(styles['item_image'], 'item_image', 'beacon-lazy-load')}
-                                src={domainImage(item.image)}
-                                layout="fill"
-                                alt={item.img_alt_tag || ''}
-                                objectFit="cover"
-                                objectPosition="top"
-                            />
-                        </div>
-
-                        <div className={styles['lb-dataContainer']}>
-                            <div className={styles['lb-data']}>
-                                <div className={styles['lb-details']}>
-                                    <span className={styles['lb-caption']}>lightbox</span>
-
-                                    <span className={styles['lb-number']}></span>
-                                </div>
-                                <div className={styles['lb-closeContainer']}>
-                                    <a className={styles['lb-close']}></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     )
 }
 
