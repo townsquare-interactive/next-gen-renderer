@@ -255,6 +255,8 @@ Button.args = {
             align: 'center',
             icon: 'faArchway',
             icon2: 'faAnchor',
+            btnType: 'btn_1',
+            btnType2: 'btn_2',
         },
     ],
 }
@@ -357,4 +359,10 @@ V3SmallText.args = {
     ...Plain.args,
     type: 'article_3',
     items: [{ ...item1, align: 'left', headSize: 'font_xs', descSize: 'font_lg' }],
+}
+export const Icon3 = Template.bind({})
+Icon3.args = {
+    ...Plain.args,
+
+    items: [{ ...item1, icon3: 'faAnchor' }],
 }

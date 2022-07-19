@@ -10,7 +10,6 @@ import Link from 'next/link'
 // importing fontAwesome
 import { library } from '@fortawesome/fontawesome-svg-core'
 // import your icons
-import { faGoogle, faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faRocket, faAnchor, faArchway } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -54,9 +53,10 @@ const CharlotteArticle = (props: ArticleProps) => {
         backgroundColor: props.themeStyles['mainColor'],
     }
 
-    const btn2Styles = {
-        color: props.themeStyles['altColor'],
-        borderColor: props.themeStyles['altColor'],
+    const icons: { [key: string]: any } = {
+        faRocket,
+        faAnchor,
+        faArchway,
     }
 
     //non constrained images
@@ -146,7 +146,8 @@ const CharlotteArticle = (props: ArticleProps) => {
                                             imgSize={props.imgSize}
                                             well={props.well}
                                             textColorHeading={textColorHeading}
-                                            btnStyles2={btn2Styles}
+                                            icons={icons}
+                                            icon3={item.icon3}
                                         />
                                     ) : props.type === 'article_2' ? (
                                         <TheListWrapV2
@@ -160,7 +161,8 @@ const CharlotteArticle = (props: ArticleProps) => {
                                             imgSize={props.imgSize}
                                             well={props.well}
                                             textColorHeading={textColorHeading}
-                                            btnStyles2={btn2Styles}
+                                            icons={icons}
+                                            icon3={item.icon3}
                                         />
                                     ) : props.type === 'article_3' ? (
                                         <TheListWrapV3
@@ -174,7 +176,8 @@ const CharlotteArticle = (props: ArticleProps) => {
                                             imgSize={props.imgSize}
                                             well={props.well}
                                             textColorHeading={textColorHeading}
-                                            btnStyles2={btn2Styles}
+                                            icons={icons}
+                                            icon3={item.icon3}
                                         />
                                     ) : (
                                         ''
@@ -186,26 +189,32 @@ const CharlotteArticle = (props: ArticleProps) => {
                                                 pagelink={item.pagelink}
                                                 actionlbl={item.actionlbl}
                                                 newwindow={item.newwindow}
-                                                accentColors={accentColors}
+                                                newwindow2={item.newwindow2}
                                                 actionlbl2={item.actionlbl2}
                                                 pagelink2={item.pagelink2}
-                                                btn2Styles={btn2Styles}
                                                 icon={item.icon}
                                                 icon2={item.icon2}
+                                                icons={icons}
+                                                btnType={item.btnType}
+                                                btnType2={item.btnType2}
+                                                themeStyles={props.themeStyles}
                                             />
                                         ) : (
                                             <TheListItemAction
                                                 pagelink={item.pagelink}
                                                 actionlbl={item.actionlbl}
                                                 newwindow={item.newwindow}
-                                                accentColors={accentColors}
+                                                newwindow2={item.newwindow2}
                                                 icon={item.icon}
                                                 icon2={item.icon2}
+                                                icons={icons}
+                                                btnType={item.btnType}
+                                                themeStyles={props.themeStyles}
                                             />
                                         ))}
                                 </div>
                             ) : (
-                                <Link href={item.pagelink}>
+                                <Link href={item.pagelink || item.weblink || ''}>
                                     <a className={styles['tsI_wrp']} target={item.newwindow === 1 ? '_blank' : '_self'}>
                                         {props.type === 'article_1' ? (
                                             <TheListWrapV1
@@ -219,6 +228,8 @@ const CharlotteArticle = (props: ArticleProps) => {
                                                 imgSize={props.imgSize}
                                                 well={props.well}
                                                 textColorHeading={textColorHeading}
+                                                icons={icons}
+                                                icon3={item.icon3}
                                             />
                                         ) : props.type === 'article_2' ? (
                                             <TheListWrapV2
@@ -232,6 +243,8 @@ const CharlotteArticle = (props: ArticleProps) => {
                                                 imgSize={props.imgSize}
                                                 well={props.well}
                                                 textColorHeading={textColorHeading}
+                                                icons={icons}
+                                                icon3={item.icon3}
                                             />
                                         ) : props.type === 'article_3' ? (
                                             <TheListWrapV3
@@ -245,34 +258,44 @@ const CharlotteArticle = (props: ArticleProps) => {
                                                 imgSize={props.imgSize}
                                                 well={props.well}
                                                 textColorHeading={textColorHeading}
+                                                icons={icons}
+                                                icon3={item.icon3}
                                             />
                                         ) : (
                                             ''
                                         )}
-                                        {item.pagelink &&
-                                            item.actionlbl &&
-                                            (item.actionlbl2 ? (
-                                                <TheListItemAction
-                                                    pagelink={item.pagelink}
-                                                    actionlbl={item.actionlbl}
-                                                    newwindow={item.newwindow}
-                                                    accentColors={accentColors}
-                                                    actionlbl2={item.actionlbl2}
-                                                    pagelink2={item.pagelink2}
-                                                    btn2Styles={btn2Styles}
-                                                    icon={item.icon}
-                                                    icon2={item.icon2}
-                                                />
-                                            ) : (
-                                                <TheListItemAction
-                                                    pagelink={item.pagelink}
-                                                    actionlbl={item.actionlbl}
-                                                    newwindow={item.newwindow}
-                                                    accentColors={accentColors}
-                                                    icon={item.icon}
-                                                    icon2={item.icon2}
-                                                />
-                                            ))}
+                                        {(item.pagelink && item.actionlbl) ||
+                                            (item.weblink &&
+                                                (item.actionlbl2 || item.weblink2 ? (
+                                                    <TheListItemAction
+                                                        pagelink={item.pagelink}
+                                                        pagelink2={item.pagelink2}
+                                                        weblink={item.weblink}
+                                                        weblink2={item.weblink2}
+                                                        actionlbl={item.actionlbl}
+                                                        newwindow={item.newwindow}
+                                                        newwindow2={item.newwindow2}
+                                                        actionlbl2={item.actionlbl2}
+                                                        icon={item.icon}
+                                                        icon2={item.icon2}
+                                                        icons={icons}
+                                                        btnType={item.btnType}
+                                                        btnType2={item.btnType2}
+                                                        themeStyles={props.themeStyles}
+                                                    />
+                                                ) : (
+                                                    <TheListItemAction
+                                                        pagelink={item.pagelink}
+                                                        weblink={item.weblink}
+                                                        actionlbl={item.actionlbl}
+                                                        newwindow={item.newwindow}
+                                                        icon={item.icon}
+                                                        icon2={item.icon2}
+                                                        icons={icons}
+                                                        btnType={item.btnType}
+                                                        themeStyles={props.themeStyles}
+                                                    />
+                                                )))}
                                     </a>
                                 </Link>
                             )}
@@ -287,7 +310,7 @@ const CharlotteArticle = (props: ArticleProps) => {
 }
 
 const TheListWrapV1 = (props: any) => {
-    const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgSize, well, textColorHeading } = props
+    const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgSize, well, textColorHeading, icons, icon3 } = props
     return (
         <>
             {item.image && (
@@ -308,7 +331,11 @@ const TheListWrapV1 = (props: any) => {
                         textColor={textColor}
                         imgSize={props.imgSize}
                         well={props.well}
+                        icons={icons}
+                        icon3={icon3}
                     />
+
+                    {item.caption_tag && <figcaption style={textColorAccent}>{item.caption_tag}</figcaption>}
                 </figure>
             )}
 
@@ -356,7 +383,7 @@ const TheListWrapV1 = (props: any) => {
 }
 
 const TheListWrapV2 = (props: any) => {
-    const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgSize, well, textColorHeading } = props
+    const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgSize, well, textColorHeading, icons, icon3 } = props
     return (
         <>
             <header
@@ -398,7 +425,15 @@ const TheListWrapV2 = (props: any) => {
                         textColor={textColor}
                         imgSize={props.imgSize}
                         well={props.well}
+                        icons={icons}
+                        icon3={icon3}
                     />
+                    {item.icon3 && (
+                        <div className={cn(styles.tsI_icon, styles.icon_block)}>
+                            <FontAwesomeIcon icon={item.icon3} />
+                        </div>
+                    )}
+                    {item.caption_tag && <figcaption style={textColorAccent}>{item.caption_tag}</figcaption>}
                 </figure>
             )}
 
@@ -423,7 +458,7 @@ const TheListWrapV2 = (props: any) => {
 }
 
 const TheListWrapV3 = (props: any) => {
-    const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgSize, well, textColorHeading } = props
+    const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgSize, well, textColorHeading, icons, icon3 } = props
     return (
         <>
             <div className={styles['tsI_txt_wrp']}>
@@ -444,7 +479,11 @@ const TheListWrapV3 = (props: any) => {
                             textColor={textColor}
                             imgSize={props.imgSize}
                             well={props.well}
+                            icons={icons}
+                            icon3={icon3}
                         />
+
+                        {item.caption_tag && <figcaption style={textColorAccent}>{item.caption_tag}</figcaption>}
                     </figure>
                 )}
 
@@ -493,44 +532,66 @@ const TheListWrapV3 = (props: any) => {
 }
 
 const TheListItemAction = (props: TheListItemActionProps) => {
-    const icons: { [key: string]: any } = {
-        faRocket,
-        faAnchor,
-        faArchway,
+    let icon = props.icon ? props.icons[props.icon] : faRocket
+    let icon2 = props.icon2 ? props.icons[props.icon2] : faRocket
+
+    const btn1Styles = {
+        color: props.themeStyles['textColorAccent'],
+        backgroundColor: props.themeStyles['mainColor'],
     }
 
-    let icon = props.icon ? icons[props.icon] : faRocket
-    let icon2 = props.icon2 ? icons[props.icon2] : faRocket
+    const btn2Styles = {
+        color: props.themeStyles['altColor'],
+        borderColor: props.themeStyles['altColor'],
+    }
+
+    function determineStyles(btnType: string) {
+        if (btnType === 'btn_1') {
+            return btn1Styles
+        } else if (btnType === 'btn_2') {
+            return btn2Styles
+        } else {
+            return btn1Styles
+        }
+    }
+
+    console.log(props.btnType)
 
     return (
-        /*         <div className={styles.the_list_item_action}>
-            <Link href={props.pagelink}>
-                <a target={props.newwindow === 1 ? '_blank' : '_self'} className="accent_color_bg accent_txt_color" style={props.accentColors}>
-                    {props.actionlbl}
-                </a>
-            </Link>
-        </div> */
-
         <>
-            {props.actionlbl2 && props.pagelink2 ? (
+            {props.actionlbl2 ? (
                 <div className={cn(styles['tsI_btn_std_wrp'], styles['tsI_text'])}>
-                    <Link href={props.pagelink}>
+                    <Link href={props.pagelink || props.weblink || ''}>
                         <a target={props.newwindow === 1 ? '_blank' : '_self'} className="accent_color_bg accent_txt_color">
-                            <div className={cn(styles['tsI_btn'], styles['btn_1'], styles['btn_md'], styles['transition'])} style={props.accentColors}>
+                            <div
+                                className={cn(styles['tsI_btn'], styles['btn_md'], styles['transition'], {
+                                    [styles.btn_1]: props.btnType === 'btn_1' || !props.btnType,
+                                })}
+                                style={determineStyles(props.btnType || 'btn_1')}
+                            >
                                 {props.icon && <FontAwesomeIcon icon={icon || faRocket} />} {props.actionlbl}
                             </div>
                         </a>
                     </Link>
-                    <Link href={props.pagelink2}>
-                        <a target={props.newwindow === 1 ? '_blank' : '_self'} className="accent_color_bg accent_txt_color">
-                            <div className={cn(styles['tsI_btn'], styles['btn_2'], styles['btn_md'], styles['transition'])} style={props.btn2Styles}>
+                    <Link href={props.pagelink2 || props.weblink2 || ''}>
+                        <a target={props.newwindow2 === 1 ? '_blank' : '_self'} className="accent_color_bg accent_txt_color">
+                            <div
+                                className={cn(styles['tsI_btn'], styles['btn_2'], styles['btn_md'], styles['transition'], {
+                                    [styles.btn_1]: props.btnType === 'btn_1',
+                                    [styles.btn_2]: props.btnType === 'btn_2' || !props.btnType2,
+                                })}
+                                style={determineStyles(props.btnType2 || 'btn_2')}
+                            >
                                 {props.icon2 && <FontAwesomeIcon icon={icon2 || faRocket} />} {props.actionlbl2}
                             </div>
                         </a>
                     </Link>
                 </div>
             ) : (
-                <div className={cn(styles['tsI_btn'], styles['btn_1'], styles['btn_md'], styles['transition'])} style={props.accentColors}>
+                <div
+                    className={cn(styles['tsI_btn'], styles['btn_1'], styles['btn_md'], styles['transition'])}
+                    style={determineStyles(props.btnType || 'btn_1')}
+                >
                     {props.icon && <FontAwesomeIcon icon={icon || faRocket} />} {props.actionlbl}
                 </div>
             )}
@@ -540,13 +601,9 @@ const TheListItemAction = (props: TheListItemActionProps) => {
 const TheListItemImage = (props: TheListItemImageProps) => {
     const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor } = props
 
+    let icon = props.icon3 ? props.icons[props.icon3] : faRocket
+
     return (
-        /*  <div
-            className={cn(styles['tsI_img'], {
-                [styles.right]: item.align === 'right',
-                [styles.left]: item.align === 'left',
-            })}
-        > */
         <>
             <div className={styles.image}>
                 {!imageNoSizings.includes(props.imgSize) ? (
@@ -570,14 +627,12 @@ const TheListItemImage = (props: TheListItemImageProps) => {
                         objectPosition="top"
                     />
                 )}
+                {item.icon3 && (
+                    <div className={cn(styles.tsI_icon, styles.icon_block)}>
+                        <FontAwesomeIcon icon={icon} />
+                    </div>
+                )}
             </div>
-
-            {item.caption_tag && (
-                /* <div className={styles['the_list_item_caption']} style={props.well || item.isFeatured ? textColorAccent : textColor}>
-                    caption
-                </div> */
-                <figcaption style={textColorAccent}>{item.caption_tag}</figcaption>
-            )}
         </>
     )
 }
