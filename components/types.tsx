@@ -436,12 +436,29 @@ export interface Colors {
     color?: string
     backgroundColor?: string
 }
+export interface btnColors {
+    color?: string
+    borderColor?: string
+}
 
 export interface TheListItemActionProps {
-    pagelink: string
+    pagelink?: string
+    pagelink2?: string
+    weblink?: string
+    weblink2?: string
     actionlbl: string
+    actionlbl2?: string
     newwindow: number | null
-    accentColors: Colors
+    newwindow2?: number | null
+    btn2Styles?: btnColors
+    icon?: string
+    icon2?: string
+    icons: { [key: string]: any }
+    btnType?: string
+    btnType2?: string
+    themeStyles: ThemeStyles
+    btnSize: string
+    btnSize2: string
 }
 
 export interface TheListItemImageProps {
@@ -454,4 +471,21 @@ export interface TheListItemImageProps {
     textColor: Colors
     imgSize: string
     well: string
+    icons: { [key: string]: any }
+    icon3?: string
+}
+
+export interface TsiWrp {
+    imageNoSizings: any
+    calcImageSize: (loadedMedia: any) => void
+    imageWidth: number
+    imageHeight: number
+    textColorAccent: Colors
+    textColor: Colors
+    imgSize: string
+    well: string
+    icons: { [key: string]: any }
+    icon3?: string
+    item: ArticleItems
+    textColorHeading: any
 }
