@@ -263,6 +263,27 @@ Button.args = {
         },
     ],
 }
+export const ButtonSizesBlock = Template.bind({})
+ButtonSizesBlock.args = {
+    ...Default.args,
+    items: [
+        {
+            ...item1,
+            actionlbl: 'Contact Us',
+            pagelink: '/',
+            actionlbl2: 'Contact 2',
+            pagelink2: '/',
+            align: 'center',
+            icon: 'faArchway',
+            icon2: 'faAnchor',
+            btnType: 'btn_2',
+            btnType2: 'btn_1',
+            btnSize: 'lg btn_block',
+            // btnSize:'md btn_block',
+            btnSize2: 'lg btn_block',
+        },
+    ],
+}
 export const LinkNoButton = Template.bind({})
 LinkNoButton.args = {
     ...Default.args,
@@ -342,7 +363,7 @@ V2Multiple.args = {
     ...Plain.args,
     type: 'article_2',
     columns: 2,
-    items: [{ ...item1 }, { ...item1 }, { ...item1 }],
+    items: [{ ...item1 }, { ...item1 }, { ...item1 }, { ...item1 }],
 }
 export const V3 = Template.bind({})
 V3.args = {
@@ -354,8 +375,13 @@ export const V3Multiple = Template.bind({})
 V3Multiple.args = {
     ...Plain.args,
     type: 'article_3',
-    columns: 3,
-    items: [{ ...item1, align: 'right' }, { ...item1 }, { ...item1 }],
+    columns: 2,
+    items: [
+        { ...item1, align: 'right' },
+        { ...item1, align: 'right' },
+        { ...item1, align: 'right' },
+        { ...item1, align: 'right' },
+    ],
 }
 export const V3SmallText = Template.bind({})
 V3SmallText.args = {

@@ -7,6 +7,12 @@ import { domainImage } from '../functions'
 import { useState } from 'react'
 import Link from 'next/link'
 
+// importing fontAwesome
+import { library } from '@fortawesome/fontawesome-svg-core'
+// import your icons
+import { faRocket, faAnchor, faArchway } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 const Article = (props: ArticleProps) => {
     const [imageHeight, setHeight] = useState(100)
     const [imageWidth, setWidth] = useState(300)
@@ -42,9 +48,11 @@ const Article = (props: ArticleProps) => {
     const borderBackground = {
         backgroundColor: props.themeStyles['headerBackground'],
     }
-    const accentColors = {
-        color: props.themeStyles['textColorAccent'],
-        backgroundColor: props.themeStyles['mainColor'],
+
+    const icons: { [key: string]: any } = {
+        faRocket,
+        faAnchor,
+        faArchway,
     }
 
     //non constrained images
@@ -124,6 +132,7 @@ const Article = (props: ArticleProps) => {
                                         textColor={textColor}
                                         imgSize={props.imgSize}
                                         well={props.well}
+                                        icons={icons}
                                     />
                                 </div>
                             )}
@@ -162,7 +171,15 @@ const Article = (props: ArticleProps) => {
                                 <p>{Parser(item.desc)}</p>
                             </div>
                             {item.pagelink && item.actionlbl && (
-                                <TheListItemAction pagelink={item.pagelink} actionlbl={item.actionlbl} newwindow={item.newwindow} accentColors={accentColors} />
+                                <TheListItemAction
+                                    pagelink={item.pagelink}
+                                    actionlbl={item.actionlbl}
+                                    newwindow={item.newwindow}
+                                    themeStyles={props.themeStyles}
+                                    icons={icons}
+                                    btnSize={item.btnSize}
+                                    btnSize2={item.btnSize}
+                                />
                             )}
                         </div>
                     </div>
@@ -175,13 +192,28 @@ const Article = (props: ArticleProps) => {
 }
 
 const TheListItemAction = (props: TheListItemActionProps) => {
+    const btn1Styles = {
+        color: props.themeStyles['textColorAccent'],
+        backgroundColor: props.themeStyles['mainColor'],
+    }
+
     return (
         <div className={styles.the_list_item_action}>
-            <Link href={props.pagelink}>
-                <a target={props.newwindow === 1 ? '_blank' : '_self'} className="accent_color_bg accent_txt_color" style={props.accentColors}>
-                    {props.actionlbl}
-                </a>
-            </Link>
+            {props.pagelink ? (
+                <Link href={props.pagelink}>
+                    <a target={props.newwindow === 1 ? '_blank' : '_self'} className="accent_color_bg accent_txt_color" style={btn1Styles}>
+                        {props.actionlbl}
+                    </a>
+                </Link>
+            ) : (
+                props.weblink && (
+                    <Link href={props.weblink}>
+                        <a target={props.newwindow === 1 ? '_blank' : '_self'} className="accent_color_bg accent_txt_color" style={btn1Styles}>
+                            {props.actionlbl}
+                        </a>
+                    </Link>
+                )
+            )}
         </div>
     )
 }
