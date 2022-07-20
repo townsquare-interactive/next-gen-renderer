@@ -7,6 +7,18 @@ import { domainImage } from '../functions'
 import { useState } from 'react'
 import Link from 'next/link'
 
+// importing fontAwesome
+import { library } from '@fortawesome/fontawesome-svg-core'
+// import your icons
+import { faRocket, faAnchor, faArchway } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+const icons: { [key: string]: any } = {
+    faRocket,
+    faAnchor,
+    faArchway,
+}
+
 const MyArticle = (props: ArticleProps) => {
     const [imageHeight, setHeight] = useState(100)
     const [imageWidth, setWidth] = useState(300)
@@ -184,6 +196,7 @@ const TheListWrapV1 = (props: any) => {
                         textColor={textColor}
                         imgSize={props.imgSize}
                         well={props.well}
+                        icons={icons}
                     />
                 </figure>
             )}
@@ -274,6 +287,7 @@ const TheListWrapV2 = (props: any) => {
                         textColor={textColor}
                         imgSize={props.imgSize}
                         well={props.well}
+                        icons={icons}
                     />
                 </figure>
             )}
@@ -320,6 +334,7 @@ const TheListWrapV3 = (props: any) => {
                             textColor={textColor}
                             imgSize={props.imgSize}
                             well={props.well}
+                            icons={icons}
                         />
                     </figure>
                 )}
@@ -369,13 +384,20 @@ const TheListWrapV3 = (props: any) => {
 }
 
 const TheListItemAction = (props: TheListItemActionProps) => {
+    const btn1Styles = {
+        color: props.themeStyles['textColorAccent'],
+        backgroundColor: props.themeStyles['mainColor'],
+    }
+
     return (
         <div className={styles.the_list_item_action}>
-            <Link href={props.pagelink}>
-                <a target={props.newwindow === 1 ? '_blank' : '_self'} className="accent_color_bg accent_txt_color" style={props.accentColors}>
-                    {props.actionlbl}
-                </a>
-            </Link>
+            {props.pagelink && (
+                <Link href={props.pagelink}>
+                    <a target={props.newwindow === 1 ? '_blank' : '_self'} className="accent_color_bg accent_txt_color" style={btn1Styles}>
+                        {props.actionlbl}
+                    </a>
+                </Link>
+            )}
         </div>
     )
 }
