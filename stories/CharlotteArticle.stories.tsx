@@ -250,6 +250,27 @@ Button.args = {
             ...item1,
             actionlbl: 'Contact Us',
             pagelink: '/',
+            /*  actionlbl2: 'Contact 2',
+            pagelink2: '/', */
+            align: 'center',
+            icon: 'faArchway',
+            /* icon2: 'faAnchor', */
+            btnType: 'btn_1',
+            /*           btnType2: 'btn_2', */
+            btnSize: 'md',
+            // btnSize:'md btn_block',
+            /*   btnSize2: 'md', */
+        },
+    ],
+}
+export const TwoButtons = Template.bind({})
+TwoButtons.args = {
+    ...Default.args,
+    items: [
+        {
+            ...item1,
+            actionlbl: 'Contact Us',
+            pagelink: '/',
             actionlbl2: 'Contact 2',
             pagelink2: '/',
             align: 'center',
@@ -258,7 +279,7 @@ Button.args = {
             btnType: 'btn_1',
             btnType2: 'btn_2',
             btnSize: 'md',
-            // btnSize:'md btn_block',
+            /*             btnSize:'md btn_block', */
             btnSize2: 'md',
         },
     ],
@@ -333,6 +354,47 @@ export const MultipleBorder = Template.bind({})
 MultipleBorder.args = {
     ...ThreeColumns.args,
     well: '1',
+}
+export const MultipleBorderButtons = Template.bind({})
+MultipleBorderButtons.args = {
+    ...ThreeColumns.args,
+    columns: 3,
+    well: '1',
+    items: [
+        {
+            ...item1,
+            actionlbl: 'Contact Us',
+            pagelink: '/',
+            // actionlbl2: 'Contact 2',
+            //pagelink2: '/',
+            align: 'center',
+            icon: 'faArchway',
+            icon2: 'faAnchor',
+            btnType: 'btn_1',
+        },
+        {
+            ...item1,
+            actionlbl: 'Contact Us',
+            pagelink: '/',
+            // actionlbl2: 'Contact 2',
+            //pagelink2: '/',
+            align: 'center',
+            icon: 'faArchway',
+            icon2: 'faAnchor',
+            btnType: 'btn_1',
+        },
+        {
+            ...item1,
+            actionlbl: 'Contact Us',
+            pagelink: '/',
+            // actionlbl2: 'Contact 2',
+            //pagelink2: '/',
+            align: 'center',
+            icon: 'faArchway',
+            icon2: 'faAnchor',
+            btnType: 'btn_1',
+        },
+    ],
 }
 export const CustomClass = Template.bind({})
 CustomClass.args = {

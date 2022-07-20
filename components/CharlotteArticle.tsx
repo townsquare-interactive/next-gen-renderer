@@ -182,40 +182,26 @@ const CharlotteArticle = (props: ArticleProps) => {
                                     ) : (
                                         ''
                                     )}
-                                    {item.pagelink &&
-                                        item.actionlbl &&
-                                        (item.actionlbl2 ? (
-                                            <TheListItemAction
-                                                pagelink={item.pagelink}
-                                                actionlbl={item.actionlbl}
-                                                newwindow={item.newwindow}
-                                                newwindow2={item.newwindow2}
-                                                actionlbl2={item.actionlbl2}
-                                                pagelink2={item.pagelink2}
-                                                icon={item.icon}
-                                                icon2={item.icon2}
-                                                icons={icons}
-                                                btnType={item.btnType}
-                                                btnType2={item.btnType2}
-                                                themeStyles={props.themeStyles}
-                                                btnSize={item.btnSize}
-                                                btnSize2={item.btnSize2}
-                                            />
-                                        ) : (
-                                            <TheListItemAction
-                                                pagelink={item.pagelink}
-                                                actionlbl={item.actionlbl}
-                                                newwindow={item.newwindow}
-                                                newwindow2={item.newwindow2}
-                                                icon={item.icon}
-                                                icon2={item.icon2}
-                                                icons={icons}
-                                                btnType={item.btnType}
-                                                themeStyles={props.themeStyles}
-                                                btnSize={item.btnSize}
-                                                btnSize2={item.btnSize2}
-                                            />
-                                        ))}
+
+                                    {item.actionlbl && (
+                                        <TheListItemAction
+                                            pagelink={item.pagelink}
+                                            actionlbl={item.actionlbl}
+                                            newwindow={item.newwindow}
+                                            newwindow2={item.newwindow2}
+                                            actionlbl2={item.actionlbl2}
+                                            pagelink2={item.pagelink2}
+                                            icon={item.icon}
+                                            icon2={item.icon2}
+                                            icons={icons}
+                                            btnType={item.btnType}
+                                            btnType2={item.btnType2}
+                                            themeStyles={props.themeStyles}
+                                            btnSize={item.btnSize}
+                                            btnSize2={item.btnSize2}
+                                            well={props.well}
+                                        />
+                                    )}
                                 </div>
                             ) : (
                                 <Link href={item.pagelink || item.weblink || ''}>
@@ -268,42 +254,27 @@ const CharlotteArticle = (props: ArticleProps) => {
                                         ) : (
                                             ''
                                         )}
-                                        {(item.pagelink && item.actionlbl) ||
-                                            (item.weblink &&
-                                                (item.actionlbl2 || item.weblink2 ? (
-                                                    <TheListItemAction
-                                                        pagelink={item.pagelink}
-                                                        pagelink2={item.pagelink2}
-                                                        weblink={item.weblink}
-                                                        weblink2={item.weblink2}
-                                                        actionlbl={item.actionlbl}
-                                                        newwindow={item.newwindow}
-                                                        newwindow2={item.newwindow2}
-                                                        actionlbl2={item.actionlbl2}
-                                                        icon={item.icon}
-                                                        icon2={item.icon2}
-                                                        icons={icons}
-                                                        btnType={item.btnType}
-                                                        btnType2={item.btnType2}
-                                                        themeStyles={props.themeStyles}
-                                                        btnSize={item.btnSize}
-                                                        btnSize2={item.btnSize2}
-                                                    />
-                                                ) : (
-                                                    <TheListItemAction
-                                                        pagelink={item.pagelink}
-                                                        weblink={item.weblink}
-                                                        actionlbl={item.actionlbl}
-                                                        newwindow={item.newwindow}
-                                                        icon={item.icon}
-                                                        icon2={item.icon2}
-                                                        icons={icons}
-                                                        btnType={item.btnType}
-                                                        themeStyles={props.themeStyles}
-                                                        btnSize={item.btnSize}
-                                                        btnSize2={item.btnSize2}
-                                                    />
-                                                )))}
+                                        {item.pagelink && item.actionlbl && (
+                                            <TheListItemAction
+                                                pagelink={item.pagelink}
+                                                pagelink2={item.pagelink2}
+                                                weblink={item.weblink}
+                                                weblink2={item.weblink2}
+                                                actionlbl={item.actionlbl}
+                                                newwindow={item.newwindow}
+                                                newwindow2={item.newwindow2}
+                                                actionlbl2={item.actionlbl2}
+                                                icon={item.icon}
+                                                icon2={item.icon2}
+                                                icons={icons}
+                                                btnType={item.btnType}
+                                                btnType2={item.btnType2}
+                                                themeStyles={props.themeStyles}
+                                                btnSize={item.btnSize}
+                                                btnSize2={item.btnSize2}
+                                                well={props.well}
+                                            />
+                                        )}
                                     </a>
                                 </Link>
                             )}
@@ -619,6 +590,7 @@ const TheListItemAction = (props: TheListItemActionProps) => {
                         [styles.btn_lg]: props.btnSize === 'lg' || props.btnSize === 'lg btn_block',
                         [styles.btn_sm]: props.btnSize === 'sm' || props.btnSize === 'sm btn_block',
                         [styles.btn_xs]: props.btnSize === 'xs' || props.btnSize === 'xs btn_block',
+                        [styles.btn_w]: props.well === '1',
                         [styles.btn_block]: props.btnSize.includes('btn_block'),
                     })}
                     style={determineStyles(props.btnType || 'btn_1')}
