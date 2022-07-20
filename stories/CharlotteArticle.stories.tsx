@@ -337,7 +337,6 @@ MultipleBorder.args = {
 export const CustomClass = Template.bind({})
 CustomClass.args = {
     ...AlignLeft.args,
-    well: '1',
     class: 'hello',
 }
 

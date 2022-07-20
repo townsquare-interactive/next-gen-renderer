@@ -832,4 +832,13 @@
     .font_xl {
         font-size: 125%;
     }
+
+    //custom class test
+    &.tsD_hello {
+        background-color: black;
+
+        * {
+            color: red !important;
+        }
+    }
 }
