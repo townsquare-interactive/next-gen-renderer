@@ -359,15 +359,15 @@ const TheListWrapV1 = (props: TsiWrp) => {
                 >
                     {item.headerTag === '1' ? (
                         <h1 className={styles['tsI_hd']} style={props.well ? textColorAccent : textColorHeading}>
-                            {item.headline}
+                            {Parser(item.headline)}
                         </h1>
                     ) : (
                         <h2 className={styles['tsI_hd']} style={props.well ? textColorAccent : textColorHeading}>
-                            {item.headline}
+                            {Parser(item.headline)}
                         </h2>
                     )}
                     <h2 className={styles['tsI_sh']} style={props.well ? textColorAccent : textColorHeading}>
-                        {item.subheader}
+                        {Parser(item.subheader)}
                     </h2>
                 </header>
 
@@ -382,7 +382,7 @@ const TheListWrapV1 = (props: TsiWrp) => {
                         })}
                         style={props.well || item.isFeatured ? textColorAccent : textColorHeading}
                     >
-                        <p>{item.desc}</p>
+                        <p>{Parser(item.desc)}</p>
                     </div>
                 </div>
             </div>
@@ -405,15 +405,15 @@ const TheListWrapV2 = (props: TsiWrp) => {
             >
                 {item.headerTag === '1' ? (
                     <h1 className={styles['tsI_hd']} style={props.well ? textColorAccent : textColorHeading}>
-                        {item.headline}
+                        {Parser(item.headline)}
                     </h1>
                 ) : (
                     <h2 className={styles['tsI_hd']} style={props.well ? textColorAccent : textColorHeading}>
-                        {item.headline}
+                        {Parser(item.headline)}
                     </h2>
                 )}
                 <h2 className={styles['tsI_sh']} style={props.well ? textColorAccent : textColorHeading}>
-                    {item.subheader}
+                    {Parser(item.subheader)}
                 </h2>
             </header>
             {item.image && (
@@ -503,15 +503,15 @@ const TheListWrapV3 = (props: TsiWrp) => {
                     >
                         {item.headerTag === '1' ? (
                             <h1 className={styles['tsI_hd']} style={props.well ? textColorAccent : textColorHeading}>
-                                {item.headline}
+                                {Parser(item.headline)}
                             </h1>
                         ) : (
                             <h2 className={styles['tsI_hd']} style={props.well ? textColorAccent : textColorHeading}>
-                                {item.headline}
+                                {Parser(item.headline)}
                             </h2>
                         )}
                         <h2 className={styles['tsI_sh']} style={props.well ? textColorAccent : textColorHeading}>
-                            {item.subheader}
+                            {Parser(item.subheader)}
                         </h2>
                     </header>
 
