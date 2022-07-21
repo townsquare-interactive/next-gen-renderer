@@ -14,53 +14,9 @@ import { faRocket, faAnchor, faArchway } from '@fortawesome/free-solid-svg-icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const CharlotteArticle = (props: ArticleProps) => {
-    const [imageHeight, setHeight] = useState(100)
-    const [imageWidth, setWidth] = useState(300)
-    const [lightbox, setLightbox] = useState(false)
-
-    function toggleSwitch() {
-        setLightbox(!lightbox)
-        console.log(lightbox)
-    }
-
-    const calcImageSize = (loadedMedia: Media) => {
-        setWidth(loadedMedia.naturalWidth)
-        setHeight(loadedMedia.naturalHeight)
-    }
-
-    //Defining style objects
-    const textColor = {
-        color: props.themeStyles['textColor'],
-    }
-
     const textColorHeading = {
         color: props.themeStyles['headingColor'],
     }
-    const textColorAccent = {
-        color: props.themeStyles['textColorAccent'],
-    }
-    const accentBackground = {
-        backgroundColor: props.themeStyles['mainColor'],
-    }
-    const noBackground = {
-        backgroundColor: 'transparent',
-    }
-    const borderBackground = {
-        backgroundColor: props.themeStyles['headerBackground'],
-    }
-    const accentColors = {
-        color: props.themeStyles['textColorAccent'],
-        backgroundColor: props.themeStyles['mainColor'],
-    }
-
-    const icons: { [key: string]: any } = {
-        faRocket,
-        faAnchor,
-        faArchway,
-    }
-
-    //non constrained images
-    const imageNoSizings = ['no_sizing', 'no_set_height']
 
     return (
         <div
@@ -105,186 +61,260 @@ const CharlotteArticle = (props: ArticleProps) => {
                 )}
                 {props.items.map((item, index) =>
                     item.disabled != 'disabled' ? (
-                        <article
-                            className={cn(
-                                styles['tsI'],
-                                {
-                                    [styles.right]: item.align === 'right',
-                                    [styles.left]: item.align === 'left',
-                                    [styles.yHero]: item.isFeatured === 'active',
-                                    [styles.nHero]: !item.isFeatured,
-                                    [styles.yDsc]: item.desc,
-                                    [styles.nDsc]: !item.desc,
-                                    [styles.nImg]: !item.image,
-                                    [styles.yImg]: item.image,
-                                    [styles.yHds]: item.headline || item.subheader,
-                                    [styles.nHds]: !item.headline || !item.subheader,
-                                    [styles.center]: item.align === 'center',
-                                    [styles.mod_left]: item.align === 'left' && props.type === 'article_3',
-                                    [styles.mod_right]: item.align === 'right' && props.type === 'article_3',
-                                    [styles.mod_center]: item.align === 'center' && props.type === 'article_3',
-                                },
-                                styles[`item_${index + 1}`]
-                            )}
-                            lang="en"
+                        <TheListItem
+                            item={item}
+                            well={props.well}
+                            index={index}
+                            themeStyles={props.themeStyles}
+                            textColorHeading={textColorHeading}
                             key={index}
-                            data-aos="fade-up"
-                            data-aos-once="true"
-                            style={props.well === '1' ? borderBackground : noBackground}
-                        >
-                            {!item.pagelink || (item.pagelink && item.pagelink2) ? (
-                                <div className={styles['tsI_wrp']}>
-                                    {props.type === 'article_1' ? (
-                                        <TheListWrapV1
-                                            item={item}
-                                            imageNoSizings={imageNoSizings}
-                                            calcImageSize={calcImageSize}
-                                            imageWidth={imageWidth}
-                                            imageHeight={imageHeight}
-                                            textColorAccent={textColorAccent}
-                                            textColor={textColor}
-                                            imgSize={props.imgSize}
-                                            well={props.well}
-                                            textColorHeading={textColorHeading}
-                                            icons={icons}
-                                            icon3={item.icon3}
-                                        />
-                                    ) : props.type === 'article_2' ? (
-                                        <TheListWrapV2
-                                            item={item}
-                                            imageNoSizings={imageNoSizings}
-                                            calcImageSize={calcImageSize}
-                                            imageWidth={imageWidth}
-                                            imageHeight={imageHeight}
-                                            textColorAccent={textColorAccent}
-                                            textColor={textColor}
-                                            imgSize={props.imgSize}
-                                            well={props.well}
-                                            textColorHeading={textColorHeading}
-                                            icons={icons}
-                                            icon3={item.icon3}
-                                        />
-                                    ) : props.type === 'article_3' ? (
-                                        <TheListWrapV3
-                                            item={item}
-                                            imageNoSizings={imageNoSizings}
-                                            calcImageSize={calcImageSize}
-                                            imageWidth={imageWidth}
-                                            imageHeight={imageHeight}
-                                            textColorAccent={textColorAccent}
-                                            textColor={textColor}
-                                            imgSize={props.imgSize}
-                                            well={props.well}
-                                            textColorHeading={textColorHeading}
-                                            icons={icons}
-                                            icon3={item.icon3}
-                                        />
-                                    ) : (
-                                        ''
-                                    )}
-
-                                    {item.actionlbl && (
-                                        <TheListItemAction
-                                            pagelink={item.pagelink}
-                                            actionlbl={item.actionlbl}
-                                            newwindow={item.newwindow}
-                                            newwindow2={item.newwindow2}
-                                            actionlbl2={item.actionlbl2}
-                                            pagelink2={item.pagelink2}
-                                            icon={item.icon}
-                                            icon2={item.icon2}
-                                            icons={icons}
-                                            btnType={item.btnType}
-                                            btnType2={item.btnType2}
-                                            themeStyles={props.themeStyles}
-                                            btnSize={item.btnSize}
-                                            btnSize2={item.btnSize2}
-                                            well={props.well}
-                                        />
-                                    )}
-                                </div>
-                            ) : (
-                                <Link href={item.pagelink || item.weblink || ''}>
-                                    <a className={styles['tsI_wrp']} target={item.newwindow === 1 ? '_blank' : '_self'}>
-                                        {props.type === 'article_1' ? (
-                                            <TheListWrapV1
-                                                item={item}
-                                                imageNoSizings={imageNoSizings}
-                                                calcImageSize={calcImageSize}
-                                                imageWidth={imageWidth}
-                                                imageHeight={imageHeight}
-                                                textColorAccent={textColorAccent}
-                                                textColor={textColor}
-                                                imgSize={props.imgSize}
-                                                well={props.well}
-                                                textColorHeading={textColorHeading}
-                                                icons={icons}
-                                                icon3={item.icon3}
-                                            />
-                                        ) : props.type === 'article_2' ? (
-                                            <TheListWrapV2
-                                                item={item}
-                                                imageNoSizings={imageNoSizings}
-                                                calcImageSize={calcImageSize}
-                                                imageWidth={imageWidth}
-                                                imageHeight={imageHeight}
-                                                textColorAccent={textColorAccent}
-                                                textColor={textColor}
-                                                imgSize={props.imgSize}
-                                                well={props.well}
-                                                textColorHeading={textColorHeading}
-                                                icons={icons}
-                                                icon3={item.icon3}
-                                            />
-                                        ) : props.type === 'article_3' ? (
-                                            <TheListWrapV3
-                                                item={item}
-                                                imageNoSizings={imageNoSizings}
-                                                calcImageSize={calcImageSize}
-                                                imageWidth={imageWidth}
-                                                imageHeight={imageHeight}
-                                                textColorAccent={textColorAccent}
-                                                textColor={textColor}
-                                                imgSize={props.imgSize}
-                                                well={props.well}
-                                                textColorHeading={textColorHeading}
-                                                icons={icons}
-                                                icon3={item.icon3}
-                                            />
-                                        ) : (
-                                            ''
-                                        )}
-                                        {item.pagelink && item.actionlbl && (
-                                            <TheListItemAction
-                                                pagelink={item.pagelink}
-                                                pagelink2={item.pagelink2}
-                                                weblink={item.weblink}
-                                                weblink2={item.weblink2}
-                                                actionlbl={item.actionlbl}
-                                                newwindow={item.newwindow}
-                                                newwindow2={item.newwindow2}
-                                                actionlbl2={item.actionlbl2}
-                                                icon={item.icon}
-                                                icon2={item.icon2}
-                                                icons={icons}
-                                                btnType={item.btnType}
-                                                btnType2={item.btnType2}
-                                                themeStyles={props.themeStyles}
-                                                btnSize={item.btnSize}
-                                                btnSize2={item.btnSize2}
-                                                well={props.well}
-                                            />
-                                        )}
-                                    </a>
-                                </Link>
-                            )}
-                        </article>
+                            imgSize={props.imgSize}
+                            type={props.type}
+                        />
                     ) : (
                         <></>
                     )
                 )}
             </div>
         </div>
+    )
+}
+
+const TheListItem = (props: any) => {
+    const { item } = props
+
+    const [imageHeight, setHeight] = useState(100)
+    const [imageWidth, setWidth] = useState(300)
+    const [lightbox, setLightbox] = useState(false)
+
+    function toggleSwitch() {
+        setLightbox(!lightbox)
+        console.log(lightbox)
+    }
+
+    const calcImageSize = (loadedMedia: Media) => {
+        setWidth(loadedMedia.naturalWidth)
+        setHeight(loadedMedia.naturalHeight)
+    }
+
+    //Defining style objects
+    const textColor = {
+        color: props.themeStyles['textColor'],
+    }
+
+    const textColorAccent = {
+        color: props.themeStyles['textColorAccent'],
+    }
+    const accentBackground = {
+        backgroundColor: props.themeStyles['mainColor'],
+    }
+    const noBackground = {
+        backgroundColor: 'transparent',
+    }
+    const borderBackground = {
+        backgroundColor: props.themeStyles['headerBackground'],
+    }
+    const accentColors = {
+        color: props.themeStyles['textColorAccent'],
+        backgroundColor: props.themeStyles['mainColor'],
+    }
+
+    const icons: { [key: string]: any } = {
+        faRocket,
+        faAnchor,
+        faArchway,
+    }
+
+    //non constrained images
+    const imageNoSizings = ['no_sizing', 'no_set_height']
+
+    //determine amount of buttons
+    function buttonCount() {
+        if (item.actionlbl && item.actionlbl2) {
+            const btnCount = 2
+        } else if (item.actionlbl && !item.actionlbl2) {
+            const btnCount = 1
+        } else if (!item.actionlbl && item.actionlbl2) {
+            const btnCount = 1
+        } else {
+            const btnCount = 0
+        }
+    }
+
+    return (
+        <article
+            className={cn(
+                styles['tsI'],
+                {
+                    [styles.right]: item.align === 'right',
+                    [styles.left]: item.align === 'left',
+                    [styles.yHero]: item.isFeatured === 'active',
+                    [styles.nHero]: !item.isFeatured,
+                    [styles.yDsc]: item.desc,
+                    [styles.nDsc]: !item.desc,
+                    [styles.nImg]: !item.image,
+                    [styles.yImg]: item.image,
+                    [styles.yHds]: item.headline || item.subheader,
+                    [styles.nHds]: !item.headline || !item.subheader,
+                    [styles.center]: item.align === 'center',
+                    [styles.mod_left]: item.align === 'left' && props.type === 'article_3',
+                    [styles.mod_right]: item.align === 'right' && props.type === 'article_3',
+                    [styles.mod_center]: item.align === 'center' && props.type === 'article_3',
+                },
+                styles[`item_${props.index + 1}`]
+            )}
+            lang="en"
+            data-aos="fade-up"
+            data-aos-once="true"
+            style={props.well === '1' ? props.borderBackground : props.noBackground}
+        >
+            {!item.pagelink || (item.pagelink && item.pagelink2) ? (
+                <div className={styles['tsI_wrp']}>
+                    {props.type === 'article_1' ? (
+                        <TheListWrapV1
+                            item={item}
+                            imageNoSizings={imageNoSizings}
+                            calcImageSize={calcImageSize}
+                            imageWidth={imageWidth}
+                            imageHeight={imageHeight}
+                            textColorAccent={textColorAccent}
+                            textColor={textColor}
+                            imgSize={props.imgSize}
+                            well={props.well}
+                            textColorHeading={props.textColorHeading}
+                            icons={icons}
+                            icon3={item.icon3}
+                        />
+                    ) : props.type === 'article_2' ? (
+                        <TheListWrapV2
+                            item={item}
+                            imageNoSizings={imageNoSizings}
+                            calcImageSize={calcImageSize}
+                            imageWidth={imageWidth}
+                            imageHeight={imageHeight}
+                            textColorAccent={textColorAccent}
+                            textColor={textColor}
+                            imgSize={props.imgSize}
+                            well={props.well}
+                            textColorHeading={props.textColorHeading}
+                            icons={icons}
+                            icon3={item.icon3}
+                        />
+                    ) : props.type === 'article_3' ? (
+                        <TheListWrapV3
+                            item={item}
+                            imageNoSizings={imageNoSizings}
+                            calcImageSize={calcImageSize}
+                            imageWidth={imageWidth}
+                            imageHeight={imageHeight}
+                            textColorAccent={textColorAccent}
+                            textColor={textColor}
+                            imgSize={props.imgSize}
+                            well={props.well}
+                            textColorHeading={props.textColorHeading}
+                            icons={icons}
+                            icon3={item.icon3}
+                        />
+                    ) : (
+                        ''
+                    )}
+
+                    {item.actionlbl && (
+                        <TheListItemAction
+                            pagelink={item.pagelink}
+                            actionlbl={item.actionlbl}
+                            newwindow={item.newwindow}
+                            newwindow2={item.newwindow2}
+                            actionlbl2={item.actionlbl2}
+                            pagelink2={item.pagelink2}
+                            icon={item.icon}
+                            icon2={item.icon2}
+                            icons={icons}
+                            btnType={item.btnType}
+                            btnType2={item.btnType2}
+                            themeStyles={props.themeStyles}
+                            btnSize={item.btnSize}
+                            btnSize2={item.btnSize2}
+                            well={props.well}
+                        />
+                    )}
+                </div>
+            ) : (
+                <Link href={item.pagelink || item.weblink || ''}>
+                    <a className={styles['tsI_wrp']} target={item.newwindow === 1 ? '_blank' : '_self'}>
+                        {props.type === 'article_1' ? (
+                            <TheListWrapV1
+                                item={item}
+                                imageNoSizings={imageNoSizings}
+                                calcImageSize={calcImageSize}
+                                imageWidth={imageWidth}
+                                imageHeight={imageHeight}
+                                textColorAccent={textColorAccent}
+                                textColor={textColor}
+                                imgSize={props.imgSize}
+                                well={props.well}
+                                textColorHeading={props.textColorHeading}
+                                icons={icons}
+                                icon3={item.icon3}
+                            />
+                        ) : props.type === 'article_2' ? (
+                            <TheListWrapV2
+                                item={item}
+                                imageNoSizings={imageNoSizings}
+                                calcImageSize={calcImageSize}
+                                imageWidth={imageWidth}
+                                imageHeight={imageHeight}
+                                textColorAccent={textColorAccent}
+                                textColor={textColor}
+                                imgSize={props.imgSize}
+                                well={props.well}
+                                textColorHeading={props.textColorHeading}
+                                icons={icons}
+                                icon3={item.icon3}
+                            />
+                        ) : props.type === 'article_3' ? (
+                            <TheListWrapV3
+                                item={item}
+                                imageNoSizings={imageNoSizings}
+                                calcImageSize={calcImageSize}
+                                imageWidth={imageWidth}
+                                imageHeight={imageHeight}
+                                textColorAccent={textColorAccent}
+                                textColor={textColor}
+                                imgSize={props.imgSize}
+                                well={props.well}
+                                textColorHeading={props.textColorHeading}
+                                icons={icons}
+                                icon3={item.icon3}
+                            />
+                        ) : (
+                            ''
+                        )}
+                        {item.pagelink && item.actionlbl && (
+                            <TheListItemAction
+                                pagelink={item.pagelink}
+                                pagelink2={item.pagelink2}
+                                weblink={item.weblink}
+                                weblink2={item.weblink2}
+                                actionlbl={item.actionlbl}
+                                newwindow={item.newwindow}
+                                newwindow2={item.newwindow2}
+                                actionlbl2={item.actionlbl2}
+                                icon={item.icon}
+                                icon2={item.icon2}
+                                icons={icons}
+                                btnType={item.btnType}
+                                btnType2={item.btnType2}
+                                themeStyles={props.themeStyles}
+                                btnSize={item.btnSize}
+                                btnSize2={item.btnSize2}
+                                well={props.well}
+                            />
+                        )}
+                    </a>
+                </Link>
+            )}
+        </article>
     )
 }
 
