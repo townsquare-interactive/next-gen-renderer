@@ -147,13 +147,15 @@ const TheListItem = (props: any) => {
 
     const twoButtons = item.actionlbl && item.actionlbl2 && (item.pagelink || item.weblink) && (item.pagelink2 || item.weblink2)
 
+    const oneButton = (item.actionlbl && !item.actionlbl2) || (!item.actionlbl && item.actionlbl2)
+
     /*     const isButton = item.actionlbl || item.actionlbl2
 
     const isLink = item.pagelink || item.pagelink2 || item.weblink || item.weblink2 */
 
     const linkNoBtn = isButton() === false && isLink() === true
 
-    const wrapLink = !twoButtons || linkNoBtn
+    const wrapLink = oneButton || linkNoBtn
 
     const linkAndBtn =
         (item.actionlbl && item.pagelink) || (item.actionlbl && item.weblink) || (item.actionlbl2 && item.pagelink2) || (item.actionlbl2 && item.weblink2)
@@ -177,13 +179,15 @@ const TheListItem = (props: any) => {
                     [styles.mod_left]: item.align === 'left' && props.type === 'article_3',
                     [styles.mod_right]: item.align === 'right' && props.type === 'article_3',
                     [styles.mod_center]: item.align === 'center' && props.type === 'article_3',
+                    [styles.yLk]: (item.pagelink || item.weblink || item.pagelink2 || item.weblink2) && !twoButtons,
+                    [styles.yLks]: twoButtons,
                 },
                 styles[`item_${props.index + 1}`]
             )}
             lang="en"
             data-aos="fade-up"
             data-aos-once="true"
-            style={props.well === '1' ? props.borderBackground : props.noBackground}
+            style={props.well === '1' ? borderBackground : noBackground}
         >
             {!wrapLink ? (
                 <div className={styles['tsI_wrp']}>
@@ -663,6 +667,7 @@ const TheListItemAction = (props: TheListItemActionProps) => {
                         [styles.btn_lg]: props.btnSize2 === 'lg' || props.btnSize2 === 'lg btn_block',
                         [styles.btn_sm]: props.btnSize2 === 'sm' || props.btnSize2 === 'sm btn_block',
                         [styles.btn_xs]: props.btnSize2 === 'xs' || props.btnSize2 === 'xs btn_block',
+                        [styles.btn_w]: props.well === '1',
                         [styles.btn_block]: props.btnSize2.includes('btn_block'),
                     })}
                     style={determineStyles(props.btnType2 || 'btn_2')}

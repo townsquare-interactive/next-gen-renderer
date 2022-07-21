@@ -10,6 +10,10 @@ export default {
             options: ['landscape_4_3', 'landscape_3_2', 'portrait_3_4', 'portrait_2_3', 'square_1_1', 'widescreen_16_9', 'widescreen_2_4_1', 'widescreen_3_1'],
             control: { type: 'radio' },
         },
+        well: {
+            options: ['', '1'],
+            control: { type: 'radio' },
+        },
         items: {
             align: {
                 options: ['left', 'right', 'center'],
@@ -323,6 +327,7 @@ ButtonSizesBlock.args = {
 export const LinkNoButton = Template.bind({})
 LinkNoButton.args = {
     ...Default.args,
+    well: '1',
     items: [
         {
             ...item1,
