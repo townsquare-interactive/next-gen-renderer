@@ -270,9 +270,9 @@ TwoButtons.args = {
         {
             ...item1,
             actionlbl: 'Contact Us',
-            pagelink: '/',
+            pagelink: 'facebook.com',
             actionlbl2: 'Contact 2',
-            pagelink2: '/',
+            weblink2: 'google.com',
             align: 'center',
             icon: 'faArchway',
             icon2: 'faAnchor',
@@ -280,6 +280,21 @@ TwoButtons.args = {
             btnType2: 'btn_2',
             btnSize: 'md',
             /*             btnSize:'md btn_block', */
+            btnSize2: 'md',
+        },
+    ],
+}
+export const Button2 = Template.bind({})
+Button2.args = {
+    ...Default.args,
+    items: [
+        {
+            ...item1,
+            actionlbl2: 'Contact 2',
+            weblink2: 'tacos.com',
+            align: 'center',
+            icon2: 'faAnchor',
+            btnType2: 'btn_2',
             btnSize2: 'md',
         },
     ],
@@ -311,7 +326,19 @@ LinkNoButton.args = {
     items: [
         {
             ...item1,
-            pagelink: '/',
+            weblink2: 'facebook.com',
+            align: 'left',
+        },
+    ],
+}
+
+export const ButtonNoLink = Template.bind({})
+ButtonNoLink.args = {
+    ...Default.args,
+    items: [
+        {
+            ...item1,
+            actionlbl: 'hello',
             align: 'left',
         },
     ],

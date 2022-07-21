@@ -129,17 +129,34 @@ const TheListItem = (props: any) => {
     const imageNoSizings = ['no_sizing', 'no_set_height']
 
     //determine amount of buttons
-    function buttonCount() {
-        if (item.actionlbl && item.actionlbl2) {
-            const btnCount = 2
-        } else if (item.actionlbl && !item.actionlbl2) {
-            const btnCount = 1
-        } else if (!item.actionlbl && item.actionlbl2) {
-            const btnCount = 1
+
+    function isButton() {
+        if (item.actionlbl || item.actionlbl2) {
+            return true
         } else {
-            const btnCount = 0
+            return false
         }
     }
+    function isLink() {
+        if (item.pagelink || item.pagelink2 || item.weblink || item.weblink2) {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    const twoButtons = item.actionlbl && item.actionlbl2 && (item.pagelink || item.weblink) && (item.pagelink2 || item.weblink2)
+
+    /*     const isButton = item.actionlbl || item.actionlbl2
+
+    const isLink = item.pagelink || item.pagelink2 || item.weblink || item.weblink2 */
+
+    const linkNoBtn = isButton() === false && isLink() === true
+
+    const wrapLink = !twoButtons || linkNoBtn
+
+    const linkAndBtn =
+        (item.actionlbl && item.pagelink) || (item.actionlbl && item.weblink) || (item.actionlbl2 && item.pagelink2) || (item.actionlbl2 && item.weblink2)
 
     return (
         <article
@@ -168,7 +185,7 @@ const TheListItem = (props: any) => {
             data-aos-once="true"
             style={props.well === '1' ? props.borderBackground : props.noBackground}
         >
-            {!item.pagelink || (item.pagelink && item.pagelink2) ? (
+            {!wrapLink ? (
                 <div className={styles['tsI_wrp']}>
                     {props.type === 'article_1' ? (
                         <TheListWrapV1
@@ -219,7 +236,7 @@ const TheListItem = (props: any) => {
                         ''
                     )}
 
-                    {item.actionlbl && (
+                    {linkAndBtn && (
                         <TheListItemAction
                             pagelink={item.pagelink}
                             actionlbl={item.actionlbl}
@@ -227,6 +244,7 @@ const TheListItem = (props: any) => {
                             newwindow2={item.newwindow2}
                             actionlbl2={item.actionlbl2}
                             pagelink2={item.pagelink2}
+                            weblink2={item.weblink2}
                             icon={item.icon}
                             icon2={item.icon2}
                             icons={icons}
@@ -240,7 +258,7 @@ const TheListItem = (props: any) => {
                     )}
                 </div>
             ) : (
-                <Link href={item.pagelink || item.weblink || ''}>
+                <Link href={item.pagelink || item.weblink || item.pagelink2 || item.weblink2 || ''}>
                     <a className={styles['tsI_wrp']} target={item.newwindow === 1 ? '_blank' : '_self'}>
                         {props.type === 'article_1' ? (
                             <TheListWrapV1
@@ -290,7 +308,7 @@ const TheListItem = (props: any) => {
                         ) : (
                             ''
                         )}
-                        {item.pagelink && item.actionlbl && (
+                        {isButton() && (
                             <TheListItemAction
                                 pagelink={item.pagelink}
                                 pagelink2={item.pagelink2}
@@ -560,11 +578,18 @@ const TheListItemAction = (props: TheListItemActionProps) => {
         }
     }
 
+    const link1 = props.pagelink || props.weblink
+
+    const link2 = props.pagelink2 || props.weblink2
+    console.log(link2)
+    console.log(link1)
+
     return (
         <>
-            {props.actionlbl2 ? (
+            {props.actionlbl2 && props.actionlbl ? (
                 <div className={cn(styles['tsI_btn_std_wrp'], styles['tsI_text'])}>
-                    <Link href={props.pagelink || props.weblink || ''}>
+                    {/* <Link href={props.pagelink || props.weblink || ''}> */}
+                    <Link href={link1 || ''}>
                         <a
                             target={props.newwindow === 1 ? '_blank' : '_self'}
                             className={cn({
@@ -587,7 +612,8 @@ const TheListItemAction = (props: TheListItemActionProps) => {
                             </div>
                         </a>
                     </Link>
-                    <Link href={props.pagelink2 || props.weblink2 || ''}>
+
+                    <Link href={link2 || ''}>
                         <a
                             target={props.newwindow2 === 1 ? '_blank' : '_self'}
                             className={cn({
@@ -607,11 +633,12 @@ const TheListItemAction = (props: TheListItemActionProps) => {
                                 style={determineStyles(props.btnType2 || 'btn_2')}
                             >
                                 {props.icon2 && <FontAwesomeIcon icon={icon2 || faRocket} />} {props.actionlbl2}
+                                hi
                             </div>
                         </a>
                     </Link>
                 </div>
-            ) : (
+            ) : props.actionlbl ? (
                 <div
                     className={cn(styles['tsI_btn'], styles['btn_1'], styles['transition'], {
                         [styles.btn_1]: props.btnType === 'btn_1' || !props.btnType,
@@ -626,6 +653,21 @@ const TheListItemAction = (props: TheListItemActionProps) => {
                     style={determineStyles(props.btnType || 'btn_1')}
                 >
                     {props.icon && <FontAwesomeIcon icon={icon || faRocket} />} {props.actionlbl}
+                </div>
+            ) : (
+                <div
+                    className={cn(styles['tsI_btn'], styles['transition'], {
+                        [styles.btn_1]: props.btnType === 'btn_1',
+                        [styles.btn_2]: props.btnType === 'btn_2' || !props.btnType2,
+                        [styles.btn_md]: props.btnSize2 === 'md' || props.btnSize2 === 'md btn_block' || !props.btnSize2,
+                        [styles.btn_lg]: props.btnSize2 === 'lg' || props.btnSize2 === 'lg btn_block',
+                        [styles.btn_sm]: props.btnSize2 === 'sm' || props.btnSize2 === 'sm btn_block',
+                        [styles.btn_xs]: props.btnSize2 === 'xs' || props.btnSize2 === 'xs btn_block',
+                        [styles.btn_block]: props.btnSize2.includes('btn_block'),
+                    })}
+                    style={determineStyles(props.btnType2 || 'btn_2')}
+                >
+                    {props.icon2 && <FontAwesomeIcon icon={icon2 || faRocket} />} {props.actionlbl2}
                 </div>
             )}
         </>
