@@ -14,6 +14,10 @@ export default {
             options: ['', '1'],
             control: { type: 'radio' },
         },
+        columns: {
+            options: [1, 2, 3, 4],
+            control: { type: 'radio' },
+        },
         items: {
             align: {
                 options: ['left', 'right', 'center'],
@@ -425,6 +429,29 @@ MultipleBorderButtons.args = {
             icon: 'faArchway',
             icon2: 'faAnchor',
             btnType: 'btn_1',
+        },
+    ],
+}
+export const MultipleBorderLinked = Template.bind({})
+MultipleBorderLinked.args = {
+    ...ThreeColumns.args,
+    columns: 3,
+    well: '1',
+    items: [
+        {
+            ...item1,
+            pagelink: '/',
+            align: 'center',
+        },
+        {
+            ...item1,
+            pagelink: '/',
+            align: 'center',
+        },
+        {
+            ...item1,
+            pagelink: '/',
+            align: 'center',
         },
     ],
 }

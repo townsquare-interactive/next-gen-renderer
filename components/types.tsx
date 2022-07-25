@@ -413,14 +413,18 @@ export interface ArticleItems {
     headSize?: string
     descSize?: string
 }
+
 export interface ArticleProps {
     uid: string
     type: string
+    /**Border background on items*/
     well: string
-    align: string
+    align?: string
     items: ArticleItems[]
     imgSize: string
+    /**Custom class addition*/
     class: string
+    /**Title text to go above module*/
     title: string
     hideTitle?: number
     export: number
@@ -428,6 +432,7 @@ export interface ArticleProps {
     lightbox: string
     blockSwitch1: number
     scale_to_fit: string
+    /**Global styles for site*/
     themeStyles: ThemeStyles
     /**Check to see if element is hidden */
 }
