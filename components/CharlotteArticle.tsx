@@ -8,7 +8,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 
 // importing fontAwesome
-import { library } from '@fortawesome/fontawesome-svg-core'
+/* import { library } from '@fortawesome/fontawesome-svg-core' */
 // import your icons
 import { faRocket, faAnchor, faArchway } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -259,7 +259,7 @@ const TheListItem = (props: any) => {
                 </div>
             ) : (
                 <Link href={item.pagelink || item.weblink || item.pagelink2 || item.weblink2 || ''}>
-                    <a className={styles['tsI_wrp']} target={item.newwindow === 1 ? '_blank' : item.newwindow2 === 1 ? '_blank' : '_self'}>
+                    <a className={cn('btn_link', styles['tsI_wrp'])} target={item.newwindow === 1 ? '_blank' : item.newwindow2 === 1 ? '_blank' : '_self'}>
                         {props.type === 'article_1' ? (
                             <TheListWrapV1
                                 item={item}
@@ -460,23 +460,24 @@ const TheListWrapV2 = (props: TsiWrp) => {
                     {item.caption_tag && <figcaption style={textColorAccent}>{item.caption_tag}</figcaption>}
                 </figure>
             )}
-
-            <div className={cn(styles['tsI_txt'])}>
-                <div className={styles['tsI_dsc_wrp']}>
-                    <div
-                        className={cn(styles['tsI_dsc'], {
-                            [styles.font_xs]: item.descSize === 'font_xs',
-                            [styles.font_sm]: item.descSize === 'font_sm',
-                            [styles.font_md]: item.descSize === 'font_md',
-                            [styles.font_lg]: item.descSize === 'font_lg',
-                            [styles.font_xl]: item.descSize === 'font_xl',
-                        })}
-                        style={props.well || item.isFeatured ? textColorAccent : textColorHeading}
-                    >
-                        <p>{item.desc}</p>
+            {item.desc && (
+                <div className={cn(styles['tsI_txt'])}>
+                    <div className={styles['tsI_dsc_wrp']}>
+                        <div
+                            className={cn(styles['tsI_dsc'], {
+                                [styles.font_xs]: item.descSize === 'font_xs',
+                                [styles.font_sm]: item.descSize === 'font_sm',
+                                [styles.font_md]: item.descSize === 'font_md',
+                                [styles.font_lg]: item.descSize === 'font_lg',
+                                [styles.font_xl]: item.descSize === 'font_xl',
+                            })}
+                            style={props.well || item.isFeatured ? textColorAccent : textColorHeading}
+                        >
+                            <p>{item.desc}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            )}
         </>
     )
 }
@@ -568,7 +569,9 @@ const TheListItemAction = (props: TheListItemActionProps) => {
 
     const btn2Hover = `.btn2{color: ${props.themeStyles['altColor']}; border-color: ${props.themeStyles['altColor']}} .btn2:hover{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['mainColor']}}` */
 
-    const btns = `.btn1{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['mainColor']}} .btn1:hover{color: ${props.themeStyles['mainColor']}; background-color: ${props.themeStyles['textColorAccent']}} .btn2{color: ${props.themeStyles['altColor']}; border-color: ${props.themeStyles['altColor']}} .btn2:hover{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['altColor']}}`
+    const btns = props.well
+        ? `.btn1{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['mainColor']}} .btn_link:hover .btn1{color: ${props.themeStyles['mainColor']}; background-color: ${props.themeStyles['textColorAccent']}} .btn2{color: ${props.themeStyles['altColor']}; border-color: ${props.themeStyles['altColor']}} .btn_link:hover .btn2{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['altColor']}}`
+        : `.btn1{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['mainColor']}} .btn1:hover{color: ${props.themeStyles['mainColor']}; background-color: ${props.themeStyles['textColorAccent']}} .btn2{color: ${props.themeStyles['altColor']}; border-color: ${props.themeStyles['altColor']}} .btn2:hover{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['altColor']}}`
 
     /*     const btn2Styles = {
         color: props.themeStyles['altColor'],
@@ -591,14 +594,13 @@ const TheListItemAction = (props: TheListItemActionProps) => {
 
     return (
         <>
+            <style>{btns}</style>
             {props.actionlbl2 && props.actionlbl ? (
                 <div className={cn(styles['tsI_btn_std_wrp'], styles['tsI_text'])}>
-                    <style> {btns}</style>
-                    {/* <Link href={props.pagelink || props.weblink || ''}> */}
                     <Link href={link1 || ''}>
                         <a
                             target={props.newwindow === 1 ? '_blank' : '_self'}
-                            className={cn({
+                            className={cn('btn_link', {
                                 [styles.btn_block]: props.btnSize.includes('btn_block'),
                             })}
                         >
@@ -612,7 +614,6 @@ const TheListItemAction = (props: TheListItemActionProps) => {
                                     [styles.btn_xs]: props.btnSize === 'xs' || props.btnSize === 'xs btn_block',
                                     [styles.btn_block]: props.btnSize.includes('btn_block'),
                                 })}
-                                /*  style={determineStyles(props.btnType || 'btn_1')} */
                             >
                                 {props.icon && <FontAwesomeIcon icon={icon || faRocket} />} {props.actionlbl}
                             </div>
@@ -622,7 +623,7 @@ const TheListItemAction = (props: TheListItemActionProps) => {
                     <Link href={link2 || ''}>
                         <a
                             target={props.newwindow2 === 1 ? '_blank' : '_self'}
-                            className={cn({
+                            className={cn('btn_link', {
                                 [styles.btn_block]: props.btnSize2.includes('btn_block'),
                             })}
                         >
@@ -636,7 +637,6 @@ const TheListItemAction = (props: TheListItemActionProps) => {
                                     [styles.btn_xs]: props.btnSize2 === 'xs' || props.btnSize2 === 'xs btn_block',
                                     [styles.btn_block]: props.btnSize2.includes('btn_block'),
                                 })}
-                                /*  style={determineStyles(props.btnType2 || 'btn_2')} */
                             >
                                 {props.icon2 && <FontAwesomeIcon icon={icon2 || faRocket} />} {props.actionlbl2}
                             </div>
@@ -645,7 +645,7 @@ const TheListItemAction = (props: TheListItemActionProps) => {
                 </div>
             ) : props.actionlbl ? (
                 <div
-                    className={cn(styles['tsI_btn'], styles['btn_1'], styles['transition'], 'btn1', {
+                    className={cn(styles['tsI_btn'], styles['transition'], 'btn1', {
                         [styles.btn_1]: props.btnType === 'btn_1' || !props.btnType,
                         [styles.btn_2]: props.btnType === 'btn_2',
                         [styles.btn_md]: props.btnSize === 'md' || props.btnSize === 'md btn_block' || !props.btnSize,
@@ -655,7 +655,6 @@ const TheListItemAction = (props: TheListItemActionProps) => {
                         [styles.btn_w]: props.well === '1',
                         [styles.btn_block]: props.btnSize.includes('btn_block'),
                     })}
-                    /* style={determineStyles(props.btnType || 'btn_1')} */
                 >
                     {props.icon && <FontAwesomeIcon icon={icon || faRocket} />} {props.actionlbl}
                 </div>
@@ -671,7 +670,6 @@ const TheListItemAction = (props: TheListItemActionProps) => {
                         [styles.btn_w]: props.well === '1',
                         [styles.btn_block]: props.btnSize2.includes('btn_block'),
                     })}
-                    /* style={determineStyles(props.btnType2 || 'btn_2')} */
                 >
                     {props.icon2 && <FontAwesomeIcon icon={icon2 || faRocket} />} {props.actionlbl2}
                 </div>

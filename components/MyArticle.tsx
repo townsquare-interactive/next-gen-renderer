@@ -84,6 +84,16 @@ const MyArticle = (props: ArticleProps) => {
                     [styles.col_3]: props.columns === 3,
                     [styles.col_4]: props.columns === 4,
                     [styles[`tsD_${props.class}`]]: props.class,
+                    [styles.square_1_1]: props.imgSize === 'square_1_1',
+                    [styles.landscape_4_3]: props.imgSize === 'landscape_4_3',
+                    [styles.landscape_3_2]: props.imgSize === 'landscape_3_2',
+                    [styles.portrait_3_4]: props.imgSize === 'portrait_3_4',
+                    [styles.portrait_2_3]: props.imgSize === 'portrait_2_3',
+                    [styles.widescreen_16_9]: props.imgSize === 'widescreen_16_9',
+                    [styles.widescreen_3_1]: props.imgSize === 'widescreen_3_1',
+                    [styles.widescreen_2_4_1]: props.imgSize === 'widescreen_2_4_1',
+                    [styles.no_sizing]: props.imgSize === 'no_sizing',
+                    [styles.no_set_height]: props.imgSize === 'no_set_height',
                 }
             )}
         >
@@ -444,10 +454,10 @@ const TheListItem = (props: any) => {
 const TheListWrapV1 = (props: any) => {
     const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgSize, well, textColorHeading } = props
     return (
-        <div className={styles['tsI_wrp']}>
+        <>
             {item.image && (
                 <figure className={cn(styles['tsI_img'], styles['theframe'], styles['imgtag'], styles['imgbase'], styles['img-loaded'])} data-alt="Headline">
-                    {/*  <TheListItemImage
+                    <TheListItemImage
                         item={item}
                         imageNoSizings={imageNoSizings}
                         calcImageSize={calcImageSize}
@@ -458,7 +468,7 @@ const TheListWrapV1 = (props: any) => {
                         imgSize={props.imgSize}
                         well={props.well}
                         icons={icons}
-                    /> */}
+                    />
                 </figure>
             )}
 
@@ -501,14 +511,14 @@ const TheListWrapV1 = (props: any) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 
 const TheListWrapV2 = (props: any) => {
     const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgSize, well, textColorHeading } = props
     return (
-        <div className={styles['tsI_wrp']}>
+        <>
             <header
                 className={cn(styles['tsI_hds'], {
                     [styles.font_xs]: item.headSize === 'font_xs',
@@ -538,7 +548,7 @@ const TheListWrapV2 = (props: any) => {
                     data-alt="Headline"
                     data-image-loaded=""
                 >
-                    {/*   <TheListItemImage
+                    <TheListItemImage
                         item={item}
                         imageNoSizings={imageNoSizings}
                         calcImageSize={calcImageSize}
@@ -549,7 +559,7 @@ const TheListWrapV2 = (props: any) => {
                         imgSize={props.imgSize}
                         well={props.well}
                         icons={icons}
-                    /> */}
+                    />
                 </figure>
             )}
 
@@ -569,14 +579,14 @@ const TheListWrapV2 = (props: any) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 
 const TheListWrapV3 = (props: any) => {
     const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgSize, well, textColorHeading } = props
     return (
-        <div className={styles['tsI_wrp']}>
+        <>
             <div className={styles['tsI_txt_wrp']}>
                 {item.image && (
                     <figure
@@ -585,7 +595,7 @@ const TheListWrapV3 = (props: any) => {
                         data-alt="Headline"
                         data-image-loaded=""
                     >
-                        {/*  <TheListItemImage
+                        <TheListItemImage
                             item={item}
                             imageNoSizings={imageNoSizings}
                             calcImageSize={calcImageSize}
@@ -596,7 +606,7 @@ const TheListWrapV3 = (props: any) => {
                             imgSize={props.imgSize}
                             well={props.well}
                             icons={icons}
-                        /> */}
+                        />
                     </figure>
                 )}
 
@@ -640,7 +650,7 @@ const TheListWrapV3 = (props: any) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 
@@ -744,6 +754,45 @@ const TheListItemAction = (props: TheListItemActionProps) => {
                     {props.icon2 && <FontAwesomeIcon icon={icon2 || faRocket} />} {props.actionlbl2}
                 </div>
             )}
+        </>
+    )
+}
+
+const TheListItemImage = (props: TheListItemImageProps) => {
+    const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor } = props
+
+    let icon = props.icon3 ? props.icons[props.icon3] : faRocket
+
+    return (
+        <>
+            <div className={styles.image}>
+                {!imageNoSizings.includes(props.imgSize) ? (
+                    <Image
+                        className={cn(styles['item_image'], 'item_image', 'beacon-lazy-load')}
+                        src={domainImage(item.image)}
+                        layout="fill"
+                        objectFit="cover"
+                        alt={item.img_alt_tag || ''}
+                        objectPosition="top"
+                    />
+                ) : (
+                    //Setting width and height to image props if nosizing added
+                    <Image
+                        src={domainImage(item.image)}
+                        onLoadingComplete={calcImageSize}
+                        width={imageWidth}
+                        height={imageHeight}
+                        layout="responsive"
+                        alt={item.img_alt_tag || ''}
+                        objectPosition="top"
+                    />
+                )}
+                {item.icon3 && (
+                    <div className={cn(styles.tsI_icon, styles.icon_block)}>
+                        <FontAwesomeIcon icon={icon} />
+                    </div>
+                )}
+            </div>
         </>
     )
 }

@@ -1,5 +1,16 @@
 @use 'sass:math';
 
+$full-width: 100%;
+$half-width: 50%;
+$third-width: math.div($full-width, 3);
+$quarter-width: 25%;
+$item-margins: 2%;
+
+$full-item-width: $full-width - ($item-margins * 2);
+$half-item-width: $half-width - ($item-margins * 2);
+$third-item-width: $third-width - ($item-margins * 2);
+$quarteritem-width: $quarter-width - ($item-margins * 2);
+
 @mixin tsFlex {
     display: -webkit-box;
     display: -moz-box;
@@ -43,79 +54,108 @@
 
         .item {
             .tsI_wrp {
-                .tsI_txt_wrp {
-                    .tsI_img {
-                        margin: 0;
-                        display: block;
-                        margin-bottom: 0.5625em;
+                .tsI_img {
+                    //.tsI_img:not(.no-lazy-load).img-loaded
+                    opacity: 1;
+                    //----done
+                    //.tsI_img:not(.no-lazy-load)
+                    transition: all 0.3s ease-in-out;
+                    //----done
+                    //figure
+                    margin: 0;
+                    display: block;
+                    //----done
+                    margin-bottom: 0.5625em;
 
-                        .image {
-                            position: relative;
+                    .image {
+                        position: relative;
+                        img {
+                            display: block;
+                            margin: 0;
                             width: 100%;
-                            //aspect-ratio: math.div(4, 3);
-
-                            img {
-                                display: block;
-                                margin: 0;
-                                width: 100%;
-                                max-width: 100%;
-                                border: 0;
-                            }
-
-                            &.square_1_1 {
-                                aspect-ratio: math.div(1, 1);
-                            }
-
-                            &.landscape_4_3 {
-                                aspect-ratio: math.div(4, 3);
-                            }
-                            &.landscape_3_2 {
-                                aspect-ratio: math.div(3, 2);
-                            }
-                            &.portrait_3_4 {
-                                aspect-ratio: math.div(3, 4);
-                            }
-                            &.portrait_2_3 {
-                                aspect-ratio: math.div(2, 3);
-                            }
-                            &.widescreen_16_9 {
-                                aspect-ratio: math.div(16, 9);
-                            }
-                            &.widescreen_3_1 {
-                                aspect-ratio: math.div(3, 1);
-                            }
-                            &.widescreen_2_4_1 {
-                                aspect-ratio: math.div(2000, 830);
-                            }
+                            max-width: 100%;
+                            border: 0;
                         }
-                        figcaption {
-                            display: block;
-                            font-size: 75%;
-                            padding: 0.5rem 1rem;
-                            text-align: center;
-                            background: rgba(0, 0, 0, 0.5);
+                    }
+
+                    figcaption {
+                        display: block;
+                    }
+
+                    .tsI_icon {
+                        display: -webkit-box;
+                        display: -moz-box;
+                        display: box;
+                        display: -moz-flex;
+                        display: flex;
+                        box-align: center;
+                        -moz-align-items: center;
+                        -ms-align-items: center;
+                        -o-align-items: center;
+                        align-items: center;
+                        -ms-flex-align: center;
+                        box-pack: center;
+                        -moz-justify-content: center;
+                        -ms-justify-content: center;
+                        -o-justify-content: center;
+                        justify-content: center;
+                        -ms-flex-pack: center;
+                        box-orient: vertical;
+                        box-direction: normal;
+                        -moz-flex-direction: column;
+                        flex-direction: column;
+                        background: rgba(0, 0, 0, 0.5);
+
+                        &.icon_block {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            bottom: 0;
+                            right: 0;
                             z-index: 1;
-                            position: relative;
-                        }
-                        .tsI_hds {
-                            //header
-                            display: block;
-
-                            .tsI_hd {
-                                font-weight: 700;
-                            }
-                            .tsI_sh {
-                                font-weight: 400;
-                            }
                         }
 
-                        .tsI_txt {
-                            .tsI_dsc_wrap {
-                                .tsI_dsc {
-                                    font-weight: lighter !important;
-                                    display: inline;
-                                    width: 100%;
-                                }
+                        @media print, screen and (min-width: 481px) {
+                            padding: 15%;
+                        }
+
+                        svg {
+                            color: #fff;
+                            max-height: 5em;
+                            max-width: 5em;
+
+                            @media print, screen and (max-width: 480px) {
+                                width: 100%;
+                                height: 100%;
+                                max-height: 4em;
+                            }
+                            @media print, screen and (min-width: 481px) {
+                                width: 100%;
+                                height: 100%;
+                            }
+                        }
+                    }
+                }
+
+                .tsI_txt_wrp {
+                    .tsI_hds {
+                        //header
+                        display: block;
+
+                        .tsI_hd {
+                            font-weight: 700;
+                        }
+                        .tsI_sh {
+                            font-weight: 400;
+                        }
+                    }
+
+                    .tsI_txt {
+                        .tsI_dsc_wrap {
+                            .tsI_dsc {
+                                font-weight: lighter !important;
+                                display: inline;
+                                width: 100%;
                             }
                         }
                     }
@@ -124,85 +164,161 @@
         }
     }
 
+    &.tsflex {
+        @include tsFlex;
+        /*  -webkit-box-lines: multiple;
+        -moz-box-lines: multiple;
+        box-lines: multiple; */
+        flex-wrap: wrap;
+
+        .wrapper {
+            @include tsFlex;
+            /*  -webkit-box-lines: multiple;
+            -moz-box-lines: multiple;
+            box-lines: multiple; */
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .tsI {
+            /*Full width*/
+            box-flex: 0;
+            -moz-flex: 0 1 auto;
+            flex: 0 1 auto;
+            align-self: stretch;
+            -ms-flex-item-align: stretch;
+            flex: 0 1 auto;
+            align-self: stretch;
+            /*Full width ending*/
+
+            @include tsFlex;
+            box-orient: vertical;
+            box-direction: normal;
+            -moz-flex-direction: column;
+            flex-direction: column;
+            margin-bottom: 2rem;
+
+            .tsI_wrp {
+                @include tsFlex;
+                box-orient: vertical;
+                box-direction: normal;
+                -moz-flex-direction: column;
+                flex-direction: column;
+                box-flex: 1;
+                -moz-flex: 1 1 auto;
+                flex: 1 1 auto;
+            }
+        }
+    }
+
+    &.square_1_1 .tsI_img .image {
+        aspect-ratio: math.div(1, 1);
+    }
+
+    &.landscape_4_3 .tsI_img .image {
+        aspect-ratio: math.div(4, 3);
+    }
+
+    &.landscape_3_2 .tsI_img .image {
+        aspect-ratio: math.div(3, 2);
+    }
+
+    &.portrait_3_4 .tsI_img .image {
+        aspect-ratio: math.div(3, 4);
+    }
+
+    &.portrait_2_3 .tsI_img .image {
+        aspect-ratio: math.div(2, 3);
+    }
+
+    &.widescreen_16_9 .tsI_img .image {
+        aspect-ratio: math.div(16, 9);
+    }
+
+    &.widescreen_3_1 .tsI_img .image {
+        aspect-ratio: math.div(3, 1);
+    }
+
+    &.widescreen_2_4_1 .tsI_img .image {
+        aspect-ratio: math.div(2000, 830);
+    }
+
     //media queries for columns
     @media print, screen and (max-width: 480px) {
         .item {
-            width: 100%;
+            width: $full-width;
             margin-left: 0;
             margin-right: 0;
         }
     }
 
+    /*     $full-item-width: $full-width - (item-margins * 2);
+$half-item-width: $half-width - (item-margins * 2);
+$third-item-width: $third-width - (item-margins * 2);
+$quarteritem-width: $quarter-width - (item-margins * 2); */
+
     @media print, screen and (min-width: 481px) and (max-width: 850px) {
         //w1060
-        &.col_1 .item {
-            margin-left: 2.1220609456%;
-            margin-right: 2.1220609456%;
-            width: 95.7558781088%;
-        }
+        &.col_1 .item,
         &.col_2 .item {
-            margin-left: 2.1220609456%;
-            margin-right: 2.1220609456%;
-            width: 95.7558781088%;
+            margin-left: $item-margins;
+            margin-right: $item-margins;
+            width: $full-item-width;
         }
+
         &.col_3 .item {
-            margin-left: 2.1220609456%;
-            margin-right: 2.1220609456%;
-            width: 45.7558781088%;
-        }
-        &.col2 .item {
-            margin-left: 2.1220609456%;
-            margin-right: 2.1220609456%;
-            width: 95.7558781088%;
+            margin-left: $item-margins;
+            margin-right: $item-margins;
+            width: $half-item-width;
         }
     }
 
     @media print, screen and (min-width: 481px) and (max-width: 1024px) {
         &.col_4 .item {
-            margin-left: 2.1220609456%;
-            margin-right: 2.1220609456%;
-            width: 45.7558781088%;
+            margin-left: $item-margins;
+            margin-right: $item-margins;
+            width: $half-item-width;
         }
     }
     @media print, screen and (min-width: 851px) and (max-width: 1024px) {
         &.col_1 .item {
-            margin-left: 2.1220609456%;
-            margin-right: 2.1220609456%;
-            width: 95.7558781088%;
+            margin-left: $item-margins;
+            margin-right: $item-margins;
+            width: $full-item-width;
         }
         &.col_2 .item {
-            margin-left: 2.1220609456%;
-            margin-right: 2.1220609456%;
-            width: 45.7558781088%;
+            margin-left: $item-margins;
+            margin-right: $item-margins;
+            width: $half-item-width;
         }
         &.col_3 .item {
-            margin-left: 2.1220609456%;
-            margin-right: 2.1220609456%;
-            width: 29.0892114422%;
+            margin-left: $item-margins;
+            margin-right: $item-margins;
+            width: $third-item-width;
         }
     }
 
     @media print, screen and (min-width: 1025px) {
         &.col_1 .item {
-            margin-left: 2.1220609456%;
-            margin-right: 2.1220609456%;
-            width: 95.7558781088%;
+            margin-left: $item-margins;
+            margin-right: $item-margins;
+            width: $full-item-width;
         }
         &.col_2 .item {
-            margin-left: 2.1220609456%;
-            margin-right: 2.1220609456%;
-            width: 45.7558781088%;
+            margin-left: $item-margins;
+            margin-right: $item-margins;
+            width: $half-item-width;
         }
         &.col_3 .item {
-            margin-left: 2.1220609456%;
-            margin-right: 2.1220609456%;
-            width: 29.0892114422%;
+            margin-left: $item-margins;
+            margin-right: $item-margins;
+            width: $third-item-width;
         }
 
         &.col_4 .item {
-            margin-left: 2.1220609456%;
-            margin-right: 2.1220609456%;
-            width: 20.7558781088%;
+            margin-left: $item-margins;
+            margin-right: $item-margins;
+            width: $quarteritem-width;
         }
     }
 }
@@ -330,42 +446,42 @@
             box-lines: multiple;
             flex-wrap: wrap;
 
-            .tsR {
+            .wrapper {
                 @include tsFlex;
                 -webkit-box-lines: multiple;
                 -moz-box-lines: multiple;
                 box-lines: multiple;
                 flex-wrap: wrap;
                 width: 100%;
-            }
 
-            .tsI {
-                /*Full width*/
-                box-flex: 0;
-                -moz-flex: 0 1 auto;
-                flex: 0 1 auto;
-                align-self: stretch;
-                -ms-flex-item-align: stretch;
-                flex: 0 1 auto;
-                align-self: stretch;
-                /*Full width ending*/
+                .item {
+                    /*Full width*/
+                    box-flex: 0;
+                    -moz-flex: 0 1 auto;
+                    flex: 0 1 auto;
+                    align-self: stretch;
+                    -ms-flex-item-align: stretch;
+                    flex: 0 1 auto;
+                    align-self: stretch;
+                    /*Full width ending*/
 
-                @include tsFlex;
-                box-orient: vertical;
-                box-direction: normal;
-                -moz-flex-direction: column;
-                flex-direction: column;
-                margin-bottom: 2rem;
-
-                .tsI_wrp {
                     @include tsFlex;
                     box-orient: vertical;
                     box-direction: normal;
                     -moz-flex-direction: column;
                     flex-direction: column;
-                    box-flex: 1;
-                    -moz-flex: 1 1 auto;
-                    flex: 1 1 auto;
+                    margin-bottom: 2rem;
+
+                    .tsI_wrp {
+                        @include tsFlex;
+                        box-orient: vertical;
+                        box-direction: normal;
+                        -moz-flex-direction: column;
+                        flex-direction: column;
+                        box-flex: 1;
+                        -moz-flex: 1 1 auto;
+                        flex: 1 1 auto;
+                    }
                 }
             }
         }
