@@ -1,10 +1,10 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import CharlotteArticle from '../components/CharlotteArticle'
+import MyArticle from '../components/MyArticle'
 import { ArticleItems } from '../components/types'
 
 export default {
-    title: 'CLT/Article',
-    component: CharlotteArticle,
+    title: 'other/MyArticle',
+    component: MyArticle,
     argTypes: {
         imgSize: {
             options: ['landscape_4_3', 'landscape_3_2', 'portrait_3_4', 'portrait_2_3', 'square_1_1', 'widescreen_16_9', 'widescreen_2_4_1', 'widescreen_3_1'],
@@ -25,9 +25,9 @@ export default {
             },
         },
     },
-} as ComponentMeta<typeof CharlotteArticle>
+} as ComponentMeta<typeof MyArticle>
 
-const Template: ComponentStory<typeof CharlotteArticle> = (args) => <CharlotteArticle {...args} />
+const Template: ComponentStory<typeof MyArticle> = (args) => <MyArticle {...args} />
 
 const Default = Template.bind({})
 const item1: ArticleItems = {
@@ -52,7 +52,7 @@ const item1: ArticleItems = {
     weblink2: '',
     actionlbl2: '',
     newwindow2: null,
-    align: '',
+    align: 'right',
     isFeatured: '',
     isPlugin: '',
     headerTag: '',
@@ -66,7 +66,7 @@ Default.args = {
     uid: '1',
     type: 'article_1',
     well: '',
-    align: '',
+    align: 'left',
     imgSize: 'landscape_4_3',
     title: '',
     export: 1,
