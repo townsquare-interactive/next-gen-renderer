@@ -66,7 +66,7 @@ Default.args = {
     uid: '1',
     type: 'article_1',
     well: '',
-    align: 'left',
+    align: '',
     imgSize: 'landscape_4_3',
     title: '',
     export: 1,

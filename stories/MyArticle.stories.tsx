@@ -52,7 +52,7 @@ const item1: ArticleItems = {
     weblink2: '',
     actionlbl2: '',
     newwindow2: null,
-    align: '',
+    align: 'right',
     isFeatured: '',
     isPlugin: '',
     headerTag: '',

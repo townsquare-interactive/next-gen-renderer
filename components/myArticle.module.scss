@@ -14,16 +14,17 @@ $quarteritem-width: $quarter-width - ($item-margins * 2);
 @mixin tsFlex {
     display: -webkit-box;
     display: -moz-box;
-    //display: box;
     display: -moz-flex;
     display: flex;
 }
 
 .root {
+    padding-top: 3rem;
+
     * {
-        box-sizing: inherit;
         box-sizing: border-box;
     }
+
     .wrapper {
         max-width: 75.5em;
         margin-left: auto;
@@ -53,27 +54,28 @@ $quarteritem-width: $quarter-width - ($item-margins * 2);
         } */
 
         .item {
-            .tsI_wrp {
-                .tsI_img {
-                    //.tsI_img:not(.no-lazy-load).img-loaded
-                    opacity: 1;
-                    //----done
-                    //.tsI_img:not(.no-lazy-load)
-                    transition: all 0.3s ease-in-out;
-                    //----done
-                    //figure
-                    margin: 0;
+            //originally under tsflex
+            margin-bottom: 2rem;
+
+            .item-wrap {
+                /*   display: flex;
+                flex-direction: column; */
+
+                .image-block {
+                    /*                     margin: 0;
                     display: block;
-                    //----done
-                    margin-bottom: 0.5625em;
+                    margin-bottom: 0.5625em; */
+                    margin: 0;
+                    width: 100%;
 
                     .image {
                         position: relative;
+                        margin: 0;
+                        width: 100%;
+                        max-width: 100%;
+
                         img {
                             display: block;
-                            margin: 0;
-                            width: 100%;
-                            max-width: 100%;
                             border: 0;
                         }
                     }
@@ -82,7 +84,33 @@ $quarteritem-width: $quarter-width - ($item-margins * 2);
                         display: block;
                     }
 
-                    .tsI_icon {
+                    // @media print, screen and (max-width: 480px) {
+                    //commenting out media query, same as .small nHero as well
+                    .tsI_dsc {
+                        font-size: 0.875em;
+                        margin-top: 1.1428571429em;
+                        margin-bottom: 1.1428571429em;
+                        line-height: 1.4285714286em;
+                    }
+                    .tsI_sh {
+                        font-size: 0.875em;
+                        margin-top: 0.5714285714em;
+                        margin-bottom: 0.5714285714em;
+                        line-height: 1.1428571429em;
+                    }
+
+                    .tsI_hd {
+                        font-size: 1.0625em;
+                        margin-top: 0.7058823529em;
+                        margin-bottom: 0.4705882353em;
+                        line-height: 1.1764705882em;
+                    }
+                    &.a3 .tsI_img {
+                        width: 100%;
+                        float: none;
+                    }
+
+                    /* .tsI_icon {
                         display: -webkit-box;
                         display: -moz-box;
                         display: box;
@@ -134,30 +162,26 @@ $quarteritem-width: $quarter-width - ($item-margins * 2);
                                 height: 100%;
                             }
                         }
+                    } */
+                }
+
+                .hd-block {
+                    //header
+                    display: block;
+
+                    .hd {
+                        font-weight: 700;
+                    }
+                    .sh {
+                        font-weight: 400;
                     }
                 }
 
-                .tsI_txt_wrp {
-                    .tsI_hds {
-                        //header
-                        display: block;
-
-                        .tsI_hd {
-                            font-weight: 700;
-                        }
-                        .tsI_sh {
-                            font-weight: 400;
-                        }
-                    }
-
-                    .tsI_txt {
-                        .tsI_dsc_wrap {
-                            .tsI_dsc {
-                                font-weight: lighter !important;
-                                display: inline;
-                                width: 100%;
-                            }
-                        }
+                .txt-block {
+                    .dsc {
+                        //font-weight: lighter !important;
+                        display: inline;
+                        width: 100%;
                     }
                 }
             }
@@ -211,36 +235,331 @@ $quarteritem-width: $quarter-width - ($item-margins * 2);
         }
     }
 
-    &.square_1_1 .tsI_img .image {
-        aspect-ratio: math.div(1, 1);
+    &.not_well {
+        .yImg {
+            .hd-block,
+            .txt-block {
+                /*                 @media print, screen and (min-width: 1025px) {
+                    padding: 1.5rem 0 0;
+                } */
+            }
+        }
     }
 
-    &.landscape_4_3 .tsI_img .image {
-        aspect-ratio: math.div(4, 3);
+    &.a2 {
+        .header-block {
+            order: 1;
+        }
+
+        .image-block {
+            order: 2;
+        }
+
+        .txt-block {
+            order: 3;
+        }
     }
 
-    &.landscape_3_2 .tsI_img .image {
-        aspect-ratio: math.div(3, 2);
+    &.a1,
+    &.a2 {
+        .hd,
+        .sh,
+        .dsc {
+            text-align: center;
+        }
+
+        .left {
+            .hd,
+            .sh,
+            .dsc {
+                text-align: left;
+            }
+        }
+
+        .right {
+            .hd,
+            .sh,
+            .dsc {
+                text-align: right;
+            }
+        }
     }
 
-    &.portrait_3_4 .tsI_img .image {
-        aspect-ratio: math.div(3, 4);
+    &.a3 {
+        //couldmove out as class only exists a3 and beacon
+        .txt-wrap {
+            width: 100%;
+        }
     }
 
-    &.portrait_2_3 .tsI_img .image {
-        aspect-ratio: math.div(2, 3);
+    &.a3,
+    .beacon {
+        /* &.medium,
+        &.large {
+            @media print, screen and (min-width: 481px) {
+                .mod_left,
+                .mod_right {
+                    .item-wrap {
+                        flex-direction: row;
+                    }
+
+                    .txt-wrap {
+                        width: 50%;
+                    }
+                }
+
+                .mod_left .image-block,
+                .mod_right .image-block {
+                    //width: $third-width;
+                    //width: 50%;
+                    width: 41.6666666667%;
+                    display: block;
+                }
+                .mod_left .image-block {
+                    float: left;
+                    margin-right: 2rem;
+                }
+                .mod_right .image-block {
+                    float: right;
+                    margin-left: 2rem;
+                }
+            }
+        } */
+        &.medium {
+            @media print, screen and (min-width: 481px) {
+                //how about hero??
+                &.nHero {
+                    .tsI_sh {
+                        font-size: 1.0625em;
+                        margin-top: 0.7058823529em;
+                        margin-bottom: 0.4705882353em;
+                        line-height: 1.1764705882em;
+                    }
+                    .tsI_hd {
+                        font-size: 1.5em;
+                        margin-top: 0.6666666667em;
+                        margin-bottom: 0.5em;
+                        line-height: 1.1666666667em;
+                        letter-spacing: -0.0125rem;
+                    }
+                    .tsI_dsc {
+                        font-size: 1.0625em;
+                        margin-top: 0.9411764706em;
+                        margin-bottom: 0.9411764706em;
+                        line-height: 1.4117647059em;
+                    }
+                }
+
+                /*                 .mod_left,
+                .mod_right {
+                    .item-wrap {
+                        flex-direction: row;
+                    }
+                } */
+
+                .mod_left .image-block,
+                .mod_right .image-block {
+                    width: $third-width;
+                    display: block;
+                }
+                .mod_left .image-block {
+                    float: left;
+                    margin-right: 1rem;
+                }
+                .mod_right .image-block {
+                    float: right;
+                    margin-left: 1rem;
+                }
+            }
+        }
+
+        &.large {
+            @media print, screen and (min-width: 481px) {
+                .tsI_hd {
+                    font-size: 2.25em;
+                    margin-top: 0.6666666667em;
+                    margin-bottom: 0.4444444444em;
+                    line-height: 1.1111111111em;
+                    letter-spacing: -0.0125rem;
+                }
+                .tsI_sh {
+                    font-size: 1.5em;
+                    margin-top: 0.6666666667em;
+                    margin-bottom: 0.5em;
+                    line-height: 1.1666666667em;
+                    letter-spacing: -0.0125rem;
+                }
+                .tsI_dsc {
+                    font-size: 1.0625em;
+                    margin-top: 0.9411764706em;
+                    margin-bottom: 0.9411764706em;
+                    line-height: 1.4117647059em;
+                }
+                /*                 .mod_left,
+                .mod_right {
+                    .item-wrap {
+                        flex-direction: row;
+                    }
+                } */
+
+                .mod_left .image-block,
+                .mod_right .image-block {
+                    //width: $third-width;
+                    //width: 50%;
+                    width: 41.6666666667%;
+                    display: block;
+                }
+                .mod_left .image-block {
+                    float: left;
+                    margin-right: 2rem;
+                }
+                .mod_right .image-block {
+                    float: right;
+                    margin-left: 2rem;
+                }
+            }
+        }
     }
 
-    &.widescreen_16_9 .tsI_img .image {
-        aspect-ratio: math.div(16, 9);
+    &.medium {
+        @media print, screen and (min-width: 481px) {
+            //how about hero??
+            &.nHero {
+                .sh {
+                    font-size: 1.0625em;
+                    margin-top: 0.7058823529em;
+                    margin-bottom: 0.4705882353em;
+                    line-height: 1.1764705882em;
+                }
+
+                .hd {
+                    font-size: 1.5em;
+                    margin-top: 0.6666666667em;
+                    margin-bottom: 0.5em;
+                    line-height: 1.1666666667em;
+                    letter-spacing: -0.0125rem;
+                }
+
+                .dsc {
+                    font-size: 1.0625em;
+                    margin-top: 0.9411764706em;
+                    margin-bottom: 0.9411764706em;
+                    line-height: 1.4117647059em;
+                }
+            }
+        }
     }
 
-    &.widescreen_3_1 .tsI_img .image {
-        aspect-ratio: math.div(3, 1);
+    &.large {
+        @media print, screen and (min-width: 481px) {
+            .hd {
+                font-size: 2.25em;
+                margin-top: 0.6666666667em;
+                margin-bottom: 0.4444444444em;
+                line-height: 1.1111111111em;
+                letter-spacing: -0.0125rem;
+            }
+
+            .sh {
+                font-size: 1.5em;
+                margin-top: 0.6666666667em;
+                margin-bottom: 0.5em;
+                line-height: 1.1666666667em;
+                letter-spacing: -0.0125rem;
+            }
+
+            .dsc {
+                font-size: 1.0625em;
+                margin-top: 0.9411764706em;
+                margin-bottom: 0.9411764706em;
+                line-height: 1.4117647059em;
+            }
+        }
     }
 
-    &.widescreen_2_4_1 .tsI_img .image {
-        aspect-ratio: math.div(2000, 830);
+    &.well {
+        .hd-block,
+        .txt-block {
+            max-width: 100%;
+        }
+
+        &.a1 {
+            .btn-block,
+            .dsc-block,
+            .hd-block {
+                padding: 0 2rem 0;
+                width: 100%;
+            }
+
+            .dsc-block {
+                padding-bottom: 1.5rem;
+            }
+
+            &.large .dsc-block {
+                @media print, screen and (min-width: 1025px) {
+                    padding-bottom: 3rem;
+                }
+            }
+        }
+
+        &.a2 {
+            //well padding
+            .header-block {
+                padding: 1rem 2rem;
+                width: 100%;
+            }
+
+            .dsc-block {
+                padding: 1rem 2rem 1.5rem;
+            }
+
+            .nDsc .tsI_img {
+                margin-bottom: 0 !important;
+                margin-top: auto;
+            }
+
+            /*             .dsc-block,
+            .header-block {
+                width: 100%;
+            } */
+        }
+
+        &.a3 {
+            &.small {
+                .txt-wrap {
+                    padding: 1.5rem;
+                }
+            }
+
+            &.medium {
+                .txt-wrap {
+                    padding: 3rem 2rem 2rem;
+                }
+            }
+
+            &.large {
+                .txt-wrap {
+                    @media print, screen and (min-width: 1025px) {
+                        /*                         max-width: 100%;
+                        margin-left: auto;
+                        margin-right: auto; */
+                        padding: 4rem 1.5rem;
+                    }
+                }
+            }
+        }
+
+        .tsI {
+            box-shadow: 0 0 2px rgb(0 0 0 / 6%), 0 2px 4px rgb(0 0 0 / 12%);
+
+            &.yLk:hover {
+                transition: all 0.1s ease-in-out;
+                -webkit-transform: scale(1.01);
+                transform: scale(1.01);
+                box-shadow: 1px 1px 10px rgb(0 0 0 / 25%);
+                z-index: 1;
+            }
+        }
     }
 
     //media queries for columns
@@ -251,11 +570,6 @@ $quarteritem-width: $quarter-width - ($item-margins * 2);
             margin-right: 0;
         }
     }
-
-    /*     $full-item-width: $full-width - (item-margins * 2);
-$half-item-width: $half-width - (item-margins * 2);
-$third-item-width: $third-width - (item-margins * 2);
-$quarteritem-width: $quarter-width - (item-margins * 2); */
 
     @media print, screen and (min-width: 481px) and (max-width: 850px) {
         //w1060
@@ -280,6 +594,7 @@ $quarteritem-width: $quarter-width - (item-margins * 2); */
             width: $half-item-width;
         }
     }
+
     @media print, screen and (min-width: 851px) and (max-width: 1024px) {
         &.col_1 .item {
             margin-left: $item-margins;
@@ -321,8 +636,56 @@ $quarteritem-width: $quarter-width - (item-margins * 2); */
             width: $quarteritem-width;
         }
     }
+
+    &.large {
+        @media print, screen and (min-width: 481px) {
+            .nHero {
+                margin-left: 2.1220609456%;
+                margin-right: 2.1220609456%;
+                width: 79.0892114422%;
+                margin-left: 9.9248790425%;
+                margin-bottom: 4rem;
+            }
+            &:last-of-type {
+                margin-bottom: 2rem;
+            }
+        }
+    }
+
+    &.square_1_1 .image-block .image {
+        aspect-ratio: math.div(1, 1);
+    }
+
+    &.landscape_4_3 .image-block .image {
+        aspect-ratio: math.div(4, 3);
+    }
+
+    &.landscape_3_2 .image-block .image {
+        aspect-ratio: math.div(3, 2);
+    }
+
+    &.portrait_3_4 .image-block .image {
+        aspect-ratio: math.div(3, 4);
+    }
+
+    &.portrait_2_3 .image-block .image {
+        aspect-ratio: math.div(2, 3);
+    }
+
+    &.widescreen_16_9 .image-block .image {
+        aspect-ratio: math.div(16, 9);
+    }
+
+    &.widescreen_3_1 .image-block .image {
+        aspect-ratio: math.div(3, 1);
+    }
+
+    &.widescreen_2_4_1 .image-block .image {
+        aspect-ratio: math.div(2000, 830);
+    }
 }
 
+//old charlotte code -------------------------------------------------------------------------------------------------------------------
 @mixin charlotte {
     .tsB {
         padding-top: 3rem;
