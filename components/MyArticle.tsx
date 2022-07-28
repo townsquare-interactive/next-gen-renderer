@@ -13,54 +13,11 @@ import Link from 'next/link'
 import { faRocket, faAnchor, faArchway } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-const icons: { [key: string]: any } = {
-    faRocket,
-    faAnchor,
-    faArchway,
-}
-
 const MyArticle = (props: ArticleProps) => {
-    const [imageHeight, setHeight] = useState(100)
-    const [imageWidth, setWidth] = useState(300)
-    const [lightbox, setLightbox] = useState(false)
-
-    function toggleSwitch() {
-        setLightbox(!lightbox)
-        console.log(lightbox)
-    }
-
-    const calcImageSize = (loadedMedia: Media) => {
-        setWidth(loadedMedia.naturalWidth)
-        setHeight(loadedMedia.naturalHeight)
-    }
-
     //Defining style objects
-    const textColor = {
-        color: props.themeStyles['textColor'],
-    }
-
     const textColorHeading = {
         color: props.themeStyles['headingColor'],
     }
-    const textColorAccent = {
-        color: props.themeStyles['textColorAccent'],
-    }
-    const accentBackground = {
-        backgroundColor: props.themeStyles['mainColor'],
-    }
-    const noBackground = {
-        backgroundColor: 'transparent',
-    }
-    const borderBackground = {
-        backgroundColor: props.themeStyles['headerBackground'],
-    }
-    const accentColors = {
-        color: props.themeStyles['textColorAccent'],
-        backgroundColor: props.themeStyles['mainColor'],
-    }
-
-    //non constrained images
-    const imageNoSizings = ['no_sizing', 'no_set_height']
 
     return (
         <div
@@ -99,7 +56,7 @@ const MyArticle = (props: ArticleProps) => {
         >
             <div className={styles.wrapper}>
                 {props.title && (
-                    <h2 className={cn(styles['hd'], styles['section_title'])} data-title="module headline" style={textColorHeading}>
+                    <h2 className={cn(styles['mod-title'], styles['section_title'])} data-title="module headline" style={textColorHeading}>
                         <span>{props.title}</span>
                     </h2>
                 )}
@@ -324,7 +281,7 @@ const ModuleItem = (props: any) => {
                     />
 
                     {linkAndBtn && (
-                        <TheListItemAction
+                        <Button
                             pagelink={item.pagelink}
                             actionlbl={item.actionlbl}
                             newwindow={item.newwindow}
@@ -347,7 +304,7 @@ const ModuleItem = (props: any) => {
             ) : (
                 <Link href={item.pagelink || item.weblink || item.pagelink2 || item.weblink2 || ''}>
                     <a
-                        className={styles['item-wrap']}
+                        className={cn(styles['item-wrap'], 'btn_link')}
                         target={item.newwindow === 1 ? '_blank' : item.newwindow2 === 1 ? '_blank' : '_self'}
                         style={props.isFeatured && props.type === 'article' ? heroBackground : noBackground}
                     >
@@ -364,12 +321,13 @@ const ModuleItem = (props: any) => {
                             textColorHeading={props.textColorHeading}
                             icons={icons}
                             icon3={item.icon3}
+                            type={props.type}
                             themeStyles={props.themeStyles}
                             isFeatured={item.isFeatured}
                         />
 
                         {isButton() && (
-                            <TheListItemAction
+                            <Button
                                 pagelink={item.pagelink}
                                 pagelink2={item.pagelink2}
                                 weblink={item.weblink}
@@ -594,7 +552,7 @@ const ItemWrap = (props: any) => {
     )
 }
 
-const TheListItemAction = (props: TheListItemActionProps) => {
+const Button = (props: TheListItemActionProps) => {
     let icon = props.icon ? props.icons[props.icon] : faRocket
     let icon2 = props.icon2 ? props.icons[props.icon2] : faRocket
 
@@ -631,8 +589,6 @@ const TheListItemAction = (props: TheListItemActionProps) => {
             btnType2: props.btnType2,
         },
     ]
-
-    console.log(buttons)
 
     return (
         <>

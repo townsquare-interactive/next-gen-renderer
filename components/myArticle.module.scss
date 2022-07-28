@@ -30,6 +30,30 @@ $quarteritem-width: $quarter-width - ($item-margins * 2);
         margin-right: auto;
         padding: 0 1.5rem 1rem;
 
+        //module title
+        .mod-title {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            font-size: 1.5em;
+            text-align: center;
+            margin: 1rem;
+
+            span {
+                max-width: 35rem;
+                margin: 0 auto;
+                padding: 0 1rem;
+
+                &:after {
+                    content: ' ';
+                    display: block;
+                    border-bottom: 3px solid;
+                    width: 4rem;
+                    margin: 1rem auto;
+                }
+            }
+        }
+
         /* .hd {
             display: flex;
             justify-content: center;
@@ -428,6 +452,10 @@ $quarteritem-width: $quarter-width - ($item-margins * 2);
         .txt-block {
             order: 3;
         }
+
+        .btn {
+            order: 4;
+        }
     }
 
     &.a1,
@@ -731,7 +759,7 @@ $quarteritem-width: $quarter-width - ($item-margins * 2);
             }
         }
 
-        .tsI {
+        .item {
             box-shadow: 0 0 2px rgb(0 0 0 / 6%), 0 2px 4px rgb(0 0 0 / 12%);
 
             &.yLk:hover {

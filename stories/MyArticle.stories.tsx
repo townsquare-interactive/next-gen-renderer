@@ -436,6 +436,12 @@ MultipleBorderButtons.args = {
         },
     ],
 }
+
+export const MBBv3 = Template.bind({})
+MBBv3.args = {
+    ...MultipleBorderButtons.args,
+    type: 'article_3',
+}
 export const MultipleBorderLinked = Template.bind({})
 MultipleBorderLinked.args = {
     ...ThreeColumns.args,
