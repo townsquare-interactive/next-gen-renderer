@@ -482,7 +482,9 @@ const ItemWrap = (props: any) => {
                                 ['accent-txt']: well || beaconHero,
                                 ['txt-color-heading']: !well && !beaconHero,
                             })}
-                        ></h2>
+                        >
+                            {Parser(item.subheader)}
+                        </h2>
                     </header>
                     {item.desc && (
                         <div className={cn(styles['txt-block'])}>
@@ -596,10 +598,10 @@ const TheListItemAction = (props: TheListItemActionProps) => {
     let icon = props.icon ? props.icons[props.icon] : faRocket
     let icon2 = props.icon2 ? props.icons[props.icon2] : faRocket
 
-    const btn1Styles = {
+    /*     const btn1Styles = {
         color: props.themeStyles['textColorAccent'],
         backgroundColor: props.themeStyles['mainColor'],
-    }
+    } */
 
     const btns = props.well
         ? `.btn1{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['mainColor']}} .btn_link:hover .btn1{color: ${props.themeStyles['mainColor']}; background-color: ${props.themeStyles['textColorAccent']}} .btn2{color: ${props.themeStyles['altColor']}; border-color: ${props.themeStyles['altColor']}} .btn_link:hover .btn2{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['altColor']}}`
