@@ -545,7 +545,7 @@ const TheListWrapV3 = (props: TsiWrp) => {
                                 [styles.font_lg]: item.descSize === 'font_lg',
                                 [styles.font_xl]: item.descSize === 'font_xl',
                             })}
-                            style={props.well || item.isFeatured ? textColorAccent : textColorHeading}
+                            style={props.well ? textColorAccent : textColorHeading}
                         >
                             <p>{item.desc}</p>
                         </div>
@@ -565,28 +565,9 @@ const TheListItemAction = (props: TheListItemActionProps) => {
         backgroundColor: props.themeStyles['mainColor'],
     }
 
-    /*     const btn1Hover = `.btn1{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['mainColor']}} .btn1:hover{color: ${props.themeStyles['mainColor']}; background-color: ${props.themeStyles['textColorAccent']}}`
-
-    const btn2Hover = `.btn2{color: ${props.themeStyles['altColor']}; border-color: ${props.themeStyles['altColor']}} .btn2:hover{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['mainColor']}}` */
-
     const btns = props.well
         ? `.btn1{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['mainColor']}} .btn_link:hover .btn1{color: ${props.themeStyles['mainColor']}; background-color: ${props.themeStyles['textColorAccent']}} .btn2{color: ${props.themeStyles['altColor']}; border-color: ${props.themeStyles['altColor']}} .btn_link:hover .btn2{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['altColor']}}`
         : `.btn1{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['mainColor']}} .btn1:hover{color: ${props.themeStyles['mainColor']}; background-color: ${props.themeStyles['textColorAccent']}} .btn2{color: ${props.themeStyles['altColor']}; border-color: ${props.themeStyles['altColor']}} .btn2:hover{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['altColor']}}`
-
-    /*     const btn2Styles = {
-        color: props.themeStyles['altColor'],
-        borderColor: props.themeStyles['altColor'],
-    }
- */
-    /*     function determineStyles(btnType: string) {
-        if (btnType === 'btn_1') {
-            return btn1Styles
-        } else if (btnType === 'btn_2') {
-            return btn2Styles
-        } else {
-            return btn1Styles
-        }
-    } */
 
     const link1 = props.pagelink || props.weblink
 
@@ -687,7 +668,7 @@ const TheListItemImage = (props: TheListItemImageProps) => {
             <div className={styles.image}>
                 {!imageNoSizings.includes(props.imgSize) ? (
                     <Image
-                        className={cn(styles['item_image'], 'item_image', 'beacon-lazy-load')}
+                        /*  className={cn(styles['item_image'], 'item_image', 'beacon-lazy-load')} */
                         src={domainImage(item.image)}
                         layout="fill"
                         objectFit="cover"

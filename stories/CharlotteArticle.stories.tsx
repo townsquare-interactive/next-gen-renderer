@@ -14,6 +14,10 @@ export default {
             options: ['', '1'],
             control: { type: 'radio' },
         },
+        type: {
+            options: ['article_1', 'article_2', 'article_3', 'beacon'],
+            control: { type: 'radio' },
+        },
         columns: {
             options: [1, 2, 3, 4],
             control: { type: 'radio' },

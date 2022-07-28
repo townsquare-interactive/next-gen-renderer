@@ -18,6 +18,10 @@ export default {
             options: [1, 2, 3, 4],
             control: { type: 'radio' },
         },
+        type: {
+            options: ['article_1', 'article_2', 'article_3', 'article'],
+            control: { type: 'radio' },
+        },
         items: {
             align: {
                 options: ['left', 'right', 'center'],
@@ -52,7 +56,7 @@ const item1: ArticleItems = {
     weblink2: '',
     actionlbl2: '',
     newwindow2: null,
-    align: 'right',
+    align: '',
     isFeatured: '',
     isPlugin: '',
     headerTag: '',
@@ -260,7 +264,7 @@ Button.args = {
             pagelink: '/',
             /*  actionlbl2: 'Contact 2',
             pagelink2: '/', */
-            align: 'center',
+            // align: 'center',
             icon: 'faArchway',
             /* icon2: 'faAnchor', */
             btnType: 'btn_1',
@@ -489,6 +493,12 @@ export const V3 = Template.bind({})
 V3.args = {
     ...Plain.args,
     type: 'article_3',
+    items: [{ ...item1 }],
+}
+export const V3Left = Template.bind({})
+V3Left.args = {
+    ...Plain.args,
+    type: 'article_3',
     items: [{ ...item1, align: 'left' }],
 }
 export const V3Multiple = Template.bind({})
@@ -514,4 +524,24 @@ Icon3.args = {
     ...Plain.args,
 
     items: [{ ...item1, icon3: 'faAnchor' }],
+}
+
+export const Beacon = Template.bind({})
+Beacon.args = {
+    ...Plain.args,
+    type: 'article',
+    items: [{ ...item1 }],
+}
+export const BeaconLeft = Template.bind({})
+BeaconLeft.args = {
+    ...Plain.args,
+    type: 'article',
+    items: [{ ...item1, align: 'left' }],
+}
+
+export const BeaconHero = Template.bind({})
+BeaconHero.args = {
+    ...Plain.args,
+    type: 'article',
+    items: [{ ...item1, align: 'left', isFeatured: 'active' }],
 }
