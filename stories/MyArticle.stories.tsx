@@ -549,5 +549,51 @@ export const BeaconHero = Template.bind({})
 BeaconHero.args = {
     ...Plain.args,
     type: 'article',
-    items: [{ ...item1, align: 'left', isFeatured: 'active' }],
+    items: [
+        { ...item1, align: 'left', isFeatured: 'active' },
+        /*        { ...item2, align: 'left' }, */
+    ],
+}
+
+export const BeaconHeroMultiple = Template.bind({})
+BeaconHeroMultiple.args = {
+    ...Plain.args,
+    columns: 3,
+    type: 'article',
+    items: [
+        {
+            ...item1,
+            actionlbl: 'Contact Us',
+            pagelink: '/',
+            // actionlbl2: 'Contact 2',
+            //pagelink2: '/',
+            align: 'center',
+            icon: 'faArchway',
+            icon2: 'faAnchor',
+            btnType: 'btn_1',
+        },
+        {
+            ...item1,
+            actionlbl: 'Contact Us',
+            pagelink: '/',
+            // actionlbl2: 'Contact 2',
+            //pagelink2: '/',
+            align: 'center',
+            icon: 'faArchway',
+            icon2: 'faAnchor',
+            btnType: 'btn_1',
+            isFeatured: 'active',
+        },
+        {
+            ...item1,
+            actionlbl: 'Contact Us',
+            pagelink: '/',
+            // actionlbl2: 'Contact 2',
+            //pagelink2: '/',
+            align: 'center',
+            icon: 'faArchway',
+            icon2: 'faAnchor',
+            btnType: 'btn_1',
+        },
+    ],
 }

@@ -668,6 +668,85 @@
             }
         }
     }
+
+    &.small {
+        .nHero {
+            @media print, screen and (min-width: 481px) {
+                .tsI_sh {
+                    font-size: 0.875em;
+                    margin-top: 0.5714285714em;
+                    margin-bottom: 0.5714285714em;
+                    line-height: 1.1428571429em;
+                }
+                .tsI_hd {
+                    font-size: 1.0625em;
+                    margin-top: 0.7058823529em;
+                    margin-bottom: 0.4705882353em;
+                    line-height: 1.1764705882em;
+                }
+                .tsI_dsc {
+                    font-size: 0.875em;
+                    margin-top: 1.1428571429em;
+                    margin-bottom: 1.1428571429em;
+                    line-height: 1.4285714286em;
+                }
+            }
+        }
+    }
+
+    &.medium {
+        .nHero {
+            .tsI_sh {
+                font-size: 1.0625em;
+                margin-top: 0.7058823529em;
+                margin-bottom: 0.4705882353em;
+                line-height: 1.1764705882em;
+            }
+            .tsI_hd {
+                font-size: 1.5em;
+                margin-top: 0.6666666667em;
+                margin-bottom: 0.5em;
+                line-height: 1.1666666667em;
+                letter-spacing: -0.0125rem;
+            }
+            .tsI_dsc {
+                font-size: 1.0625em;
+                margin-top: 0.9411764706em;
+                margin-bottom: 0.9411764706em;
+                line-height: 1.4117647059em;
+            }
+        }
+    }
+
+    .center {
+        .tsI_btn {
+            align-self: center;
+            -ms-flex-item-align: center;
+        }
+        .tsI_btn_std_wrp {
+            justify-content: center;
+        }
+    }
+
+    .left {
+        .tsI_btn {
+            align-self: flex-start;
+            -ms-flex-item-align: flex-start;
+        }
+        .tsI_btn_std_wrp {
+            justify-content: left;
+        }
+    }
+
+    .right {
+        .tsI_btn {
+            align-self: flex-end;
+            -ms-flex-item-align: flex-end;
+        }
+        .tsI_btn_std_wrp {
+            justify-content: right;
+        }
+    }
     &.a3 {
         .tsI_txt_wrp {
             box-align: baseline;
@@ -767,84 +846,9 @@
                 }
             }
         }
-    }
 
-    &.small {
-        .nHero {
-            @media print, screen and (min-width: 481px) {
-                .tsI_sh {
-                    font-size: 0.875em;
-                    margin-top: 0.5714285714em;
-                    margin-bottom: 0.5714285714em;
-                    line-height: 1.1428571429em;
-                }
-                .tsI_hd {
-                    font-size: 1.0625em;
-                    margin-top: 0.7058823529em;
-                    margin-bottom: 0.4705882353em;
-                    line-height: 1.1764705882em;
-                }
-                .tsI_dsc {
-                    font-size: 0.875em;
-                    margin-top: 1.1428571429em;
-                    margin-bottom: 1.1428571429em;
-                    line-height: 1.4285714286em;
-                }
-            }
-        }
-    }
-
-    &.medium {
-        .nHero {
-            .tsI_sh {
-                font-size: 1.0625em;
-                margin-top: 0.7058823529em;
-                margin-bottom: 0.4705882353em;
-                line-height: 1.1764705882em;
-            }
-            .tsI_hd {
-                font-size: 1.5em;
-                margin-top: 0.6666666667em;
-                margin-bottom: 0.5em;
-                line-height: 1.1666666667em;
-                letter-spacing: -0.0125rem;
-            }
-            .tsI_dsc {
-                font-size: 1.0625em;
-                margin-top: 0.9411764706em;
-                margin-bottom: 0.9411764706em;
-                line-height: 1.4117647059em;
-            }
-        }
-    }
-
-    .center {
-        .tsI_btn {
-            align-self: center;
-            -ms-flex-item-align: center;
-        }
-        .tsI_btn_std_wrp {
-            justify-content: center;
-        }
-    }
-
-    .left {
         .tsI_btn {
             align-self: flex-start;
-            -ms-flex-item-align: flex-start;
-        }
-        .tsI_btn_std_wrp {
-            justify-content: left;
-        }
-    }
-
-    .right {
-        .tsI_btn {
-            align-self: flex-end;
-            -ms-flex-item-align: flex-end;
-        }
-        .tsI_btn_std_wrp {
-            justify-content: right;
         }
     }
 
