@@ -228,6 +228,8 @@ const ModuleItem = (props: any) => {
 
     const wrapLink = oneButton || linkNoBtn
 
+    console.log(item.isFeatured)
+
     return (
         <article
             className={cn(
@@ -258,7 +260,7 @@ const ModuleItem = (props: any) => {
             style={props.well === '1' ? borderBackground : noBackground}
         >
             {!wrapLink ? (
-                <div className={styles['item-wrap']} style={item.isFeatured && props.type === 'article' ? heroBackground : noBackground}>
+                <div className={styles['item-wrap']} style={item.isFeatured === 'active' && props.type === 'article' ? heroBackground : noBackground}>
                     <ItemWrap
                         item={item}
                         imageNoSizings={imageNoSizings}
@@ -282,7 +284,7 @@ const ModuleItem = (props: any) => {
                     <a
                         className={cn(styles['item-wrap'], 'btn_link')}
                         target={item.newwindow === 1 ? '_blank' : item.newwindow2 === 1 ? '_blank' : '_self'}
-                        style={props.isFeatured && props.type === 'article' ? heroBackground : noBackground}
+                        style={item.isFeatured === 'active' && props.type === 'article' ? heroBackground : noBackground}
                     >
                         <ItemWrap
                             item={item}
