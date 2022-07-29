@@ -201,6 +201,7 @@ const TheListItem = (props: any) => {
                             textColorHeading={props.textColorHeading}
                             icons={icons}
                             icon3={item.icon3}
+                            themeStyles={props.themeStyles}
                         />
                     ) : props.type === 'article_2' ? (
                         <TheListWrapV2
@@ -216,6 +217,7 @@ const TheListItem = (props: any) => {
                             textColorHeading={props.textColorHeading}
                             icons={icons}
                             icon3={item.icon3}
+                            themeStyles={props.themeStyles}
                         />
                     ) : props.type === 'article_3' ? (
                         <TheListWrapV3
@@ -231,12 +233,13 @@ const TheListItem = (props: any) => {
                             textColorHeading={props.textColorHeading}
                             icons={icons}
                             icon3={item.icon3}
+                            themeStyles={props.themeStyles}
                         />
                     ) : (
                         ''
                     )}
 
-                    {linkAndBtn && (
+                    {/* {linkAndBtn && (
                         <TheListItemAction
                             pagelink={item.pagelink}
                             actionlbl={item.actionlbl}
@@ -255,7 +258,7 @@ const TheListItem = (props: any) => {
                             btnSize2={item.btnSize2}
                             well={props.well}
                         />
-                    )}
+                    )} */}
                 </div>
             ) : (
                 <Link href={item.pagelink || item.weblink || item.pagelink2 || item.weblink2 || ''}>
@@ -274,6 +277,7 @@ const TheListItem = (props: any) => {
                                 textColorHeading={props.textColorHeading}
                                 icons={icons}
                                 icon3={item.icon3}
+                                themeStyles={props.themeStyles}
                             />
                         ) : props.type === 'article_2' ? (
                             <TheListWrapV2
@@ -289,6 +293,7 @@ const TheListItem = (props: any) => {
                                 textColorHeading={props.textColorHeading}
                                 icons={icons}
                                 icon3={item.icon3}
+                                themeStyles={props.themeStyles}
                             />
                         ) : props.type === 'article_3' ? (
                             <TheListWrapV3
@@ -304,11 +309,12 @@ const TheListItem = (props: any) => {
                                 textColorHeading={props.textColorHeading}
                                 icons={icons}
                                 icon3={item.icon3}
+                                themeStyles={props.themeStyles}
                             />
                         ) : (
                             ''
                         )}
-                        {isButton() && (
+                        {/*  {isButton() && (
                             <TheListItemAction
                                 pagelink={item.pagelink}
                                 pagelink2={item.pagelink2}
@@ -328,7 +334,7 @@ const TheListItem = (props: any) => {
                                 btnSize2={item.btnSize2}
                                 well={props.well}
                             />
-                        )}
+                        )} */}
                     </a>
                 </Link>
             )}
@@ -338,6 +344,10 @@ const TheListItem = (props: any) => {
 
 const TheListWrapV1 = (props: TsiWrp) => {
     const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgSize, well, textColorHeading, icons, icon3 } = props
+
+    const linkAndBtn =
+        (item.actionlbl && item.pagelink) || (item.actionlbl && item.weblink) || (item.actionlbl2 && item.pagelink2) || (item.actionlbl2 && item.weblink2)
+
     return (
         <>
             {item.image && (
@@ -406,12 +416,36 @@ const TheListWrapV1 = (props: TsiWrp) => {
                     </div>
                 </div>
             </div>
+            {linkAndBtn && (
+                <TheListItemAction
+                    pagelink={item.pagelink}
+                    actionlbl={item.actionlbl}
+                    newwindow={item.newwindow}
+                    newwindow2={item.newwindow2}
+                    actionlbl2={item.actionlbl2}
+                    pagelink2={item.pagelink2}
+                    weblink2={item.weblink2}
+                    icon={item.icon}
+                    icon2={item.icon2}
+                    icons={icons}
+                    btnType={item.btnType}
+                    btnType2={item.btnType2}
+                    themeStyles={props.themeStyles}
+                    btnSize={item.btnSize}
+                    btnSize2={item.btnSize2}
+                    well={props.well}
+                />
+            )}
         </>
     )
 }
 
 const TheListWrapV2 = (props: TsiWrp) => {
     const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgSize, well, textColorHeading, icons, icon3 } = props
+
+    const linkAndBtn =
+        (item.actionlbl && item.pagelink) || (item.actionlbl && item.weblink) || (item.actionlbl2 && item.pagelink2) || (item.actionlbl2 && item.weblink2)
+
     return (
         <>
             <header
@@ -478,12 +512,37 @@ const TheListWrapV2 = (props: TsiWrp) => {
                     </div>
                 </div>
             )}
+
+            {linkAndBtn && (
+                <TheListItemAction
+                    pagelink={item.pagelink}
+                    actionlbl={item.actionlbl}
+                    newwindow={item.newwindow}
+                    newwindow2={item.newwindow2}
+                    actionlbl2={item.actionlbl2}
+                    pagelink2={item.pagelink2}
+                    weblink2={item.weblink2}
+                    icon={item.icon}
+                    icon2={item.icon2}
+                    icons={icons}
+                    btnType={item.btnType}
+                    btnType2={item.btnType2}
+                    themeStyles={props.themeStyles}
+                    btnSize={item.btnSize}
+                    btnSize2={item.btnSize2}
+                    well={props.well}
+                />
+            )}
         </>
     )
 }
 
 const TheListWrapV3 = (props: TsiWrp) => {
     const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgSize, well, textColorHeading, icons, icon3 } = props
+
+    const linkAndBtn =
+        (item.actionlbl && item.pagelink) || (item.actionlbl && item.weblink) || (item.actionlbl2 && item.pagelink2) || (item.actionlbl2 && item.weblink2)
+
     return (
         <>
             <div className={styles['tsI_txt_wrp']}>
@@ -551,6 +610,27 @@ const TheListWrapV3 = (props: TsiWrp) => {
                         </div>
                     </div>
                 </div>
+
+                {linkAndBtn && (
+                    <TheListItemAction
+                        pagelink={item.pagelink}
+                        actionlbl={item.actionlbl}
+                        newwindow={item.newwindow}
+                        newwindow2={item.newwindow2}
+                        actionlbl2={item.actionlbl2}
+                        pagelink2={item.pagelink2}
+                        weblink2={item.weblink2}
+                        icon={item.icon}
+                        icon2={item.icon2}
+                        icons={icons}
+                        btnType={item.btnType}
+                        btnType2={item.btnType2}
+                        themeStyles={props.themeStyles}
+                        btnSize={item.btnSize}
+                        btnSize2={item.btnSize2}
+                        well={props.well}
+                    />
+                )}
             </div>
         </>
     )

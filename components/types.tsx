@@ -494,4 +494,5 @@ export interface TsiWrp {
     icon3?: string
     item: ArticleItems
     textColorHeading: any
+    themeStyles: ThemeStyles
 }

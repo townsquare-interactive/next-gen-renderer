@@ -669,28 +669,33 @@ const Button = (props: TheListItemActionProps) => {
             {props.actionlbl2 && props.actionlbl ? (
                 <div className={cn(styles['btn-wrap'], styles['txt-wrap'])}>
                     {buttons.map((bt, index) => (
-                        <Link href={bt.link || ''} key={index}>
-                            <a
-                                target={bt.window === 1 ? '_blank' : '_self'}
-                                className={cn('btn_link', {
-                                    [styles.btn_block]: bt.btnSize.includes('btn_block'),
-                                })}
-                            >
-                                <div
-                                    className={cn(styles['btn'], styles['transition'], `${bt.btnType}`, {
-                                        [styles.btn_1]: bt.btnType === 'btn_1' || !bt.btnType,
-                                        [styles.btn_2]: bt.btnType === 'btn_2',
-                                        [styles.btn_md]: bt.btnSize === 'md' || bt.btnSize === 'md btn_block' || !bt.btnSize,
-                                        [styles.btn_lg]: bt.btnSize === 'lg' || bt.btnSize === 'lg btn_block',
-                                        [styles.btn_sm]: bt.btnSize === 'sm' || bt.btnSize === 'sm btn_block',
-                                        [styles.btn_xs]: bt.btnSize === 'xs' || bt.btnSize === 'xs btn_block',
-                                        [styles.btn_block]: bt.btnSize.includes('btn_block'),
-                                    })}
-                                >
-                                    {bt.icon && <FontAwesomeIcon icon={icon || faRocket} />} {bt.label}
-                                </div>
-                            </a>
-                        </Link>
+                        <>
+                            {bt.active && (
+                                <Link href={bt.link || ''} key={index}>
+                                    <a
+                                        target={bt.window === 1 ? '_blank' : '_self'}
+                                        className={cn('btn_link', {
+                                            [styles.btn_block]: bt.btnSize.includes('btn_block'),
+                                        })}
+                                    >
+                                        <div
+                                            className={cn(styles['btn'], styles['transition'], `${bt.btnType}`, {
+                                                [styles.btn_1]: bt.btnType === 'btn_1' || !bt.btnType,
+                                                [styles.btn_2]: bt.btnType === 'btn_2',
+                                                [styles.btn_md]: bt.btnSize === 'md' || bt.btnSize === 'md btn_block' || !bt.btnSize,
+                                                [styles.btn_lg]: bt.btnSize === 'lg' || bt.btnSize === 'lg btn_block',
+                                                [styles.btn_sm]: bt.btnSize === 'sm' || bt.btnSize === 'sm btn_block',
+                                                [styles.btn_xs]: bt.btnSize === 'xs' || bt.btnSize === 'xs btn_block',
+                                                [styles.btn_block]: bt.btnSize.includes('btn_block'),
+                                                [styles.btn_w]: props.well === '1',
+                                            })}
+                                        >
+                                            {bt.icon && <FontAwesomeIcon icon={icon || faRocket} />} {bt.label}
+                                        </div>
+                                    </a>
+                                </Link>
+                            )}
+                        </>
                     ))}
                 </div> /* : props.actionlbl ? (
                 <div
@@ -725,7 +730,7 @@ const Button = (props: TheListItemActionProps) => {
                 </div> */
                 buttons.map((bt, index) => (
                     <>
-                        {bt.active ? (
+                        {bt.active && (
                             <div
                                 className={cn(styles['btn'], styles['transition'], `${bt.btnType}`, {
                                     [styles.btn_1]: bt.btnType === 'btn_1' || !bt.btnType,
@@ -734,14 +739,13 @@ const Button = (props: TheListItemActionProps) => {
                                     [styles.btn_lg]: bt.btnSize === 'lg' || bt.btnSize === 'lg btn_block',
                                     [styles.btn_sm]: bt.btnSize === 'sm' || bt.btnSize === 'sm btn_block',
                                     [styles.btn_xs]: bt.btnSize === 'xs' || bt.btnSize === 'xs btn_block',
+                                    [styles.btn_w]: props.well === '1',
                                     [styles.btn_block]: bt.btnSize.includes('btn_block'),
                                 })}
                                 key={index}
                             >
                                 {bt.icon && <FontAwesomeIcon icon={icon || faRocket} />} {bt.label}
                             </div>
-                        ) : (
-                            <></>
                         )}
                     </>
                 ))
@@ -773,7 +777,7 @@ const TheListItemImage = (props: TheListItemImageProps) => {
                     />
                 )}
                 {item.icon3 && (
-                    <div className={cn(styles.tsI_icon, styles['icon-block'])}>
+                    <div className={cn(styles['icon-block'])}>
                         <div className={styles.icon}>
                             <FontAwesomeIcon icon={icon} />
                         </div>
