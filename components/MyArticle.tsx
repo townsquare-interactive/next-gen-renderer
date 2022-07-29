@@ -228,8 +228,6 @@ const ModuleItem = (props: any) => {
 
     const wrapLink = oneButton || linkNoBtn
 
-    console.log(item.isFeatured)
-
     return (
         <article
             className={cn(
@@ -587,8 +585,8 @@ const Button = (props: TheListItemActionProps) => {
     } */
 
     const btns = props.well
-        ? `.btn1{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['mainColor']}} .btn_link:hover .btn1{color: ${props.themeStyles['mainColor']}; background-color: ${props.themeStyles['textColorAccent']}} .btn2{color: ${props.themeStyles['altColor']}; border-color: ${props.themeStyles['altColor']}} .btn_link:hover .btn2{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['altColor']}}`
-        : `.btn1{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['mainColor']}} .btn1:hover{color: ${props.themeStyles['mainColor']}; background-color: ${props.themeStyles['textColorAccent']}} .btn2{color: ${props.themeStyles['altColor']}; border-color: ${props.themeStyles['altColor']}} .btn2:hover{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['altColor']}}`
+        ? `.btn_1{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['mainColor']}} .btn_link:hover .btn_1{color: ${props.themeStyles['mainColor']}; background-color: ${props.themeStyles['textColorAccent']}} .btn_{color: ${props.themeStyles['altColor']}; border-color: ${props.themeStyles['altColor']}} .btn_link:hover .btn_2{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['altColor']}}`
+        : `.btn_1{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['mainColor']}} .btn_1:hover{color: ${props.themeStyles['mainColor']}; background-color: ${props.themeStyles['textColorAccent']}} .btn_2{color: ${props.themeStyles['altColor']}; border-color: ${props.themeStyles['altColor']}} .btn_2:hover{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['altColor']}}`
 
     const link1 = props.pagelink || props.weblink
 
@@ -599,27 +597,25 @@ const Button = (props: TheListItemActionProps) => {
             name: 'btn1',
             link: props.pagelink || props.weblink,
             window: props.newwindow,
-            icons: props.icon,
+            icon: props.icon,
             label: props.actionlbl,
             active: props.actionlbl ? true : false,
             btnType: props.btnType,
+            btnSize: props.btnSize,
         },
         {
             name: 'btn2',
             link: props.pagelink2 || props.weblink2,
             window: props.newwindow2,
-            icons: props.icon2,
+            icon: props.icon2,
             label: props.actionlbl2,
             active: props.actionlbl2 ? true : false,
-            btnType2: props.btnType2,
+            btnType: props.btnType2,
+            btnSize: props.btnSize2,
         },
     ]
 
-    return (
-        <>
-            <style>{btns}</style>
-            {props.actionlbl2 && props.actionlbl ? (
-                <div className={cn(styles['btn-wrap'], styles['txt-wrap'])}>
+    /* <div className={cn(styles['btn-wrap'], styles['txt-wrap'])}>
                     <Link href={link1 || ''}>
                         <a
                             target={props.newwindow === 1 ? '_blank' : '_self'}
@@ -665,8 +661,38 @@ const Button = (props: TheListItemActionProps) => {
                             </div>
                         </a>
                     </Link>
-                </div>
-            ) : props.actionlbl ? (
+                </div> */
+
+    return (
+        <>
+            <style>{btns}</style>
+            {props.actionlbl2 && props.actionlbl ? (
+                <div className={cn(styles['btn-wrap'], styles['txt-wrap'])}>
+                    {buttons.map((bt, index) => (
+                        <Link href={bt.link || ''} key={index}>
+                            <a
+                                target={bt.window === 1 ? '_blank' : '_self'}
+                                className={cn('btn_link', {
+                                    [styles.btn_block]: bt.btnSize.includes('btn_block'),
+                                })}
+                            >
+                                <div
+                                    className={cn(styles['btn'], styles['transition'], `${bt.btnType}`, {
+                                        [styles.btn_1]: bt.btnType === 'btn_1' || !bt.btnType,
+                                        [styles.btn_2]: bt.btnType === 'btn_2',
+                                        [styles.btn_md]: bt.btnSize === 'md' || bt.btnSize === 'md btn_block' || !bt.btnSize,
+                                        [styles.btn_lg]: bt.btnSize === 'lg' || bt.btnSize === 'lg btn_block',
+                                        [styles.btn_sm]: bt.btnSize === 'sm' || bt.btnSize === 'sm btn_block',
+                                        [styles.btn_xs]: bt.btnSize === 'xs' || bt.btnSize === 'xs btn_block',
+                                        [styles.btn_block]: bt.btnSize.includes('btn_block'),
+                                    })}
+                                >
+                                    {bt.icon && <FontAwesomeIcon icon={icon || faRocket} />} {bt.label}
+                                </div>
+                            </a>
+                        </Link>
+                    ))}
+                </div> /* : props.actionlbl ? (
                 <div
                     className={cn(styles['btn'], styles['transition'], 'btn1', {
                         [styles.btn_1]: props.btnType === 'btn_1' || !props.btnType,
@@ -681,8 +707,9 @@ const Button = (props: TheListItemActionProps) => {
                 >
                     {props.icon && <FontAwesomeIcon icon={icon || faRocket} />} {props.actionlbl}
                 </div>
+            ) */
             ) : (
-                <div
+                /*  <div
                     className={cn(styles['btn'], styles['transition'], 'btn2', {
                         [styles.btn_1]: props.btnType === 'btn_1',
                         [styles.btn_2]: props.btnType === 'btn_2' || !props.btnType2,
@@ -695,7 +722,29 @@ const Button = (props: TheListItemActionProps) => {
                     })}
                 >
                     {props.icon2 && <FontAwesomeIcon icon={icon2 || faRocket} />} {props.actionlbl2}
-                </div>
+                </div> */
+                buttons.map((bt, index) => (
+                    <>
+                        {bt.active ? (
+                            <div
+                                className={cn(styles['btn'], styles['transition'], `${bt.btnType}`, {
+                                    [styles.btn_1]: bt.btnType === 'btn_1' || !bt.btnType,
+                                    [styles.btn_2]: bt.btnType === 'btn_2',
+                                    [styles.btn_md]: bt.btnSize === 'md' || bt.btnSize === 'md btn_block' || !bt.btnSize,
+                                    [styles.btn_lg]: bt.btnSize === 'lg' || bt.btnSize === 'lg btn_block',
+                                    [styles.btn_sm]: bt.btnSize === 'sm' || bt.btnSize === 'sm btn_block',
+                                    [styles.btn_xs]: bt.btnSize === 'xs' || bt.btnSize === 'xs btn_block',
+                                    [styles.btn_block]: bt.btnSize.includes('btn_block'),
+                                })}
+                                key={index}
+                            >
+                                {bt.icon && <FontAwesomeIcon icon={icon || faRocket} />} {bt.label}
+                            </div>
+                        ) : (
+                            <></>
+                        )}
+                    </>
+                ))
             )}
         </>
     )

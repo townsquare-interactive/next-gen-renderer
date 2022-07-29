@@ -439,6 +439,9 @@ $quarteritem-width: $quarter-width - ($item-margins * 2);
 
     &.a1,
     &.a2 {
+        .btn {
+            align-self: center;
+        }
         .hd,
         .sh,
         .dsc {
