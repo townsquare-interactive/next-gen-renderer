@@ -69,14 +69,6 @@ $lg-screen: 1025px;
     }
 }
 
-/*
-@media print, screen and (min-width: 481px) and (max-width: 1024px) {
-
-    @media print, screen and (min-width: 851px) and (max-width: 1024px) {
-
-        @media print, screen and (min-width: 481px) and (max-width: 850px) {
-*/
-
 @mixin tsFlex {
     /*  display: -webkit-box;
     display: -moz-box;
@@ -127,9 +119,7 @@ $lg-screen: 1025px;
 
             .item-wrap {
                 .image-block {
-                    /*                     margin: 0;
-                    display: block;
-                    margin-bottom: 0.5625em; */
+                    /* display: block;*/
                     margin: 0;
                     margin-bottom: 0.5625em;
 
@@ -138,14 +128,6 @@ $lg-screen: 1025px;
                         margin: 0;
                         width: 100%;
                         max-width: 100%;
-
-                        /*    img {
-                                                     display: block;
-                            margin: 0;
-                            width: 100%;
-                            max-width: 100%;
-                            border: 0; 
-                        }*/
                     }
 
                     figcaption {
@@ -156,12 +138,11 @@ $lg-screen: 1025px;
                         padding: 0.5rem 1rem;
                         text-align: center;
                         background: rgba(0, 0, 0, 0.5);
-                        /*                         z-index: 1;
+                        /* z-index: 1;
                         position: relative; */
                     }
 
-                    /*                     &.a3 .tsI_img {
-                                               width: 100%;
+                    /* &.a3 .tsI_img {
                         float: none; 
                     } */
 
@@ -186,91 +167,15 @@ $lg-screen: 1025px;
                             }
                         }
                     }
-
-                    /* .tsI_icon {
-                        display: -webkit-box;
-                        display: -moz-box;
-                        display: box;
-                        display: -moz-flex;
-                        display: flex;
-                        box-align: center;
-                        -moz-align-items: center;
-                        -ms-align-items: center;
-                        -o-align-items: center;
-                        align-items: center;
-                        -ms-flex-align: center;
-                        box-pack: center;
-                        -moz-justify-content: center;
-                        -ms-justify-content: center;
-                        -o-justify-content: center;
-                        justify-content: center;
-                        -ms-flex-pack: center;
-                        box-orient: vertical;
-                        box-direction: normal;
-                        -moz-flex-direction: column;
-                        flex-direction: column;
-                        background: rgba(0, 0, 0, 0.5);
-
-                        &.icon_block {
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            bottom: 0;
-                            right: 0;
-                            z-index: 1;
-                        }
-
-                        @media print, screen and (min-width: 481px) {
-                            padding: 15%;
-                        }
-
-                        svg {
-                            color: #fff;
-                            max-height: 5em;
-                            max-width: 5em;
-
-                            @media print, screen and (max-width: 480px) {
-                                width: 100%;
-                                height: 100%;
-                                max-height: 4em;
-                            }
-                            @media print, screen and (min-width: 481px) {
-                                width: 100%;
-                                height: 100%;
-                            }
-                        }
-                    } */
-                }
-
-                // @media print, screen and (max-width: 480px) {
-                //commenting out media query, same as .small nHero as well
-                .dsc {
-                    font-size: 0.875em;
-                    margin-top: 1.1428571429em;
-                    margin-bottom: 1.1428571429em;
-                    line-height: 1.4285714286em;
-                }
-                .sh {
-                    font-size: 0.875em;
-                    margin-top: 0.5714285714em;
-                    margin-bottom: 0.5714285714em;
-                    line-height: 1.1428571429em;
-                }
-
-                .hd {
-                    font-size: 1.0625em;
-                    margin-top: 0.7058823529em;
-                    margin-bottom: 0.4705882353em;
-                    line-height: 1.1764705882em;
                 }
 
                 .hd-block {
-                    //header
                     //display: block;
 
                     .hd {
                         font-weight: 700;
                     }
+
                     .sh {
                         font-weight: 400;
                     }
@@ -278,17 +183,18 @@ $lg-screen: 1025px;
 
                 .txt-block {
                     .dsc {
-                        //font-weight: lighter !important;
                         display: inline;
                         width: 100%;
                     }
                 }
+
+                // @media print, screen and (max-width: 480px) {
+                //commenting out media query, same as .small nHero as well
             }
 
             /*-----------------------------Button styles--------------------*/
 
             .btn {
-                //align-self: center;
                 border-style: solid;
                 //border-color: transparent;
                 border-width: 1px;
@@ -416,9 +322,6 @@ $lg-screen: 1025px;
     }
     /*-----------------------------ENd of button styles--------------------*/
 
-    /*   &.ts-box {
-    } */
-
     &.tsflex {
         @include tsFlex;
         box-lines: multiple;
@@ -451,10 +354,8 @@ $lg-screen: 1025px;
                 @include tsFlex;
                 box-orient: vertical;
                 box-direction: normal;
-
                 flex-direction: column;
                 box-flex: 1;
-
                 flex: 1 1 auto;
             }
         }
@@ -468,25 +369,6 @@ $lg-screen: 1025px;
                     padding: 1.5rem 0 0;
                 } */
             }
-        }
-    }
-
-    //used order to move desc under image
-    &.a2 {
-        .hd-block {
-            order: 1;
-        }
-
-        .image-block {
-            order: 2;
-        }
-
-        .txt-block {
-            order: 3;
-        }
-
-        .btn {
-            order: 4;
         }
     }
 
@@ -544,6 +426,25 @@ $lg-screen: 1025px;
         }
     }
 
+    //used order to move desc under image
+    &.a2 {
+        .hd-block {
+            order: 1;
+        }
+
+        .image-block {
+            order: 2;
+        }
+
+        .txt-block {
+            order: 3;
+        }
+
+        .btn {
+            order: 4;
+        }
+    }
+
     &.a3 {
         .txt-wrap {
             /*  box-align: baseline;
@@ -561,69 +462,8 @@ $lg-screen: 1025px;
 
     &.a3,
     &.beacon {
-        /* &.medium,
-        &.large {
-            @media print, screen and (min-width: 481px) {
-                .mod_left,
-                .mod_right {
-                    .item-wrap {
-                        flex-direction: row;
-                    }
-
-                    .txt-wrap {
-                        width: 50%;
-                    }
-                }
-
-                .mod_left .image-block,
-                .mod_right .image-block {
-                    //width: $third-width;
-                    //width: 50%;
-                    width: 41.6666666667%;
-                    display: block;
-                }
-                .mod_left .image-block {
-                    float: left;
-                    margin-right: 2rem;
-                }
-                .mod_right .image-block {
-                    float: right;
-                    margin-left: 2rem;
-                }
-            }
-        } */
         &.medium {
             @include sm-min {
-                //how about hero??
-                &.nHero {
-                    .sh {
-                        font-size: 1.0625em;
-                        margin-top: 0.7058823529em;
-                        margin-bottom: 0.4705882353em;
-                        line-height: 1.1764705882em;
-                    }
-                    .hd {
-                        font-size: 1.5em;
-                        margin-top: 0.6666666667em;
-                        margin-bottom: 0.5em;
-                        line-height: 1.1666666667em;
-                        letter-spacing: -0.0125rem;
-                    }
-                    .dsc {
-                        font-size: 1.0625em;
-                        margin-top: 0.9411764706em;
-                        margin-bottom: 0.9411764706em;
-                        line-height: 1.4117647059em;
-                    }
-                }
-
-                /*                 .mod_left,
-                .mod_right {
-                    .item-wrap {
-                        flex-direction: row;
-                    }
-                } */
-
                 .mod_left .image-block,
                 .mod_right .image-block {
                     width: $third-width;
@@ -642,33 +482,6 @@ $lg-screen: 1025px;
 
         &.large {
             @include sm-min {
-                .hd {
-                    font-size: 2.25em;
-                    margin-top: 0.6666666667em;
-                    margin-bottom: 0.4444444444em;
-                    line-height: 1.1111111111em;
-                    letter-spacing: -0.0125rem;
-                }
-                .sh {
-                    font-size: 1.5em;
-                    margin-top: 0.6666666667em;
-                    margin-bottom: 0.5em;
-                    line-height: 1.1666666667em;
-                    letter-spacing: -0.0125rem;
-                }
-                .dsc {
-                    font-size: 1.0625em;
-                    margin-top: 0.9411764706em;
-                    margin-bottom: 0.9411764706em;
-                    line-height: 1.4117647059em;
-                }
-                /*                 .mod_left,
-                .mod_right {
-                    .item-wrap {
-                        flex-direction: row;
-                    }
-                } */
-
                 .mod_left .image-block,
                 .mod_right .image-block {
                     //width: $third-width;
@@ -692,10 +505,57 @@ $lg-screen: 1025px;
         }
     }
 
+    /* @include sm-min { */
+    .dsc {
+        font-size: 0.875em;
+        margin-top: 1.1428571429em;
+        margin-bottom: 1.1428571429em;
+        line-height: 1.4285714286em;
+    }
+
+    .sh {
+        font-size: 0.875em;
+        margin-top: 0.5714285714em;
+        margin-bottom: 0.5714285714em;
+        line-height: 1.1428571429em;
+    }
+
+    .hd {
+        font-size: 1.0625em;
+        margin-top: 0.7058823529em;
+        margin-bottom: 0.4705882353em;
+        line-height: 1.1764705882em;
+    }
+
+    &.small {
+        /* @include sm-min {
+            .dsc {
+                font-size: 0.875em;
+                margin-top: 1.1428571429em;
+                margin-bottom: 1.1428571429em;
+                line-height: 1.4285714286em;
+            }
+
+            .sh {
+                font-size: 0.875em;
+                margin-top: 0.5714285714em;
+                margin-bottom: 0.5714285714em;
+                line-height: 1.1428571429em;
+            }
+
+            .hd {
+                font-size: 1.0625em;
+                margin-top: 0.7058823529em;
+                margin-bottom: 0.4705882353em;
+                line-height: 1.1764705882em;
+            }
+        } */
+    }
+
     &.medium {
         @include sm-min {
             //how about hero??
-            &.nHero {
+            .nHero {
                 .sh {
                     font-size: 1.0625em;
                     margin-top: 0.7058823529em;
@@ -704,7 +564,7 @@ $lg-screen: 1025px;
                 }
 
                 .hd {
-                    font-size: 1.5em;
+                    font-size: 1.5em !important;
                     margin-top: 0.6666666667em;
                     margin-bottom: 0.5em;
                     line-height: 1.1666666667em;
@@ -800,11 +660,6 @@ $lg-screen: 1025px;
                 margin-bottom: 0 !important;
                 margin-top: auto;
             }
-
-            /*             .dsc-block,
-            .hd-block {
-                width: 100%;
-            } */
         }
 
         &.a3,
@@ -826,7 +681,7 @@ $lg-screen: 1025px;
                     padding: 2rem;
 
                     @include lg-min {
-                        /*                         max-width: 100%;
+                        /* max-width: 100%;
                         margin-left: auto;
                         margin-right: auto; */
                         padding: 4rem 1.5rem;
@@ -884,11 +739,13 @@ $lg-screen: 1025px;
             margin-right: $item-margins;
             width: $full-item-width;
         }
+
         &.col_2 .item {
             margin-left: $item-margins;
             margin-right: $item-margins;
             width: $half-item-width;
         }
+
         &.col_3 .item {
             margin-left: $item-margins;
             margin-right: $item-margins;
@@ -902,11 +759,13 @@ $lg-screen: 1025px;
             margin-right: $item-margins;
             width: $full-item-width;
         }
+
         &.col_2 .item {
             margin-left: $item-margins;
             margin-right: $item-margins;
             width: $half-item-width;
         }
+
         &.col_3 .item {
             margin-left: $item-margins;
             margin-right: $item-margins;
@@ -918,17 +777,44 @@ $lg-screen: 1025px;
             margin-right: $item-margins;
             width: $quarteritem-width;
         }
+
+        &.a1,
+        &.a2,
+        &.a3 {
+            &.col_2 .hero {
+                margin-left: $item-margins;
+                margin-right: $item-margins;
+                width: $full-item-width;
+            }
+
+            &.col_3 .hero {
+                margin-left: 2.1220609456%;
+                margin-right: 2.1220609456%;
+                width: 62.4225447755%;
+            }
+
+            &.col_4 .hero {
+                margin-left: $item-margins;
+                margin-right: $item-margins;
+                width: $half-item-width;
+            }
+        }
     }
 
     &.large {
         @include sm-min {
-            .nHero {
-                margin-left: 2.1220609456%;
-                margin-right: 2.1220609456%;
-                width: 79.0892114422%;
-                margin-left: 9.9248790425%;
-                margin-bottom: 4rem;
+            &.a1,
+            &.a2,
+            &.a3 {
+                .nHero {
+                    margin-left: 2.1220609456%;
+                    margin-right: 2.1220609456%;
+                    width: 79.0892114422%;
+                    margin-left: 9.9248790425%;
+                    margin-bottom: 4rem;
+                }
             }
+
             &:last-of-type {
                 margin-bottom: 2rem;
             }
@@ -965,6 +851,23 @@ $lg-screen: 1025px;
 
     &.widescreen_2_4_1 .image-block .image {
         aspect-ratio: math.div(2000, 830);
+    }
+
+    //font sizes
+    .font_xs {
+        font-size: 62.5%;
+    }
+    .font_sm {
+        font-size: 75%;
+    }
+    .font_md {
+        font-size: 87.5%;
+    }
+    .font_lg {
+        font-size: 112.5%;
+    }
+    .font_xl {
+        font-size: 125%;
     }
 
     //custom class test

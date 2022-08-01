@@ -552,26 +552,52 @@
     }
 
     @media print, screen and (min-width: 1025px) {
-        &.col_1 .tsI {
-            margin-left: 2.1220609456%;
-            margin-right: 2.1220609456%;
-            width: 95.7558781088%;
+        &.col_1 {
+            .tsI {
+                margin-left: 2.1220609456%;
+                margin-right: 2.1220609456%;
+                width: 95.7558781088%;
+            }
         }
-        &.col_2 .tsI {
-            margin-left: 2.1220609456%;
-            margin-right: 2.1220609456%;
-            width: 45.7558781088%;
+        &.col_2 {
+            .tsI {
+                margin-left: 2.1220609456%;
+                margin-right: 2.1220609456%;
+                width: 45.7558781088%;
+            }
+
+            .yHero {
+                margin-left: 2.1220609456%;
+                margin-right: 2.1220609456%;
+                width: 95.7558781088%;
+            }
         }
-        &.col_3 .tsI {
-            margin-left: 2.1220609456%;
-            margin-right: 2.1220609456%;
-            width: 29.0892114422%;
+        &.col_3 {
+            .tsI {
+                margin-left: 2.1220609456%;
+                margin-right: 2.1220609456%;
+                width: 29.0892114422%;
+            }
+
+            .yHero {
+                margin-left: 2.1220609456%;
+                margin-right: 2.1220609456%;
+                width: 62.4225447755%;
+            }
         }
 
-        &.col_4 .tsI {
-            margin-left: 2.1220609456%;
-            margin-right: 2.1220609456%;
-            width: 20.7558781088%;
+        &.col_4 {
+            .tsI {
+                margin-left: 2.1220609456%;
+                margin-right: 2.1220609456%;
+                width: 20.7558781088%;
+            }
+
+            .yHero {
+                margin-left: 2.1220609456%;
+                margin-right: 2.1220609456%;
+                width: 45.7558781088%;
+            }
         }
     }
     &.a1,
@@ -798,7 +824,7 @@
                 }
             }
 
-            nHero {
+            .nHero {
                 @media print, screen and (min-width: 1025px) {
                     .tsI_wrp {
                         max-width: 100%;

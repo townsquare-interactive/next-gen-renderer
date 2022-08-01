@@ -390,6 +390,13 @@ Featured.args = {
     items: [{ ...item1, isFeatured: 'active', align: 'left' }],
 }
 
+export const MultiFeatured = Template.bind({})
+MultiFeatured.args = {
+    ...AlignLeft.args,
+    columns: 3,
+    items: [{ ...item1 }, { ...item1, isFeatured: 'active' }, { ...item1 }],
+}
+
 export const MultipleBorder = Template.bind({})
 MultipleBorder.args = {
     ...ThreeColumns.args,
