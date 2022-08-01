@@ -353,7 +353,7 @@ const ItemWrap = (props: any) => {
     const beaconHero = type === 'article' && isFeatured === 'active'
 
     //Colors of text with classes for normal/hero/border
-    const textColors = `.accent-txt{color:${themeStyles['textColorAccent']}} .txt-color{color:{${themeStyles['txtColor']} .txt-color-heading{color:{${themeStyles['headingColor']}}`
+    const textColors = `.accent-txt{color:${themeStyles['textColorAccent']}} .txt-color{color:${themeStyles['txtColor']}} .txt-color-heading{color:{${themeStyles['headingColor']}}`
 
     const linkAndBtn =
         (item.actionlbl && item.pagelink) || (item.actionlbl && item.weblink) || (item.actionlbl2 && item.pagelink2) || (item.actionlbl2 && item.weblink2)

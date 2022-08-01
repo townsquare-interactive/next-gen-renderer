@@ -10,6 +10,10 @@ $half-item-width: $half-width - ($item-margins * 2);
 $third-item-width: $third-width - ($item-margins * 2);
 $quarteritem-width: $quarter-width - ($item-margins * 2);
 
+//grid system
+$col3-hero: (math.div(8, 12) * 100%) - ($item-margins * 2);
+$ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
+
 //breakpoints
 $sm-screen: 481px;
 $md-screen: 851px;
@@ -132,8 +136,6 @@ $lg-screen: 1025px;
 
                     figcaption {
                         display: block;
-
-                        //not lazy load
                         font-size: 0.75rem;
                         padding: 0.5rem 1rem;
                         text-align: center;
@@ -141,10 +143,6 @@ $lg-screen: 1025px;
                         /* z-index: 1;
                         position: relative; */
                     }
-
-                    /* &.a3 .tsI_img {
-                        float: none; 
-                    } */
 
                     .icon-block {
                         position: absolute;
@@ -170,8 +168,6 @@ $lg-screen: 1025px;
                 }
 
                 .hd-block {
-                    //display: block;
-
                     .hd {
                         font-weight: 700;
                     }
@@ -187,9 +183,6 @@ $lg-screen: 1025px;
                         width: 100%;
                     }
                 }
-
-                // @media print, screen and (max-width: 480px) {
-                //commenting out media query, same as .small nHero as well
             }
 
             /*-----------------------------Button styles--------------------*/
@@ -374,6 +367,7 @@ $lg-screen: 1025px;
 
     &.a1,
     &.a2 {
+        //default alignments
         .btn {
             align-self: center;
         }
@@ -383,6 +377,7 @@ $lg-screen: 1025px;
             text-align: center;
         }
 
+        //alignment modifiers
         .left {
             .hd,
             .sh,
@@ -445,23 +440,24 @@ $lg-screen: 1025px;
         }
     }
 
-    &.a3 {
+    /* &.a3 {
         .txt-wrap {
-            /*  box-align: baseline;
+             box-align: baseline;
             -moz-align-items: baseline;
             -ms-align-items: baseline;
             -o-align-items: baseline;
             align-items: baseline;
             -ms-flex-align: baseline;
             align-self: stretch;
-            -ms-flex-item-align: stretch; */
+            -ms-flex-item-align: stretch; 
 
             // width: 100%;
         }
-    }
+    }*/
 
     &.a3,
     &.beacon {
+        //Floating image to side of content
         &.medium {
             @include sm-min {
                 .mod_left .image-block,
@@ -486,7 +482,8 @@ $lg-screen: 1025px;
                 .mod_right .image-block {
                     //width: $third-width;
                     //width: 50%;
-                    width: 41.6666666667%;
+                    /* width: 41.6666666667%; */
+                    width: math.div(5, 12) * 100%;
                     display: block;
                 }
                 .mod_left .image-block {
@@ -506,7 +503,7 @@ $lg-screen: 1025px;
     }
 
     /* @include sm-min { */
-    .dsc {
+    .dsc p {
         font-size: 0.875em;
         margin-top: 1.1428571429em;
         margin-bottom: 1.1428571429em;
@@ -527,8 +524,9 @@ $lg-screen: 1025px;
         line-height: 1.1764705882em;
     }
 
-    &.small {
-        /* @include sm-min {
+    //Same as above ^^
+    /* &.small {
+        @include sm-min {
             .dsc {
                 font-size: 0.875em;
                 margin-top: 1.1428571429em;
@@ -549,34 +547,34 @@ $lg-screen: 1025px;
                 margin-bottom: 0.4705882353em;
                 line-height: 1.1764705882em;
             }
-        } */
+        } 
+        
     }
-
+*/
     &.medium {
         @include sm-min {
             //how about hero??
-            .nHero {
-                .sh {
-                    font-size: 1.0625em;
-                    margin-top: 0.7058823529em;
-                    margin-bottom: 0.4705882353em;
-                    line-height: 1.1764705882em;
-                }
 
-                .hd {
-                    font-size: 1.5em !important;
-                    margin-top: 0.6666666667em;
-                    margin-bottom: 0.5em;
-                    line-height: 1.1666666667em;
-                    letter-spacing: -0.0125rem;
-                }
+            .sh {
+                font-size: 1.0625em;
+                margin-top: 0.7058823529em;
+                margin-bottom: 0.4705882353em;
+                line-height: 1.1764705882em;
+            }
 
-                .dsc {
-                    font-size: 1.0625em;
-                    margin-top: 0.9411764706em;
-                    margin-bottom: 0.9411764706em;
-                    line-height: 1.4117647059em;
-                }
+            .hd {
+                font-size: 1.5em !important;
+                margin-top: 0.6666666667em;
+                margin-bottom: 0.5em;
+                line-height: 1.1666666667em;
+                letter-spacing: -0.0125rem;
+            }
+
+            .dsc p {
+                font-size: 1.0625em;
+                margin-top: 0.9411764706em;
+                margin-bottom: 0.9411764706em;
+                line-height: 1.4117647059em;
             }
         }
     }
@@ -599,7 +597,7 @@ $lg-screen: 1025px;
                 letter-spacing: -0.0125rem;
             }
 
-            .dsc {
+            .dsc p {
                 font-size: 1.0625em;
                 margin-top: 0.9411764706em;
                 margin-bottom: 0.9411764706em;
@@ -610,10 +608,10 @@ $lg-screen: 1025px;
 
     /*------------------------------------Border/well prop enabled-------------------------*/
     &.well {
-        /*         .hd-block,
+        .hd-block,
         .txt-block {
             max-width: 100%;
-        } */
+        }
 
         .item {
             box-shadow: 0 0 2px rgb(0 0 0 / 6%), 0 2px 4px rgb(0 0 0 / 12%);
@@ -788,9 +786,9 @@ $lg-screen: 1025px;
             }
 
             &.col_3 .hero {
-                margin-left: 2.1220609456%;
-                margin-right: 2.1220609456%;
-                width: 62.4225447755%;
+                margin-left: $item-margins;
+                margin-right: $item-margins;
+                width: $col3-hero;
             }
 
             &.col_4 .hero {
@@ -807,10 +805,11 @@ $lg-screen: 1025px;
             &.a2,
             &.a3 {
                 .nHero {
-                    margin-left: 2.1220609456%;
-                    margin-right: 2.1220609456%;
-                    width: 79.0892114422%;
-                    margin-left: 9.9248790425%;
+                    width: $ten-12;
+                    /* margin-left: item-margins;
+                    margin-right: item-margins; */
+                    // margin-left: 9.9248790425%;
+                    margin: 0 auto;
                     margin-bottom: 4rem;
                 }
             }
@@ -821,6 +820,7 @@ $lg-screen: 1025px;
         }
     }
 
+    //setting aspect ratio of images
     &.square_1_1 .image-block .image {
         aspect-ratio: math.div(1, 1);
     }
