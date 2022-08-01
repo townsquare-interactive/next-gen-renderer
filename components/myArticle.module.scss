@@ -10,6 +10,73 @@ $half-item-width: $half-width - ($item-margins * 2);
 $third-item-width: $third-width - ($item-margins * 2);
 $quarteritem-width: $quarter-width - ($item-margins * 2);
 
+//breakpoints
+$sm-screen: 481px;
+$md-screen: 851px;
+$lg-screen: 1025px;
+
+@mixin sm-min {
+    @media print, screen and (min-width: $sm-screen) {
+        @content;
+    }
+}
+
+@mixin md-min {
+    @media print, screen and (min-width: $md-screen) {
+        @content;
+    }
+}
+
+@mixin lg-min {
+    @media print, screen and (min-width: $lg-screen) {
+        @content;
+    }
+}
+
+@mixin sm-max {
+    @media print, screen and (max-width: ($sm-screen - 1)) {
+        @content;
+    }
+}
+
+@mixin md-max {
+    @media print, screen and (max-width: $md-screen) {
+        @content;
+    }
+}
+
+@mixin lg-max {
+    @media print, screen and (max-width: $lg-screen) {
+        @content;
+    }
+}
+
+@mixin min-sm-max-md {
+    @media print, screen and (min-width: $sm-screen) and (max-width: ($md-screen - 1)) {
+        @content;
+    }
+}
+
+@mixin min-sm-max-lg {
+    @media print, screen and (min-width: $sm-screen) and (max-width: ($lg-screen - 1)) {
+        @content;
+    }
+}
+
+@mixin min-md-max-lg {
+    @media print, screen and (min-width: $md-screen) and (max-width: ($lg-screen - 1)) {
+        @content;
+    }
+}
+
+/*
+@media print, screen and (min-width: 481px) and (max-width: 1024px) {
+
+    @media print, screen and (min-width: 851px) and (max-width: 1024px) {
+
+        @media print, screen and (min-width: 481px) and (max-width: 850px) {
+*/
+
 @mixin tsFlex {
     /*  display: -webkit-box;
     display: -moz-box;
@@ -93,27 +160,6 @@ $quarteritem-width: $quarter-width - ($item-margins * 2);
                         position: relative; */
                     }
 
-                    // @media print, screen and (max-width: 480px) {
-                    //commenting out media query, same as .small nHero as well
-                    .tsI_dsc {
-                        font-size: 0.875em;
-                        margin-top: 1.1428571429em;
-                        margin-bottom: 1.1428571429em;
-                        line-height: 1.4285714286em;
-                    }
-                    .tsI_sh {
-                        font-size: 0.875em;
-                        margin-top: 0.5714285714em;
-                        margin-bottom: 0.5714285714em;
-                        line-height: 1.1428571429em;
-                    }
-
-                    .tsI_hd {
-                        font-size: 1.0625em;
-                        margin-top: 0.7058823529em;
-                        margin-bottom: 0.4705882353em;
-                        line-height: 1.1764705882em;
-                    }
                     /*                     &.a3 .tsI_img {
                                                width: 100%;
                         float: none; 
@@ -135,7 +181,7 @@ $quarteritem-width: $quarter-width - ($item-margins * 2);
                             color: #fff;
                             font-size: 4rem;
 
-                            @media print, screen and (min-width: 480px) {
+                            @mixin sm-min {
                                 font-size: 6rem;
                             }
                         }
@@ -196,6 +242,28 @@ $quarteritem-width: $quarter-width - ($item-margins * 2);
                     } */
                 }
 
+                // @media print, screen and (max-width: 480px) {
+                //commenting out media query, same as .small nHero as well
+                .dsc {
+                    font-size: 0.875em;
+                    margin-top: 1.1428571429em;
+                    margin-bottom: 1.1428571429em;
+                    line-height: 1.4285714286em;
+                }
+                .sh {
+                    font-size: 0.875em;
+                    margin-top: 0.5714285714em;
+                    margin-bottom: 0.5714285714em;
+                    line-height: 1.1428571429em;
+                }
+
+                .hd {
+                    font-size: 1.0625em;
+                    margin-top: 0.7058823529em;
+                    margin-bottom: 0.4705882353em;
+                    line-height: 1.1764705882em;
+                }
+
                 .hd-block {
                     //header
                     //display: block;
@@ -234,63 +302,49 @@ $quarteritem-width: $quarter-width - ($item-margins * 2);
                 text-align: center;
                 user-select: none;
                 white-space: normal;
+                display: inline-block;
+                margin-top: 0em;
+                margin-bottom: 0em;
 
                 &.btn_xs {
                     font-size: 0.8125em;
-                    margin-top: 0em;
-                    margin-bottom: 0em;
                     line-height: 1.2307692308em;
                     padding: 0.25em 0.75em;
-                    display: inline-block;
                 }
 
                 &.btn_sm {
                     font-size: 0.8125em;
-                    margin-top: 0em;
-                    margin-bottom: 0em;
                     line-height: 1.2307692308em;
                     padding: 0.5em 1em;
-                    display: inline-block;
                 }
 
                 &.btn_md {
                     font-size: 0.875em;
-                    margin-top: 0em;
-                    margin-bottom: 0em;
                     line-height: 1.4285714286em;
                     padding: 0.625em 1.25em;
-                    display: inline-block;
                 }
 
-                @media print, screen and (max-width: 851px) {
-                    &.btn_xl,
-                    &.btn_lg {
-                        font-size: 0.875em;
-                        margin-top: 0em;
-                        margin-bottom: 0em;
-                        line-height: 1.4285714286em;
-                        padding: 0.625em 1.25em;
-                        display: inline-block;
-                    }
+                &.btn_lg {
+                    font-size: 0.875em;
+                    line-height: 1.4285714286em;
+                    padding: 0.625em 1.25em;
                 }
 
-                @media print, screen and (min-width: 851px) {
+                &.btn_xl {
+                    font-size: 0.875em;
+                    padding: 0.625em 1.25em;
+                    line-height: 1.4285714286em;
+                }
+
+                @include md-min {
                     &.btn_lg {
-                        font-size: 0.875em;
-                        margin-top: 0em;
-                        margin-bottom: 0em;
-                        line-height: 1.4285714286em;
                         padding: 0.825em 2.25em;
-                        display: inline-block;
                     }
 
                     &.btn_xl {
                         font-size: 1em;
-                        margin-top: 0em;
-                        margin-bottom: 0em;
                         line-height: 1.5em;
                         padding: 1.125em 2.75em;
-                        display: inline-block;
                     }
                 }
 
@@ -362,8 +416,8 @@ $quarteritem-width: $quarter-width - ($item-margins * 2);
     }
     /*-----------------------------ENd of button styles--------------------*/
 
-    &.ts-box {
-    }
+    /*   &.ts-box {
+    } */
 
     &.tsflex {
         @include tsFlex;
@@ -381,7 +435,6 @@ $quarteritem-width: $quarter-width - ($item-margins * 2);
             /*Full width*/
             @include tsFlex;
             box-flex: 0;
-
             flex: 0 1 auto;
             align-self: stretch;
             -ms-flex-item-align: stretch;
@@ -540,23 +593,23 @@ $quarteritem-width: $quarter-width - ($item-margins * 2);
             }
         } */
         &.medium {
-            @media print, screen and (min-width: 481px) {
+            @include sm-min {
                 //how about hero??
                 &.nHero {
-                    .tsI_sh {
+                    .sh {
                         font-size: 1.0625em;
                         margin-top: 0.7058823529em;
                         margin-bottom: 0.4705882353em;
                         line-height: 1.1764705882em;
                     }
-                    .tsI_hd {
+                    .hd {
                         font-size: 1.5em;
                         margin-top: 0.6666666667em;
                         margin-bottom: 0.5em;
                         line-height: 1.1666666667em;
                         letter-spacing: -0.0125rem;
                     }
-                    .tsI_dsc {
+                    .dsc {
                         font-size: 1.0625em;
                         margin-top: 0.9411764706em;
                         margin-bottom: 0.9411764706em;
@@ -588,22 +641,22 @@ $quarteritem-width: $quarter-width - ($item-margins * 2);
         }
 
         &.large {
-            @media print, screen and (min-width: 481px) {
-                .tsI_hd {
+            @include sm-min {
+                .hd {
                     font-size: 2.25em;
                     margin-top: 0.6666666667em;
                     margin-bottom: 0.4444444444em;
                     line-height: 1.1111111111em;
                     letter-spacing: -0.0125rem;
                 }
-                .tsI_sh {
+                .sh {
                     font-size: 1.5em;
                     margin-top: 0.6666666667em;
                     margin-bottom: 0.5em;
                     line-height: 1.1666666667em;
                     letter-spacing: -0.0125rem;
                 }
-                .tsI_dsc {
+                .dsc {
                     font-size: 1.0625em;
                     margin-top: 0.9411764706em;
                     margin-bottom: 0.9411764706em;
@@ -640,7 +693,7 @@ $quarteritem-width: $quarter-width - ($item-margins * 2);
     }
 
     &.medium {
-        @media print, screen and (min-width: 481px) {
+        @include sm-min {
             //how about hero??
             &.nHero {
                 .sh {
@@ -669,7 +722,7 @@ $quarteritem-width: $quarter-width - ($item-margins * 2);
     }
 
     &.large {
-        @media print, screen and (min-width: 481px) {
+        @include sm-min {
             .hd {
                 font-size: 2.25em;
                 margin-top: 0.6666666667em;
@@ -726,7 +779,7 @@ $quarteritem-width: $quarter-width - ($item-margins * 2);
             }
 
             &.large .dsc-block {
-                @media print, screen and (min-width: 1025px) {
+                @include lg-min {
                     padding-bottom: 3rem;
                 }
             }
@@ -743,7 +796,7 @@ $quarteritem-width: $quarter-width - ($item-margins * 2);
                 padding: 1rem 2rem 1.5rem;
             }
 
-            .nDsc .tsI_img {
+            .nDsc .image-block {
                 margin-bottom: 0 !important;
                 margin-top: auto;
             }
@@ -772,7 +825,7 @@ $quarteritem-width: $quarter-width - ($item-margins * 2);
                 .txt-wrap {
                     padding: 2rem;
 
-                    @media print, screen and (min-width: 1025px) {
+                    @include lg-min {
                         /*                         max-width: 100%;
                         margin-left: auto;
                         margin-right: auto; */
@@ -793,7 +846,7 @@ $quarteritem-width: $quarter-width - ($item-margins * 2);
     }
 
     //media queries for columns
-    @media print, screen and (max-width: 480px) {
+    @include sm-max {
         .item {
             width: $full-width;
             margin-left: 0;
@@ -801,7 +854,7 @@ $quarteritem-width: $quarter-width - ($item-margins * 2);
         }
     }
 
-    @media print, screen and (min-width: 481px) and (max-width: 850px) {
+    @include min-sm-max-md {
         //w1060
         &.col_1 .item,
         &.col_2 .item {
@@ -817,7 +870,7 @@ $quarteritem-width: $quarter-width - ($item-margins * 2);
         }
     }
 
-    @media print, screen and (min-width: 481px) and (max-width: 1024px) {
+    @include min-sm-max-lg {
         &.col_4 .item {
             margin-left: $item-margins;
             margin-right: $item-margins;
@@ -825,7 +878,7 @@ $quarteritem-width: $quarter-width - ($item-margins * 2);
         }
     }
 
-    @media print, screen and (min-width: 851px) and (max-width: 1024px) {
+    @include min-md-max-lg {
         &.col_1 .item {
             margin-left: $item-margins;
             margin-right: $item-margins;
@@ -843,7 +896,7 @@ $quarteritem-width: $quarter-width - ($item-margins * 2);
         }
     }
 
-    @media print, screen and (min-width: 1025px) {
+    @include lg-min {
         &.col_1 .item {
             margin-left: $item-margins;
             margin-right: $item-margins;
@@ -868,7 +921,7 @@ $quarteritem-width: $quarter-width - ($item-margins * 2);
     }
 
     &.large {
-        @media print, screen and (min-width: 481px) {
+        @include sm-min {
             .nHero {
                 margin-left: 2.1220609456%;
                 margin-right: 2.1220609456%;
