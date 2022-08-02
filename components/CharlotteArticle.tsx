@@ -1,5 +1,5 @@
 import styles from './CharlotteArticle.module.scss'
-import { ArticleProps, Media, TheListItemImageProps, TheListItemActionProps, TsiWrp } from './types'
+import { ArticleProps, Media, TheListItemImageProps, TheListItemActionProps, TsiWrp, ModuleItemProps } from './types'
 import Image from 'next/image'
 import cn from 'classnames'
 import Parser from 'html-react-parser'
@@ -7,9 +7,7 @@ import { domainImage } from '../functions'
 import { useState } from 'react'
 import Link from 'next/link'
 
-// importing fontAwesome
-/* import { library } from '@fortawesome/fontawesome-svg-core' */
-// import your icons
+// import your icons from fontawesome
 import { faRocket, faAnchor, faArchway } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -81,7 +79,7 @@ const CharlotteArticle = (props: ArticleProps) => {
     )
 }
 
-const TheListItem = (props: any) => {
+const TheListItem = (props: ModuleItemProps) => {
     const { item } = props
     const [imageHeight, setHeight] = useState(100)
     const [imageWidth, setWidth] = useState(300)

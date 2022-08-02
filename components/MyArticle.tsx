@@ -1,5 +1,5 @@
 import styles from './myArticle.module.scss'
-import { ArticleProps, Media, TheListItemImageProps, TheListItemActionProps } from './types'
+import { ArticleProps, Media, TheListItemImageProps, TheListItemActionProps, ItemWrapProps, ModuleItemProps } from './types'
 import Image from 'next/image'
 import cn from 'classnames'
 import Parser from 'html-react-parser'
@@ -7,8 +7,7 @@ import { domainImage } from '../functions'
 import { useState } from 'react'
 import Link from 'next/link'
 
-// importing fontAwesome
-// import your icons
+// importing fontAwesome icons
 import { faRocket, faAnchor, faArchway } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -80,7 +79,7 @@ const MyArticle = (props: ArticleProps) => {
     )
 }
 
-const ModuleItem = (props: any) => {
+const ModuleItem = (props: ModuleItemProps) => {
     const { item } = props
     const [imageHeight, setHeight] = useState(100)
     const [imageWidth, setWidth] = useState(300)
@@ -221,7 +220,7 @@ const ModuleItem = (props: any) => {
     )
 }
 
-const ItemWrap = (props: any) => {
+const ItemWrap = (props: ItemWrapProps) => {
     const {
         item,
         imageNoSizings,
@@ -232,7 +231,6 @@ const ItemWrap = (props: any) => {
         textColor,
         imgSize,
         well,
-        textColorHeading,
         icons,
         icon3,
         isFeatured,
