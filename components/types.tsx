@@ -494,4 +494,33 @@ export interface TsiWrp {
     icon3?: string
     item: ArticleItems
     textColorHeading: any
+    themeStyles: ThemeStyles
+}
+
+export interface ItemWrapProps {
+    imageNoSizings: any
+    calcImageSize: (loadedMedia: any) => void
+    imageWidth: number
+    imageHeight: number
+    textColorAccent: Colors
+    textColor: Colors
+    imgSize: string
+    well: string
+    icons: { [key: string]: any }
+    icon3?: string
+    item: ArticleItems
+    textColorHeading: any
+    themeStyles: ThemeStyles
+    isFeatured?: string
+    type: string
+}
+
+export interface ModuleItemProps {
+    item: ArticleItems
+    well: string
+    index: number
+    themeStyles: ThemeStyles
+    textColorHeading: any
+    imgSize: string
+    type: string
 }

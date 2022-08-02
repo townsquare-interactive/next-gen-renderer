@@ -14,6 +14,10 @@ export default {
             options: ['', '1'],
             control: { type: 'radio' },
         },
+        type: {
+            options: ['article_1', 'article_2', 'article_3', 'beacon'],
+            control: { type: 'radio' },
+        },
         columns: {
             options: [1, 2, 3, 4],
             control: { type: 'radio' },
@@ -384,6 +388,13 @@ export const Featured = Template.bind({})
 Featured.args = {
     ...AlignLeft.args,
     items: [{ ...item1, isFeatured: 'active', align: 'left' }],
+}
+
+export const MultiFeatured = Template.bind({})
+MultiFeatured.args = {
+    ...AlignLeft.args,
+    columns: 3,
+    items: [{ ...item1 }, { ...item1, isFeatured: 'active' }, { ...item1 }],
 }
 
 export const MultipleBorder = Template.bind({})
