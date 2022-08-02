@@ -1,6 +1,6 @@
 /* Components */
 
-import { ReactNode } from 'react'
+import { ReactChild, ReactElement, ReactNode } from 'react'
 
 export interface HeaderProps {
     /**Headline content to appear */
@@ -523,4 +523,13 @@ export interface ModuleItemProps {
     textColorHeading: any
     imgSize: string
     type: string
+}
+
+export interface ConditionalWrapperProps {
+    condition: boolean
+    children: ReactChild
+    wrapperDiv: (children: ReactChild) => ReactElement
+    wrapperPageLink: (children: ReactChild) => ReactElement
+    wrapperWebLink?: (children: ReactChild) => ReactElement
+    linkType: boolean
 }
