@@ -8,7 +8,6 @@ import { useState } from 'react'
 import Link from 'next/link'
 
 // importing fontAwesome
-/* import { library } from '@fortawesome/fontawesome-svg-core' */
 // import your icons
 import { faRocket, faAnchor, faArchway } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -61,80 +60,6 @@ const MyArticle = (props: ArticleProps) => {
                     </h2>
                 )}
                 {props.items.map((item, index) =>
-                    /* item.disabled != 'disabled' ? (
-                        <article
-                            className={cn(
-                                styles['item'],
-                                {
-                                    [styles.right]: item.align === 'right',
-                                    [styles.left]: item.align === 'left',
-                                    [styles.yHero]: item.isFeatured === 'active',
-                                    [styles.nHero]: !item.isFeatured,
-                                    [styles.yDsc]: item.desc,
-                                    [styles.nDsc]: !item.desc,
-                                    [styles.nImg]: !item.image,
-                                    [styles.yImg]: item.image,
-                                    [styles.yHds]: item.headline || item.subheader,
-                                    [styles.nHds]: !item.headline || !item.subheader,
-                                    [styles.center]: item.align === 'center',
-                                    [styles.mod_left]: item.align === 'left' && props.type === 'article_3',
-                                    [styles.mod_right]: item.align === 'right' && props.type === 'article_3',
-                                    [styles.mod_center]: item.align === 'center' && props.type === 'article_3',
-                                },
-                                styles[`item_${index + 1}`]
-                            )}
-                            lang="en"
-                            key={index}
-                            data-aos="fade-up"
-                            data-aos-once="true"
-                            style={props.well === '1' ? borderBackground : noBackground}
-                        >
-                            {props.type === 'article_1' ? (
-                                <TheListWrapV1
-                                    item={item}
-                                    imageNoSizings={imageNoSizings}
-                                    calcImageSize={calcImageSize}
-                                    imageWidth={imageWidth}
-                                    imageHeight={imageHeight}
-                                    textColorAccent={textColorAccent}
-                                    textColor={textColor}
-                                    imgSize={props.imgSize}
-                                    well={props.well}
-                                    textColorHeading={textColorHeading}
-                                />
-                            ) : props.type === 'article_2' ? (
-                                <ItemWrap
-                                    item={item}
-                                    imageNoSizings={imageNoSizings}
-                                    calcImageSize={calcImageSize}
-                                    imageWidth={imageWidth}
-                                    imageHeight={imageHeight}
-                                    textColorAccent={textColorAccent}
-                                    textColor={textColor}
-                                    imgSize={props.imgSize}
-                                    well={props.well}
-                                    textColorHeading={textColorHeading}
-                                />
-                            ) : props.type === 'article_3' ? (
-                                <TheListWrapV3
-                                    item={item}
-                                    imageNoSizings={imageNoSizings}
-                                    calcImageSize={calcImageSize}
-                                    imageWidth={imageWidth}
-                                    imageHeight={imageHeight}
-                                    textColorAccent={textColorAccent}
-                                    textColor={textColor}
-                                    imgSize={props.imgSize}
-                                    well={props.well}
-                                    textColorHeading={textColorHeading}
-                                />
-                            ) : (
-                                ''
-                            )}
-                        </article>
-                    ) : (
-                        <></>
-                    ) */
                     item.disabled != 'disabled' ? (
                         <ModuleItem
                             item={item}
@@ -159,12 +84,6 @@ const ModuleItem = (props: any) => {
     const { item } = props
     const [imageHeight, setHeight] = useState(100)
     const [imageWidth, setWidth] = useState(300)
-    const [lightbox, setLightbox] = useState(false)
-
-    /*     function toggleSwitch() {
-        setLightbox(!lightbox)
-        console.log(lightbox)
-    } */
 
     const calcImageSize = (loadedMedia: Media) => {
         setWidth(loadedMedia.naturalWidth)
@@ -179,9 +98,7 @@ const ModuleItem = (props: any) => {
     const textColorAccent = {
         color: props.themeStyles['textColorAccent'],
     }
-    const accentBackground = {
-        backgroundColor: props.themeStyles['mainColor'],
-    }
+
     const noBackground = {
         backgroundColor: 'transparent',
     }
@@ -190,10 +107,6 @@ const ModuleItem = (props: any) => {
     }
     const heroBackground = {
         backgroundColor: props.themeStyles['altColor'],
-    }
-    const accentColors = {
-        color: props.themeStyles['textColorAccent'],
-        backgroundColor: props.themeStyles['mainColor'],
     }
 
     const icons: { [key: string]: any } = {
@@ -301,28 +214,6 @@ const ModuleItem = (props: any) => {
                             themeStyles={props.themeStyles}
                             isFeatured={item.isFeatured}
                         />
-
-                        {/* {isButton() && (
-                            <Button
-                                pagelink={item.pagelink}
-                                pagelink2={item.pagelink2}
-                                weblink={item.weblink}
-                                weblink2={item.weblink2}
-                                actionlbl={item.actionlbl}
-                                newwindow={item.newwindow}
-                                newwindow2={item.newwindow2}
-                                actionlbl2={item.actionlbl2}
-                                icon={item.icon}
-                                icon2={item.icon2}
-                                icons={icons}
-                                btnType={item.btnType}
-                                btnType2={item.btnType2}
-                                themeStyles={props.themeStyles}
-                                btnSize={item.btnSize}
-                                btnSize2={item.btnSize2}
-                                well={props.well}
-                            />
-                        )} */}
                     </a>
                 </Link>
             )}
@@ -353,7 +244,7 @@ const ItemWrap = (props: any) => {
     const beaconHero = type === 'article' && isFeatured === 'active'
 
     //Colors of text with classes for normal/hero/border
-    const textColors = `.accent-txt{color:${themeStyles['textColorAccent']}} .txt-color{color:${themeStyles['txtColor']}} .txt-color-heading{color:{${themeStyles['headingColor']}}`
+    const textColors = `.accent-txt{color:${themeStyles['textColorAccent']}} .txt-color{color:${themeStyles['textColor']}} .txt-color-heading{color:${themeStyles['headingColor']}}`
 
     const linkAndBtn =
         (item.actionlbl && item.pagelink) || (item.actionlbl && item.weblink) || (item.actionlbl2 && item.pagelink2) || (item.actionlbl2 && item.weblink2)
@@ -369,7 +260,7 @@ const ItemWrap = (props: any) => {
                             className={cn(styles['image-block'], styles['theframe'], styles['imgtag'], styles['imgbase'], styles['img-loaded'])}
                             data-alt="Headline"
                         >
-                            <TheListItemImage
+                            <ImageBlock
                                 item={item}
                                 imageNoSizings={imageNoSizings}
                                 calcImageSize={calcImageSize}
@@ -466,8 +357,6 @@ const ItemWrap = (props: any) => {
                 </>
             ) : (
                 <div className={cn(styles['txt-wrap'])}>
-                    {/* <div className={cn(styles['txt-wrap'])}> */}
-
                     {item.image && (
                         <figure
                             className={cn(styles['image-block'], styles['theframe'], styles['imgtag'], styles['imgbase'], styles['img-loaded'])}
@@ -475,7 +364,7 @@ const ItemWrap = (props: any) => {
                             data-alt="Headline"
                             data-image-loaded=""
                         >
-                            <TheListItemImage
+                            <ImageBlock
                                 item={item}
                                 imageNoSizings={imageNoSizings}
                                 calcImageSize={calcImageSize}
@@ -579,18 +468,9 @@ const Button = (props: TheListItemActionProps) => {
     let icon = props.icon ? props.icons[props.icon] : faRocket
     let icon2 = props.icon2 ? props.icons[props.icon2] : faRocket
 
-    /*     const btn1Styles = {
-        color: props.themeStyles['textColorAccent'],
-        backgroundColor: props.themeStyles['mainColor'],
-    } */
-
     const btns = props.well
         ? `.btn_1{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['mainColor']}} .btn_link:hover .btn_1{color: ${props.themeStyles['mainColor']}; background-color: ${props.themeStyles['textColorAccent']}} .btn_{color: ${props.themeStyles['altColor']}; border-color: ${props.themeStyles['altColor']}} .btn_link:hover .btn_2{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['altColor']}}`
         : `.btn_1{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['mainColor']}} .btn_1:hover{color: ${props.themeStyles['mainColor']}; background-color: ${props.themeStyles['textColorAccent']}} .btn_2{color: ${props.themeStyles['altColor']}; border-color: ${props.themeStyles['altColor']}} .btn_2:hover{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['altColor']}}`
-
-    const link1 = props.pagelink || props.weblink
-
-    const link2 = props.pagelink2 || props.weblink2
 
     let buttons = [
         {
@@ -614,54 +494,6 @@ const Button = (props: TheListItemActionProps) => {
             btnSize: props.btnSize2,
         },
     ]
-
-    /* <div className={cn(styles['btn-wrap'], styles['txt-wrap'])}>
-                    <Link href={link1 || ''}>
-                        <a
-                            target={props.newwindow === 1 ? '_blank' : '_self'}
-                            className={cn('btn_link', {
-                                [styles.btn_block]: props.btnSize.includes('btn_block'),
-                            })}
-                        >
-                            <div
-                                className={cn(styles['btn'], styles['transition'], 'btn1', {
-                                    [styles.btn_1]: props.btnType === 'btn_1' || !props.btnType,
-                                    [styles.btn_2]: props.btnType === 'btn_2',
-                                    [styles.btn_md]: props.btnSize === 'md' || props.btnSize === 'md btn_block' || !props.btnSize,
-                                    [styles.btn_lg]: props.btnSize === 'lg' || props.btnSize === 'lg btn_block',
-                                    [styles.btn_sm]: props.btnSize === 'sm' || props.btnSize === 'sm btn_block',
-                                    [styles.btn_xs]: props.btnSize === 'xs' || props.btnSize === 'xs btn_block',
-                                    [styles.btn_block]: props.btnSize.includes('btn_block'),
-                                })}
-                            >
-                                {props.icon && <FontAwesomeIcon icon={icon || faRocket} />} {props.actionlbl}
-                            </div>
-                        </a>
-                    </Link>
-
-                    <Link href={link2 || ''}>
-                        <a
-                            target={props.newwindow2 === 1 ? '_blank' : '_self'}
-                            className={cn('btn_link', {
-                                [styles.btn_block]: props.btnSize2.includes('btn_block'),
-                            })}
-                        >
-                            <div
-                                className={cn(styles['btn'], styles['transition'], 'btn2', {
-                                    [styles.btn_1]: props.btnType === 'btn_1',
-                                    [styles.btn_2]: props.btnType === 'btn_2' || !props.btnType2,
-                                    [styles.btn_md]: props.btnSize2 === 'md' || props.btnSize2 === 'md btn_block' || !props.btnSize2,
-                                    [styles.btn_lg]: props.btnSize2 === 'lg' || props.btnSize2 === 'lg btn_block',
-                                    [styles.btn_sm]: props.btnSize2 === 'sm' || props.btnSize2 === 'sm btn_block',
-                                    [styles.btn_xs]: props.btnSize2 === 'xs' || props.btnSize2 === 'xs btn_block',
-                                    [styles.btn_block]: props.btnSize2.includes('btn_block'),
-                                })}
-                            >
-                                {props.icon2 && <FontAwesomeIcon icon={icon2 || faRocket} />} {props.actionlbl2}
-                            </div>
-                        </a>
-                    </Link>
-                </div> */
 
     return (
         <>
@@ -697,37 +529,8 @@ const Button = (props: TheListItemActionProps) => {
                             )}
                         </>
                     ))}
-                </div> /* : props.actionlbl ? (
-                <div
-                    className={cn(styles['btn'], styles['transition'], 'btn1', {
-                        [styles.btn_1]: props.btnType === 'btn_1' || !props.btnType,
-                        [styles.btn_2]: props.btnType === 'btn_2',
-                        [styles.btn_md]: props.btnSize === 'md' || props.btnSize === 'md btn_block' || !props.btnSize,
-                        [styles.btn_lg]: props.btnSize === 'lg' || props.btnSize === 'lg btn_block',
-                        [styles.btn_sm]: props.btnSize === 'sm' || props.btnSize === 'sm btn_block',
-                        [styles.btn_xs]: props.btnSize === 'xs' || props.btnSize === 'xs btn_block',
-                        [styles.btn_w]: props.well === '1',
-                        [styles.btn_block]: props.btnSize.includes('btn_block'),
-                    })}
-                >
-                    {props.icon && <FontAwesomeIcon icon={icon || faRocket} />} {props.actionlbl}
                 </div>
-            ) */
             ) : (
-                /*  <div
-                    className={cn(styles['btn'], styles['transition'], 'btn2', {
-                        [styles.btn_1]: props.btnType === 'btn_1',
-                        [styles.btn_2]: props.btnType === 'btn_2' || !props.btnType2,
-                        [styles.btn_md]: props.btnSize2 === 'md' || props.btnSize2 === 'md btn_block' || !props.btnSize2,
-                        [styles.btn_lg]: props.btnSize2 === 'lg' || props.btnSize2 === 'lg btn_block',
-                        [styles.btn_sm]: props.btnSize2 === 'sm' || props.btnSize2 === 'sm btn_block',
-                        [styles.btn_xs]: props.btnSize2 === 'xs' || props.btnSize2 === 'xs btn_block',
-                        [styles.btn_w]: props.well === '1',
-                        [styles.btn_block]: props.btnSize2.includes('btn_block'),
-                    })}
-                >
-                    {props.icon2 && <FontAwesomeIcon icon={icon2 || faRocket} />} {props.actionlbl2}
-                </div> */
                 buttons.map((bt, index) => (
                     <>
                         {bt.active && (
@@ -754,8 +557,8 @@ const Button = (props: TheListItemActionProps) => {
     )
 }
 
-const TheListItemImage = (props: TheListItemImageProps) => {
-    const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor } = props
+const ImageBlock = (props: TheListItemImageProps) => {
+    const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight } = props
 
     let icon = props.icon3 ? props.icons[props.icon3] : faRocket
 

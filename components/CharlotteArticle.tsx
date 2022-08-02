@@ -85,12 +85,6 @@ const TheListItem = (props: any) => {
     const { item } = props
     const [imageHeight, setHeight] = useState(100)
     const [imageWidth, setWidth] = useState(300)
-    const [lightbox, setLightbox] = useState(false)
-
-    function toggleSwitch() {
-        setLightbox(!lightbox)
-        console.log(lightbox)
-    }
 
     const calcImageSize = (loadedMedia: Media) => {
         setWidth(loadedMedia.naturalWidth)
@@ -105,18 +99,12 @@ const TheListItem = (props: any) => {
     const textColorAccent = {
         color: props.themeStyles['textColorAccent'],
     }
-    const accentBackground = {
-        backgroundColor: props.themeStyles['mainColor'],
-    }
+
     const noBackground = {
         backgroundColor: 'transparent',
     }
     const borderBackground = {
         backgroundColor: props.themeStyles['headerBackground'],
-    }
-    const accentColors = {
-        color: props.themeStyles['textColorAccent'],
-        backgroundColor: props.themeStyles['mainColor'],
     }
 
     const icons: { [key: string]: any } = {
@@ -238,27 +226,6 @@ const TheListItem = (props: any) => {
                     ) : (
                         ''
                     )}
-
-                    {/* {linkAndBtn && (
-                        <TheListItemAction
-                            pagelink={item.pagelink}
-                            actionlbl={item.actionlbl}
-                            newwindow={item.newwindow}
-                            newwindow2={item.newwindow2}
-                            actionlbl2={item.actionlbl2}
-                            pagelink2={item.pagelink2}
-                            weblink2={item.weblink2}
-                            icon={item.icon}
-                            icon2={item.icon2}
-                            icons={icons}
-                            btnType={item.btnType}
-                            btnType2={item.btnType2}
-                            themeStyles={props.themeStyles}
-                            btnSize={item.btnSize}
-                            btnSize2={item.btnSize2}
-                            well={props.well}
-                        />
-                    )} */}
                 </div>
             ) : (
                 <Link href={item.pagelink || item.weblink || item.pagelink2 || item.weblink2 || ''}>
@@ -314,27 +281,6 @@ const TheListItem = (props: any) => {
                         ) : (
                             ''
                         )}
-                        {/*  {isButton() && (
-                            <TheListItemAction
-                                pagelink={item.pagelink}
-                                pagelink2={item.pagelink2}
-                                weblink={item.weblink}
-                                weblink2={item.weblink2}
-                                actionlbl={item.actionlbl}
-                                newwindow={item.newwindow}
-                                newwindow2={item.newwindow2}
-                                actionlbl2={item.actionlbl2}
-                                icon={item.icon}
-                                icon2={item.icon2}
-                                icons={icons}
-                                btnType={item.btnType}
-                                btnType2={item.btnType2}
-                                themeStyles={props.themeStyles}
-                                btnSize={item.btnSize}
-                                btnSize2={item.btnSize2}
-                                well={props.well}
-                            />
-                        )} */}
                     </a>
                 </Link>
             )}
@@ -355,7 +301,6 @@ const TheListWrapV1 = (props: TsiWrp) => {
                     className={cn(styles['tsI_img'], styles['theframe'], styles['imgtag'], styles['imgbase'], styles['img-loaded'])}
                     data-image=""
                     data-alt="Headline"
-                    /*  style="margin-bottom: 0.5625em;" */
                     data-image-loaded=""
                 >
                     <TheListItemImage
@@ -640,11 +585,6 @@ const TheListItemAction = (props: TheListItemActionProps) => {
     let icon = props.icon ? props.icons[props.icon] : faRocket
     let icon2 = props.icon2 ? props.icons[props.icon2] : faRocket
 
-    const btn1Styles = {
-        color: props.themeStyles['textColorAccent'],
-        backgroundColor: props.themeStyles['mainColor'],
-    }
-
     const btns = props.well
         ? `.btn1{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['mainColor']}} .btn_link:hover .btn1{color: ${props.themeStyles['mainColor']}; background-color: ${props.themeStyles['textColorAccent']}} .btn2{color: ${props.themeStyles['altColor']}; border-color: ${props.themeStyles['altColor']}} .btn_link:hover .btn2{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['altColor']}}`
         : `.btn1{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['mainColor']}} .btn1:hover{color: ${props.themeStyles['mainColor']}; background-color: ${props.themeStyles['textColorAccent']}} .btn2{color: ${props.themeStyles['altColor']}; border-color: ${props.themeStyles['altColor']}} .btn2:hover{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['altColor']}}`
@@ -747,14 +687,7 @@ const TheListItemImage = (props: TheListItemImageProps) => {
         <>
             <div className={styles.image}>
                 {!imageNoSizings.includes(props.imgSize) ? (
-                    <Image
-                        /*  className={cn(styles['item_image'], 'item_image', 'beacon-lazy-load')} */
-                        src={domainImage(item.image)}
-                        layout="fill"
-                        objectFit="cover"
-                        alt={item.img_alt_tag || ''}
-                        objectPosition="top"
-                    />
+                    <Image src={domainImage(item.image)} layout="fill" objectFit="cover" alt={item.img_alt_tag || ''} objectPosition="top" />
                 ) : (
                     //Setting width and height to image props if nosizing added
                     <Image

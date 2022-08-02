@@ -55,7 +55,7 @@ $lg-screen: 1025px;
     }
 }
 
-@mixin min-sm-max-md {
+/* @mixin min-sm-max-md {
     @media print, screen and (min-width: $sm-screen) and (max-width: ($md-screen - 1)) {
         @content;
     }
@@ -71,7 +71,7 @@ $lg-screen: 1025px;
     @media print, screen and (min-width: $md-screen) and (max-width: ($lg-screen - 1)) {
         @content;
     }
-}
+} */
 
 @mixin tsFlex {
     /*  display: -webkit-box;
@@ -179,7 +179,7 @@ $lg-screen: 1025px;
 
                 .txt-block {
                     .dsc {
-                        display: inline;
+                        //display: inline;
                         width: 100%;
                     }
                 }
@@ -350,17 +350,6 @@ $lg-screen: 1025px;
                 flex-direction: column;
                 box-flex: 1;
                 flex: 1 1 auto;
-            }
-        }
-    }
-
-    &.not_well {
-        .yImg {
-            .hd-block,
-            .txt-block {
-                /*                 @media print, screen and (min-width: 1025px) {
-                    padding: 1.5rem 0 0;
-                } */
             }
         }
     }
@@ -707,7 +696,7 @@ $lg-screen: 1025px;
         }
     }
 
-    @include min-sm-max-md {
+    @media print, screen and (min-width: $sm-screen) and (max-width: ($md-screen - 1)) {
         //w1060
         &.col_1 .item,
         &.col_2 .item {
@@ -723,7 +712,7 @@ $lg-screen: 1025px;
         }
     }
 
-    @include min-sm-max-lg {
+    @media print, screen and (min-width: $sm-screen) and (max-width: ($lg-screen - 1)) {
         &.col_4 .item {
             margin-left: $item-margins;
             margin-right: $item-margins;
@@ -731,7 +720,7 @@ $lg-screen: 1025px;
         }
     }
 
-    @include min-md-max-lg {
+    @media print, screen and (min-width: $md-screen) and (max-width: ($lg-screen - 1)) {
         &.col_1 .item {
             margin-left: $item-margins;
             margin-right: $item-margins;
