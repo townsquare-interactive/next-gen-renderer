@@ -3,7 +3,7 @@ import MyArticle from '../components/MyArticle'
 import { ArticleItems } from '../components/types'
 
 export default {
-    title: 'other/MyArticle',
+    title: 'new/MyArticle',
     component: MyArticle,
     argTypes: {
         imgSize: {
@@ -291,7 +291,6 @@ TwoButtons.args = {
             btnType: 'btn_1',
             btnType2: 'btn_2',
             btnSize: 'md',
-            /*             btnSize:'md btn_block', */
             btnSize2: 'md',
         },
     ],

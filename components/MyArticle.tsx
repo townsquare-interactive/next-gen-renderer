@@ -108,6 +108,7 @@ const ModuleItem = (props: ModuleItemProps) => {
         backgroundColor: props.themeStyles['altColor'],
     }
 
+    //Key to determine which imported logo to use
     const icons: { [key: string]: any } = {
         faRocket,
         faAnchor,
@@ -124,6 +125,7 @@ const ModuleItem = (props: ModuleItemProps) => {
             return false
         }
     }
+
     function isLink() {
         if (item.pagelink || item.pagelink2 || item.weblink || item.weblink2) {
             return true
@@ -132,7 +134,8 @@ const ModuleItem = (props: ModuleItemProps) => {
         }
     }
 
-    const oneButton = (item.actionlbl && !item.actionlbl2) || (!item.actionlbl && item.actionlbl2)
+    const oneButton =
+        (item.actionlbl && !item.actionlbl2 && (item.pagelink || item.weblink)) || (!item.actionlbl && item.actionlbl2 && (item.pagelink2 || item.weblink2))
 
     const twoButtons = item.actionlbl && item.actionlbl2 && (item.pagelink || item.weblink) && (item.pagelink2 || item.weblink2)
 
@@ -463,9 +466,6 @@ const ItemWrap = (props: ItemWrapProps) => {
 }
 
 const Button = (props: TheListItemActionProps) => {
-    let icon = props.icon ? props.icons[props.icon] : faRocket
-    let icon2 = props.icon2 ? props.icons[props.icon2] : faRocket
-
     const btns = props.well
         ? `.btn_1{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['mainColor']}} .btn_link:hover .btn_1{color: ${props.themeStyles['mainColor']}; background-color: ${props.themeStyles['textColorAccent']}} .btn_{color: ${props.themeStyles['altColor']}; border-color: ${props.themeStyles['altColor']}} .btn_link:hover .btn_2{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['altColor']}}`
         : `.btn_1{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['mainColor']}} .btn_1:hover{color: ${props.themeStyles['mainColor']}; background-color: ${props.themeStyles['textColorAccent']}} .btn_2{color: ${props.themeStyles['altColor']}; border-color: ${props.themeStyles['altColor']}} .btn_2:hover{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['altColor']}}`
@@ -475,7 +475,7 @@ const Button = (props: TheListItemActionProps) => {
             name: 'btn1',
             link: props.pagelink || props.weblink,
             window: props.newwindow,
-            icon: props.icon,
+            icon: props.icons[props.icon || ''],
             label: props.actionlbl,
             active: props.actionlbl ? true : false,
             btnType: props.btnType,
@@ -485,7 +485,7 @@ const Button = (props: TheListItemActionProps) => {
             name: 'btn2',
             link: props.pagelink2 || props.weblink2,
             window: props.newwindow2,
-            icon: props.icon2,
+            icon: props.icons[props.icon2 || ''],
             label: props.actionlbl2,
             active: props.actionlbl2 ? true : false,
             btnType: props.btnType2,
@@ -520,7 +520,7 @@ const Button = (props: TheListItemActionProps) => {
                                                 [styles.btn_w]: props.well === '1',
                                             })}
                                         >
-                                            {bt.icon && <FontAwesomeIcon icon={icon || faRocket} />} {bt.label}
+                                            {bt.icon && <FontAwesomeIcon icon={bt.icon || faRocket} />} {bt.label}
                                         </div>
                                     </a>
                                 </Link>
@@ -545,7 +545,7 @@ const Button = (props: TheListItemActionProps) => {
                                 })}
                                 key={index}
                             >
-                                {bt.icon && <FontAwesomeIcon icon={icon || faRocket} />} {bt.label}
+                                {bt.icon && <FontAwesomeIcon icon={bt.icon || faRocket} />} {bt.label}
                             </div>
                         )}
                     </>

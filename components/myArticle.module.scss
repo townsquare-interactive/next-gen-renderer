@@ -55,24 +55,6 @@ $lg-screen: 1025px;
     }
 }
 
-/* @mixin min-sm-max-md {
-    @media print, screen and (min-width: $sm-screen) and (max-width: ($md-screen - 1)) {
-        @content;
-    }
-}
-
-@mixin min-sm-max-lg {
-    @media print, screen and (min-width: $sm-screen) and (max-width: ($lg-screen - 1)) {
-        @content;
-    }
-}
-
-@mixin min-md-max-lg {
-    @media print, screen and (min-width: $md-screen) and (max-width: ($lg-screen - 1)) {
-        @content;
-    }
-} */
-
 @mixin tsFlex {
     /*  display: -webkit-box;
     display: -moz-box;
@@ -120,6 +102,8 @@ $lg-screen: 1025px;
         .item {
             //originally under tsflex
             margin-bottom: 2rem;
+            margin-left: $item-margins;
+            margin-right: $item-margins;
 
             .item-wrap {
                 .image-block {
@@ -668,9 +652,6 @@ $lg-screen: 1025px;
                     padding: 2rem;
 
                     @include lg-min {
-                        /* max-width: 100%;
-                        margin-left: auto;
-                        margin-right: auto; */
                         padding: 4rem 1.5rem;
                     }
                 }
@@ -700,68 +681,48 @@ $lg-screen: 1025px;
         //w1060
         &.col_1 .item,
         &.col_2 .item {
-            margin-left: $item-margins;
-            margin-right: $item-margins;
             width: $full-item-width;
         }
 
         &.col_3 .item {
-            margin-left: $item-margins;
-            margin-right: $item-margins;
             width: $half-item-width;
         }
     }
 
     @media print, screen and (min-width: $sm-screen) and (max-width: ($lg-screen - 1)) {
         &.col_4 .item {
-            margin-left: $item-margins;
-            margin-right: $item-margins;
             width: $half-item-width;
         }
     }
 
     @media print, screen and (min-width: $md-screen) and (max-width: ($lg-screen - 1)) {
         &.col_1 .item {
-            margin-left: $item-margins;
-            margin-right: $item-margins;
             width: $full-item-width;
         }
 
         &.col_2 .item {
-            margin-left: $item-margins;
-            margin-right: $item-margins;
             width: $half-item-width;
         }
 
         &.col_3 .item {
-            margin-left: $item-margins;
-            margin-right: $item-margins;
             width: $third-item-width;
         }
     }
 
     @include lg-min {
         &.col_1 .item {
-            margin-left: $item-margins;
-            margin-right: $item-margins;
             width: $full-item-width;
         }
 
         &.col_2 .item {
-            margin-left: $item-margins;
-            margin-right: $item-margins;
             width: $half-item-width;
         }
 
         &.col_3 .item {
-            margin-left: $item-margins;
-            margin-right: $item-margins;
             width: $third-item-width;
         }
 
         &.col_4 .item {
-            margin-left: $item-margins;
-            margin-right: $item-margins;
             width: $quarteritem-width;
         }
 
@@ -769,20 +730,14 @@ $lg-screen: 1025px;
         &.a2,
         &.a3 {
             &.col_2 .hero {
-                margin-left: $item-margins;
-                margin-right: $item-margins;
                 width: $full-item-width;
             }
 
             &.col_3 .hero {
-                margin-left: $item-margins;
-                margin-right: $item-margins;
                 width: $col3-hero;
             }
 
             &.col_4 .hero {
-                margin-left: $item-margins;
-                margin-right: $item-margins;
                 width: $half-item-width;
             }
         }
