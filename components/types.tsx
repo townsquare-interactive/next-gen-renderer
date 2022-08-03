@@ -525,11 +525,17 @@ export interface ModuleItemProps {
     type: string
 }
 
-export interface ConditionalWrapperProps {
+/* export interface ConditionalWrapperProps {
     condition: boolean
     children: ReactChild
     wrapperDiv: (children: ReactChild) => ReactElement
     wrapperPageLink: (children: ReactChild) => ReactElement
     wrapperWebLink?: (children: ReactChild) => ReactElement
-    linkType: boolean
+} */
+
+export interface ConditionalWrapperProps {
+    condition: boolean
+    children: ReactChild
+    falseCondition: (children: ReactChild) => ReactElement | ReactElement
+    trueCondition: (children: ReactChild) => ReactElement
 }

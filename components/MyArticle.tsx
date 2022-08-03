@@ -145,7 +145,7 @@ const ModuleItem = (props: ModuleItemProps) => {
 
     const wrapLink = oneButton || linkNoBtn
 
-    const pageLink = item.pagelink || item.pagelink2 ? true : false
+    /* const pageLink = item.pagelink || item.pagelink2 ? true : false */
 
     return (
         <article
@@ -177,8 +177,8 @@ const ModuleItem = (props: ModuleItemProps) => {
             style={props.well === '1' ? borderBackground : noBackground}
         >
             <ConditionalWrapper
-                condition={!wrapLink}
-                wrapperPageLink={(children: ReactChild) => (
+                condition={wrapLink}
+                trueCondition={(children: ReactChild) => (
                     <Link href={item.pagelink || item.weblink || item.pagelink2 || item.weblink2 || ''} passHref={item.weblink || item.weblink2 ? true : false}>
                         <a
                             className={cn(styles['item-wrap'], 'btn_link')}
@@ -189,12 +189,11 @@ const ModuleItem = (props: ModuleItemProps) => {
                         </a>
                     </Link>
                 )}
-                wrapperDiv={(children: ReactChild) => (
+                falseCondition={(children: ReactChild) => (
                     <div className={styles['item-wrap']} style={item.isFeatured === 'active' && props.type === 'article' ? heroBackground : noBackground}>
                         {children}
                     </div>
                 )}
-                linkType={pageLink}
             >
                 <ItemWrap
                     item={item}
@@ -214,73 +213,6 @@ const ModuleItem = (props: ModuleItemProps) => {
                     isFeatured={item.isFeatured}
                 />
             </ConditionalWrapper>
-
-            {/*  <div className={styles['item-wrap']} style={item.isFeatured === 'active' && props.type === 'article' ? heroBackground : noBackground}>
-                <ItemWrap
-                    item={item}
-                    imageNoSizings={imageNoSizings}
-                    calcImageSize={calcImageSize}
-                    imageWidth={imageWidth}
-                    imageHeight={imageHeight}
-                    textColorAccent={textColorAccent}
-                    textColor={textColor}
-                    imgSize={props.imgSize}
-                    well={props.well}
-                    textColorHeading={props.textColorHeading}
-                    icons={icons}
-                    icon3={item.icon3}
-                    type={props.type}
-                    themeStyles={props.themeStyles}
-                    isFeatured={item.isFeatured}
-                />
-            </div> */}
-            {/* {!wrapLink ? (
-                <div className={styles['item-wrap']} style={item.isFeatured === 'active' && props.type === 'article' ? heroBackground : noBackground}>
-                    <ItemWrap
-                        item={item}
-                        imageNoSizings={imageNoSizings}
-                        calcImageSize={calcImageSize}
-                        imageWidth={imageWidth}
-                        imageHeight={imageHeight}
-                        textColorAccent={textColorAccent}
-                        textColor={textColor}
-                        imgSize={props.imgSize}
-                        well={props.well}
-                        textColorHeading={props.textColorHeading}
-                        icons={icons}
-                        icon3={item.icon3}
-                        type={props.type}
-                        themeStyles={props.themeStyles}
-                        isFeatured={item.isFeatured}
-                    />
-                </div>
-            ) : (
-                <Link href={item.pagelink || item.weblink || item.pagelink2 || item.weblink2 || ''}>
-                    <a
-                        className={cn(styles['item-wrap'], 'btn_link')}
-                        target={item.newwindow === 1 ? '_blank' : item.newwindow2 === 1 ? '_blank' : '_self'}
-                        style={item.isFeatured === 'active' && props.type === 'article' ? heroBackground : noBackground}
-                    >
-                        <ItemWrap
-                            item={item}
-                            imageNoSizings={imageNoSizings}
-                            calcImageSize={calcImageSize}
-                            imageWidth={imageWidth}
-                            imageHeight={imageHeight}
-                            textColorAccent={textColorAccent}
-                            textColor={textColor}
-                            imgSize={props.imgSize}
-                            well={props.well}
-                            textColorHeading={props.textColorHeading}
-                            icons={icons}
-                            icon3={item.icon3}
-                            type={props.type}
-                            themeStyles={props.themeStyles}
-                            isFeatured={item.isFeatured}
-                        />
-                    </a>
-                </Link>
-            )} */}
         </article>
     )
 }
@@ -559,9 +491,59 @@ const Button = (props: TheListItemActionProps) => {
         },
     ]
 
-    console.log(props.weblink)
-
     return (
+        <>
+            <style>{btns}</style>
+            <ConditionalWrapper
+                condition={props.actionlbl2 && props.actionlbl ? true : false}
+                trueCondition={(children: ReactChild) => <div className={cn(styles['btn-wrap'], styles['txt-wrap'])}>{children}</div>}
+                falseCondition={(children: ReactChild) => <>{children}</>}
+            >
+                <>
+                    {buttons.map((bt, index) => (
+                        <>
+                            {bt.active && (
+                                <ConditionalWrapper
+                                    condition={props.actionlbl2 && props.actionlbl ? true : false}
+                                    trueCondition={(children: ReactChild) => (
+                                        <Link href={bt.link || ''} key={index} passHref={bt.linkType === 'ext' ? true : false}>
+                                            <a
+                                                target={bt.window === 1 ? '_blank' : '_self'}
+                                                className={cn('btn_link', {
+                                                    [styles.btn_block]: bt.btnSize.includes('btn_block'),
+                                                })}
+                                            >
+                                                {children}
+                                            </a>
+                                        </Link>
+                                    )}
+                                    falseCondition={(children: ReactChild) => <>{children}</>}
+                                >
+                                    <div
+                                        className={cn(styles['btn'], styles['transition'], `${bt.btnType}`, {
+                                            ['btn_1']: !bt.btnType,
+                                            [styles.btn_1]: bt.btnType === 'btn_1' || !props.btnType,
+                                            [styles.btn_2]: bt.btnType === 'btn_2',
+                                            [styles.btn_md]: bt.btnSize === 'md' || bt.btnSize === 'md btn_block' || !bt.btnSize,
+                                            [styles.btn_lg]: bt.btnSize === 'lg' || bt.btnSize === 'lg btn_block',
+                                            [styles.btn_sm]: bt.btnSize === 'sm' || bt.btnSize === 'sm btn_block',
+                                            [styles.btn_xs]: bt.btnSize === 'xs' || bt.btnSize === 'xs btn_block',
+                                            [styles.btn_block]: bt.btnSize.includes('btn_block'),
+                                            [styles.btn_w]: props.well === '1',
+                                        })}
+                                    >
+                                        {bt.icon && <FontAwesomeIcon icon={bt.icon || faRocket} />} {bt.label}
+                                    </div>
+                                </ConditionalWrapper>
+                            )}
+                        </>
+                    ))}
+                </>
+            </ConditionalWrapper>
+        </>
+    )
+
+    /*  return (
         <>
             <style>{btns}</style>
             {props.actionlbl2 && props.actionlbl ? (
@@ -604,7 +586,7 @@ const Button = (props: TheListItemActionProps) => {
                             <div
                                 className={cn(styles['btn'], styles['transition'], `${bt.btnType}`, {
                                     ['btn_1']: !bt.btnType,
-                                    [styles.btn_1]: bt.btnType === 'btn_1' || bt.btnType === '',
+                                    [styles.btn_1]: bt.btnType === 'btn_1' || !props.btnType,
                                     [styles.btn_2]: bt.btnType === 'btn_2',
                                     [styles.btn_md]: bt.btnSize === 'md' || bt.btnSize === 'md btn_block' || !bt.btnSize,
                                     [styles.btn_lg]: bt.btnSize === 'lg' || bt.btnSize === 'lg btn_block',
@@ -622,7 +604,7 @@ const Button = (props: TheListItemActionProps) => {
                 ))
             )}
         </>
-    )
+    ) */
 }
 
 const ImageBlock = (props: TheListItemImageProps) => {
@@ -659,7 +641,7 @@ const ImageBlock = (props: TheListItemImageProps) => {
     )
 }
 
-const ConditionalWrapper = ({ condition, wrapperDiv, wrapperPageLink, wrapperWebLink, children, linkType }: ConditionalWrapperProps) =>
-    condition ? wrapperDiv(children) : wrapperPageLink(children)
+const ConditionalWrapper = ({ condition, falseCondition, trueCondition, children }: ConditionalWrapperProps) =>
+    condition ? trueCondition(children) : falseCondition(children)
 
 export default MyArticle
