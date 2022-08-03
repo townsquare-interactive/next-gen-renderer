@@ -3,7 +3,7 @@ import MyArticle from '../components/MyArticle'
 import { ArticleItems } from '../components/types'
 
 export default {
-    title: 'other/MyArticle',
+    title: 'new/MyArticle',
     component: MyArticle,
     argTypes: {
         imgSize: {
@@ -261,7 +261,7 @@ Button.args = {
         {
             ...item1,
             actionlbl: 'Contact Us',
-            pagelink: '/',
+            pagelink: '/home',
             /*  actionlbl2: 'Contact 2',
             pagelink2: '/', */
             // align: 'center',
@@ -282,17 +282,20 @@ TwoButtons.args = {
         {
             ...item1,
             actionlbl: 'Contact Us',
-            pagelink: 'facebook.com',
+            weblink: 'https://www.facebook.com/',
+            pagelink: '',
             actionlbl2: 'Contact 2',
-            weblink2: 'google.com',
+            weblink2: 'https://www.google.com/',
+            pagelink2: '',
             align: 'center',
             icon: 'faArchway',
             icon2: 'faAnchor',
             btnType: 'btn_1',
             btnType2: 'btn_2',
             btnSize: 'md',
-            /*             btnSize:'md btn_block', */
             btnSize2: 'md',
+            newwindow: 1,
+            newwindow2: 1,
         },
     ],
 }
@@ -303,7 +306,7 @@ Button2.args = {
         {
             ...item1,
             actionlbl2: 'Contact 2',
-            weblink2: 'tacos.com',
+            weblink2: '/home',
             align: 'center',
             icon2: 'faAnchor',
             btnType2: 'btn_2',
@@ -339,8 +342,9 @@ LinkNoButton.args = {
     items: [
         {
             ...item1,
-            weblink2: 'facebook.com',
+            weblink: 'https://www.facebook.com/',
             align: 'left',
+            newwindow: 1,
         },
     ],
 }
@@ -530,7 +534,12 @@ export const V3SmallText = Template.bind({})
 V3SmallText.args = {
     ...Plain.args,
     type: 'article_3',
-    items: [{ ...item1, align: 'left', headSize: 'font_xs', descSize: 'font_lg' }],
+    columns: 3,
+    items: [
+        { ...item1, headSize: 'font_xs', descSize: 'font_sm' },
+        { ...item1, headSize: 'font_md', descSize: 'font_md' },
+        { ...item1, headSize: 'font_lg', descSize: 'font_lg' },
+    ],
 }
 export const Icon3 = Template.bind({})
 Icon3.args = {

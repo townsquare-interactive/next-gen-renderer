@@ -55,28 +55,10 @@ $lg-screen: 1025px;
     }
 }
 
-/* @mixin min-sm-max-md {
-    @media print, screen and (min-width: $sm-screen) and (max-width: ($md-screen - 1)) {
-        @content;
-    }
-}
-
-@mixin min-sm-max-lg {
-    @media print, screen and (min-width: $sm-screen) and (max-width: ($lg-screen - 1)) {
-        @content;
-    }
-}
-
-@mixin min-md-max-lg {
-    @media print, screen and (min-width: $md-screen) and (max-width: ($lg-screen - 1)) {
-        @content;
-    }
-} */
-
 @mixin tsFlex {
     /*  display: -webkit-box;
-    display: -moz-box;
-    display: -moz-flex; */
+    display: -moz-box;*/
+    display: -moz-flex;
     display: flex;
 }
 
@@ -120,6 +102,8 @@ $lg-screen: 1025px;
         .item {
             //originally under tsflex
             margin-bottom: 2rem;
+            margin-left: $item-margins;
+            margin-right: $item-margins;
 
             .item-wrap {
                 .image-block {
@@ -282,9 +266,6 @@ $lg-screen: 1025px;
                 }
 
                 &.btn_w {
-                    border-width: 0;
-                    border-radius: 0;
-                    box-shadow: none;
                     margin: auto 0 0;
                     width: 100%;
                 }
@@ -339,10 +320,12 @@ $lg-screen: 1025px;
             /*Full width ending*/
             box-orient: vertical;
             box-direction: normal;
-
             flex-direction: column;
             margin-bottom: 2rem;
+        }
 
+        &.a1,
+        &.a2 {
             .item-wrap {
                 @include tsFlex;
                 box-orient: vertical;
@@ -359,6 +342,11 @@ $lg-screen: 1025px;
         //default alignments
         .btn {
             align-self: center;
+
+            &.btn_w {
+                margin: auto 0 0;
+                width: 100%;
+            }
         }
         .hd,
         .sh,
@@ -492,7 +480,7 @@ $lg-screen: 1025px;
     }
 
     /* @include sm-min { */
-    .dsc p {
+    .dsc {
         font-size: 0.875em;
         margin-top: 1.1428571429em;
         margin-bottom: 1.1428571429em;
@@ -559,7 +547,7 @@ $lg-screen: 1025px;
                 letter-spacing: -0.0125rem;
             }
 
-            .dsc p {
+            .dsc {
                 font-size: 1.0625em;
                 margin-top: 0.9411764706em;
                 margin-bottom: 0.9411764706em;
@@ -586,7 +574,7 @@ $lg-screen: 1025px;
                 letter-spacing: -0.0125rem;
             }
 
-            .dsc p {
+            .dsc {
                 font-size: 1.0625em;
                 margin-top: 0.9411764706em;
                 margin-bottom: 0.9411764706em;
@@ -640,7 +628,7 @@ $lg-screen: 1025px;
             }
 
             .dsc-block {
-                padding: 1rem 2rem 1.5rem;
+                padding: 0 2rem 1.5rem;
             }
 
             .nDsc .image-block {
@@ -651,7 +639,7 @@ $lg-screen: 1025px;
 
         &.a3,
         &.beacon {
-            &.small {
+            /*  &.small {
                 .txt-wrap {
                     padding: 1.5rem;
                 }
@@ -668,9 +656,27 @@ $lg-screen: 1025px;
                     padding: 2rem;
 
                     @include lg-min {
-                        /* max-width: 100%;
-                        margin-left: auto;
-                        margin-right: auto; */
+                        padding: 4rem 1.5rem;
+                    }
+                }
+            } */
+            &.small {
+                .item-wrap {
+                    padding: 1.5rem;
+                }
+            }
+
+            &.medium {
+                .item-wrap {
+                    padding: 3rem 2rem 2rem;
+                }
+            }
+
+            &.large {
+                .item-wrap {
+                    padding: 2rem;
+
+                    @include lg-min {
                         padding: 4rem 1.5rem;
                     }
                 }
@@ -700,68 +706,48 @@ $lg-screen: 1025px;
         //w1060
         &.col_1 .item,
         &.col_2 .item {
-            margin-left: $item-margins;
-            margin-right: $item-margins;
             width: $full-item-width;
         }
 
         &.col_3 .item {
-            margin-left: $item-margins;
-            margin-right: $item-margins;
             width: $half-item-width;
         }
     }
 
     @media print, screen and (min-width: $sm-screen) and (max-width: ($lg-screen - 1)) {
         &.col_4 .item {
-            margin-left: $item-margins;
-            margin-right: $item-margins;
             width: $half-item-width;
         }
     }
 
     @media print, screen and (min-width: $md-screen) and (max-width: ($lg-screen - 1)) {
         &.col_1 .item {
-            margin-left: $item-margins;
-            margin-right: $item-margins;
             width: $full-item-width;
         }
 
         &.col_2 .item {
-            margin-left: $item-margins;
-            margin-right: $item-margins;
             width: $half-item-width;
         }
 
         &.col_3 .item {
-            margin-left: $item-margins;
-            margin-right: $item-margins;
             width: $third-item-width;
         }
     }
 
     @include lg-min {
         &.col_1 .item {
-            margin-left: $item-margins;
-            margin-right: $item-margins;
             width: $full-item-width;
         }
 
         &.col_2 .item {
-            margin-left: $item-margins;
-            margin-right: $item-margins;
             width: $half-item-width;
         }
 
         &.col_3 .item {
-            margin-left: $item-margins;
-            margin-right: $item-margins;
             width: $third-item-width;
         }
 
         &.col_4 .item {
-            margin-left: $item-margins;
-            margin-right: $item-margins;
             width: $quarteritem-width;
         }
 
@@ -769,20 +755,14 @@ $lg-screen: 1025px;
         &.a2,
         &.a3 {
             &.col_2 .hero {
-                margin-left: $item-margins;
-                margin-right: $item-margins;
                 width: $full-item-width;
             }
 
             &.col_3 .hero {
-                margin-left: $item-margins;
-                margin-right: $item-margins;
                 width: $col3-hero;
             }
 
             &.col_4 .hero {
-                margin-left: $item-margins;
-                margin-right: $item-margins;
                 width: $half-item-width;
             }
         }

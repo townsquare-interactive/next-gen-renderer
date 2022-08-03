@@ -1,10 +1,10 @@
 import styles from './myArticle.module.scss'
-import { ArticleProps, Media, TheListItemImageProps, TheListItemActionProps, ItemWrapProps, ModuleItemProps } from './types'
+import { ArticleProps, Media, TheListItemImageProps, TheListItemActionProps, ItemWrapProps, ModuleItemProps, ConditionalWrapperProps } from './types'
 import Image from 'next/image'
 import cn from 'classnames'
 import Parser from 'html-react-parser'
 import { domainImage } from '../functions'
-import { useState } from 'react'
+import { ReactChild, useState } from 'react'
 import Link from 'next/link'
 
 // importing fontAwesome icons
@@ -17,12 +17,13 @@ const MyArticle = (props: ArticleProps) => {
         color: props.themeStyles['headingColor'],
     }
 
+    console.log(props.themeStyles)
+
     return (
         <div
             className={cn(
                 styles['root'],
                 styles['tsflex'],
-                /*  styles['ts-box'], */
 
                 {
                     [styles.a1]: props.type === 'article_1',
@@ -108,6 +109,7 @@ const ModuleItem = (props: ModuleItemProps) => {
         backgroundColor: props.themeStyles['altColor'],
     }
 
+    //Key to determine which imported logo to use
     const icons: { [key: string]: any } = {
         faRocket,
         faAnchor,
@@ -124,6 +126,7 @@ const ModuleItem = (props: ModuleItemProps) => {
             return false
         }
     }
+
     function isLink() {
         if (item.pagelink || item.pagelink2 || item.weblink || item.weblink2) {
             return true
@@ -132,13 +135,16 @@ const ModuleItem = (props: ModuleItemProps) => {
         }
     }
 
-    const oneButton = (item.actionlbl && !item.actionlbl2) || (!item.actionlbl && item.actionlbl2)
+    const oneButton =
+        (item.actionlbl && !item.actionlbl2 && (item.pagelink || item.weblink)) || (!item.actionlbl && item.actionlbl2 && (item.pagelink2 || item.weblink2))
 
     const twoButtons = item.actionlbl && item.actionlbl2 && (item.pagelink || item.weblink) && (item.pagelink2 || item.weblink2)
 
     const linkNoBtn = isButton() === false && isLink() === true
 
     const wrapLink = oneButton || linkNoBtn
+
+    /* const pageLink = item.pagelink || item.pagelink2 ? true : false */
 
     return (
         <article
@@ -169,53 +175,43 @@ const ModuleItem = (props: ModuleItemProps) => {
             data-aos-once="true"
             style={props.well === '1' ? borderBackground : noBackground}
         >
-            {!wrapLink ? (
-                <div className={styles['item-wrap']} style={item.isFeatured === 'active' && props.type === 'article' ? heroBackground : noBackground}>
-                    <ItemWrap
-                        item={item}
-                        imageNoSizings={imageNoSizings}
-                        calcImageSize={calcImageSize}
-                        imageWidth={imageWidth}
-                        imageHeight={imageHeight}
-                        textColorAccent={textColorAccent}
-                        textColor={textColor}
-                        imgSize={props.imgSize}
-                        well={props.well}
-                        textColorHeading={props.textColorHeading}
-                        icons={icons}
-                        icon3={item.icon3}
-                        type={props.type}
-                        themeStyles={props.themeStyles}
-                        isFeatured={item.isFeatured}
-                    />
-                </div>
-            ) : (
-                <Link href={item.pagelink || item.weblink || item.pagelink2 || item.weblink2 || ''}>
-                    <a
-                        className={cn(styles['item-wrap'], 'btn_link')}
-                        target={item.newwindow === 1 ? '_blank' : item.newwindow2 === 1 ? '_blank' : '_self'}
-                        style={item.isFeatured === 'active' && props.type === 'article' ? heroBackground : noBackground}
-                    >
-                        <ItemWrap
-                            item={item}
-                            imageNoSizings={imageNoSizings}
-                            calcImageSize={calcImageSize}
-                            imageWidth={imageWidth}
-                            imageHeight={imageHeight}
-                            textColorAccent={textColorAccent}
-                            textColor={textColor}
-                            imgSize={props.imgSize}
-                            well={props.well}
-                            textColorHeading={props.textColorHeading}
-                            icons={icons}
-                            icon3={item.icon3}
-                            type={props.type}
-                            themeStyles={props.themeStyles}
-                            isFeatured={item.isFeatured}
-                        />
-                    </a>
-                </Link>
-            )}
+            <ConditionalWrapper
+                condition={wrapLink ? true : false}
+                trueOutput={(children: ReactChild) => (
+                    <Link href={item.pagelink || item.weblink || item.pagelink2 || item.weblink2 || ''} passHref={item.weblink || item.weblink2 ? true : false}>
+                        <a
+                            className={cn(styles['item-wrap'], 'btn_link')}
+                            target={item.newwindow === 1 ? '_blank' : item.newwindow2 === 1 ? '_blank' : '_self'}
+                            style={item.isFeatured === 'active' && props.type === 'article' ? heroBackground : noBackground}
+                        >
+                            {children}
+                        </a>
+                    </Link>
+                )}
+                falseOutput={(children: ReactChild) => (
+                    <div className={styles['item-wrap']} style={item.isFeatured === 'active' && props.type === 'article' ? heroBackground : noBackground}>
+                        {children}
+                    </div>
+                )}
+            >
+                <ItemWrap
+                    item={item}
+                    imageNoSizings={imageNoSizings}
+                    calcImageSize={calcImageSize}
+                    imageWidth={imageWidth}
+                    imageHeight={imageHeight}
+                    textColorAccent={textColorAccent}
+                    textColor={textColor}
+                    imgSize={props.imgSize}
+                    well={props.well}
+                    textColorHeading={props.textColorHeading}
+                    icons={icons}
+                    icon3={item.icon3}
+                    type={props.type}
+                    themeStyles={props.themeStyles}
+                    isFeatured={item.isFeatured}
+                />
+            </ConditionalWrapper>
         </article>
     )
 }
@@ -250,224 +246,111 @@ const ItemWrap = (props: ItemWrapProps) => {
     return (
         <>
             <style>{textColors}</style>
+            {item.image && (
+                <figure
+                    className={cn(styles['image-block'], styles['theframe'], styles['imgtag'], styles['imgbase'], styles['img-loaded'])}
+                    data-alt="Headline"
+                >
+                    <ImageBlock
+                        item={item}
+                        imageNoSizings={imageNoSizings}
+                        calcImageSize={calcImageSize}
+                        imageWidth={imageWidth}
+                        imageHeight={imageHeight}
+                        textColorAccent={textColorAccent}
+                        textColor={textColor}
+                        imgSize={imgSize}
+                        well={well}
+                        icons={icons}
+                        icon3={icon3}
+                    />
 
-            {props.type != 'article_3' && props.type != 'article' ? (
-                <>
-                    {item.image && (
-                        <figure
-                            className={cn(styles['image-block'], styles['theframe'], styles['imgtag'], styles['imgbase'], styles['img-loaded'])}
-                            data-alt="Headline"
-                        >
-                            <ImageBlock
-                                item={item}
-                                imageNoSizings={imageNoSizings}
-                                calcImageSize={calcImageSize}
-                                imageWidth={imageWidth}
-                                imageHeight={imageHeight}
-                                textColorAccent={textColorAccent}
-                                textColor={textColor}
-                                imgSize={imgSize}
-                                well={well}
-                                icons={icons}
-                                icon3={icon3}
-                            />
+                    {item.caption_tag && <figcaption style={textColorAccent}>{item.caption_tag}</figcaption>}
+                </figure>
+            )}
 
-                            {item.caption_tag && <figcaption style={textColorAccent}>{item.caption_tag}</figcaption>}
-                        </figure>
-                    )}
-
-                    <header
-                        className={cn(styles['hd-block'], {
-                            [styles.font_xs]: item.headSize === 'font_xs',
-                            [styles.font_sm]: item.headSize === 'font_sm',
-                            [styles.font_md]: item.headSize === 'font_md',
-                            [styles.font_lg]: item.headSize === 'font_lg',
-                            [styles.font_xl]: item.headSize === 'font_xl',
+            <header
+                className={cn(styles['hd-block'], {
+                    [styles.font_xs]: item.headSize === 'font_xs',
+                    [styles.font_sm]: item.headSize === 'font_sm',
+                    [styles.font_md]: item.headSize === 'font_md',
+                    [styles.font_lg]: item.headSize === 'font_lg',
+                    [styles.font_xl]: item.headSize === 'font_xl',
+                })}
+            >
+                {item.headerTag === '1' ? (
+                    <h1
+                        className={cn(styles['hd'], {
+                            ['accent-txt']: well || beaconHero,
+                            ['txt-color-heading']: !well && !beaconHero,
                         })}
                     >
-                        {item.headerTag === '1' ? (
-                            <h1
-                                className={cn(styles['hd'], {
-                                    ['accent-txt']: well || beaconHero,
-                                    ['txt-color-heading']: !well && !beaconHero,
-                                })}
-                            >
-                                {Parser(item.headline)}
-                            </h1>
-                        ) : (
-                            <h2
-                                className={cn(styles['hd'], {
-                                    ['accent-txt']: well || beaconHero,
-                                    ['txt-color-heading']: !well && !beaconHero,
-                                })}
-                            >
-                                {Parser(item.headline)}
-                            </h2>
-                        )}
-                        <h2
-                            className={cn(styles['sh'], {
-                                ['accent-txt']: well || beaconHero,
-                                ['txt-color-heading']: !well && !beaconHero,
-                            })}
-                        >
-                            {Parser(item.subheader)}
-                        </h2>
-                    </header>
-                    {item.desc && (
-                        <div className={cn(styles['txt-block'])}>
-                            <div className={styles['dsc-block']}>
-                                <div
-                                    className={cn(styles['dsc'], {
-                                        [styles.font_xs]: item.descSize === 'font_xs',
-                                        [styles.font_sm]: item.descSize === 'font_sm',
-                                        [styles.font_md]: item.descSize === 'font_md',
-                                        [styles.font_lg]: item.descSize === 'font_lg',
-                                        [styles.font_xl]: item.descSize === 'font_xl',
-                                        ['accent-txt']: well || beaconHero,
-                                        ['txt-color']: !well && !beaconHero,
-                                    })}
-                                >
-                                    <p>{item.desc}</p>
-                                </div>
-                            </div>
-                        </div>
-                    )}
-                    {linkAndBtn && (
-                        <Button
-                            pagelink={item.pagelink}
-                            actionlbl={item.actionlbl}
-                            newwindow={item.newwindow}
-                            newwindow2={item.newwindow2}
-                            actionlbl2={item.actionlbl2}
-                            pagelink2={item.pagelink2}
-                            weblink2={item.weblink2}
-                            icon={item.icon}
-                            icon2={item.icon2}
-                            icons={icons}
-                            btnType={item.btnType}
-                            btnType2={item.btnType2}
-                            themeStyles={themeStyles}
-                            btnSize={item.btnSize}
-                            btnSize2={item.btnSize2}
-                            well={well}
-                        />
-                    )}
-                </>
-            ) : (
-                <div className={cn(styles['txt-wrap'])}>
-                    {item.image && (
-                        <figure
-                            className={cn(styles['image-block'], styles['theframe'], styles['imgtag'], styles['imgbase'], styles['img-loaded'])}
-                            data-image=""
-                            data-alt="Headline"
-                            data-image-loaded=""
-                        >
-                            <ImageBlock
-                                item={item}
-                                imageNoSizings={imageNoSizings}
-                                calcImageSize={calcImageSize}
-                                imageWidth={imageWidth}
-                                imageHeight={imageHeight}
-                                textColorAccent={textColorAccent}
-                                textColor={textColor}
-                                imgSize={imgSize}
-                                well={well}
-                                icons={icons}
-                                icon3={icon3}
-                            />
-
-                            {item.caption_tag && <figcaption style={textColorAccent}>{item.caption_tag}</figcaption>}
-                        </figure>
-                    )}
-                    <header
-                        className={cn(styles['hd-block'], {
-                            [styles.font_xs]: item.headSize === 'font_xs',
-                            [styles.font_sm]: item.headSize === 'font_sm',
-                            [styles.font_md]: item.headSize === 'font_md',
-                            [styles.font_lg]: item.headSize === 'font_lg',
-                            [styles.font_xl]: item.headSize === 'font_xl',
+                        {Parser(item.headline)}
+                    </h1>
+                ) : (
+                    <h2
+                        className={cn(styles['hd'], {
+                            ['accent-txt']: well || beaconHero,
+                            ['txt-color-heading']: !well && !beaconHero,
                         })}
                     >
-                        {item.headerTag === '1' ? (
-                            <h1
-                                className={cn(styles['hd'], {
-                                    ['accent-txt']: well || beaconHero,
-                                    ['txt-color-heading']: !well && !beaconHero,
-                                })}
-                            >
-                                {Parser(item.headline)}
-                            </h1>
-                        ) : (
-                            <h2
-                                className={cn(styles['hd'], {
-                                    ['accent-txt']: well || beaconHero,
-                                    ['txt-color-heading']: !well && !beaconHero,
-                                })}
-                            >
-                                {Parser(item.headline)}
-                            </h2>
-                        )}
-                        <h2
-                            className={cn(styles['sh'], {
-                                ['accent-txt']: well || beaconHero,
-                                ['txt-color-heading']: !well && !beaconHero,
-                            })}
-                        >
-                            {Parser(item.subheader)}
-                        </h2>
-                    </header>
-                    {item.desc && (
-                        <div className={cn(styles['txt-block'])}>
-                            <div className={styles['dsc-block']}>
-                                <div
-                                    className={cn(styles['dsc'], {
-                                        [styles.font_xs]: item.descSize === 'font_xs',
-                                        [styles.font_sm]: item.descSize === 'font_sm',
-                                        [styles.font_md]: item.descSize === 'font_md',
-                                        [styles.font_lg]: item.descSize === 'font_lg',
-                                        [styles.font_xl]: item.descSize === 'font_xl',
-                                        ['accent-txt']: well || beaconHero,
-                                        ['txt-color']: !well && !beaconHero,
-                                    })}
-                                >
-                                    <p>{item.desc}</p>
-                                </div>
-                            </div>
-                        </div>
-                    )}
-
-                    {linkAndBtn && (
-                        <Button
-                            pagelink={item.pagelink}
-                            actionlbl={item.actionlbl}
-                            newwindow={item.newwindow}
-                            newwindow2={item.newwindow2}
-                            actionlbl2={item.actionlbl2}
-                            pagelink2={item.pagelink2}
-                            weblink2={item.weblink2}
-                            icon={item.icon}
-                            icon2={item.icon2}
-                            icons={icons}
-                            btnType={item.btnType}
-                            btnType2={item.btnType2}
-                            themeStyles={themeStyles}
-                            btnSize={item.btnSize}
-                            btnSize2={item.btnSize2}
-                            well={well}
-                        />
-                    )}
+                        {Parser(item.headline)}
+                    </h2>
+                )}
+                <h2
+                    className={cn(styles['sh'], {
+                        ['accent-txt']: well || beaconHero,
+                        ['txt-color-heading']: !well && !beaconHero,
+                    })}
+                >
+                    {Parser(item.subheader)}
+                </h2>
+            </header>
+            {item.desc && (
+                <div className={cn(styles['txt-block'])}>
+                    <div
+                        className={cn(styles['dsc-block'], {
+                            [styles.font_xs]: item.descSize === 'font_xs',
+                            [styles.font_sm]: item.descSize === 'font_sm',
+                            [styles.font_md]: item.descSize === 'font_md',
+                            [styles.font_lg]: item.descSize === 'font_lg',
+                            [styles.font_xl]: item.descSize === 'font_xl',
+                            ['accent-txt']: well || beaconHero,
+                            ['txt-color']: !well && !beaconHero,
+                        })}
+                    >
+                        <p className={cn(styles['dsc'])}>{item.desc}</p>
+                    </div>
                 </div>
+            )}
+            {linkAndBtn && (
+                <Button
+                    pagelink={item.pagelink}
+                    actionlbl={item.actionlbl}
+                    newwindow={item.newwindow}
+                    newwindow2={item.newwindow2}
+                    actionlbl2={item.actionlbl2}
+                    pagelink2={item.pagelink2}
+                    weblink2={item.weblink2}
+                    weblink={item.weblink}
+                    icon={item.icon}
+                    icon2={item.icon2}
+                    icons={icons}
+                    btnType={item.btnType}
+                    btnType2={item.btnType2}
+                    themeStyles={themeStyles}
+                    btnSize={item.btnSize}
+                    btnSize2={item.btnSize2}
+                    well={well}
+                />
             )}
         </>
     )
 }
 
 const Button = (props: TheListItemActionProps) => {
-    let icon = props.icon ? props.icons[props.icon] : faRocket
-    let icon2 = props.icon2 ? props.icons[props.icon2] : faRocket
-
     const btns = props.well
-        ? `.btn_1{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['mainColor']}} .btn_link:hover .btn_1{color: ${props.themeStyles['mainColor']}; background-color: ${props.themeStyles['textColorAccent']}} .btn_{color: ${props.themeStyles['altColor']}; border-color: ${props.themeStyles['altColor']}} .btn_link:hover .btn_2{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['altColor']}}`
+        ? `.btn_1{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['mainColor']}} .btn_link:hover .btn_1{color: ${props.themeStyles['mainColor']}; background-color: ${props.themeStyles['textColorAccent']}} .btn_{color: ${props.themeStyles['altColor']}; border-color: ${props.themeStyles['altColor']}} .btn_link:hover .btn_2{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['altColor']}} .btn_2{color: ${props.themeStyles['altColor']}; border-color: ${props.themeStyles['altColor']}}`
         : `.btn_1{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['mainColor']}} .btn_1:hover{color: ${props.themeStyles['mainColor']}; background-color: ${props.themeStyles['textColorAccent']}} .btn_2{color: ${props.themeStyles['altColor']}; border-color: ${props.themeStyles['altColor']}} .btn_2:hover{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['altColor']}}`
 
     let buttons = [
@@ -475,82 +358,75 @@ const Button = (props: TheListItemActionProps) => {
             name: 'btn1',
             link: props.pagelink || props.weblink,
             window: props.newwindow,
-            icon: props.icon,
+            icon: props.icons[props.icon || ''],
             label: props.actionlbl,
             active: props.actionlbl ? true : false,
             btnType: props.btnType,
             btnSize: props.btnSize,
+            linkType: props.pagelink ? 'local' : 'ext',
         },
         {
             name: 'btn2',
             link: props.pagelink2 || props.weblink2,
             window: props.newwindow2,
-            icon: props.icon2,
+            icon: props.icons[props.icon2 || ''],
             label: props.actionlbl2,
             active: props.actionlbl2 ? true : false,
             btnType: props.btnType2,
             btnSize: props.btnSize2,
+            linkType: props.pagelink2 ? 'local' : 'ext',
         },
     ]
 
     return (
         <>
             <style>{btns}</style>
-            {props.actionlbl2 && props.actionlbl ? (
-                <div className={cn(styles['btn-wrap'], styles['txt-wrap'])}>
+            <ConditionalWrapper
+                condition={props.actionlbl2 && props.actionlbl ? true : false}
+                trueOutput={(children: ReactChild) => <div className={cn(styles['btn-wrap'], styles['txt-wrap'])}>{children}</div>}
+                falseOutput={(children: ReactChild) => <>{children}</>}
+            >
+                <>
                     {buttons.map((bt, index) => (
                         <>
                             {bt.active && (
-                                <Link href={bt.link || ''} key={index}>
-                                    <a
-                                        target={bt.window === 1 ? '_blank' : '_self'}
-                                        className={cn('btn_link', {
+                                <ConditionalWrapper
+                                    condition={props.actionlbl2 && props.actionlbl ? true : false}
+                                    trueOutput={(children: ReactChild) => (
+                                        <Link href={bt.link || ''} key={index} passHref={bt.linkType === 'ext' ? true : false}>
+                                            <a
+                                                target={bt.window === 1 ? '_blank' : '_self'}
+                                                className={cn('btn_link', {
+                                                    [styles.btn_block]: bt.btnSize.includes('btn_block'),
+                                                })}
+                                            >
+                                                {children}
+                                            </a>
+                                        </Link>
+                                    )}
+                                    falseOutput={(children: ReactChild) => <>{children}</>}
+                                >
+                                    <div
+                                        className={cn(styles['btn'], styles['transition'], `${bt.btnType}`, {
+                                            ['btn_1']: !bt.btnType,
+                                            [styles.btn_1]: bt.btnType === 'btn_1' || !props.btnType,
+                                            [styles.btn_2]: bt.btnType === 'btn_2',
+                                            [styles.btn_md]: bt.btnSize === 'md' || bt.btnSize === 'md btn_block' || !bt.btnSize,
+                                            [styles.btn_lg]: bt.btnSize === 'lg' || bt.btnSize === 'lg btn_block',
+                                            [styles.btn_sm]: bt.btnSize === 'sm' || bt.btnSize === 'sm btn_block',
+                                            [styles.btn_xs]: bt.btnSize === 'xs' || bt.btnSize === 'xs btn_block',
                                             [styles.btn_block]: bt.btnSize.includes('btn_block'),
+                                            [styles.btn_w]: props.well === '1',
                                         })}
                                     >
-                                        <div
-                                            className={cn(styles['btn'], styles['transition'], `${bt.btnType}`, {
-                                                [styles.btn_1]: bt.btnType === 'btn_1' || !bt.btnType,
-                                                [styles.btn_2]: bt.btnType === 'btn_2',
-                                                [styles.btn_md]: bt.btnSize === 'md' || bt.btnSize === 'md btn_block' || !bt.btnSize,
-                                                [styles.btn_lg]: bt.btnSize === 'lg' || bt.btnSize === 'lg btn_block',
-                                                [styles.btn_sm]: bt.btnSize === 'sm' || bt.btnSize === 'sm btn_block',
-                                                [styles.btn_xs]: bt.btnSize === 'xs' || bt.btnSize === 'xs btn_block',
-                                                [styles.btn_block]: bt.btnSize.includes('btn_block'),
-                                                [styles.btn_w]: props.well === '1',
-                                            })}
-                                        >
-                                            {bt.icon && <FontAwesomeIcon icon={icon || faRocket} />} {bt.label}
-                                        </div>
-                                    </a>
-                                </Link>
+                                        {bt.icon && <FontAwesomeIcon icon={bt.icon || faRocket} />} {bt.label}
+                                    </div>
+                                </ConditionalWrapper>
                             )}
                         </>
                     ))}
-                </div>
-            ) : (
-                buttons.map((bt, index) => (
-                    <>
-                        {bt.active && (
-                            <div
-                                className={cn(styles['btn'], styles['transition'], `${bt.btnType}`, {
-                                    [styles.btn_1]: bt.btnType === 'btn_1' || !bt.btnType,
-                                    [styles.btn_2]: bt.btnType === 'btn_2',
-                                    [styles.btn_md]: bt.btnSize === 'md' || bt.btnSize === 'md btn_block' || !bt.btnSize,
-                                    [styles.btn_lg]: bt.btnSize === 'lg' || bt.btnSize === 'lg btn_block',
-                                    [styles.btn_sm]: bt.btnSize === 'sm' || bt.btnSize === 'sm btn_block',
-                                    [styles.btn_xs]: bt.btnSize === 'xs' || bt.btnSize === 'xs btn_block',
-                                    [styles.btn_w]: props.well === '1',
-                                    [styles.btn_block]: bt.btnSize.includes('btn_block'),
-                                })}
-                                key={index}
-                            >
-                                {bt.icon && <FontAwesomeIcon icon={icon || faRocket} />} {bt.label}
-                            </div>
-                        )}
-                    </>
-                ))
-            )}
+                </>
+            </ConditionalWrapper>
         </>
     )
 }
@@ -588,5 +464,9 @@ const ImageBlock = (props: TheListItemImageProps) => {
         </>
     )
 }
+
+//Used to have conditional tag wraps around code without repeating inside code
+const ConditionalWrapper = ({ condition, falseOutput, trueOutput, children }: ConditionalWrapperProps) =>
+    condition ? trueOutput(children) : falseOutput(children)
 
 export default MyArticle

@@ -3,7 +3,7 @@ import CharlotteArticle from '../components/CharlotteArticle'
 import { ArticleItems } from '../components/types'
 
 export default {
-    title: 'CLT/Article',
+    title: 'CMS/CLTArticle',
     component: CharlotteArticle,
     argTypes: {
         imgSize: {

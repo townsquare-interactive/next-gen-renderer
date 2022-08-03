@@ -16,12 +16,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const Article = (props: ArticleProps) => {
     const [imageHeight, setHeight] = useState(100)
     const [imageWidth, setWidth] = useState(300)
-    const [lightbox, setLightbox] = useState(false)
-
-    function toggleSwitch() {
-        setLightbox(!lightbox)
-        console.log(lightbox)
-    }
 
     const calcImageSize = (loadedMedia: Media) => {
         setWidth(loadedMedia.naturalWidth)
@@ -121,22 +115,19 @@ const Article = (props: ArticleProps) => {
                     >
                         <div className={styles.the_list_wrap} style={item.isFeatured ? accentBackground : props.well ? borderBackground : noBackground}>
                             {item.image && (
-                                <div onClick={toggleSwitch}>
-                                    <TheListItemImage
-                                        item={item}
-                                        imageNoSizings={imageNoSizings}
-                                        calcImageSize={calcImageSize}
-                                        imageWidth={imageWidth}
-                                        imageHeight={imageHeight}
-                                        textColorAccent={textColorAccent}
-                                        textColor={textColor}
-                                        imgSize={props.imgSize}
-                                        well={props.well}
-                                        icons={icons}
-                                    />
-                                </div>
+                                <TheListItemImage
+                                    item={item}
+                                    imageNoSizings={imageNoSizings}
+                                    calcImageSize={calcImageSize}
+                                    imageWidth={imageWidth}
+                                    imageHeight={imageHeight}
+                                    textColorAccent={textColorAccent}
+                                    textColor={textColor}
+                                    imgSize={props.imgSize}
+                                    well={props.well}
+                                    icons={icons}
+                                />
                             )}
-                            {/* {props.lightbox === '1' && <Lightbox item={item} lightbox={lightbox} toggleSwitch={toggleSwitch} />} */}
 
                             <div className={styles['the_list_item_heads']}>
                                 {item.headline &&
@@ -292,46 +283,4 @@ const TheListItemImage = (props: TheListItemImageProps) => {
     )
 }
 
-/* const Lightbox = (props: any) => {
-    const { item, lightbox, toggleSwitch } = props
-
-    return (
-        <div
-            className={cn(styles.lightboxOverlay, {
-                [styles.active]: lightbox === true,
-            })}
-        >
-            <div onClick={toggleSwitch}>
-                <div className={styles.lightbox}>
-                    <div className={styles['lb-container']}>
-                        <div className={styles['lb-image']}>
-                            <Image
-                                className={cn(styles['item_image'], 'item_image', 'beacon-lazy-load')}
-                                src={domainImage(item.image)}
-                                layout="fill"
-                                alt={item.img_alt_tag || ''}
-                                objectFit="cover"
-                                objectPosition="top"
-                            />
-                        </div>
-
-                        <div className={styles['lb-dataContainer']}>
-                            <div className={styles['lb-data']}>
-                                <div className={styles['lb-details']}>
-                                    <span className={styles['lb-caption']}>lightbox</span>
-
-                                    <span className={styles['lb-number']}></span>
-                                </div>
-                                <div className={styles['lb-closeContainer']}>
-                                    <a className={styles['lb-close']}></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    )
-}
- */
 export default Article
