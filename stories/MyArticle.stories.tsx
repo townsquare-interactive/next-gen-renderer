@@ -534,7 +534,12 @@ export const V3SmallText = Template.bind({})
 V3SmallText.args = {
     ...Plain.args,
     type: 'article_3',
-    items: [{ ...item1, align: 'left', headSize: 'font_xs', descSize: 'font_lg' }],
+    columns: 3,
+    items: [
+        { ...item1, headSize: 'font_xs', descSize: 'font_sm' },
+        { ...item1, headSize: 'font_md', descSize: 'font_md' },
+        { ...item1, headSize: 'font_lg', descSize: 'font_lg' },
+    ],
 }
 export const Icon3 = Template.bind({})
 Icon3.args = {

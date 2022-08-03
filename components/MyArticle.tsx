@@ -24,7 +24,6 @@ const MyArticle = (props: ArticleProps) => {
             className={cn(
                 styles['root'],
                 styles['tsflex'],
-                /*  styles['ts-box'], */
 
                 {
                     [styles.a1]: props.type === 'article_1',
@@ -247,8 +246,6 @@ const ItemWrap = (props: ItemWrapProps) => {
     return (
         <>
             <style>{textColors}</style>
-
-            {/*  <div className={cn(styles['txt-wrap'])}> */}
             {item.image && (
                 <figure
                     className={cn(styles['image-block'], styles['theframe'], styles['imgtag'], styles['imgbase'], styles['img-loaded'])}
@@ -311,20 +308,18 @@ const ItemWrap = (props: ItemWrapProps) => {
             </header>
             {item.desc && (
                 <div className={cn(styles['txt-block'])}>
-                    <div className={styles['dsc-block']}>
-                        <div
-                            className={cn(styles['dsc'], {
-                                [styles.font_xs]: item.descSize === 'font_xs',
-                                [styles.font_sm]: item.descSize === 'font_sm',
-                                [styles.font_md]: item.descSize === 'font_md',
-                                [styles.font_lg]: item.descSize === 'font_lg',
-                                [styles.font_xl]: item.descSize === 'font_xl',
-                                ['accent-txt']: well || beaconHero,
-                                ['txt-color']: !well && !beaconHero,
-                            })}
-                        >
-                            <p>{item.desc}</p>
-                        </div>
+                    <div
+                        className={cn(styles['dsc-block'], {
+                            [styles.font_xs]: item.descSize === 'font_xs',
+                            [styles.font_sm]: item.descSize === 'font_sm',
+                            [styles.font_md]: item.descSize === 'font_md',
+                            [styles.font_lg]: item.descSize === 'font_lg',
+                            [styles.font_xl]: item.descSize === 'font_xl',
+                            ['accent-txt']: well || beaconHero,
+                            ['txt-color']: !well && !beaconHero,
+                        })}
+                    >
+                        <p className={cn(styles['dsc'])}>{item.desc}</p>
                     </div>
                 </div>
             )}
@@ -349,217 +344,6 @@ const ItemWrap = (props: ItemWrapProps) => {
                     well={well}
                 />
             )}
-            {/*  </div> */}
-
-            {/* {props.type != 'article_3' && props.type != 'article' ? (
-                <>
-                    {item.image && (
-                        <figure
-                            className={cn(styles['image-block'], styles['theframe'], styles['imgtag'], styles['imgbase'], styles['img-loaded'])}
-                            data-alt="Headline"
-                        >
-                            <ImageBlock
-                                item={item}
-                                imageNoSizings={imageNoSizings}
-                                calcImageSize={calcImageSize}
-                                imageWidth={imageWidth}
-                                imageHeight={imageHeight}
-                                textColorAccent={textColorAccent}
-                                textColor={textColor}
-                                imgSize={imgSize}
-                                well={well}
-                                icons={icons}
-                                icon3={icon3}
-                            />
-
-                            {item.caption_tag && <figcaption style={textColorAccent}>{item.caption_tag}</figcaption>}
-                        </figure>
-                    )}
-
-                    <header
-                        className={cn(styles['hd-block'], {
-                            [styles.font_xs]: item.headSize === 'font_xs',
-                            [styles.font_sm]: item.headSize === 'font_sm',
-                            [styles.font_md]: item.headSize === 'font_md',
-                            [styles.font_lg]: item.headSize === 'font_lg',
-                            [styles.font_xl]: item.headSize === 'font_xl',
-                        })}
-                    >
-                        {item.headerTag === '1' ? (
-                            <h1
-                                className={cn(styles['hd'], {
-                                    ['accent-txt']: well || beaconHero,
-                                    ['txt-color-heading']: !well && !beaconHero,
-                                })}
-                            >
-                                {Parser(item.headline)}
-                            </h1>
-                        ) : (
-                            <h2
-                                className={cn(styles['hd'], {
-                                    ['accent-txt']: well || beaconHero,
-                                    ['txt-color-heading']: !well && !beaconHero,
-                                })}
-                            >
-                                {Parser(item.headline)}
-                            </h2>
-                        )}
-                        <h2
-                            className={cn(styles['sh'], {
-                                ['accent-txt']: well || beaconHero,
-                                ['txt-color-heading']: !well && !beaconHero,
-                            })}
-                        >
-                            {Parser(item.subheader)}
-                        </h2>
-                    </header>
-                    {item.desc && (
-                        <div className={cn(styles['txt-block'])}>
-                            <div className={styles['dsc-block']}>
-                                <div
-                                    className={cn(styles['dsc'], {
-                                        [styles.font_xs]: item.descSize === 'font_xs',
-                                        [styles.font_sm]: item.descSize === 'font_sm',
-                                        [styles.font_md]: item.descSize === 'font_md',
-                                        [styles.font_lg]: item.descSize === 'font_lg',
-                                        [styles.font_xl]: item.descSize === 'font_xl',
-                                        ['accent-txt']: well || beaconHero,
-                                        ['txt-color']: !well && !beaconHero,
-                                    })}
-                                >
-                                    <p>{item.desc}</p>
-                                </div>
-                            </div>
-                        </div>
-                    )}
-                    {linkAndBtn && (
-                        <Button
-                            pagelink={item.pagelink}
-                            actionlbl={item.actionlbl}
-                            newwindow={item.newwindow}
-                            newwindow2={item.newwindow2}
-                            actionlbl2={item.actionlbl2}
-                            pagelink2={item.pagelink2}
-                            weblink2={item.weblink2}
-                            weblink={item.weblink}
-                            icon={item.icon}
-                            icon2={item.icon2}
-                            icons={icons}
-                            btnType={item.btnType}
-                            btnType2={item.btnType2}
-                            themeStyles={themeStyles}
-                            btnSize={item.btnSize}
-                            btnSize2={item.btnSize2}
-                            well={well}
-                        />
-                    )}
-                </>
-            ) : (
-                <div className={cn(styles['txt-wrap'])}>
-                    {item.image && (
-                        <figure
-                            className={cn(styles['image-block'], styles['theframe'], styles['imgtag'], styles['imgbase'], styles['img-loaded'])}
-                            data-image=""
-                            data-alt="Headline"
-                            data-image-loaded=""
-                        >
-                            <ImageBlock
-                                item={item}
-                                imageNoSizings={imageNoSizings}
-                                calcImageSize={calcImageSize}
-                                imageWidth={imageWidth}
-                                imageHeight={imageHeight}
-                                textColorAccent={textColorAccent}
-                                textColor={textColor}
-                                imgSize={imgSize}
-                                well={well}
-                                icons={icons}
-                                icon3={icon3}
-                            />
-
-                            {item.caption_tag && <figcaption style={textColorAccent}>{item.caption_tag}</figcaption>}
-                        </figure>
-                    )}
-                    <header
-                        className={cn(styles['hd-block'], {
-                            [styles.font_xs]: item.headSize === 'font_xs',
-                            [styles.font_sm]: item.headSize === 'font_sm',
-                            [styles.font_md]: item.headSize === 'font_md',
-                            [styles.font_lg]: item.headSize === 'font_lg',
-                            [styles.font_xl]: item.headSize === 'font_xl',
-                        })}
-                    >
-                        {item.headerTag === '1' ? (
-                            <h1
-                                className={cn(styles['hd'], {
-                                    ['accent-txt']: well || beaconHero,
-                                    ['txt-color-heading']: !well && !beaconHero,
-                                })}
-                            >
-                                {Parser(item.headline)}
-                            </h1>
-                        ) : (
-                            <h2
-                                className={cn(styles['hd'], {
-                                    ['accent-txt']: well || beaconHero,
-                                    ['txt-color-heading']: !well && !beaconHero,
-                                })}
-                            >
-                                {Parser(item.headline)}
-                            </h2>
-                        )}
-                        <h2
-                            className={cn(styles['sh'], {
-                                ['accent-txt']: well || beaconHero,
-                                ['txt-color-heading']: !well && !beaconHero,
-                            })}
-                        >
-                            {Parser(item.subheader)}
-                        </h2>
-                    </header>
-                    {item.desc && (
-                        <div className={cn(styles['txt-block'])}>
-                            <div className={styles['dsc-block']}>
-                                <div
-                                    className={cn(styles['dsc'], {
-                                        [styles.font_xs]: item.descSize === 'font_xs',
-                                        [styles.font_sm]: item.descSize === 'font_sm',
-                                        [styles.font_md]: item.descSize === 'font_md',
-                                        [styles.font_lg]: item.descSize === 'font_lg',
-                                        [styles.font_xl]: item.descSize === 'font_xl',
-                                        ['accent-txt']: well || beaconHero,
-                                        ['txt-color']: !well && !beaconHero,
-                                    })}
-                                >
-                                    <p>{item.desc}</p>
-                                </div>
-                            </div>
-                        </div>
-                    )}
-
-                    {linkAndBtn && (
-                        <Button
-                            pagelink={item.pagelink}
-                            weblink={item.weblink}
-                            actionlbl={item.actionlbl}
-                            newwindow={item.newwindow}
-                            newwindow2={item.newwindow2}
-                            actionlbl2={item.actionlbl2}
-                            pagelink2={item.pagelink2}
-                            weblink2={item.weblink2}
-                            icon={item.icon}
-                            icon2={item.icon2}
-                            icons={icons}
-                            btnType={item.btnType}
-                            btnType2={item.btnType2}
-                            themeStyles={themeStyles}
-                            btnSize={item.btnSize}
-                            btnSize2={item.btnSize2}
-                            well={well}
-                        />
-                    )}
-                </div>
-            )} */}
         </>
     )
 }
