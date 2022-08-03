@@ -177,8 +177,8 @@ const ModuleItem = (props: ModuleItemProps) => {
             style={props.well === '1' ? borderBackground : noBackground}
         >
             <ConditionalWrapper
-                condition={wrapLink}
-                trueCondition={(children: ReactChild) => (
+                condition={wrapLink ? true : false}
+                trueOutput={(children: ReactChild) => (
                     <Link href={item.pagelink || item.weblink || item.pagelink2 || item.weblink2 || ''} passHref={item.weblink || item.weblink2 ? true : false}>
                         <a
                             className={cn(styles['item-wrap'], 'btn_link')}
@@ -189,7 +189,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                         </a>
                     </Link>
                 )}
-                falseCondition={(children: ReactChild) => (
+                falseOutput={(children: ReactChild) => (
                     <div className={styles['item-wrap']} style={item.isFeatured === 'active' && props.type === 'article' ? heroBackground : noBackground}>
                         {children}
                     </div>
@@ -248,7 +248,110 @@ const ItemWrap = (props: ItemWrapProps) => {
         <>
             <style>{textColors}</style>
 
-            {props.type != 'article_3' && props.type != 'article' ? (
+            {/*  <div className={cn(styles['txt-wrap'])}> */}
+            {item.image && (
+                <figure
+                    className={cn(styles['image-block'], styles['theframe'], styles['imgtag'], styles['imgbase'], styles['img-loaded'])}
+                    data-alt="Headline"
+                >
+                    <ImageBlock
+                        item={item}
+                        imageNoSizings={imageNoSizings}
+                        calcImageSize={calcImageSize}
+                        imageWidth={imageWidth}
+                        imageHeight={imageHeight}
+                        textColorAccent={textColorAccent}
+                        textColor={textColor}
+                        imgSize={imgSize}
+                        well={well}
+                        icons={icons}
+                        icon3={icon3}
+                    />
+
+                    {item.caption_tag && <figcaption style={textColorAccent}>{item.caption_tag}</figcaption>}
+                </figure>
+            )}
+
+            <header
+                className={cn(styles['hd-block'], {
+                    [styles.font_xs]: item.headSize === 'font_xs',
+                    [styles.font_sm]: item.headSize === 'font_sm',
+                    [styles.font_md]: item.headSize === 'font_md',
+                    [styles.font_lg]: item.headSize === 'font_lg',
+                    [styles.font_xl]: item.headSize === 'font_xl',
+                })}
+            >
+                {item.headerTag === '1' ? (
+                    <h1
+                        className={cn(styles['hd'], {
+                            ['accent-txt']: well || beaconHero,
+                            ['txt-color-heading']: !well && !beaconHero,
+                        })}
+                    >
+                        {Parser(item.headline)}
+                    </h1>
+                ) : (
+                    <h2
+                        className={cn(styles['hd'], {
+                            ['accent-txt']: well || beaconHero,
+                            ['txt-color-heading']: !well && !beaconHero,
+                        })}
+                    >
+                        {Parser(item.headline)}
+                    </h2>
+                )}
+                <h2
+                    className={cn(styles['sh'], {
+                        ['accent-txt']: well || beaconHero,
+                        ['txt-color-heading']: !well && !beaconHero,
+                    })}
+                >
+                    {Parser(item.subheader)}
+                </h2>
+            </header>
+            {item.desc && (
+                <div className={cn(styles['txt-block'])}>
+                    <div className={styles['dsc-block']}>
+                        <div
+                            className={cn(styles['dsc'], {
+                                [styles.font_xs]: item.descSize === 'font_xs',
+                                [styles.font_sm]: item.descSize === 'font_sm',
+                                [styles.font_md]: item.descSize === 'font_md',
+                                [styles.font_lg]: item.descSize === 'font_lg',
+                                [styles.font_xl]: item.descSize === 'font_xl',
+                                ['accent-txt']: well || beaconHero,
+                                ['txt-color']: !well && !beaconHero,
+                            })}
+                        >
+                            <p>{item.desc}</p>
+                        </div>
+                    </div>
+                </div>
+            )}
+            {linkAndBtn && (
+                <Button
+                    pagelink={item.pagelink}
+                    actionlbl={item.actionlbl}
+                    newwindow={item.newwindow}
+                    newwindow2={item.newwindow2}
+                    actionlbl2={item.actionlbl2}
+                    pagelink2={item.pagelink2}
+                    weblink2={item.weblink2}
+                    weblink={item.weblink}
+                    icon={item.icon}
+                    icon2={item.icon2}
+                    icons={icons}
+                    btnType={item.btnType}
+                    btnType2={item.btnType2}
+                    themeStyles={themeStyles}
+                    btnSize={item.btnSize}
+                    btnSize2={item.btnSize2}
+                    well={well}
+                />
+            )}
+            {/*  </div> */}
+
+            {/* {props.type != 'article_3' && props.type != 'article' ? (
                 <>
                     {item.image && (
                         <figure
@@ -456,7 +559,7 @@ const ItemWrap = (props: ItemWrapProps) => {
                         />
                     )}
                 </div>
-            )}
+            )} */}
         </>
     )
 }
@@ -496,8 +599,8 @@ const Button = (props: TheListItemActionProps) => {
             <style>{btns}</style>
             <ConditionalWrapper
                 condition={props.actionlbl2 && props.actionlbl ? true : false}
-                trueCondition={(children: ReactChild) => <div className={cn(styles['btn-wrap'], styles['txt-wrap'])}>{children}</div>}
-                falseCondition={(children: ReactChild) => <>{children}</>}
+                trueOutput={(children: ReactChild) => <div className={cn(styles['btn-wrap'], styles['txt-wrap'])}>{children}</div>}
+                falseOutput={(children: ReactChild) => <>{children}</>}
             >
                 <>
                     {buttons.map((bt, index) => (
@@ -505,7 +608,7 @@ const Button = (props: TheListItemActionProps) => {
                             {bt.active && (
                                 <ConditionalWrapper
                                     condition={props.actionlbl2 && props.actionlbl ? true : false}
-                                    trueCondition={(children: ReactChild) => (
+                                    trueOutput={(children: ReactChild) => (
                                         <Link href={bt.link || ''} key={index} passHref={bt.linkType === 'ext' ? true : false}>
                                             <a
                                                 target={bt.window === 1 ? '_blank' : '_self'}
@@ -517,7 +620,7 @@ const Button = (props: TheListItemActionProps) => {
                                             </a>
                                         </Link>
                                     )}
-                                    falseCondition={(children: ReactChild) => <>{children}</>}
+                                    falseOutput={(children: ReactChild) => <>{children}</>}
                                 >
                                     <div
                                         className={cn(styles['btn'], styles['transition'], `${bt.btnType}`, {
@@ -542,69 +645,6 @@ const Button = (props: TheListItemActionProps) => {
             </ConditionalWrapper>
         </>
     )
-
-    /*  return (
-        <>
-            <style>{btns}</style>
-            {props.actionlbl2 && props.actionlbl ? (
-                <div className={cn(styles['btn-wrap'], styles['txt-wrap'])}>
-                    {buttons.map((bt, index) => (
-                        <>
-                            {bt.active && (
-                                <Link href={bt.link || ''} key={index} passHref={bt.linkType === 'ext' ? true : false}>
-                                    <a
-                                        target={bt.window === 1 ? '_blank' : '_self'}
-                                        className={cn('btn_link', {
-                                            [styles.btn_block]: bt.btnSize.includes('btn_block'),
-                                        })}
-                                    >
-                                        <div
-                                            className={cn(styles['btn'], styles['transition'], `${bt.btnType}`, {
-                                                ['btn_1']: !bt.btnType,
-                                                [styles.btn_1]: bt.btnType === 'btn_1' || !props.btnType,
-                                                [styles.btn_2]: bt.btnType === 'btn_2',
-                                                [styles.btn_md]: bt.btnSize === 'md' || bt.btnSize === 'md btn_block' || !bt.btnSize,
-                                                [styles.btn_lg]: bt.btnSize === 'lg' || bt.btnSize === 'lg btn_block',
-                                                [styles.btn_sm]: bt.btnSize === 'sm' || bt.btnSize === 'sm btn_block',
-                                                [styles.btn_xs]: bt.btnSize === 'xs' || bt.btnSize === 'xs btn_block',
-                                                [styles.btn_block]: bt.btnSize.includes('btn_block'),
-                                                [styles.btn_w]: props.well === '1',
-                                            })}
-                                        >
-                                            {bt.icon && <FontAwesomeIcon icon={bt.icon || faRocket} />} {bt.label}
-                                        </div>
-                                    </a>
-                                </Link>
-                            )}
-                        </>
-                    ))}
-                </div>
-            ) : (
-                buttons.map((bt, index) => (
-                    <>
-                        {bt.active && (
-                            <div
-                                className={cn(styles['btn'], styles['transition'], `${bt.btnType}`, {
-                                    ['btn_1']: !bt.btnType,
-                                    [styles.btn_1]: bt.btnType === 'btn_1' || !props.btnType,
-                                    [styles.btn_2]: bt.btnType === 'btn_2',
-                                    [styles.btn_md]: bt.btnSize === 'md' || bt.btnSize === 'md btn_block' || !bt.btnSize,
-                                    [styles.btn_lg]: bt.btnSize === 'lg' || bt.btnSize === 'lg btn_block',
-                                    [styles.btn_sm]: bt.btnSize === 'sm' || bt.btnSize === 'sm btn_block',
-                                    [styles.btn_xs]: bt.btnSize === 'xs' || bt.btnSize === 'xs btn_block',
-                                    [styles.btn_w]: props.well === '1',
-                                    [styles.btn_block]: bt.btnSize.includes('btn_block'),
-                                })}
-                                key={index}
-                            >
-                                {bt.icon && <FontAwesomeIcon icon={bt.icon || faRocket} />} {bt.label}
-                            </div>
-                        )}
-                    </>
-                ))
-            )}
-        </>
-    ) */
 }
 
 const ImageBlock = (props: TheListItemImageProps) => {
@@ -641,7 +681,8 @@ const ImageBlock = (props: TheListItemImageProps) => {
     )
 }
 
-const ConditionalWrapper = ({ condition, falseCondition, trueCondition, children }: ConditionalWrapperProps) =>
-    condition ? trueCondition(children) : falseCondition(children)
+//Used to have conditional tag wraps around code without repeating inside code
+const ConditionalWrapper = ({ condition, falseOutput, trueOutput, children }: ConditionalWrapperProps) =>
+    condition ? trueOutput(children) : falseOutput(children)
 
 export default MyArticle

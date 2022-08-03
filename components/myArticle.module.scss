@@ -320,10 +320,12 @@ $lg-screen: 1025px;
             /*Full width ending*/
             box-orient: vertical;
             box-direction: normal;
-
             flex-direction: column;
             margin-bottom: 2rem;
+        }
 
+        &.a1,
+        &.a2 {
             .item-wrap {
                 @include tsFlex;
                 box-orient: vertical;
@@ -626,7 +628,7 @@ $lg-screen: 1025px;
             }
 
             .dsc-block {
-                padding: 1rem 2rem 1.5rem;
+                padding: 0 2rem 1.5rem;
             }
 
             .nDsc .image-block {
@@ -637,7 +639,7 @@ $lg-screen: 1025px;
 
         &.a3,
         &.beacon {
-            &.small {
+            /*  &.small {
                 .txt-wrap {
                     padding: 1.5rem;
                 }
@@ -651,6 +653,27 @@ $lg-screen: 1025px;
 
             &.large {
                 .txt-wrap {
+                    padding: 2rem;
+
+                    @include lg-min {
+                        padding: 4rem 1.5rem;
+                    }
+                }
+            } */
+            &.small {
+                .item-wrap {
+                    padding: 1.5rem;
+                }
+            }
+
+            &.medium {
+                .item-wrap {
+                    padding: 3rem 2rem 2rem;
+                }
+            }
+
+            &.large {
+                .item-wrap {
                     padding: 2rem;
 
                     @include lg-min {

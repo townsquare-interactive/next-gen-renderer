@@ -536,6 +536,6 @@ export interface ModuleItemProps {
 export interface ConditionalWrapperProps {
     condition: boolean
     children: ReactChild
-    falseCondition: (children: ReactChild) => ReactElement | ReactElement
-    trueCondition: (children: ReactChild) => ReactElement
+    falseOutput: (children: ReactChild) => ReactElement | ReactElement
+    trueOutput: (children: ReactChild) => ReactElement
 }
