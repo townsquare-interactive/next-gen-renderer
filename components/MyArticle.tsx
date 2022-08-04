@@ -17,8 +17,6 @@ const MyArticle = (props: ArticleProps) => {
         color: props.themeStyles['headingColor'],
     }
 
-    console.log(props.themeStyles)
-
     return (
         <div
             className={cn(
@@ -82,13 +80,6 @@ const MyArticle = (props: ArticleProps) => {
 
 const ModuleItem = (props: ModuleItemProps) => {
     const { item } = props
-    const [imageHeight, setHeight] = useState(100)
-    const [imageWidth, setWidth] = useState(300)
-
-    const calcImageSize = (loadedMedia: Media) => {
-        setWidth(loadedMedia.naturalWidth)
-        setHeight(loadedMedia.naturalHeight)
-    }
 
     //Defining style objects
     const textColor = {
@@ -197,9 +188,6 @@ const ModuleItem = (props: ModuleItemProps) => {
                 <ItemWrap
                     item={item}
                     imageNoSizings={imageNoSizings}
-                    calcImageSize={calcImageSize}
-                    imageWidth={imageWidth}
-                    imageHeight={imageHeight}
                     textColorAccent={textColorAccent}
                     textColor={textColor}
                     imgSize={props.imgSize}
@@ -217,22 +205,7 @@ const ModuleItem = (props: ModuleItemProps) => {
 }
 
 const ItemWrap = (props: ItemWrapProps) => {
-    const {
-        item,
-        imageNoSizings,
-        calcImageSize,
-        imageWidth,
-        imageHeight,
-        textColorAccent,
-        textColor,
-        imgSize,
-        well,
-        icons,
-        icon3,
-        isFeatured,
-        themeStyles,
-        type,
-    } = props
+    const { item, imageNoSizings, textColorAccent, textColor, imgSize, well, icons, icon3, isFeatured, themeStyles, type } = props
 
     //Check if item is on beacon theme and hero
     const beaconHero = type === 'article' && isFeatured === 'active'
@@ -254,9 +227,6 @@ const ItemWrap = (props: ItemWrapProps) => {
                     <ImageBlock
                         item={item}
                         imageNoSizings={imageNoSizings}
-                        calcImageSize={calcImageSize}
-                        imageWidth={imageWidth}
-                        imageHeight={imageHeight}
                         textColorAccent={textColorAccent}
                         textColor={textColor}
                         imgSize={imgSize}
@@ -432,7 +402,14 @@ const Button = (props: TheListItemActionProps) => {
 }
 
 const ImageBlock = (props: TheListItemImageProps) => {
-    const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight } = props
+    const { item, imageNoSizings } = props
+    const [imageHeight, setHeight] = useState(100)
+    const [imageWidth, setWidth] = useState(300)
+
+    const calcImageSize = (loadedMedia: Media) => {
+        setWidth(loadedMedia.naturalWidth)
+        setHeight(loadedMedia.naturalHeight)
+    }
 
     let icon = props.icon3 ? props.icons[props.icon3] : faRocket
 

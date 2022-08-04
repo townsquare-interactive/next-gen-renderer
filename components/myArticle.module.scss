@@ -56,8 +56,6 @@ $lg-screen: 1025px;
 }
 
 @mixin tsFlex {
-    /*  display: -webkit-box;
-    display: -moz-box;*/
     display: -moz-flex;
     display: flex;
 }
@@ -501,37 +499,8 @@ $lg-screen: 1025px;
         line-height: 1.1764705882em;
     }
 
-    //Same as above ^^
-    /* &.small {
-        @include sm-min {
-            .dsc {
-                font-size: 0.875em;
-                margin-top: 1.1428571429em;
-                margin-bottom: 1.1428571429em;
-                line-height: 1.4285714286em;
-            }
-
-            .sh {
-                font-size: 0.875em;
-                margin-top: 0.5714285714em;
-                margin-bottom: 0.5714285714em;
-                line-height: 1.1428571429em;
-            }
-
-            .hd {
-                font-size: 1.0625em;
-                margin-top: 0.7058823529em;
-                margin-bottom: 0.4705882353em;
-                line-height: 1.1764705882em;
-            }
-        } 
-        
-    }
-*/
     &.medium {
         @include sm-min {
-            //how about hero??
-
             .sh {
                 font-size: 1.0625em;
                 margin-top: 0.7058823529em;
@@ -639,27 +608,7 @@ $lg-screen: 1025px;
 
         &.a3,
         &.beacon {
-            /*  &.small {
-                .txt-wrap {
-                    padding: 1.5rem;
-                }
-            }
-
-            &.medium {
-                .txt-wrap {
-                    padding: 3rem 2rem 2rem;
-                }
-            }
-
-            &.large {
-                .txt-wrap {
-                    padding: 2rem;
-
-                    @include lg-min {
-                        padding: 4rem 1.5rem;
-                    }
-                }
-            } */
+            //changed from removed class txt-wrap to item-wrap
             &.small {
                 .item-wrap {
                     padding: 1.5rem;
@@ -775,9 +724,6 @@ $lg-screen: 1025px;
             &.a3 {
                 .nHero {
                     width: $ten-12;
-                    /* margin-left: item-margins;
-                    margin-right: item-margins; */
-                    // margin-left: 9.9248790425%;
                     margin: 0 auto;
                     margin-bottom: 4rem;
                 }

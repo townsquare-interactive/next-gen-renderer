@@ -470,9 +470,9 @@ export interface TheListItemActionProps {
 export interface TheListItemImageProps {
     item: ArticleItems
     imageNoSizings: any
-    calcImageSize: (loadedMedia: any) => void
-    imageWidth: number
-    imageHeight: number
+    calcImageSize?: (loadedMedia: any) => void
+    imageWidth?: number
+    imageHeight?: number
     textColorAccent: Colors
     textColor: Colors
     imgSize: string
@@ -499,9 +499,6 @@ export interface TsiWrp {
 
 export interface ItemWrapProps {
     imageNoSizings: any
-    calcImageSize: (loadedMedia: any) => void
-    imageWidth: number
-    imageHeight: number
     textColorAccent: Colors
     textColor: Colors
     imgSize: string
