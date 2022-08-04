@@ -69,6 +69,7 @@ const CharlotteArticle = (props: ArticleProps) => {
                             key={index}
                             imgSize={props.imgSize}
                             type={props.type}
+                            columns={props.columns}
                         />
                     ) : (
                         <></>

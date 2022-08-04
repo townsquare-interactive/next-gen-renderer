@@ -61,7 +61,16 @@ $lg-screen: 1025px;
 }
 
 .root {
-    padding-top: 3rem;
+    /*  padding-top: 3rem;
+    background-color: red;
+
+    @media (min-width: 900px) {
+        background-color: blue;
+    }
+
+    @media (min-width: 1300px) {
+        background-color: green;
+    } */
 
     * {
         box-sizing: border-box;

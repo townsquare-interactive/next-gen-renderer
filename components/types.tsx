@@ -510,6 +510,7 @@ export interface ItemWrapProps {
     themeStyles: ThemeStyles
     isFeatured?: string
     type: string
+    columns: number
 }
 
 export interface ModuleItemProps {
@@ -520,6 +521,7 @@ export interface ModuleItemProps {
     textColorHeading: any
     imgSize: string
     type: string
+    columns: number
 }
 
 /* export interface ConditionalWrapperProps {

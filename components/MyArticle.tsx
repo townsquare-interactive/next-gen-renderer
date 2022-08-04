@@ -68,6 +68,7 @@ const MyArticle = (props: ArticleProps) => {
                             key={index}
                             imgSize={props.imgSize}
                             type={props.type}
+                            columns={props.columns}
                         />
                     ) : (
                         <></>
@@ -198,6 +199,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                     type={props.type}
                     themeStyles={props.themeStyles}
                     isFeatured={item.isFeatured}
+                    columns={props.columns}
                 />
             </ConditionalWrapper>
         </article>
@@ -215,6 +217,25 @@ const ItemWrap = (props: ItemWrapProps) => {
 
     const linkAndBtn =
         (item.actionlbl && item.pagelink) || (item.actionlbl && item.weblink) || (item.actionlbl2 && item.pagelink2) || (item.actionlbl2 && item.weblink2)
+
+    //Finding tag types for headline and subjeadline
+    const HeadTag = decideHeadTag('hd')
+    const SubTag = decideHeadTag('sh')
+
+    function decideHeadTag(tag: string) {
+        if (props.columns === 4) {
+            return 'h5'
+        }
+        if (props.columns === 3) {
+            return 'h4'
+        } else if (props.columns === 2) {
+            return 'h2'
+        } else if (props.columns === 1 && item.headerTag === '1' && tag === 'hd') {
+            return 'h1'
+        } else {
+            return 'h2'
+        }
+    }
 
     return (
         <>
@@ -248,33 +269,22 @@ const ItemWrap = (props: ItemWrapProps) => {
                     [styles.font_xl]: item.headSize === 'font_xl',
                 })}
             >
-                {item.headerTag === '1' ? (
-                    <h1
-                        className={cn(styles['hd'], {
-                            ['accent-txt']: well || beaconHero,
-                            ['txt-color-heading']: !well && !beaconHero,
-                        })}
-                    >
-                        {Parser(item.headline)}
-                    </h1>
-                ) : (
-                    <h2
-                        className={cn(styles['hd'], {
-                            ['accent-txt']: well || beaconHero,
-                            ['txt-color-heading']: !well && !beaconHero,
-                        })}
-                    >
-                        {Parser(item.headline)}
-                    </h2>
-                )}
-                <h2
+                <HeadTag
+                    className={cn(styles['hd'], {
+                        ['accent-txt']: well || beaconHero,
+                        ['txt-color-heading']: !well && !beaconHero,
+                    })}
+                >
+                    {Parser(item.headline)}
+                </HeadTag>
+                <SubTag
                     className={cn(styles['sh'], {
                         ['accent-txt']: well || beaconHero,
                         ['txt-color-heading']: !well && !beaconHero,
                     })}
                 >
                     {Parser(item.subheader)}
-                </h2>
+                </SubTag>
             </header>
             {item.desc && (
                 <div className={cn(styles['txt-block'])}>
