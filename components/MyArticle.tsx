@@ -218,74 +218,44 @@ const ItemWrap = (props: ItemWrapProps) => {
     const linkAndBtn =
         (item.actionlbl && item.pagelink) || (item.actionlbl && item.weblink) || (item.actionlbl2 && item.pagelink2) || (item.actionlbl2 && item.weblink2)
 
-    //Finding tag types for headline and subjeadline
-    const HeadTag = decideHeadTag('hd')
-    const SubTag = decideHeadTag('sh')
-
-    function decideHeadTag(tag: string) {
-        if (props.columns === 4) {
-            return 'h5'
-        }
-        if (props.columns === 3) {
-            return 'h4'
-        } else if (props.columns === 2) {
-            return 'h2'
-        } else if (props.columns === 1 && item.headerTag === '1' && tag === 'hd') {
-            return 'h1'
-        } else {
-            return 'h2'
-        }
-    }
-
     return (
         <>
             <style>{textColors}</style>
-            {item.image && (
-                <figure
-                    className={cn(styles['image-block'], styles['theframe'], styles['imgtag'], styles['imgbase'], styles['img-loaded'])}
-                    data-alt="Headline"
-                >
-                    <ImageBlock
-                        item={item}
-                        imageNoSizings={imageNoSizings}
-                        textColorAccent={textColorAccent}
-                        textColor={textColor}
-                        imgSize={imgSize}
-                        well={well}
-                        icons={icons}
-                        icon3={icon3}
-                    />
+            {props.type != 'article_2' ? (
+                <>
+                    {item.image && (
+                        <ImageBlock
+                            item={item}
+                            imageNoSizings={imageNoSizings}
+                            textColorAccent={textColorAccent}
+                            textColor={textColor}
+                            imgSize={imgSize}
+                            well={well}
+                            icons={icons}
+                            icon3={icon3}
+                        />
+                    )}
+                    <HeaderBlock item={props.item} well={props.well} columns={props.columns} beaconHero={beaconHero} />
+                </>
+            ) : (
+                <>
+                    <HeaderBlock item={props.item} well={props.well} columns={props.columns} beaconHero={beaconHero} />
 
-                    {item.caption_tag && <figcaption style={textColorAccent}>{item.caption_tag}</figcaption>}
-                </figure>
+                    {item.image && (
+                        <ImageBlock
+                            item={item}
+                            imageNoSizings={imageNoSizings}
+                            textColorAccent={textColorAccent}
+                            textColor={textColor}
+                            imgSize={imgSize}
+                            well={well}
+                            icons={icons}
+                            icon3={icon3}
+                        />
+                    )}
+                </>
             )}
 
-            <header
-                className={cn(styles['hd-block'], {
-                    [styles.font_xs]: item.headSize === 'font_xs',
-                    [styles.font_sm]: item.headSize === 'font_sm',
-                    [styles.font_md]: item.headSize === 'font_md',
-                    [styles.font_lg]: item.headSize === 'font_lg',
-                    [styles.font_xl]: item.headSize === 'font_xl',
-                })}
-            >
-                <HeadTag
-                    className={cn(styles['hd'], {
-                        ['accent-txt']: well || beaconHero,
-                        ['txt-color-heading']: !well && !beaconHero,
-                    })}
-                >
-                    {Parser(item.headline)}
-                </HeadTag>
-                <SubTag
-                    className={cn(styles['sh'], {
-                        ['accent-txt']: well || beaconHero,
-                        ['txt-color-heading']: !well && !beaconHero,
-                    })}
-                >
-                    {Parser(item.subheader)}
-                </SubTag>
-            </header>
             {item.desc && (
                 <div className={cn(styles['txt-block'])}>
                     <div
@@ -411,6 +381,56 @@ const Button = (props: TheListItemActionProps) => {
     )
 }
 
+const HeaderBlock = (props: any) => {
+    const { item, columns, well, beaconHero } = props
+    //Finding tag types for headline and subjeadline
+    const HeadTag = decideHeadTag('hd')
+    const SubTag = decideHeadTag('sh')
+
+    function decideHeadTag(tag: string) {
+        if (columns === 4) {
+            return 'h5'
+        }
+        if (columns === 3) {
+            return 'h4'
+        } else if (columns === 2) {
+            return 'h2'
+        } else if (columns === 1 && item.headerTag === '1' && tag === 'hd') {
+            return 'h1'
+        } else {
+            return 'h2'
+        }
+    }
+    return (
+        <header
+            className={cn(styles['hd-block'], {
+                [styles.font_xs]: item.headSize === 'font_xs',
+                [styles.font_sm]: item.headSize === 'font_sm',
+                [styles.font_md]: item.headSize === 'font_md',
+                [styles.font_lg]: item.headSize === 'font_lg',
+                [styles.font_xl]: item.headSize === 'font_xl',
+            })}
+        >
+            <HeadTag
+                className={cn(styles['hd'], {
+                    ['accent-txt']: well || beaconHero,
+                    ['txt-color-heading']: !well && !beaconHero,
+                })}
+            >
+                {Parser(item.headline)}
+            </HeadTag>
+            <SubTag
+                className={cn(styles['sh'], {
+                    ['accent-txt']: well || beaconHero,
+                    ['txt-color-heading']: !well && !beaconHero,
+                })}
+            >
+                {Parser(item.subheader)}
+            </SubTag>
+        </header>
+    )
+}
+
 const ImageBlock = (props: TheListItemImageProps) => {
     const { item, imageNoSizings } = props
     const [imageHeight, setHeight] = useState(100)
@@ -424,7 +444,7 @@ const ImageBlock = (props: TheListItemImageProps) => {
     let icon = props.icon3 ? props.icons[props.icon3] : faRocket
 
     return (
-        <>
+        <figure className={cn(styles['image-block'], styles['theframe'], styles['imgtag'], styles['imgbase'], styles['img-loaded'])} data-alt="Headline">
             <div className={styles.image}>
                 {!imageNoSizings.includes(props.imgSize) ? (
                     <Image src={domainImage(item.image)} layout="fill" objectFit="cover" alt={item.img_alt_tag || ''} objectPosition="top" />
@@ -448,7 +468,8 @@ const ImageBlock = (props: TheListItemImageProps) => {
                     </div>
                 )}
             </div>
-        </>
+            {item.caption_tag && <figcaption style={props.textColorAccent}>{item.caption_tag}</figcaption>}
+        </figure>
     )
 }
 
