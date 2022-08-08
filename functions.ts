@@ -1,3 +1,5 @@
+import { ConditionalWrapperProps } from 'components/types'
+
 const bucketUrl = 'https://townsquareinteractive.s3.amazonaws.com'
 const localUrl = 'elitesports.com/preview'
 const env = process.env.NEXT_PUBLIC_URL_ENV
@@ -37,3 +39,7 @@ export function capitalize(str: string) {
 
     return str[0].toUpperCase() + str.slice(1)
 }
+
+//Used to have conditional tag wraps around code without repeating inside code
+export const ConditionalWrapper = ({ condition, falseOutput, trueOutput, children }: ConditionalWrapperProps) =>
+    condition ? trueOutput(children) : falseOutput(children)

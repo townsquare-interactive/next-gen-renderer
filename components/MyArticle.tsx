@@ -3,7 +3,7 @@ import { ArticleProps, Media, TheListItemImageProps, TheListItemActionProps, Ite
 import Image from 'next/image'
 import cn from 'classnames'
 import Parser from 'html-react-parser'
-import { domainImage } from '../functions'
+import { domainImage, ConditionalWrapper } from '../functions'
 import { ReactChild, useState } from 'react'
 import Link from 'next/link'
 
@@ -472,9 +472,5 @@ const ImageBlock = (props: TheListItemImageProps) => {
         </figure>
     )
 }
-
-//Used to have conditional tag wraps around code without repeating inside code
-const ConditionalWrapper = ({ condition, falseOutput, trueOutput, children }: ConditionalWrapperProps) =>
-    condition ? trueOutput(children) : falseOutput(children)
 
 export default MyArticle

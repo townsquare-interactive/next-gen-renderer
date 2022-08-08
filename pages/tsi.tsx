@@ -3,6 +3,7 @@ import TsiLayout from '../components/TsiLayout'
 import { Renderer } from '../components/Renderer'
 import page from '../cms.json'
 import { getDomain } from '../functions'
+import styles from './tsi.module.scss'
 
 export const getStaticProps = async (context: Context) => {
     const resGlobal = await fetch(getDomain() + '/global.json')
@@ -23,12 +24,24 @@ const Slug = (props: HomeProps) => {
     const { globalData } = props
 
     return (
-        <div>
-            <TsiLayout>
-                <div>
+        <div className={styles.root}>
+            <div className={styles.featured}>
+                {/*   <TsiLayout>
                     <Renderer config={page.modules} themeStyles={globalData.themeStyles} />
-                </div>
-            </TsiLayout>
+                </TsiLayout> */}
+            </div>
+            <div className={styles.column1}>
+                <TsiLayout>
+                    <Renderer config={page.modules} themeStyles={globalData.themeStyles} />
+                </TsiLayout>
+            </div>
+            <div className={styles.column2}>
+                <TsiLayout>
+                    <Renderer config={page.modules} themeStyles={globalData.themeStyles} />
+                </TsiLayout>
+            </div>
+            <div className={styles.column3}></div>
+            <div className={styles.column4}></div>
         </div>
     )
 }

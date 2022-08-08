@@ -1,0 +1,9 @@
+.root {
+    display: flex;
+    flex-direction: row;
+
+    .column1,
+    .column2 {
+        width: 50%;
+    }
+}
