@@ -353,20 +353,18 @@ export interface ThemeStyles {
 
 export interface ModuleData {
     logoUrl?: string
-    /*imagesData?: ImagesProps
-    listData?: ListProps
-    headerData?: HeaderProps
-    labelData?: LabelProps
-    textData?: TextData
-    carouselData?: CarouselProps
-    footerData?: FooterProps
-    navData: NavProps
-    videoData?: VideoProps
-    gridData?: GridProps */
-    modules?: ImagesProps | ListProps | HeaderProps | LabelProps | TextData | CarouselProps | FooterProps | NavProps | VideoProps | GridProps
+    /* modules?: ImagesProps | ListProps | HeaderProps | LabelProps | TextData | CarouselProps | FooterProps | NavProps | VideoProps | GridProps*/
+    modules?: any
     name?: string
     seo?: SeoData
     themeStyles?: ThemeStyles
+    type?: string
+    layout?: number
+    columns?: number
+    JS?: string | null
+    head_script: string | null
+    hideTitle: number
+    sections: any[]
 }
 
 /*----------------------------Elements--------------------------------------*/
@@ -416,6 +414,7 @@ export interface ArticleItems {
 
 export interface ArticleProps {
     uid: string
+    /* type: string */
     type: string
     /**Border background on items*/
     well: string

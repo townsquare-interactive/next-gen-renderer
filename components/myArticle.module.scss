@@ -334,7 +334,7 @@ $lg-screen: 1025px;
     &.a2 {
         //default alignments
         .btn {
-            align-self: center;
+            align-self: flex-start;
 
             &.btn_w {
                 margin: auto 0 0;
@@ -344,17 +344,11 @@ $lg-screen: 1025px;
         .hd,
         .sh,
         .dsc {
-            text-align: center;
+            text-align: left;
         }
 
         //alignment modifiers
         .left {
-            .hd,
-            .sh,
-            .dsc {
-                text-align: left;
-            }
-
             .btn {
                 align-self: flex-start;
                 -ms-flex-item-align: flex-start;
@@ -381,6 +375,12 @@ $lg-screen: 1025px;
         }
 
         .center {
+            .hd,
+            .sh,
+            .dsc {
+                text-align: center;
+            }
+
             .btn {
                 align-self: center;
                 -ms-flex-item-align: center;

@@ -1,6 +1,11 @@
 .root {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+
+    .featured {
+        width: 100%;
+        margin: 0 auto;
+    }
 
     .column1,
     .column2 {
