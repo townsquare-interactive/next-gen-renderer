@@ -43,17 +43,6 @@ $lg-screen: 1025px;
 }
 
 .root {
-    /*  padding-top: 3rem;
-    background-color: red;
-
-    @media (min-width: 900px) {
-        background-color: blue;
-    }
-
-    @media (min-width: 1300px) {
-        background-color: green;
-    } */
-
     * {
         box-sizing: border-box;
     }
@@ -523,6 +512,29 @@ $lg-screen: 1025px;
     &.large {
         @include sm-min {
             .hd {
+                font-size: 1.5em;
+                margin-top: 0.6666666667em;
+                margin-bottom: 0.5em;
+                line-height: 1.1666666667em;
+                letter-spacing: -0.0125rem;
+            }
+
+            .sh {
+                font-size: 1.0625em;
+                margin-top: 0.7058823529em;
+                margin-bottom: 0.4705882353em;
+                line-height: 1.1764705882em;
+            }
+
+            .dsc {
+                font-size: 0.875em;
+                margin-top: 1.1428571429em;
+                margin-bottom: 1.1428571429em;
+                line-height: 1.4285714286em;
+            }
+        }
+        @include lg-min {
+            .hd {
                 font-size: 2.25em;
                 margin-top: 0.6666666667em;
                 margin-bottom: 0.4444444444em;
@@ -673,15 +685,11 @@ $lg-screen: 1025px;
         }
 
         &.col_4 .item {
-            width: $third-item-width;
+            width: $half-item-width;
         }
     }
 
-    @include lg-min {
-        &.col_4 .item {
-            width: $quarteritem-width;
-        }
-
+    @include md-min {
         &.a1,
         &.a2,
         &.a3 {
@@ -696,6 +704,12 @@ $lg-screen: 1025px;
             &.col_4 .hero {
                 width: $half-item-width;
             }
+        }
+    }
+
+    @include lg-min {
+        &.col_4 .item {
+            width: $quarteritem-width;
         }
     }
 
