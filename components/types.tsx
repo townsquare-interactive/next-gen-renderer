@@ -360,7 +360,7 @@ export interface ModuleData {
     themeStyles?: ThemeStyles
     type?: string
     layout?: number
-    columns?: number
+    columns?: number | string
     JS?: string | null
     head_script: string | null
     hideTitle: number
@@ -395,11 +395,11 @@ export interface ArticleItems {
     pagelink: string
     weblink: string
     actionlbl: string
-    newwindow: number | null
+    newwindow: number | null | string
     pagelink2: string
     weblink2: string
     actionlbl2: string
-    newwindow2: number | null
+    newwindow2: number | null | string
     align: string
     isFeatured: string
     isPlugin: string
@@ -413,21 +413,21 @@ export interface ArticleItems {
 }
 
 export interface ArticleProps {
-    uid: string
+    modId: string
     /* type: string */
     type: string
     /**Border background on items*/
-    well: string
+    well: string | number
     align?: string
     items: ArticleItems[]
-    imgSize: string
+    imgsize: string
     /**Custom class addition*/
     class: string
     /**Title text to go above module*/
     title: string
     hideTitle?: number
     export: number
-    columns: number
+    columns: number | string
     lightbox: string
     blockSwitch1: number
     scale_to_fit: string
@@ -452,8 +452,8 @@ export interface TheListItemActionProps {
     weblink2?: string
     actionlbl: string
     actionlbl2?: string
-    newwindow: number | null
-    newwindow2?: number | null
+    newwindow: number | null | string
+    newwindow2?: number | null | string
     btn2Styles?: btnColors
     icon?: string
     icon2?: string
@@ -463,7 +463,8 @@ export interface TheListItemActionProps {
     themeStyles: ThemeStyles
     btnSize: string
     btnSize2: string
-    well?: string
+    well?: string | number
+    modId: string
 }
 
 export interface TheListItemImageProps {
@@ -474,8 +475,8 @@ export interface TheListItemImageProps {
     imageHeight?: number
     textColorAccent: Colors
     textColor: Colors
-    imgSize: string
-    well: string
+    imgsize: string
+    well: string | number
     icons: { [key: string]: any }
     icon3?: string
 }
@@ -487,8 +488,8 @@ export interface TsiWrp {
     imageHeight: number
     textColorAccent: Colors
     textColor: Colors
-    imgSize: string
-    well: string
+    imgsize: string
+    well: string | number
     icons: { [key: string]: any }
     icon3?: string
     item: ArticleItems
@@ -500,8 +501,8 @@ export interface ItemWrapProps {
     imageNoSizings: any
     textColorAccent: Colors
     textColor: Colors
-    imgSize: string
-    well: string
+    imgsize: string
+    well: string | number
     icons: { [key: string]: any }
     icon3?: string
     item: ArticleItems
@@ -509,18 +510,20 @@ export interface ItemWrapProps {
     themeStyles: ThemeStyles
     isFeatured?: string
     type: string
-    columns: number
+    columns: number | string
+    modId: string
 }
 
 export interface ModuleItemProps {
     item: ArticleItems
-    well: string
-    index: number
+    well: string | number
+    itemIndex: number
     themeStyles: ThemeStyles
     textColorHeading: any
-    imgSize: string
+    imgsize: string
     type: string
-    columns: number
+    columns: number | string
+    modId: string
 }
 
 /* export interface ConditionalWrapperProps {

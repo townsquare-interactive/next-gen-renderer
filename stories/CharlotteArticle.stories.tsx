@@ -6,7 +6,7 @@ export default {
     title: 'CMS/CLTArticle',
     component: CharlotteArticle,
     argTypes: {
-        imgSize: {
+        imgsize: {
             options: ['landscape_4_3', 'landscape_3_2', 'portrait_3_4', 'portrait_2_3', 'square_1_1', 'widescreen_16_9', 'widescreen_2_4_1', 'widescreen_3_1'],
             control: { type: 'radio' },
         },
@@ -71,7 +71,7 @@ Default.args = {
     type: 'article_1',
     well: '',
     align: '',
-    imgSize: 'landscape_4_3',
+    imgsize: 'landscape_4_3',
     title: '',
     export: 1,
     columns: 1,
@@ -209,49 +209,49 @@ ModuleTitle.args = {
 export const ImageSquare = Template.bind({})
 ImageSquare.args = {
     ...AlignLeft.args,
-    imgSize: 'square_1_1',
+    imgsize: 'square_1_1',
 }
 export const ImageLandscape_4_3 = Template.bind({})
 ImageLandscape_4_3.args = {
     ...AlignLeft.args,
-    imgSize: 'landscape_4_3',
+    imgsize: 'landscape_4_3',
 }
 
 export const ImageLandscape_3_2 = Template.bind({})
 ImageLandscape_3_2.args = {
     ...AlignLeft.args,
-    imgSize: 'landscape_3_2',
+    imgsize: 'landscape_3_2',
 }
 export const ImagePortrait_3_4 = Template.bind({})
 ImagePortrait_3_4.args = {
     ...AlignLeft.args,
-    imgSize: 'portrait_3_4',
+    imgsize: 'portrait_3_4',
 }
 export const ImagePortrait_2_3 = Template.bind({})
 ImagePortrait_2_3.args = {
     ...AlignLeft.args,
-    imgSize: 'portrait_2_3',
+    imgsize: 'portrait_2_3',
 }
 export const ImageWideScreen_16_9 = Template.bind({})
 ImageWideScreen_16_9.args = {
     ...AlignLeft.args,
-    imgSize: 'widescreen_16_9',
+    imgsize: 'widescreen_16_9',
 }
 
 export const ImageWideScreen_2_4_1 = Template.bind({})
 ImageWideScreen_2_4_1.args = {
     ...AlignLeft.args,
-    imgSize: 'widescreen_2_4_1',
+    imgsize: 'widescreen_2_4_1',
 }
 export const ImageWideScreen_3_1 = Template.bind({})
 ImageWideScreen_3_1.args = {
     ...AlignLeft.args,
-    imgSize: 'widescreen_3_1',
+    imgsize: 'widescreen_3_1',
 }
 export const ImageNoSizing = Template.bind({})
 ImageNoSizing.args = {
     ...AlignLeft.args,
-    imgSize: 'no_sizing',
+    imgsize: 'no_sizing',
 }
 
 export const Button = Template.bind({})

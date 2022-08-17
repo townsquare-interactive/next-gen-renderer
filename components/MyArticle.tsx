@@ -1,5 +1,5 @@
 import styles from './myArticle.module.scss'
-import { ArticleProps, Media, TheListItemImageProps, TheListItemActionProps, ItemWrapProps, ModuleItemProps, ConditionalWrapperProps } from './types'
+import { ArticleProps, Media, TheListItemImageProps, TheListItemActionProps, ItemWrapProps, ModuleItemProps } from './types'
 import Image from 'next/image'
 import cn from 'classnames'
 import Parser from 'html-react-parser'
@@ -17,18 +17,19 @@ const MyArticle = (props: ArticleProps) => {
         color: props.themeStyles['headingColor'],
     }
 
+    console.log(props.modId)
+
     return (
         <div
             className={cn(
                 styles['root'],
                 styles['tsflex'],
-
                 {
                     [styles.a1]: props.type === 'article_1',
                     [styles.a2]: props.type === 'article_2',
                     [styles.a3]: props.type === 'article_3',
                     [styles.beacon]: props.type === 'article',
-                    [styles.well]: props.well === '1',
+                    [styles.well]: props.well == '1',
                     [styles.not_well]: !props.well,
                     [styles.large]: props.columns == 1,
                     [styles.medium]: props.columns == 2,
@@ -38,17 +39,18 @@ const MyArticle = (props: ArticleProps) => {
                     [styles.col_3]: props.columns == 3,
                     [styles.col_4]: props.columns == 4,
                     [styles[`cst_${props.class}`]]: props.class,
-                    [styles.square_1_1]: props.imgSize === 'square_1_1',
-                    [styles.landscape_4_3]: props.imgSize === 'landscape_4_3',
-                    [styles.landscape_3_2]: props.imgSize === 'landscape_3_2',
-                    [styles.portrait_3_4]: props.imgSize === 'portrait_3_4',
-                    [styles.portrait_2_3]: props.imgSize === 'portrait_2_3',
-                    [styles.widescreen_16_9]: props.imgSize === 'widescreen_16_9',
-                    [styles.widescreen_3_1]: props.imgSize === 'widescreen_3_1',
-                    [styles.widescreen_2_4_1]: props.imgSize === 'widescreen_2_4_1',
-                    [styles.no_sizing]: props.imgSize === 'no_sizing',
-                    [styles.no_set_height]: props.imgSize === 'no_set_height',
-                }
+                    [styles.square_1_1]: props.imgsize === 'square_1_1',
+                    [styles.landscape_4_3]: props.imgsize === 'landscape_4_3',
+                    [styles.landscape_3_2]: props.imgsize === 'landscape_3_2',
+                    [styles.portrait_3_4]: props.imgsize === 'portrait_3_4',
+                    [styles.portrait_2_3]: props.imgsize === 'portrait_2_3',
+                    [styles.widescreen_16_9]: props.imgsize === 'widescreen_16_9',
+                    [styles.widescreen_3_1]: props.imgsize === 'widescreen_3_1',
+                    [styles.widescreen_2_4_1]: props.imgsize === 'widescreen_2_4_1',
+                    [styles.no_sizing]: props.imgsize === 'no_sizing',
+                    [styles.no_set_height]: props.imgsize === 'no_set_height',
+                },
+                `id_${props.modId}`
             )}
         >
             <div className={styles.wrapper}>
@@ -62,13 +64,14 @@ const MyArticle = (props: ArticleProps) => {
                         <ModuleItem
                             item={item}
                             well={props.well}
-                            index={index}
+                            modId={props.modId}
                             themeStyles={props.themeStyles}
                             textColorHeading={textColorHeading}
                             key={index}
-                            imgSize={props.imgSize}
+                            imgsize={props.imgsize}
                             type={props.type}
                             columns={props.columns}
+                            itemIndex={index}
                         />
                     ) : (
                         <></>
@@ -80,7 +83,7 @@ const MyArticle = (props: ArticleProps) => {
 }
 
 const ModuleItem = (props: ModuleItemProps) => {
-    const { item } = props
+    const { item, modId, itemIndex } = props
 
     //Defining style objects
     const textColor = {
@@ -134,7 +137,7 @@ const ModuleItem = (props: ModuleItemProps) => {
 
     const linkNoBtn = isButton() === false && isLink() === true
 
-    const wrapLink = oneButton || linkNoBtn
+    const wrapLink = (oneButton || linkNoBtn) && props.type != 'article'
 
     /* const pageLink = item.pagelink || item.pagelink2 ? true : false */
 
@@ -160,12 +163,13 @@ const ModuleItem = (props: ModuleItemProps) => {
                     [styles.yLk]: (item.pagelink || item.weblink || item.pagelink2 || item.weblink2) && !twoButtons,
                     [styles.yLks]: twoButtons,
                 },
-                styles[`item_${props.index + 1}`]
+                `item_${itemIndex + 1}`,
+                styles[`item_${itemIndex + 1}`]
             )}
             lang="en"
             data-aos="fade-up"
             data-aos-once="true"
-            style={props.well === '1' ? borderBackground : noBackground}
+            style={props.well == '1' ? borderBackground : noBackground}
         >
             <ConditionalWrapper
                 condition={wrapLink ? true : false}
@@ -173,7 +177,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                     <Link href={item.pagelink || item.weblink || item.pagelink2 || item.weblink2 || ''} passHref={item.weblink || item.weblink2 ? true : false}>
                         <a
                             className={cn(styles['item-wrap'], 'btn_link')}
-                            target={item.newwindow === 1 ? '_blank' : item.newwindow2 === 1 ? '_blank' : '_self'}
+                            target={item.newwindow == 1 ? '_blank' : item.newwindow2 == 1 ? '_blank' : '_self'}
                             style={item.isFeatured === 'active' && props.type === 'article' ? heroBackground : noBackground}
                         >
                             {children}
@@ -191,7 +195,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                     imageNoSizings={imageNoSizings}
                     textColorAccent={textColorAccent}
                     textColor={textColor}
-                    imgSize={props.imgSize}
+                    imgsize={props.imgsize}
                     well={props.well}
                     textColorHeading={props.textColorHeading}
                     icons={icons}
@@ -200,6 +204,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                     themeStyles={props.themeStyles}
                     isFeatured={item.isFeatured}
                     columns={props.columns}
+                    modId={modId}
                 />
             </ConditionalWrapper>
         </article>
@@ -207,7 +212,7 @@ const ModuleItem = (props: ModuleItemProps) => {
 }
 
 const ItemWrap = (props: ItemWrapProps) => {
-    const { item, imageNoSizings, textColorAccent, textColor, imgSize, well, icons, icon3, isFeatured, themeStyles, type } = props
+    const { item, imageNoSizings, textColorAccent, textColor, imgsize, well, icons, icon3, isFeatured, themeStyles, type, modId } = props
 
     //Check if item is on beacon theme and hero
     const beaconHero = type === 'article' && isFeatured === 'active'
@@ -229,7 +234,7 @@ const ItemWrap = (props: ItemWrapProps) => {
                             imageNoSizings={imageNoSizings}
                             textColorAccent={textColorAccent}
                             textColor={textColor}
-                            imgSize={imgSize}
+                            imgsize={imgsize}
                             well={well}
                             icons={icons}
                             icon3={icon3}
@@ -247,7 +252,7 @@ const ItemWrap = (props: ItemWrapProps) => {
                             imageNoSizings={imageNoSizings}
                             textColorAccent={textColorAccent}
                             textColor={textColor}
-                            imgSize={imgSize}
+                            imgsize={imgsize}
                             well={well}
                             icons={icons}
                             icon3={icon3}
@@ -292,6 +297,7 @@ const ItemWrap = (props: ItemWrapProps) => {
                     btnSize={item.btnSize}
                     btnSize2={item.btnSize2}
                     well={well}
+                    modId={modId}
                 />
             )}
         </>
@@ -299,8 +305,8 @@ const ItemWrap = (props: ItemWrapProps) => {
 }
 
 const Button = (props: TheListItemActionProps) => {
-    const btns = props.well
-        ? `.btn_1{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['mainColor']}} .btn_link:hover .btn_1{color: ${props.themeStyles['mainColor']}; background-color: ${props.themeStyles['textColorAccent']}} .btn_{color: ${props.themeStyles['altColor']}; border-color: ${props.themeStyles['altColor']}} .btn_link:hover .btn_2{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['altColor']}} .btn_2{color: ${props.themeStyles['altColor']}; border-color: ${props.themeStyles['altColor']}}`
+    const btnStyles = props.well
+        ? `.btn_1{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['mainColor']}} .id_${props.modId} .btn_link:hover .btn_1{color: ${props.themeStyles['mainColor']}; background-color: ${props.themeStyles['textColorAccent']}} .btn_{color: ${props.themeStyles['altColor']}; border-color: ${props.themeStyles['altColor']}} .id_${props.modId} .btn_link:hover .btn_2{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['altColor']}} .btn_2{color: ${props.themeStyles['altColor']}; border-color: ${props.themeStyles['altColor']}}`
         : `.btn_1{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['mainColor']}} .btn_1:hover{color: ${props.themeStyles['mainColor']}; background-color: ${props.themeStyles['textColorAccent']}} .btn_2{color: ${props.themeStyles['altColor']}; border-color: ${props.themeStyles['altColor']}} .btn_2:hover{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['altColor']}}`
 
     let buttons = [
@@ -330,7 +336,8 @@ const Button = (props: TheListItemActionProps) => {
 
     return (
         <>
-            <style>{btns}</style>
+            {/* <style>{props.well == 1 ? wellBtnStyles : btnStyles}</style> */}
+            <style>{btnStyles}</style>
             <ConditionalWrapper
                 condition={props.actionlbl2 && props.actionlbl ? true : false}
                 trueOutput={(children: ReactChild) => <div className={cn(styles['btn-wrap'], styles['txt-wrap'])}>{children}</div>}
@@ -347,7 +354,7 @@ const Button = (props: TheListItemActionProps) => {
                                             <a
                                                 target={bt.window === 1 ? '_blank' : '_self'}
                                                 className={cn('btn_link', {
-                                                    [styles.btn_block]: bt.btnSize.includes('btn_block'),
+                                                    [styles.btn_block]: bt.btnSize?.includes('btn_block'),
                                                 })}
                                             >
                                                 {children}
@@ -365,7 +372,7 @@ const Button = (props: TheListItemActionProps) => {
                                             [styles.btn_lg]: bt.btnSize === 'lg' || bt.btnSize === 'lg btn_block',
                                             [styles.btn_sm]: bt.btnSize === 'sm' || bt.btnSize === 'sm btn_block',
                                             [styles.btn_xs]: bt.btnSize === 'xs' || bt.btnSize === 'xs btn_block',
-                                            [styles.btn_block]: bt.btnSize.includes('btn_block'),
+                                            [styles.btn_block]: bt.btnSize?.includes('btn_block'),
                                             [styles.btn_w]: props.well === '1',
                                         })}
                                     >
@@ -446,7 +453,7 @@ const ImageBlock = (props: TheListItemImageProps) => {
     return (
         <figure className={cn(styles['image-block'], styles['theframe'], styles['imgtag'], styles['imgbase'], styles['img-loaded'])} data-alt="Headline">
             <div className={styles.image}>
-                {!imageNoSizings.includes(props.imgSize) ? (
+                {!imageNoSizings.includes(props.imgsize) ? (
                     <Image src={domainImage(item.image)} layout="fill" objectFit="cover" alt={item.img_alt_tag || ''} objectPosition="top" />
                 ) : (
                     //Setting width and height to image props if nosizing added

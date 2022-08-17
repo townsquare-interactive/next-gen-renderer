@@ -36,11 +36,12 @@ const Slug = (props: HomeProps) => {
 
     for (const [key, value] of Object.entries(page.modules[0])) {
         let modType
-        if (value.type === 'article_1' || value.type === 'article_2' || value.type === 'article_3') {
+        if (value.type === 'article_1' || value.type === 'article_2' || value.type === 'article_3' || value.type === 'article') {
             modType = 'MyArticle'
         }
+        let modData = { ...value, modId: key }
 
-        const arr = { attributes: value, componentType: modType }
+        const arr = { attributes: modData, componentType: modType }
         newArr.push(arr)
     }
 
