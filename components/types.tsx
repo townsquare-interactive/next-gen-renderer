@@ -537,7 +537,7 @@ export interface ModuleItemProps {
     modId: string
 }
 
-export interface ButtonProps {
+export interface BtnProps {
     pagelink?: string
     pagelink2?: string
     weblink?: string
