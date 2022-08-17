@@ -17,41 +17,35 @@ const MyArticle = (props: ArticleProps) => {
         color: props.themeStyles['headingColor'],
     }
 
-    console.log(props.modId)
-
     return (
         <div
-            className={cn(
-                styles['root'],
-                styles['tsflex'],
-                {
-                    [styles.a1]: props.type === 'article_1',
-                    [styles.a2]: props.type === 'article_2',
-                    [styles.a3]: props.type === 'article_3',
-                    [styles.beacon]: props.type === 'article',
-                    [styles.well]: props.well == '1',
-                    [styles.not_well]: !props.well,
-                    [styles.large]: props.columns == 1,
-                    [styles.medium]: props.columns == 2,
-                    [styles.small]: props.columns == 3 || props.columns == 4,
-                    [styles.col_1]: props.columns == 1,
-                    [styles.col_2]: props.columns == 2,
-                    [styles.col_3]: props.columns == 3,
-                    [styles.col_4]: props.columns == 4,
-                    [styles[`cst_${props.class}`]]: props.class,
-                    [styles.square_1_1]: props.imgsize === 'square_1_1',
-                    [styles.landscape_4_3]: props.imgsize === 'landscape_4_3',
-                    [styles.landscape_3_2]: props.imgsize === 'landscape_3_2',
-                    [styles.portrait_3_4]: props.imgsize === 'portrait_3_4',
-                    [styles.portrait_2_3]: props.imgsize === 'portrait_2_3',
-                    [styles.widescreen_16_9]: props.imgsize === 'widescreen_16_9',
-                    [styles.widescreen_3_1]: props.imgsize === 'widescreen_3_1',
-                    [styles.widescreen_2_4_1]: props.imgsize === 'widescreen_2_4_1',
-                    [styles.no_sizing]: props.imgsize === 'no_sizing',
-                    [styles.no_set_height]: props.imgsize === 'no_set_height',
-                },
-                `id_${props.modId}`
-            )}
+            className={cn(styles['root'], styles['tsflex'], {
+                [styles.a1]: props.type === 'article_1',
+                [styles.a2]: props.type === 'article_2',
+                [styles.a3]: props.type === 'article_3',
+                [styles.beacon]: props.type === 'article',
+                [styles.well]: props.well == '1',
+                [styles.not_well]: !props.well,
+                [styles.large]: props.columns == 1,
+                [styles.medium]: props.columns == 2,
+                [styles.small]: props.columns == 3 || props.columns == 4,
+                [styles.col_1]: props.columns == 1,
+                [styles.col_2]: props.columns == 2,
+                [styles.col_3]: props.columns == 3,
+                [styles.col_4]: props.columns == 4,
+                [styles[`cst_${props.class}`]]: props.class,
+                [styles.square_1_1]: props.imgsize === 'square_1_1',
+                [styles.landscape_4_3]: props.imgsize === 'landscape_4_3',
+                [styles.landscape_3_2]: props.imgsize === 'landscape_3_2',
+                [styles.portrait_3_4]: props.imgsize === 'portrait_3_4',
+                [styles.portrait_2_3]: props.imgsize === 'portrait_2_3',
+                [styles.widescreen_16_9]: props.imgsize === 'widescreen_16_9',
+                [styles.widescreen_3_1]: props.imgsize === 'widescreen_3_1',
+                [styles.widescreen_2_4_1]: props.imgsize === 'widescreen_2_4_1',
+                [styles.no_sizing]: props.imgsize === 'no_sizing',
+                [styles.no_set_height]: props.imgsize === 'no_set_height',
+            })}
+            id={`id_${props.modId}`}
         >
             <div className={styles.wrapper}>
                 {props.title && (
@@ -306,7 +300,7 @@ const ItemWrap = (props: ItemWrapProps) => {
 
 const Button = (props: TheListItemActionProps) => {
     const btnStyles = props.well
-        ? `.btn_1{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['mainColor']}} .id_${props.modId} .btn_link:hover .btn_1{color: ${props.themeStyles['mainColor']}; background-color: ${props.themeStyles['textColorAccent']}} .btn_{color: ${props.themeStyles['altColor']}; border-color: ${props.themeStyles['altColor']}} .id_${props.modId} .btn_link:hover .btn_2{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['altColor']}} .btn_2{color: ${props.themeStyles['altColor']}; border-color: ${props.themeStyles['altColor']}}`
+        ? `.btn_1{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['mainColor']}} #id_${props.modId} .btn_link:hover .btn_1{color: ${props.themeStyles['mainColor']}; background-color: ${props.themeStyles['textColorAccent']}} .btn_{color: ${props.themeStyles['altColor']}; border-color: ${props.themeStyles['altColor']}} #id_${props.modId} .btn_link:hover .btn_2{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['altColor']}} .btn_2{color: ${props.themeStyles['altColor']}; border-color: ${props.themeStyles['altColor']}}`
         : `.btn_1{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['mainColor']}} .btn_1:hover{color: ${props.themeStyles['mainColor']}; background-color: ${props.themeStyles['textColorAccent']}} .btn_2{color: ${props.themeStyles['altColor']}; border-color: ${props.themeStyles['altColor']}} .btn_2:hover{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['altColor']}}`
 
     let buttons = [

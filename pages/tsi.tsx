@@ -39,13 +39,14 @@ const Slug = (props: HomeProps) => {
         if (value.type === 'article_1' || value.type === 'article_2' || value.type === 'article_3' || value.type === 'article') {
             modType = 'MyArticle'
         }
+
         let modData = { ...value, modId: key }
 
         const arr = { attributes: modData, componentType: modType }
         newArr.push(arr)
     }
 
-    console.log(newArr)
+    //console.log(newArr)
 
     return (
         <div className={styles.root}>
