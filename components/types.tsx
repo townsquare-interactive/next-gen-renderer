@@ -369,12 +369,12 @@ export interface ModuleData {
 
 /*----------------------------Elements--------------------------------------*/
 
-/* export interface ButtonProps {
+export interface ButtonProps {
     linkUrl: string
     text: string
     themeStyles: ThemeStyles
     btnType?: 'normal' | 'accent' | 'alt' | 'alt2' | 'accent2'
-} */
+}
 
 /*-----------------------------TSI Modules ----------------------------------*/
 export interface ArticleItems {
