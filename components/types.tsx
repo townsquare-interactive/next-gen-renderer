@@ -369,12 +369,12 @@ export interface ModuleData {
 
 /*----------------------------Elements--------------------------------------*/
 
-export interface ButtonProps {
+/* export interface ButtonProps {
     linkUrl: string
     text: string
     themeStyles: ThemeStyles
     btnType?: 'normal' | 'accent' | 'alt' | 'alt2' | 'accent2'
-}
+} */
 
 /*-----------------------------TSI Modules ----------------------------------*/
 export interface ArticleItems {
@@ -413,6 +413,7 @@ export interface ArticleItems {
 }
 
 export interface ArticleProps {
+    uid: string
     modId: string
     /* type: string */
     type: string
@@ -464,7 +465,17 @@ export interface TheListItemActionProps {
     btnSize: string
     btnSize2: string
     well?: string | number
-    modId: string
+}
+
+export interface TheListItemProps {
+    item: ArticleItems
+    well: string | number
+    themeStyles: ThemeStyles
+    textColorHeading: any
+    imgsize: string
+    type: string
+    columns: number | string
+    index: number
 }
 
 export interface TheListItemImageProps {
@@ -523,6 +534,28 @@ export interface ModuleItemProps {
     imgsize: string
     type: string
     columns: number | string
+    modId: string
+}
+
+export interface ButtonProps {
+    pagelink?: string
+    pagelink2?: string
+    weblink?: string
+    weblink2?: string
+    actionlbl: string
+    actionlbl2?: string
+    newwindow: number | null | string
+    newwindow2?: number | null | string
+    btn2Styles?: btnColors
+    icon?: string
+    icon2?: string
+    icons: { [key: string]: any }
+    btnType?: string
+    btnType2?: string
+    themeStyles: ThemeStyles
+    btnSize: string
+    btnSize2: string
+    well?: string | number
     modId: string
 }
 

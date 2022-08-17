@@ -1,5 +1,5 @@
 import styles from './CharlotteArticle.module.scss'
-import { ArticleProps, Media, TheListItemImageProps, TheListItemActionProps, TsiWrp, ModuleItemProps } from './types'
+import { ArticleProps, Media, TheListItemImageProps, TheListItemActionProps, TsiWrp, TheListItemProps } from './types'
 import Image from 'next/image'
 import cn from 'classnames'
 import Parser from 'html-react-parser'
@@ -28,16 +28,16 @@ const CharlotteArticle = (props: ArticleProps) => {
                     [styles.a1]: props.type === 'article_1',
                     [styles.a2]: props.type === 'article_2',
                     [styles.a3]: props.type === 'article_3',
-                    [styles.square_1_1]: props.imgSize === 'square_1_1',
-                    [styles.landscape_4_3]: props.imgSize === 'landscape_4_3',
-                    [styles.landscape_3_2]: props.imgSize === 'landscape_3_2',
-                    [styles.portrait_3_4]: props.imgSize === 'portrait_3_4',
-                    [styles.portrait_2_3]: props.imgSize === 'portrait_2_3',
-                    [styles.widescreen_16_9]: props.imgSize === 'widescreen_16_9',
-                    [styles.widescreen_3_1]: props.imgSize === 'widescreen_3_1',
-                    [styles.widescreen_2_4_1]: props.imgSize === 'widescreen_2_4_1',
-                    [styles.no_sizing]: props.imgSize === 'no_sizing',
-                    [styles.no_set_height]: props.imgSize === 'no_set_height',
+                    [styles.square_1_1]: props.imgsize === 'square_1_1',
+                    [styles.landscape_4_3]: props.imgsize === 'landscape_4_3',
+                    [styles.landscape_3_2]: props.imgsize === 'landscape_3_2',
+                    [styles.portrait_3_4]: props.imgsize === 'portrait_3_4',
+                    [styles.portrait_2_3]: props.imgsize === 'portrait_2_3',
+                    [styles.widescreen_16_9]: props.imgsize === 'widescreen_16_9',
+                    [styles.widescreen_3_1]: props.imgsize === 'widescreen_3_1',
+                    [styles.widescreen_2_4_1]: props.imgsize === 'widescreen_2_4_1',
+                    [styles.no_sizing]: props.imgsize === 'no_sizing',
+                    [styles.no_set_height]: props.imgsize === 'no_set_height',
                     [styles.well]: props.well === '1',
                     [styles.not_well]: props.well === '',
                     [styles.large]: props.columns === 1,
@@ -67,7 +67,7 @@ const CharlotteArticle = (props: ArticleProps) => {
                             themeStyles={props.themeStyles}
                             textColorHeading={textColorHeading}
                             key={index}
-                            imgSize={props.imgSize}
+                            imgsize={props.imgsize}
                             type={props.type}
                             columns={props.columns}
                         />
@@ -80,7 +80,7 @@ const CharlotteArticle = (props: ArticleProps) => {
     )
 }
 
-const TheListItem = (props: ModuleItemProps) => {
+const TheListItem = (props: TheListItemProps) => {
     const { item } = props
     const [imageHeight, setHeight] = useState(100)
     const [imageWidth, setWidth] = useState(300)
@@ -183,7 +183,7 @@ const TheListItem = (props: ModuleItemProps) => {
                             imageHeight={imageHeight}
                             textColorAccent={textColorAccent}
                             textColor={textColor}
-                            imgSize={props.imgSize}
+                            imgsize={props.imgsize}
                             well={props.well}
                             textColorHeading={props.textColorHeading}
                             icons={icons}
@@ -199,7 +199,7 @@ const TheListItem = (props: ModuleItemProps) => {
                             imageHeight={imageHeight}
                             textColorAccent={textColorAccent}
                             textColor={textColor}
-                            imgSize={props.imgSize}
+                            imgsize={props.imgsize}
                             well={props.well}
                             textColorHeading={props.textColorHeading}
                             icons={icons}
@@ -215,7 +215,7 @@ const TheListItem = (props: ModuleItemProps) => {
                             imageHeight={imageHeight}
                             textColorAccent={textColorAccent}
                             textColor={textColor}
-                            imgSize={props.imgSize}
+                            imgsize={props.imgsize}
                             well={props.well}
                             textColorHeading={props.textColorHeading}
                             icons={icons}
@@ -238,7 +238,7 @@ const TheListItem = (props: ModuleItemProps) => {
                                 imageHeight={imageHeight}
                                 textColorAccent={textColorAccent}
                                 textColor={textColor}
-                                imgSize={props.imgSize}
+                                imgsize={props.imgsize}
                                 well={props.well}
                                 textColorHeading={props.textColorHeading}
                                 icons={icons}
@@ -254,7 +254,7 @@ const TheListItem = (props: ModuleItemProps) => {
                                 imageHeight={imageHeight}
                                 textColorAccent={textColorAccent}
                                 textColor={textColor}
-                                imgSize={props.imgSize}
+                                imgsize={props.imgsize}
                                 well={props.well}
                                 textColorHeading={props.textColorHeading}
                                 icons={icons}
@@ -270,7 +270,7 @@ const TheListItem = (props: ModuleItemProps) => {
                                 imageHeight={imageHeight}
                                 textColorAccent={textColorAccent}
                                 textColor={textColor}
-                                imgSize={props.imgSize}
+                                imgsize={props.imgsize}
                                 well={props.well}
                                 textColorHeading={props.textColorHeading}
                                 icons={icons}
@@ -288,7 +288,7 @@ const TheListItem = (props: ModuleItemProps) => {
 }
 
 const TheListWrapV1 = (props: TsiWrp) => {
-    const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgSize, well, textColorHeading, icons, icon3 } = props
+    const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgsize, well, textColorHeading, icons, icon3 } = props
 
     const linkAndBtn =
         (item.actionlbl && item.pagelink) || (item.actionlbl && item.weblink) || (item.actionlbl2 && item.pagelink2) || (item.actionlbl2 && item.weblink2)
@@ -310,7 +310,7 @@ const TheListWrapV1 = (props: TsiWrp) => {
                         imageHeight={imageHeight}
                         textColorAccent={textColorAccent}
                         textColor={textColor}
-                        imgSize={props.imgSize}
+                        imgsize={props.imgsize}
                         well={props.well}
                         icons={icons}
                         icon3={icon3}
@@ -385,7 +385,7 @@ const TheListWrapV1 = (props: TsiWrp) => {
 }
 
 const TheListWrapV2 = (props: TsiWrp) => {
-    const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgSize, well, textColorHeading, icons, icon3 } = props
+    const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgsize, well, textColorHeading, icons, icon3 } = props
 
     const linkAndBtn =
         (item.actionlbl && item.pagelink) || (item.actionlbl && item.weblink) || (item.actionlbl2 && item.pagelink2) || (item.actionlbl2 && item.weblink2)
@@ -429,7 +429,7 @@ const TheListWrapV2 = (props: TsiWrp) => {
                         imageHeight={imageHeight}
                         textColorAccent={textColorAccent}
                         textColor={textColor}
-                        imgSize={props.imgSize}
+                        imgsize={props.imgsize}
                         well={props.well}
                         icons={icons}
                         icon3={icon3}
@@ -482,7 +482,7 @@ const TheListWrapV2 = (props: TsiWrp) => {
 }
 
 const TheListWrapV3 = (props: TsiWrp) => {
-    const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgSize, well, textColorHeading, icons, icon3 } = props
+    const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgsize, well, textColorHeading, icons, icon3 } = props
 
     const linkAndBtn =
         (item.actionlbl && item.pagelink) || (item.actionlbl && item.weblink) || (item.actionlbl2 && item.pagelink2) || (item.actionlbl2 && item.weblink2)
@@ -505,7 +505,7 @@ const TheListWrapV3 = (props: TsiWrp) => {
                             imageHeight={imageHeight}
                             textColorAccent={textColorAccent}
                             textColor={textColor}
-                            imgSize={props.imgSize}
+                            imgsize={props.imgsize}
                             well={props.well}
                             icons={icons}
                             icon3={icon3}
@@ -685,7 +685,7 @@ const TheListItemImage = (props: TheListItemImageProps) => {
     return (
         <>
             <div className={styles.image}>
-                {!imageNoSizings.includes(props.imgSize) ? (
+                {!imageNoSizings.includes(props.imgsize) ? (
                     <Image src={domainImage(item.image)} layout="fill" objectFit="cover" alt={item.img_alt_tag || ''} objectPosition="top" />
                 ) : (
                     //Setting width and height to image props if nosizing added

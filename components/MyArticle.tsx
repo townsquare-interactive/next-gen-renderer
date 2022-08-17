@@ -1,5 +1,5 @@
 import styles from './myArticle.module.scss'
-import { ArticleProps, Media, TheListItemImageProps, TheListItemActionProps, ItemWrapProps, ModuleItemProps } from './types'
+import { ArticleProps, Media, TheListItemImageProps, ButtonProps, ItemWrapProps, ModuleItemProps } from './types'
 import Image from 'next/image'
 import cn from 'classnames'
 import Parser from 'html-react-parser'
@@ -298,7 +298,7 @@ const ItemWrap = (props: ItemWrapProps) => {
     )
 }
 
-const Button = (props: TheListItemActionProps) => {
+const Button = (props: ButtonProps) => {
     const btnStyles = props.well
         ? `.btn_1{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['mainColor']}} #id_${props.modId} .btn_link:hover .btn_1{color: ${props.themeStyles['mainColor']}; background-color: ${props.themeStyles['textColorAccent']}} .btn_{color: ${props.themeStyles['altColor']}; border-color: ${props.themeStyles['altColor']}} #id_${props.modId} .btn_link:hover .btn_2{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['altColor']}} .btn_2{color: ${props.themeStyles['altColor']}; border-color: ${props.themeStyles['altColor']}}`
         : `.btn_1{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['mainColor']}} .btn_1:hover{color: ${props.themeStyles['mainColor']}; background-color: ${props.themeStyles['textColorAccent']}} .btn_2{color: ${props.themeStyles['altColor']}; border-color: ${props.themeStyles['altColor']}} .btn_2:hover{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['altColor']}}`

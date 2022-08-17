@@ -61,16 +61,16 @@ const Article = (props: ArticleProps) => {
                 styles['a1'],
 
                 {
-                    [styles.square_1_1]: props.imgSize === 'square_1_1',
-                    [styles.landscape_4_3]: props.imgSize === 'landscape_4_3',
-                    [styles.landscape_3_2]: props.imgSize === 'landscape_3_2',
-                    [styles.portrait_3_4]: props.imgSize === 'portrait_3_4',
-                    [styles.portrait_2_3]: props.imgSize === 'portrait_2_3',
-                    [styles.widescreen_16_9]: props.imgSize === 'widescreen_16_9',
-                    [styles.widescreen_3_1]: props.imgSize === 'widescreen_3_1',
-                    [styles.widescreen_2_4_1]: props.imgSize === 'widescreen_2_4_1',
-                    [styles.no_sizing]: props.imgSize === 'no_sizing',
-                    [styles.no_set_height]: props.imgSize === 'no_set_height',
+                    [styles.square_1_1]: props.imgsize === 'square_1_1',
+                    [styles.landscape_4_3]: props.imgsize === 'landscape_4_3',
+                    [styles.landscape_3_2]: props.imgsize === 'landscape_3_2',
+                    [styles.portrait_3_4]: props.imgsize === 'portrait_3_4',
+                    [styles.portrait_2_3]: props.imgsize === 'portrait_2_3',
+                    [styles.widescreen_16_9]: props.imgsize === 'widescreen_16_9',
+                    [styles.widescreen_3_1]: props.imgsize === 'widescreen_3_1',
+                    [styles.widescreen_2_4_1]: props.imgsize === 'widescreen_2_4_1',
+                    [styles.no_sizing]: props.imgsize === 'no_sizing',
+                    [styles.no_set_height]: props.imgsize === 'no_set_height',
                     [styles.well]: props.well === '1',
                     [styles.not_well]: !props.well,
                     [styles.large]: props.columns === 1,
@@ -123,7 +123,7 @@ const Article = (props: ArticleProps) => {
                                     imageHeight={imageHeight}
                                     textColorAccent={textColorAccent}
                                     textColor={textColor}
-                                    imgSize={props.imgSize}
+                                    imgsize={props.imgsize}
                                     well={props.well}
                                     icons={icons}
                                 />
@@ -209,7 +209,7 @@ const TheListItemAction = (props: TheListItemActionProps) => {
     )
 }
 const TheListItemImage = (props: TheListItemImageProps) => {
-    const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgSize, well } = props
+    const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgsize, well } = props
 
     return (
         <div
@@ -222,7 +222,7 @@ const TheListItemImage = (props: TheListItemImageProps) => {
                 {item.pagelink ? (
                     <Link href={item.pagelink}>
                         <a target={item.newwindow === 1 ? '_blank' : '_self'} className="accent_color_bg accent_txt_color">
-                            {!imageNoSizings.includes(imgSize) ? (
+                            {!imageNoSizings.includes(imgsize) ? (
                                 <Image
                                     className={cn(styles['item_image'], 'item_image', 'beacon-lazy-load')}
                                     src={domainImage(item.image)}
@@ -248,7 +248,7 @@ const TheListItemImage = (props: TheListItemImageProps) => {
                 ) : (
                     //had to add an extra div here
                     <>
-                        {!imageNoSizings.includes(props.imgSize) ? (
+                        {!imageNoSizings.includes(props.imgsize) ? (
                             <Image
                                 className={cn(styles['item_image'], 'item_image', 'beacon-lazy-load')}
                                 src={domainImage(item.image)}
