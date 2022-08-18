@@ -126,14 +126,9 @@ const ModuleItem = (props: ModuleItemProps) => {
 
     const oneButton =
         (item.actionlbl && !item.actionlbl2 && (item.pagelink || item.weblink)) || (!item.actionlbl && item.actionlbl2 && (item.pagelink2 || item.weblink2))
-
     const twoButtons = item.actionlbl && item.actionlbl2 && (item.pagelink || item.weblink) && (item.pagelink2 || item.weblink2)
-
     const linkNoBtn = isButton() === false && isLink() === true
-
     const wrapLink = (oneButton || linkNoBtn) && props.type != 'article'
-
-    /* const pageLink = item.pagelink || item.pagelink2 ? true : false */
 
     return (
         <article
@@ -219,7 +214,6 @@ const ItemWrap = (props: ItemWrapProps) => {
 
     return (
         <>
-            <style>{textColors}</style>
             {props.type != 'article_2' ? (
                 <>
                     {item.image && (
@@ -234,11 +228,11 @@ const ItemWrap = (props: ItemWrapProps) => {
                             icon3={icon3}
                         />
                     )}
-                    <HeaderBlock item={props.item} well={props.well} columns={props.columns} beaconHero={beaconHero} />
+                    {(item.headline || item.subheader) && <HeaderBlock item={props.item} well={props.well} columns={props.columns} beaconHero={beaconHero} />}
                 </>
             ) : (
                 <>
-                    <HeaderBlock item={props.item} well={props.well} columns={props.columns} beaconHero={beaconHero} />
+                    {(item.headline || item.subheader) && <HeaderBlock item={props.item} well={props.well} columns={props.columns} beaconHero={beaconHero} />}
 
                     {item.image && (
                         <ImageBlock
@@ -299,9 +293,11 @@ const ItemWrap = (props: ItemWrapProps) => {
 }
 
 const Button = (props: BtnProps) => {
-    const btnStyles = props.well
+    /*     const btnStyles = props.well
         ? `.btn_1{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['mainColor']}} #id_${props.modId} .btn_link:hover .btn_1{color: ${props.themeStyles['mainColor']}; background-color: ${props.themeStyles['textColorAccent']}} .btn_{color: ${props.themeStyles['altColor']}; border-color: ${props.themeStyles['altColor']}} #id_${props.modId} .btn_link:hover .btn_2{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['altColor']}} .btn_2{color: ${props.themeStyles['altColor']}; border-color: ${props.themeStyles['altColor']}}`
-        : `.btn_1{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['mainColor']}} .btn_1:hover{color: ${props.themeStyles['mainColor']}; background-color: ${props.themeStyles['textColorAccent']}} .btn_2{color: ${props.themeStyles['altColor']}; border-color: ${props.themeStyles['altColor']}} .btn_2:hover{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['altColor']}}`
+        : `.btn_1{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['mainColor']}} .btn_1:hover{color: ${props.themeStyles['mainColor']}; background-color: ${props.themeStyles['textColorAccent']}} .btn_2{color: ${props.themeStyles['altColor']}; border-color: ${props.themeStyles['altColor']}} .btn_2:hover{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['altColor']}}` */
+
+    const btnStyles = `#id_${props.modId} .btn_link:hover .btn_1{color: ${props.themeStyles['mainColor']}; background-color: ${props.themeStyles['textColorAccent']}} #id_${props.modId} .btn_link:hover .btn_2{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['altColor']}}`
 
     let buttons = [
         {
@@ -330,8 +326,7 @@ const Button = (props: BtnProps) => {
 
     return (
         <>
-            {/* <style>{props.well == 1 ? wellBtnStyles : btnStyles}</style> */}
-            <style>{btnStyles}</style>
+            {props.well && <style>{btnStyles}</style>}
             <ConditionalWrapper
                 condition={props.actionlbl2 && props.actionlbl ? true : false}
                 trueOutput={(children: ReactChild) => <div className={cn(styles['btn-wrap'], styles['txt-wrap'])}>{children}</div>}
@@ -359,9 +354,10 @@ const Button = (props: BtnProps) => {
                                 >
                                     <div
                                         className={cn(styles['btn'], styles['transition'], `${bt.btnType}`, {
-                                            ['btn_1']: !bt.btnType,
-                                            [styles.btn_1]: bt.btnType === 'btn_1' || !props.btnType,
-                                            [styles.btn_2]: bt.btnType === 'btn_2',
+                                            ['btn_1']: bt.btnType === 'btn_1' || (!bt.btnType && index === 0),
+                                            ['btn_2']: bt.btnType === 'btn_2' || (!bt.btnType && index === 1),
+                                            [styles.btn_1]: bt.btnType === 'btn_1' || (!bt.btnType && index === 0),
+                                            [styles.btn_2]: bt.btnType === 'btn_2' || (!bt.btnType && index === 1),
                                             [styles.btn_md]: bt.btnSize === 'md' || bt.btnSize === 'md btn_block' || !bt.btnSize,
                                             [styles.btn_lg]: bt.btnSize === 'lg' || bt.btnSize === 'lg btn_block',
                                             [styles.btn_sm]: bt.btnSize === 'sm' || bt.btnSize === 'sm btn_block',
@@ -412,22 +408,27 @@ const HeaderBlock = (props: any) => {
                 [styles.font_xl]: item.headSize === 'font_xl',
             })}
         >
-            <HeadTag
-                className={cn(styles['hd'], {
-                    ['accent-txt']: well || beaconHero,
-                    ['txt-color-heading']: !well && !beaconHero,
-                })}
-            >
-                {Parser(item.headline)}
-            </HeadTag>
-            <SubTag
-                className={cn(styles['sh'], {
-                    ['accent-txt']: well || beaconHero,
-                    ['txt-color-heading']: !well && !beaconHero,
-                })}
-            >
-                {Parser(item.subheader)}
-            </SubTag>
+            {item.headline && (
+                <HeadTag
+                    className={cn(styles['hd'], {
+                        ['accent-txt']: well || beaconHero,
+                        ['txt-color-heading']: !well && !beaconHero,
+                    })}
+                >
+                    {Parser(item.headline)}
+                </HeadTag>
+            )}
+
+            {item.subheader && (
+                <SubTag
+                    className={cn(styles['sh'], {
+                        ['accent-txt']: well || beaconHero,
+                        ['txt-color-heading']: !well && !beaconHero,
+                    })}
+                >
+                    {Parser(item.subheader)}
+                </SubTag>
+            )}
         </header>
     )
 }

@@ -31,7 +31,12 @@ export default {
     },
 } as ComponentMeta<typeof MyArticle>
 
-const Template: ComponentStory<typeof MyArticle> = (args) => <MyArticle {...args} />
+const Template: ComponentStory<typeof MyArticle> = (args) => (
+    <>
+        {colorStyles && <style>{colorStyles}</style>}
+        <MyArticle {...args} />
+    </>
+)
 
 const Default = Template.bind({})
 const item1: ArticleItems = {
@@ -92,6 +97,15 @@ Default.args = {
         footerBackground: 'linear-gradient(rgb(54,80,112, 0.6) 0%, rgb(54,80,112) 23%)',
         navBackground: 'rgb(64,64,64,.9)',
     },
+}
+
+let colorStyles: string
+if (Default.args.themeStyles) {
+    const textColors = `.accent-txt{color:${Default.args.themeStyles['textColorAccent']}} .txt-color{color:${Default.args.themeStyles['textColor']}} .txt-color-heading{color:${Default.args.themeStyles['headingColor']}}`
+
+    const btnStyles = `.btn_1{color: ${Default.args.themeStyles['textColorAccent']}; background-color: ${Default.args.themeStyles['mainColor']}} .btn_1:hover{color: ${Default.args.themeStyles['mainColor']}; background-color: ${Default.args.themeStyles['textColorAccent']}} .btn_2{color: ${Default.args.themeStyles['altColor']}; border-color: ${Default.args.themeStyles['altColor']}} .btn_2:hover{color: ${Default.args.themeStyles['textColorAccent']}; background-color: ${Default.args.themeStyles['altColor']}}`
+
+    colorStyles = textColors + btnStyles
 }
 
 export const Plain = Template.bind({})

@@ -1,18 +1,18 @@
 import { HomeProps, PageListProps, Context } from '../components/types'
 import TsiLayout from '../components/TsiLayout'
+import Layout from '../components/Layout'
 import { Renderer } from '../components/Renderer'
-import oldPage from '../cms.json'
-import page from '../cmspage.json'
-import { getDomain } from '../functions'
+import pageData from '../cmspage.json'
+import { getDomain, cmsPageDataMod } from '../functions'
 import styles from './tsi.module.scss'
 
 export const getStaticProps = async (context: Context) => {
     const resGlobal = await fetch(getDomain() + '/global.json')
-
     const globalData = await resGlobal.json()
+    const page = pageData
 
     return {
-        props: { globalData },
+        props: { globalData, page },
         // Next.js will attempt to re-generate the page:
         // - When a request comes in
         // - At most once every 10 seconds
@@ -21,60 +21,28 @@ export const getStaticProps = async (context: Context) => {
 }
 
 const Slug = (props: HomeProps) => {
-    //const { page, globalData } = props
-    const { globalData } = props
+    const { globalData, page } = props
 
-    /*  const column1Mods = Object.keys(page.modules[0])
+    const secOnePageData = page.modules[0]
+    const newSecOneData = cmsPageDataMod(secOnePageData)
 
-    var size = column1Mods.length
+    const textColors = `.accent-txt{color:${globalData.themeStyles['textColorAccent']}} .txt-color{color:${globalData.themeStyles['textColor']}} .txt-color-heading{color:${globalData.themeStyles['headingColor']}}`
 
-    console.log(size)
+    const btnStyles = `.btn_1{color: ${props.globalData.themeStyles['textColorAccent']}; background-color: ${props.globalData.themeStyles['mainColor']}} .btn_1:hover{color: ${props.globalData.themeStyles['mainColor']}; background-color: ${props.globalData.themeStyles['textColorAccent']}} .btn_2{color: ${props.globalData.themeStyles['altColor']}; border-color: ${props.globalData.themeStyles['altColor']}} .btn_2:hover{color: ${props.globalData.themeStyles['textColorAccent']}; background-color: ${props.globalData.themeStyles['altColor']}}`
 
-    console.log(column1Mods) */
-
-    let newArr: any[] = []
-
-    for (const [key, value] of Object.entries(page.modules[0])) {
-        let modType
-        if (value.type === 'article_1' || value.type === 'article_2' || value.type === 'article_3' || value.type === 'article') {
-            modType = 'MyArticle'
-        }
-
-        let modData = { ...value, modId: key }
-
-        const arr = { attributes: modData, componentType: modType }
-        newArr.push(arr)
-    }
-
-    //console.log(newArr)
+    let colorStyles = textColors + btnStyles
 
     return (
         <div className={styles.root}>
+            <style>{colorStyles}</style>
             <div className={styles.featured}>
-                <TsiLayout>
-                    <Renderer config={newArr} themeStyles={globalData.themeStyles} />
-                </TsiLayout>
-                {/*   <TsiLayout>
-                    <Renderer config={page.modules} themeStyles={globalData.themeStyles} />
-                </TsiLayout> */}
+                <Layout moduleData={globalData}>
+                    <Renderer config={newSecOneData} themeStyles={globalData.themeStyles} />
+                </Layout>
             </div>
 
-            {/*             {page.modules.map((mod, index) => (
-                
-                <TsiLayout key={index}>
-                    <Renderer config={mod.modules} themeStyles={globalData.themeStyles} />
-                </TsiLayout>
-            ))} */}
-            <div className={styles.column1}>
-                {/*                 <TsiLayout>
-                    <Renderer config={newArr} themeStyles={globalData.themeStyles} />
-                </TsiLayout> */}
-            </div>
-            <div className={styles.column2}>
-                {/*                 <TsiLayout>
-                    <Renderer config={page.modules} themeStyles={globalData.themeStyles} />
-                </TsiLayout> */}
-            </div>
+            <div className={styles.column1}></div>
+            <div className={styles.column2}></div>
             <div className={styles.column3}></div>
             <div className={styles.column4}></div>
         </div>

@@ -221,7 +221,7 @@ export interface VideoProps {
 export interface HomeProps {
     moduleData: ModuleData
     globalData: ModuleData
-    page: ModuleData
+    page: PageProps
 }
 
 export interface LayoutProps {
@@ -351,10 +351,34 @@ export interface ThemeStyles {
     navBackground: string
 }
 
+export interface Module {
+    [key: string]: ModuleData
+}
+
+export interface CMSModuleKey {
+    0: Module
+}
+
 export interface ModuleData {
     logoUrl?: string
     /* modules?: ImagesProps | ListProps | HeaderProps | LabelProps | TextData | CarouselProps | FooterProps | NavProps | VideoProps | GridProps*/
-    modules?: any
+    modules: CMSModuleKey
+    name?: string
+    seo?: SeoData
+    themeStyles: ThemeStyles
+    type?: string
+    layout?: number
+    columns?: number | string
+    JS?: string | null
+    head_script: string | null
+    hideTitle: number
+    sections: any[]
+}
+
+export interface PageProps {
+    logoUrl?: string
+    /* modules?: ImagesProps | ListProps | HeaderProps | LabelProps | TextData | CarouselProps | FooterProps | NavProps | VideoProps | GridProps*/
+    modules: CMSModuleKey
     name?: string
     seo?: SeoData
     themeStyles?: ThemeStyles

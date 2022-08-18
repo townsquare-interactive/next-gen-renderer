@@ -1,4 +1,4 @@
-import { ConditionalWrapperProps } from 'components/types'
+import { ConditionalWrapperProps, Module } from 'components/types'
 
 const bucketUrl = 'https://townsquareinteractive.s3.amazonaws.com'
 const localUrl = 'elitesports.com/preview'
@@ -38,6 +38,25 @@ export function capitalize(str: string) {
     }
 
     return str[0].toUpperCase() + str.slice(1)
+}
+
+//modifies cms page data
+export function cmsPageDataMod(page: Module) {
+    let newData = []
+
+    for (const [key, value] of Object.entries(page)) {
+        let modType
+
+        if (value.type === 'article_1' || value.type === 'article_2' || value.type === 'article_3' || value.type === 'article') {
+            modType = 'MyArticle'
+        }
+
+        const modData = { ...value, modId: key }
+
+        const arr = { attributes: modData, componentType: modType }
+        newData.push(arr)
+    }
+    return newData
 }
 
 //Used to have conditional tag wraps around code without repeating inside code
