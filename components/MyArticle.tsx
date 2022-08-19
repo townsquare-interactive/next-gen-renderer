@@ -17,6 +17,8 @@ const MyArticle = (props: ArticleProps) => {
         color: props.themeStyles['headingColor'],
     }
 
+    const imgSizes = ['landscape_4_3', 'square_1_1', 'portrait_3_4', 'portrait_2_3', 'widescreen_16_9', 'widescreen_3_1']
+
     return (
         <div
             className={cn(styles['root'], styles['tsflex'], {
@@ -35,13 +37,13 @@ const MyArticle = (props: ArticleProps) => {
                 [styles.col_4]: props.columns == 4,
                 [styles[`cst_${props.class}`]]: props.class,
                 [styles.square_1_1]: props.imgsize === 'square_1_1',
-                [styles.landscape_4_3]: props.imgsize === 'landscape_4_3',
+                [styles.landscape_4_3]: props.imgsize === 'landscape_4_3' || !imgSizes.includes(props.imgsize) || !props.imgsize,
                 [styles.landscape_3_2]: props.imgsize === 'landscape_3_2',
                 [styles.portrait_3_4]: props.imgsize === 'portrait_3_4',
                 [styles.portrait_2_3]: props.imgsize === 'portrait_2_3',
                 [styles.widescreen_16_9]: props.imgsize === 'widescreen_16_9',
                 [styles.widescreen_3_1]: props.imgsize === 'widescreen_3_1',
-                [styles.widescreen_2_4_1]: props.imgsize === 'widescreen_2_4_1',
+                [styles.widescreen_2_4_1]: props.imgsize === 'widescreen_2_4_1' || props.imgsize === 'widescreen_2-4_1',
                 [styles.no_sizing]: props.imgsize === 'no_sizing',
                 [styles.no_set_height]: props.imgsize === 'no_set_height',
             })}
@@ -337,7 +339,7 @@ const Button = (props: BtnProps) => {
                                     trueOutput={(children: ReactChild) => (
                                         <Link href={bt.link || ''} key={index} passHref={bt.linkType === 'ext' ? true : false}>
                                             <a
-                                                target={bt.window === 1 ? '_blank' : '_self'}
+                                                target={bt.window == 1 ? '_blank' : '_self'}
                                                 className={cn('btn_link', {
                                                     [styles.btn_block]: bt.btnSize?.includes('btn_block'),
                                                 })}

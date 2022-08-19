@@ -261,6 +261,9 @@ $lg-screen: 1025px;
                 // margin: 0 -0.25rem;
 
                 a {
+                    margin-left: 0.25rem;
+                    margin-right: 0.25rem;
+
                     &.btn_block {
                         display: block;
                         width: 100%;
@@ -271,8 +274,7 @@ $lg-screen: 1025px;
                     flex: 0 1 auto;
                     align-self: stretch;
                     justify-content: center;
-                    margin-left: 0.25rem;
-                    margin-right: 0.25rem;
+
                     min-width: 6.875rem;
                 }
             }
