@@ -1,5 +1,6 @@
 /* Components */
 
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { ReactChild, ReactElement, ReactNode } from 'react'
 
 export interface HeaderProps {
@@ -482,7 +483,7 @@ export interface TheListItemActionProps {
     btn2Styles?: btnColors
     icon?: string
     icon2?: string
-    icons: { [key: string]: any }
+    icons: { [key: string]: IconProp }
     btnType?: string
     btnType2?: string
     themeStyles: ThemeStyles
@@ -512,7 +513,7 @@ export interface TheListItemImageProps {
     textColor: Colors
     imgsize: string
     well: string | number
-    icons: { [key: string]: any }
+    icons: { [key: string]: IconProp }
     icon3?: string
 }
 
@@ -525,7 +526,7 @@ export interface TsiWrp {
     textColor: Colors
     imgsize: string
     well: string | number
-    icons: { [key: string]: any }
+    icons: { [key: string]: IconProp }
     icon3?: string
     item: ArticleItems
     textColorHeading: { color: string }
@@ -538,7 +539,7 @@ export interface ItemWrapProps {
     textColor: Colors
     imgsize: string
     well: string | number
-    icons: { [key: string]: any }
+    icons: { [key: string]: IconProp }
     icon3?: string
     item: ArticleItems
     textColorHeading: { color: string }
@@ -573,7 +574,7 @@ export interface BtnProps {
     btn2Styles?: btnColors
     icon?: string
     icon2?: string
-    icons: { [key: string]: any }
+    icons: { [key: string]: IconProp }
     btnType?: string
     btnType2?: string
     themeStyles: ThemeStyles
@@ -582,14 +583,6 @@ export interface BtnProps {
     well?: string | number
     modId: string
 }
-
-/* export interface ConditionalWrapperProps {
-    condition: boolean
-    children: ReactChild
-    wrapperDiv: (children: ReactChild) => ReactElement
-    wrapperPageLink: (children: ReactChild) => ReactElement
-    wrapperWebLink?: (children: ReactChild) => ReactElement
-} */
 
 export interface ConditionalWrapperProps {
     condition: boolean

@@ -10,6 +10,7 @@ import Link from 'next/link'
 // importing fontAwesome icons
 import { faRocket, faAnchor, faArchway } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
 
 const MyArticle = (props: ArticleProps) => {
     //Defining style objects
@@ -17,6 +18,7 @@ const MyArticle = (props: ArticleProps) => {
         color: props.themeStyles['headingColor'],
     }
 
+    console.log(faRocket)
     const imgSizes = ['landscape_4_3', 'square_1_1', 'portrait_3_4', 'portrait_2_3', 'widescreen_16_9', 'widescreen_3_1']
 
     return (
@@ -101,7 +103,7 @@ const ModuleItem = (props: ModuleItemProps) => {
     }
 
     //Key to determine which imported logo to use
-    const icons: { [key: string]: any } = {
+    const icons: { [key: string]: IconProp } = {
         faRocket,
         faAnchor,
         faArchway,
