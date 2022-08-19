@@ -226,7 +226,7 @@ export interface HomeProps {
 
 export interface LayoutProps {
     children: ReactNode
-    moduleData: any
+    moduleData: ModuleData
 }
 export interface tsiLayoutProps {
     children: ReactNode
@@ -372,7 +372,7 @@ export interface ModuleData {
     JS?: string | null
     head_script: string | null
     hideTitle: number
-    sections: any[]
+    sections: [{ wide: string }]
 }
 
 export interface PageProps {
@@ -388,7 +388,7 @@ export interface PageProps {
     JS?: string | null
     head_script: string | null
     hideTitle: number
-    sections: any[]
+    sections: [{ wide: string }]
 }
 
 /*----------------------------Elements--------------------------------------*/
@@ -505,7 +505,7 @@ export interface TheListItemProps {
 export interface TheListItemImageProps {
     item: ArticleItems
     imageNoSizings: string[]
-    calcImageSize?: (loadedMedia: any) => void
+    calcImageSize?: (loadedMedia: { naturalWidth: string; naturalHeight: string }) => void
     imageWidth?: number
     imageHeight?: number
     textColorAccent: Colors
@@ -518,7 +518,7 @@ export interface TheListItemImageProps {
 
 export interface TsiWrp {
     imageNoSizings: string[]
-    calcImageSize: (loadedMedia: any) => void
+    calcImageSize: (loadedMedia: { naturalWidth: string; naturalHeight: string }) => void
     imageWidth: number
     imageHeight: number
     textColorAccent: Colors
