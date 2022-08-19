@@ -495,7 +495,7 @@ export interface TheListItemProps {
     item: ArticleItems
     well: string | number
     themeStyles: ThemeStyles
-    textColorHeading: any
+    textColorHeading: { color: string }
     imgsize: string
     type: string
     columns: number | string
@@ -504,7 +504,7 @@ export interface TheListItemProps {
 
 export interface TheListItemImageProps {
     item: ArticleItems
-    imageNoSizings: any
+    imageNoSizings: string[]
     calcImageSize?: (loadedMedia: any) => void
     imageWidth?: number
     imageHeight?: number
@@ -517,7 +517,7 @@ export interface TheListItemImageProps {
 }
 
 export interface TsiWrp {
-    imageNoSizings: any
+    imageNoSizings: string[]
     calcImageSize: (loadedMedia: any) => void
     imageWidth: number
     imageHeight: number
@@ -528,12 +528,12 @@ export interface TsiWrp {
     icons: { [key: string]: any }
     icon3?: string
     item: ArticleItems
-    textColorHeading: any
+    textColorHeading: { color: string }
     themeStyles: ThemeStyles
 }
 
 export interface ItemWrapProps {
-    imageNoSizings: any
+    imageNoSizings: string[]
     textColorAccent: Colors
     textColor: Colors
     imgsize: string
@@ -541,7 +541,7 @@ export interface ItemWrapProps {
     icons: { [key: string]: any }
     icon3?: string
     item: ArticleItems
-    textColorHeading: any
+    textColorHeading: { color: string }
     themeStyles: ThemeStyles
     isFeatured?: string
     type: string
@@ -554,7 +554,7 @@ export interface ModuleItemProps {
     well: string | number
     itemIndex: number
     themeStyles: ThemeStyles
-    textColorHeading: any
+    textColorHeading: { color: string }
     imgsize: string
     type: string
     columns: number | string
