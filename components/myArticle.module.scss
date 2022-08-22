@@ -652,17 +652,12 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
             width: $full-item-width;
         }
 
-        &.med-width,
-        &.full-width {
-            &.col_3 .item {
-                width: $half-item-width;
-            }
+        &.col_3 .item {
+            width: $half-item-width;
         }
 
-        &.full-width {
-            &.col_4 .item {
-                width: $half-item-width;
-            }
+        &.col_4 .item {
+            width: $half-item-width;
         }
     }
 

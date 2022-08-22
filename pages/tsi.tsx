@@ -105,7 +105,7 @@ const Slug = (props: HomeProps) => {
                             [styles.oneFourthColumn]: page.sections[2].wide == '232',
                         })}
                     >
-                        <Renderer config={secThreeData} themeStyles={globalData.themeStyles} width={page.sections[1].wide} />
+                        <Renderer config={secThreeData} themeStyles={globalData.themeStyles} width={page.sections[2].wide} />
                     </div>
                     <div
                         className={cn(styles.column3, {
@@ -116,7 +116,7 @@ const Slug = (props: HomeProps) => {
                             [styles.oneFourthColumn]: page.sections[3].wide == '232',
                         })}
                     >
-                        <Renderer config={secFourData} themeStyles={globalData.themeStyles} width={page.sections[1].wide} />
+                        <Renderer config={secFourData} themeStyles={globalData.themeStyles} width={page.sections[3].wide} />
                     </div>
                     <div
                         className={cn(styles.column4, {
@@ -127,7 +127,7 @@ const Slug = (props: HomeProps) => {
                             [styles.oneFourthColumn]: page.sections[4].wide == '232',
                         })}
                     >
-                        <Renderer config={secFiveData} themeStyles={globalData.themeStyles} width={page.sections[1].wide} />
+                        <Renderer config={secFiveData} themeStyles={globalData.themeStyles} width={page.sections[4].wide} />
                     </div>
                 </div>
             </div>
