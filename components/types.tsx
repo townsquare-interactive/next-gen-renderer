@@ -23,16 +23,41 @@ export interface Module {
 
 export interface CMSModuleKey {
     0: Module
-    1: Module
-    2: Module
-    3: Module
-    4: Module
+    1?: Module
+    2?: Module
+    3?: Module
+    4?: Module
+}
+
+export interface HomeProps {
+    moduleData: ModuleData
+    globalData: GlobalData
+    page: PageProps
+}
+
+export interface LayoutProps {
+    children: ReactNode
+    moduleData: GlobalData
+}
+
+export interface GlobalData {
+    logoUrl?: string
+    navStyle?: 'layout1' | 'layout2'
+    themeStyles: ThemeStyles
+    layout?: number
+    modules: GlobalModule[]
+}
+
+export interface GlobalModule {
+    componentType: string
+    attributes: NavigationProps | FooterProps
 }
 
 export interface ModuleData {
     logoUrl?: string
     /* modules?: ImagesProps | ListProps | HeaderProps | LabelProps | TextData | CarouselProps | FooterProps | NavProps | VideoProps | GridProps*/
     modules: CMSModuleKey
+    navStyle?: 'layout1' | 'layout2'
     name?: string
     seo?: SeoData
     themeStyles: ThemeStyles
@@ -47,7 +72,6 @@ export interface ModuleData {
 
 export interface PageProps {
     logoUrl?: string
-    /* modules?: ImagesProps | ListProps | HeaderProps | LabelProps | TextData | CarouselProps | FooterProps | NavProps | VideoProps | GridProps*/
     modules: CMSModuleKey
     name?: string
     seo?: SeoData
@@ -263,17 +287,6 @@ export interface ConditionalWrapperProps {
 
 /*------------------------------Non CMS types-------------------------*/
 
-export interface HomeProps {
-    moduleData: ModuleData
-    globalData: ModuleData
-    page: PageProps
-}
-
-export interface LayoutProps {
-    children: ReactNode
-    moduleData: ModuleData
-}
-
 export interface HeaderProps {
     /**Headline content to appear */
     headline?: string
@@ -481,6 +494,7 @@ export interface FooterProps {
     borderNum?: number
     /**Global site styles*/
     themeStyles: ThemeStyles
+    navStyle?: string
 }
 
 export interface VideoProps {
@@ -561,16 +575,6 @@ export interface NavigationProps {
     altText?: string
     /**Image url for logo*/
     logoUrl?: string
-    /**Global site styles*/
-    themeStyles: ThemeStyles
-}
-export interface NavModule {
-    componentType: string
-    attributes: NavigationProps
-}
-export interface FooterModule {
-    componentType: string
-    attributes: FooterProps
 }
 
 export interface NavBarProps {

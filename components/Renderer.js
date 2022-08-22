@@ -47,7 +47,7 @@ const mapPropsToConfig = (config) => {
     return configWithProps
 }
 
-export const Renderer = ({ config, themeStyles, width }) => {
+export const Renderer = ({ config, themeStyles, width = '' }) => {
     if (!config) {
         throw new Error('You are calling Renderer with no config.')
     }

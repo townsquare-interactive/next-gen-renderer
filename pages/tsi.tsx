@@ -25,10 +25,10 @@ const Slug = (props: HomeProps) => {
 
     /* const secOnePageData = page.modules[0] */
     const secOneData = cmsPageDataMod(page.modules[0])
-    const secTwoData = cmsPageDataMod(page.modules[1])
-    const secThreeData = cmsPageDataMod(page.modules[2])
-    const secFourData = cmsPageDataMod(page.modules[3])
-    const secFiveData = cmsPageDataMod(page.modules[4])
+    const secTwoData = page.modules[1] ? cmsPageDataMod(page.modules[1]) : ''
+    const secThreeData = page.modules[2] ? cmsPageDataMod(page.modules[2]) : ''
+    const secFourData = page.modules[3] ? cmsPageDataMod(page.modules[3]) : ''
+    const secFiveData = page.modules[4] ? cmsPageDataMod(page.modules[4]) : ''
 
     const textColors = `.accent-txt{color:${globalData.themeStyles['textColorAccent']}} .txt-color{color:${globalData.themeStyles['textColor']}} .txt-color-heading{color:${globalData.themeStyles['headingColor']}}`
 
@@ -60,8 +60,6 @@ const Slug = (props: HomeProps) => {
     } else if (page.sections[1].wide == '232' && page.sections[2].wide == '484' && page.sections[3].wide == '232') {
         columnStyles = 'one-fourth_half_one-fourth'
     }
-
-    console.log(page.sections[2].wide)
 
     return (
         <Layout moduleData={globalData}>
