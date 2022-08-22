@@ -18,7 +18,6 @@ const MyArticle = (props: ArticleProps) => {
         color: props.themeStyles['headingColor'],
     }
 
-    console.log(faRocket)
     const imgSizes = ['landscape_4_3', 'square_1_1', 'portrait_3_4', 'portrait_2_3', 'widescreen_16_9', 'widescreen_3_1']
 
     return (
@@ -48,6 +47,8 @@ const MyArticle = (props: ArticleProps) => {
                 [styles.widescreen_2_4_1]: props.imgsize === 'widescreen_2_4_1' || props.imgsize === 'widescreen_2-4_1',
                 [styles.no_sizing]: props.imgsize === 'no_sizing',
                 [styles.no_set_height]: props.imgsize === 'no_set_height',
+                [styles['full-width']]: props.width === '938' || props.width === '1060',
+                [styles['med-width']]: props.width === '736' || props.width === '652',
             })}
             id={`id_${props.modId}`}
         >

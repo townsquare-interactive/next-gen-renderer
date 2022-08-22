@@ -3,6 +3,277 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { ReactChild, ReactElement, ReactNode } from 'react'
 
+export interface ThemeStyles {
+    mainColor: string
+    textColor: string
+    headingColor: string
+    textColorAccent: string
+    linkColor: string
+    accentBackgroundColor: string
+    accentColor2: string
+    altColor: string
+    headerBackground: string
+    footerBackground: string
+    navBackground: string
+}
+
+export interface Module {
+    [key: string]: ModuleData
+}
+
+export interface CMSModuleKey {
+    0: Module
+    1: Module
+    2: Module
+    3: Module
+    4: Module
+}
+
+export interface ModuleData {
+    logoUrl?: string
+    /* modules?: ImagesProps | ListProps | HeaderProps | LabelProps | TextData | CarouselProps | FooterProps | NavProps | VideoProps | GridProps*/
+    modules: CMSModuleKey
+    name?: string
+    seo?: SeoData
+    themeStyles: ThemeStyles
+    type?: string
+    layout?: number
+    columns?: number | string
+    JS?: string | null
+    head_script: string | null
+    hideTitle: number
+    sections: [{ wide: string }, { wide: string }, { wide: string }, { wide: string }, { wide: string }]
+}
+
+export interface PageProps {
+    logoUrl?: string
+    /* modules?: ImagesProps | ListProps | HeaderProps | LabelProps | TextData | CarouselProps | FooterProps | NavProps | VideoProps | GridProps*/
+    modules: CMSModuleKey
+    name?: string
+    seo?: SeoData
+    themeStyles?: ThemeStyles
+    type?: string
+    layout?: number
+    columns?: number | string
+    JS?: string | null
+    head_script: string | null
+    hideTitle: number
+    sections: [{ wide: string }, { wide: string }, { wide: string }, { wide: string }, { wide: string }]
+}
+
+/*----------------------------Elements--------------------------------------*/
+
+export interface ButtonProps {
+    linkUrl: string
+    text: string
+    themeStyles: ThemeStyles
+    btnType?: 'normal' | 'accent' | 'alt' | 'alt2' | 'accent2'
+}
+
+/*-----------------------------TSI Modules ----------------------------------*/
+export interface ArticleItems {
+    id: string
+    headline: string
+    subheader: string
+    image: string
+    captionOn?: 0 | 1
+    icon: string
+    icon2: string
+    icon3: string
+    bkgrd_color: string
+    btnType: string
+    btnType2: string
+    btnSize: string
+    btnSize2: string
+    desc: string
+    pagelink: string
+    weblink: string
+    actionlbl: string
+    newwindow: number | null | string
+    pagelink2: string
+    weblink2: string
+    actionlbl2: string
+    newwindow2: number | null | string
+    align: string
+    isFeatured: string
+    isPlugin: string
+    headerTag: string
+    plugin: string
+    disabled: string
+    img_alt_tag?: string
+    caption_tag?: string
+    headSize?: string
+    descSize?: string
+}
+
+export interface ArticleProps {
+    uid: string
+    modId: string
+    /* type: string */
+    type: string
+    /**Border background on items*/
+    well: string | number
+    align?: string
+    items: ArticleItems[]
+    imgsize: string
+    /**Custom class addition*/
+    class: string
+    /**Title text to go above module*/
+    title: string
+    hideTitle?: number
+    export: number
+    columns: number | string
+    lightbox: string
+    blockSwitch1: number
+    scale_to_fit: string
+    /**Global styles for site*/
+    themeStyles: ThemeStyles
+    /**Check to see if element is hidden */
+    width?: string
+}
+
+export interface Colors {
+    color?: string
+    backgroundColor?: string
+}
+export interface btnColors {
+    color?: string
+    borderColor?: string
+}
+
+export interface TheListItemActionProps {
+    pagelink?: string
+    pagelink2?: string
+    weblink?: string
+    weblink2?: string
+    actionlbl: string
+    actionlbl2?: string
+    newwindow: number | null | string
+    newwindow2?: number | null | string
+    btn2Styles?: btnColors
+    icon?: string
+    icon2?: string
+    icons: { [key: string]: IconProp }
+    btnType?: string
+    btnType2?: string
+    themeStyles: ThemeStyles
+    btnSize: string
+    btnSize2: string
+    well?: string | number
+}
+
+export interface TheListItemProps {
+    item: ArticleItems
+    well: string | number
+    themeStyles: ThemeStyles
+    textColorHeading: { color: string }
+    imgsize: string
+    type: string
+    columns: number | string
+    index: number
+}
+
+export interface TheListItemImageProps {
+    item: ArticleItems
+    imageNoSizings: string[]
+    calcImageSize?: (loadedMedia: { naturalWidth: string; naturalHeight: string }) => void
+    imageWidth?: number
+    imageHeight?: number
+    textColorAccent: Colors
+    textColor: Colors
+    imgsize: string
+    well: string | number
+    icons: { [key: string]: IconProp }
+    icon3?: string
+}
+
+export interface TsiWrp {
+    imageNoSizings: string[]
+    calcImageSize: (loadedMedia: { naturalWidth: string; naturalHeight: string }) => void
+    imageWidth: number
+    imageHeight: number
+    textColorAccent: Colors
+    textColor: Colors
+    imgsize: string
+    well: string | number
+    icons: { [key: string]: IconProp }
+    icon3?: string
+    item: ArticleItems
+    textColorHeading: { color: string }
+    themeStyles: ThemeStyles
+}
+
+export interface ItemWrapProps {
+    imageNoSizings: string[]
+    textColorAccent: Colors
+    textColor: Colors
+    imgsize: string
+    well: string | number
+    icons: { [key: string]: IconProp }
+    icon3?: string
+    item: ArticleItems
+    textColorHeading: { color: string }
+    themeStyles: ThemeStyles
+    isFeatured?: string
+    type: string
+    columns: number | string
+    modId: string
+}
+
+export interface ModuleItemProps {
+    item: ArticleItems
+    well: string | number
+    itemIndex: number
+    themeStyles: ThemeStyles
+    textColorHeading: { color: string }
+    imgsize: string
+    type: string
+    columns: number | string
+    modId: string
+}
+
+export interface BtnProps {
+    pagelink?: string
+    pagelink2?: string
+    weblink?: string
+    weblink2?: string
+    actionlbl: string
+    actionlbl2?: string
+    newwindow: number | null | string
+    newwindow2?: number | null | string
+    btn2Styles?: btnColors
+    icon?: string
+    icon2?: string
+    icons: { [key: string]: IconProp }
+    btnType?: string
+    btnType2?: string
+    themeStyles: ThemeStyles
+    btnSize: string
+    btnSize2: string
+    well?: string | number
+    modId: string
+}
+
+export interface ConditionalWrapperProps {
+    condition: boolean
+    children: ReactChild
+    falseOutput: (children: ReactChild) => ReactElement
+    trueOutput: (children: ReactChild) => ReactElement
+}
+
+/*------------------------------Non CMS types-------------------------*/
+
+export interface HomeProps {
+    moduleData: ModuleData
+    globalData: ModuleData
+    page: PageProps
+}
+
+export interface LayoutProps {
+    children: ReactNode
+    moduleData: ModuleData
+}
+
 export interface HeaderProps {
     /**Headline content to appear */
     headline?: string
@@ -219,16 +490,6 @@ export interface VideoProps {
     modLayout: 'ext' | 'local'
 }
 
-export interface HomeProps {
-    moduleData: ModuleData
-    globalData: ModuleData
-    page: PageProps
-}
-
-export interface LayoutProps {
-    children: ReactNode
-    moduleData: ModuleData
-}
 export interface tsiLayoutProps {
     children: ReactNode
 }
@@ -336,257 +597,4 @@ export interface SeoData {
     description: string
     favicon: string
     ogImage: string
-}
-
-export interface ThemeStyles {
-    mainColor: string
-    textColor: string
-    headingColor: string
-    textColorAccent: string
-    linkColor: string
-    accentBackgroundColor: string
-    accentColor2: string
-    altColor: string
-    headerBackground: string
-    footerBackground: string
-    navBackground: string
-}
-
-export interface Module {
-    [key: string]: ModuleData
-}
-
-export interface CMSModuleKey {
-    0: Module
-}
-
-export interface ModuleData {
-    logoUrl?: string
-    /* modules?: ImagesProps | ListProps | HeaderProps | LabelProps | TextData | CarouselProps | FooterProps | NavProps | VideoProps | GridProps*/
-    modules: CMSModuleKey
-    name?: string
-    seo?: SeoData
-    themeStyles: ThemeStyles
-    type?: string
-    layout?: number
-    columns?: number | string
-    JS?: string | null
-    head_script: string | null
-    hideTitle: number
-    sections: [{ wide: string }]
-}
-
-export interface PageProps {
-    logoUrl?: string
-    /* modules?: ImagesProps | ListProps | HeaderProps | LabelProps | TextData | CarouselProps | FooterProps | NavProps | VideoProps | GridProps*/
-    modules: CMSModuleKey
-    name?: string
-    seo?: SeoData
-    themeStyles?: ThemeStyles
-    type?: string
-    layout?: number
-    columns?: number | string
-    JS?: string | null
-    head_script: string | null
-    hideTitle: number
-    sections: [{ wide: string }]
-}
-
-/*----------------------------Elements--------------------------------------*/
-
-export interface ButtonProps {
-    linkUrl: string
-    text: string
-    themeStyles: ThemeStyles
-    btnType?: 'normal' | 'accent' | 'alt' | 'alt2' | 'accent2'
-}
-
-/*-----------------------------TSI Modules ----------------------------------*/
-export interface ArticleItems {
-    id: string
-    headline: string
-    subheader: string
-    image: string
-    captionOn?: 0 | 1
-    icon: string
-    icon2: string
-    icon3: string
-    bkgrd_color: string
-    btnType: string
-    btnType2: string
-    btnSize: string
-    btnSize2: string
-    desc: string
-    pagelink: string
-    weblink: string
-    actionlbl: string
-    newwindow: number | null | string
-    pagelink2: string
-    weblink2: string
-    actionlbl2: string
-    newwindow2: number | null | string
-    align: string
-    isFeatured: string
-    isPlugin: string
-    headerTag: string
-    plugin: string
-    disabled: string
-    img_alt_tag?: string
-    caption_tag?: string
-    headSize?: string
-    descSize?: string
-}
-
-export interface ArticleProps {
-    uid: string
-    modId: string
-    /* type: string */
-    type: string
-    /**Border background on items*/
-    well: string | number
-    align?: string
-    items: ArticleItems[]
-    imgsize: string
-    /**Custom class addition*/
-    class: string
-    /**Title text to go above module*/
-    title: string
-    hideTitle?: number
-    export: number
-    columns: number | string
-    lightbox: string
-    blockSwitch1: number
-    scale_to_fit: string
-    /**Global styles for site*/
-    themeStyles: ThemeStyles
-    /**Check to see if element is hidden */
-}
-
-export interface Colors {
-    color?: string
-    backgroundColor?: string
-}
-export interface btnColors {
-    color?: string
-    borderColor?: string
-}
-
-export interface TheListItemActionProps {
-    pagelink?: string
-    pagelink2?: string
-    weblink?: string
-    weblink2?: string
-    actionlbl: string
-    actionlbl2?: string
-    newwindow: number | null | string
-    newwindow2?: number | null | string
-    btn2Styles?: btnColors
-    icon?: string
-    icon2?: string
-    icons: { [key: string]: IconProp }
-    btnType?: string
-    btnType2?: string
-    themeStyles: ThemeStyles
-    btnSize: string
-    btnSize2: string
-    well?: string | number
-}
-
-export interface TheListItemProps {
-    item: ArticleItems
-    well: string | number
-    themeStyles: ThemeStyles
-    textColorHeading: { color: string }
-    imgsize: string
-    type: string
-    columns: number | string
-    index: number
-}
-
-export interface TheListItemImageProps {
-    item: ArticleItems
-    imageNoSizings: string[]
-    calcImageSize?: (loadedMedia: { naturalWidth: string; naturalHeight: string }) => void
-    imageWidth?: number
-    imageHeight?: number
-    textColorAccent: Colors
-    textColor: Colors
-    imgsize: string
-    well: string | number
-    icons: { [key: string]: IconProp }
-    icon3?: string
-}
-
-export interface TsiWrp {
-    imageNoSizings: string[]
-    calcImageSize: (loadedMedia: { naturalWidth: string; naturalHeight: string }) => void
-    imageWidth: number
-    imageHeight: number
-    textColorAccent: Colors
-    textColor: Colors
-    imgsize: string
-    well: string | number
-    icons: { [key: string]: IconProp }
-    icon3?: string
-    item: ArticleItems
-    textColorHeading: { color: string }
-    themeStyles: ThemeStyles
-}
-
-export interface ItemWrapProps {
-    imageNoSizings: string[]
-    textColorAccent: Colors
-    textColor: Colors
-    imgsize: string
-    well: string | number
-    icons: { [key: string]: IconProp }
-    icon3?: string
-    item: ArticleItems
-    textColorHeading: { color: string }
-    themeStyles: ThemeStyles
-    isFeatured?: string
-    type: string
-    columns: number | string
-    modId: string
-}
-
-export interface ModuleItemProps {
-    item: ArticleItems
-    well: string | number
-    itemIndex: number
-    themeStyles: ThemeStyles
-    textColorHeading: { color: string }
-    imgsize: string
-    type: string
-    columns: number | string
-    modId: string
-}
-
-export interface BtnProps {
-    pagelink?: string
-    pagelink2?: string
-    weblink?: string
-    weblink2?: string
-    actionlbl: string
-    actionlbl2?: string
-    newwindow: number | null | string
-    newwindow2?: number | null | string
-    btn2Styles?: btnColors
-    icon?: string
-    icon2?: string
-    icons: { [key: string]: IconProp }
-    btnType?: string
-    btnType2?: string
-    themeStyles: ThemeStyles
-    btnSize: string
-    btnSize2: string
-    well?: string | number
-    modId: string
-}
-
-export interface ConditionalWrapperProps {
-    condition: boolean
-    children: ReactChild
-    falseOutput: (children: ReactChild) => ReactElement | ReactElement
-    trueOutput: (children: ReactChild) => ReactElement
 }

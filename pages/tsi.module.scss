@@ -1,14 +1,63 @@
+@use './styles/breakpoints.scss';
+
 .root {
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
 
     .featured {
         width: 100%;
         margin: 0 auto;
     }
 
-    .column1,
-    .column2 {
-        width: 50%;
+    .columns {
+        @include breakpoints.md-min {
+            display: grid;
+
+            &.wide-column {
+                grid-template-columns: 1fr;
+            }
+
+            &.half-columns {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @include breakpoints.lg-min {
+            &.third-columns {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+
+            &.fourth-columns {
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+            }
+
+            &.two-third_one-third {
+                grid-template-columns: 2fr 1fr;
+            }
+
+            &.one-third_two-third {
+                grid-template-columns: 1fr 2fr;
+            }
+
+            &.one-fourth_three-fourth {
+                grid-template-columns: 1fr 3fr;
+            }
+
+            &.three-fourth_one-fourth {
+                grid-template-columns: 3fr 1fr;
+            }
+
+            &.half_one-fourth_one-fourth {
+                grid-template-columns: 2fr 1fr 1fr;
+            }
+
+            &.one-fourth_one-fourth_half {
+                grid-template-columns: 1fr 1fr 2fr;
+            }
+
+            &.one-fourth_half_one-fourth {
+                grid-template-columns: 1fr 2fr 1fr;
+            }
+        }
     }
 }

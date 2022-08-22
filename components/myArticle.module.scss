@@ -1,4 +1,5 @@
 @use 'sass:math';
+@use './styles/breakpoints.scss';
 
 $full-width: 100%;
 $half-width: 50%;
@@ -13,29 +14,6 @@ $quarteritem-width: $quarter-width - ($item-margins * 2);
 //grid system
 $col3-hero: (math.div(8, 12) * 100%) - ($item-margins * 2);
 $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
-
-//breakpoints
-$sm-screen: 481px;
-$md-screen: 851px;
-$lg-screen: 1025px;
-
-@mixin sm-min {
-    @media print, screen and (min-width: $sm-screen) {
-        @content;
-    }
-}
-
-@mixin md-min {
-    @media print, screen and (min-width: $md-screen) {
-        @content;
-    }
-}
-
-@mixin lg-min {
-    @media print, screen and (min-width: $lg-screen) {
-        @content;
-    }
-}
 
 @mixin tsFlex {
     display: -moz-flex;
@@ -128,7 +106,7 @@ $lg-screen: 1025px;
                             color: #fff;
                             font-size: 4rem;
 
-                            @mixin sm-min {
+                            @include breakpoints.sm-min {
                                 font-size: 6rem;
                             }
                         }
@@ -203,7 +181,7 @@ $lg-screen: 1025px;
                     line-height: 1.4285714286em;
                 }
 
-                @include md-min {
+                @include breakpoints.md-min {
                     &.btn_lg {
                         padding: 0.825em 2.25em;
                     }
@@ -420,42 +398,41 @@ $lg-screen: 1025px;
 
     &.a3,
     &.beacon {
-        //Floating image to side of content
-        &.medium {
-            @include sm-min {
-                .mod_left .image-block,
-                .mod_right .image-block {
-                    width: $third-width;
-                    display: block;
-                }
-                .mod_left .image-block {
-                    float: left;
-                    margin-right: 1rem;
-                }
-                .mod_right .image-block {
-                    float: right;
-                    margin-left: 1rem;
+        //Floating image to side of content, only when columns are not in play
+        &.full-width {
+            &.medium {
+                @include breakpoints.sm-min {
+                    .mod_left .image-block,
+                    .mod_right .image-block {
+                        width: $third-width;
+                        display: block;
+                    }
+                    .mod_left .image-block {
+                        float: left;
+                        margin-right: 1rem;
+                    }
+                    .mod_right .image-block {
+                        float: right;
+                        margin-left: 1rem;
+                    }
                 }
             }
-        }
 
-        &.large {
-            @include sm-min {
-                .mod_left .image-block,
-                .mod_right .image-block {
-                    //width: $third-width;
-                    //width: 50%;
-                    /* width: 41.6666666667%; */
-                    width: math.div(5, 12) * 100%;
-                    display: block;
-                }
-                .mod_left .image-block {
-                    float: left;
-                    margin-right: 2rem;
-                }
-                .mod_right .image-block {
-                    float: right;
-                    margin-left: 2rem;
+            &.large {
+                @include breakpoints.sm-min {
+                    .mod_left .image-block,
+                    .mod_right .image-block {
+                        width: math.div(5, 12) * 100%;
+                        display: block;
+                    }
+                    .mod_left .image-block {
+                        float: left;
+                        margin-right: 2rem;
+                    }
+                    .mod_right .image-block {
+                        float: right;
+                        margin-left: 2rem;
+                    }
                 }
             }
         }
@@ -488,7 +465,7 @@ $lg-screen: 1025px;
     }
 
     &.medium {
-        @include sm-min {
+        @include breakpoints.sm-min {
             .sh {
                 font-size: 1.0625em;
                 margin-top: 0.7058823529em;
@@ -514,7 +491,7 @@ $lg-screen: 1025px;
     }
 
     &.large {
-        @include sm-min {
+        @include breakpoints.sm-min {
             .hd {
                 font-size: 1.5em;
                 margin-top: 0.6666666667em;
@@ -543,7 +520,7 @@ $lg-screen: 1025px;
                 }
             }
         }
-        @include lg-min {
+        @include breakpoints.lg-min {
             .hd {
                 font-size: 2.25em;
                 margin-top: 0.6666666667em;
@@ -600,7 +577,7 @@ $lg-screen: 1025px;
             }
 
             &.large .dsc-block {
-                @include lg-min {
+                @include breakpoints.lg-min {
                     padding-bottom: 3rem;
                 }
             }
@@ -642,7 +619,7 @@ $lg-screen: 1025px;
                 .item-wrap {
                     padding: 2rem;
 
-                    @include lg-min {
+                    @include breakpoints.lg-min {
                         padding: 4rem 1.5rem;
                     }
                 }
@@ -660,7 +637,7 @@ $lg-screen: 1025px;
     }
 
     /*---------------------------------------- Column item sizes ------------------------------------------------*/
-    @include sm-min {
+    @include breakpoints.sm-min {
         &.col_2,
         &.col_3,
         &.col_4 {
@@ -675,13 +652,21 @@ $lg-screen: 1025px;
             width: $full-item-width;
         }
 
-        &.col_3 .item,
-        &.col_4 .item {
-            width: $half-item-width;
+        &.med-width,
+        &.full-width {
+            &.col_3 .item {
+                width: $half-item-width;
+            }
+        }
+
+        &.full-width {
+            &.col_4 .item {
+                width: $half-item-width;
+            }
         }
     }
 
-    @include md-min {
+    @include breakpoints.md-min {
         &.col_1 .item {
             width: $full-item-width;
         }
@@ -697,9 +682,8 @@ $lg-screen: 1025px;
         &.col_4 .item {
             width: $half-item-width;
         }
-    }
 
-    @include md-min {
+        //need to check heros with columns still
         &.a1,
         &.a2,
         &.a3 {
@@ -717,14 +701,28 @@ $lg-screen: 1025px;
         }
     }
 
-    @include lg-min {
-        &.col_4 .item {
-            width: $quarteritem-width;
+    @include breakpoints.lg-min {
+        //if its is col3, screen size is large, but column size is smaller
+        &.col_3 .item {
+            width: $half-item-width;
+        }
+
+        &.med-width,
+        &.full-width {
+            &.col_3 .item {
+                width: $third-item-width;
+            }
+        }
+
+        &.full-width {
+            &.col_4 .item {
+                width: $quarteritem-width;
+            }
         }
     }
 
     &.large {
-        @include sm-min {
+        @include breakpoints.sm-min {
             &.a1,
             &.a2,
             &.a3 {

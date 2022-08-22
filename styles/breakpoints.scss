@@ -1,3 +1,27 @@
+/* CMS BREAKPOINTS */
+//breakpoints
+$sm-screen: 481px;
+$md-screen: 851px;
+$lg-screen: 1025px;
+
+@mixin sm-min {
+    @media print, screen and (min-width: $sm-screen) {
+        @content;
+    }
+}
+
+@mixin md-min {
+    @media print, screen and (min-width: $md-screen) {
+        @content;
+    }
+}
+
+@mixin lg-min {
+    @media print, screen and (min-width: $lg-screen) {
+        @content;
+    }
+}
+
 // Extra small screens
 $screen-xs-min: 360px;
 
