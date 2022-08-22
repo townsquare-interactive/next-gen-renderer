@@ -9,8 +9,6 @@ export default function Layout(props: LayoutProps) {
     const navigationModule = moduleData.modules.filter((module: GlobalModule) => module.componentType === 'navigation')
     const footerModule = moduleData.modules.filter((module: GlobalModule) => module.componentType === 'footer')
 
-    console.log('navmod', navigationModule)
-
     return (
         <div
             className={cn(styles.root, {

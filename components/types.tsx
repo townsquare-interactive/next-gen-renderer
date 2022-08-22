@@ -575,6 +575,7 @@ export interface NavigationProps {
     altText?: string
     /**Image url for logo*/
     logoUrl?: string
+    themeStyles: ThemeStyles
 }
 
 export interface NavBarProps {
