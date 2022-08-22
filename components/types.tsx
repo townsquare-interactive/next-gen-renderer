@@ -176,7 +176,7 @@ export interface TheListItemProps {
 export interface TheListItemImageProps {
     item: ArticleItems
     imageNoSizings: string[]
-    calcImageSize?: (loadedMedia: { naturalWidth: string; naturalHeight: string }) => void
+    calcImageSize?: (loadedMedia: Media) => void
     imageWidth?: number
     imageHeight?: number
     textColorAccent: Colors
@@ -189,7 +189,7 @@ export interface TheListItemImageProps {
 
 export interface TsiWrp {
     imageNoSizings: string[]
-    calcImageSize: (loadedMedia: { naturalWidth: string; naturalHeight: string }) => void
+    calcImageSize: (loadedMedia: Media) => void
     imageWidth: number
     imageHeight: number
     textColorAccent: Colors
