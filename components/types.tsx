@@ -46,6 +46,7 @@ export interface GlobalData {
     themeStyles: ThemeStyles
     layout?: number
     modules: GlobalModule[]
+    seo?: SeoData
 }
 
 export interface GlobalModule {
