@@ -155,6 +155,7 @@ export interface ArticleProps {
     themeStyles: ThemeStyles
     /**Check to see if element is hidden */
     width?: string
+    disabled?: string
 }
 
 export interface Colors {

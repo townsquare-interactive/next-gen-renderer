@@ -58,11 +58,7 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
         }
 
         .item {
-            //originally under tsflex
             margin-bottom: 2rem;
-            /*             margin-left: $item-margins;
-            margin-right: $item-margins; */
-
             width: $full-width;
             margin-left: 0;
             margin-right: 0;
@@ -362,39 +358,27 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
         }
     }
 
-    //used order to move desc under image
-    /* &.a2 {
-        .hd-block {
-            order: 1;
-        }
+    &.beacon {
+        &.full-width {
+            @include breakpoints.sm-min {
+                .mod_left .image-block,
+                .mod_right .image-block {
+                    width: math.div(5, 12) * 100%;
+                    display: block;
+                }
 
-        .image-block {
-            order: 2;
-        }
+                .mod_left .image-block {
+                    float: left;
+                    margin-right: 1rem;
+                }
 
-        .txt-block {
-            order: 3;
+                .mod_right .image-block {
+                    float: right;
+                    margin-left: 1rem;
+                }
+            }
         }
-
-        .btn {
-            order: 4;
-        }
-    } */
-
-    /* &.a3 {
-        .txt-wrap {
-             box-align: baseline;
-            -moz-align-items: baseline;
-            -ms-align-items: baseline;
-            -o-align-items: baseline;
-            align-items: baseline;
-            -ms-flex-align: baseline;
-            align-self: stretch;
-            -ms-flex-item-align: stretch; 
-
-            // width: 100%;
-        }
-    }*/
+    }
 
     &.a3,
     &.beacon {
@@ -697,20 +681,17 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
     }
 
     @include breakpoints.lg-min {
-        //if its is col3, screen size is large, but column size is smaller
-        &.col_3 .item {
-            width: $half-item-width;
-        }
-
         &.med-width,
         &.full-width {
-            &.col_3 .item {
+            &.col_3 .nHero,
+            &.beacon.col_3 .item {
                 width: $third-item-width;
             }
         }
 
         &.full-width {
-            &.col_4 .item {
+            &.col_4 .nHero,
+            &.beacon.col_4 .item {
                 width: $quarteritem-width;
             }
         }
@@ -724,7 +705,6 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
                 .nHero {
                     width: $ten-12;
                     margin: 0 auto;
-                    margin-bottom: 4rem;
                 }
             }
 

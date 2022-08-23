@@ -19,66 +19,67 @@ const MyArticle = (props: ArticleProps) => {
     }
 
     const imgSizes = ['landscape_4_3', 'square_1_1', 'portrait_3_4', 'portrait_2_3', 'widescreen_16_9', 'widescreen_3_1']
-
-    return (
-        <div
-            className={cn(styles['root'], styles['tsflex'], {
-                [styles.a1]: props.type === 'article_1',
-                [styles.a2]: props.type === 'article_2',
-                [styles.a3]: props.type === 'article_3',
-                [styles.beacon]: props.type === 'article',
-                [styles.well]: props.well == '1',
-                [styles.not_well]: !props.well,
-                [styles.large]: props.columns == 1,
-                [styles.medium]: props.columns == 2,
-                [styles.small]: props.columns == 3 || props.columns == 4,
-                [styles.col_1]: props.columns == 1,
-                [styles.col_2]: props.columns == 2,
-                [styles.col_3]: props.columns == 3,
-                [styles.col_4]: props.columns == 4,
-                [styles[`cst_${props.class}`]]: props.class,
-                [styles.square_1_1]: props.imgsize === 'square_1_1',
-                [styles.landscape_4_3]: props.imgsize === 'landscape_4_3' || !imgSizes.includes(props.imgsize) || !props.imgsize,
-                [styles.landscape_3_2]: props.imgsize === 'landscape_3_2',
-                [styles.portrait_3_4]: props.imgsize === 'portrait_3_4',
-                [styles.portrait_2_3]: props.imgsize === 'portrait_2_3',
-                [styles.widescreen_16_9]: props.imgsize === 'widescreen_16_9',
-                [styles.widescreen_3_1]: props.imgsize === 'widescreen_3_1',
-                [styles.widescreen_2_4_1]: props.imgsize === 'widescreen_2_4_1' || props.imgsize === 'widescreen_2-4_1',
-                [styles.no_sizing]: props.imgsize === 'no_sizing',
-                [styles.no_set_height]: props.imgsize === 'no_set_height',
-                [styles['full-width']]: props.width === '938' || props.width === '1060',
-                [styles['med-width']]: props.width === '736' || props.width === '652',
-            })}
-            id={`id_${props.modId}`}
-        >
-            <div className={styles.wrapper}>
-                {props.title && (
-                    <h2 className={cn(styles['mod-title'], styles['section_title'])} data-title="module headline" style={textColorHeading}>
-                        <span>{props.title}</span>
-                    </h2>
-                )}
-                {props.items.map((item, index) =>
-                    item.disabled != 'disabled' ? (
-                        <ModuleItem
-                            item={item}
-                            well={props.well}
-                            modId={props.modId}
-                            themeStyles={props.themeStyles}
-                            textColorHeading={textColorHeading}
-                            key={index}
-                            imgsize={props.imgsize}
-                            type={props.type}
-                            columns={props.columns}
-                            itemIndex={index}
-                        />
-                    ) : (
-                        <></>
-                    )
-                )}
+    if (props.disabled != 'disabled') {
+        return (
+            <div
+                className={cn(styles['root'], styles['tsflex'], {
+                    [styles.a1]: props.type === 'article_1',
+                    [styles.a2]: props.type === 'article_2',
+                    [styles.a3]: props.type === 'article_3',
+                    [styles.beacon]: props.type === 'article',
+                    [styles.well]: props.well == '1',
+                    [styles.not_well]: !props.well,
+                    [styles.large]: props.columns == 1,
+                    [styles.medium]: props.columns == 2,
+                    [styles.small]: props.columns == 3 || props.columns == 4,
+                    [styles.col_1]: props.columns == 1,
+                    [styles.col_2]: props.columns == 2,
+                    [styles.col_3]: props.columns == 3,
+                    [styles.col_4]: props.columns == 4,
+                    [styles[`cst_${props.class}`]]: props.class,
+                    [styles.square_1_1]: props.imgsize === 'square_1_1',
+                    [styles.landscape_4_3]: props.imgsize === 'landscape_4_3' || !imgSizes.includes(props.imgsize) || !props.imgsize,
+                    [styles.landscape_3_2]: props.imgsize === 'landscape_3_2',
+                    [styles.portrait_3_4]: props.imgsize === 'portrait_3_4',
+                    [styles.portrait_2_3]: props.imgsize === 'portrait_2_3',
+                    [styles.widescreen_16_9]: props.imgsize === 'widescreen_16_9',
+                    [styles.widescreen_3_1]: props.imgsize === 'widescreen_3_1',
+                    [styles.widescreen_2_4_1]: props.imgsize === 'widescreen_2_4_1' || props.imgsize === 'widescreen_2-4_1',
+                    [styles.no_sizing]: props.imgsize === 'no_sizing',
+                    [styles.no_set_height]: props.imgsize === 'no_set_height',
+                    [styles['full-width']]: props.width === '938' || props.width === '1060',
+                    [styles['med-width']]: props.width === '736' || props.width === '652',
+                })}
+                id={`id_${props.modId}`}
+            >
+                <div className={styles.wrapper}>
+                    {props.title && (
+                        <h2 className={cn(styles['mod-title'], styles['section_title'])} data-title="module headline" style={textColorHeading}>
+                            <span>{props.title}</span>
+                        </h2>
+                    )}
+                    {props.items.map((item, index) =>
+                        item.disabled != 'disabled' ? (
+                            <ModuleItem
+                                item={item}
+                                well={props.well}
+                                modId={props.modId}
+                                themeStyles={props.themeStyles}
+                                textColorHeading={textColorHeading}
+                                key={index}
+                                imgsize={props.imgsize}
+                                type={props.type}
+                                columns={props.columns}
+                                itemIndex={index}
+                            />
+                        ) : (
+                            <></>
+                        )
+                    )}
+                </div>
             </div>
-        </div>
-    )
+        )
+    } else return <></>
 }
 
 const ModuleItem = (props: ModuleItemProps) => {
