@@ -24,10 +24,18 @@ export function getDomain() {
     return domainUrl
 }
 //Determines url for grabbing images
-export function domainImage(url: string) {
-    const assetsApi = process.env.NEXT_PUBLIC_API_URL_ASSETS || bucketUrl
+export function domainImage(url: string, cms = false) {
+    if (cms == true) {
+        let imageUrl = 'http://clttestsiteforjoshedwards.production.townsquareinteractive.com' + url
+        return encodeURI(imageUrl)
+    } else {
+        const assetsApi = process.env.NEXT_PUBLIC_API_URL_ASSETS || bucketUrl
+        let imageUrl = process.env.NEXT_PUBLIC_URL_ENV ? envCheck(assetsApi) + '/assets' + url : assetsApi + '/' + localUrl + '/assets' + url
+        return encodeURI(imageUrl)
+    }
+    /*  const assetsApi = process.env.NEXT_PUBLIC_API_URL_ASSETS || bucketUrl
     let imageUrl = process.env.NEXT_PUBLIC_URL_ENV ? envCheck(assetsApi) + '/assets' + url : assetsApi + '/' + localUrl + '/assets' + url
-    return encodeURI(imageUrl)
+    return encodeURI(imageUrl) */
     //jedwards4044.github.io/website-assets/jremodeling.com/live/assets/bathroom-1.jpg
 }
 

@@ -144,8 +144,6 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
                 user-select: none;
                 white-space: normal;
                 display: inline-block;
-                margin-top: 0em;
-                margin-bottom: 0em;
 
                 &.btn_xs {
                     font-size: 0.8125em;
@@ -248,8 +246,11 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
                     flex: 0 1 auto;
                     align-self: stretch;
                     justify-content: center;
-
                     min-width: 6.875rem;
+
+                    &.btn_w {
+                        margin: 0.25rem 0;
+                    }
                 }
             }
         }

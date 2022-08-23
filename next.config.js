@@ -11,7 +11,14 @@ const nextConfig = {
 } */
 module.exports = {
     images: {
-        domains: ['via.placeholder.com', 'unsplash.com', 'images.pexels.com', 'townsquareinteractive.s3.amazonaws.com', 'jedwards4044.github.io'],
+        domains: [
+            'via.placeholder.com',
+            'unsplash.com',
+            'images.pexels.com',
+            'townsquareinteractive.s3.amazonaws.com',
+            'jedwards4044.github.io',
+            'clttestsiteforjoshedwards.production.townsquareinteractive.com',
+        ],
     },
     i18n: {
         locales: ['en'],

@@ -29,7 +29,7 @@ const MyArticle = (props: ArticleProps) => {
                     [styles.beacon]: props.type === 'article',
                     [styles.well]: props.well == '1',
                     [styles.not_well]: !props.well,
-                    [styles.large]: props.columns == 1,
+                    [styles.large]: props.columns == 1 && (props.width === '736' || props.width === '652' || props.width === '938' || props.width === '1060'),
                     [styles.medium]: props.columns == 2,
                     [styles.small]: props.columns == 3 || props.columns == 4,
                     [styles.col_1]: props.columns == 1,
@@ -451,11 +451,11 @@ const ImageBlock = (props: TheListItemImageProps) => {
         <figure className={cn(styles['image-block'], styles['theframe'], styles['imgtag'], styles['imgbase'], styles['img-loaded'])} data-alt="Headline">
             <div className={styles.image}>
                 {!imageNoSizings.includes(props.imgsize) ? (
-                    <Image src={domainImage(item.image)} layout="fill" objectFit="cover" alt={item.img_alt_tag || ''} objectPosition="top" />
+                    <Image src={domainImage(item.image, true)} layout="fill" objectFit="cover" alt={item.img_alt_tag || ''} objectPosition="top" />
                 ) : (
                     //Setting width and height to image props if nosizing added
                     <Image
-                        src={domainImage(item.image)}
+                        src={domainImage(item.image, true)}
                         onLoadingComplete={calcImageSize}
                         width={imageWidth}
                         height={imageHeight}
