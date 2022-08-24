@@ -7,9 +7,17 @@ import styles from './tsi.module.scss'
 import cn from 'classnames'
 
 export const getStaticProps = async (context: Context) => {
-    const resGlobal = await fetch(getDomain() + '/global.json')
+    const resGlobal = await fetch(
+        'https://townsquareinteractive.s3.amazonaws.com/clttestsiteforjoshedwards.production.townsquareinteractive.com' + '/global.json'
+    )
     const globalData = await resGlobal.json()
-    const page = pageData
+    /*     const page = pageData */
+
+    const resPage = await fetch(
+        'https://townsquareinteractive.s3.amazonaws.com/clttestsiteforjoshedwards.production.townsquareinteractive.com' + '/pages/' + 'article' + '.json'
+    )
+    let page = await resPage.json()
+    page = page.backup.data
 
     return {
         props: { globalData, page },
@@ -20,7 +28,7 @@ export const getStaticProps = async (context: Context) => {
     }
 }
 
-const Slug = (props: HomeProps) => {
+const TSI = (props: HomeProps) => {
     const { globalData, page } = props
 
     /* const secOnePageData = page.modules[0] */
@@ -29,16 +37,6 @@ const Slug = (props: HomeProps) => {
     const secThreeData = page.modules[2] ? cmsPageDataMod(page.modules[2]) : ''
     const secFourData = page.modules[3] ? cmsPageDataMod(page.modules[3]) : ''
     const secFiveData = page.modules[4] ? cmsPageDataMod(page.modules[4]) : '' */
-
-    const columnsData = []
-
-    for (let i = 0; i <= 4; ++i) {
-        columnsData.push(cmsPageDataMod(page.modules[i]))
-        /* columnsData[i] = page.modules[i] ? cmsPageDataMod(page.modules[i]) : '' */
-    }
-
-    //This is causing hydration error, will do it in node.js
-    /*     page.modules = columnsData */
 
     let columnStyles
     if (page.sections[1].wide == '938') {
@@ -71,13 +69,15 @@ const Slug = (props: HomeProps) => {
     const btnStyles = `.btn_1{color: ${props.globalData.themeStyles['textColorAccent']}; background-color: ${props.globalData.themeStyles['mainColor']}} .btn_1:hover{color: ${props.globalData.themeStyles['mainColor']}; background-color: ${props.globalData.themeStyles['textColorAccent']}} .btn_2{color: ${props.globalData.themeStyles['altColor']}; border-color: ${props.globalData.themeStyles['altColor']}} .btn_2:hover{color: ${props.globalData.themeStyles['textColorAccent']}; background-color: ${props.globalData.themeStyles['altColor']}}`
 
     let colorStyles = textColors + btnStyles
+    console.log(page.modules)
+    console.log(page.sections[1].wide)
 
     return (
         <Layout moduleData={globalData}>
             <div className={styles.root}>
                 <style>{colorStyles}</style>
                 <div className={styles.featured}>
-                    <Renderer config={columnsData[0]} themeStyles={globalData.themeStyles} width={page.sections[0].wide} />
+                    <Renderer config={page.modules[0]} themeStyles={globalData.themeStyles} width={page.sections[0].wide} />
                 </div>
 
                 <div
@@ -95,81 +95,30 @@ const Slug = (props: HomeProps) => {
                         [styles['one-fourth_half_one-fourth']]: columnStyles === 'one-fourth_half_one-fourth',
                     })}
                 >
-                    {columnsData.map((data, idx) =>
+                    {page.modules.map((data, idx) =>
                         data && idx != 0 ? (
                             <div
                                 className={cn(styles['column' + (idx + 1)], {
                                     [styles.featured]: idx === 0,
                                     [styles[`column ${idx + 1}`]]: idx != 0,
-                                    [styles.thirdColumn]: page.sections[idx].wide == '316',
-                                    [styles.halfColumn]: page.sections[idx].wide == '484',
-                                    [styles.twoThirdColumn]: page.sections[idx].wide == '652',
-                                    [styles.threeFourthColumn]: page.sections[idx].wide == '736',
-                                    [styles.oneFourthColumn]: page.sections[idx].wide == '232',
+                                    [styles.thirdColumn]: page.sections[idx] && page.sections[idx].wide == '316',
+                                    [styles.halfColumn]: page.sections[idx] && page.sections[idx].wide == '484',
+                                    [styles.twoThirdColumn]: page.sections[idx] && page.sections[idx].wide == '652',
+                                    [styles.threeFourthColumn]: page.sections[idx] && page.sections[idx].wide == '736',
+                                    [styles.oneFourthColumn]: page.sections[idx] && page.sections[idx].wide == '232',
                                 })}
                             >
-                                <Renderer config={data} themeStyles={globalData.themeStyles} width={page.sections[idx].wide} />
+                                <Renderer config={data} themeStyles={globalData.themeStyles} width={page.sections[idx] ? page.sections[idx].wide : ''} />
                             </div>
                         ) : (
+                            /*      <div>Hello {page.sections[idx] ? page.sections[idx].wide : 'me'}</div> */
                             <></>
                         )
                     )}
-                    {/* {secTwoData && (
-                        <div
-                            className={cn(styles.column1, {
-                                [styles.thirdColumn]: page.sections[1].wide == '316',
-                                [styles.halfColumn]: page.sections[1].wide == '484',
-                                [styles.twoThirdColumn]: page.sections[1].wide == '652',
-                                [styles.threeFourthColumn]: page.sections[1].wide == '736',
-                                [styles.oneFourthColumn]: page.sections[1].wide == '232',
-                            })}
-                        >
-                            <Renderer config={secTwoData} themeStyles={globalData.themeStyles} width={page.sections[1].wide} />
-                        </div>
-                    )}
-                    {secThreeData && (
-                        <div
-                            className={cn(styles.column2, {
-                                [styles.thirdColumn]: page.sections[2].wide == '316',
-                                [styles.halfColumn]: page.sections[2].wide == '484',
-                                [styles.twoThirdColumn]: page.sections[2].wide == '652',
-                                [styles.threeFourthColumn]: page.sections[2].wide == '736',
-                                [styles.oneFourthColumn]: page.sections[2].wide == '232',
-                            })}
-                        >
-                            <Renderer config={secThreeData} themeStyles={globalData.themeStyles} width={page.sections[2].wide} />
-                        </div>
-                    )}
-                    {secFourData && (
-                        <div
-                            className={cn(styles.column3, {
-                                [styles.thirdColumn]: page.sections[3].wide == '316',
-                                [styles.halfColumn]: page.sections[3].wide == '484',
-                                [styles.twoThirdColumn]: page.sections[3].wide == '652',
-                                [styles.threeFourthColumn]: page.sections[3].wide == '736',
-                                [styles.oneFourthColumn]: page.sections[3].wide == '232',
-                            })}
-                        >
-                            <Renderer config={secFourData} themeStyles={globalData.themeStyles} width={page.sections[3].wide} />
-                        </div>
-                    )}
-                    {secFiveData && (
-                        <div
-                            className={cn(styles.column4, {
-                                [styles.thirdColumn]: page.sections[4].wide == '316',
-                                [styles.halfColumn]: page.sections[4].wide == '484',
-                                [styles.twoThirdColumn]: page.sections[4].wide == '652',
-                                [styles.threeFourthColumn]: page.sections[4].wide == '736',
-                                [styles.oneFourthColumn]: page.sections[4].wide == '232',
-                            })}
-                        >
-                            <Renderer config={secFiveData} themeStyles={globalData.themeStyles} width={page.sections[4].wide} />
-                        </div>
-                    )} */}
                 </div>
             </div>
         </Layout>
     )
 }
 
-export default Slug
+export default TSI
