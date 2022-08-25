@@ -14,7 +14,7 @@ export const getStaticProps = async (context: Context) => {
     /*     const page = pageData */
 
     const resPage = await fetch(
-        'https://townsquareinteractive.s3.amazonaws.com/clttestsiteforjoshedwards.production.townsquareinteractive.com' + '/pages/' + 'article' + '.json'
+        'https://townsquareinteractive.s3.amazonaws.com/clttestsiteforjoshedwards.production.townsquareinteractive.com' + '/pages/' + 'test' + '.json'
     )
     let page = await resPage.json()
     page = page.backup.data
