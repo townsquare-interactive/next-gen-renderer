@@ -7,15 +7,11 @@ import styles from './tsi.module.scss'
 import cn from 'classnames'
 
 export const getStaticProps = async (context: Context) => {
-    const resGlobal = await fetch(
-        'https://townsquareinteractive.s3.amazonaws.com/clttestsiteforjoshedwards.production.townsquareinteractive.com' + '/global.json'
-    )
+    const resGlobal = await fetch(getDomain() + '/global.json')
     const globalData = await resGlobal.json()
     /*     const page = pageData */
 
-    const resPage = await fetch(
-        'https://townsquareinteractive.s3.amazonaws.com/clttestsiteforjoshedwards.production.townsquareinteractive.com' + '/pages/' + 'test' + '.json'
-    )
+    const resPage = await fetch(getDomain(true) + '/pages/' + 'test' + '.json')
     let page = await resPage.json()
     page = page.backup.data
 

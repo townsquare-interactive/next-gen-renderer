@@ -707,11 +707,11 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
                     width: $ten-12;
                     margin: 0 auto;
                     margin-bottom: 4rem;
-                }
-            }
 
-            &:last-of-type {
-                margin-bottom: 2rem;
+                    &:last-of-type {
+                        margin-bottom: 2rem;
+                    }
+                }
             }
         }
     }

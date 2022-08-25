@@ -1,9 +1,10 @@
+import { faBedPulse } from '@fortawesome/free-solid-svg-icons'
 import { ConditionalWrapperProps, Module } from 'components/types'
 
 const bucketUrl = 'https://townsquareinteractive.s3.amazonaws.com'
 /* const localUrl = 'clttestsiteforjoshedwards.production.townsquareinteractive.com' */
-
 const localUrl = 'elitesports.com/preview'
+const cmsUrl = 'clttestsiteforjoshedwards.production.townsquareinteractive.com'
 const env = process.env.NEXT_PUBLIC_URL_ENV
 const domain = process.env.NEXT_PUBLIC_BASE_URL
 
@@ -20,11 +21,18 @@ function envCheck(api: string) {
     }
 }
 //Grabs domain using env variables for json page fetching
-export function getDomain() {
-    const apiUrl = process.env.API_URL_DATA || bucketUrl
-    let domainUrl = process.env.NEXT_PUBLIC_URL_ENV ? envCheck(apiUrl) : apiUrl + '/' + localUrl
-    return domainUrl
+export function getDomain(cms = false) {
+    //checking if using cms url
+    if (cms === false) {
+        const apiUrl = process.env.API_URL_DATA || bucketUrl
+        let domainUrl = process.env.NEXT_PUBLIC_URL_ENV ? envCheck(apiUrl) : apiUrl + '/' + localUrl
+        return domainUrl
+    } else {
+        let domainUrl = bucketUrl + '/' + cmsUrl
+        return domainUrl
+    }
 }
+
 //Determines url for grabbing images
 export function domainImage(url: string, cms = false) {
     if (cms == true) {
@@ -35,9 +43,6 @@ export function domainImage(url: string, cms = false) {
         let imageUrl = process.env.NEXT_PUBLIC_URL_ENV ? envCheck(assetsApi) + '/assets' + url : assetsApi + '/' + localUrl + '/assets' + url
         return encodeURI(imageUrl)
     }
-    /*  const assetsApi = process.env.NEXT_PUBLIC_API_URL_ASSETS || bucketUrl
-    let imageUrl = process.env.NEXT_PUBLIC_URL_ENV ? envCheck(assetsApi) + '/assets' + url : assetsApi + '/' + localUrl + '/assets' + url
-    return encodeURI(imageUrl) */
 }
 
 //Capitalize first letter of word

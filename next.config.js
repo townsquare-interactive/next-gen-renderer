@@ -18,6 +18,7 @@ module.exports = {
             'townsquareinteractive.s3.amazonaws.com',
             'jedwards4044.github.io',
             'clttestsiteforjoshedwards.production.townsquareinteractive.com',
+            'joshedwards.production.townsquareinteractive.com',
         ],
     },
     i18n: {
