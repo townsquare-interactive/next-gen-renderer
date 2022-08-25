@@ -706,6 +706,7 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
                 .nHero {
                     width: $ten-12;
                     margin: 0 auto;
+                    margin-bottom: 4rem;
                 }
             }
 

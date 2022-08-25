@@ -21,14 +21,14 @@ export interface Module {
     [key: string]: ModuleData
 }
 
-export interface CMSModuleKey {
+/*  export interface CMSModuleKey {
     0: Module
     1?: Module
     2?: Module
     3?: Module
     4?: Module
-}
-
+} 
+ */
 export interface HomeProps {
     moduleData: ModuleData
     globalData: GlobalData
@@ -57,7 +57,7 @@ export interface GlobalModule {
 export interface ModuleData {
     logoUrl?: string
     /* modules?: ImagesProps | ListProps | HeaderProps | LabelProps | TextData | CarouselProps | FooterProps | NavProps | VideoProps | GridProps*/
-    modules: CMSModuleKey
+    modules: Module[]
     navStyle?: 'layout1' | 'layout2'
     name?: string
     seo?: SeoData
@@ -73,7 +73,7 @@ export interface ModuleData {
 
 export interface PageProps {
     logoUrl?: string
-    modules: CMSModuleKey
+    modules: Module[]
     name?: string
     seo?: SeoData
     themeStyles?: ThemeStyles

@@ -31,13 +31,6 @@ export const getStaticProps = async (context: Context) => {
 const TSI = (props: HomeProps) => {
     const { globalData, page } = props
 
-    /* const secOnePageData = page.modules[0] */
-    /*     const secOneData = cmsPageDataMod(page.modules[0])
-    const secTwoData = page.modules[1] ? cmsPageDataMod(page.modules[1]) : ''
-    const secThreeData = page.modules[2] ? cmsPageDataMod(page.modules[2]) : ''
-    const secFourData = page.modules[3] ? cmsPageDataMod(page.modules[3]) : ''
-    const secFiveData = page.modules[4] ? cmsPageDataMod(page.modules[4]) : '' */
-
     let columnStyles
     if (page.sections[1].wide == '938') {
         columnStyles = 'wide-column'
@@ -69,8 +62,6 @@ const TSI = (props: HomeProps) => {
     const btnStyles = `.btn_1{color: ${props.globalData.themeStyles['textColorAccent']}; background-color: ${props.globalData.themeStyles['mainColor']}} .btn_1:hover{color: ${props.globalData.themeStyles['mainColor']}; background-color: ${props.globalData.themeStyles['textColorAccent']}} .btn_2{color: ${props.globalData.themeStyles['altColor']}; border-color: ${props.globalData.themeStyles['altColor']}} .btn_2:hover{color: ${props.globalData.themeStyles['textColorAccent']}; background-color: ${props.globalData.themeStyles['altColor']}}`
 
     let colorStyles = textColors + btnStyles
-    console.log(page.modules)
-    console.log(page.sections[1].wide)
 
     return (
         <Layout moduleData={globalData}>
@@ -111,7 +102,6 @@ const TSI = (props: HomeProps) => {
                                 <Renderer config={data} themeStyles={globalData.themeStyles} width={page.sections[idx] ? page.sections[idx].wide : ''} />
                             </div>
                         ) : (
-                            /*      <div>Hello {page.sections[idx] ? page.sections[idx].wide : 'me'}</div> */
                             <></>
                         )
                     )}
