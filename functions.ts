@@ -4,7 +4,7 @@ import { ConditionalWrapperProps, Module } from 'components/types'
 const bucketUrl = 'https://townsquareinteractive.s3.amazonaws.com'
 /* const localUrl = 'clttestsiteforjoshedwards.production.townsquareinteractive.com' */
 const localUrl = 'elitesports.com/preview'
-const cmsUrl = 'clttestsiteforjoshedwards.production.townsquareinteractive.com'
+const cmsUrl = 'clttestsiteforjoshedwards'
 const env = process.env.NEXT_PUBLIC_URL_ENV
 const domain = process.env.NEXT_PUBLIC_BASE_URL
 
