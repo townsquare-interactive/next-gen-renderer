@@ -53,6 +53,7 @@ const Slug = (props: HomeProps) => {
     const router = useRouter()
 
     let columnStyles = '333'
+    let colorStyles
 
     if (page) {
         if (page.sections[1].wide == '938') {
@@ -78,16 +79,16 @@ const Slug = (props: HomeProps) => {
         } else if (page.sections[1].wide == '232' && page.sections[2].wide == '484' && page.sections[3].wide == '232') {
             columnStyles = 'one-fourth_half_one-fourth'
         }
-    }
 
-    //Global styles
-    let colorStyles
-    if (globalData && globalData.themeStyles) {
-        const textColors = `.accent-txt{color:${globalData.themeStyles['textColorAccent']}} .txt-color{color:${globalData.themeStyles['textColor']}} .txt-color-heading{color:${globalData.themeStyles['headingColor']}}`
+        //Global styles
 
-        const btnStyles = `.btn_1{color: ${props.globalData.themeStyles['textColorAccent']}; background-color: ${props.globalData.themeStyles['mainColor']}} .btn_1:hover{color: ${props.globalData.themeStyles['mainColor']}; background-color: ${props.globalData.themeStyles['textColorAccent']}} .btn_2{color: ${props.globalData.themeStyles['altColor']}; border-color: ${props.globalData.themeStyles['altColor']}} .btn_2:hover{color: ${props.globalData.themeStyles['textColorAccent']}; background-color: ${props.globalData.themeStyles['altColor']}}`
+        if (globalData && globalData.themeStyles) {
+            const textColors = `.accent-txt{color:${globalData.themeStyles['textColorAccent']}} .txt-color{color:${globalData.themeStyles['textColor']}} .txt-color-heading{color:${globalData.themeStyles['headingColor']}}`
 
-        colorStyles = textColors + btnStyles
+            const btnStyles = `.btn_1{color: ${props.globalData.themeStyles['textColorAccent']}; background-color: ${props.globalData.themeStyles['mainColor']}} .btn_1:hover{color: ${props.globalData.themeStyles['mainColor']}; background-color: ${props.globalData.themeStyles['textColorAccent']}} .btn_2{color: ${props.globalData.themeStyles['altColor']}; border-color: ${props.globalData.themeStyles['altColor']}} .btn_2:hover{color: ${props.globalData.themeStyles['textColorAccent']}; background-color: ${props.globalData.themeStyles['altColor']}}`
+
+            colorStyles = textColors + btnStyles
+        }
     }
 
     // If the page is not yet generated, this will be displayed
@@ -119,50 +120,56 @@ const Slug = (props: HomeProps) => {
         </div> */
         /*    <div>sdf</div> */
         <Layout moduleData={globalData}>
-            <div className={styles.root}>
-                <style>{colorStyles}</style>
-                <div className={styles.featured}>
-                    <Renderer config={page.modules[0]} themeStyles={globalData.themeStyles} width={page.sections[0] ? page.sections[0].wide : ''} />
-                </div>
+            {page && (
+                <div className={styles.root}>
+                    <style>{colorStyles}</style>
+                    <div className={styles.featured}>
+                        <Renderer config={page.modules[0]} themeStyles={globalData.themeStyles} width={page.sections[0] ? page.sections[0].wide : ''} />
+                    </div>
 
-                <div
-                    className={cn(styles.columns, {
-                        [styles['wide-column']]: columnStyles === 'wide-column',
-                        [styles['half-columns']]: columnStyles === 'half-columns',
-                        [styles['third-columns']]: columnStyles === 'third-columns',
-                        [styles['fourth-columns']]: columnStyles === 'fourth-columns',
-                        [styles['two-third_one-third']]: columnStyles === 'two-third_one-third',
-                        [styles['one-third_two-third']]: columnStyles === 'one-third_two-third',
-                        [styles['one-fourth_three-fourth']]: columnStyles === 'one-fourth_three-fourth',
-                        [styles['three-fourth_one-fourth']]: columnStyles === 'three-fourth_one-fourth',
-                        [styles['half_one-fourth_one-fourth']]: columnStyles === 'half_one-fourth_one-fourth',
-                        [styles['one-fourth_one-fourth_half']]: columnStyles === 'one-fourth_one-fourth_half',
-                        [styles['one-fourth_half_one-fourth']]: columnStyles === 'one-fourth_half_one-fourth',
-                    })}
-                >
-                    {page.modules.map((data, idx) => (
-                        <Fragment key={idx}>
-                            {data && idx != 0 ? (
-                                <div
-                                    className={cn(styles['column' + (idx + 1)], {
-                                        [styles.featured]: idx === 0,
-                                        [styles[`column ${idx + 1}`]]: idx != 0,
-                                        [styles.thirdColumn]: page.sections[idx] && page.sections[idx].wide == '316',
-                                        [styles.halfColumn]: page.sections[idx] && page.sections[idx].wide == '484',
-                                        [styles.twoThirdColumn]: page.sections[idx] && page.sections[idx].wide == '652',
-                                        [styles.threeFourthColumn]: page.sections[idx] && page.sections[idx].wide == '736',
-                                        [styles.oneFourthColumn]: page.sections[idx] && page.sections[idx].wide == '232',
-                                    })}
-                                >
-                                    <Renderer config={data} themeStyles={globalData.themeStyles} width={page.sections[idx] ? page.sections[idx].wide : ''} />
-                                </div>
-                            ) : (
-                                <></>
-                            )}
-                        </Fragment>
-                    ))}
+                    <div
+                        className={cn(styles.columns, {
+                            [styles['wide-column']]: columnStyles === 'wide-column',
+                            [styles['half-columns']]: columnStyles === 'half-columns',
+                            [styles['third-columns']]: columnStyles === 'third-columns',
+                            [styles['fourth-columns']]: columnStyles === 'fourth-columns',
+                            [styles['two-third_one-third']]: columnStyles === 'two-third_one-third',
+                            [styles['one-third_two-third']]: columnStyles === 'one-third_two-third',
+                            [styles['one-fourth_three-fourth']]: columnStyles === 'one-fourth_three-fourth',
+                            [styles['three-fourth_one-fourth']]: columnStyles === 'three-fourth_one-fourth',
+                            [styles['half_one-fourth_one-fourth']]: columnStyles === 'half_one-fourth_one-fourth',
+                            [styles['one-fourth_one-fourth_half']]: columnStyles === 'one-fourth_one-fourth_half',
+                            [styles['one-fourth_half_one-fourth']]: columnStyles === 'one-fourth_half_one-fourth',
+                        })}
+                    >
+                        {page.modules.map((data, idx) => (
+                            <Fragment key={idx}>
+                                {data && idx != 0 ? (
+                                    <div
+                                        className={cn(styles['column' + (idx + 1)], {
+                                            [styles.featured]: idx === 0,
+                                            [styles[`column ${idx + 1}`]]: idx != 0,
+                                            [styles.thirdColumn]: page.sections[idx] && page.sections[idx].wide == '316',
+                                            [styles.halfColumn]: page.sections[idx] && page.sections[idx].wide == '484',
+                                            [styles.twoThirdColumn]: page.sections[idx] && page.sections[idx].wide == '652',
+                                            [styles.threeFourthColumn]: page.sections[idx] && page.sections[idx].wide == '736',
+                                            [styles.oneFourthColumn]: page.sections[idx] && page.sections[idx].wide == '232',
+                                        })}
+                                    >
+                                        <Renderer
+                                            config={data}
+                                            themeStyles={globalData.themeStyles}
+                                            width={page.sections[idx] ? page.sections[idx].wide : ''}
+                                        />
+                                    </div>
+                                ) : (
+                                    <></>
+                                )}
+                            </Fragment>
+                        ))}
+                    </div>
                 </div>
-            </div>
+            )}
         </Layout>
     )
 }
