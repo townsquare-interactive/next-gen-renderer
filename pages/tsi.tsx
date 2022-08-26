@@ -9,7 +9,6 @@ import cn from 'classnames'
 export const getStaticProps = async (context: Context) => {
     const resGlobal = await fetch(getDomain() + '/global.json')
     const globalData = await resGlobal.json()
-    /*     const page = pageData */
 
     const resPage = await fetch(getDomain(true) + '/pages/' + 'test' + '.json')
     let page = await resPage.json()

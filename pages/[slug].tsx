@@ -32,12 +32,12 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context: Context) => {
     const slug = context.params.slug
 
-    const resPage = await fetch(getDomain(true) + '/pages/' + slug + '.json')
     const resGlobal = await fetch(getDomain() + '/global.json')
-
-    let page = await resPage.json()
-    page = page.backup.data
     const globalData = await resGlobal.json()
+
+    const resPage = await fetch(getDomain(true) + '/pages/' + slug + '.json')
+    let page = await resPage.json()
+    page = page.backup.data || ''
 
     return {
         props: { page, globalData },
@@ -53,38 +53,42 @@ const Slug = (props: HomeProps) => {
     const router = useRouter()
 
     let columnStyles = '333'
-    if (page.sections) {
+
+    if (page) {
         if (page.sections[1].wide == '938') {
             columnStyles = 'wide-column'
-        } else if (page.sections[1]?.wide == '484' && page.sections[2]?.wide == '484') {
+        } else if (page.sections[1].wide == '484' && page.sections[2].wide == '484') {
             columnStyles = 'half-columns'
-        } else if (page.sections[1]?.wide == '316' && page.sections[2]?.wide == '316' && page.sections[3]?.wide == '316') {
+        } else if (page.sections[1].wide == '316' && page.sections[2].wide == '316' && page.sections[3].wide == '316') {
             columnStyles = 'third-columns'
-        } else if (page.sections[1]?.wide == '232' && page.sections[2]?.wide == '232' && page.sections[3]?.wide == '232' && page.sections[4]?.wide == '232') {
+        } else if (page.sections[1].wide == '232' && page.sections[2].wide == '232' && page.sections[3].wide == '232' && page.sections[4].wide == '232') {
             columnStyles = 'fourth-columns'
-        } else if (page.sections[1]?.wide == '652' && page.sections[2]?.wide == '316') {
+        } else if (page.sections[1].wide == '652' && page.sections[2].wide == '316') {
             columnStyles = 'two-third_one-third'
-        } else if (page.sections[1]?.wide == '316' && page.sections[2]?.wide == '652') {
+        } else if (page.sections[1].wide == '316' && page.sections[2].wide == '652') {
             columnStyles = 'one-third_two-third'
-        } else if (page.sections[1]?.wide == '232' && page.sections[2]?.wide == '736') {
+        } else if (page.sections[1].wide == '232' && page.sections[2].wide == '736') {
             columnStyles = 'one-fourth_three-fourth'
-        } else if (page.sections[1]?.wide == '736' && page.sections[2]?.wide == '232') {
+        } else if (page.sections[1].wide == '736' && page.sections[2].wide == '232') {
             columnStyles = 'three-fourth_one-fourth'
-        } else if (page.sections[1]?.wide == '484' && page.sections[2]?.wide == '232' && page.sections[3]?.wide == '232') {
+        } else if (page.sections[1].wide == '484' && page.sections[2].wide == '232' && page.sections[3].wide == '232') {
             columnStyles = 'half_one-fourth_one-fourth'
-        } else if (page.sections[1]?.wide == '232' && page.sections[2]?.wide == '232' && page.sections[3]?.wide == '484') {
+        } else if (page.sections[1].wide == '232' && page.sections[2].wide == '232' && page.sections[3].wide == '484') {
             columnStyles = 'one-fourth_one-fourth_half'
-        } else if (page.sections[1]?.wide == '232' && page.sections[2]?.wide == '484' && page.sections[3]?.wide == '232') {
+        } else if (page.sections[1].wide == '232' && page.sections[2].wide == '484' && page.sections[3].wide == '232') {
             columnStyles = 'one-fourth_half_one-fourth'
         }
     }
 
     //Global styles
-    const textColors = `.accent-txt{color:${globalData.themeStyles['textColorAccent']}} .txt-color{color:${globalData.themeStyles['textColor']}} .txt-color-heading{color:${globalData.themeStyles['headingColor']}}`
+    let colorStyles
+    if (globalData && globalData.themeStyles) {
+        const textColors = `.accent-txt{color:${globalData.themeStyles['textColorAccent']}} .txt-color{color:${globalData.themeStyles['textColor']}} .txt-color-heading{color:${globalData.themeStyles['headingColor']}}`
 
-    const btnStyles = `.btn_1{color: ${props.globalData.themeStyles['textColorAccent']}; background-color: ${props.globalData.themeStyles['mainColor']}} .btn_1:hover{color: ${props.globalData.themeStyles['mainColor']}; background-color: ${props.globalData.themeStyles['textColorAccent']}} .btn_2{color: ${props.globalData.themeStyles['altColor']}; border-color: ${props.globalData.themeStyles['altColor']}} .btn_2:hover{color: ${props.globalData.themeStyles['textColorAccent']}; background-color: ${props.globalData.themeStyles['altColor']}}`
+        const btnStyles = `.btn_1{color: ${props.globalData.themeStyles['textColorAccent']}; background-color: ${props.globalData.themeStyles['mainColor']}} .btn_1:hover{color: ${props.globalData.themeStyles['mainColor']}; background-color: ${props.globalData.themeStyles['textColorAccent']}} .btn_2{color: ${props.globalData.themeStyles['altColor']}; border-color: ${props.globalData.themeStyles['altColor']}} .btn_2:hover{color: ${props.globalData.themeStyles['textColorAccent']}; background-color: ${props.globalData.themeStyles['altColor']}}`
 
-    let colorStyles = textColors + btnStyles
+        colorStyles = textColors + btnStyles
+    }
 
     // If the page is not yet generated, this will be displayed
     // initially until getStaticProps() finishes running
