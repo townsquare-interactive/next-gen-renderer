@@ -1,4 +1,3 @@
-import React, { Fragment } from 'react'
 import Images from './Images'
 import Text from './Text'
 import Label from './Label'
@@ -55,13 +54,13 @@ export const Renderer = ({ config, themeStyles, width = '' }) => {
     const configWithProps = mapPropsToConfig(config)
 
     return (
-        <Fragment>
+        <>
             {configWithProps.map((item, index) => {
                 const { Component, ...props } = item
                 //Changes json string to component value
                 const Comp = keysToComponentMap[Component]
                 return <Comp {...props.attributes} key={index} themeStyles={themeStyles} width={width} />
             })}
-        </Fragment>
+        </>
     )
 }

@@ -88,14 +88,14 @@ const TSI = (props: HomeProps) => {
                                 className={cn(styles['column' + (idx + 1)], {
                                     [styles.featured]: idx === 0,
                                     [styles[`column ${idx + 1}`]]: idx != 0,
-                                    [styles.thirdColumn]: page.sections[idx] && page.sections[idx].wide == '316',
-                                    [styles.halfColumn]: page.sections[idx] && page.sections[idx].wide == '484',
-                                    [styles.twoThirdColumn]: page.sections[idx] && page.sections[idx].wide == '652',
-                                    [styles.threeFourthColumn]: page.sections[idx] && page.sections[idx].wide == '736',
-                                    [styles.oneFourthColumn]: page.sections[idx] && page.sections[idx].wide == '232',
+                                    [styles.thirdColumn]: page.sections[idx].wide == '316',
+                                    [styles.halfColumn]: page.sections[idx].wide == '484',
+                                    [styles.twoThirdColumn]: page.sections[idx].wide == '652',
+                                    [styles.threeFourthColumn]: page.sections[idx].wide == '736',
+                                    [styles.oneFourthColumn]: page.sections[idx].wide == '232',
                                 })}
                             >
-                                <Renderer config={data} themeStyles={globalData.themeStyles} width={page.sections[idx] ? page.sections[idx].wide : ''} />
+                                <Renderer config={data} themeStyles={globalData.themeStyles} width={page.sections[idx].wide || ''} />
                             </div>
                         ) : (
                             <></>

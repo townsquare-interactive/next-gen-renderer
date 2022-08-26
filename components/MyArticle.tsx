@@ -4,7 +4,7 @@ import Image from 'next/image'
 import cn from 'classnames'
 import Parser from 'html-react-parser'
 import { domainImage, ConditionalWrapper } from '../functions'
-import { ReactChild, useState } from 'react'
+import { ReactChild, useState, Fragment } from 'react'
 import Link from 'next/link'
 
 // importing fontAwesome icons
@@ -336,7 +336,7 @@ const Button = (props: BtnProps) => {
             >
                 <>
                     {buttons.map((bt, index) => (
-                        <>
+                        <Fragment key={index}>
                             {bt.active && (
                                 <ConditionalWrapper
                                     condition={props.actionlbl2 && props.actionlbl ? true : false}
@@ -372,7 +372,7 @@ const Button = (props: BtnProps) => {
                                     </div>
                                 </ConditionalWrapper>
                             )}
-                        </>
+                        </Fragment>
                     ))}
                 </>
             </ConditionalWrapper>
