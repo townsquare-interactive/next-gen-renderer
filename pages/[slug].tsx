@@ -37,7 +37,7 @@ export const getStaticProps = async (context: Context) => {
 
     const resCmsGlobal = await fetch(getDomain(true) + '/siteData.json')
     let cmsGlobal = await resCmsGlobal.json()
-    let cmsGlobalDesign = cmsGlobal.design
+    let cmsGlobalDesign = cmsGlobal.design.colors
 
     const resPage = await fetch(getDomain(true) + '/pages/' + slug + '.json')
     let page = await resPage.json()
@@ -67,17 +67,17 @@ const Slug = (props: HomeProps) => {
 
     if (cmsGlobalDesign) {
         globalData.themeStyles = {
-            mainColor: cmsGlobalDesign.colors ? cmsGlobalDesign.colors.color_8.value : '',
-            textColor: cmsGlobalDesign.colors ? cmsGlobalDesign.colors.color_4.value : '',
-            headingColor: cmsGlobalDesign.colors ? cmsGlobalDesign.colors.color_2.value : '',
+            mainColor: cmsGlobalDesign.color_8.value,
+            textColor: cmsGlobalDesign.color_4.value,
+            headingColor: cmsGlobalDesign.color_2.value,
             textColorAccent: '#fff',
-            linkColor: cmsGlobalDesign.colors ? cmsGlobalDesign.colors.color_5.value : '',
-            accentBackgroundColor: cmsGlobalDesign.colors ? cmsGlobalDesign.colors.color_8.value : '',
-            accentColor2: cmsGlobalDesign.colors ? cmsGlobalDesign.colors.color_32.value : '',
-            altColor: cmsGlobalDesign.colors ? cmsGlobalDesign.colors.color_31.value : '',
-            headerBackground: cmsGlobalDesign.colors ? cmsGlobalDesign.colors.color_23.value : '',
-            footerBackground: cmsGlobalDesign.colors ? cmsGlobalDesign.colors.color_27.value : '',
-            navBackground: cmsGlobalDesign.colors ? cmsGlobalDesign.colors.color_23.value : '',
+            linkColor: cmsGlobalDesign.color_5.value,
+            accentBackgroundColor: cmsGlobalDesign.color_8.value,
+            accentColor2: cmsGlobalDesign.color_32.value,
+            altColor: cmsGlobalDesign.color_31.value,
+            headerBackground: cmsGlobalDesign.color_23.value,
+            footerBackground: cmsGlobalDesign.color_27.value,
+            navBackground: cmsGlobalDesign.color_23.value,
         }
     }
 
