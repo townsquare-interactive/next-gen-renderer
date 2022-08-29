@@ -36,7 +36,7 @@ export function getDomain(cms = false) {
 //Determines url for grabbing images
 export function domainImage(url: string, cms = false) {
     if (cms == true) {
-        let imageUrl = 'http://clttestsiteforjoshedwards.production.townsquareinteractive.com' + url
+        let imageUrl = 'http://' + cmsUrl + '.production.townsquareinteractive.com' + url
         return encodeURI(imageUrl)
     } else {
         const assetsApi = process.env.NEXT_PUBLIC_API_URL_ASSETS || bucketUrl

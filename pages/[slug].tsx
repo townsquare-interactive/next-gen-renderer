@@ -35,12 +35,16 @@ export const getStaticProps = async (context: Context) => {
     const resGlobal = await fetch(getDomain() + '/global.json')
     const globalData = await resGlobal.json()
 
+    const resCmsGlobal = await fetch(getDomain(true) + '/siteData.json')
+    let cmsGlobal = await resCmsGlobal.json()
+    let cmsGlobalDesign = cmsGlobal.design
+
     const resPage = await fetch(getDomain(true) + '/pages/' + slug + '.json')
     let page = await resPage.json()
     page = page.backup.data || ''
 
     return {
-        props: { page, globalData },
+        props: { page, globalData, cmsGlobalDesign },
         // Next.js will attempt to re-generate the page:
         // - When a request comes in
         // - At most once every 10 seconds
@@ -49,10 +53,35 @@ export const getStaticProps = async (context: Context) => {
 }
 
 const Slug = (props: HomeProps) => {
-    const { page, globalData } = props
+    const { page, globalData, cmsGlobalDesign } = props
     const router = useRouter()
 
-    let columnStyles = '333'
+    /*     const cmsColors = {
+        headlines: cmsGlobalDesign.colors.color_2.value,
+        subheadlines: cmsGlobalDesign.colors.color_3.value,
+        heroBckg: cmsGlobalDesign.colors.color_26.value,
+        accentTxt: '#fff',
+        borderColor: cmsGlobalDesign.colors.color_22.value,
+        btnBckg: cmsGlobalDesign.colors.color_8.value,
+    } */
+
+    const themeStyles = {
+        mainColor: cmsGlobalDesign.colors.color_8.value,
+        textColor: cmsGlobalDesign.colors.color_4.value,
+        headingColor: cmsGlobalDesign.colors.color_2.value,
+        textColorAccent: '#fff',
+        linkColor: cmsGlobalDesign.colors.color_5.value,
+        accentBackgroundColor: cmsGlobalDesign.colors.color_8.value,
+        accentColor2: cmsGlobalDesign.colors.color_32.value,
+        altColor: cmsGlobalDesign.colors.color_31.value,
+        headerBackground: cmsGlobalDesign.colors.color_23.value,
+        footerBackground: cmsGlobalDesign.colors.color_27.value,
+        navBackground: cmsGlobalDesign.colors.color_23.value,
+    }
+
+    globalData.themeStyles = themeStyles
+
+    let columnStyles
     let colorStyles
 
     if (page) {
@@ -82,10 +111,18 @@ const Slug = (props: HomeProps) => {
 
         //Global styles
 
-        if (globalData && globalData.themeStyles) {
+        /*         if (globalData && globalData.themeStyles) {
             const textColors = `.accent-txt{color:${globalData.themeStyles['textColorAccent']}} .txt-color{color:${globalData.themeStyles['textColor']}} .txt-color-heading{color:${globalData.themeStyles['headingColor']}}`
 
-            const btnStyles = `.btn_1{color: ${props.globalData.themeStyles['textColorAccent']}; background-color: ${props.globalData.themeStyles['mainColor']}} .btn_1:hover{color: ${props.globalData.themeStyles['mainColor']}; background-color: ${props.globalData.themeStyles['textColorAccent']}} .btn_2{color: ${props.globalData.themeStyles['altColor']}; border-color: ${props.globalData.themeStyles['altColor']}} .btn_2:hover{color: ${props.globalData.themeStyles['textColorAccent']}; background-color: ${props.globalData.themeStyles['altColor']}}`
+            const btnStyles = `.btn_1{color: ${props.globalData.themeStyles['textColorAccent']}; background-color: ${themeStyles.mainColor}} .btn_1:hover{color: ${props.globalData.themeStyles['mainColor']}; background-color: ${props.globalData.themeStyles['textColorAccent']}} .btn_2{color: ${props.globalData.themeStyles['altColor']}; border-color: ${props.globalData.themeStyles['altColor']}} .btn_2:hover{color: ${props.globalData.themeStyles['textColorAccent']}; background-color: ${props.globalData.themeStyles['altColor']}}`
+
+            colorStyles = textColors + btnStyles
+        } */
+
+        if (cmsGlobalDesign && themeStyles) {
+            const textColors = `.accent-txt{color:${themeStyles['textColorAccent']}} .txt-color{color:${themeStyles['textColor']}} .txt-color-heading{color:${themeStyles['headingColor']}}`
+
+            const btnStyles = `.btn_1{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles.mainColor}} .btn_1:hover{color: ${themeStyles['mainColor']}; background-color: ${themeStyles['textColorAccent']}} .btn_2{color: ${themeStyles['altColor']}; border-color: ${themeStyles['altColor']}} .btn_2:hover{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['altColor']}}`
 
             colorStyles = textColors + btnStyles
         }
@@ -156,11 +193,7 @@ const Slug = (props: HomeProps) => {
                                             [styles.oneFourthColumn]: page.sections[idx] && page.sections[idx].wide == '232',
                                         })}
                                     >
-                                        <Renderer
-                                            config={data}
-                                            themeStyles={globalData.themeStyles}
-                                            width={page.sections[idx] ? page.sections[idx].wide : ''}
-                                        />
+                                        <Renderer config={data} themeStyles={themeStyles} width={page.sections[idx] ? page.sections[idx].wide : ''} />
                                     </div>
                                 ) : (
                                     <></>

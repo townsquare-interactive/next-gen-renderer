@@ -33,6 +33,7 @@ export interface HomeProps {
     moduleData: ModuleData
     globalData: GlobalData
     page: PageProps
+    cmsGlobalDesign: any
 }
 
 export interface LayoutProps {

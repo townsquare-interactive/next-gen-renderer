@@ -10,12 +10,16 @@ export const getStaticProps = async (context: Context) => {
     const resGlobal = await fetch(getDomain() + '/global.json')
     const globalData = await resGlobal.json()
 
+    const resCmsGlobal = await fetch(getDomain(true) + '/siteData.json')
+    let cmsGlobal = await resCmsGlobal.json()
+    let cmsGlobalDesign = cmsGlobal.design
+
     const resPage = await fetch(getDomain(true) + '/pages/' + 'test' + '.json')
     let page = await resPage.json()
     page = page.backup.data
 
     return {
-        props: { globalData, page },
+        props: { globalData, page, cmsGlobalDesign },
         // Next.js will attempt to re-generate the page:
         // - When a request comes in
         // - At most once every 10 seconds
@@ -24,7 +28,7 @@ export const getStaticProps = async (context: Context) => {
 }
 
 const TSI = (props: HomeProps) => {
-    const { globalData, page } = props
+    const { globalData, page, cmsGlobalDesign } = props
 
     let columnStyles
     if (page.sections[1].wide == '938') {
