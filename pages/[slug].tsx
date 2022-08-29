@@ -65,21 +65,21 @@ const Slug = (props: HomeProps) => {
         btnBckg: cmsGlobalDesign.colors.color_8.value,
     } */
 
-    const themeStyles = {
-        mainColor: cmsGlobalDesign.colors.color_8.value,
-        textColor: cmsGlobalDesign.colors.color_4.value,
-        headingColor: cmsGlobalDesign.colors.color_2.value,
-        textColorAccent: '#fff',
-        linkColor: cmsGlobalDesign.colors.color_5.value,
-        accentBackgroundColor: cmsGlobalDesign.colors.color_8.value,
-        accentColor2: cmsGlobalDesign.colors.color_32.value,
-        altColor: cmsGlobalDesign.colors.color_31.value,
-        headerBackground: cmsGlobalDesign.colors.color_23.value,
-        footerBackground: cmsGlobalDesign.colors.color_27.value,
-        navBackground: cmsGlobalDesign.colors.color_23.value,
+    if (cmsGlobalDesign) {
+        globalData.themeStyles = {
+            mainColor: cmsGlobalDesign.colors ? cmsGlobalDesign.colors.color_8.value : '',
+            textColor: cmsGlobalDesign.colors ? cmsGlobalDesign.colors.color_4.value : '',
+            headingColor: cmsGlobalDesign.colors ? cmsGlobalDesign.colors.color_2.value : '',
+            textColorAccent: '#fff',
+            linkColor: cmsGlobalDesign.colors ? cmsGlobalDesign.colors.color_5.value : '',
+            accentBackgroundColor: cmsGlobalDesign.colors ? cmsGlobalDesign.colors.color_8.value : '',
+            accentColor2: cmsGlobalDesign.colors ? cmsGlobalDesign.colors.color_32.value : '',
+            altColor: cmsGlobalDesign.colors ? cmsGlobalDesign.colors.color_31.value : '',
+            headerBackground: cmsGlobalDesign.colors ? cmsGlobalDesign.colors.color_23.value : '',
+            footerBackground: cmsGlobalDesign.colors ? cmsGlobalDesign.colors.color_27.value : '',
+            navBackground: cmsGlobalDesign.colors ? cmsGlobalDesign.colors.color_23.value : '',
+        }
     }
-
-    globalData.themeStyles = themeStyles
 
     let columnStyles
     let colorStyles
@@ -119,10 +119,10 @@ const Slug = (props: HomeProps) => {
             colorStyles = textColors + btnStyles
         } */
 
-        if (cmsGlobalDesign && themeStyles) {
-            const textColors = `.accent-txt{color:${themeStyles['textColorAccent']}} .txt-color{color:${themeStyles['textColor']}} .txt-color-heading{color:${themeStyles['headingColor']}}`
+        if (cmsGlobalDesign && globalData.themeStyles) {
+            const textColors = `.accent-txt{color:${globalData.themeStyles['textColorAccent']}} .txt-color{color:${globalData.themeStyles['textColor']}} .txt-color-heading{color:${globalData.themeStyles['headingColor']}}`
 
-            const btnStyles = `.btn_1{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles.mainColor}} .btn_1:hover{color: ${themeStyles['mainColor']}; background-color: ${themeStyles['textColorAccent']}} .btn_2{color: ${themeStyles['altColor']}; border-color: ${themeStyles['altColor']}} .btn_2:hover{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['altColor']}}`
+            const btnStyles = `.btn_1{color: ${globalData.themeStyles['textColorAccent']}; background-color: ${globalData.themeStyles.mainColor}} .btn_1:hover{color: ${globalData.themeStyles['mainColor']}; background-color: ${globalData.themeStyles['textColorAccent']}} .btn_2{color: ${globalData.themeStyles['altColor']}; border-color: ${globalData.themeStyles['altColor']}} .btn_2:hover{color: ${globalData.themeStyles['textColorAccent']}; background-color: ${globalData.themeStyles['altColor']}}`
 
             colorStyles = textColors + btnStyles
         }
@@ -193,7 +193,11 @@ const Slug = (props: HomeProps) => {
                                             [styles.oneFourthColumn]: page.sections[idx] && page.sections[idx].wide == '232',
                                         })}
                                     >
-                                        <Renderer config={data} themeStyles={themeStyles} width={page.sections[idx] ? page.sections[idx].wide : ''} />
+                                        <Renderer
+                                            config={data}
+                                            themeStyles={globalData.themeStyles}
+                                            width={page.sections[idx] ? page.sections[idx].wide : ''}
+                                        />
                                     </div>
                                 ) : (
                                     <></>
