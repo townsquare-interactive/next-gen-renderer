@@ -1,8 +1,6 @@
-import { faBedPulse } from '@fortawesome/free-solid-svg-icons'
-import { ConditionalWrapperProps, Module } from 'components/types'
+import { ConditionalWrapperProps, Module, PageProps } from 'components/types'
 
 const bucketUrl = 'https://townsquareinteractive.s3.amazonaws.com'
-/* const localUrl = 'clttestsiteforjoshedwards.production.townsquareinteractive.com' */
 const localUrl = 'elitesports.com/preview'
 const cmsUrl = 'clttestsiteforjoshedwards'
 const env = process.env.NEXT_PUBLIC_URL_ENV
@@ -71,6 +69,32 @@ export function cmsPageDataMod(page: Module) {
         newData.push(arr)
     }
     return newData
+}
+
+export const decideColumns = (page: PageProps) => {
+    if (page.sections[1].wide == '938') {
+        return 'wide-column'
+    } else if (page.sections[1].wide == '484' && page.sections[2].wide == '484') {
+        return 'half-columns'
+    } else if (page.sections[1].wide == '316' && page.sections[2].wide == '316' && page.sections[3].wide == '316') {
+        return 'third-columns'
+    } else if (page.sections[1].wide == '232' && page.sections[2].wide == '232' && page.sections[3].wide == '232' && page.sections[4].wide == '232') {
+        return 'fourth-columns'
+    } else if (page.sections[1].wide == '652' && page.sections[2].wide == '316') {
+        return 'two-third_one-third'
+    } else if (page.sections[1].wide == '316' && page.sections[2].wide == '652') {
+        return 'one-third_two-third'
+    } else if (page.sections[1].wide == '232' && page.sections[2].wide == '736') {
+        return 'one-fourth_three-fourth'
+    } else if (page.sections[1].wide == '736' && page.sections[2].wide == '232') {
+        return 'three-fourth_one-fourth'
+    } else if (page.sections[1].wide == '484' && page.sections[2].wide == '232' && page.sections[3].wide == '232') {
+        return 'half_one-fourth_one-fourth'
+    } else if (page.sections[1].wide == '232' && page.sections[2].wide == '232' && page.sections[3].wide == '484') {
+        return 'one-fourth_one-fourth_half'
+    } else if (page.sections[1].wide == '232' && page.sections[2].wide == '484' && page.sections[3].wide == '232') {
+        return 'one-fourth_half_one-fourth'
+    }
 }
 
 //Used to have conditional tag wraps around code without repeating inside code

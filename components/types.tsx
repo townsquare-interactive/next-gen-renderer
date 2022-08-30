@@ -21,14 +21,6 @@ export interface Module {
     [key: string]: ModuleData
 }
 
-/*  export interface CMSModuleKey {
-    0: Module
-    1?: Module
-    2?: Module
-    3?: Module
-    4?: Module
-} 
- */
 export interface HomeProps {
     moduleData: ModuleData
     globalData: GlobalData
