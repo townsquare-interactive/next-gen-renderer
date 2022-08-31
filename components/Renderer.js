@@ -46,7 +46,7 @@ const mapPropsToConfig = (config) => {
     return configWithProps
 }
 
-export const Renderer = ({ config, themeStyles, width = '' }) => {
+export const Renderer = ({ config, themeStyles, width = '', cmsUrl }) => {
     if (!config) {
         throw new Error('You are calling Renderer with no config.')
     }
@@ -59,7 +59,7 @@ export const Renderer = ({ config, themeStyles, width = '' }) => {
                 const { Component, ...props } = item
                 //Changes json string to component value
                 const Comp = keysToComponentMap[Component]
-                return <Comp {...props.attributes} key={index} themeStyles={themeStyles} width={width} />
+                return <Comp {...props.attributes} key={index} themeStyles={themeStyles} width={width} cmsUrl={cmsUrl} />
             })}
         </>
     )

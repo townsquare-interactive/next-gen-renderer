@@ -23,9 +23,11 @@ export interface Module {
 
 export interface HomeProps {
     moduleData: ModuleData
+    /* globalData: GlobalData */
     globalData: GlobalData
     page: PageProps
     cmsGlobalDesign: any
+    cmsGlobal: any
 }
 
 export interface LayoutProps {
@@ -122,6 +124,7 @@ export interface ArticleItems {
     caption_tag?: string
     headSize?: string
     descSize?: string
+    cmsUrl?: string
 }
 
 export interface ArticleProps {
@@ -149,6 +152,7 @@ export interface ArticleProps {
     /**Check to see if element is hidden */
     width?: string
     disabled?: string
+    cmsUrl?: string
 }
 
 export interface Colors {
@@ -204,6 +208,7 @@ export interface TheListItemImageProps {
     well: string | number
     icons: { [key: string]: IconProp }
     icon3?: string
+    cmsUrl?: string
 }
 
 export interface TsiWrp {
@@ -237,6 +242,7 @@ export interface ItemWrapProps {
     type: string
     columns: number | string
     modId: string
+    cmsUrl?: string
 }
 
 export interface ModuleItemProps {
@@ -249,6 +255,7 @@ export interface ModuleItemProps {
     type: string
     columns: number | string
     modId: string
+    cmsUrl?: string
 }
 
 export interface BtnProps {

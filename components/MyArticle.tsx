@@ -71,6 +71,7 @@ const MyArticle = (props: ArticleProps) => {
                                 type={props.type}
                                 columns={props.columns}
                                 itemIndex={index}
+                                cmsUrl={props.cmsUrl}
                             />
                         ) : (
                             <></>
@@ -83,7 +84,7 @@ const MyArticle = (props: ArticleProps) => {
 }
 
 const ModuleItem = (props: ModuleItemProps) => {
-    const { item, modId, itemIndex } = props
+    const { item, modId, itemIndex, cmsUrl } = props
 
     //Defining style objects
     const textColor = {
@@ -200,6 +201,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                     isFeatured={item.isFeatured}
                     columns={props.columns}
                     modId={modId}
+                    cmsUrl={cmsUrl}
                 />
             </ConditionalWrapper>
         </article>
@@ -207,7 +209,7 @@ const ModuleItem = (props: ModuleItemProps) => {
 }
 
 const ItemWrap = (props: ItemWrapProps) => {
-    const { item, imageNoSizings, textColorAccent, textColor, imgsize, well, icons, icon3, isFeatured, themeStyles, type, modId } = props
+    const { item, imageNoSizings, textColorAccent, textColor, imgsize, well, icons, icon3, isFeatured, themeStyles, type, modId, cmsUrl } = props
 
     //Check if item is on beacon theme and hero
     const beaconHero = type === 'article' && isFeatured === 'active'
@@ -232,6 +234,7 @@ const ItemWrap = (props: ItemWrapProps) => {
                             well={well}
                             icons={icons}
                             icon3={icon3}
+                            cmsUrl={cmsUrl}
                         />
                     )}
                     {(item.headline || item.subheader) && <HeaderBlock item={props.item} well={props.well} columns={props.columns} beaconHero={beaconHero} />}
@@ -250,6 +253,7 @@ const ItemWrap = (props: ItemWrapProps) => {
                             well={well}
                             icons={icons}
                             icon3={icon3}
+                            cmsUrl={cmsUrl}
                         />
                     )}
                 </>
@@ -451,11 +455,17 @@ const ImageBlock = (props: TheListItemImageProps) => {
         <figure className={cn(styles['image-block'], styles['theframe'], styles['imgtag'], styles['imgbase'], styles['img-loaded'])} data-alt="Headline">
             <div className={styles.image}>
                 {!imageNoSizings.includes(props.imgsize) ? (
-                    <Image src={domainImage(item.image, true)} layout="fill" objectFit="cover" alt={item.img_alt_tag || ''} objectPosition="top" />
+                    <Image
+                        src={domainImage(item.image, true, props.cmsUrl || '')}
+                        layout="fill"
+                        objectFit="cover"
+                        alt={item.img_alt_tag || ''}
+                        objectPosition="top"
+                    />
                 ) : (
                     //Setting width and height to image props if nosizing added
                     <Image
-                        src={domainImage(item.image, true)}
+                        src={domainImage(item.image, true, props.cmsUrl || '')}
                         onLoadingComplete={calcImageSize}
                         width={imageWidth}
                         height={imageHeight}

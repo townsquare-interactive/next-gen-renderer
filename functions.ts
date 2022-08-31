@@ -3,6 +3,7 @@ import { ConditionalWrapperProps, Module, PageProps } from 'components/types'
 const bucketUrl = 'https://townsquareinteractive.s3.amazonaws.com'
 const localUrl = 'elitesports.com/preview'
 const cmsUrl = 'clttestsiteforjoshedwards'
+/* const cmsUrl = 'joshedwards' */
 const env = process.env.NEXT_PUBLIC_URL_ENV
 const domain = process.env.NEXT_PUBLIC_BASE_URL
 
@@ -32,9 +33,9 @@ export function getDomain(cms = false) {
 }
 
 //Determines url for grabbing images
-export function domainImage(url: string, cms = false) {
+export function domainImage(url: string, cms = false, cmsSiteUrl = '') {
     if (cms == true) {
-        let imageUrl = 'http://' + cmsUrl + '.production.townsquareinteractive.com' + url
+        let imageUrl = 'http://' + (cmsSiteUrl || cmsUrl + '.production.townsquare.com') + url
         return encodeURI(imageUrl)
     } else {
         const assetsApi = process.env.NEXT_PUBLIC_API_URL_ASSETS || bucketUrl
@@ -94,6 +95,38 @@ export const decideColumns = (page: PageProps) => {
         return 'one-fourth_one-fourth_half'
     } else if (page.sections[1].wide == '232' && page.sections[2].wide == '484' && page.sections[3].wide == '232') {
         return 'one-fourth_half_one-fourth'
+    }
+}
+
+export const setColors = (cmsGlobalDesign: any, cmsTheme: string) => {
+    if (cmsTheme === 'beacon-theme_charlotte') {
+        return {
+            mainColor: cmsGlobalDesign.colors.color_8.value,
+            textColor: cmsGlobalDesign.colors.color_4.value,
+            headingColor: cmsGlobalDesign.colors.color_2.value,
+            textColorAccent: cmsGlobalDesign.colors.color_9.value,
+            linkColor: cmsGlobalDesign.colors.color_5.value,
+            accentBackgroundColor: cmsGlobalDesign.colors.color_8.value,
+            accentColor2: cmsGlobalDesign.colors.color_32.value,
+            altColor: cmsGlobalDesign.colors.color_31.value,
+            headerBackground: cmsGlobalDesign.colors.color_23.value,
+            footerBackground: cmsGlobalDesign.colors.color_27.value,
+            navBackground: cmsGlobalDesign.colors.color_23.value,
+        }
+    } else {
+        return {
+            mainColor: cmsGlobalDesign.colors.color_3.value,
+            textColor: cmsGlobalDesign.colors.color_3a.value,
+            headingColor: cmsGlobalDesign.colors.color_2.value,
+            textColorAccent: cmsGlobalDesign.colors.color_4.value,
+            linkColor: cmsGlobalDesign.colors.color_19.value,
+            accentBackgroundColor: cmsGlobalDesign.colors.color_3.value,
+            accentColor2: cmsGlobalDesign.colors.color_16.value,
+            altColor: cmsGlobalDesign.colors.color_16.value,
+            headerBackground: cmsGlobalDesign.colors.color_17.value,
+            footerBackground: cmsGlobalDesign.colors.color_20.value,
+            navBackground: cmsGlobalDesign.colors.color_16.value,
+        }
     }
 }
 

@@ -5,7 +5,7 @@ import { HomeProps, PageListProps, Context } from '../components/types'
 import Layout from '../components/Layout'
 import { Renderer } from '../components/Renderer'
 import { useRouter } from 'next/router'
-import { getDomain, decideColumns } from '../functions'
+import { getDomain, decideColumns, setColors } from '../functions'
 import cn from 'classnames'
 import { Fragment } from 'react'
 
@@ -24,7 +24,6 @@ export const getStaticPaths = async () => {
 
     return {
         paths,
-        //fallback: 'blocking',
         fallback: true,
     }
 }
@@ -37,14 +36,14 @@ export const getStaticProps = async (context: Context) => {
 
     const resCmsGlobal = await fetch(getDomain(true) + '/siteData.json')
     let cmsGlobal = await resCmsGlobal.json()
-    let cmsGlobalDesign = cmsGlobal.design.colors
+    let cmsGlobalDesign = cmsGlobal.design
 
     const resPage = await fetch(getDomain(true) + '/pages/' + slug + '.json')
     let page = await resPage.json()
-    page = page.backup.data || ''
+    page = page.publisher ? page.publisher.data : page.backup ? page.backup.data : ''
 
     return {
-        props: { page, globalData, cmsGlobalDesign },
+        props: { page, globalData, cmsGlobalDesign, cmsGlobal },
         // Next.js will attempt to re-generate the page:
         // - When a request comes in
         // - At most once every 10 seconds
@@ -53,23 +52,12 @@ export const getStaticProps = async (context: Context) => {
 }
 
 const Slug = (props: HomeProps) => {
-    const { page, globalData, cmsGlobalDesign } = props
+    const { page, globalData, cmsGlobalDesign, cmsGlobal } = props
     const router = useRouter()
+    const cmsTheme = cmsGlobalDesign ? cmsGlobalDesign.themes.selected : ''
 
     if (cmsGlobalDesign) {
-        globalData.themeStyles = {
-            mainColor: cmsGlobalDesign.color_8.value,
-            textColor: cmsGlobalDesign.color_4.value,
-            headingColor: cmsGlobalDesign.color_2.value,
-            textColorAccent: cmsGlobalDesign.color_9.value,
-            linkColor: cmsGlobalDesign.color_5.value,
-            accentBackgroundColor: cmsGlobalDesign.color_8.value,
-            accentColor2: cmsGlobalDesign.color_32.value,
-            altColor: cmsGlobalDesign.color_31.value,
-            headerBackground: cmsGlobalDesign.color_23.value,
-            footerBackground: cmsGlobalDesign.color_27.value,
-            navBackground: cmsGlobalDesign.color_23.value,
-        }
+        globalData.themeStyles = setColors(cmsGlobalDesign, cmsTheme)
     }
 
     let columnStyles
@@ -87,6 +75,8 @@ const Slug = (props: HomeProps) => {
             colorStyles = textColors + btnStyles
         }
     }
+
+    const cmsUrl = cmsGlobal ? cmsGlobal.config.website.url : ''
 
     // If the page is not yet generated, this will be displayed
     // initially until getStaticProps() finishes running
@@ -120,7 +110,12 @@ const Slug = (props: HomeProps) => {
                 <div className={styles.root}>
                     <style>{colorStyles}</style>
                     <div className={styles.featured}>
-                        <Renderer config={page.modules[0]} themeStyles={globalData.themeStyles} width={page.sections[0] ? page.sections[0].wide : ''} />
+                        <Renderer
+                            config={page.modules[0]}
+                            themeStyles={globalData.themeStyles}
+                            width={page.sections[0] ? page.sections[0].wide : ''}
+                            cmsUrl={cmsUrl}
+                        />
                     </div>
 
                     <div
@@ -143,7 +138,6 @@ const Slug = (props: HomeProps) => {
                                 {data && idx != 0 ? (
                                     <div
                                         className={cn(styles['column' + (idx + 1)], {
-                                            [styles.featured]: idx === 0,
                                             [styles[`column ${idx + 1}`]]: idx != 0,
                                             [styles.thirdColumn]: page.sections[idx] && page.sections[idx].wide == '316',
                                             [styles.halfColumn]: page.sections[idx] && page.sections[idx].wide == '484',
@@ -156,6 +150,7 @@ const Slug = (props: HomeProps) => {
                                             config={data}
                                             themeStyles={globalData.themeStyles}
                                             width={page.sections[idx] ? page.sections[idx].wide : ''}
+                                            cmsUrl={cmsUrl}
                                         />
                                     </div>
                                 ) : (
