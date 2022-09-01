@@ -25,9 +25,10 @@ export interface HomeProps {
     moduleData: ModuleData
     /* globalData: GlobalData */
     globalData: GlobalData
-    page: PageProps
+    page: any
     cmsGlobalDesign: any
     cmsGlobal: any
+    pageMods: PageProps
 }
 
 export interface LayoutProps {
@@ -604,4 +605,5 @@ export interface SeoData {
     description: string
     favicon: string
     ogImage: string
+    descr: string
 }

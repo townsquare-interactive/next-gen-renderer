@@ -101,31 +101,31 @@ export const decideColumns = (page: PageProps) => {
 export const setColors = (cmsGlobalDesign: any, cmsTheme: string) => {
     if (cmsTheme === 'beacon-theme_charlotte') {
         return {
-            mainColor: cmsGlobalDesign.colors.color_8.value,
-            textColor: cmsGlobalDesign.colors.color_4.value,
-            headingColor: cmsGlobalDesign.colors.color_2.value,
-            textColorAccent: cmsGlobalDesign.colors.color_9.value,
-            linkColor: cmsGlobalDesign.colors.color_5.value,
-            accentBackgroundColor: cmsGlobalDesign.colors.color_8.value,
-            accentColor2: cmsGlobalDesign.colors.color_32.value,
-            altColor: cmsGlobalDesign.colors.color_31.value,
-            headerBackground: cmsGlobalDesign.colors.color_23.value,
-            footerBackground: cmsGlobalDesign.colors.color_27.value,
-            navBackground: cmsGlobalDesign.colors.color_23.value,
+            mainColor: cmsGlobalDesign.color_8.value,
+            textColor: cmsGlobalDesign.color_4.value,
+            headingColor: cmsGlobalDesign.color_2.value,
+            textColorAccent: cmsGlobalDesign.color_9.value,
+            linkColor: cmsGlobalDesign.color_5.value,
+            accentBackgroundColor: cmsGlobalDesign.color_8.value,
+            accentColor2: cmsGlobalDesign.color_32.value,
+            altColor: cmsGlobalDesign.color_31.value,
+            headerBackground: cmsGlobalDesign.color_23.value,
+            footerBackground: cmsGlobalDesign.color_27.value,
+            navBackground: cmsGlobalDesign.color_23.value,
         }
     } else {
         return {
-            mainColor: cmsGlobalDesign.colors.color_3.value,
-            textColor: cmsGlobalDesign.colors.color_3a.value,
-            headingColor: cmsGlobalDesign.colors.color_2.value,
-            textColorAccent: cmsGlobalDesign.colors.color_4.value,
-            linkColor: cmsGlobalDesign.colors.color_19.value,
-            accentBackgroundColor: cmsGlobalDesign.colors.color_3.value,
-            accentColor2: cmsGlobalDesign.colors.color_16.value,
-            altColor: cmsGlobalDesign.colors.color_16.value,
-            headerBackground: cmsGlobalDesign.colors.color_17.value,
-            footerBackground: cmsGlobalDesign.colors.color_20.value,
-            navBackground: cmsGlobalDesign.colors.color_16.value,
+            mainColor: cmsGlobalDesign.color_3.value,
+            textColor: cmsGlobalDesign.color_3a.value,
+            headingColor: cmsGlobalDesign.color_2.value,
+            textColorAccent: cmsGlobalDesign.color_4.value,
+            linkColor: cmsGlobalDesign.color_19.value,
+            accentBackgroundColor: cmsGlobalDesign.color_3.value,
+            accentColor2: cmsGlobalDesign.color_16.value,
+            altColor: cmsGlobalDesign.color_16.value,
+            headerBackground: cmsGlobalDesign.color_17.value,
+            footerBackground: cmsGlobalDesign.color_20.value,
+            navBackground: cmsGlobalDesign.color_16.value,
         }
     }
 }
