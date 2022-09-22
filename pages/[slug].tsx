@@ -56,7 +56,7 @@ const Slug = (props: HomeProps) => {
     let themeStyles
     if (cmsGlobalDesign) {
         themeStyles = setColors(cmsGlobalDesign.colors, cmsTheme)
-    } else {
+    } else if (globalData) {
         themeStyles = globalData.themeStyles
     }
 
@@ -66,11 +66,11 @@ const Slug = (props: HomeProps) => {
 
     let columnStyles
     let colorStyles
-    if (page.data) {
+    if (page && page.data) {
         columnStyles = decideColumns(page.data)
 
         //Global styles
-        if (cmsGlobalDesign || globalData.themeStyles) {
+        if (themeStyles) {
             const textColors = `.accent-txt{color:${themeStyles['textColorAccent']}} .txt-color{color:${themeStyles['textColor']}} .txt-color-heading{color:${themeStyles['headingColor']}}`
 
             const btnStyles = `.btn_1{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles.mainColor}} .btn_1:hover{color: ${themeStyles['mainColor']}; background-color: ${themeStyles['textColorAccent']}} .btn_2{color: ${themeStyles['altColor']}; border-color: ${themeStyles['altColor']}} .btn_2:hover{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['altColor']}}`
