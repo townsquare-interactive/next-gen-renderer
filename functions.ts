@@ -27,7 +27,8 @@ export function getDomain(cms = false) {
         let domainUrl = process.env.NEXT_PUBLIC_URL_ENV ? envCheck(apiUrl) : apiUrl + '/' + localUrl
         return domainUrl
     } else {
-        let domainUrl = bucketUrl + '/' + cmsUrl
+        /* let domainUrl = bucketUrl + '/' + cmsUrl */
+        let domainUrl = bucketUrl + '/' + 'wordpress'
         return domainUrl
     }
 }

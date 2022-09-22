@@ -25,7 +25,7 @@ export interface HomeProps {
     moduleData: ModuleData
     /* globalData: GlobalData */
     globalData: GlobalData
-    page: any
+    page: CMSPage
     cmsGlobalDesign: any
     cmsGlobal: any
     pageMods: PageProps
@@ -43,6 +43,24 @@ export interface GlobalData {
     layout?: number
     modules: GlobalModule[]
     seo?: SeoData
+}
+
+export interface CMSPage {
+    seo?: SeoData
+    attrs?: {}
+    data: CMSPageData
+}
+
+export interface CMSPageData {
+    attributes: NavigationProps | FooterProps
+    modules: Module[]
+    type?: string
+    layout?: number
+    columns?: number | string
+    JS?: string | null
+    head_script: string | null
+    hideTitle: number
+    sections: [{ wide: string }, { wide: string }, { wide: string }, { wide: string }, { wide: string }]
 }
 
 export interface GlobalModule {
@@ -601,9 +619,11 @@ export interface NavBarProps {
 }
 
 export interface SeoData {
-    title: string
-    description: string
-    favicon: string
-    ogImage: string
-    descr: string
+    title?: string
+    description?: string
+    favicon?: string
+    ogImage?: string
+    descr?: string
+    imageOverride?: any
+    selectedImage?: string
 }

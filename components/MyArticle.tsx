@@ -272,7 +272,7 @@ const ItemWrap = (props: ItemWrapProps) => {
                             ['txt-color']: !well && !beaconHero,
                         })}
                     >
-                        <p className={cn(styles['dsc'])}>{item.desc}</p>
+                        <p className={cn(styles['dsc'])}>{Parser(item.desc)}</p>
                     </div>
                 </div>
             )}

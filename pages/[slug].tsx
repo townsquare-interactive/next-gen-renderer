@@ -9,8 +9,6 @@ import { getDomain, decideColumns, setColors, domainImage } from '../functions'
 import cn from 'classnames'
 import { Fragment } from 'react'
 
-/* import NextCors from 'nextjs-cors' */
-
 //runs at build time just like static props
 export const getStaticPaths = async () => {
     const res = await fetch(getDomain(true) + '/pages/page-list.json')
@@ -40,10 +38,9 @@ export const getStaticProps = async (context: Context) => {
 
     const resPage = await fetch(getDomain(true) + '/pages/' + slug + '.json')
     let page = await resPage.json()
-    const pageMods = page.publisher ? page.publisher.data : page.backup ? page.backup.data : ''
 
     return {
-        props: { page, globalData, cmsGlobalDesign, cmsGlobal, pageMods },
+        props: { page, globalData, cmsGlobalDesign, cmsGlobal },
         // Next.js will attempt to re-generate the page:
         // - When a request comes in
         // - At most once every 10 seconds
@@ -52,9 +49,16 @@ export const getStaticProps = async (context: Context) => {
 }
 
 const Slug = (props: HomeProps) => {
-    const { page, globalData, cmsGlobalDesign, cmsGlobal, pageMods } = props
+    const { page, globalData, cmsGlobalDesign, cmsGlobal } = props
     const router = useRouter()
     const cmsTheme = cmsGlobalDesign ? cmsGlobalDesign.themes.selected : ''
+
+    let themeStyles
+    if (cmsGlobalDesign) {
+        themeStyles = setColors(cmsGlobalDesign.colors, cmsTheme)
+    } else {
+        themeStyles = globalData.themeStyles
+    }
 
     if (cmsGlobalDesign) {
         globalData.themeStyles = setColors(cmsGlobalDesign.colors, cmsTheme)
@@ -62,21 +66,22 @@ const Slug = (props: HomeProps) => {
 
     let columnStyles
     let colorStyles
-
-    if (pageMods) {
-        columnStyles = decideColumns(pageMods)
+    if (page.data) {
+        columnStyles = decideColumns(page.data)
 
         //Global styles
-        if (cmsGlobalDesign && globalData.themeStyles) {
-            const textColors = `.accent-txt{color:${globalData.themeStyles['textColorAccent']}} .txt-color{color:${globalData.themeStyles['textColor']}} .txt-color-heading{color:${globalData.themeStyles['headingColor']}}`
+        if (cmsGlobalDesign || globalData.themeStyles) {
+            const textColors = `.accent-txt{color:${themeStyles['textColorAccent']}} .txt-color{color:${themeStyles['textColor']}} .txt-color-heading{color:${themeStyles['headingColor']}}`
 
-            const btnStyles = `.btn_1{color: ${globalData.themeStyles['textColorAccent']}; background-color: ${globalData.themeStyles.mainColor}} .btn_1:hover{color: ${globalData.themeStyles['mainColor']}; background-color: ${globalData.themeStyles['textColorAccent']}} .btn_2{color: ${globalData.themeStyles['altColor']}; border-color: ${globalData.themeStyles['altColor']}} .btn_2:hover{color: ${globalData.themeStyles['textColorAccent']}; background-color: ${globalData.themeStyles['altColor']}}`
+            const btnStyles = `.btn_1{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles.mainColor}} .btn_1:hover{color: ${themeStyles['mainColor']}; background-color: ${themeStyles['textColorAccent']}} .btn_2{color: ${themeStyles['altColor']}; border-color: ${themeStyles['altColor']}} .btn_2:hover{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['altColor']}}`
 
             colorStyles = textColors + btnStyles
         }
     }
 
-    const cmsUrl = cmsGlobal ? cmsGlobal.config.website.url : ''
+    //temp: temporary change need to change back
+    /* const cmsUrl = cmsGlobal ? cmsGlobal.config.website.url : '' */
+    const cmsUrl = 'clttestsiteforjoshedwards.production.townsquareinteractive.com'
 
     // If the page is not yet generated, this will be displayed
     // initially until getStaticProps() finishes running
@@ -90,8 +95,8 @@ const Slug = (props: HomeProps) => {
                 <title>{page.seo?.title || 'title'}</title>
                 {page.seo?.title && <meta property="og:title" content={page.seo.title} key="title" />}
                 {page.seo?.descr && <meta name="description" content={page.seo.descr} />}
-                {page.seo.imageOverride ||
-                    (page.seo.selectedImage && (
+                {page.seo?.imageOverride ||
+                    (page.seo?.selectedImage && (
                         <>
                             <meta property="og:image" content={domainImage(page.seo.imageOverride || page.seo.selectedImage[0], true, cmsUrl)} />
                             <meta property="og:image:type" content="image/jpg" />
@@ -103,14 +108,14 @@ const Slug = (props: HomeProps) => {
             </Head>
 
             <Layout moduleData={globalData}>
-                {pageMods && (
+                {page.data && (
                     <div className={styles.root}>
                         <style>{colorStyles}</style>
                         <div className={styles.featured}>
                             <Renderer
-                                config={pageMods.modules[0]}
-                                themeStyles={globalData.themeStyles}
-                                width={pageMods.sections[0] ? pageMods.sections[0].wide : ''}
+                                config={page.data.modules[0]}
+                                themeStyles={themeStyles}
+                                width={page.data.sections[0] ? page.data.sections[0].wide : ''}
                                 cmsUrl={cmsUrl}
                             />
                         </div>
@@ -130,23 +135,23 @@ const Slug = (props: HomeProps) => {
                                 [styles['one-fourth_half_one-fourth']]: columnStyles === 'one-fourth_half_one-fourth',
                             })}
                         >
-                            {pageMods.modules.map((data, idx) => (
+                            {page.data.modules.map((data: any, idx: number) => (
                                 <Fragment key={idx}>
                                     {data && idx != 0 ? (
                                         <div
                                             className={cn(styles['column' + (idx + 1)], {
                                                 [styles[`column ${idx + 1}`]]: idx != 0,
-                                                [styles.thirdColumn]: pageMods.sections[idx] && pageMods.sections[idx].wide == '316',
-                                                [styles.halfColumn]: pageMods.sections[idx] && pageMods.sections[idx].wide == '484',
-                                                [styles.twoThirdColumn]: pageMods.sections[idx] && pageMods.sections[idx].wide == '652',
-                                                [styles.threeFourthColumn]: pageMods.sections[idx] && pageMods.sections[idx].wide == '736',
-                                                [styles.oneFourthColumn]: pageMods.sections[idx] && pageMods.sections[idx].wide == '232',
+                                                [styles.thirdColumn]: page.data.sections[idx] && page.data.sections[idx].wide == '316',
+                                                [styles.halfColumn]: page.data.sections[idx] && page.data.sections[idx].wide == '484',
+                                                [styles.twoThirdColumn]: page.data.sections[idx] && page.data.sections[idx].wide == '652',
+                                                [styles.threeFourthColumn]: page.data.sections[idx] && page.data.sections[idx].wide == '736',
+                                                [styles.oneFourthColumn]: page.data.sections[idx] && page.data.sections[idx].wide == '232',
                                             })}
                                         >
                                             <Renderer
                                                 config={data}
                                                 themeStyles={globalData.themeStyles}
-                                                width={pageMods.sections[idx] ? pageMods.sections[idx].wide : ''}
+                                                width={page.data.sections[idx] ? page.data.sections[idx].wide : ''}
                                                 cmsUrl={cmsUrl}
                                             />
                                         </div>
