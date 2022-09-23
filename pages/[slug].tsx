@@ -29,12 +29,12 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context: Context) => {
     const slug = context.params.slug
 
-    const resGlobal = await fetch(getDomain() + '/global.json')
+    const resGlobal = await fetch(getDomain(true) + '/global.json')
     const globalData = await resGlobal.json()
 
     const resCmsGlobal = await fetch(getDomain(true) + '/siteData.json')
     let cmsGlobal = await resCmsGlobal.json()
-    let cmsGlobalDesign = cmsGlobal.design
+    //let cmsGlobalDesign = cmsGlobal.design
 
     const resPage = await fetch(getDomain(true) + '/pages/' + slug + '.json')
     let page = await resPage.json()
@@ -43,7 +43,7 @@ export const getStaticProps = async (context: Context) => {
     const pageList = await resPageList.json()
 
     return {
-        props: { page, globalData, cmsGlobalDesign, cmsGlobal, pageList },
+        props: { page, globalData, cmsGlobal, pageList },
         // Next.js will attempt to re-generate the page:
         // - When a request comes in
         // - At most once every 10 seconds
@@ -52,19 +52,21 @@ export const getStaticProps = async (context: Context) => {
 }
 
 const Slug = (props: HomeProps) => {
-    const { page, globalData, cmsGlobalDesign, cmsGlobal, pageList } = props
+    const { page, globalData, cmsGlobal, pageList } = props
     const router = useRouter()
+
+    const cmsGlobalDesign = cmsGlobal.design
     const cmsTheme = cmsGlobalDesign ? cmsGlobalDesign.themes.selected : ''
 
-    console.log('globalData,', page)
-
-    for (let i = 0; i < globalData.modules.length; i++) {
+    /*     for (let i = 0; i < globalData.modules.length; i++) {
         globalData.modules[i].attributes.pages = pageList.pages
     }
-
+ */
     let themeStyles
 
     themeStyles = setColors(cmsGlobalDesign.colors, cmsTheme)
+
+    globalData.themeStyles = setColors(cmsGlobalDesign.colors, cmsTheme)
 
     //removing if statement for hydration
     /*  if (cmsGlobalDesign) {
@@ -86,7 +88,7 @@ const Slug = (props: HomeProps) => {
         if (themeStyles) {
             const textColors = `.accent-txt{color:${themeStyles['textColorAccent']}} .txt-color{color:${themeStyles['textColor']}} .txt-color-heading{color:${themeStyles['headingColor']}}`
 
-            const btnStyles = `.btn_1{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles.mainColor}} .btn_1:hover{color: ${themeStyles['mainColor']}; background-color: ${themeStyles['textColorAccent']}} .btn_2{color: ${themeStyles['altColor']}; border-color: ${themeStyles['altColor']}} .btn_2:hover{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['altColor']}}`
+            const btnStyles = `.btn_1{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['mainColor']}} .btn_1:hover{color: ${themeStyles['mainColor']}; background-color: ${themeStyles['textColorAccent']}} .btn_2{color: ${themeStyles['altColor']}; border-color: ${themeStyles['altColor']}} .btn_2:hover{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['altColor']}}`
 
             colorStyles = textColors + btnStyles
         }
