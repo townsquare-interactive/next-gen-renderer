@@ -3,37 +3,40 @@
 @use '../styles/variables.scss';
 @use '../styles/utils.module.scss';
 
+$nav-item-padding: 2%;
+
 .root {
     width: 100%;
 
     .wrapper {
-        ul {
-            padding: 0;
-            margin: 0;
+        padding: 0;
+        margin: 0;
 
-            li {
-                text-decoration: none;
-                list-style-type: none;
-                padding: 10px;
-                //color: variables.$textColorAccent;
-                @include utils.text-sizes-md;
+        div {
+            text-decoration: none;
+            list-style-type: none;
+            padding: $nav-item-padding; //color: variables.$textColorAccent;
+            vertical-align: top;
 
-                &.bordered {
-                    margin-bottom: 20px;
-                    padding-bottom: 20px;
-                    border-bottom: 1px solid variables.$textColorAccent;
-                }
-            }
+            @include utils.text-sizes-md;
 
-            @include breakpoints.xs {
-                columns: 2;
+            &.bordered {
+                margin-bottom: 20px;
+                padding-bottom: 20px;
+                border-bottom: 1px solid variables.$textColorAccent;
             }
         }
 
         &.headerNav {
-            li {
+            div {
                 text-align: left;
-                padding: 10px;
+                padding: 2%;
+
+                @include breakpoints.xs {
+                    // columns: 2;
+                    width: math.div(100%, 2)- $nav-item-padding * 2;
+                    display: inline-block;
+                }
             }
 
             ul {
@@ -42,13 +45,20 @@
         }
 
         &.footerNav {
-            li {
-                padding: 5px;
-
-                @media (max-width: breakpoints.$screen-md-min) {
-                    font-size: variables.$text-size-body-md;
-                    padding: 10px;
+            div {
+                // padding: 5px;
+                padding: 1%;
+                @include breakpoints.xs {
+                    width: math.div(100%, 2)- 1% * 2;
+                    display: inline-block;
                 }
+            }
+
+            @media (max-width: breakpoints.$screen-md-min) {
+                font-size: variables.$text-size-body-md;
+                padding: 2%;
+                width: math.div(100%, 2)- 2% * 2;
+                display: inline-block;
             }
         }
     }

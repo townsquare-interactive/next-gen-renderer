@@ -39,8 +39,11 @@ export const getStaticProps = async (context: Context) => {
     const resPage = await fetch(getDomain(true) + '/pages/' + slug + '.json')
     let page = await resPage.json()
 
+    const resPageList = await fetch(getDomain(true) + '/pages/page-list.json')
+    const pageList = await resPageList.json()
+
     return {
-        props: { page, globalData, cmsGlobalDesign, cmsGlobal },
+        props: { page, globalData, cmsGlobalDesign, cmsGlobal, pageList },
         // Next.js will attempt to re-generate the page:
         // - When a request comes in
         // - At most once every 10 seconds
@@ -49,12 +52,22 @@ export const getStaticProps = async (context: Context) => {
 }
 
 const Slug = (props: HomeProps) => {
-    const { page, globalData, cmsGlobalDesign, cmsGlobal } = props
+    const { page, globalData, cmsGlobalDesign, cmsGlobal, pageList } = props
     const router = useRouter()
     const cmsTheme = cmsGlobalDesign ? cmsGlobalDesign.themes.selected : ''
 
+    console.log('globalData,', page)
+
+    for (let i = 0; i < globalData.modules.length; i++) {
+        globalData.modules[i].attributes.pages = pageList.pages
+    }
+
     let themeStyles
-    if (cmsGlobalDesign) {
+
+    themeStyles = setColors(cmsGlobalDesign.colors, cmsTheme)
+
+    //removing if statement for hydration
+    /*  if (cmsGlobalDesign) {
         themeStyles = setColors(cmsGlobalDesign.colors, cmsTheme)
     } else if (globalData) {
         themeStyles = globalData.themeStyles
@@ -62,7 +75,7 @@ const Slug = (props: HomeProps) => {
 
     if (cmsGlobalDesign) {
         globalData.themeStyles = setColors(cmsGlobalDesign.colors, cmsTheme)
-    }
+    } */
 
     let columnStyles
     let colorStyles

@@ -29,6 +29,7 @@ export interface HomeProps {
     cmsGlobalDesign: any
     cmsGlobal: any
     pageMods: PageProps
+    pageList: Pagelist
 }
 
 export interface LayoutProps {
@@ -502,6 +503,10 @@ export interface AddressData {
     zip: string
 }
 
+export interface Pagelist {
+    pages: PagesProps[]
+}
+
 export interface FooterProps {
     /**Data for links to social platforms*/
     socialData: SocialData[]
@@ -556,6 +561,7 @@ export interface PagesProps {
     name: string
     slug: string
     id: string
+    url: string
 }
 
 export interface NavProps {

@@ -59,9 +59,8 @@ const Home = (props: HomeProps) => {
             </Head>
 
             <Layout moduleData={globalData}>
-                {/*   <style>{dynamicCss}</style> */}
-
-                <Renderer config={page.modules} themeStyles={globalData.themeStyles} />
+                {/*hiding render of homepage for now*/}
+                {/* <Renderer config={page.modules} themeStyles={globalData.themeStyles} /> */}
             </Layout>
         </div>
     )
