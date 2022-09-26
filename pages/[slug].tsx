@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.scss'
 import { HomeProps, PageListProps, Context } from '../components/types'
-/* import { GetStaticProps } from 'next' */
 import Layout from '../components/Layout'
 import { Renderer } from '../components/Renderer'
 import { useRouter } from 'next/router'
@@ -29,8 +28,8 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context: Context) => {
     const slug = context.params.slug
 
-    const resGlobal = await fetch(getDomain(true) + '/global.json')
-    const globalData = await resGlobal.json()
+    const resLayout = await fetch(getDomain(true) + '/layout.json')
+    const CMSLayout = await resLayout.json()
 
     const resCmsGlobal = await fetch(getDomain(true) + '/siteData.json')
     let cmsGlobal = await resCmsGlobal.json()
@@ -43,7 +42,7 @@ export const getStaticProps = async (context: Context) => {
     const pageList = await resPageList.json()
 
     return {
-        props: { page, globalData, cmsGlobal, pageList },
+        props: { page, CMSLayout, cmsGlobal, pageList },
         // Next.js will attempt to re-generate the page:
         // - When a request comes in
         // - At most once every 10 seconds
@@ -52,40 +51,23 @@ export const getStaticProps = async (context: Context) => {
 }
 
 const Slug = (props: HomeProps) => {
-    let { page, globalData, cmsGlobal, pageList } = props
+    let { page, CMSLayout, cmsGlobal, pageList } = props
     const router = useRouter()
 
     const cmsGlobalDesign = cmsGlobal ? cmsGlobal.design : ''
     const cmsTheme = cmsGlobalDesign ? cmsGlobalDesign?.themes.selected : ''
 
-    /*     for (let i = 0; i < globalData.modules.length; i++) {
-        globalData.modules[i].attributes.pages = pageList.pages
+    /*     for (let i = 0; i < CMSLayout.modules.length; i++) {
+        CMSLayout.modules[i].attributes.pages = pageList.pages
     }
  */
 
     const themeStyles = setColors(cmsGlobalDesign?.colors, cmsTheme)
 
-    //setting themestyles in globalData, will probably change later
-    //globalData = { ...globalData, themeStyles: setColors(cmsGlobalDesign?.colors, cmsTheme) }
+    //setting themestyles in CMSLayout, will probably change later
+    //CMSLayout = { ...CMSLayout, themeStyles: setColors(cmsGlobalDesign?.colors, cmsTheme) }
 
-    /*  globalData.themeStyles = setColors(cmsGlobalDesign?.colors, cmsTheme) */
-
-    //removing if statement for hydration
-    /*  if (cmsGlobalDesign) {
-        themeStyles = setColors(cmsGlobalDesign.colors, cmsTheme)
-    } else if (globalData) {
-        themeStyles = globalData.themeStyles
-    }
-
-    if (cmsGlobalDesign) {
-        globalData.themeStyles = setColors(cmsGlobalDesign.colors, cmsTheme)
-    } */
-    /* 
-    let columnStyles
-    let colorStyles */
-    /*     if (page && page.data) {
-        const columnStyles = decideColumns(page.data)
-    } */
+    /*  CMSLayout.themeStyles = setColors(cmsGlobalDesign?.colors, cmsTheme) */
 
     const columnStyles = page ? decideColumns(page.data) : 'wide-column'
 
@@ -125,7 +107,7 @@ const Slug = (props: HomeProps) => {
                 {cmsGlobal.config.website.favicon.src && <link rel="shortcut icon" href={domainImage(cmsGlobal.config.website.favicon.src, true, cmsUrl)} />}
             </Head>
 
-            <Layout moduleData={globalData} themeStyles={themeStyles}>
+            <Layout moduleData={CMSLayout} themeStyles={themeStyles}>
                 {page.data && (
                     <div className={styles.root}>
                         <style>{colorStyles}</style>

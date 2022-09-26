@@ -24,7 +24,7 @@ export interface Module {
 export interface HomeProps {
     moduleData: ModuleData
     /* globalData: GlobalData */
-    globalData: GlobalData
+    CMSLayout: GlobalData
     page: CMSPage
     /*     cmsGlobalDesign: any */
     cmsGlobal: CMSGlobal
