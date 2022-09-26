@@ -66,7 +66,7 @@ const Slug = (props: HomeProps) => {
     const themeStyles = setColors(cmsGlobalDesign?.colors, cmsTheme)
 
     //setting themestyles in globalData, will probably change later
-    globalData = { ...globalData, themeStyles: setColors(cmsGlobalDesign?.colors, cmsTheme) }
+    //globalData = { ...globalData, themeStyles: setColors(cmsGlobalDesign?.colors, cmsTheme) }
 
     /*  globalData.themeStyles = setColors(cmsGlobalDesign?.colors, cmsTheme) */
 
@@ -125,7 +125,7 @@ const Slug = (props: HomeProps) => {
                 {cmsGlobal.config.website.favicon.src && <link rel="shortcut icon" href={domainImage(cmsGlobal.config.website.favicon.src, true, cmsUrl)} />}
             </Head>
 
-            <Layout moduleData={globalData}>
+            <Layout moduleData={globalData} themeStyles={themeStyles}>
                 {page.data && (
                     <div className={styles.root}>
                         <style>{colorStyles}</style>
@@ -168,7 +168,7 @@ const Slug = (props: HomeProps) => {
                                         >
                                             <Renderer
                                                 config={data}
-                                                themeStyles={globalData.themeStyles}
+                                                themeStyles={themeStyles}
                                                 width={page.data.sections[idx] ? page.data.sections[idx].wide : ''}
                                                 cmsUrl={cmsUrl}
                                             />

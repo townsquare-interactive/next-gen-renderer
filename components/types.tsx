@@ -50,12 +50,13 @@ export interface CMSGlobal {
 export interface LayoutProps {
     children: ReactNode
     moduleData: GlobalData
+    themeStyles: ThemeStyles
 }
 
 export interface GlobalData {
     logoUrl?: string
     navStyle?: 'layout1' | 'layout2'
-    themeStyles: ThemeStyles
+    //themeStyles: ThemeStyles
     layout?: number
     modules: GlobalModule[]
     seo?: SeoData

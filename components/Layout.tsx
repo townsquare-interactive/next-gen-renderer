@@ -4,7 +4,7 @@ import cn from 'classnames'
 import { Renderer } from '../components/Renderer'
 
 export default function Layout(props: LayoutProps) {
-    const { children, moduleData } = props
+    const { children, moduleData, themeStyles } = props
     //Placing nav data na footer data into two different arrays
     const navigationModule = moduleData.modules.filter((module: GlobalModule) => module.componentType === 'navigation')
     const footerModule = moduleData.modules.filter((module: GlobalModule) => module.componentType === 'footer')
@@ -16,11 +16,11 @@ export default function Layout(props: LayoutProps) {
             })}
         >
             <header>
-                <Renderer config={navigationModule} themeStyles={moduleData.themeStyles} />
+                <Renderer config={navigationModule} themeStyles={themeStyles} />
             </header>
             <main>{children}</main>
             <footer>
-                <Renderer config={footerModule} themeStyles={moduleData.themeStyles} />
+                <Renderer config={footerModule} themeStyles={themeStyles} />
             </footer>
         </div>
     )
