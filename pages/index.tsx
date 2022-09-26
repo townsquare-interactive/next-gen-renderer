@@ -14,7 +14,7 @@ import { useRouter } from 'next/router'
 //const domain = encodeURI('localhost:3000')
 /* const domain = encodeURI(process.env.NEXT_PUBLIC_BASE_URL + '')*/
 
-export const getStaticProps = async (context: Context) => {
+/* export const getStaticProps = async (context: Context) => {
     //grabs 1 item each time
     const domain = getDomain()
     console.log('The URL of this page is: ' + domain)
@@ -31,18 +31,18 @@ export const getStaticProps = async (context: Context) => {
         // - At most once every 10 seconds
         revalidate: 10, // In seconds
     }
-}
+} */
 
 const Home = (props: HomeProps) => {
-    const { page, globalData } = props
+    /*     const { page, globalData } = props
     const router = useRouter()
 
     if (router.isFallback) {
         return <div>Loading...</div>
-    }
+    } */
 
     return (
-        <div>
+        /*  <div>
             <Head>
                 <title>{page.seo?.title || 'title'}</title>
                 {page.seo?.title && <meta property="og:title" content={page.seo.title} key="title" />}
@@ -59,11 +59,11 @@ const Home = (props: HomeProps) => {
             </Head>
 
             <Layout moduleData={globalData}>
-                {/*   <style>{dynamicCss}</style> */}
-
-                <Renderer config={page.modules} themeStyles={globalData.themeStyles} />
+                
+               <Renderer config={page.modules} themeStyles={globalData.themeStyles} /> 
             </Layout>
-        </div>
+                </div> */
+        <div>Hello</div>
     )
 }
 

@@ -23,7 +23,7 @@ const Nav = (props: NavProps) => {
             >
                 <style>{navHover}</style>
 
-                <ul>
+                {/* <ul>
                     {pages.map((item, index) => (
                         <li
                             key={index}
@@ -31,12 +31,25 @@ const Nav = (props: NavProps) => {
                                 [styles.bordered]: index === borderNum,
                             })}
                         >
-                            <Link href={item.slug}>
+                            <Link href={item.url}>
                                 <a className="navLink">{item.name}</a>
                             </Link>
                         </li>
                     ))}
-                </ul>
+                </ul> */}
+
+                {pages.map((item, index) => (
+                    <div
+                        key={index}
+                        className={cn({
+                            [styles.bordered]: index === borderNum,
+                        })}
+                    >
+                        <Link href={item.url}>
+                            <a className="navLink">{item.name}</a>
+                        </Link>
+                    </div>
+                ))}
             </div>
         </nav>
     )

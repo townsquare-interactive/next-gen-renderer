@@ -11,8 +11,11 @@ const Navigation = (props: NavigationProps) => {
     const { navStyle = 'layout1', logoUrl, pages, navImage, borderNum, altText = '', themeStyles } = props
     const [navCheck, setNav] = useState<boolean>(false)
 
-    const navImageDomain = navImage && domainImage(navImage)
-    const logoDomain = logoUrl && domainImage(logoUrl)
+    //TEMP: Need to change later
+    /* const navImageDomain = navImage && domainImage(navImage)
+     const logoDomain = logoUrl && domainImage(logoUrl) */
+    const navImageDomain = logoUrl && domainImage(logoUrl, true, 'clttestsiteforjoshedwards.production.townsquareinteractive.com')
+    const logoDomain = logoUrl && domainImage(logoUrl, true, 'clttestsiteforjoshedwards.production.townsquareinteractive.com')
 
     const themeStylesObj = {
         background: `${themeStyles['headerBackground']}`,
@@ -69,6 +72,7 @@ const Navbar = (props: NavBarProps) => {
                     <div className={styles.navItems}>{<Nav pages={pages} modLayout="header" borderNum={borderNum} themeStyles={themeStyles} />}</div>
                     {navImage && (
                         <div className={styles.imageTile}>
+                            {/* <Image src={navImage} layout="fill" alt={altText} objectFit="cover" quality="50" /> */}
                             <Image src={navImage} layout="fill" alt={altText} objectFit="cover" quality="50" />
                         </div>
                     )}
