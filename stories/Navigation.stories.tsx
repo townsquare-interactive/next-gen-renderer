@@ -16,33 +16,45 @@ Default.args = {
             name: 'Home',
             slug: '/home',
             id: '0',
+            page_type: '',
+            url: '/home',
         },
         {
             name: 'Hockey',
             slug: '/hockey',
+            url: '/hockey',
             id: '1',
+            page_type: '',
         },
         {
             name: 'Football',
             slug: '/football',
+            url: '/football',
             id: '2',
+            page_type: '',
         },
         {
             name: 'Reviews',
             slug: '/reviews',
+            url: '/reviews',
             id: '3',
+            page_type: '',
         },
 
         {
             name: 'Contact',
             slug: '/contact',
+            url: '/contact',
             id: '6',
+            page_type: '',
         },
 
         {
             name: 'Other',
             slug: '/',
+            url: '/',
             id: '7',
+            page_type: '',
         },
     ],
 

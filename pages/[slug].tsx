@@ -64,8 +64,11 @@ const Slug = (props: HomeProps) => {
  */
 
     //check homepage for page_type, if it does not exist pass first page
-    const homePage = pageList.pages.filter((e) => e.page_type === 'home')
-    const homePageName = homePage || pageList.pages[0]
+    if (pageList.pages) {
+        const homePage = pageList.pages.filter((e) => e.page_type === 'home') || pageList.pages[0]
+        const homePageName = homePage.length != 0 ? homePage : pageList.pages[0]
+        console.log(homePageName)
+    }
 
     const themeStyles = setColors(cmsGlobalDesign?.colors, cmsTheme)
 
