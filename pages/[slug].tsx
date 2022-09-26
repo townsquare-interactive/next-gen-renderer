@@ -52,21 +52,23 @@ export const getStaticProps = async (context: Context) => {
 }
 
 const Slug = (props: HomeProps) => {
-    const { page, globalData, cmsGlobal, pageList } = props
+    let { page, globalData, cmsGlobal, pageList } = props
     const router = useRouter()
 
-    const cmsGlobalDesign = cmsGlobal.design
-    const cmsTheme = cmsGlobalDesign ? cmsGlobalDesign.themes.selected : ''
+    const cmsGlobalDesign = cmsGlobal ? cmsGlobal.design : ''
+    const cmsTheme = cmsGlobalDesign ? cmsGlobalDesign?.themes.selected : ''
 
     /*     for (let i = 0; i < globalData.modules.length; i++) {
         globalData.modules[i].attributes.pages = pageList.pages
     }
  */
-    let themeStyles
 
-    themeStyles = setColors(cmsGlobalDesign.colors, cmsTheme)
+    const themeStyles = setColors(cmsGlobalDesign?.colors, cmsTheme)
 
-    globalData.themeStyles = setColors(cmsGlobalDesign.colors, cmsTheme)
+    //setting themestyles in globalData, will probably change later
+    globalData = { ...globalData, themeStyles: setColors(cmsGlobalDesign?.colors, cmsTheme) }
+
+    /*  globalData.themeStyles = setColors(cmsGlobalDesign?.colors, cmsTheme) */
 
     //removing if statement for hydration
     /*  if (cmsGlobalDesign) {
@@ -78,21 +80,22 @@ const Slug = (props: HomeProps) => {
     if (cmsGlobalDesign) {
         globalData.themeStyles = setColors(cmsGlobalDesign.colors, cmsTheme)
     } */
-
+    /* 
     let columnStyles
-    let colorStyles
-    if (page && page.data) {
-        columnStyles = decideColumns(page.data)
+    let colorStyles */
+    /*     if (page && page.data) {
+        const columnStyles = decideColumns(page.data)
+    } */
 
-        //Global styles
-        if (themeStyles) {
-            const textColors = `.accent-txt{color:${themeStyles['textColorAccent']}} .txt-color{color:${themeStyles['textColor']}} .txt-color-heading{color:${themeStyles['headingColor']}}`
+    const columnStyles = page ? decideColumns(page.data) : 'wide-column'
 
-            const btnStyles = `.btn_1{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['mainColor']}} .btn_1:hover{color: ${themeStyles['mainColor']}; background-color: ${themeStyles['textColorAccent']}} .btn_2{color: ${themeStyles['altColor']}; border-color: ${themeStyles['altColor']}} .btn_2:hover{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['altColor']}}`
+    //Global styles
 
-            colorStyles = textColors + btnStyles
-        }
-    }
+    const textColors = `.accent-txt{color:${themeStyles['textColorAccent']}} .txt-color{color:${themeStyles['textColor']}} .txt-color-heading{color:${themeStyles['headingColor']}}`
+
+    const btnStyles = `.btn_1{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['mainColor']}} .btn_1:hover{color: ${themeStyles['mainColor']}; background-color: ${themeStyles['textColorAccent']}} .btn_2{color: ${themeStyles['altColor']}; border-color: ${themeStyles['altColor']}} .btn_2:hover{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['altColor']}}`
+
+    const colorStyles = textColors + btnStyles
 
     //temp: temporary change need to change back
     /* const cmsUrl = cmsGlobal ? cmsGlobal.config.website.url : '' */

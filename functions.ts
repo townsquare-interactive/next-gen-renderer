@@ -1,8 +1,9 @@
-import { ConditionalWrapperProps, Module, PageProps } from 'components/types'
+import { ConditionalWrapperProps, Module, PageProps, CMSColors } from 'components/types'
 
 const bucketUrl = 'https://townsquareinteractive.s3.amazonaws.com'
 const localUrl = 'elitesports.com/preview'
 const cmsUrl = 'clttestsiteforjoshedwards'
+
 /* const cmsUrl = 'joshedwards' */
 const env = process.env.NEXT_PUBLIC_URL_ENV
 const domain = process.env.NEXT_PUBLIC_BASE_URL
@@ -99,7 +100,7 @@ export const decideColumns = (page: PageProps) => {
     }
 }
 
-export const setColors = (cmsGlobalDesign: any, cmsTheme: string) => {
+export const setColors = (cmsGlobalDesign: CMSColors, cmsTheme: string) => {
     if (cmsTheme === 'beacon-theme_charlotte') {
         return {
             mainColor: cmsGlobalDesign.color_8.value,
@@ -116,17 +117,17 @@ export const setColors = (cmsGlobalDesign: any, cmsTheme: string) => {
         }
     } else {
         return {
-            mainColor: cmsGlobalDesign.color_3.value,
-            textColor: cmsGlobalDesign.color_3a.value,
-            headingColor: cmsGlobalDesign.color_2.value,
-            textColorAccent: cmsGlobalDesign.color_4.value,
-            linkColor: cmsGlobalDesign.color_19.value,
-            accentBackgroundColor: cmsGlobalDesign.color_3.value,
-            accentColor2: cmsGlobalDesign.color_16.value,
-            altColor: cmsGlobalDesign.color_16.value,
-            headerBackground: cmsGlobalDesign.color_17.value,
-            footerBackground: cmsGlobalDesign.color_20.value,
-            navBackground: cmsGlobalDesign.color_16.value,
+            mainColor: cmsGlobalDesign?.color_3?.value,
+            textColor: cmsGlobalDesign?.color_3a?.value,
+            headingColor: cmsGlobalDesign?.color_2?.value,
+            textColorAccent: cmsGlobalDesign?.color_4?.value,
+            linkColor: cmsGlobalDesign?.color_19?.value,
+            accentBackgroundColor: cmsGlobalDesign?.color_3?.value,
+            accentColor2: cmsGlobalDesign?.color_16?.value,
+            altColor: cmsGlobalDesign?.color_16?.value,
+            headerBackground: cmsGlobalDesign?.color_17?.value,
+            footerBackground: cmsGlobalDesign?.color_20?.value,
+            navBackground: cmsGlobalDesign?.color_16?.value,
         }
     }
 }

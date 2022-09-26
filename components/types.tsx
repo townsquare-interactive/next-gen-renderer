@@ -26,10 +26,25 @@ export interface HomeProps {
     /* globalData: GlobalData */
     globalData: GlobalData
     page: CMSPage
-    cmsGlobalDesign: any
-    cmsGlobal: any
+    /*     cmsGlobalDesign: any */
+    cmsGlobal: CMSGlobal
     pageMods: PageProps
     pageList: Pagelist
+}
+
+export interface CMSGlobal {
+    vars: any
+    forms2: any
+    design: any
+    logos: any
+    pages: any
+    forms: any
+    navigation: any
+    seo: any
+    images: any
+    config: any
+    blogging: any
+    composites: any
 }
 
 export interface LayoutProps {
@@ -44,6 +59,57 @@ export interface GlobalData {
     layout?: number
     modules: GlobalModule[]
     seo?: SeoData
+}
+
+export interface CMSGlobalDesign {
+    colors: CMSColors
+}
+
+export interface Color {
+    value: string
+    key: string
+    label: string
+    type: string
+}
+
+export interface CMSColors {
+    color_1: Color
+    color_2: Color
+    color_3: Color
+    color_3a: Color
+    color_4: Color
+    color_5: Color
+    color_6: Color
+    color_7: Color
+    color_8: Color
+    color_9: Color
+    color_10: Color
+    color_11: Color
+    color_12: Color
+    color_13: Color
+    color_14: Color
+    color_15: Color
+    color_16: Color
+    color_17: Color
+    color_18: Color
+    color_19: Color
+    color_20: Color
+    color_21: Color
+    color_22: Color
+    color_23: Color
+    color_24: Color
+    color_25: Color
+    color_26: Color
+    color_27: Color
+    color_28: Color
+    color_29: Color
+    color_30: Color
+    color_31: Color
+    color_32: Color
+    color_33: Color
+    color_34: Color
+    color_35: Color
+    color_36: Color
 }
 
 export interface CMSPage {
