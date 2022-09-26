@@ -6,7 +6,7 @@ import { getDomain, cmsPageDataMod } from '../functions'
 import styles from './tsi.module.scss'
 import cn from 'classnames'
 
-export const getStaticProps = async (context: Context) => {
+/* export const getStaticProps = async (context: Context) => {
     const resGlobal = await fetch(getDomain() + '/global.json')
     const globalData = await resGlobal.json()
 
@@ -25,7 +25,7 @@ export const getStaticProps = async (context: Context) => {
         // - At most once every 10 seconds
         revalidate: 10, // In seconds
     }
-}
+} 
 
 const TSI = (props: HomeProps) => {
     const { globalData, page, cmsGlobalDesign } = props
@@ -108,6 +108,11 @@ const TSI = (props: HomeProps) => {
             </div>
         </Layout>
     )
+}
+*/
+
+const TSI = () => {
+    return <div>hello</div>
 }
 
 export default TSI

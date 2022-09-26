@@ -629,6 +629,7 @@ export interface PagesProps {
     slug: string
     id: string
     url: string
+    page_type: string
 }
 
 export interface NavProps {

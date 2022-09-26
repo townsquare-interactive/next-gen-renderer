@@ -63,6 +63,10 @@ const Slug = (props: HomeProps) => {
     }
  */
 
+    //check homepage for page_type, if it does not exist pass first page
+    const homePage = pageList.pages.filter((e) => e.page_type === 'home')
+    const homePageName = homePage || pageList.pages[0]
+
     const themeStyles = setColors(cmsGlobalDesign?.colors, cmsTheme)
 
     //setting themestyles in globalData, will probably change later
@@ -97,7 +101,7 @@ const Slug = (props: HomeProps) => {
 
     const colorStyles = textColors + btnStyles
 
-    //temp: temporary change need to change back
+    //temp: temporary change need to change back, just using for pictures right now
     /* const cmsUrl = cmsGlobal ? cmsGlobal.config.website.url : '' */
     const cmsUrl = 'clttestsiteforjoshedwards.production.townsquareinteractive.com'
 
