@@ -4,7 +4,7 @@ import { HomeProps, PageListProps, Context } from '../components/types'
 import Layout from '../components/Layout'
 import { Renderer } from '../components/Renderer'
 import { useRouter } from 'next/router'
-import { getDomain, decideColumns, setColors, domainImage } from '../functions'
+import { getDomain, decideColumns, setColors, domainImage, findHomePageSlug } from '../functions'
 import cn from 'classnames'
 import { Fragment } from 'react'
 
@@ -20,12 +20,19 @@ export const getStaticProps = async (context: Context) => {
     const resPageList = await fetch(getDomain(true) + '/pages/page-list.json')
     const pageList = await resPageList.json()
 
-    const resPage = await fetch(getDomain(true) + '/pages/' + 'home' + '.json')
+    /* 
+    const homePage = pageList.pages.filter((e: any) => e.page_type === 'home') || pageList.pages[0]
+    const homePageSlug = homePage.length != 0 ? homePage.slug : pageList.pages[0].slug */
+
+    const homePageSlug = findHomePageSlug(pageList)
+
+    //const resPage = await fetch(getDomain(true) + '/pages/' + 'home' + '.json')
+    const resPage = await fetch(getDomain(true) + '/pages/' + homePageSlug + '.json')
     let page = await resPage.json()
 
     //check homepage for page_type, if it does not exist pass first page
     /*         const homePage = pageList.pages.filter((e) => e.page_type === 'home') || pageList.pages[0]
-        const homePageName = homePage.length != 0 ? homePage : pageList.pages[0]y
+        const homePageName = homePage.length != 0 ? homePage : pageList.pages[0]
         
         console.log(homePageName)  */
 

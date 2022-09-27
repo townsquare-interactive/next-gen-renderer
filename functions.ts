@@ -1,4 +1,4 @@
-import { ConditionalWrapperProps, Module, PageProps, CMSColors } from 'components/types'
+import { ConditionalWrapperProps, Module, PageProps, CMSColors, Pagelist } from 'components/types'
 
 const bucketUrl = 'https://townsquareinteractive.s3.amazonaws.com'
 const localUrl = 'elitesports.com/preview'
@@ -130,6 +130,12 @@ export const setColors = (cmsGlobalDesign: CMSColors, cmsTheme: string) => {
             navBackground: cmsGlobalDesign?.color_16?.value,
         }
     }
+}
+
+export const findHomePageSlug = (pageList: Pagelist) => {
+    const homePage = pageList.pages.filter((e: any) => e.page_type === 'homepage')
+    const homePageSlug = homePage.length != 0 ? homePage[0].slug : pageList.pages[0].slug
+    return homePageSlug
 }
 
 //Used to have conditional tag wraps around code without repeating inside code
