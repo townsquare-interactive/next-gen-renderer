@@ -2,6 +2,7 @@ import { LayoutProps, GlobalModule } from '../components/types'
 import styles from './layout.module.scss'
 import cn from 'classnames'
 import { Renderer } from '../components/Renderer'
+import MyHeader from './MyHeader'
 
 export default function Layout(props: LayoutProps) {
     const { children, moduleData, themeStyles } = props
@@ -15,9 +16,10 @@ export default function Layout(props: LayoutProps) {
                 [styles.layout1]: navigationModule[0].attributes.navStyle === 'layout1',
             })}
         >
-            <header>
+            <MyHeader pages={navigationModule[0].attributes.pages} />
+            {/*             <header>
                 <Renderer config={navigationModule} themeStyles={themeStyles} />
-            </header>
+            </header> */}
             <main>{children}</main>
             <footer>
                 <Renderer config={footerModule} themeStyles={themeStyles} />

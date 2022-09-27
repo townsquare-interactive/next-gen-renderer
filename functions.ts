@@ -37,12 +37,44 @@ export function getDomain(cms = false) {
 //Determines url for grabbing images
 export function domainImage(url: string, cms = false, cmsSiteUrl = '') {
     if (cms == true) {
-        let imageUrl = 'http://' + (cmsSiteUrl || cmsUrl + '.production.townsquare.com') + url
+        let imageUrl = 'http://' + (cmsSiteUrl || cmsUrl + '.production.townsquareinteractive.com') + url
         return encodeURI(imageUrl)
     } else {
         const assetsApi = process.env.NEXT_PUBLIC_API_URL_ASSETS || bucketUrl
         let imageUrl = process.env.NEXT_PUBLIC_URL_ENV ? envCheck(assetsApi) + '/assets' + url : assetsApi + '/' + localUrl + '/assets' + url
         return encodeURI(imageUrl)
+    }
+}
+
+export const setColors = (cmsGlobalDesign: CMSColors, cmsTheme: string) => {
+    if (cmsTheme === 'beacon-theme_charlotte') {
+        return {
+            mainColor: cmsGlobalDesign.color_8.value,
+            textColor: cmsGlobalDesign.color_4.value,
+            headingColor: cmsGlobalDesign.color_2.value,
+            textColorAccent: cmsGlobalDesign.color_9.value,
+            linkColor: cmsGlobalDesign.color_5.value,
+            accentBackgroundColor: cmsGlobalDesign.color_8.value,
+            accentColor2: cmsGlobalDesign.color_32.value,
+            altColor: cmsGlobalDesign.color_31.value,
+            headerBackground: cmsGlobalDesign.color_23.value,
+            footerBackground: cmsGlobalDesign.color_27.value,
+            navBackground: cmsGlobalDesign.color_23.value,
+        }
+    } else {
+        return {
+            mainColor: cmsGlobalDesign?.color_3?.value,
+            textColor: cmsGlobalDesign?.color_3a?.value,
+            headingColor: cmsGlobalDesign?.color_2?.value,
+            textColorAccent: cmsGlobalDesign?.color_4?.value,
+            linkColor: cmsGlobalDesign?.color_19?.value,
+            accentBackgroundColor: cmsGlobalDesign?.color_3?.value,
+            accentColor2: cmsGlobalDesign?.color_16?.value,
+            altColor: cmsGlobalDesign?.color_16?.value,
+            headerBackground: cmsGlobalDesign?.color_17?.value,
+            footerBackground: cmsGlobalDesign?.color_20?.value,
+            navBackground: cmsGlobalDesign?.color_16?.value,
+        }
     }
 }
 
@@ -97,38 +129,6 @@ export const decideColumns = (page: PageProps) => {
         return 'one-fourth_one-fourth_half'
     } else if (page.sections[1].wide == '232' && page.sections[2].wide == '484' && page.sections[3].wide == '232') {
         return 'one-fourth_half_one-fourth'
-    }
-}
-
-export const setColors = (cmsGlobalDesign: CMSColors, cmsTheme: string) => {
-    if (cmsTheme === 'beacon-theme_charlotte') {
-        return {
-            mainColor: cmsGlobalDesign.color_8.value,
-            textColor: cmsGlobalDesign.color_4.value,
-            headingColor: cmsGlobalDesign.color_2.value,
-            textColorAccent: cmsGlobalDesign.color_9.value,
-            linkColor: cmsGlobalDesign.color_5.value,
-            accentBackgroundColor: cmsGlobalDesign.color_8.value,
-            accentColor2: cmsGlobalDesign.color_32.value,
-            altColor: cmsGlobalDesign.color_31.value,
-            headerBackground: cmsGlobalDesign.color_23.value,
-            footerBackground: cmsGlobalDesign.color_27.value,
-            navBackground: cmsGlobalDesign.color_23.value,
-        }
-    } else {
-        return {
-            mainColor: cmsGlobalDesign?.color_3?.value,
-            textColor: cmsGlobalDesign?.color_3a?.value,
-            headingColor: cmsGlobalDesign?.color_2?.value,
-            textColorAccent: cmsGlobalDesign?.color_4?.value,
-            linkColor: cmsGlobalDesign?.color_19?.value,
-            accentBackgroundColor: cmsGlobalDesign?.color_3?.value,
-            accentColor2: cmsGlobalDesign?.color_16?.value,
-            altColor: cmsGlobalDesign?.color_16?.value,
-            headerBackground: cmsGlobalDesign?.color_17?.value,
-            footerBackground: cmsGlobalDesign?.color_20?.value,
-            navBackground: cmsGlobalDesign?.color_16?.value,
-        }
     }
 }
 

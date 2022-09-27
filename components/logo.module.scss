@@ -10,7 +10,8 @@
             position: relative;
 
             span {
-                max-height: variables.$logo-size-4 !important;
+                /*  max-height: variables.$logo-size-4 !important;
+
                 @media (min-width: 352px) {
                     max-height: variables.$logo-size-3 !important;
                 }
@@ -21,25 +22,16 @@
                 @media (min-width: 920px) {
                     max-height: variables.$logo-size !important;
                 }
+                
+ */
+                //temp instead of above ^
+                max-height: 5rem;
 
                 img {
                     height: 100% !important;
                     min-width: 0 !important;
                     width: auto !important;
                 }
-
-                /* img {
-                width: auto;
-                max-height: 30px;
-
-                @media (min-width: 312px) {
-                    max-height: variables.$logo-size-2 !important;
-                }
-
-                @media (min-width: 620px) {
-                    max-height: variables.$logo-size !important;
-                }
-            } */
             }
         }
     }
