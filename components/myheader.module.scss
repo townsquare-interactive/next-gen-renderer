@@ -20,27 +20,28 @@
 
         //grid attempt
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 11fr 1fr;
 
         .logo-block {
-            flex: 1 1 auto;
+            //flex: 1 1 auto;
             position: relative;
             width: 100%;
             height: 100%;
 
             span {
                 img {
-                    height: 100% !important;
+                    /*                     height: 100% !important;
                     min-width: 0 !important;
-                    width: auto !important;
+                    width: auto !important; */
+                    // margin-left: 0 !important;
                 }
             }
         }
 
         .access {
             /* flex: 1 1 100%; */
-            grid-column-start: 2;
-            grid-column-end: 5;
+            /*             grid-column-start: 2;
+            grid-column-end: 8; */
 
             display: flex;
             align-items: center;
@@ -73,6 +74,134 @@
                         cursor: pointer;
                     }
                 }
+            }
+        }
+
+        .nav-open {
+            @media (min-width: 1024px) {
+                display: none;
+            }
+
+            flex: 0 1 3rem;
+            background: transparent;
+            font-weight: 700;
+            padding: 0 0.5rem;
+            text-align: center;
+            letter-spacing: 0.1em;
+            visibility: visible;
+            opacity: 1;
+            max-width: initial;
+
+            //temp
+            color: rgba(237, 237, 223, 1);
+
+            &:before {
+                //font-family: "tsi-cms";
+                //content: "a";
+                content: 'X';
+                font-size: 1.5em;
+                margin-top: 0.6666666667em;
+                margin-bottom: 0.5em;
+                line-height: 1.1666666667em;
+                letter-spacing: -0.0125rem;
+                font-weight: 400;
+                vertical-align: middle;
+            }
+        }
+
+        .mobile-header {
+            width: 50%;
+            padding: 1rem 1.5rem 0;
+
+            position: fixed;
+            top: 0;
+            z-index: 400;
+
+            height: 100vh;
+            max-height: -webkit-fill-available;
+
+            transition: all 0.2s ease-in-out;
+
+            //temp
+            background: rgba(16, 37, 46, 1);
+
+            &.hidden {
+                right: -100%;
+                width: 30%;
+            }
+
+            &.visible {
+                right: 0;
+            }
+
+            .nav-toggle {
+                //close
+                right: auto;
+                left: -1rem;
+                top: 1.75rem;
+                border-radius: 2px;
+                font-family: 'tsi-cms';
+                font-size: 1.0625em;
+                // margin-top: 0.7058823529em;
+                // margin-bottom: 0.4705882353em;
+                line-height: 1.1764705882em;
+                margin: 0;
+                padding: 0.25rem 0.5rem;
+                position: absolute;
+                top: 0.75rem;
+                right: 1rem;
+                text-decoration: none;
+                z-index: 400;
+
+                //trigger
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                -ms-appearance: none;
+                -o-appearance: none;
+                appearance: none;
+                -webkit-font-smoothing: antialiased;
+                border: none;
+                cursor: pointer;
+                display: inline-block;
+                font-family: inherit;
+                text-decoration: none;
+                text-align: center;
+                user-select: none;
+                white-space: normal;
+                margin: 0;
+                padding: 0;
+                outline: none;
+
+                //button
+                vertical-align: baseline;
+
+                //close temp
+                background-color: #009374;
+                color: #ffffff;
+
+                //temp
+                width: 3rem;
+                height: 3rem;
+
+                &:before {
+                    content: 'x';
+                    font-weight: bold;
+                    font-size: 2rem;
+                }
+            }
+
+            .social {
+                padding: 1rem 1.5rem 0;
+
+                //temp
+                font-size: 3rem;
+                color: #fff;
+                text-align: center;
+            }
+
+            li {
+                display: block !important;
+                margin: 1rem 0;
             }
         }
     }

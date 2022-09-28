@@ -423,12 +423,13 @@ MultipleBorder.args = {
 export const MultipleBorderButtons = Template.bind({})
 MultipleBorderButtons.args = {
     ...ThreeColumns.args,
-    columns: 3,
+    columns: 1,
     well: '1',
     items: [
         {
             ...item1,
             actionlbl: 'Contact Us',
+            actionlbl2: 'Contact Us',
             pagelink: '/',
             // actionlbl2: 'Contact 2',
             //pagelink2: '/',
@@ -439,7 +440,7 @@ MultipleBorderButtons.args = {
         },
         {
             ...item1,
-            actionlbl: 'Contact Us',
+            actionlbl2: 'Contact Us',
             pagelink: '/',
             // actionlbl2: 'Contact 2',
             //pagelink2: '/',
@@ -449,7 +450,9 @@ MultipleBorderButtons.args = {
         },
         {
             ...item1,
-            actionlbl: 'Contact Us',
+
+            actionlbl2: 'Contact Us',
+            pagelink2: '/',
             pagelink: '/',
             // actionlbl2: 'Contact 2',
             //pagelink2: '/',

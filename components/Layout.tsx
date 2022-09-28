@@ -16,7 +16,7 @@ export default function Layout(props: LayoutProps) {
                 [styles.layout1]: navigationModule[0].attributes.navStyle === 'layout1',
             })}
         >
-            <MyHeader pages={navigationModule[0].attributes.pages} />
+            <MyHeader pages={navigationModule[0].attributes.pages} themeStyles={themeStyles} />
             {/*             <header>
                 <Renderer config={navigationModule} themeStyles={themeStyles} />
             </header> */}

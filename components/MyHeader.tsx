@@ -1,17 +1,19 @@
 import styles from './myheader.module.scss'
-import { ArticleProps, Media, TheListItemImageProps, BtnProps, ItemWrapProps, ModuleItemProps, Pagelist } from './types'
-import Image from 'next/image'
+import { Pagelist, NavigationProps } from './types'
 import cn from 'classnames'
-import Parser from 'html-react-parser'
-import { domainImage, ConditionalWrapper } from '../functions'
-import { ReactChild, useState, Fragment } from 'react'
+
+import { domainImage } from '../functions'
+import { useState } from 'react'
 import Link from 'next/link'
 import Logo from './Logo'
 
-const MyHeader = (props: Pagelist) => {
-    const { pages } = props
+const MyHeader = (props: NavigationProps) => {
+    const { pages, themeStyles } = props
+    const [navCheck, setNav] = useState<boolean>(false)
 
-    console.log(pages)
+    function navSwitch() {
+        setNav(!navCheck)
+    }
 
     return (
         <header className={styles.root}>
@@ -31,27 +33,67 @@ const MyHeader = (props: Pagelist) => {
                     <Logo
                         logoUrl={domainImage('/files/2022/07/jremodeling-logo.png', true, 'clttestsiteforjoshedwards.production.townsquareinteractive.com')}
                     />
-                    {/* <Logo
+
+                    {/*                    <Logo
                         logoUrl={domainImage('/files/2022/07/jremodeling-logo.png', true, 'clttestsiteforjoshedwards.production.townsquareinteractive.com')}
                     />
                     <Logo
                         logoUrl={domainImage('/files/2022/07/jremodeling-logo.png', true, 'clttestsiteforjoshedwards.production.townsquareinteractive.com')}
                     /> */}
                 </div>
-                <div className={styles.access}>
+                {/*  <div className={styles.access}>
                     <ul className={styles.menu}>
                         {pages.map((item, index: number) => (
-                            <Link href={item.url} key={index}>
+                            <Link href={item.url} key={index} passHref={true}>
                                 <li>
                                     <a className="navLink">{item.name}</a>
                                 </li>
                             </Link>
                         ))}
                     </ul>
-                </div>
+                </div> */}
+                <Nav pages={pages} />
+                <button className={styles['nav-open']} onClick={navSwitch}></button>
+                <MobileNav pages={pages} navSwitch={navSwitch} navCheck={navCheck} themeStyles={themeStyles} />
             </div>
-            <div className={styles['social-bar']}></div>
+            {/* <div className={styles['social-bar']}></div> */}
         </header>
+    )
+}
+
+const MobileNav = (props: NavigationProps) => {
+    const { pages, navSwitch, navCheck, themeStyles } = props
+
+    return (
+        <div
+            className={cn(styles['mobile-header'], {
+                [styles.hidden]: !navCheck,
+                [styles.visible]: navCheck,
+            })}
+        >
+            <button className={styles['nav-toggle']} onClick={navSwitch}></button>
+            <div className={styles.social}>Social</div>
+            <div className={styles['mobile-nav']}>
+                <Nav pages={pages} />
+            </div>
+        </div>
+    )
+}
+
+const Nav = (props: Pagelist) => {
+    const { pages } = props
+    return (
+        <div className={styles.access}>
+            <ul className={styles.menu}>
+                {pages.map((item, index: number) => (
+                    <Link href={item.url} key={index} passHref={true}>
+                        <li>
+                            <a className="navLink">{item.name}</a>
+                        </li>
+                    </Link>
+                ))}
+            </ul>
+        </div>
     )
 }
 

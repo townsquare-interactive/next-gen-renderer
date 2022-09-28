@@ -656,7 +656,7 @@ export interface BurgerProps {
 export interface NavigationProps {
     navSwitch?: () => void
     /**Boolean that determines if navbar being shown or hidden*/
-    navCheck: boolean
+    navCheck?: boolean
     pages: PagesProps[]
     /**Layout changes based on where Nav is being called*/
     modLayout?: 'header' | 'footer'
