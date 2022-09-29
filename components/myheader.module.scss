@@ -20,20 +20,47 @@
 
         //grid attempt
         display: grid;
-        grid-template-columns: 1fr 11fr 1fr;
+        grid-template-columns: 1fr 9fr 1fr;
+
+        //non grid
+        //display: flex;
 
         .logo-block {
             //flex: 1 1 auto;
             position: relative;
-            width: 100%;
+            //not sure why I need to specify this width
+            //width: 100%;
             height: 100%;
 
-            span {
+            //flex
+            //flex: 1 1 auto;
+
+            @media (min-width: 1025px) {
+                padding: 0 0.5rem;
+            }
+
+            /* span {
                 img {
-                    /*                     height: 100% !important;
+                                        height: 100% !important;
                     min-width: 0 !important;
-                    width: auto !important; */
+                    width: auto !important; 
                     // margin-left: 0 !important;
+                }
+            } */
+
+            &.desktop-logo-block {
+                display: none;
+
+                @media (min-width: 1025px) {
+                    display: block;
+                }
+            }
+
+            &.mobile-logo-block {
+                display: block;
+
+                @media (min-width: 1025px) {
+                    display: none;
                 }
             }
         }
@@ -42,6 +69,9 @@
             /* flex: 1 1 100%; */
             /*             grid-column-start: 2;
             grid-column-end: 8; */
+
+            //flex
+            //flex: 1 1 100%;
 
             display: flex;
             align-items: center;
@@ -90,7 +120,9 @@
                 display: none;
             }
 
-            flex: 0 1 3rem;
+            //flex
+            //flex: 0 1 3rem;
+
             background: transparent;
             font-weight: 700;
             padding: 0 0.5rem;
@@ -106,7 +138,7 @@
             &:before {
                 //font-family: "tsi-cms";
                 //content: "a";
-                content: 'X';
+                content: 'O';
                 font-size: 1.5em;
                 margin-top: 0.6666666667em;
                 margin-bottom: 0.5em;
@@ -210,6 +242,100 @@
             li {
                 display: block !important;
                 margin: 1rem 0;
+            }
+        }
+    }
+
+    .social-bar {
+        box-shadow: 0 2px 2px 1px rgb(0 0 0 / 20%);
+        padding: 0 1rem;
+        width: 100%;
+
+        background-color: #12343d;
+
+        display: flex;
+        flex-wrap: wrap;
+
+        align-items: center;
+
+        .social-media-links {
+            flex: 1 0 60%;
+            padding: 0.25rem 0;
+            flex-wrap: wrap;
+            -webkit-box-flex: 1;
+
+            font-size: 100%;
+            margin: 0;
+            list-style-type: none;
+
+            li {
+                display: inline-block;
+
+                a {
+                    font-size: 0.6875em;
+                    line-height: 1.0909090909em;
+                    border-radius: 2px;
+                    font-weight: 400;
+                    margin-top: 0.25em;
+                    margin-bottom: 0.25em;
+                    padding: 0.375em 1em 0.4375em;
+                    display: inline-block;
+                    text-transform: initial;
+
+                    //before
+                    vertical-align: middle;
+
+                    //temp
+                    color: #fff;
+                    font-weight: bold;
+
+                    //temp
+                    &:hover {
+                        background-color: #009374;
+                    }
+                }
+            }
+        }
+
+        .contact {
+            flex: 1 0 40%;
+
+            ul {
+                font-size: 100%;
+                letter-spacing: 0.1em;
+                text-align: right;
+                width: 100%;
+                margin: 0.25rem 0;
+
+                //other
+                list-style-type: none;
+                padding: 0;
+
+                li {
+                    display: inline-block;
+
+                    a {
+                        font-size: 0.6875em;
+                        line-height: 1.0909090909em;
+                        border-radius: 2px;
+                        font-weight: 400;
+                        margin-top: 0.25em;
+                        margin-bottom: 0.25em;
+                        padding: 0.375em 1em 0.4375em;
+                        display: inline-block;
+                        vertical-align: text-bottom;
+                    }
+                }
+
+                .phone {
+                    font-size: 100%;
+                    letter-spacing: 0.1em;
+                    //width: 100%;
+                    margin: 0.25rem 0;
+
+                    //temp
+                    color: #fff;
+                }
             }
         }
     }

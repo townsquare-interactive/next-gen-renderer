@@ -4,7 +4,7 @@
 @use 'sass:math';
 
 .root {
-    &.layout1 {
+    /*     &.layout1 {
         padding-top: variables.$layout-padding-4;
         @media (min-width: 500px) {
             padding-top: variables.$layout-padding-3;
@@ -16,5 +16,28 @@
         @media (min-width: 920px) {
             padding-top: variables.$layout-padding;
         }
+    } */
+
+    margin-top: 147px;
+
+    /*  padding-top: variables.$layout-padding-4;
+        @media (min-width: 500px) {
+            padding-top: variables.$layout-padding-3;
+        }
+
+        @media (min-width: 500px) {
+            padding-top: variables.$layout-padding-2;
+        }
+        @media (min-width: 920px) {
+            padding-top: variables.$layout-padding;
+        } */
+
+    * {
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+    }
+
+    a {
+        cursor: pointer;
     }
 }

@@ -7,6 +7,11 @@ import { useState } from 'react'
 import Link from 'next/link'
 import Logo from './Logo'
 
+// import your icons
+import { faGoogle, faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons'
+import { faRocket, faEnvelope, faPrint, faPhone, faLocationPin } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 const MyHeader = (props: NavigationProps) => {
     const { pages, themeStyles } = props
     const [navCheck, setNav] = useState<boolean>(false)
@@ -15,49 +20,70 @@ const MyHeader = (props: NavigationProps) => {
         setNav(!navCheck)
     }
 
+    function socialConvert(str: string) {
+        let icon = str
+        if (icon === 'mail') {
+            return faEnvelope
+        }
+    }
+
     return (
         <header className={styles.root}>
             <div className={styles.wrapper}>
-                {/* <div className={styles.logo}>
-                    <Image
-                        src={domainImage('/files/2022/07/jremodeling-logo.png', true, props.cmsUrl || '')}
-                        onLoadingComplete={calcImageSize}
-                        width={imageWidth}
-                        height={imageHeight}
-                        layout="responsive"
-                        alt="logo"
-                        objectPosition="top"
-                    /> 
-                </div>*/}
-                <div className={styles['logo-block']}>
+                <div className={cn(styles['logo-block'], styles['desktop-logo-block'])}>
                     <Logo
                         logoUrl={domainImage('/files/2022/07/jremodeling-logo.png', true, 'clttestsiteforjoshedwards.production.townsquareinteractive.com')}
                     />
-
-                    {/*                    <Logo
-                        logoUrl={domainImage('/files/2022/07/jremodeling-logo.png', true, 'clttestsiteforjoshedwards.production.townsquareinteractive.com')}
-                    />
-                    <Logo
-                        logoUrl={domainImage('/files/2022/07/jremodeling-logo.png', true, 'clttestsiteforjoshedwards.production.townsquareinteractive.com')}
-                    /> */}
                 </div>
-                {/*  <div className={styles.access}>
-                    <ul className={styles.menu}>
-                        {pages.map((item, index: number) => (
-                            <Link href={item.url} key={index} passHref={true}>
-                                <li>
-                                    <a className="navLink">{item.name}</a>
-                                </li>
-                            </Link>
-                        ))}
-                    </ul>
-                </div> */}
+
+                <div className={cn(styles['logo-block'], styles['mobile-logo-block'])}>
+                    <Logo logoUrl={domainImage('/files/2022/09/Yos2.jpg', true, 'clttestsiteforjoshedwards.production.townsquareinteractive.com')} />
+                </div>
+
                 <Nav pages={pages} navType={'desktop'} />
                 <button className={styles['nav-open']} onClick={navSwitch}></button>
                 <MobileHeader pages={pages} navSwitch={navSwitch} navCheck={navCheck} themeStyles={themeStyles} />
             </div>
-            {/* <div className={styles['social-bar']}></div> */}
+            <SocialBar />
         </header>
+    )
+}
+
+const SocialBar = () => {
+    return (
+        <div className={styles['social-bar']}>
+            <ul className={styles['social-media-links']}>
+                <li>
+                    <a>
+                        <FontAwesomeIcon icon={faEnvelope} />
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <FontAwesomeIcon icon={faPrint} />
+                    </a>
+                </li>
+            </ul>
+            <aside className={styles.contact}>
+                <ul>
+                    <li className={styles.phone}>
+                        <a>
+                            <FontAwesomeIcon icon={faPhone} /> Phone Number: (394) 940-39404
+                        </a>
+                    </li>
+                    <li className={styles.phone}>
+                        <a>
+                            <FontAwesomeIcon icon={faEnvelope} /> EMAIL: fake@gmail.com
+                        </a>
+                    </li>
+                    <li className={styles.phone}>
+                        <a>
+                            <FontAwesomeIcon icon={faLocationPin} /> Company Name
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+        </div>
     )
 }
 
