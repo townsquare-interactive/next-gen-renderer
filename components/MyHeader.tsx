@@ -52,16 +52,16 @@ const MyHeader = (props: NavigationProps) => {
                         ))}
                     </ul>
                 </div> */}
-                <Nav pages={pages} />
+                <Nav pages={pages} navType={'desktop'} />
                 <button className={styles['nav-open']} onClick={navSwitch}></button>
-                <MobileNav pages={pages} navSwitch={navSwitch} navCheck={navCheck} themeStyles={themeStyles} />
+                <MobileHeader pages={pages} navSwitch={navSwitch} navCheck={navCheck} themeStyles={themeStyles} />
             </div>
             {/* <div className={styles['social-bar']}></div> */}
         </header>
     )
 }
 
-const MobileNav = (props: NavigationProps) => {
+const MobileHeader = (props: NavigationProps) => {
     const { pages, navSwitch, navCheck, themeStyles } = props
 
     return (
@@ -74,17 +74,22 @@ const MobileNav = (props: NavigationProps) => {
             <button className={styles['nav-toggle']} onClick={navSwitch}></button>
             <div className={styles.social}>Social</div>
             <div className={styles['mobile-nav']}>
-                <Nav pages={pages} />
+                <Nav pages={pages} navType={'mobile'} />
             </div>
         </div>
     )
 }
 
 const Nav = (props: Pagelist) => {
-    const { pages } = props
+    const { pages, navType } = props
     return (
         <div className={styles.access}>
-            <ul className={styles.menu}>
+            <ul
+                className={cn(styles.menu, {
+                    [styles['desktop-nav']]: navType == 'desktop',
+                    [styles['mobile-nav']]: navType == 'mobile',
+                })}
+            >
                 {pages.map((item, index: number) => (
                     <Link href={item.url} key={index} passHref={true}>
                         <li>

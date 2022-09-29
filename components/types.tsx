@@ -572,6 +572,7 @@ export interface AddressData {
 
 export interface Pagelist {
     pages: PagesProps[]
+    navType?: string
 }
 
 export interface FooterProps {

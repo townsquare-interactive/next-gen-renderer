@@ -58,6 +58,14 @@
                 list-style-type: none;
                 padding: 0;
 
+                &.desktop-nav {
+                    display: none;
+
+                    @media (min-width: 1024px) {
+                        display: block;
+                    }
+                }
+
                 li {
                     display: inline-block;
                     position: relative;
