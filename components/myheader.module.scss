@@ -12,15 +12,30 @@
     background: black;
 
     .wrapper {
-        /* display: flex; */
+        display: flex;
         padding: 1rem 0.5rem;
         width: 100%;
         position: relative;
         z-index: 1009;
 
+        align-items: center;
+
         //grid attempt
-        display: grid;
-        grid-template-columns: 1.4fr 9fr 1fr;
+        /*         display: grid;
+
+        grid-template-columns: 2fr 1fr 1fr;
+
+        @media (min-width: 270px) {
+            grid-template-columns: 2fr 2fr 1fr;
+        }
+
+        @media (min-width: 530px) {
+            grid-template-columns: 1.2fr 3fr 1fr;
+        }
+
+        @media (min-width: 1025px) {
+            grid-template-columns: 1.4fr 9fr 1fr;
+        } */
 
         //non grid
         //display: flex;
@@ -33,7 +48,9 @@
             height: 100%;
 
             //flex
-            //flex: 1 1 auto;
+            flex: 1 1 auto;
+
+            flex-basis: auto;
 
             @media (min-width: 1025px) {
                 padding: 0 0.5rem;
@@ -47,6 +64,9 @@
                     // margin-left: 0 !important;
                 }
             } */
+            span {
+                max-width: 8.75rem !important;
+            }
 
             &.desktop-logo-block {
                 display: none;
@@ -71,7 +91,7 @@
             grid-column-end: 8; */
 
             //flex
-            //flex: 1 1 100%;
+            flex: 1 1 100%;
 
             display: flex;
             align-items: center;
@@ -88,28 +108,49 @@
                 list-style-type: none;
                 padding: 0;
 
-                &.desktop-nav {
-                    display: none;
-
-                    @media (min-width: 1024px) {
-                        display: block;
-                    }
-                }
-
                 li {
                     display: inline-block;
                     position: relative;
 
                     //sf-menu li
-                    text-transform: uppercase;
+
                     letter-spacing: 0.05em;
-                    font-weight: bold;
+                    //font-weight: bold;
 
                     a {
                         display: block;
                         padding: 0.75rem 0.5rem;
                         width: 100%;
                         cursor: pointer;
+                    }
+                }
+
+                &.desktop-nav {
+                    display: none;
+
+                    @media (min-width: 1024px) {
+                        display: block;
+                    }
+
+                    li {
+                        text-transform: uppercase;
+                    }
+                }
+
+                &.mobile-nav {
+                    font-size: 0.875rem;
+                    padding: 0 0 0 0.5rem;
+
+                    li {
+                        margin: 1rem 0;
+                        font-weight: 700;
+
+                        a {
+                            border-radius: 2px;
+                            display: inline-block;
+                            outline: 0;
+                            padding: 0.5rem;
+                        }
                     }
                 }
             }
@@ -132,21 +173,22 @@
             opacity: 1;
             max-width: initial;
 
+            cursor: pointer;
+
             //temp
             color: rgba(237, 237, 223, 1);
 
-            &:before {
-                //font-family: "tsi-cms";
-                //content: "a";
-                content: 'O';
-                font-size: 1.5em;
-                margin-top: 0.6666666667em;
-                margin-bottom: 0.5em;
-                line-height: 1.1666666667em;
-                letter-spacing: -0.0125rem;
-                font-weight: 400;
-                vertical-align: middle;
-            }
+            // &:before {
+            //font-family: "tsi-cms";
+            //content: "a";
+            //content: 'O';
+            font-size: 1.5em;
+            margin-top: 0.6666666667em;
+            margin-bottom: 0.5em;
+            line-height: 1.1666666667em;
+            letter-spacing: -0.0125rem;
+            font-weight: 400;
+            vertical-align: middle;
         }
 
         .mobile-header {
@@ -337,6 +379,12 @@
                         padding: 0.375em 1em 0.4375em;
                         display: inline-block;
                         vertical-align: text-bottom;
+                        text-align: center;
+
+                        //temp
+                        &:hover {
+                            background-color: #009374;
+                        }
                     }
                 }
 
@@ -349,6 +397,20 @@
                     //temp
                     color: #fff;
                 }
+            }
+        }
+    }
+
+    &.shrink {
+        .wrapper {
+            //border: 10px solid red;
+            // grid-template-columns: 0.8fr 9fr 1fr;
+
+            padding: 0.5rem;
+
+            span {
+                max-width: 4.5rem !important;
+                transition: all 0.3s ease-in-out;
             }
         }
     }

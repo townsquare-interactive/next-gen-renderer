@@ -3,32 +3,60 @@ import { Pagelist, NavigationProps } from './types'
 import cn from 'classnames'
 
 import { domainImage } from '../functions'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Logo from './Logo'
 
 // import your icons
 import { faGoogle, faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons'
-import { faRocket, faEnvelope, faPrint, faPhone, faLocationPin } from '@fortawesome/free-solid-svg-icons'
+import { faRocket, faEnvelope, faPrint, faPhone, faLocationPin, faBars } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const MyHeader = (props: NavigationProps) => {
     const { pages, themeStyles } = props
     const [navCheck, setNav] = useState<boolean>(false)
+    const [clientWindowHeight, setClientWindowHeight] = useState(0)
+
+    /*   useEffect(() => {
+    window.addEventListener("scroll", () => {
+      const scrollCheck = window.scrollY < 100
+      if (scrollCheck !== scroll) {
+        setScroll(scrollCheck)
+      }
+    })
+  }) */
+
+    /*   useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+}); */
+
+    const handleScroll = () => {
+        setClientWindowHeight(window.scrollY)
+    }
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll)
+        return () => window.removeEventListener('scroll', handleScroll)
+    })
 
     function navSwitch() {
         setNav(!navCheck)
     }
 
-    function socialConvert(str: string) {
+    /*     function socialConvert(str: string) {
         let icon = str
         if (icon === 'mail') {
             return faEnvelope
         }
-    }
+    } */
 
     return (
-        <header className={styles.root}>
+        <header
+            className={cn(styles.root, {
+                [styles.shrink]: clientWindowHeight > 50,
+            })}
+        >
             <div className={styles.wrapper}>
                 <div className={cn(styles['logo-block'], styles['desktop-logo-block'])}>
                     <Logo
@@ -41,7 +69,9 @@ const MyHeader = (props: NavigationProps) => {
                 </div>
 
                 <Nav pages={pages} navType={'desktop'} />
-                <button className={styles['nav-open']} onClick={navSwitch}></button>
+                <button className={styles['nav-open']} onClick={navSwitch}>
+                    <FontAwesomeIcon icon={faBars} />
+                </button>
                 <MobileHeader pages={pages} navSwitch={navSwitch} navCheck={navCheck} themeStyles={themeStyles} />
             </div>
             <SocialBar />
@@ -98,10 +128,15 @@ const MobileHeader = (props: NavigationProps) => {
             })}
         >
             <button className={styles['nav-toggle']} onClick={navSwitch}></button>
+
+            {/*settings/contact/contact_list/wide/items/0 : 
+            "selectedPrimaryPhoneNumber": "9195400390", 
+            "selectedPrimaryEmailAddress": "email@email.com", 
+            address.name
+            */}
             <div className={styles.social}>Social</div>
-            <div className={styles['mobile-nav']}>
-                <Nav pages={pages} navType={'mobile'} />
-            </div>
+
+            <Nav pages={pages} navType={'mobile'} />
         </div>
     )
 }

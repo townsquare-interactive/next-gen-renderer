@@ -10,6 +10,7 @@ const Logo = (props: LogoProps) => {
     const [logoWidth, setWidth] = useState(300)
 
     const calcImageSize = (loadedMedia: Media) => {
+        console.log(loadedMedia.naturalWidth, loadedMedia.naturalHeight)
         setWidth(loadedMedia.naturalWidth)
         setHeight(loadedMedia.naturalHeight)
     }
@@ -20,7 +21,16 @@ const Logo = (props: LogoProps) => {
                 <div className={styles.logo}>
                     <Link href="/">
                         <a>
-                            <Image src={logoUrl} alt="logo" onLoadingComplete={calcImageSize} width={logoWidth} height={logoHeight} layout="responsive" />
+                            <Image
+                                src={logoUrl}
+                                alt="logo"
+                                onLoadingComplete={calcImageSize}
+                                width={logoWidth}
+                                height={logoHeight}
+                                /*                                 width="384px"
+                                height="310px" */
+                                /* layout="responsive"  */
+                            />
                         </a>
                     </Link>
                 </div>
