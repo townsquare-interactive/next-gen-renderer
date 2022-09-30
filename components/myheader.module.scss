@@ -20,7 +20,7 @@
 
         //grid attempt
         display: grid;
-        grid-template-columns: 1fr 9fr 1fr;
+        grid-template-columns: 1.4fr 9fr 1fr;
 
         //non grid
         //display: flex;
@@ -259,7 +259,9 @@
         align-items: center;
 
         .social-media-links {
-            flex: 1 0 60%;
+            display: none;
+
+            flex: 1 0 30%;
             padding: 0.25rem 0;
             flex-wrap: wrap;
             -webkit-box-flex: 1;
@@ -267,6 +269,10 @@
             font-size: 100%;
             margin: 0;
             list-style-type: none;
+
+            @media (min-width: 851px) {
+                display: block;
+            }
 
             li {
                 display: inline-block;
@@ -298,7 +304,7 @@
         }
 
         .contact {
-            flex: 1 0 40%;
+            flex: 1 0 70%;
 
             ul {
                 font-size: 100%;
@@ -310,6 +316,13 @@
                 //other
                 list-style-type: none;
                 padding: 0;
+
+                //I added
+                @media (max-width: 850px) {
+                    display: flex;
+                    justify-content: center;
+                    flex-wrap: wrap;
+                }
 
                 li {
                     display: inline-block;
