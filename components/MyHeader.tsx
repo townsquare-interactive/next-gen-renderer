@@ -1,35 +1,20 @@
 import styles from './myheader.module.scss'
-import { Pagelist, NavigationProps } from './types'
+import { Pagelist, NavigationProps, MyHeaderProps } from './types'
 import cn from 'classnames'
 
-import { domainImage } from '../functions'
+import { domainImage, socialConvert } from '../functions'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Logo from './Logo'
 
 // import your icons
-import { faGoogle, faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faRocket, faEnvelope, faPrint, faPhone, faLocationPin, faBars } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-const MyHeader = (props: NavigationProps) => {
-    const { pages, themeStyles } = props
+const MyHeader = (props: MyHeaderProps) => {
+    const { pages, CMSLayout } = props
     const [navCheck, setNav] = useState<boolean>(false)
     const [clientWindowHeight, setClientWindowHeight] = useState(0)
-
-    /*   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      const scrollCheck = window.scrollY < 100
-      if (scrollCheck !== scroll) {
-        setScroll(scrollCheck)
-      }
-    })
-  }) */
-
-    /*   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-}); */
 
     const handleScroll = () => {
         setClientWindowHeight(window.scrollY)
@@ -43,13 +28,6 @@ const MyHeader = (props: NavigationProps) => {
     function navSwitch() {
         setNav(!navCheck)
     }
-
-    /*     function socialConvert(str: string) {
-        let icon = str
-        if (icon === 'mail') {
-            return faEnvelope
-        }
-    } */
 
     return (
         <header
@@ -72,43 +50,36 @@ const MyHeader = (props: NavigationProps) => {
                 <button className={styles['nav-open']} onClick={navSwitch}>
                     <FontAwesomeIcon icon={faBars} />
                 </button>
-                <MobileHeader pages={pages} navSwitch={navSwitch} navCheck={navCheck} themeStyles={themeStyles} />
+                <MobileHeader pages={pages} navSwitch={navSwitch} navCheck={navCheck} themeStyles={CMSLayout.themeStyles} CMSLayout={CMSLayout} />
             </div>
-            <SocialBar />
+            <SocialBar CMSLayout={CMSLayout} />
         </header>
     )
 }
 
-const SocialBar = () => {
+const SocialBar = ({ CMSLayout }: any) => {
     return (
         <div className={styles['social-bar']}>
-            <ul className={styles['social-media-links']}>
-                <li>
-                    <a>
-                        <FontAwesomeIcon icon={faEnvelope} />
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <FontAwesomeIcon icon={faPrint} />
-                    </a>
-                </li>
-            </ul>
+            <SocialLinks CMSLayout={CMSLayout} />
             <aside className={styles.contact}>
                 <ul>
                     <li className={styles.phone}>
-                        <a>
-                            <FontAwesomeIcon icon={faPhone} /> Phone Number: (394) 940-39404
-                        </a>
+                        <Link href={'tel:' + CMSLayout.contact.phone.number}>
+                            <a>
+                                <FontAwesomeIcon icon={faPhone} /> {CMSLayout.phoneNumber}
+                            </a>
+                        </Link>
+                    </li>
+                    <li className={styles.phone}>
+                        <Link href={'mailto:' + CMSLayout.contact.email.email}>
+                            <a>
+                                <FontAwesomeIcon icon={faEnvelope} /> {CMSLayout.contact.email.name}: {CMSLayout.email}
+                            </a>
+                        </Link>
                     </li>
                     <li className={styles.phone}>
                         <a>
-                            <FontAwesomeIcon icon={faEnvelope} /> EMAIL: fake@gmail.com
-                        </a>
-                    </li>
-                    <li className={styles.phone}>
-                        <a>
-                            <FontAwesomeIcon icon={faLocationPin} /> Company Name
+                            <FontAwesomeIcon icon={faLocationPin} /> {CMSLayout.siteName}
                         </a>
                     </li>
                 </ul>
@@ -116,9 +87,34 @@ const SocialBar = () => {
         </div>
     )
 }
+const SocialLinks = ({ CMSLayout }: any) => {
+    return (
+        <ul className={styles['social-media-links']}>
+            <li>
+                <a>
+                    <FontAwesomeIcon icon={faEnvelope} />
+                </a>
+            </li>
+            <li>
+                <a>
+                    <FontAwesomeIcon icon={faPrint} />
+                </a>
+            </li>
+            {CMSLayout.social.map((url: string, index: number) => (
+                <li key={index}>
+                    <Link href={url}>
+                        <a target="blank">
+                            <FontAwesomeIcon icon={socialConvert(url)} />
+                        </a>
+                    </Link>
+                </li>
+            ))}
+        </ul>
+    )
+}
 
 const MobileHeader = (props: NavigationProps) => {
-    const { pages, navSwitch, navCheck, themeStyles } = props
+    const { pages, navSwitch, navCheck, themeStyles, CMSLayout } = props
 
     return (
         <div
@@ -129,12 +125,9 @@ const MobileHeader = (props: NavigationProps) => {
         >
             <button className={styles['nav-toggle']} onClick={navSwitch}></button>
 
-            {/*settings/contact/contact_list/wide/items/0 : 
-            "selectedPrimaryPhoneNumber": "9195400390", 
-            "selectedPrimaryEmailAddress": "email@email.com", 
-            address.name
-            */}
-            <div className={styles.social}>Social</div>
+            <div className={styles.social}>
+                <SocialLinks CMSLayout={CMSLayout} />
+            </div>
 
             <Nav pages={pages} navType={'mobile'} />
         </div>

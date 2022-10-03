@@ -49,7 +49,7 @@ export interface CMSGlobal {
 
 export interface LayoutProps {
     children: ReactNode
-    moduleData: GlobalData
+    CMSLayout: GlobalData
     themeStyles: ThemeStyles
 }
 
@@ -60,6 +60,31 @@ export interface GlobalData {
     layout?: number
     modules: GlobalModule[]
     seo?: SeoData
+    url?: string
+    email?: string
+    //social?: [string]
+    social?: any
+    siteName?: string
+    phoneNumber?: String
+    themeStyles: ThemeStyles
+    contact: any
+}
+
+export interface GlobalData2 {
+    logoUrl?: string
+    navStyle?: 'layout1' | 'layout2'
+    //themeStyles: ThemeStyles
+    layout?: number
+    modules: GlobalModule[]
+    seo?: SeoData
+    url?: string
+    email?: string
+    //social?: [string]
+    social?: any
+    siteName?: string
+    phoneNumber?: String
+    themeStyles: ThemeStyles
+    contact: any
 }
 
 export interface CMSGlobalDesign {
@@ -133,7 +158,8 @@ export interface CMSPageData {
 
 export interface GlobalModule {
     componentType: string
-    attributes: NavigationProps | FooterProps
+    /* attributes: NavigationProps | FooterProps */
+    attributes: any
 }
 
 export interface ModuleData {
@@ -672,6 +698,12 @@ export interface NavigationProps {
     /**Image url for logo*/
     logoUrl?: string
     themeStyles: ThemeStyles
+    CMSLayout: GlobalData
+}
+
+export interface MyHeaderProps {
+    pages: PagesProps[]
+    CMSLayout: GlobalData2
 }
 
 export interface NavBarProps {

@@ -1,5 +1,8 @@
 import { ConditionalWrapperProps, Module, PageProps, CMSColors, Pagelist } from 'components/types'
 
+import { faGoogle, faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons'
+import { faRocket, faEnvelope, faPrint, faPhone, faLocationPin, faBars } from '@fortawesome/free-solid-svg-icons'
+
 const bucketUrl = 'https://townsquareinteractive.s3.amazonaws.com'
 const localUrl = 'elitesports.com/preview'
 const cmsUrl = 'clttestsiteforjoshedwards'
@@ -136,6 +139,35 @@ export const findHomePageSlug = (pageList: Pagelist) => {
     const homePage = pageList.pages.filter((e: any) => e.page_type === 'homepage')
     const homePageSlug = homePage.length != 0 ? homePage[0].slug : pageList.pages[0].slug
     return homePageSlug
+}
+
+function iconConvert(str: string) {
+    if (str.indexOf('google') !== -1) {
+        return 'google'
+    } else if (str.indexOf('facebook') !== -1) {
+        return 'facebook'
+    } else if (str.indexOf('instagram') !== -1) {
+        return 'instagram'
+    } else if (str.indexOf('twitter') !== -1) {
+        return 'twitter'
+    } else {
+        return 'social'
+    }
+}
+
+export function socialConvert(str: string) {
+    let icon = iconConvert(str)
+    if (icon === 'google') {
+        return faGoogle
+    } else if (icon === 'facebook') {
+        return faFacebook
+    } else if (icon === 'instagram') {
+        return faInstagram
+    } else if (icon === 'twitter') {
+        return faTwitter
+    } else {
+        return faRocket
+    }
 }
 
 //Used to have conditional tag wraps around code without repeating inside code

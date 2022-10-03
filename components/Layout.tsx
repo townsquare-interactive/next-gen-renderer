@@ -5,10 +5,10 @@ import { Renderer } from '../components/Renderer'
 import MyHeader from './MyHeader'
 
 export default function Layout(props: LayoutProps) {
-    const { children, moduleData, themeStyles } = props
+    const { children, CMSLayout, themeStyles } = props
     //Placing nav data na footer data into two different arrays
-    const navigationModule = moduleData.modules.filter((module: GlobalModule) => module.componentType === 'navigation')
-    const footerModule = moduleData.modules.filter((module: GlobalModule) => module.componentType === 'footer')
+    const navigationModule = CMSLayout.modules.filter((module: GlobalModule) => module.componentType === 'navigation')
+    const footerModule = CMSLayout.modules.filter((module: GlobalModule) => module.componentType === 'footer')
 
     return (
         <div
@@ -16,7 +16,7 @@ export default function Layout(props: LayoutProps) {
                 [styles.layout1]: navigationModule[0].attributes.navStyle === 'layout1',
             })}
         >
-            <MyHeader pages={navigationModule[0].attributes.pages} themeStyles={themeStyles} />
+            <MyHeader pages={navigationModule[0].attributes.pages} CMSLayout={CMSLayout} />
             {/*             <header>
                 <Renderer config={navigationModule} themeStyles={themeStyles} />
             </header> */}

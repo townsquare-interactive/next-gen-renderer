@@ -45,7 +45,7 @@ const Footer = (props: FooterProps) => {
         let icon = iconConvert(str)
         if (icon === 'google') {
             return faGoogle
-        } else if (icon === 'facebok') {
+        } else if (icon === 'facebook') {
             return faFacebook
         } else if (icon === 'instagram') {
             return faInstagram

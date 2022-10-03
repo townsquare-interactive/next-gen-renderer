@@ -92,7 +92,7 @@ const Home = (props: HomeProps) => {
                 {cmsGlobal.config.website.favicon.src && <link rel="shortcut icon" href={domainImage(cmsGlobal.config.website.favicon.src, true, cmsUrl)} />}
             </Head>
 
-            <Layout moduleData={CMSLayout} themeStyles={themeStyles}>
+            <Layout CMSLayout={CMSLayout} themeStyles={themeStyles}>
                 {page.data && (
                     <div className={styles.root}>
                         <style>{colorStyles}</style>
