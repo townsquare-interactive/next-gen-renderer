@@ -1,23 +1,23 @@
 import styles from './myheader.module.scss'
-import { Pagelist, NavigationProps, MyHeaderProps } from './types'
+import { Pagelist, MyHeaderProps, SocialBarProps, MobileHeaderProps } from './types'
 import cn from 'classnames'
-
 import { domainImage, socialConvert } from '../functions'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Logo from './Logo'
 
 // import your icons
-import { faRocket, faEnvelope, faPrint, faPhone, faLocationPin, faBars } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope, faPrint, faPhone, faLocationPin, faBars } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const MyHeader = (props: MyHeaderProps) => {
     const { pages, CMSLayout } = props
     const [navCheck, setNav] = useState<boolean>(false)
-    const [clientWindowHeight, setClientWindowHeight] = useState(0)
+    const [windowHeight, setWindowHeight] = useState(0)
 
+    //set state for scroll
     const handleScroll = () => {
-        setClientWindowHeight(window.scrollY)
+        setWindowHeight(window.scrollY)
     }
 
     useEffect(() => {
@@ -32,7 +32,7 @@ const MyHeader = (props: MyHeaderProps) => {
     return (
         <header
             className={cn(styles.root, {
-                [styles.shrink]: clientWindowHeight > 50,
+                [styles.shrink]: windowHeight > 50,
             })}
         >
             <div className={styles.wrapper}>
@@ -57,7 +57,7 @@ const MyHeader = (props: MyHeaderProps) => {
     )
 }
 
-const SocialBar = ({ CMSLayout }: any) => {
+const SocialBar = ({ CMSLayout }: SocialBarProps) => {
     return (
         <div className={styles['social-bar']}>
             <SocialLinks CMSLayout={CMSLayout} />
@@ -87,7 +87,7 @@ const SocialBar = ({ CMSLayout }: any) => {
         </div>
     )
 }
-const SocialLinks = ({ CMSLayout }: any) => {
+const SocialLinks = ({ CMSLayout }: SocialBarProps) => {
     return (
         <ul className={styles['social-media-links']}>
             <li>
@@ -113,7 +113,7 @@ const SocialLinks = ({ CMSLayout }: any) => {
     )
 }
 
-const MobileHeader = (props: NavigationProps) => {
+const MobileHeader = (props: MobileHeaderProps) => {
     const { pages, navSwitch, navCheck, themeStyles, CMSLayout } = props
 
     return (

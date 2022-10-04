@@ -57,11 +57,6 @@ const Slug = (props: HomeProps) => {
     const cmsGlobalDesign = cmsGlobal ? cmsGlobal.design : ''
     const cmsTheme = cmsGlobalDesign ? cmsGlobalDesign?.themes.selected : ''
 
-    /*     for (let i = 0; i < CMSLayout.modules.length; i++) {
-        CMSLayout.modules[i].attributes.pages = pageList.pages
-    }
- */
-
     const themeStyles = setColors(cmsGlobalDesign?.colors, cmsTheme)
 
     //setting themestyles in CMSLayout, will probably change later

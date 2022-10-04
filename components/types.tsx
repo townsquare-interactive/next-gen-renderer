@@ -1,5 +1,4 @@
 /* Components */
-
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { ReactChild, ReactElement, ReactNode } from 'react'
 
@@ -17,16 +16,11 @@ export interface ThemeStyles {
     navBackground: string
 }
 
-export interface Module {
-    [key: string]: ModuleData
-}
-
 export interface HomeProps {
     moduleData: ModuleData
     /* globalData: GlobalData */
     CMSLayout: GlobalData
     page: CMSPage
-    /*     cmsGlobalDesign: any */
     cmsGlobal: CMSGlobal
     pageMods: PageProps
     pageList: Pagelist
@@ -53,6 +47,10 @@ export interface LayoutProps {
     themeStyles: ThemeStyles
 }
 
+export interface SocialBarProps {
+    CMSLayout: GlobalData
+}
+
 export interface GlobalData {
     logoUrl?: string
     navStyle?: 'layout1' | 'layout2'
@@ -70,21 +68,15 @@ export interface GlobalData {
     contact: any
 }
 
-export interface GlobalData2 {
+export interface MobileHeaderProps {
+    navSwitch?: () => void
+    /**Boolean that determines if navbar being shown or hidden*/
+    navCheck?: boolean
+    pages: PagesProps[]
+    /**Image url for logo*/
     logoUrl?: string
-    navStyle?: 'layout1' | 'layout2'
-    //themeStyles: ThemeStyles
-    layout?: number
-    modules: GlobalModule[]
-    seo?: SeoData
-    url?: string
-    email?: string
-    //social?: [string]
-    social?: any
-    siteName?: string
-    phoneNumber?: String
     themeStyles: ThemeStyles
-    contact: any
+    CMSLayout: GlobalData
 }
 
 export interface CMSGlobalDesign {
@@ -144,6 +136,10 @@ export interface CMSPage {
     data: CMSPageData
 }
 
+export interface Module {
+    [key: string]: ModuleData
+}
+
 export interface CMSPageData {
     attributes: NavigationProps | FooterProps
     modules: Module[]
@@ -159,7 +155,32 @@ export interface CMSPageData {
 export interface GlobalModule {
     componentType: string
     /* attributes: NavigationProps | FooterProps */
-    attributes: any
+    attributes: LayoutComponentAttributes
+}
+
+export interface LayoutComponentAttributes {
+    /**Data for links to social platforms*/
+    socialData?: SocialData[]
+    addressData?: AddressData
+    siteName?: string
+    phoneNumber?: string
+
+    navSwitch?: () => void
+    /**Boolean that determines if navbar being shown or hidden*/
+    navCheck?: boolean
+    pages: PagesProps[]
+    /**Layout changes based on where Nav is being called*/
+    modLayout?: 'header' | 'footer'
+    /**Mobile style layout of component*/
+    navStyle?: 'layout1' | 'layout2'
+    /**Determines which item to place bottom border under in Nav*/
+    borderNum?: number
+    /**Image that appears in navbar dropdown*/
+    navImage?: string
+    /**alt text for nav image*/
+    altText?: string
+    /**Image url for logo*/
+    logoUrl?: string
 }
 
 export interface ModuleData {
@@ -192,15 +213,6 @@ export interface PageProps {
     head_script: string | null
     hideTitle: number
     sections: [{ wide: string }, { wide: string }, { wide: string }, { wide: string }, { wide: string }]
-}
-
-/*----------------------------Elements--------------------------------------*/
-
-export interface ButtonProps {
-    linkUrl: string
-    text: string
-    themeStyles: ThemeStyles
-    btnType?: 'normal' | 'accent' | 'alt' | 'alt2' | 'accent2'
 }
 
 /*-----------------------------TSI Modules ----------------------------------*/
@@ -703,7 +715,7 @@ export interface NavigationProps {
 
 export interface MyHeaderProps {
     pages: PagesProps[]
-    CMSLayout: GlobalData2
+    CMSLayout: GlobalData
 }
 
 export interface NavBarProps {
@@ -733,4 +745,13 @@ export interface SeoData {
     descr?: string
     imageOverride?: any
     selectedImage?: string
+}
+
+/*----------------------------Elements--------------------------------------*/
+
+export interface ButtonProps {
+    linkUrl: string
+    text: string
+    themeStyles: ThemeStyles
+    btnType?: 'normal' | 'accent' | 'alt' | 'alt2' | 'accent2'
 }
