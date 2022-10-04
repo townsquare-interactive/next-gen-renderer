@@ -80,7 +80,7 @@ const Home = (props: HomeProps) => {
             <Head>
                 <title>{page.seo?.title || 'title'}</title>
                 {page.seo?.title && <meta property="og:title" content={page.seo.title} key="title" />}
-                {page.seo?.descr && <meta name="description" content={page.seo.descr} />}
+                {page.seo?.descr ? <meta name="description" content={page.seo.descr} /> : <meta name="description" content="description" />}
                 {page.seo?.imageOverride ||
                     (page.seo?.selectedImage && (
                         <>
@@ -147,14 +147,14 @@ const Home = (props: HomeProps) => {
                                 </Fragment>
                             ))}
                         </div>
-                        <div style={{ width: '30rem', height: '30rem', position: 'absolute' }}>
+                        {/* <div style={{ width: '30rem', height: '30rem', position: 'absolute' }}>
                             <Image
                                 src="http://clttestsiteforjoshedwards.production.townsquareinteractive.com//files/2022/08/EiffelWater1.jpg"
                                 alt=""
                                 layout="fill"
                                 objectFit="cover"
                             />
-                        </div>
+                        </div> */}
                     </div>
                 )}
             </Layout>

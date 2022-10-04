@@ -71,16 +71,18 @@ const SocialBar = ({ CMSLayout }: SocialBarProps) => {
                         </Link>
                     </li>
                     <li className={styles.phone}>
-                        <Link href={'mailto:' + CMSLayout.contact.email.email}>
+                        <Link href={`mailto:${CMSLayout.contact.email.email}`}>
                             <a aria-label="email">
                                 <FontAwesomeIcon icon={faEnvelope} /> {CMSLayout.contact.email.name}: {CMSLayout.email}
                             </a>
                         </Link>
                     </li>
                     <li className={styles.phone}>
-                        <a aria-label="location">
-                            <FontAwesomeIcon icon={faLocationPin} /> {CMSLayout.siteName}
-                        </a>
+                        <Link href={'google.com'}>
+                            <a aria-label="location">
+                                <FontAwesomeIcon icon={faLocationPin} /> {CMSLayout.siteName}
+                            </a>
+                        </Link>
                     </li>
                 </ul>
             </aside>
