@@ -1,7 +1,7 @@
 import styles from './myheader.module.scss'
 import { Pagelist, MyHeaderProps, SocialBarProps, MobileHeaderProps } from './types'
 import cn from 'classnames'
-import { domainImage, socialConvert } from '../functions'
+import { domainImage, socialConvert, iconConvert } from '../functions'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Logo from './Logo'
@@ -47,7 +47,7 @@ const MyHeader = (props: MyHeaderProps) => {
                 </div>
 
                 <Nav pages={pages} navType={'desktop'} />
-                <button className={styles['nav-open']} onClick={navSwitch}>
+                <button className={styles['nav-open']} onClick={navSwitch} aria-label="toggle navigation">
                     <FontAwesomeIcon icon={faBars} />
                 </button>
                 <MobileHeader pages={pages} navSwitch={navSwitch} navCheck={navCheck} themeStyles={CMSLayout.themeStyles} CMSLayout={CMSLayout} />
@@ -65,20 +65,20 @@ const SocialBar = ({ CMSLayout }: SocialBarProps) => {
                 <ul>
                     <li className={styles.phone}>
                         <Link href={'tel:' + CMSLayout.contact.phone.number}>
-                            <a>
+                            <a aria-label="phone">
                                 <FontAwesomeIcon icon={faPhone} /> {CMSLayout.phoneNumber}
                             </a>
                         </Link>
                     </li>
                     <li className={styles.phone}>
                         <Link href={'mailto:' + CMSLayout.contact.email.email}>
-                            <a>
+                            <a aria-label="email">
                                 <FontAwesomeIcon icon={faEnvelope} /> {CMSLayout.contact.email.name}: {CMSLayout.email}
                             </a>
                         </Link>
                     </li>
                     <li className={styles.phone}>
-                        <a>
+                        <a aria-label="location">
                             <FontAwesomeIcon icon={faLocationPin} /> {CMSLayout.siteName}
                         </a>
                     </li>
@@ -91,19 +91,19 @@ const SocialLinks = ({ CMSLayout }: SocialBarProps) => {
     return (
         <ul className={styles['social-media-links']}>
             <li>
-                <a>
+                <a aria-label="share-site">
                     <FontAwesomeIcon icon={faEnvelope} />
                 </a>
             </li>
             <li>
-                <a>
+                <a aria-label="print-site">
                     <FontAwesomeIcon icon={faPrint} />
                 </a>
             </li>
             {CMSLayout.social.map((url: string, index: number) => (
                 <li key={index}>
                     <Link href={url}>
-                        <a target="blank">
+                        <a target="blank" aria-label={iconConvert(url)}>
                             <FontAwesomeIcon icon={socialConvert(url)} />
                         </a>
                     </Link>
@@ -123,7 +123,7 @@ const MobileHeader = (props: MobileHeaderProps) => {
                 [styles.visible]: navCheck,
             })}
         >
-            <button className={styles['nav-toggle']} onClick={navSwitch}></button>
+            <button className={styles['nav-toggle']} onClick={navSwitch} aria-label="close-mobile-nav"></button>
 
             <div className={styles['mobile-body']}>
                 <div className={styles.social}>
@@ -149,7 +149,9 @@ const Nav = (props: Pagelist) => {
                 {pages.map((item, index: number) => (
                     <Link href={item.url} key={index} passHref={true}>
                         <li>
-                            <a className="navLink">{item.name}</a>
+                            <a className="navLink" aria-label={item.name}>
+                                {item.name}
+                            </a>
                         </li>
                     </Link>
                 ))}

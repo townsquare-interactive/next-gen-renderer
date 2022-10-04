@@ -7,6 +7,7 @@ import { useRouter } from 'next/router'
 import { getDomain, decideColumns, setColors, domainImage, findHomePageSlug } from '../functions'
 import cn from 'classnames'
 import { Fragment } from 'react'
+import Image from 'next/image'
 
 //runs at build time just like static props
 export const getStaticProps = async (context: Context) => {
@@ -145,6 +146,14 @@ const Home = (props: HomeProps) => {
                                     )}
                                 </Fragment>
                             ))}
+                        </div>
+                        <div style={{ width: '30rem', height: '30rem', position: 'absolute' }}>
+                            <Image
+                                src="http://clttestsiteforjoshedwards.production.townsquareinteractive.com//files/2022/08/EiffelWater1.jpg"
+                                alt=""
+                                layout="fill"
+                                objectFit="cover"
+                            />
                         </div>
                     </div>
                 )}

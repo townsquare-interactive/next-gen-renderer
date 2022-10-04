@@ -141,7 +141,7 @@ export const findHomePageSlug = (pageList: Pagelist) => {
     return homePageSlug
 }
 
-function iconConvert(str: string) {
+export function iconConvert(str: string) {
     if (str.indexOf('google') !== -1) {
         return 'google'
     } else if (str.indexOf('facebook') !== -1) {

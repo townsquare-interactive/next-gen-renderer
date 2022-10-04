@@ -70,6 +70,7 @@
 
             span {
                 max-width: 8.75rem !important;
+                transition: all 0.3s ease-in-out;
             }
 
             &.desktop-logo-block {
@@ -281,7 +282,6 @@
 
             span {
                 max-width: 4.5rem !important;
-                transition: all 0.3s ease-in-out;
             }
         }
     }
@@ -398,7 +398,6 @@
             margin: 0;
             padding: 0;
             outline: none;
-
             border: none;
 
             //button

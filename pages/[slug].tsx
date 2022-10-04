@@ -89,7 +89,7 @@ const Slug = (props: HomeProps) => {
             <Head>
                 <title>{page.seo?.title || 'title'}</title>
                 {page.seo?.title && <meta property="og:title" content={page.seo.title} key="title" />}
-                {page.seo?.descr && <meta name="description" content={page.seo.descr} />}
+                {page.seo?.descr ? <meta name="description" content={page.seo.descr} /> : <meta name="description" content="description of page" />}
                 {page.seo?.imageOverride ||
                     (page.seo?.selectedImage && (
                         <>
