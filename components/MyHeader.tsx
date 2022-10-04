@@ -125,11 +125,13 @@ const MobileHeader = (props: MobileHeaderProps) => {
         >
             <button className={styles['nav-toggle']} onClick={navSwitch}></button>
 
-            <div className={styles.social}>
-                <SocialLinks CMSLayout={CMSLayout} />
-            </div>
+            <div className={styles['mobile-body']}>
+                <div className={styles.social}>
+                    <SocialLinks CMSLayout={CMSLayout} />
+                </div>
 
-            <Nav pages={pages} navType={'mobile'} />
+                <Nav pages={pages} navType={'mobile'} />
+            </div>
         </div>
     )
 }
