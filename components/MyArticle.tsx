@@ -175,6 +175,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                             className={cn(styles['item-wrap'], 'btn_link')}
                             target={item.newwindow == 1 ? '_blank' : item.newwindow2 == 1 ? '_blank' : '_self'}
                             style={item.isFeatured === 'active' && props.type === 'article' ? heroBackground : noBackground}
+                            aria-label={item.headline || 'block-link'}
                         >
                             {children}
                         </a>

@@ -147,13 +147,13 @@ const Nav = (props: Pagelist) => {
                 })}
             >
                 {pages.map((item, index: number) => (
-                    <Link href={item.url} key={index} passHref={true}>
-                        <li>
+                    <li key={index}>
+                        <Link href={item.url} passHref={true}>
                             <a className="navLink" aria-label={item.name}>
                                 {item.name}
                             </a>
-                        </li>
-                    </Link>
+                        </Link>
+                    </li>
                 ))}
             </ul>
         </div>
