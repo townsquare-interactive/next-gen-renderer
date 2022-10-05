@@ -78,7 +78,7 @@ const SocialBar = ({ CMSLayout }: SocialBarProps) => {
                         </Link>
                     </li>
                     <li className={styles.phone}>
-                        <Link href={'google.com'}>
+                        <Link href={'https://www.google.com/'}>
                             <a aria-label="location">
                                 <FontAwesomeIcon icon={faLocationPin} /> {CMSLayout.siteName}
                             </a>
@@ -93,14 +93,18 @@ const SocialLinks = ({ CMSLayout }: SocialBarProps) => {
     return (
         <ul className={styles['social-media-links']}>
             <li>
-                <a aria-label="share-site">
-                    <FontAwesomeIcon icon={faEnvelope} />
-                </a>
+                <Link href={`mailto:${CMSLayout.contact.email.email}`}>
+                    <a aria-label="email-site">
+                        <FontAwesomeIcon icon={faEnvelope} />
+                    </a>
+                </Link>
             </li>
             <li>
-                <a aria-label="print-site">
-                    <FontAwesomeIcon icon={faPrint} />
-                </a>
+                {/* <Link onClick={}>
+                    <a aria-label="print-site">
+                        <FontAwesomeIcon icon={faPrint} />
+                    </a>
+                </Link> */}
             </li>
             {CMSLayout.social.map((url: string, index: number) => (
                 <li key={index}>

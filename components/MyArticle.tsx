@@ -462,6 +462,8 @@ const ImageBlock = (props: TheListItemImageProps) => {
                         objectFit="cover"
                         alt={item.img_alt_tag || ''}
                         objectPosition="top"
+                        priority={item.desc ? false : true}
+                        quality="40"
                     />
                 ) : (
                     //Setting width and height to image props if nosizing added
@@ -473,6 +475,8 @@ const ImageBlock = (props: TheListItemImageProps) => {
                         layout="responsive"
                         alt={item.img_alt_tag || ''}
                         objectPosition="top"
+                        priority={item.desc ? false : true}
+                        quality="40"
                     />
                 )}
                 {item.icon3 && (
