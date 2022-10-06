@@ -66,6 +66,7 @@ export interface GlobalData {
     phoneNumber?: String
     themeStyles: ThemeStyles
     contact: any
+    cmsNav?: any
 }
 
 export interface MobileHeaderProps {
@@ -611,6 +612,7 @@ export interface AddressData {
 export interface Pagelist {
     pages: PagesProps[]
     navType?: string
+    cmsNav?: any
 }
 
 export interface FooterProps {

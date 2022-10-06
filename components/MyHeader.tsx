@@ -46,7 +46,7 @@ const MyHeader = (props: MyHeaderProps) => {
                     <Logo logoUrl={domainImage('/files/2022/09/Yos2.jpg', true, 'clttestsiteforjoshedwards.production.townsquareinteractive.com')} />
                 </div>
 
-                <Nav pages={pages} navType={'desktop'} />
+                <Nav pages={pages} navType={'desktop'} cmsNav={CMSLayout.cmsNav} />
                 <button className={styles['nav-open']} onClick={navSwitch} aria-label="toggle navigation">
                     <FontAwesomeIcon icon={faBars} />
                 </button>
@@ -97,11 +97,7 @@ const SocialLinks = ({ CMSLayout }: SocialBarProps) => {
                     <FontAwesomeIcon icon={faEnvelope} />
                 </a>
             </li>
-            <li>
-                <a aria-label="print-site">
-                    <FontAwesomeIcon icon={faPrint} />
-                </a>
-            </li>
+
             {CMSLayout.social.map((url: string, index: number) => (
                 <li key={index}>
                     <Link href={url}>
@@ -129,7 +125,8 @@ const MobileHeader = (props: MobileHeaderProps) => {
 
             <div className={styles['mobile-body']}>
                 <div className={styles.social}>
-                    <SocialLinks CMSLayout={CMSLayout} />
+                    {' '}
+                    <SocialLinks CMSLayout={CMSLayout} />{' '}
                 </div>
 
                 <Nav pages={pages} navType={'mobile'} />
@@ -139,7 +136,8 @@ const MobileHeader = (props: MobileHeaderProps) => {
 }
 
 const Nav = (props: Pagelist) => {
-    const { pages, navType } = props
+    const { pages, navType, cmsNav } = props
+
     return (
         <div className={styles.access}>
             <ul
@@ -155,8 +153,38 @@ const Nav = (props: Pagelist) => {
                                 {item.name}
                             </a>
                         </Link>
+                        {index === 0 && (
+                            <ul
+                                className={cn({
+                                    [styles['sub-menu']]: navType == 'desktop',
+                                })}
+                            >
+                                <li>
+                                    <Link href="http://clttestsiteforjoshedwards.production.townsquareinteractive.com/columns/" passHref={true}>
+                                        <a className="navLink">columns</a>
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="http://clttestsiteforjoshedwards.production.townsquareinteractive.com/columns/" passHref={true}>
+                                        <a className="navLink">Other</a>
+                                    </Link>
+                                </li>
+                            </ul>
+                        )}
                     </li>
                 ))}
+
+                {/*For testing CMS Nav  (determined by menu item parent)*/}
+                {/* {cmsNav &&
+                    cmsNav.map((item: any, index: number) => (
+                        <li key={index}>
+                            <Link href={item.url} passHref={true}>
+                                <a className="navLink" aria-label={item.title}>
+                                    {item.title}
+                                </a>
+                            </Link>
+                        </li>
+                    ))}*/}
             </ul>
         </div>
     )
