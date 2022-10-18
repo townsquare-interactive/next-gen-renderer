@@ -50,9 +50,10 @@ Default.args = {
 
     CMSLayout: {
         themeStyles: {
-            mainColor: '#ff7b42',
+            mainColor: '#00ab80',
             textColor: '#666666',
             headingColor: '#008185',
+            subHeadingColor: '#008185',
             textColorAccent: '#242424',
             linkColor: '#000000',
             accentBackgroundColor: '#ff7b42',
@@ -61,6 +62,8 @@ Default.args = {
             headerBackground: '#88f7fb',
             footerBackground: '#e3dccc',
             navBackground: '#88f7fb',
+            BckdHeaderSocial: '#91fbff',
+            NavText: '#008185',
         },
         logoUrl: '/files/2022/08/EiffelWater1.jpg',
         social: ['http://www.facebook.com/Tipsyburro', 'http://www.twitter.com/nbc'],

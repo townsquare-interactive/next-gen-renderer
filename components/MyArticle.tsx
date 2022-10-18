@@ -463,7 +463,7 @@ const ImageBlock = (props: TheListItemImageProps) => {
                         alt={item.img_alt_tag || ''}
                         objectPosition="top"
                         quality="50"
-                        //priority={item.desc ? false : true}
+                        priority={item.desc ? false : true}
                         loading="eager"
                     />
                 ) : (
@@ -477,7 +477,7 @@ const ImageBlock = (props: TheListItemImageProps) => {
                         alt={item.img_alt_tag || ''}
                         objectPosition="top"
                         quality="50"
-                        //priority={item.desc ? false : true}
+                        priority={item.desc ? false : true}
                     />
                 )}
                 {item.icon3 && (

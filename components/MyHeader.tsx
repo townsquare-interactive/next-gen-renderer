@@ -11,7 +11,7 @@ import { faEnvelope, faPrint, faPhone, faLocationPin, faBars } from '@fortawesom
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const MyHeader = (props: MyHeaderProps) => {
-    const { pages, CMSLayout } = props
+    const { pages, CMSLayout, themeStyles } = props
     const [navCheck, setNav] = useState<boolean>(false)
     const [windowHeight, setWindowHeight] = useState(0)
 
@@ -34,6 +34,7 @@ const MyHeader = (props: MyHeaderProps) => {
             className={cn(styles.root, {
                 [styles.shrink]: windowHeight > 50,
             })}
+            style={{ background: themeStyles.headerBackground }}
         >
             <div className={styles.wrapper}>
                 <div className={cn(styles['logo-block'], styles['desktop-logo-block'])}>
@@ -46,41 +47,42 @@ const MyHeader = (props: MyHeaderProps) => {
                     <Logo logoUrl={domainImage('/files/2022/09/Yos2.jpg', true, 'clttestsiteforjoshedwards.production.townsquareinteractive.com')} />
                 </div>
 
-                <Nav pages={pages} navType={'desktop'} cmsNav={CMSLayout.cmsNav} />
+                <Nav pages={pages} navType={'desktop'} cmsNav={CMSLayout.cmsNav} themeStyles={themeStyles} />
                 <button className={styles['nav-open']} onClick={navSwitch} aria-label="toggle navigation">
                     <FontAwesomeIcon icon={faBars} />
                 </button>
                 <MobileHeader pages={pages} navSwitch={navSwitch} navCheck={navCheck} themeStyles={CMSLayout.themeStyles} CMSLayout={CMSLayout} />
             </div>
-            <SocialBar CMSLayout={CMSLayout} />
+            <SocialBar CMSLayout={CMSLayout} themeStyles={themeStyles} />
         </header>
     )
 }
 
-const SocialBar = ({ CMSLayout }: SocialBarProps) => {
+const SocialBar = ({ CMSLayout, themeStyles }: SocialBarProps) => {
     return (
-        <div className={styles['social-bar']}>
-            <SocialLinks CMSLayout={CMSLayout} />
+        <div className={styles['social-bar']} style={{ background: themeStyles.BckdHeaderSocial }}>
+            <SocialLinks CMSLayout={CMSLayout} themeStyles={themeStyles} />
             <aside className={styles.contact}>
                 <ul>
                     <li className={styles.phone}>
                         <Link href={'tel:' + CMSLayout.contact.phone.number}>
                             <a aria-label="phone">
-                                <FontAwesomeIcon icon={faPhone} /> {CMSLayout.phoneNumber}
+                                <FontAwesomeIcon icon={faPhone} size="xs" /> {CMSLayout.phoneNumber}
                             </a>
                         </Link>
                     </li>
                     <li className={styles.phone}>
                         <Link href={`mailto:${CMSLayout.contact.email.email}`}>
                             <a aria-label="email">
-                                <FontAwesomeIcon icon={faEnvelope} /> {CMSLayout.contact.email.name}: {CMSLayout.email}
+                                <FontAwesomeIcon icon={faEnvelope} size="xs" /> {CMSLayout.contact.email.name}:{CMSLayout.email}
                             </a>
                         </Link>
                     </li>
                     <li className={styles.phone}>
                         <Link href={'google.com'}>
                             <a aria-label="location">
-                                <FontAwesomeIcon icon={faLocationPin} /> {CMSLayout.siteName}
+                                <FontAwesomeIcon icon={faLocationPin} size="xs" />
+                                {CMSLayout.siteName}
                             </a>
                         </Link>
                     </li>
@@ -89,7 +91,7 @@ const SocialBar = ({ CMSLayout }: SocialBarProps) => {
         </div>
     )
 }
-const SocialLinks = ({ CMSLayout }: SocialBarProps) => {
+const SocialLinks = ({ CMSLayout, themeStyles }: SocialBarProps) => {
     return (
         <ul className={styles['social-media-links']}>
             <li>
@@ -125,18 +127,17 @@ const MobileHeader = (props: MobileHeaderProps) => {
 
             <div className={styles['mobile-body']}>
                 <div className={styles.social}>
-                    {' '}
-                    <SocialLinks CMSLayout={CMSLayout} />{' '}
+                    <SocialLinks CMSLayout={CMSLayout} themeStyles={themeStyles} />{' '}
                 </div>
 
-                <Nav pages={pages} navType={'mobile'} />
+                <Nav pages={pages} navType={'mobile'} themeStyles={themeStyles} cmsNav={CMSLayout.cmsNav} />
             </div>
         </div>
     )
 }
 
 const Nav = (props: Pagelist) => {
-    const { pages, navType, cmsNav } = props
+    const { pages, navType, cmsNav, themeStyles } = props
 
     return (
         <div className={styles.access}>
@@ -146,7 +147,7 @@ const Nav = (props: Pagelist) => {
                     [styles['mobile-nav']]: navType == 'mobile',
                 })}
             >
-                {pages.map((item, index: number) => (
+                {/* {pages.map((item, index: number) => (
                     <li key={index}>
                         <Link href={item.url} passHref={true}>
                             <a className="navLink" aria-label={item.name}>
@@ -172,19 +173,19 @@ const Nav = (props: Pagelist) => {
                             </ul>
                         )}
                     </li>
-                ))}
+                ))} */}
 
                 {/*For testing CMS Nav  (determined by menu item parent)*/}
-                {/* {cmsNav &&
+                {cmsNav &&
                     cmsNav.map((item: any, index: number) => (
                         <li key={index}>
-                            <Link href={item.url} passHref={true}>
+                            <Link href={item.title.toLowerCase()} passHref={true}>
                                 <a className="navLink" aria-label={item.title}>
                                     {item.title}
                                 </a>
                             </Link>
                         </li>
-                    ))}*/}
+                    ))}
             </ul>
         </div>
     )

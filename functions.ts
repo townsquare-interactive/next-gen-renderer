@@ -31,8 +31,8 @@ export function getDomain(cms = false) {
         let domainUrl = process.env.NEXT_PUBLIC_URL_ENV ? envCheck(apiUrl) : apiUrl + '/' + localUrl
         return domainUrl
     } else {
-        /* let domainUrl = bucketUrl + '/' + cmsUrl */
-        let domainUrl = bucketUrl + '/' + 'wordpress'
+        let domainUrl = bucketUrl + '/' + cmsUrl
+        /*  let domainUrl = bucketUrl + '/' + 'wordpress' */
         return domainUrl
     }
 }
@@ -52,9 +52,10 @@ export function domainImage(url: string, cms = false, cmsSiteUrl = '') {
 export const setColors = (cmsGlobalDesign: CMSColors, cmsTheme: string) => {
     if (cmsTheme === 'beacon-theme_charlotte') {
         return {
-            mainColor: cmsGlobalDesign.color_8.value,
+            mainColor: cmsGlobalDesign.color_31.value,
             textColor: cmsGlobalDesign.color_4.value,
             headingColor: cmsGlobalDesign.color_2.value,
+            subHeadingColor: cmsGlobalDesign?.color_3.value,
             textColorAccent: cmsGlobalDesign.color_9.value,
             linkColor: cmsGlobalDesign.color_5.value,
             accentBackgroundColor: cmsGlobalDesign.color_8.value,
@@ -63,20 +64,25 @@ export const setColors = (cmsGlobalDesign: CMSColors, cmsTheme: string) => {
             headerBackground: cmsGlobalDesign.color_23.value,
             footerBackground: cmsGlobalDesign.color_27.value,
             navBackground: cmsGlobalDesign.color_23.value,
+            BckdHeaderSocial: cmsGlobalDesign.color_24.value,
+            NavText: cmsGlobalDesign.color_18.value,
         }
     } else {
         return {
-            mainColor: cmsGlobalDesign?.color_3?.value,
-            textColor: cmsGlobalDesign?.color_3a?.value,
-            headingColor: cmsGlobalDesign?.color_2?.value,
-            textColorAccent: cmsGlobalDesign?.color_4?.value,
-            linkColor: cmsGlobalDesign?.color_19?.value,
-            accentBackgroundColor: cmsGlobalDesign?.color_3?.value,
-            accentColor2: cmsGlobalDesign?.color_16?.value,
-            altColor: cmsGlobalDesign?.color_16?.value,
-            headerBackground: cmsGlobalDesign?.color_17?.value,
-            footerBackground: cmsGlobalDesign?.color_20?.value,
-            navBackground: cmsGlobalDesign?.color_16?.value,
+            mainColor: cmsGlobalDesign?.color_3.value,
+            textColor: cmsGlobalDesign?.color_3a.value,
+            headingColor: cmsGlobalDesign?.color_2.value,
+            subHeadingColor: cmsGlobalDesign?.color_3.value,
+            textColorAccent: cmsGlobalDesign?.color_4.value,
+            linkColor: cmsGlobalDesign?.color_19.value,
+            accentBackgroundColor: cmsGlobalDesign?.color_3.value,
+            accentColor2: cmsGlobalDesign?.color_16.value,
+            altColor: cmsGlobalDesign?.color_16.value,
+            headerBackground: cmsGlobalDesign?.color_17.value,
+            footerBackground: cmsGlobalDesign?.color_20.value,
+            navBackground: cmsGlobalDesign?.color_16.value,
+            BckdHeaderSocial: cmsGlobalDesign?.color_24.value,
+            NavText: cmsGlobalDesign?.color_18.value,
         }
     }
 }

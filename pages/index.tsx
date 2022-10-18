@@ -55,6 +55,30 @@ const Home = (props: HomeProps) => {
 
     /*  CMSLayout.themeStyles = setColors(cmsGlobalDesign?.colors, cmsTheme) */
 
+    if (!page.data.sections) {
+        /*  page.data = {
+            ...page.data,
+            sections: [
+                {
+                    wide: '1060',
+                },
+                {
+                    wide: '232',
+                },
+                {
+                    wide: '232',
+                },
+                {
+                    wide: '232',
+                },
+                {
+                    wide: '232',
+                },
+            ],
+        } */
+        console.log('false')
+    }
+
     const columnStyles = page ? decideColumns(page.data) : 'wide-column'
 
     //Global styles

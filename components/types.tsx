@@ -14,6 +14,9 @@ export interface ThemeStyles {
     headerBackground: string
     footerBackground: string
     navBackground: string
+    BckdHeaderSocial: string
+    subHeadingColor: string
+    NavText: string
 }
 
 export interface HomeProps {
@@ -49,6 +52,7 @@ export interface LayoutProps {
 
 export interface SocialBarProps {
     CMSLayout: GlobalData
+    themeStyles: ThemeStyles
 }
 
 export interface GlobalData {
@@ -613,6 +617,7 @@ export interface Pagelist {
     pages: PagesProps[]
     navType?: string
     cmsNav?: any
+    themeStyles?: ThemeStyles
 }
 
 export interface FooterProps {
@@ -718,6 +723,7 @@ export interface NavigationProps {
 export interface MyHeaderProps {
     pages: PagesProps[]
     CMSLayout: GlobalData
+    themeStyles: ThemeStyles
 }
 
 export interface NavBarProps {

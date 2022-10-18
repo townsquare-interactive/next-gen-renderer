@@ -12,7 +12,7 @@
     display: block;
 
     //temp
-    background: black;
+    // background: black;
 
     .wrapper {
         display: flex;
@@ -230,6 +230,10 @@
             letter-spacing: -0.0125rem;
             font-weight: 400;
             vertical-align: middle;
+
+            //added
+            width: 1.5em;
+            border: none;
         }
     }
 
@@ -283,8 +287,19 @@
                         text-align: center;
 
                         //temp
+                        vertical-align: middle;
+
                         &:hover {
                             background-color: #009374;
+                        }
+
+                        svg {
+                            /*            max-width: 1rem;
+                            max-height: 1rem; */
+                            width: 0.7em;
+                            display: inline;
+                            margin-right: 0.3em;
+                            font-size: 130%;
                         }
                     }
                 }
@@ -332,6 +347,9 @@
         margin: 0;
         list-style-type: none;
 
+        //temp maybe??
+        //align-self: start;
+
         li {
             display: inline-block;
 
@@ -357,6 +375,10 @@
                 &:hover {
                     background-color: #009374;
                 }
+            }
+            svg {
+                display: inline;
+                width: 1.25em;
             }
         }
     }
@@ -485,6 +507,11 @@
                     text-transform: initial;
                     text-align: center;
                     margin: 0;
+                }
+
+                svg {
+                    width: 1.25em;
+                    display: inline;
                 }
             }
         }
