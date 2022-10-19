@@ -71,6 +71,36 @@ export interface GlobalData {
     themeStyles: ThemeStyles
     contact: any
     cmsNav?: any
+    logos: Logo
+    mobileLogos: Logo
+}
+
+export interface Logo {
+    show: number
+    type: string
+    markup: string
+    hasLinks: boolean
+    alignment: string
+    image_src: string
+    image_link: string
+}
+
+export interface NavItem {
+    ID: number
+    menu_list_id: number
+    title: string
+    post_type: string
+    nav_menu_item: string
+    type: null
+    menu_item_parent: number
+    object_id: number
+    object: string
+    target: string | null
+    classes: string | null
+    menu_order: number
+    mi_url: string | null
+    url: string
+    submenu?: [NavItem]
 }
 
 export interface MobileHeaderProps {

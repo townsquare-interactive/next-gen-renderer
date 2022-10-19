@@ -1,5 +1,5 @@
 import styles from './myheader.module.scss'
-import { Pagelist, MyHeaderProps, SocialBarProps, MobileHeaderProps } from './types'
+import { Pagelist, MyHeaderProps, SocialBarProps, MobileHeaderProps, NavItem } from './types'
 import cn from 'classnames'
 import { domainImage, socialConvert, iconConvert } from '../functions'
 import { useState, useEffect } from 'react'
@@ -38,13 +38,11 @@ const MyHeader = (props: MyHeaderProps) => {
         >
             <div className={styles.wrapper}>
                 <div className={cn(styles['logo-block'], styles['desktop-logo-block'])}>
-                    <Logo
-                        logoUrl={domainImage('/files/2022/07/jremodeling-logo.png', true, 'clttestsiteforjoshedwards.production.townsquareinteractive.com')}
-                    />
+                    <Logo logoUrl={domainImage(CMSLayout.logos.image_src, true)} />
                 </div>
 
                 <div className={cn(styles['logo-block'], styles['mobile-logo-block'])}>
-                    <Logo logoUrl={domainImage('/files/2022/09/Yos2.jpg', true, 'clttestsiteforjoshedwards.production.townsquareinteractive.com')} />
+                    <Logo logoUrl={domainImage(CMSLayout.mobileLogos.image_src, true)} />
                 </div>
 
                 <Nav pages={pages} navType={'desktop'} cmsNav={CMSLayout.cmsNav} themeStyles={themeStyles} />
@@ -137,7 +135,7 @@ const MobileHeader = (props: MobileHeaderProps) => {
 }
 
 const Nav = (props: Pagelist) => {
-    const { pages, navType, cmsNav, themeStyles } = props
+    const { navType, cmsNav, themeStyles } = props
 
     const NavItem = ({ item, arrow = false }: any) => {
         return (
@@ -158,11 +156,11 @@ const Nav = (props: Pagelist) => {
                 })}
             >
                 {cmsNav &&
-                    cmsNav.map((item: any, index: number) => (
+                    cmsNav.map((item: NavItem, index: number) => (
                         <>
                             {item.menu_item_parent === 0 && (
                                 <li key={index}>
-                                    <NavItem item={item} arrow={item.submenu.length != 0} />
+                                    <NavItem item={item} arrow={item.submenu.length} />
                                     {item.submenu && (
                                         <ul
                                             className={cn({
