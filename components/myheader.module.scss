@@ -140,7 +140,7 @@
                     -moz-transition: all 0.4s ease-in-out;
                     transition: all 0.4s ease-in-out;
                     max-height: 70vh;
-                    overflow-y: auto;
+                    //overflow-y: auto;
 
                     //
                     margin: 0;
@@ -155,9 +155,13 @@
                     a {
                         padding: 0.25rem 0.5rem;
                     }
+
+                    li > .sub-menu {
+                        font-size: 90%;
+                    }
                 }
 
-                li:hover > .sub-menu:first-of-type {
+                li:hover .sub-menu {
                     opacity: 1;
                     visibility: visible;
                     padding-top: 1rem;

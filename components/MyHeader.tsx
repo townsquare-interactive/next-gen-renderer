@@ -29,6 +29,8 @@ const MyHeader = (props: MyHeaderProps) => {
         setNav(!navCheck)
     }
 
+    console.log('cmsNav', CMSLayout.cmsNav)
+
     return (
         <header
             className={cn(styles.root, {
@@ -139,6 +141,16 @@ const MobileHeader = (props: MobileHeaderProps) => {
 const Nav = (props: Pagelist) => {
     const { pages, navType, cmsNav, themeStyles } = props
 
+    const NavItem = ({ item }: any) => {
+        return (
+            <Link href={item.title.toLowerCase()} passHref={true}>
+                <a className="navLink" aria-label={item.title}>
+                    {item.title}
+                </a>
+            </Link>
+        )
+    }
+
     return (
         <div className={styles.access}>
             <ul
@@ -147,44 +159,41 @@ const Nav = (props: Pagelist) => {
                     [styles['mobile-nav']]: navType == 'mobile',
                 })}
             >
-                {/* {pages.map((item, index: number) => (
-                    <li key={index}>
-                        <Link href={item.url} passHref={true}>
-                            <a className="navLink" aria-label={item.name}>
-                                {item.name}
-                            </a>
-                        </Link>
-                        {index === 0 && (
-                            <ul
-                                className={cn({
-                                    [styles['sub-menu']]: navType == 'desktop',
-                                })}
-                            >
-                                <li>
-                                    <Link href="http://clttestsiteforjoshedwards.production.townsquareinteractive.com/columns/" passHref={true}>
-                                        <a className="navLink">columns</a>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="http://clttestsiteforjoshedwards.production.townsquareinteractive.com/columns/" passHref={true}>
-                                        <a className="navLink">Other</a>
-                                    </Link>
-                                </li>
-                            </ul>
-                        )}
-                    </li>
-                ))} */}
-
-                {/*For testing CMS Nav  (determined by menu item parent)*/}
                 {cmsNav &&
                     cmsNav.map((item: any, index: number) => (
-                        <li key={index}>
-                            <Link href={item.title.toLowerCase()} passHref={true}>
-                                <a className="navLink" aria-label={item.title}>
-                                    {item.title}
-                                </a>
-                            </Link>
-                        </li>
+                        <>
+                            {item.menu_item_parent === 0 && (
+                                <li key={index}>
+                                    <NavItem item={item} />
+                                    {item.submenu && (
+                                        <ul
+                                            className={cn({
+                                                [styles['sub-menu']]: navType == 'desktop',
+                                            })}
+                                        >
+                                            {item.submenu.map((subItem: any, idx: number) => (
+                                                <li key={idx}>
+                                                    <NavItem item={subItem} />
+                                                    {subItem.submenu && (
+                                                        <ul
+                                                            className={cn({
+                                                                [styles['sub-menu']]: navType == 'desktop',
+                                                            })}
+                                                        >
+                                                            {subItem.submenu.map((subItem2: any, subidx: number) => (
+                                                                <li key={subidx}>
+                                                                    <NavItem item={subItem2} />
+                                                                </li>
+                                                            ))}
+                                                        </ul>
+                                                    )}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )}
+                                </li>
+                            )}
+                        </>
                     ))}
             </ul>
         </div>
