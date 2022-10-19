@@ -30,6 +30,9 @@ ThreeTwoThirds.args = {
         headerBackground: 'rgb(64,64,64)',
         footerBackground: 'linear-gradient(rgb(54,80,112, 0.6) 0%, rgb(54,80,112) 23%)',
         navBackground: 'rgb(64,64,64,.9)',
+        BckdHeaderSocial: '#12343d',
+        NavText: 'rgba(237,237,223,1)',
+        subHeadingColor: '#5b5b5b',
     },
 
     items: [
@@ -201,6 +204,9 @@ WithTextBox.args = {
         headerBackground: 'rgb(64,64,64)',
         footerBackground: 'linear-gradient(rgb(54,80,112, 0.6) 0%, rgb(54,80,112) 23%)',
         navBackground: 'rgb(64,64,64,.9)',
+        BckdHeaderSocial: '#12343d',
+        NavText: 'rgba(237,237,223,1)',
+        subHeadingColor: '#5b5b5b',
     },
 
     items: [

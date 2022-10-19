@@ -29,8 +29,6 @@ const MyHeader = (props: MyHeaderProps) => {
         setNav(!navCheck)
     }
 
-    console.log('cmsNav', CMSLayout.cmsNav)
-
     return (
         <header
             className={cn(styles.root, {
@@ -66,21 +64,21 @@ const SocialBar = ({ CMSLayout, themeStyles }: SocialBarProps) => {
             <SocialLinks CMSLayout={CMSLayout} themeStyles={themeStyles} />
             <aside className={styles.contact}>
                 <ul>
-                    <li className={styles.phone}>
+                    <li className={cn(styles.icon, styles.phone)}>
                         <Link href={'tel:' + CMSLayout.contact.phone.number}>
                             <a aria-label="phone">
                                 <FontAwesomeIcon icon={faPhone} size="xs" /> {CMSLayout.phoneNumber}
                             </a>
                         </Link>
                     </li>
-                    <li className={styles.phone}>
+                    <li className={cn(styles.icon, styles.email)}>
                         <Link href={`mailto:${CMSLayout.contact.email.email}`}>
                             <a aria-label="email">
                                 <FontAwesomeIcon icon={faEnvelope} size="xs" /> {CMSLayout.contact.email.name}:{CMSLayout.email}
                             </a>
                         </Link>
                     </li>
-                    <li className={styles.phone}>
+                    <li className={cn(styles.icon, styles.map)}>
                         <Link href={'google.com'}>
                             <a aria-label="location">
                                 <FontAwesomeIcon icon={faLocationPin} size="xs" />
@@ -141,10 +139,10 @@ const MobileHeader = (props: MobileHeaderProps) => {
 const Nav = (props: Pagelist) => {
     const { pages, navType, cmsNav, themeStyles } = props
 
-    const NavItem = ({ item }: any) => {
+    const NavItem = ({ item, arrow = false }: any) => {
         return (
             <Link href={item.title.toLowerCase()} passHref={true}>
-                <a className="navLink" aria-label={item.title}>
+                <a className={cn('navLink', { [styles.arrow]: arrow == true })} aria-label={item.title}>
                     {item.title}
                 </a>
             </Link>
@@ -164,7 +162,7 @@ const Nav = (props: Pagelist) => {
                         <>
                             {item.menu_item_parent === 0 && (
                                 <li key={index}>
-                                    <NavItem item={item} />
+                                    <NavItem item={item} arrow={item.submenu.length != 0} />
                                     {item.submenu && (
                                         <ul
                                             className={cn({
@@ -172,8 +170,10 @@ const Nav = (props: Pagelist) => {
                                             })}
                                         >
                                             {item.submenu.map((subItem: any, idx: number) => (
-                                                <li key={idx}>
-                                                    <NavItem item={subItem} />
+                                                <>
+                                                    <li key={idx}>
+                                                        <NavItem item={subItem} />
+                                                    </li>
                                                     {subItem.submenu && (
                                                         <ul
                                                             className={cn({
@@ -187,7 +187,7 @@ const Nav = (props: Pagelist) => {
                                                             ))}
                                                         </ul>
                                                     )}
-                                                </li>
+                                                </>
                                             ))}
                                         </ul>
                                     )}

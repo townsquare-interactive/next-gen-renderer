@@ -145,7 +145,7 @@
                     //
                     margin: 0;
                     z-index: 300;
-                    font-size: 90%;
+                    font-size: 80%;
 
                     min-width: 100%;
                     padding: 1rem 1rem 0.5rem 0;
@@ -158,6 +158,10 @@
 
                     li > .sub-menu {
                         font-size: 90%;
+                    }
+
+                    li {
+                        padding-left: 1rem;
                     }
                 }
 
@@ -172,6 +176,13 @@
 
                     @include breakpoints.lg-min {
                         display: block;
+                    }
+
+                    .arrow::after {
+                        content: '▼';
+                        font-size: 80%;
+                        padding-left: 0.3rem;
+                        font-weight: bold;
                     }
 
                     li {
@@ -308,7 +319,7 @@
                     }
                 }
 
-                .phone {
+                .icon {
                     font-size: 100%;
                     letter-spacing: 0.1em;
                     //width: 100%;
