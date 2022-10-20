@@ -102,7 +102,7 @@
             align-items: center;
 
             //temp
-            color: #fff;
+            //color: #fff;
 
             .menu {
                 font-size: 0.8125em;
@@ -257,7 +257,7 @@
         padding: 0 1rem;
         width: 100%;
 
-        background-color: #12343d;
+        //background-color: #12343d;
 
         display: flex;
         flex-wrap: wrap;
@@ -304,9 +304,9 @@
                         //temp
                         vertical-align: middle;
 
-                        &:hover {
+                        /*                         &:hover {
                             background-color: #009374;
-                        }
+                        } */
 
                         svg {
                             /*            max-width: 1rem;
@@ -326,7 +326,7 @@
                     margin: 0.25rem 0;
 
                     //temp
-                    color: #fff;
+                    //color: #fff;
                 }
             }
         }
@@ -383,13 +383,7 @@
                 vertical-align: middle;
 
                 //temp
-                color: #fff;
                 font-weight: bold;
-
-                //temp
-                &:hover {
-                    background-color: #009374;
-                }
             }
             svg {
                 display: inline;
@@ -496,7 +490,7 @@
 
             //temp
             font-size: 3rem;
-            color: #fff;
+            //color: #fff;
             text-align: center;
         }
 

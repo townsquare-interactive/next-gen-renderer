@@ -3,7 +3,7 @@ import Link from 'next/dist/client/link'
 import cn from 'classnames'
 import { NavProps } from '../components/types'
 
-const Nav = (props: NavProps) => {
+/*  const Nav = (props: NavProps) => {
     const { pages, modLayout = 'header', borderNum, themeStyles } = props
 
     const themeStylesObj = {
@@ -23,20 +23,7 @@ const Nav = (props: NavProps) => {
             >
                 <style>{navHover}</style>
 
-                {/* <ul>
-                    {pages.map((item, index) => (
-                        <li
-                            key={index}
-                            className={cn({
-                                [styles.bordered]: index === borderNum,
-                            })}
-                        >
-                            <Link href={item.url}>
-                                <a className="navLink">{item.name}</a>
-                            </Link>
-                        </li>
-                    ))}
-                </ul> */}
+
 
                 {pages.map((item, index) => (
                     <div
@@ -53,6 +40,10 @@ const Nav = (props: NavProps) => {
             </div>
         </nav>
     )
+}  */
+
+const Nav = (props: NavProps) => {
+    return <div></div>
 }
 
 export default Nav

@@ -62,28 +62,34 @@ const SocialBar = ({ CMSLayout, themeStyles }: SocialBarProps) => {
             <SocialLinks CMSLayout={CMSLayout} themeStyles={themeStyles} />
             <aside className={styles.contact}>
                 <ul>
-                    <li className={cn(styles.icon, styles.phone)}>
-                        <Link href={'tel:' + CMSLayout.contact.phone.number}>
-                            <a aria-label="phone">
-                                <FontAwesomeIcon icon={faPhone} size="xs" /> {CMSLayout.phoneNumber}
-                            </a>
-                        </Link>
-                    </li>
-                    <li className={cn(styles.icon, styles.email)}>
-                        <Link href={`mailto:${CMSLayout.contact.email.email}`}>
-                            <a aria-label="email">
-                                <FontAwesomeIcon icon={faEnvelope} size="xs" /> {CMSLayout.contact.email.name}:{CMSLayout.email}
-                            </a>
-                        </Link>
-                    </li>
-                    <li className={cn(styles.icon, styles.map)}>
-                        <Link href={'google.com'}>
-                            <a aria-label="location">
-                                <FontAwesomeIcon icon={faLocationPin} size="xs" />
-                                {CMSLayout.siteName}
-                            </a>
-                        </Link>
-                    </li>
+                    {CMSLayout.contact.phone && (
+                        <li className={cn(styles.icon, styles.phone)}>
+                            <Link href={'tel:' + CMSLayout.contact.phone.number}>
+                                <a aria-label="phone" className={cn('socialIcon')}>
+                                    <FontAwesomeIcon icon={faPhone} /> {CMSLayout.phoneNumber}
+                                </a>
+                            </Link>
+                        </li>
+                    )}
+                    {CMSLayout.contact.email && (
+                        <li className={cn(styles.icon, styles.email)}>
+                            <Link href={`mailto:${CMSLayout.contact.email.email}`}>
+                                <a aria-label="email" className={cn('socialIcon')}>
+                                    <FontAwesomeIcon icon={faEnvelope} /> {CMSLayout.contact.email.name}:{CMSLayout.email}
+                                </a>
+                            </Link>
+                        </li>
+                    )}
+                    {CMSLayout.siteName && (
+                        <li className={cn(styles.icon, styles.map)}>
+                            <Link href={'google.com'}>
+                                <a aria-label="location" className={cn('socialIcon')}>
+                                    <FontAwesomeIcon icon={faLocationPin} />
+                                    {CMSLayout.siteName}
+                                </a>
+                            </Link>
+                        </li>
+                    )}
                 </ul>
             </aside>
         </div>
@@ -93,7 +99,7 @@ const SocialLinks = ({ CMSLayout, themeStyles }: SocialBarProps) => {
     return (
         <ul className={styles['social-media-links']}>
             <li>
-                <a aria-label="share-site">
+                <a aria-label="share-site" className={cn('socialIcon')}>
                     <FontAwesomeIcon icon={faEnvelope} />
                 </a>
             </li>
@@ -101,7 +107,7 @@ const SocialLinks = ({ CMSLayout, themeStyles }: SocialBarProps) => {
             {CMSLayout.social.map((url: string, index: number) => (
                 <li key={index}>
                     <Link href={url}>
-                        <a target="blank" aria-label={iconConvert(url)}>
+                        <a target="blank" aria-label={iconConvert(url)} className={cn('socialIcon')}>
                             <FontAwesomeIcon icon={socialConvert(url)} />
                         </a>
                     </Link>
@@ -160,7 +166,7 @@ const Nav = (props: Pagelist) => {
                         <>
                             {item.menu_item_parent === 0 && (
                                 <li key={index}>
-                                    <NavItem item={item} arrow={item.submenu.length} />
+                                    <NavItem item={item} arrow={item.submenu && item.submenu.length} />
                                     {item.submenu && (
                                         <ul
                                             className={cn({

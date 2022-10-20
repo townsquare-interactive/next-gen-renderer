@@ -33,16 +33,12 @@ export const getStaticProps = async (context: Context) => {
 
     const resCmsGlobal = await fetch(getDomain(true) + '/siteData.json')
     let cmsGlobal = await resCmsGlobal.json()
-    //let cmsGlobalDesign = cmsGlobal.design
 
     const resPage = await fetch(getDomain(true) + '/pages/' + slug + '.json')
     let page = await resPage.json()
 
-    const resPageList = await fetch(getDomain(true) + '/pages/page-list.json')
-    const pageList = await resPageList.json()
-
     return {
-        props: { page, CMSLayout, cmsGlobal, pageList },
+        props: { page, CMSLayout, cmsGlobal },
         // Next.js will attempt to re-generate the page:
         // - When a request comes in
         // - At most once every 10 seconds
@@ -51,7 +47,7 @@ export const getStaticProps = async (context: Context) => {
 }
 
 const Slug = (props: HomeProps) => {
-    let { page, CMSLayout, cmsGlobal, pageList } = props
+    let { page, CMSLayout, cmsGlobal } = props
     const router = useRouter()
 
     const cmsGlobalDesign = cmsGlobal ? cmsGlobal.design : ''
@@ -59,47 +55,16 @@ const Slug = (props: HomeProps) => {
 
     const themeStyles = setColors(cmsGlobalDesign?.colors, cmsTheme)
 
-    //setting themestyles in CMSLayout, will probably change later
-    //CMSLayout = { ...CMSLayout, themeStyles: setColors(cmsGlobalDesign?.colors, cmsTheme) }
-
-    /*  CMSLayout.themeStyles = setColors(cmsGlobalDesign?.colors, cmsTheme) */
-
-    /* if (!page.data.sections) {
-        page.data = {
-            ...page.data,
-            sections: [
-                {
-                    wide: '1060',
-                },
-                {
-                    wide: '232',
-                },
-                {
-                    wide: '232',
-                },
-                {
-                    wide: '232',
-                },
-                {
-                    wide: '232',
-                },
-            ],
-        }
-    } */
-
     const columnStyles = page ? decideColumns(page.data) : 'wide-column'
 
-    //Global styles
-
-    const textColors = `.accent-txt{color:${themeStyles['textColorAccent']}} .txt-color{color:${themeStyles['textColor']}} .txt-color-heading{color:${themeStyles['headingColor']}}`
+    //setting color classes
+    const textColors = `.accent-txt{color:${themeStyles['textColorAccent']}} .txt-color{color:${themeStyles['textColor']}} .txt-color-heading{color:${themeStyles['headingColor']}} .navLink:hover{color: ${themeStyles['altColor']}} .navLink{color:${themeStyles['NavText']}} .socialIcon:hover{background-color: ${themeStyles['altColor']}} .socialIcon{color:${themeStyles['NavText']}}`
 
     const btnStyles = `.btn_1{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['mainColor']}} .btn_1:hover{color: ${themeStyles['mainColor']}; background-color: ${themeStyles['textColorAccent']}} .btn_2{color: ${themeStyles['altColor']}; border-color: ${themeStyles['altColor']}} .btn_2:hover{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['altColor']}}`
 
     const colorStyles = textColors + btnStyles
 
-    //temp: temporary change need to change back, just using for pictures right now
-    /* const cmsUrl = cmsGlobal ? cmsGlobal.config.website.url : '' */
-    const cmsUrl = 'clttestsiteforjoshedwards.production.townsquareinteractive.com'
+    const cmsUrl = cmsGlobal ? cmsGlobal.config.website.url : ''
 
     // If the page is not yet generated, this will be displayed
     // initially until getStaticProps() finishes running
@@ -124,11 +89,10 @@ const Slug = (props: HomeProps) => {
                     ))}
                 {cmsGlobal.config.website.favicon.src && <link rel="shortcut icon" href={domainImage(cmsGlobal.config.website.favicon.src, true, cmsUrl)} />}
             </Head>
-
+            <style>{colorStyles}</style>
             <Layout CMSLayout={CMSLayout} themeStyles={themeStyles}>
                 {page.data && (
                     <div className={styles.root}>
-                        <style>{colorStyles}</style>
                         <div className={styles.featured}>
                             <Renderer
                                 config={page.data.modules[0]}
