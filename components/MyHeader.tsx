@@ -37,13 +37,17 @@ const MyHeader = (props: MyHeaderProps) => {
             style={{ background: themeStyles.headerBackground }}
         >
             <div className={styles.wrapper}>
-                <div className={cn(styles['logo-block'], styles['desktop-logo-block'])}>
-                    <Logo logoUrl={domainImage(CMSLayout.logos.image_src, true)} />
-                </div>
+                {CMSLayout.logos && (
+                    <div className={cn(styles['logo-block'], styles['desktop-logo-block'])}>
+                        <Logo logoUrl={domainImage(CMSLayout.logos.image_src, true)} />
+                    </div>
+                )}
 
-                <div className={cn(styles['logo-block'], styles['mobile-logo-block'])}>
-                    <Logo logoUrl={domainImage(CMSLayout.mobileLogos.image_src, true)} />
-                </div>
+                {CMSLayout.mobileLogos && (
+                    <div className={cn(styles['logo-block'], styles['mobile-logo-block'])}>
+                        <Logo logoUrl={domainImage(CMSLayout.mobileLogos.image_src, true)} />
+                    </div>
+                )}
 
                 <Nav pages={pages} navType={'desktop'} cmsNav={CMSLayout.cmsNav} themeStyles={themeStyles} />
                 <button className={styles['nav-open']} onClick={navSwitch} aria-label="toggle navigation">

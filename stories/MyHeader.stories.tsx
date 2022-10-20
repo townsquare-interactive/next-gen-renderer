@@ -64,8 +64,18 @@ Default.args = {
             navBackground: '#88f7fb',
             BckdHeaderSocial: '#91fbff',
             NavText: '#008185',
+            linkHover: '#00ab80',
         },
-        logoUrl: '/files/2022/08/EiffelWater1.jpg',
+        logos: { show: 1, type: 'image', markup: '', hasLinks: false, alignment: 'center', image_src: '/files/2022/09/Yos2.jpg', image_link: '/' },
+        mobileLogos: {
+            show: 1,
+            type: 'image',
+            markup: '',
+            hasLinks: false,
+            alignment: 'left',
+            image_src: '/files/2022/07/jremodeling-logo.png',
+            image_link: '/',
+        },
         social: ['http://www.facebook.com/Tipsyburro', 'http://www.twitter.com/nbc'],
         contact: {
             phone: {
