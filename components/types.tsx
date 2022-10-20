@@ -17,6 +17,7 @@ export interface ThemeStyles {
     BckdHeaderSocial: string
     subHeadingColor: string
     NavText: string
+    linkHover?: string
 }
 
 export interface HomeProps {
@@ -71,8 +72,8 @@ export interface GlobalData {
     themeStyles: ThemeStyles
     contact: any
     cmsNav?: any
-    logos: Logo
-    mobileLogos: Logo
+    logos?: Logo
+    mobileLogos?: Logo
 }
 
 export interface Logo {
@@ -100,7 +101,7 @@ export interface NavItem {
     menu_order: number
     mi_url: string | null
     url: string
-    submenu?: [NavItem]
+    submenu: [NavItem]
 }
 
 export interface MobileHeaderProps {
