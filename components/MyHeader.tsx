@@ -44,7 +44,11 @@ const MyHeader = (props: MyHeaderProps) => {
                 )}
 
                 {CMSLayout.mobileLogos && (
-                    <div className={cn(styles['logo-block'], styles['mobile-logo-block'])}>
+                    <div
+                        className={cn(styles['logo-block'], styles['mobile-logo-block'], {
+                            [styles.center]: CMSLayout.mobileLogos.alignment == 'center',
+                        })}
+                    >
                         <Logo logoUrl={domainImage(CMSLayout.mobileLogos.image_src, true)} />
                     </div>
                 )}
