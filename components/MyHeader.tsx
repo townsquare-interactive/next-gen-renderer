@@ -39,7 +39,7 @@ const MyHeader = (props: MyHeaderProps) => {
             <div className={styles.wrapper}>
                 {CMSLayout.logos && (
                     <div className={cn(styles['logo-block'], styles['desktop-logo-block'])}>
-                        <Logo logoUrl={domainImage(CMSLayout.logos.image_src, true)} />
+                        <Logo logoUrl={domainImage(CMSLayout.logos.image_src, true)} link={CMSLayout.logos.image_link} />
                     </div>
                 )}
 
@@ -47,9 +47,10 @@ const MyHeader = (props: MyHeaderProps) => {
                     <div
                         className={cn(styles['logo-block'], styles['mobile-logo-block'], {
                             [styles.center]: CMSLayout.mobileLogos.alignment == 'center',
+                            [styles.right]: CMSLayout.mobileLogos.alignment == 'right',
                         })}
                     >
-                        <Logo logoUrl={domainImage(CMSLayout.mobileLogos.image_src, true)} />
+                        <Logo logoUrl={domainImage(CMSLayout.mobileLogos.image_src, true)} link={CMSLayout.mobileLogos.image_link} />
                     </div>
                 )}
 

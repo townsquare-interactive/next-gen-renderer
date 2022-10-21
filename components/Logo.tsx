@@ -5,7 +5,7 @@ import { LogoProps, Media } from './types'
 import { useState } from 'react'
 
 const Logo = (props: LogoProps) => {
-    const { logoUrl = '' } = props
+    const { logoUrl = '', link = '/' } = props
     const [logoHeight, setHeight] = useState(100)
     const [logoWidth, setWidth] = useState(300)
 
@@ -18,7 +18,7 @@ const Logo = (props: LogoProps) => {
         <div className={styles.root}>
             <div className={styles.wrapper}>
                 <div className={styles.logo}>
-                    <Link href="/">
+                    <Link href={link}>
                         <a>
                             <Image
                                 src={logoUrl}

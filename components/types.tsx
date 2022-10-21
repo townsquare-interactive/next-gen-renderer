@@ -469,6 +469,7 @@ export interface HeaderProps {
 
 export interface LogoProps {
     logoUrl?: string
+    link?: string
 }
 
 export interface ListProps {
