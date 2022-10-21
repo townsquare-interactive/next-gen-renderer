@@ -140,6 +140,7 @@
                     -moz-transition: all 0.4s ease-in-out;
                     transition: all 0.4s ease-in-out;
                     max-height: 70vh;
+
                     //overflow-y: auto;
 
                     //
@@ -168,7 +169,7 @@
                 li:hover .sub-menu {
                     opacity: 1;
                     visibility: visible;
-                    padding-top: 1rem;
+                    //padding-top: 1rem;
                 }
 
                 &.desktop-nav {

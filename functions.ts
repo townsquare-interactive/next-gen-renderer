@@ -179,6 +179,14 @@ export function socialConvert(str: string) {
     }
 }
 
+export function extUrl(url: string) {
+    if (url.includes('http')) {
+        return url
+    } else {
+        return 'http://' + url
+    }
+}
+
 //Used to have conditional tag wraps around code without repeating inside code
 export const ConditionalWrapper = ({ condition, falseOutput, trueOutput, children }: ConditionalWrapperProps) =>
     condition ? trueOutput(children) : falseOutput(children)

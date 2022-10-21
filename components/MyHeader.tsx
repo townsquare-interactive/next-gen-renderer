@@ -1,8 +1,8 @@
 import styles from './myheader.module.scss'
 import { Pagelist, MyHeaderProps, SocialBarProps, MobileHeaderProps, NavItem } from './types'
 import cn from 'classnames'
-import { domainImage, socialConvert, iconConvert } from '../functions'
-import { useState, useEffect } from 'react'
+import { domainImage, socialConvert, iconConvert, extUrl } from '../functions'
+import { useState, useEffect, Fragment } from 'react'
 import Link from 'next/link'
 import Logo from './Logo'
 
@@ -99,6 +99,7 @@ const SocialBar = ({ CMSLayout, themeStyles }: SocialBarProps) => {
         </div>
     )
 }
+
 const SocialLinks = ({ CMSLayout, themeStyles }: SocialBarProps) => {
     return (
         <ul className={styles['social-media-links']}>
@@ -110,11 +111,9 @@ const SocialLinks = ({ CMSLayout, themeStyles }: SocialBarProps) => {
 
             {CMSLayout.social.map((url: string, index: number) => (
                 <li key={index}>
-                    <Link href={url}>
-                        <a target="blank" aria-label={iconConvert(url)} className={cn('socialIcon')}>
-                            <FontAwesomeIcon icon={socialConvert(url)} />
-                        </a>
-                    </Link>
+                    <a target="blank" aria-label={iconConvert(url)} className={cn('socialIcon')} href={extUrl(url)}>
+                        <FontAwesomeIcon icon={socialConvert(url)} />
+                    </a>
                 </li>
             ))}
         </ul>
@@ -135,7 +134,7 @@ const MobileHeader = (props: MobileHeaderProps) => {
 
             <div className={styles['mobile-body']}>
                 <div className={styles.social}>
-                    <SocialLinks CMSLayout={CMSLayout} themeStyles={themeStyles} />{' '}
+                    <SocialLinks CMSLayout={CMSLayout} themeStyles={themeStyles} />
                 </div>
 
                 <Nav pages={pages} navType={'mobile'} themeStyles={themeStyles} cmsNav={CMSLayout.cmsNav} />
@@ -167,10 +166,10 @@ const Nav = (props: Pagelist) => {
             >
                 {cmsNav &&
                     cmsNav.map((item: NavItem, index: number) => (
-                        <>
-                            {item.menu_item_parent === 0 && (
-                                <li key={index}>
-                                    <NavItem item={item} arrow={item.submenu && item.submenu.length} />
+                        <Fragment key={index}>
+                            {item.menu_item_parent == 0 && (
+                                <li>
+                                    <NavItem item={item} arrow={item.submenu?.length ? true : false} />
                                     {item.submenu && (
                                         <ul
                                             className={cn({
@@ -178,8 +177,8 @@ const Nav = (props: Pagelist) => {
                                             })}
                                         >
                                             {item.submenu.map((subItem: any, idx: number) => (
-                                                <>
-                                                    <li key={idx}>
+                                                <Fragment key={idx}>
+                                                    <li>
                                                         <NavItem item={subItem} />
                                                     </li>
                                                     {subItem.submenu && (
@@ -195,13 +194,13 @@ const Nav = (props: Pagelist) => {
                                                             ))}
                                                         </ul>
                                                     )}
-                                                </>
+                                                </Fragment>
                                             ))}
                                         </ul>
                                     )}
                                 </li>
                             )}
-                        </>
+                        </Fragment>
                     ))}
             </ul>
         </div>
