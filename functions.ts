@@ -5,10 +5,8 @@ import { faRocket, faEnvelope, faPrint, faPhone, faLocationPin, faBars } from '@
 
 const bucketUrl = 'https://townsquareinteractive.s3.amazonaws.com'
 const localUrl = 'elitesports.com/preview'
-const cmsUrl = 'clttestsiteforjoshedwards'
+ const cmsUrl = 'clttestsiteforjoshedwards' 
 //const cmsUrl = 'joshedwards'
-
-/* const cmsUrl = 'joshedwards' */
 const env = process.env.NEXT_PUBLIC_URL_ENV
 const domain = process.env.NEXT_PUBLIC_BASE_URL
 

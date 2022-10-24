@@ -55,10 +55,10 @@ const MyHeader = (props: MyHeaderProps) => {
                 )}
 
                 <Nav pages={pages} navType={'desktop'} cmsNav={CMSLayout.cmsNav} themeStyles={themeStyles} />
-                <button className={styles['nav-open']} onClick={navSwitch} aria-label="toggle navigation">
+                <button className={styles['nav-open']} onClick={navSwitch} aria-label="toggle navigation" style={{color:themeStyles.textColorAccent}}>
                     <FontAwesomeIcon icon={faBars} />
                 </button>
-                <MobileHeader pages={pages} navSwitch={navSwitch} navCheck={navCheck} themeStyles={CMSLayout.themeStyles} CMSLayout={CMSLayout} />
+                <MobileHeader pages={pages} navSwitch={navSwitch} navCheck={navCheck} themeStyles={themeStyles} CMSLayout={CMSLayout} />
             </div>
             <SocialBar CMSLayout={CMSLayout} themeStyles={themeStyles} />
         </header>
@@ -128,6 +128,7 @@ const SocialLinks = ({ CMSLayout, themeStyles }: SocialBarProps) => {
 const MobileHeader = (props: MobileHeaderProps) => {
     const { pages, navSwitch, navCheck, themeStyles, CMSLayout } = props
 
+
     return (
         <div
             className={cn(styles['mobile-header'], {
@@ -135,7 +136,7 @@ const MobileHeader = (props: MobileHeaderProps) => {
                 [styles.visible]: navCheck,
             })}
         >
-            <button className={styles['nav-toggle']} onClick={navSwitch} aria-label="close-mobile-nav"></button>
+            <button className={styles['nav-toggle']} onClick={navSwitch} aria-label="close-mobile-nav" style={{color:themeStyles.textColorAccent, backgroundColor:themeStyles.mainColor}}></button>
 
             <div className={styles['mobile-body']}>
                 <div className={styles.social}>

@@ -117,7 +117,7 @@
                     //
                     margin: 0;
                     z-index: 300;
-                    font-size: 80%;
+                    font-size: 90%;
 
                     min-width: 100%;
                     padding: 1rem 1rem 0.5rem 0;
@@ -128,12 +128,14 @@
                         padding: 0.25rem 0.5rem;
                     }
 
-                    li > .sub-menu {
-                        font-size: 90%;
-                    }
+
 
                     li {
                         padding-left: 1rem;
+                    }
+
+                    ul li {
+                        font-size: 90%;
                     }
                 }
 
@@ -189,22 +191,14 @@
                 display: none;
             }
 
-            //flex
-            //flex: 0 1 3rem;
-
             background: transparent;
-
             padding: 0 0.5rem;
             text-align: center;
             letter-spacing: 0.1em;
             visibility: visible;
             opacity: 1;
             max-width: initial;
-
             cursor: pointer;
-
-            //temp
-            color: rgba(237, 237, 223, 1);
 
             // &:before {
             //font-family: "tsi-cms";
@@ -228,12 +222,8 @@
         box-shadow: 0 2px 2px 1px rgb(0 0 0 / 20%);
         padding: 0 1rem;
         width: 100%;
-
-        //background-color: #12343d;
-
         display: flex;
         flex-wrap: wrap;
-
         align-items: center;
 
         .contact {
@@ -276,13 +266,7 @@
                         //temp
                         vertical-align: middle;
 
-                        /*                         &:hover {
-                            background-color: #009374;
-                        } */
-
                         svg {
-                            /*            max-width: 1rem;
-                            max-height: 1rem; */
                             width: 0.7em;
                             display: inline;
                             margin-right: 0.3em;
@@ -297,8 +281,6 @@
                     //width: 100%;
                     margin: 0.25rem 0;
 
-                    //temp
-                    //color: #fff;
                 }
             }
         }
@@ -435,10 +417,6 @@
 
             //button
             vertical-align: baseline;
-
-            //close temp
-            background-color: #009374;
-            color: #ffffff;
 
             //temp
             width: 2rem;

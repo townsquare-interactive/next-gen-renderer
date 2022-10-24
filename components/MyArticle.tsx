@@ -351,7 +351,7 @@ const Button = (props: BtnProps) => {
                                             <a
                                                 target={bt.window == 1 ? '_blank' : '_self'}
                                                 className={cn('btn_link', {
-                                                    [styles.btn_block]: bt.btnSize.includes('btn_block') || bt.btnSize.includes('btn_blk'),
+                                                    [styles.btn_block]: bt.btnSize?.includes('btn_block') || bt.btnSize?.includes('btn_blk'),
                                                 })}
                                             >
                                                 {children}
@@ -366,11 +366,11 @@ const Button = (props: BtnProps) => {
                                             ['btn_2']: bt.btnType === 'btn_2' || (!bt.btnType && index === 1),
                                             [styles.btn_1]: bt.btnType === 'btn_1' || (!bt.btnType && index === 0),
                                             [styles.btn_2]: bt.btnType === 'btn_2' || (!bt.btnType && index === 1),
-                                            [styles.btn_md]: bt.btnSize.includes('md') || bt.btnSize == 'md btn_block' || !bt.btnSize,
-                                            [styles.btn_lg]: bt.btnSize.includes('lg') || bt.btnSize == 'lg',
-                                            [styles.btn_sm]: bt.btnSize.includes('sm'),
-                                            [styles.btn_xs]: bt.btnSize.includes('xs'),
-                                            [styles.btn_block]: bt.btnSize.includes('btn_block') || bt.btnSize.includes('btn_blk'),
+                                            [styles.btn_md]: bt.btnSize?.includes('md')|| !bt.btnSize,
+                                            [styles.btn_lg]: bt.btnSize?.includes('lg'),
+                                            [styles.btn_sm]: bt.btnSize?.includes('sm'),
+                                            [styles.btn_xs]: bt.btnSize?.includes('xs'),
+                                            [styles.btn_block]: bt.btnSize?.includes('btn_block') || bt.btnSize?.includes('btn_blk'),
                                             [styles.btn_w]: props.well === '1',
                                         })}
                                     >
