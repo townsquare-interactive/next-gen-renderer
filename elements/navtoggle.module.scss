@@ -1,0 +1,55 @@
+@use './styles/breakpoints.scss';
+
+.nav-open {
+    background: transparent;
+    padding: 0 0.5rem;
+    text-align: center;
+    letter-spacing: 0.1em;
+    visibility: visible;
+    opacity: 1;
+    max-width: initial;
+    cursor: pointer;
+
+    // &:before {
+    //font-family: "tsi-cms";
+    //content: "a";
+    //content: 'O';
+    font-size: 1.5em;
+    margin-top: 0.6666666667em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    line-height: 1.1666666667em;
+    letter-spacing: -0.0125rem;
+    font-weight: 400;
+    vertical-align: middle;
+    border: none;
+
+    //added
+    svg {
+        width: 1.2em;
+    }
+
+    &.head-toggle {
+        @include breakpoints.lg-min {
+            display: none;
+        }
+    }
+
+    &.foot-toggle {
+        font-size: 0.8em;
+        margin-top: 0.6666666667em;
+        margin-bottom: 0.5em;
+        margin-left: auto;
+        line-height: 1.1666666667em;
+        letter-spacing: -0.0125rem;
+        font-weight: 400;
+        vertical-align: middle;
+        display: inline-block;
+
+        //temp: added
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        align-items: center;
+    }
+}

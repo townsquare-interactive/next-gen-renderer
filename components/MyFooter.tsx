@@ -13,24 +13,35 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faGoogle, faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faRocket } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import NavToggle from 'elements/NavToggle'
 
 const MyFooter = (props: MyHeaderProps) => {
-    const { pages, CMSLayout, themeStyles } = props
+    const { pages, CMSLayout, themeStyles, navSwitch } = props
+
     return (
-        <div className={styles.root}>
+        <footer className={styles.root} style={{ backgroundColor: themeStyles.footerBackground }}>
             <div className={styles.wrapper}>
+                <div className={styles.section1}></div>
                 <div className={styles['info-block']}>
                     <address className={styles.copy}>
-                        Copyright all rights reserved
-                        <span className={styles.address}>Charlotte Nc</span>
-                        <span className={styles.phone}>9197774045</span>
+                        <span className={styles.copyright}>Copyright &#169; {new Date().getFullYear()} Charlotte Site, all rights reserved. </span>
+                        <span className={styles['street-address']}>{CMSLayout.contact.address.street}, </span>
+                        <span className={styles['city-state-zip-address']}>
+                            {CMSLayout.contact.address.city}, {CMSLayout.contact.address.state}, {CMSLayout.contact.address.zip},
+                        </span>
+                        <span className={styles.phone}> {CMSLayout.contact.phone[0].number}</span>
                     </address>
                 </div>
-                <div className={styles['nav-block']}>
-                    <SocialLinks CMSLayout={CMSLayout} themeStyles={themeStyles} modType="foot-header" />
+                <div className={styles['bottom']}>
+                    <div className={styles['social-block']}>
+                        <SocialLinks CMSLayout={CMSLayout} themeStyles={themeStyles} modType="foot-header" />
+                    </div>
+                    <div className={styles['nav-block']}>
+                        <NavToggle navSwitch={navSwitch} themeStyles={themeStyles} modType="footer" />
+                    </div>
                 </div>
             </div>
-        </div>
+        </footer>
     )
 }
 

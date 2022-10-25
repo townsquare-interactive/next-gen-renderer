@@ -117,6 +117,12 @@ export interface MobileHeaderProps {
     CMSLayout: GlobalData
 }
 
+export interface NavToggleProps {
+    navSwitch?: () => void
+    themeStyles: ThemeStyles
+    modType?: 'header' | 'footer'
+}
+
 export interface CMSGlobalDesign {
     colors: CMSColors
 }
@@ -758,6 +764,8 @@ export interface MyHeaderProps {
     pages: PagesProps[]
     CMSLayout: GlobalData
     themeStyles: ThemeStyles
+    navCheck: boolean
+    navSwitch: () => void
 }
 
 export interface NavBarProps {

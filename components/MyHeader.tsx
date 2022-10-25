@@ -6,15 +6,21 @@ import { useState, useEffect, Fragment } from 'react'
 import Link from 'next/link'
 import Logo from './Logo'
 import SocialLinks from 'elements/SocialLinks'
+import NavToggle from 'elements/NavToggle'
 
 // import your icons
 import { faEnvelope, faPrint, faPhone, faLocationPin, faBars } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const MyHeader = (props: MyHeaderProps) => {
-    const { pages, CMSLayout, themeStyles } = props
-    const [navCheck, setNav] = useState<boolean>(false)
+    const { pages, CMSLayout, themeStyles, navSwitch, navCheck } = props
+    /* const [navCheck, setNav] = useState<boolean>(false) */
     const [windowHeight, setWindowHeight] = useState(0)
+    /*     const [navCheck, setNav] = useState<boolean>(false)
+
+    function navSwitch() {
+        setNav(!navCheck)
+    } */
 
     //set state for scroll
     const handleScroll = () => {
@@ -25,10 +31,6 @@ const MyHeader = (props: MyHeaderProps) => {
         window.addEventListener('scroll', handleScroll)
         return () => window.removeEventListener('scroll', handleScroll)
     })
-
-    function navSwitch() {
-        setNav(!navCheck)
-    }
 
     return (
         <header
@@ -56,9 +58,11 @@ const MyHeader = (props: MyHeaderProps) => {
                 )}
 
                 <Nav pages={pages} navType={'desktop'} cmsNav={CMSLayout.cmsNav} themeStyles={themeStyles} />
-                <button className={styles['nav-open']} onClick={navSwitch} aria-label="toggle navigation" style={{ color: themeStyles.textColorAccent }}>
+                {/*                 <button className={styles['nav-open']} onClick={navSwitch} aria-label="toggle navigation" style={{ color: themeStyles.textColorAccent }}>
                     <FontAwesomeIcon icon={faBars} />
-                </button>
+                </button> */}
+
+                <NavToggle navSwitch={navSwitch} themeStyles={themeStyles} />
                 <MobileHeader pages={pages} navSwitch={navSwitch} navCheck={navCheck} themeStyles={themeStyles} CMSLayout={CMSLayout} />
             </div>
             <SocialBar CMSLayout={CMSLayout} themeStyles={themeStyles} />
@@ -67,29 +71,31 @@ const MyHeader = (props: MyHeaderProps) => {
 }
 
 const SocialBar = ({ CMSLayout, themeStyles }: SocialBarProps) => {
+    console.log(CMSLayout.contact)
     return (
         <div className={styles['social-bar']} style={{ background: themeStyles.BckdHeaderSocial }}>
             <SocialLinks CMSLayout={CMSLayout} themeStyles={themeStyles} />
             <aside className={styles.contact}>
                 <ul>
-                    {CMSLayout.contact.phone.phone && (
+                    {CMSLayout.contact.phone[0] && (
                         <li className={cn(styles.icon, styles.phone)}>
-                            <Link href={'tel:' + CMSLayout.contact.phone.number}>
+                            <Link href={'tel:' + CMSLayout.contact.phone[0].number}>
                                 <a aria-label="phone" className={cn('socialIcon')}>
-                                    <FontAwesomeIcon icon={faPhone} /> {CMSLayout.phoneNumber}
+                                    <FontAwesomeIcon icon={faPhone} /> {CMSLayout.contact.phone[0].number}
                                 </a>
                             </Link>
                         </li>
                     )}
-                    {CMSLayout.contact.email.email && (
+                    {CMSLayout.contact.email[0] && (
                         <li className={cn(styles.icon, styles.email)}>
-                            <Link href={`mailto:${CMSLayout.contact.email.email}`}>
+                            <Link href={`mailto:${CMSLayout.contact.email[0].email}`}>
                                 <a aria-label="email" className={cn('socialIcon')}>
-                                    <FontAwesomeIcon icon={faEnvelope} /> {CMSLayout.contact.email.name}:{CMSLayout.email}
+                                    <FontAwesomeIcon icon={faEnvelope} /> {CMSLayout.contact.email[0].name}:{CMSLayout.contact.email[0].email}
                                 </a>
                             </Link>
                         </li>
                     )}
+
                     {CMSLayout.siteName && (
                         <li className={cn(styles.icon, styles.map)}>
                             <Link href={'google.com'}>
@@ -143,6 +149,7 @@ const MobileHeader = (props: MobileHeaderProps) => {
                 aria-label="close-mobile-nav"
                 style={{ color: themeStyles.textColorAccent, backgroundColor: themeStyles.mainColor }}
             ></button>
+            {/* <NavToggle navSwitch={navSwitch} themeStyles={themeStyles}/> */}
 
             <div className={styles['mobile-body']}>
                 <div className={styles.social}>
