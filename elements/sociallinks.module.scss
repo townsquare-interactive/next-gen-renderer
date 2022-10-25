@@ -1,0 +1,72 @@
+@use './styles/breakpoints.scss';
+
+.social-media-links {
+    flex: 1 0 30%;
+    padding: 0.25rem 0;
+    flex-wrap: wrap;
+    -webkit-box-flex: 1;
+
+    font-size: 100%;
+    margin: 0;
+    list-style-type: none;
+
+    li {
+        display: inline-block;
+
+        a {
+            font-size: 0.6875em;
+            line-height: 1.0909090909em;
+            border-radius: 2px;
+            font-weight: 400;
+            margin-top: 0.25em;
+            margin-bottom: 0.25em;
+            padding: 0.375em 1em 0.4375em;
+            display: inline-block;
+            text-transform: initial;
+
+            //before
+            vertical-align: middle;
+
+            //temp
+            font-weight: bold;
+        }
+        svg {
+            display: inline;
+            width: 1.25em;
+        }
+    }
+
+    //mobile
+    &.mob-social {
+        li {
+            flex: 0 1 auto;
+            padding: 0.25rem;
+            line-height: 1;
+
+            a {
+                border-radius: 2px;
+                box-shadow: none;
+                font-weight: 400;
+                font-size: 1.25rem;
+                //line-height: 3rem;
+                padding: 1rem;
+                display: block;
+                text-transform: initial;
+                text-align: center;
+                margin: 0;
+            }
+
+            svg {
+                width: 1.25em;
+                display: inline;
+            }
+        }
+    }
+
+    &.head-social {
+        display: none;
+        @include breakpoints.md-min {
+            display: block;
+        }
+    }
+}

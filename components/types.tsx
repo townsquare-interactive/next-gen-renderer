@@ -18,7 +18,7 @@ export interface ThemeStyles {
     subHeadingColor: string
     NavText: string
     linkHover?: string
-    bckdContent?:string
+    bckdContent?: string
 }
 
 export interface HomeProps {
@@ -55,6 +55,7 @@ export interface LayoutProps {
 export interface SocialBarProps {
     CMSLayout: GlobalData
     themeStyles: ThemeStyles
+    modType?: string
 }
 
 export interface GlobalData {

@@ -3,6 +3,7 @@ import styles from './layout.module.scss'
 import cn from 'classnames'
 import { Renderer } from '../components/Renderer'
 import MyHeader from './MyHeader'
+import MyFooter from './MyFooter'
 
 export default function Layout(props: LayoutProps) {
     const { children, CMSLayout, themeStyles } = props
@@ -22,7 +23,8 @@ export default function Layout(props: LayoutProps) {
             </header> */}
             <main>{children}</main>
             <footer>
-                <Renderer config={footerModule} themeStyles={themeStyles} />
+                {/* <Renderer config={footerModule} themeStyles={themeStyles} /> */}
+                <MyFooter pages={navigationModule[0].attributes.pages} CMSLayout={CMSLayout} themeStyles={themeStyles} />
             </footer>
         </div>
     )

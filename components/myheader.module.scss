@@ -3,8 +3,8 @@
 
 .root {
     //position: fixed;
-     //temp: trying sticky
-     position: sticky;
+    //temp: trying sticky
+    position: sticky;
     top: 0%;
     width: 100%;
     margin: 0;
@@ -72,10 +72,9 @@
             @include breakpoints.lg-min {
                 flex: 1 1 100%;
             }
-            
+
             display: flex;
             align-items: center;
-
 
             .menu {
                 font-size: 0.8125em;
@@ -129,8 +128,6 @@
                     a {
                         padding: 0.25rem 0.5rem;
                     }
-
-
 
                     li {
                         padding-left: 1rem;
@@ -283,17 +280,16 @@
                     letter-spacing: 0.1em;
                     //width: 100%;
                     margin: 0.25rem 0;
-
                 }
             }
         }
 
-        .social-media-links {
+        /* .social-media-links {
             display: none;
             @include breakpoints.md-min {
                 display: block;
             }
-        }
+        } */
     }
 
     &.shrink {
@@ -306,7 +302,7 @@
         }
     }
 
-    .social-media-links {
+    /* .social-media-links {
         flex: 1 0 30%;
         padding: 0.25rem 0;
         flex-wrap: wrap;
@@ -341,7 +337,7 @@
                 width: 1.25em;
             }
         }
-    }
+    } */
 
     .mobile-header {
         padding: 1rem 1.5rem 0;
@@ -356,9 +352,6 @@
         @include breakpoints.sm-min {
             width: 50%;
         }
-
-        //temp
-        background: rgba(16, 37, 46, 1);
 
         .mobile-body {
             overflow: auto;
@@ -437,15 +430,14 @@
             text-align: center;
         }
 
-        .access  {
-        
+        .access {
             li {
                 display: block !important;
                 margin: 1rem 0;
             }
-    }
+        }
 
-        .social-media-links {
+        /* .social-media-links {
             li {
                 flex: 0 1 auto;
                 padding: 0.25rem;
@@ -469,6 +461,6 @@
                     display: inline;
                 }
             }
-        }
+        } */
     }
 }

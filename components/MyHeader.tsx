@@ -5,6 +5,7 @@ import { domainImage, socialConvert, iconConvert, extUrl } from '../functions'
 import { useState, useEffect, Fragment } from 'react'
 import Link from 'next/link'
 import Logo from './Logo'
+import SocialLinks from 'elements/SocialLinks'
 
 // import your icons
 import { faEnvelope, faPrint, faPhone, faLocationPin, faBars } from '@fortawesome/free-solid-svg-icons'
@@ -14,9 +15,6 @@ const MyHeader = (props: MyHeaderProps) => {
     const { pages, CMSLayout, themeStyles } = props
     const [navCheck, setNav] = useState<boolean>(false)
     const [windowHeight, setWindowHeight] = useState(0)
-
-    console.log('ts', themeStyles)
-
 
     //set state for scroll
     const handleScroll = () => {
@@ -58,7 +56,7 @@ const MyHeader = (props: MyHeaderProps) => {
                 )}
 
                 <Nav pages={pages} navType={'desktop'} cmsNav={CMSLayout.cmsNav} themeStyles={themeStyles} />
-                <button className={styles['nav-open']} onClick={navSwitch} aria-label="toggle navigation" style={{color:themeStyles.textColorAccent}}>
+                <button className={styles['nav-open']} onClick={navSwitch} aria-label="toggle navigation" style={{ color: themeStyles.textColorAccent }}>
                     <FontAwesomeIcon icon={faBars} />
                 </button>
                 <MobileHeader pages={pages} navSwitch={navSwitch} navCheck={navCheck} themeStyles={themeStyles} CMSLayout={CMSLayout} />
@@ -108,7 +106,7 @@ const SocialBar = ({ CMSLayout, themeStyles }: SocialBarProps) => {
     )
 }
 
-const SocialLinks = ({ CMSLayout, themeStyles }: SocialBarProps) => {
+/* const SocialLinks = ({ CMSLayout, themeStyles }: SocialBarProps) => {
     return (
         <ul className={styles['social-media-links']}>
             <li>
@@ -126,11 +124,10 @@ const SocialLinks = ({ CMSLayout, themeStyles }: SocialBarProps) => {
             ))}
         </ul>
     )
-}
+} */
 
 const MobileHeader = (props: MobileHeaderProps) => {
     const { pages, navSwitch, navCheck, themeStyles, CMSLayout } = props
-
 
     return (
         <div
@@ -138,12 +135,18 @@ const MobileHeader = (props: MobileHeaderProps) => {
                 [styles.hidden]: !navCheck,
                 [styles.visible]: navCheck,
             })}
+            style={{ background: themeStyles.headerBackground }}
         >
-            <button className={styles['nav-toggle']} onClick={navSwitch} aria-label="close-mobile-nav" style={{color:themeStyles.textColorAccent, backgroundColor:themeStyles.mainColor}}></button>
+            <button
+                className={styles['nav-toggle']}
+                onClick={navSwitch}
+                aria-label="close-mobile-nav"
+                style={{ color: themeStyles.textColorAccent, backgroundColor: themeStyles.mainColor }}
+            ></button>
 
             <div className={styles['mobile-body']}>
                 <div className={styles.social}>
-                    <SocialLinks CMSLayout={CMSLayout} themeStyles={themeStyles} />
+                    <SocialLinks CMSLayout={CMSLayout} themeStyles={themeStyles} modType="mob-header" />
                 </div>
 
                 <Nav pages={pages} navType={'mobile'} themeStyles={themeStyles} cmsNav={CMSLayout.cmsNav} />

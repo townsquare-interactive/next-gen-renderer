@@ -11,6 +11,7 @@ import Video from './Video'
 import Article from './Article'
 import CharlotteArticle from './CharlotteArticle'
 import MyArticle from './MyArticle'
+import MyFooter from './MyFooter'
 import { capitalize } from '../functions'
 
 const keysToComponentMap = {
@@ -27,6 +28,7 @@ const keysToComponentMap = {
     Article,
     CharlotteArticle,
     MyArticle,
+    MyFooter,
 }
 
 const mapPropsToConfig = (config) => {
