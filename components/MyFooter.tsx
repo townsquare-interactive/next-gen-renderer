@@ -25,11 +25,13 @@ const MyFooter = (props: MyHeaderProps) => {
                 <div className={styles['info-block']}>
                     <address className={styles.copy}>
                         <span className={styles.copyright}>Copyright &#169; {new Date().getFullYear()} Charlotte Site, all rights reserved. </span>
-                        <span className={styles['street-address']}>{CMSLayout.contact.address.street}, </span>
+                        {CMSLayout.contact.address?.street && <span className={styles['street-address']}>{CMSLayout.contact.address.street}, </span>}
                         <span className={styles['city-state-zip-address']}>
-                            {CMSLayout.contact.address.city}, {CMSLayout.contact.address.state}, {CMSLayout.contact.address.zip},
+                            {CMSLayout.contact.address?.city && `${CMSLayout.contact.address.city} ,`}{' '}
+                            {CMSLayout.contact.address?.state && `${CMSLayout.contact.address.state} ,`}{' '}
+                            {CMSLayout.contact.address?.zip && `${CMSLayout.contact.address.zip} ,`}
                         </span>
-                        <span className={styles.phone}> {CMSLayout.contact.phone[0].number}</span>
+                        {CMSLayout.contact.address?.phone && <span className={styles.phone}> {CMSLayout.contact.phone[0].number}</span>}
                     </address>
                 </div>
                 <div className={styles['bottom']}>
