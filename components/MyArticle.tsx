@@ -13,65 +13,67 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 
 const MyArticle = (props: ArticleProps) => {
+
+    const {width='1060', columns=1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl, disabled} = props
     //Defining style objects
     const textColorHeading = {
-        color: props.themeStyles['headingColor'],
+        color: themeStyles['headingColor'],
     }
 
     const imgSizes = ['landscape_4_3', 'square_1_1', 'portrait_3_4', 'portrait_2_3', 'widescreen_16_9', 'widescreen_3_1']
-    if (props.disabled != 'disabled') {
+    if (disabled != 'disabled') {
         return (
             <div
                 className={cn(styles['root'], styles['tsflex'], {
-                    [styles.a1]: props.type === 'article_1',
-                    [styles.a2]: props.type === 'article_2',
-                    [styles.a3]: props.type === 'article_3',
-                    [styles.beacon]: props.type === 'article',
-                    [styles.well]: props.well == '1',
-                    [styles.not_well]: !props.well,
-                    [styles.large]: props.columns == 1 && (props.width === '736' || props.width === '652' || props.width === '938' || props.width === '1060'),
-                    [styles.medium]: props.columns == 2,
-                    [styles.small]: props.columns == 3 || props.columns == 4,
-                    [styles.col_1]: props.columns == 1,
-                    [styles.col_2]: props.columns == 2,
-                    [styles.col_3]: props.columns == 3,
-                    [styles.col_4]: props.columns == 4,
+                    [styles.a1]: type === 'article_1',
+                    [styles.a2]: type === 'article_2',
+                    [styles.a3]: type === 'article_3',
+                    [styles.beacon]: type === 'article',
+                    [styles.well]: well == '1',
+                    [styles.not_well]: !well,
+                    [styles.large]: columns == 1 && (width === '736' || width === '652' || width === '938' || width === '1060' || width === '988'),
+                    [styles.medium]: columns == 2,
+                    [styles.small]: columns == 3 || columns == 4,
+                    [styles.col_1]: columns == 1,
+                    [styles.col_2]: columns == 2,
+                    [styles.col_3]: columns == 3,
+                    [styles.col_4]: columns == 4,
                     [styles[`cst_${props.class}`]]: props.class,
-                    [styles.square_1_1]: props.imgsize === 'square_1_1',
-                    [styles.landscape_4_3]: props.imgsize === 'landscape_4_3' || !imgSizes.includes(props.imgsize) || !props.imgsize,
-                    [styles.landscape_3_2]: props.imgsize === 'landscape_3_2',
-                    [styles.portrait_3_4]: props.imgsize === 'portrait_3_4',
-                    [styles.portrait_2_3]: props.imgsize === 'portrait_2_3',
-                    [styles.widescreen_16_9]: props.imgsize === 'widescreen_16_9',
-                    [styles.widescreen_3_1]: props.imgsize === 'widescreen_3_1',
-                    [styles.widescreen_2_4_1]: props.imgsize === 'widescreen_2_4_1' || props.imgsize === 'widescreen_2-4_1',
-                    [styles.no_sizing]: props.imgsize === 'no_sizing',
-                    [styles.no_set_height]: props.imgsize === 'no_set_height',
-                    [styles['full-width']]: props.width === '938' || props.width === '1060',
-                    [styles['med-width']]: props.width === '736' || props.width === '652',
+                    [styles.square_1_1]: imgsize === 'square_1_1',
+                    [styles.landscape_4_3]: imgsize === 'landscape_4_3' || !imgSizes.includes(imgsize) || !imgsize,
+                    [styles.landscape_3_2]: imgsize === 'landscape_3_2',
+                    [styles.portrait_3_4]: imgsize === 'portrait_3_4',
+                    [styles.portrait_2_3]: imgsize === 'portrait_2_3',
+                    [styles.widescreen_16_9]: imgsize === 'widescreen_16_9',
+                    [styles.widescreen_3_1]: imgsize === 'widescreen_3_1',
+                    [styles.widescreen_2_4_1]: imgsize === 'widescreen_2_4_1' || imgsize === 'widescreen_2-4_1',
+                    [styles.no_sizing]: imgsize === 'no_sizing',
+                    [styles.no_set_height]: imgsize === 'no_set_height',
+                    [styles['full-width']]: width === '938' || width === '1060' || width === '988' || !width,
+                    [styles['med-width']]: width === '736' || width === '652',
                 })}
-                id={`id_${props.modId}`}
+                id={`id_${modId}`}
             >
                 <div className={styles.wrapper}>
-                    {props.title && (
+                    {title && (
                         <h2 className={cn(styles['mod-title'], styles['section_title'])} data-title="module headline" style={textColorHeading}>
-                            <span>{props.title}</span>
+                            <span>{title}</span>
                         </h2>
                     )}
-                    {props.items.map((item, index) =>
+                    {items.map((item, index) =>
                         item.disabled != 'disabled' ? (
                             <ModuleItem
                                 item={item}
-                                well={props.well}
-                                modId={props.modId}
-                                themeStyles={props.themeStyles}
+                                well={well}
+                                modId={modId}
+                                themeStyles={themeStyles}
                                 textColorHeading={textColorHeading}
                                 key={index}
-                                imgsize={props.imgsize}
-                                type={props.type}
-                                columns={props.columns}
+                                imgsize={imgsize}
+                                type={type}
+                                columns={columns}
                                 itemIndex={index}
-                                cmsUrl={props.cmsUrl}
+                                cmsUrl={cmsUrl}
                             />
                         ) : (
                             <></>
@@ -84,25 +86,25 @@ const MyArticle = (props: ArticleProps) => {
 }
 
 const ModuleItem = (props: ModuleItemProps) => {
-    const { item, modId, itemIndex, cmsUrl } = props
+    const { item, modId, itemIndex, cmsUrl, themeStyles, type, textColorHeading, imgsize, columns, well } = props
 
     //Defining style objects
     const textColor = {
-        color: props.themeStyles['textColor'],
+        color: themeStyles['textColor'],
     }
 
     const textColorAccent = {
-        color: props.themeStyles['textColorAccent'],
+        color: themeStyles['textColorAccent'],
     }
 
     const noBackground = {
         backgroundColor: 'transparent',
     }
     const borderBackground = {
-        backgroundColor: props.themeStyles['headerBackground'],
+        backgroundColor: themeStyles['headerBackground'],
     }
     const heroBackground = {
-        backgroundColor: props.themeStyles['altColor'],
+        backgroundColor: themeStyles['altColor'],
     }
 
     //Key to determine which imported logo to use
@@ -135,7 +137,7 @@ const ModuleItem = (props: ModuleItemProps) => {
         (item.actionlbl && !item.actionlbl2 && (item.pagelink || item.weblink)) || (!item.actionlbl && item.actionlbl2 && (item.pagelink2 || item.weblink2))
     const twoButtons = item.actionlbl && item.actionlbl2 && (item.pagelink || item.weblink) && (item.pagelink2 || item.weblink2)
     const linkNoBtn = isButton() === false && isLink() === true
-    const wrapLink = (oneButton || linkNoBtn) && props.type != 'article'
+    const wrapLink = (oneButton || linkNoBtn) && type != 'article'
 
     return (
         <article
@@ -153,9 +155,9 @@ const ModuleItem = (props: ModuleItemProps) => {
                     [styles.yHds]: item.headline || item.subheader,
                     [styles.nHds]: !item.headline || !item.subheader,
                     [styles.center]: item.align === 'center',
-                    [styles.mod_left]: item.align === 'left' && (props.type === 'article_3' || props.type === 'article'),
-                    [styles.mod_right]: item.align === 'right' && (props.type === 'article_3' || props.type === 'article'),
-                    [styles.mod_center]: item.align === 'center' && (props.type === 'article_3' || props.type === 'article'),
+                    [styles.mod_left]: item.align === 'left' && (type === 'article_3' || type === 'article'),
+                    [styles.mod_right]: item.align === 'right' && (type === 'article_3' || type === 'article'),
+                    [styles.mod_center]: item.align === 'center' && (type === 'article_3' || type === 'article'),
                     [styles.yLk]: (item.pagelink || item.weblink || item.pagelink2 || item.weblink2) && !twoButtons,
                     [styles.yLks]: twoButtons,
                 },
@@ -165,7 +167,7 @@ const ModuleItem = (props: ModuleItemProps) => {
             lang="en"
             data-aos="fade-up"
             data-aos-once="true"
-            style={props.well == '1' ? borderBackground : noBackground}
+            style={well == '1' ? borderBackground : noBackground}
         >
             <ConditionalWrapper
                 condition={wrapLink ? true : false}
@@ -174,7 +176,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                         <a
                             className={cn(styles['item-wrap'], 'btn_link')}
                             target={item.newwindow == 1 ? '_blank' : item.newwindow2 == 1 ? '_blank' : '_self'}
-                            style={item.isFeatured === 'active' && props.type === 'article' ? heroBackground : noBackground}
+                            style={item.isFeatured === 'active' && type === 'article' ? heroBackground : noBackground}
                             aria-label={item.headline || 'block-link'}
                         >
                             {children}
@@ -182,7 +184,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                     </Link>
                 )}
                 falseOutput={(children: ReactChild) => (
-                    <div className={styles['item-wrap']} style={item.isFeatured === 'active' && props.type === 'article' ? heroBackground : noBackground}>
+                    <div className={styles['item-wrap']} style={item.isFeatured === 'active' && type === 'article' ? heroBackground : noBackground}>
                         {children}
                     </div>
                 )}
@@ -192,15 +194,15 @@ const ModuleItem = (props: ModuleItemProps) => {
                     imageNoSizings={imageNoSizings}
                     textColorAccent={textColorAccent}
                     textColor={textColor}
-                    imgsize={props.imgsize}
-                    well={props.well}
-                    textColorHeading={props.textColorHeading}
+                    imgsize={imgsize}
+                    well={well}
+                    textColorHeading={textColorHeading}
                     icons={icons}
                     icon3={item.icon3}
-                    type={props.type}
-                    themeStyles={props.themeStyles}
+                    type={type}
+                    themeStyles={themeStyles}
                     isFeatured={item.isFeatured}
-                    columns={props.columns}
+                    columns={columns}
                     modId={modId}
                     cmsUrl={cmsUrl}
                 />
@@ -210,7 +212,7 @@ const ModuleItem = (props: ModuleItemProps) => {
 }
 
 const ItemWrap = (props: ItemWrapProps) => {
-    const { item, imageNoSizings, textColorAccent, textColor, imgsize, well, icons, icon3, isFeatured, themeStyles, type, modId, cmsUrl } = props
+    const { item, imageNoSizings, textColorAccent, textColor, imgsize, well, icons, icon3, isFeatured, themeStyles, type, modId, cmsUrl, columns } = props
 
     //Check if item is on beacon theme and hero
     const beaconHero = type === 'article' && isFeatured === 'active'
@@ -239,11 +241,11 @@ const ItemWrap = (props: ItemWrapProps) => {
                             cmsUrl={cmsUrl}
                         />
                     )}
-                    {(item.headline || item.subheader) && <HeaderBlock item={props.item} well={props.well} columns={props.columns} beaconHero={beaconHero} />}
+                    {(item.headline || item.subheader) && <HeaderBlock item={item} well={well} columns={columns} beaconHero={beaconHero} />}
                 </>
             ) : (
                 <>
-                    {(item.headline || item.subheader) && <HeaderBlock item={props.item} well={props.well} columns={props.columns} beaconHero={beaconHero} />}
+                    {(item.headline || item.subheader) && <HeaderBlock item={item} well={well} columns={columns} beaconHero={beaconHero} />}
 
                     {item.image && (
                         <ImageBlock

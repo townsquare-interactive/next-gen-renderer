@@ -19,6 +19,7 @@ module.exports = {
             'jedwards4044.github.io',
             'clttestsiteforjoshedwards.production.townsquareinteractive.com',
             'joshedwards.production.townsquareinteractive.com',
+            'kaseypaztest.production.townsquareinteractive.com',
         ],
     },
     i18n: {

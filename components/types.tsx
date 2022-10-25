@@ -18,6 +18,7 @@ export interface ThemeStyles {
     subHeadingColor: string
     NavText: string
     linkHover?: string
+    bckdContent?:string
 }
 
 export interface HomeProps {

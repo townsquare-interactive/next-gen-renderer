@@ -63,7 +63,7 @@ const Slug = (props: HomeProps) => {
     const btnStyles = `.btn_1{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['mainColor']}} .btn_1:hover{color: ${themeStyles['mainColor']}; background-color: ${themeStyles['textColorAccent']}} .btn_2{color: ${themeStyles['altColor']}; border-color: ${themeStyles['altColor']}} .btn_2:hover{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['altColor']}}`
 
     const colorStyles = textColors + btnStyles
-
+    
     const cmsUrl = cmsGlobal ? cmsGlobal.config.website.url : ''
 
     // If the page is not yet generated, this will be displayed
@@ -92,7 +92,7 @@ const Slug = (props: HomeProps) => {
             <style>{colorStyles}</style>
             <Layout CMSLayout={CMSLayout} themeStyles={themeStyles}>
                 {page.data && (
-                    <div className={styles.root}>
+                    <div className={styles.root} style={{backgroundColor:themeStyles.bckdContent}}>
                         <div className={styles.featured}>
                             <Renderer
                                 config={page.data.modules[0]}

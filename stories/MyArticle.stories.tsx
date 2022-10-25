@@ -43,7 +43,7 @@ const item1: ArticleItems = {
     id: '6574f9b4_f1d5_4b10_feb6_928e62803df3',
     headline: 'Article Module',
     subheader: 'Subheader',
-    image: '/football-2.jpg',
+    image: '/files/2021/05/pic3.png?w=420&h=559',
     icon: '',
     icon2: '',
     icon3: '',
@@ -426,7 +426,7 @@ MultipleBorder.args = {
 export const MultipleBorderButtons = Template.bind({})
 MultipleBorderButtons.args = {
     ...ThreeColumns.args,
-    columns: 1,
+    columns: 3,
     well: '1',
     items: [
         {

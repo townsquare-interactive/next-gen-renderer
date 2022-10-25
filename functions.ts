@@ -5,8 +5,9 @@ import { faRocket, faEnvelope, faPrint, faPhone, faLocationPin, faBars } from '@
 
 const bucketUrl = 'https://townsquareinteractive.s3.amazonaws.com'
 const localUrl = 'elitesports.com/preview'
- const cmsUrl = 'clttestsiteforjoshedwards' 
+ //const cmsUrl = 'clttestsiteforjoshedwards' 
 //const cmsUrl = 'joshedwards'
+const cmsUrl = 'kaseypaztest'
 const env = process.env.NEXT_PUBLIC_URL_ENV
 const domain = process.env.NEXT_PUBLIC_BASE_URL
 
@@ -66,6 +67,7 @@ export const setColors = (cmsGlobalDesign: CMSColors, cmsTheme: string) => {
             BckdHeaderSocial: cmsGlobalDesign.color_24.value,
             NavText: cmsGlobalDesign.color_18.value,
             linkHover: cmsGlobalDesign.color_6.value,
+            bckdContent:cmsGlobalDesign.color_22.value
         }
     } else {
         return {

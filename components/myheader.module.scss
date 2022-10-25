@@ -2,7 +2,9 @@
 @use './styles/breakpoints.scss';
 
 .root {
-    position: fixed;
+    //position: fixed;
+     //temp: trying sticky
+     position: sticky;
     top: 0%;
     width: 100%;
     margin: 0;
@@ -207,6 +209,7 @@
             font-size: 1.5em;
             margin-top: 0.6666666667em;
             margin-bottom: 0.5em;
+            margin-left: auto;
             line-height: 1.1666666667em;
             letter-spacing: -0.0125rem;
             font-weight: 400;
@@ -345,12 +348,9 @@
         position: fixed;
         top: 0;
         z-index: 400;
-
         height: 100vh;
         max-height: -webkit-fill-available;
-
         transition: all 0.2s ease-in-out;
-
         width: 80%;
 
         @include breakpoints.sm-min {

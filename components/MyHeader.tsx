@@ -15,6 +15,9 @@ const MyHeader = (props: MyHeaderProps) => {
     const [navCheck, setNav] = useState<boolean>(false)
     const [windowHeight, setWindowHeight] = useState(0)
 
+    console.log('ts', themeStyles)
+
+
     //set state for scroll
     const handleScroll = () => {
         setWindowHeight(window.scrollY)
@@ -37,13 +40,13 @@ const MyHeader = (props: MyHeaderProps) => {
             style={{ background: themeStyles.headerBackground }}
         >
             <div className={styles.wrapper}>
-                {CMSLayout.logos && (
+                {CMSLayout.logos?.image_src && (
                     <div className={cn(styles['logo-block'], styles['desktop-logo-block'])}>
                         <Logo logoUrl={domainImage(CMSLayout.logos.image_src, true)} link={CMSLayout.logos.image_link} />
                     </div>
                 )}
 
-                {CMSLayout.mobileLogos && (
+                {CMSLayout.mobileLogos?.image_src && (
                     <div
                         className={cn(styles['logo-block'], styles['mobile-logo-block'], {
                             [styles.center]: CMSLayout.mobileLogos.alignment == 'center',
@@ -71,7 +74,7 @@ const SocialBar = ({ CMSLayout, themeStyles }: SocialBarProps) => {
             <SocialLinks CMSLayout={CMSLayout} themeStyles={themeStyles} />
             <aside className={styles.contact}>
                 <ul>
-                    {CMSLayout.contact.phone && (
+                    {CMSLayout.contact.phone.phone && (
                         <li className={cn(styles.icon, styles.phone)}>
                             <Link href={'tel:' + CMSLayout.contact.phone.number}>
                                 <a aria-label="phone" className={cn('socialIcon')}>
@@ -80,7 +83,7 @@ const SocialBar = ({ CMSLayout, themeStyles }: SocialBarProps) => {
                             </Link>
                         </li>
                     )}
-                    {CMSLayout.contact.email && (
+                    {CMSLayout.contact.email.email && (
                         <li className={cn(styles.icon, styles.email)}>
                             <Link href={`mailto:${CMSLayout.contact.email.email}`}>
                                 <a aria-label="email" className={cn('socialIcon')}>
@@ -154,7 +157,7 @@ const Nav = (props: Pagelist) => {
 
     const NavItem = ({ item, arrow = false }: any) => {
         return (
-            <Link href={item.title.toLowerCase()} passHref={true}>
+            <Link href={item.title ? item.title.toLowerCase() : ''} passHref={true}>
                 <a className={cn('navLink', { [styles.arrow]: arrow == true })} aria-label={item.title}>
                     {item.title}
                 </a>
