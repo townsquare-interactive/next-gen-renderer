@@ -1,67 +1,105 @@
 @use './styles/breakpoints.scss';
 
-.root * {
-    color: #fff;
-
-    div {
-        padding-top: 1rem;
+.root {
+    * {
+        color: #fff;
     }
 
-    .copy,
-    .nav-block,
-    .social-block {
-        padding-top: 1rem;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        position: relative;
-        padding: 0.5rem 0 0.5rem;
-
-        //inner div
+    .wrapper {
         max-width: 75.5em;
         margin-left: auto;
         margin-right: auto;
         padding: 0 1.5rem;
 
-        display: flex;
-        flex-wrap: wrap;
-        width: 100%;
-
-        @include breakpoints.sm-min {
-            margin-left: 2.1220609456%;
-            margin-right: 2.1220609456%;
-            width: 45.7558781088%;
+        .section1 {
+            display: flex;
+            position: relative;
+            padding: 0.5rem 0 0.5rem;
+            padding-bottom: 1rem;
         }
-    }
+        .brand {
+            .logo-block {
+                span {
+                    //max-width: 8.75rem !important;
+                    max-width: 6rem !important;
+                    transition: all 0.3s ease-in-out;
+                }
 
-    .bottom {
-        padding-top: 0.5rem;
-        padding-bottom: 1.5rem;
-        display: flex;
-    }
+                @include breakpoints.sm-min {
+                    margin-left: 2.1220609456%;
+                    margin-right: 2.1220609456%;
+                }
+            }
+            padding: 0.5rem 0 0.5rem;
 
-    span {
-        font-size: 0.625em;
-        margin-top: 0em;
-        margin-bottom: 0em;
-        line-height: 1.2em;
-        display: inline-block;
-        font-style: normal;
-        padding: 0;
-        line-height: 1.2em;
-    }
+            //temp
+            border-bottom: 1px solid #1b1a1a;
+        }
 
-    .copyright {
-        flex: 1 1 auto;
-        font-size: 0.625em;
-        margin-top: 0em;
-        margin-bottom: 0em;
-        line-height: 1.2em;
-        display: inline-block;
-        font-style: normal;
-        padding: 0;
+        .copy,
+        .nav-block,
+        .social-block {
+            padding-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            position: relative;
+            padding: 0.5rem 0 0.5rem;
+            //padding-top: 1rem;
 
-        //add
-        width: 100%;
+            //inner div
+            max-width: 75.5em;
+            margin-left: auto;
+            margin-right: auto;
+            //padding: 0 1.5rem;
+
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            text-align: center;
+
+            @include breakpoints.sm-min {
+                margin-left: 2.1220609456%;
+                margin-right: 2.1220609456%;
+                width: 45.7558781088%;
+                text-align: left;
+            }
+        }
+
+        .social-block {
+            padding: 0;
+        }
+
+        .bottom {
+            padding-top: 0.5rem;
+            padding-bottom: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        span {
+            font-size: 0.625em;
+            margin-top: 0em;
+            margin-bottom: 0em;
+            line-height: 1.2em;
+            display: inline-block;
+            font-style: normal;
+            padding: 0;
+            line-height: 1.2em;
+        }
+
+        .copyright {
+            flex: 1 1 auto;
+            font-size: 0.625em;
+            margin-top: 0em;
+            margin-bottom: 0em;
+            line-height: 1.2em;
+            display: inline-block;
+            font-style: normal;
+            padding-top: 1rem;
+
+            //add
+            width: 100%;
+        }
     }
 }

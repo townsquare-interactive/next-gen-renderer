@@ -1,7 +1,7 @@
 import styles from './myheader.module.scss'
 import { Pagelist, MyHeaderProps, SocialBarProps, MobileHeaderProps, NavItem } from './types'
 import cn from 'classnames'
-import { domainImage, socialConvert, iconConvert, extUrl } from '../functions'
+import { domainImage } from '../functions'
 import { useState, useEffect, Fragment } from 'react'
 import Link from 'next/link'
 import Logo from './Logo'
@@ -71,7 +71,6 @@ const MyHeader = (props: MyHeaderProps) => {
 }
 
 const SocialBar = ({ CMSLayout, themeStyles }: SocialBarProps) => {
-    console.log(CMSLayout.contact)
     return (
         <div className={styles['social-bar']} style={{ background: themeStyles.BckdHeaderSocial }}>
             <SocialLinks CMSLayout={CMSLayout} themeStyles={themeStyles} />

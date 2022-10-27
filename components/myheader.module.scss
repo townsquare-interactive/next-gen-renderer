@@ -39,7 +39,8 @@
             }
 
             span {
-                max-width: 8.75rem !important;
+                //max-width: 8.75rem !important;
+                max-width: 11rem !important;
                 transition: all 0.3s ease-in-out;
             }
 
@@ -279,7 +280,8 @@
                     font-size: 100%;
                     letter-spacing: 0.1em;
                     //width: 100%;
-                    margin: 0.25rem 0;
+                    // margin: 0.25rem 0;
+                    margin: 0;
                 }
             }
         }
@@ -297,7 +299,8 @@
             padding: 0.5rem;
 
             span {
-                max-width: 4.5rem !important;
+                // max-width: 4.5rem !important;
+                max-width: 6rem !important;
             }
         }
     }
@@ -351,6 +354,9 @@
 
         @include breakpoints.sm-min {
             width: 50%;
+        }
+        @include breakpoints.lg-min {
+            width: 30%;
         }
 
         .mobile-body {

@@ -15,18 +15,24 @@
     //content: "a";
     //content: 'O';
     font-size: 1.5em;
-    margin-top: 0.6666666667em;
-    margin-bottom: 0.5em;
-    margin-left: auto;
+
     line-height: 1.1666666667em;
     letter-spacing: -0.0125rem;
     font-weight: 400;
     vertical-align: middle;
     border: none;
+    margin: 0.5em auto;
 
     //added
     svg {
         width: 1.2em;
+    }
+
+    @include breakpoints.sm {
+        margin-top: 0.6666666667em;
+        margin-bottom: 0.5em;
+        margin-left: auto;
+        margin-right: 0;
     }
 
     &.head-toggle {
@@ -37,8 +43,8 @@
 
     &.foot-toggle {
         font-size: 0.8em;
-        margin-top: 0.6666666667em;
-        margin-bottom: 0.5em;
+        /* margin-top: 0.6666666667em;
+        margin-bottom: 0.5em; */
         margin-left: auto;
         line-height: 1.1666666667em;
         letter-spacing: -0.0125rem;

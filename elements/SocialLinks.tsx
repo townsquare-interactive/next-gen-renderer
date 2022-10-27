@@ -14,12 +14,6 @@ const SocialLinks = ({ CMSLayout, themeStyles, modType = 'header' }: SocialBarPr
                 [styles['foot-social']]: modType === 'footer',
             })}
         >
-            <li>
-                <a aria-label="share-site" className={cn('socialIcon')}>
-                    <FontAwesomeIcon icon={faEnvelope} />
-                </a>
-            </li>
-
             {CMSLayout.social.map((url: string, index: number) => (
                 <li key={index}>
                     <a target="blank" aria-label={iconConvert(url)} className={cn('socialIcon')} href={extUrl(url)}>
@@ -27,6 +21,11 @@ const SocialLinks = ({ CMSLayout, themeStyles, modType = 'header' }: SocialBarPr
                     </a>
                 </li>
             ))}
+            <li>
+                <a aria-label="share-site" className={cn('socialIcon')}>
+                    <FontAwesomeIcon icon={faEnvelope} />
+                </a>
+            </li>
         </ul>
     )
 }

@@ -16,15 +16,25 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import NavToggle from 'elements/NavToggle'
 
 const MyFooter = (props: MyHeaderProps) => {
-    const { pages, CMSLayout, themeStyles, navSwitch } = props
+    const { CMSLayout, themeStyles, navSwitch } = props
 
     return (
         <footer className={styles.root} style={{ backgroundColor: themeStyles.footerBackground }}>
             <div className={styles.wrapper}>
                 <div className={styles.section1}></div>
+                {/* <div className={styles.section1}></div> */}
+                <div className={styles.brand}>
+                    {CMSLayout.mobileLogos?.image_src && (
+                        <div className={cn(styles['logo-block'], styles['desktop-logo-block'])}>
+                            <Logo logoUrl={domainImage(CMSLayout.mobileLogos.image_src, true)} link={CMSLayout.mobileLogos?.image_link} />
+                        </div>
+                    )}
+                </div>
                 <div className={styles['info-block']}>
                     <address className={styles.copy}>
-                        <span className={styles.copyright}>Copyright &#169; {new Date().getFullYear()} Charlotte Site, all rights reserved. </span>
+                        <span className={styles.copyright}>
+                            Copyright &#169; {new Date().getFullYear()} {CMSLayout.siteName}, all rights reserved.{' '}
+                        </span>
                         {CMSLayout.contact.address?.street && <span className={styles['street-address']}>{CMSLayout.contact.address.street}, </span>}
                         <span className={styles['city-state-zip-address']}>
                             {CMSLayout.contact.address?.city && `${CMSLayout.contact.address.city} ,`}{' '}
