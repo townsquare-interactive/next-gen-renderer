@@ -76,6 +76,22 @@ export interface GlobalData {
     cmsNav?: any
     logos?: Logo
     mobileLogos?: Logo
+    composites?: { footer?: CompositeData; right_rail?: CompositeData }
+}
+
+interface CompositeData {
+    type: string
+    layout: null | string
+    columns: number
+    sections: null | string
+    modules: { items: [CompositeItems]; type: string }
+}
+
+interface CompositeItems {
+    filter: boolean
+    title: string
+    component: string
+    text: string
 }
 
 export interface Logo {

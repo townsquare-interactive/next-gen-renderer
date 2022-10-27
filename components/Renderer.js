@@ -36,7 +36,7 @@ const mapPropsToConfig = (config) => {
 
     config.forEach((item) => {
         if (item.componentType) {
-            const { componentType, ...props } = item
+            const { componentType = componentType || component, ...props } = item
 
             configWithProps.push({
                 ...props,

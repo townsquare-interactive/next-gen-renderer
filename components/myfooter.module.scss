@@ -16,6 +16,29 @@
             position: relative;
             padding: 0.5rem 0 0.5rem;
             padding-bottom: 1rem;
+            margin-left: 2.1220609456%;
+            margin-right: 2.1220609456%;
+            flex-wrap: wrap;
+
+            .item {
+                width: 100%;
+                margin-left: 0;
+                margin-right: 0;
+                display: flex;
+
+                margin-bottom: 0;
+                padding: 1.5rem 0 1rem;
+
+                @include breakpoints.sm-min {
+                    margin-left: 2.1220609456%;
+                    margin-right: 2.1220609456%;
+                    width: 29.0892114422%;
+                }
+
+                @include breakpoints.lg-min {
+                    flex: 1;
+                }
+            }
         }
         .brand {
             .logo-block {

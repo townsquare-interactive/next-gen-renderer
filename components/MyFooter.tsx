@@ -5,6 +5,7 @@ import Logo from './Logo'
 import { FooterProps, HomeProps, NavProps, PagesProps, MyHeaderProps } from './types'
 import { domainImage } from '../functions'
 import SocialLinks from 'elements/SocialLinks'
+import MyText from './MyText'
 
 // import the library
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -18,10 +19,23 @@ import NavToggle from 'elements/NavToggle'
 const MyFooter = (props: MyHeaderProps) => {
     const { CMSLayout, themeStyles, navSwitch } = props
 
+    console.log(CMSLayout.composites)
+
     return (
         <footer className={styles.root} style={{ backgroundColor: themeStyles.footerBackground }}>
             <div className={styles.wrapper}>
-                <div className={styles.section1}></div>
+                <div className={styles.section1}>
+                    {/*  <Renderer
+                                                config={CMSLayout.composites?.footer?.modules}
+                                                themeStyles={themeStyles}
+                                            /> */}
+
+                    {CMSLayout.composites?.footer?.modules.items.map((item: any, index: number) => (
+                        <div key={index} className={styles.item}>
+                            {(item.component = 'text' && <MyText text={item.text} title={item.title} />)}
+                        </div>
+                    ))}
+                </div>
                 {/* <div className={styles.section1}></div> */}
                 <div className={styles.brand}>
                     {CMSLayout.mobileLogos?.image_src && (

@@ -3,7 +3,7 @@ import styles from '../styles/Home.module.scss'
 import { HomeProps, PageListProps, Context } from '../components/types'
 import Layout from '../components/Layout'
 import { Renderer } from '../components/Renderer'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/dist/client/router'
 import { getDomain, decideColumns, setColors, domainImage } from '../functions'
 import cn from 'classnames'
 import { Fragment } from 'react'
@@ -63,7 +63,7 @@ const Slug = (props: HomeProps) => {
     const btnStyles = `.btn_1{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['mainColor']}} .btn_1:hover{color: ${themeStyles['mainColor']}; background-color: ${themeStyles['textColorAccent']}} .btn_2{color: ${themeStyles['altColor']}; border-color: ${themeStyles['altColor']}} .btn_2:hover{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['altColor']}}`
 
     const colorStyles = textColors + btnStyles
-    
+
     const cmsUrl = cmsGlobal ? cmsGlobal.config.website.url : ''
 
     // If the page is not yet generated, this will be displayed
@@ -92,7 +92,7 @@ const Slug = (props: HomeProps) => {
             <style>{colorStyles}</style>
             <Layout CMSLayout={CMSLayout} themeStyles={themeStyles}>
                 {page.data && (
-                    <div className={styles.root} style={{backgroundColor:themeStyles.bckdContent}}>
+                    <div className={styles.root} style={{ backgroundColor: themeStyles.bckdContent }}>
                         <div className={styles.featured}>
                             <Renderer
                                 config={page.data.modules[0]}
