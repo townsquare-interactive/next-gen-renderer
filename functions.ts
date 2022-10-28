@@ -87,7 +87,7 @@ export const setColors = (cmsGlobalDesign: CMSColors, cmsTheme: string) => {
             BckdHeaderSocial: cmsGlobalDesign?.color_17.value,
             NavText: cmsGlobalDesign?.color_18.value,
             linkHover: cmsGlobalDesign?.color_7.value,
-            footerText: cmsGlobalDesign.color_12.value,
+            footerText: cmsGlobalDesign?.color_12.value,
         }
     }
 }
