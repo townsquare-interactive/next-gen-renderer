@@ -76,6 +76,7 @@ export interface GlobalData {
     cmsNav?: any
     logos?: Logo
     mobileLogos?: Logo
+    footerLogos?: Logo
     composites?: { footer?: CompositeData; right_rail?: CompositeData }
 }
 
@@ -126,7 +127,7 @@ export interface MobileHeaderProps {
     navSwitch?: () => void
     /**Boolean that determines if navbar being shown or hidden*/
     navCheck?: boolean
-    pages: PagesProps[]
+    pages?: PagesProps[]
     /**Image url for logo*/
     logoUrl?: string
     themeStyles: ThemeStyles
@@ -228,7 +229,7 @@ export interface LayoutComponentAttributes {
     navSwitch?: () => void
     /**Boolean that determines if navbar being shown or hidden*/
     navCheck?: boolean
-    pages: PagesProps[]
+    pages?: PagesProps[]
     /**Layout changes based on where Nav is being called*/
     modLayout?: 'header' | 'footer'
     /**Mobile style layout of component*/
@@ -670,7 +671,7 @@ export interface AddressData {
 }
 
 export interface Pagelist {
-    pages: PagesProps[]
+    pages?: PagesProps[]
     navType?: string
     cmsNav?: any
     themeStyles?: ThemeStyles
@@ -682,7 +683,7 @@ export interface FooterProps {
     addressData: AddressData
     siteName: string
     phoneNumber: string
-    pages: PagesProps[]
+    pages?: PagesProps[]
     /**Image URL for logo*/
     logoUrl?: string
     /**Determines which item to place bottom border under in Nav*/
@@ -777,7 +778,7 @@ export interface NavigationProps {
 }
 
 export interface MyHeaderProps {
-    pages: PagesProps[]
+    pages?: PagesProps[]
     CMSLayout: GlobalData
     themeStyles: ThemeStyles
     navCheck: boolean

@@ -13,32 +13,25 @@ export default function Layout(props: LayoutProps) {
     function navSwitch() {
         setNav(!navCheck)
     }
-    console.log(navCheck)
 
     //Placing nav data na footer data into two different arrays
-    const navigationModule = CMSLayout.modules.filter((module: GlobalModule) => module.componentType === 'navigation')
-    const footerModule = CMSLayout.modules.filter((module: GlobalModule) => module.componentType === 'footer')
+    //const navigationModule = CMSLayout.modules.filter((module: GlobalModule) => module.componentType === 'navigation')
+    //const footerModule = CMSLayout.modules.filter((module: GlobalModule) => module.componentType === 'footer')
 
     return (
         <div
             className={cn(styles.root, {
-                [styles.layout1]: navigationModule[0].attributes.navStyle === 'layout1',
+                //[styles.layout1]: navigationModule[0].attributes.navStyle === 'layout1',
             })}
         >
-            <MyHeader pages={navigationModule[0].attributes.pages} CMSLayout={CMSLayout} themeStyles={themeStyles} navSwitch={navSwitch} navCheck={navCheck} />
+            <MyHeader CMSLayout={CMSLayout} themeStyles={themeStyles} navSwitch={navSwitch} navCheck={navCheck} />
             {/*             <header>
                 <Renderer config={navigationModule} themeStyles={themeStyles} />
             </header> */}
             <main>{children}</main>
             <footer>
                 {/* <Renderer config={footerModule} themeStyles={themeStyles} /> */}
-                <MyFooter
-                    pages={navigationModule[0].attributes.pages}
-                    CMSLayout={CMSLayout}
-                    themeStyles={themeStyles}
-                    navSwitch={navSwitch}
-                    navCheck={navCheck}
-                />
+                <MyFooter CMSLayout={CMSLayout} themeStyles={themeStyles} navSwitch={navSwitch} navCheck={navCheck} />
             </footer>
         </div>
     )

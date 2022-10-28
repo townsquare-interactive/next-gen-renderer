@@ -13,14 +13,8 @@ import { faEnvelope, faPrint, faPhone, faLocationPin, faBars } from '@fortawesom
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const MyHeader = (props: MyHeaderProps) => {
-    const { pages, CMSLayout, themeStyles, navSwitch, navCheck } = props
-    /* const [navCheck, setNav] = useState<boolean>(false) */
+    const { CMSLayout, themeStyles, navSwitch, navCheck } = props
     const [windowHeight, setWindowHeight] = useState(0)
-    /*     const [navCheck, setNav] = useState<boolean>(false)
-
-    function navSwitch() {
-        setNav(!navCheck)
-    } */
 
     //set state for scroll
     const handleScroll = () => {
@@ -57,13 +51,13 @@ const MyHeader = (props: MyHeaderProps) => {
                     </div>
                 )}
 
-                <Nav pages={pages} navType={'desktop'} cmsNav={CMSLayout.cmsNav} themeStyles={themeStyles} />
+                <Nav navType={'desktop'} cmsNav={CMSLayout.cmsNav} themeStyles={themeStyles} />
                 {/*                 <button className={styles['nav-open']} onClick={navSwitch} aria-label="toggle navigation" style={{ color: themeStyles.textColorAccent }}>
                     <FontAwesomeIcon icon={faBars} />
                 </button> */}
 
                 <NavToggle navSwitch={navSwitch} themeStyles={themeStyles} />
-                <MobileHeader pages={pages} navSwitch={navSwitch} navCheck={navCheck} themeStyles={themeStyles} CMSLayout={CMSLayout} />
+                <MobileHeader navSwitch={navSwitch} navCheck={navCheck} themeStyles={themeStyles} CMSLayout={CMSLayout} />
             </div>
             <SocialBar CMSLayout={CMSLayout} themeStyles={themeStyles} />
         </header>
@@ -155,7 +149,7 @@ const MobileHeader = (props: MobileHeaderProps) => {
                     <SocialLinks CMSLayout={CMSLayout} themeStyles={themeStyles} modType="mob-header" />
                 </div>
 
-                <Nav pages={pages} navType={'mobile'} themeStyles={themeStyles} cmsNav={CMSLayout.cmsNav} />
+                <Nav navType={'mobile'} themeStyles={themeStyles} cmsNav={CMSLayout.cmsNav} />
             </div>
         </div>
     )
