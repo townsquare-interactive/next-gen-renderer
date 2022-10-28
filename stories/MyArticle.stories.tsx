@@ -1,6 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import MyArticle from '../components/MyArticle'
 import { ArticleItems } from '../components/types'
+import { themeStyles } from 'storydefaults'
 
 export default {
     title: 'new/MyArticle',
@@ -84,26 +85,11 @@ Default.args = {
     blockSwitch1: 1,
     scale_to_fit: '',
     items: [item1],
-    themeStyles: {
-        mainColor: '#365070',
-        textColor: 'rgb(46, 46, 46)',
-        headingColor: 'rgb(46, 46, 46)',
-        textColorAccent: '#fff',
-        linkColor: 'rgb(230, 211, 65)',
-        accentBackgroundColor: '#000',
-        accentColor2: 'rgb(230, 211, 65)',
-        altColor: 'rgb(230, 211, 65)',
-        headerBackground: 'rgb(64,64,64)',
-        footerBackground: 'linear-gradient(rgb(54,80,112, 0.6) 0%, rgb(54,80,112) 23%)',
-        navBackground: 'rgb(64,64,64,.9)',
-        BckdHeaderSocial: '#12343d',
-        NavText: 'rgba(237,237,223,1)',
-        subHeadingColor: '#5b5b5b',
-    },
+    themeStyles: themeStyles,
 }
 
 let colorStyles: string
-if (Default.args.themeStyles) {
+if (Default.args?.themeStyles) {
     const textColors = `.accent-txt{color:${Default.args.themeStyles['textColorAccent']}} .txt-color{color:${Default.args.themeStyles['textColor']}} .txt-color-heading{color:${Default.args.themeStyles['headingColor']}}`
 
     const btnStyles = `.btn_1{color: ${Default.args.themeStyles['textColorAccent']}; background-color: ${Default.args.themeStyles['mainColor']}} .btn_1:hover{color: ${Default.args.themeStyles['mainColor']}; background-color: ${Default.args.themeStyles['textColorAccent']}} .btn_2{color: ${Default.args.themeStyles['altColor']}; border-color: ${Default.args.themeStyles['altColor']}} .btn_2:hover{color: ${Default.args.themeStyles['textColorAccent']}; background-color: ${Default.args.themeStyles['altColor']}}`

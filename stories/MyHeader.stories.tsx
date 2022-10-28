@@ -1,5 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import MyHeader from '../components/MyHeader'
+import { themeStyles } from 'storydefaults'
+import { social } from 'storydefaults'
 
 export default {
     title: 'New/MyHeader',
@@ -47,42 +49,10 @@ Default.args = {
             page_type: 'blank',
         },
     ],
-    themeStyles: {
-        mainColor: '#365070',
-        textColor: 'rgb(46, 46, 46)',
-        headingColor: 'rgb(46, 46, 46)',
-        textColorAccent: '#fff',
-        linkColor: 'rgb(230, 211, 65)',
-        accentBackgroundColor: '#000',
-        accentColor2: 'rgb(230, 211, 65)',
-        altColor: 'rgb(230, 211, 65)',
-        headerBackground: 'rgb(64,64,64)',
-        footerBackground: 'linear-gradient(rgb(54,80,112, 0.6) 0%, rgb(54,80,112) 23%)',
-        navBackground: 'rgb(64,64,64,.9)',
-        BckdHeaderSocial: '#12343d',
-        NavText: 'rgba(237,237,223,1)',
-        subHeadingColor: '#5b5b5b',
-        linkHover: '#00ab80',
-    },
+    themeStyles: themeStyles,
 
     CMSLayout: {
-        themeStyles: {
-            mainColor: '#365070',
-            textColor: 'rgb(46, 46, 46)',
-            headingColor: 'rgb(46, 46, 46)',
-            textColorAccent: '#fff',
-            linkColor: 'rgb(230, 211, 65)',
-            accentBackgroundColor: '#000',
-            accentColor2: 'rgb(230, 211, 65)',
-            altColor: 'rgb(230, 211, 65)',
-            headerBackground: 'rgb(64,64,64)',
-            footerBackground: 'linear-gradient(rgb(54,80,112, 0.6) 0%, rgb(54,80,112) 23%)',
-            navBackground: 'rgb(64,64,64,.9)',
-            BckdHeaderSocial: '#12343d',
-            NavText: 'rgba(237,237,223,1)',
-            subHeadingColor: '#5b5b5b',
-            linkHover: '#00ab80',
-        },
+        themeStyles: themeStyles,
 
         logos: { show: 1, type: 'image', markup: '', hasLinks: false, alignment: 'center', image_src: '/files/2022/09/Yos2.jpg', image_link: '/' },
         mobileLogos: {
@@ -94,7 +64,7 @@ Default.args = {
             image_src: '/files/2022/07/jremodeling-logo.png',
             image_link: '/',
         },
-        social: ['http://www.facebook.com/Tipsyburro', 'http://www.twitter.com/nbc'],
+        social: social,
         contact: {
             phone: {
                 name: 'Phone',

@@ -69,7 +69,7 @@ export interface GlobalData {
     url?: string
     email?: string
     //social?: [string]
-    social: [SocialItem]
+    social: any
     siteName?: string
     phoneNumber?: String
     themeStyles: ThemeStyles
@@ -85,7 +85,7 @@ export interface SocialItem {
     enabled: number
     format: string
     id: number
-    input: any
+    input: [string] | null
     label: string
     name: string
     url: string
