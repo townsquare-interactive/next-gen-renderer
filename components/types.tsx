@@ -19,6 +19,7 @@ export interface ThemeStyles {
     NavText: string
     linkHover?: string
     bckdContent?: string
+    footerText: string
 }
 
 export interface HomeProps {
@@ -68,7 +69,7 @@ export interface GlobalData {
     url?: string
     email?: string
     //social?: [string]
-    social?: any
+    social: [SocialItem]
     siteName?: string
     phoneNumber?: String
     themeStyles: ThemeStyles
@@ -78,6 +79,17 @@ export interface GlobalData {
     mobileLogos?: Logo
     footerLogos?: Logo
     composites?: { footer?: CompositeData; right_rail?: CompositeData }
+}
+
+export interface SocialItem {
+    enabled: number
+    format: string
+    id: number
+    input: any
+    label: string
+    name: string
+    url: string
+    value: string
 }
 
 interface CompositeData {

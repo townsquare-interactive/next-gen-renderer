@@ -63,6 +63,24 @@
         }
     }
 
+    &.widget {
+        li {
+            display: block;
+        }
+
+        svg {
+            vertical-align: middle;
+            margin-right: 0.5rem;
+        }
+
+        a {
+            list-style-type: none;
+            font-family: inherit !important;
+            position: relative;
+            //padding-left: 2rem;
+        }
+    }
+
     &.head-social {
         display: none;
         @include breakpoints.md-min {

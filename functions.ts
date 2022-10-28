@@ -68,6 +68,7 @@ export const setColors = (cmsGlobalDesign: CMSColors, cmsTheme: string) => {
             NavText: cmsGlobalDesign.color_18.value,
             linkHover: cmsGlobalDesign.color_6.value,
             bckdContent: cmsGlobalDesign.color_22.value,
+            footerText: cmsGlobalDesign.color_28.value,
         }
     } else {
         return {
@@ -86,6 +87,7 @@ export const setColors = (cmsGlobalDesign: CMSColors, cmsTheme: string) => {
             BckdHeaderSocial: cmsGlobalDesign?.color_17.value,
             NavText: cmsGlobalDesign?.color_18.value,
             linkHover: cmsGlobalDesign?.color_7.value,
+            footerText: cmsGlobalDesign.color_12.value,
         }
     }
 }
@@ -145,9 +147,13 @@ export const decideColumns = (page: PageProps) => {
 }
 
 export const findHomePageSlug = (pageList: Pagelist) => {
-    const homePage = pageList.pages.filter((e: any) => e.page_type === 'homepage')
-    const homePageSlug = homePage.length != 0 ? homePage[0].slug : pageList.pages[0].slug
-    return homePageSlug
+    if (pageList.pages) {
+        const homePage = pageList.pages?.filter((e: any) => e.page_type === 'homepage')
+        const homePageSlug = homePage.length != 0 ? homePage[0].slug : pageList.pages[0].slug
+        return homePageSlug
+    } else {
+        return pageList
+    }
 }
 
 export function iconConvert(str: string) {

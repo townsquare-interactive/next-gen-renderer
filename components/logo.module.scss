@@ -9,8 +9,8 @@
             width: 100%;
             position: relative;
 
-            span {
-                /*  max-height: variables.$logo-size-4 !important;
+            /*   span {
+                max-height: variables.$logo-size-4 !important;
 
                 @media (min-width: 352px) {
                     max-height: variables.$logo-size-3 !important;
@@ -23,15 +23,15 @@
                     max-height: variables.$logo-size !important;
                 }
                 
- */
+
                 //temp instead of above ^
                 //max-height: 8.75rem;
-                /* img {
+               img {
                     height: 100% !important;
                     min-width: 0 !important;
                     width: auto !important;
-                } */
-            }
+                } 
+            }*/
         }
     }
 }

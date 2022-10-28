@@ -40,8 +40,12 @@
 
             span {
                 //max-width: 8.75rem !important;
-                max-width: 11rem !important;
+                max-width: 6rem !important;
                 transition: all 0.3s ease-in-out;
+
+                @include breakpoints.lg-min {
+                    max-width: 13rem !important;
+                }
             }
 
             &.desktop-logo-block {
