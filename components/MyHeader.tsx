@@ -1,8 +1,8 @@
 import styles from './myheader.module.scss'
-import { Pagelist, MyHeaderProps, SocialBarProps, MobileHeaderProps, NavItem } from './types'
+import { MyHeaderProps, SocialBarProps, MobileHeaderProps } from './types'
 import cn from 'classnames'
 import { domainImage } from '../functions'
-import { useState, useEffect, Fragment } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Logo from './Logo'
 import SocialLinks from 'elements/SocialLinks'
@@ -10,7 +10,7 @@ import NavToggle from 'elements/NavToggle'
 import Nav from './Nav'
 
 // import your icons
-import { faEnvelope, faPrint, faPhone, faLocationPin, faBars } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope, faPhone, faLocationPin } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const MyHeader = (props: MyHeaderProps) => {
@@ -133,69 +133,5 @@ const MobileHeader = (props: MobileHeaderProps) => {
         </div>
     )
 }
-
-/* const Nav = (props: Pagelist) => {
-    const { navType, cmsNav, themeStyles } = props
-
-    const NavItem = ({ item, arrow = false }: any) => {
-        return (
-            <Link href={item.title ? item.title.toLowerCase() : ''} passHref={true}>
-                <a className={cn('navLink', { [styles.arrow]: arrow == true })} aria-label={item.title}>
-                    {item.title}
-                </a>
-            </Link>
-        )
-    }
-
-    return (
-        <div className={styles.access}>
-            <ul
-                className={cn(styles.menu, {
-                    [styles['desktop-nav']]: navType == 'desktop',
-                    [styles['mobile-nav']]: navType == 'mobile',
-                })}
-            >
-                {cmsNav &&
-                    cmsNav.map((item: NavItem, index: number) => (
-                        <Fragment key={index}>
-                            {item.menu_item_parent == 0 && (
-                                <li>
-                                    <NavItem item={item} arrow={item.submenu?.length ? true : false} />
-                                    {item.submenu && (
-                                        <ul
-                                            className={cn({
-                                                [styles['sub-menu']]: navType == 'desktop',
-                                            })}
-                                        >
-                                            {item.submenu.map((subItem: any, idx: number) => (
-                                                <Fragment key={idx}>
-                                                    <li>
-                                                        <NavItem item={subItem} />
-                                                    </li>
-                                                    {subItem.submenu && (
-                                                        <ul
-                                                            className={cn({
-                                                                [styles['sub-menu']]: navType == 'desktop',
-                                                            })}
-                                                        >
-                                                            {subItem.submenu.map((subItem2: any, subidx: number) => (
-                                                                <li key={subidx}>
-                                                                    <NavItem item={subItem2} />
-                                                                </li>
-                                                            ))}
-                                                        </ul>
-                                                    )}
-                                                </Fragment>
-                                            ))}
-                                        </ul>
-                                    )}
-                                </li>
-                            )}
-                        </Fragment>
-                    ))}
-            </ul>
-        </div>
-    )
-} */
 
 export default MyHeader

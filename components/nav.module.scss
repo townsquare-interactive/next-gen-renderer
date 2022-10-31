@@ -1,70 +1,5 @@
 @use '../styles/breakpoints.scss';
-/* @use '../styles/breakpoints.scss';
-@use 'sass:math';
-@use '../styles/variables.scss';
-@use '../styles/utils.module.scss';
 
-$nav-item-padding: 2%;
-
-.root {
-    width: 100%;
-
-    .wrapper {
-        padding: 0;
-        margin: 0;
-
-        div {
-            text-decoration: none;
-            list-style-type: none;
-            padding: $nav-item-padding; //color: variables.$textColorAccent;
-            vertical-align: top;
-
-            @include utils.text-sizes-md;
-
-            &.bordered {
-                margin-bottom: 20px;
-                padding-bottom: 20px;
-                border-bottom: 1px solid variables.$textColorAccent;
-            }
-        }
-
-        &.headerNav {
-            div {
-                text-align: left;
-                padding: 2%;
-
-                @include breakpoints.xs {
-                    // columns: 2;
-                    width: math.div(100%, 2)- $nav-item-padding * 2;
-                    display: inline-block;
-                }
-            }
-
-            ul {
-                columns: 2;
-            }
-        }
-
-        &.footerNav {
-            div {
-                // padding: 5px;
-                padding: 1%;
-                @include breakpoints.xs {
-                    width: math.div(100%, 2)- 1% * 2;
-                    display: inline-block;
-                }
-            }
-
-            @media (max-width: breakpoints.$screen-md-min) {
-                font-size: variables.$text-size-body-md;
-                padding: 2%;
-                width: math.div(100%, 2)- 2% * 2;
-                display: inline-block;
-            }
-        }
-    }
-}
- */
 .access {
     @include breakpoints.lg-min {
         flex: 1 1 100%;
@@ -225,10 +160,3 @@ $nav-item-padding: 2%;
         }
     }
 }
-
-/* .access {
-    li {
-        display:block;
-        margin: 1rem 0;
-    }
-} */

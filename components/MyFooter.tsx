@@ -2,13 +2,13 @@ import styles from './myfooter.module.scss'
 import cn from 'classnames'
 import Nav from './Nav'
 import Logo from './Logo'
-import { FooterProps, MyHeaderProps } from './types'
+import { MyFooterProps } from './types'
 import { domainImage } from '../functions'
 import SocialLinks from 'elements/SocialLinks'
 import MyText from 'elements/MyText'
 import NavToggle from 'elements/NavToggle'
 
-const MyFooter = (props: MyHeaderProps) => {
+const MyFooter = (props: MyFooterProps) => {
     const { CMSLayout, themeStyles, navSwitch } = props
 
     return (

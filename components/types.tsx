@@ -797,6 +797,14 @@ export interface MyHeaderProps {
     navSwitch: () => void
 }
 
+export interface MyFooterProps {
+    pages?: PagesProps[]
+    CMSLayout: GlobalData
+    themeStyles: ThemeStyles
+    navCheck: boolean
+    navSwitch: () => void
+}
+
 export interface NavBarProps {
     /**Boolean that determines if navbar being shown or hidden*/
     navCheck: boolean
