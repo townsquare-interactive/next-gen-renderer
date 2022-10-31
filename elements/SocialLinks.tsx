@@ -31,6 +31,7 @@ import cn from 'classnames'
 } */
 
 const SocialLinks = ({ CMSLayout, themeStyles, modType = 'header' }: SocialBarProps) => {
+    console.log(CMSLayout)
     return (
         <ul
             className={cn(styles['social-media-links'], {
@@ -48,8 +49,17 @@ const SocialLinks = ({ CMSLayout, themeStyles, modType = 'header' }: SocialBarPr
                 </li>
             ))}
             <li>
-                <a aria-label="share-site" className={cn('socialIcon')}>
+                <a
+                    aria-label="share-site"
+                    className={cn('socialIcon', 'email-to-friend')}
+                    href={`mailto:?subject=Check out ${CMSLayout.siteName}&body=I thought you%27d be interested in this site%3A%0A${CMSLayout.url}%2F`}
+                >
                     <FontAwesomeIcon icon={faEnvelope} /> {modType === 'widget' && 'Send to a Friend'}
+                </a>
+            </li>
+            <li>
+                <a aria-label="print-page" className={cn('socialIcon', 'print')} href="javascript:window.print()">
+                    <FontAwesomeIcon icon={faPrint} /> {modType === 'widget' && 'Print This Page'}
                 </a>
             </li>
         </ul>
