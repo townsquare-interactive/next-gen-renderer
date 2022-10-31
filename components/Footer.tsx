@@ -84,7 +84,7 @@ const Footer = (props: FooterProps) => {
                 </div>
                 {props.pages && (
                     <div className={cn(styles.block, styles.navInfo)}>
-                        <Nav pages={props.pages} modLayout="footer" borderNum={props.borderNum} themeStyles={props.themeStyles} />
+                        {/*                         <Nav pages={props.pages} modLayout="footer" borderNum={props.borderNum} themeStyles={props.themeStyles} /> */}
                     </div>
                 )}
                 {props.addressData && (

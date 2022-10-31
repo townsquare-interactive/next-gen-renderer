@@ -69,7 +69,7 @@ const Navbar = (props: NavBarProps) => {
         >
             <div className={styles.navBar_wrapper}>
                 <div className={styles.navDrop} style={navStyles}>
-                    <div className={styles.navItems}>{<Nav pages={pages} modLayout="header" borderNum={borderNum} themeStyles={themeStyles} />}</div>
+                    <div className={styles.navItems}>{/* {<Nav pages={pages} modLayout="header" borderNum={borderNum} themeStyles={themeStyles} />} */}</div>
                     {navImage && (
                         <div className={styles.imageTile}>
                             {/* <Image src={navImage} layout="fill" alt={altText} objectFit="cover" quality="50" /> */}
