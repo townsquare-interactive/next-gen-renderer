@@ -10,7 +10,14 @@ const Nav = (props: Pagelist) => {
     const NavItem = ({ item, arrow = false }: any) => {
         return (
             <Link href={item.title ? item.title.toLowerCase() : ''} passHref={true}>
-                <a className={cn('navLink', { [styles.arrow]: arrow == true })} aria-label={item.title}>
+                <a
+                    className={cn({
+                        [styles.arrow]: arrow == true,
+                        ['navLink']: navType === 'desktop' || navType === 'mobile',
+                        ['socialIcon']: navType === 'footer',
+                    })}
+                    aria-label={item.title}
+                >
                     {item.title}
                 </a>
             </Link>
@@ -23,6 +30,7 @@ const Nav = (props: Pagelist) => {
                 className={cn(styles.menu, {
                     [styles['desktop-nav']]: navType == 'desktop',
                     [styles['mobile-nav']]: navType == 'mobile',
+                    [styles['footer-nav']]: navType == 'footer',
                 })}
             >
                 {cmsNav &&
@@ -34,7 +42,7 @@ const Nav = (props: Pagelist) => {
                                     {item.submenu && (
                                         <ul
                                             className={cn({
-                                                [styles['sub-menu']]: navType == 'desktop',
+                                                [styles['sub-menu']]: navType === 'desktop',
                                             })}
                                         >
                                             {item.submenu.map((subItem: any, idx: number) => (
@@ -45,7 +53,7 @@ const Nav = (props: Pagelist) => {
                                                     {subItem.submenu && (
                                                         <ul
                                                             className={cn({
-                                                                [styles['sub-menu']]: navType == 'desktop',
+                                                                [styles['sub-menu']]: navType === 'desktop',
                                                             })}
                                                         >
                                                             {subItem.submenu.map((subItem2: any, subidx: number) => (

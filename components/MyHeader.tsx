@@ -17,6 +17,8 @@ const MyHeader = (props: MyHeaderProps) => {
     const { CMSLayout, themeStyles, navSwitch, navCheck } = props
     const [windowHeight, setWindowHeight] = useState(0)
 
+    console.log(CMSLayout.cmsNav)
+
     //set state for scroll
     const handleScroll = () => {
         setWindowHeight(window.scrollY)

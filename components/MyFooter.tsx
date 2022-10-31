@@ -20,6 +20,7 @@ const MyFooter = (props: MyHeaderProps) => {
                             {item.component === 'text' && <MyText text={item.text} title={item.title} />}
                             {item.component === 'enhancedtext' && <MyText text={item.text} title={item.title} />}
                             {item.component === 'social_media' && <SocialLinks CMSLayout={CMSLayout} themeStyles={themeStyles} modType="widget" />}
+                            {item.component === 'nav_menu' && <Nav navType={'footer'} themeStyles={themeStyles} cmsNav={CMSLayout.cmsNav} />}
                         </div>
                     ))}
                 </div>
