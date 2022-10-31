@@ -7,6 +7,7 @@ import Link from 'next/link'
 import Logo from './Logo'
 import SocialLinks from 'elements/SocialLinks'
 import NavToggle from 'elements/NavToggle'
+import Nav from './Nav'
 
 // import your icons
 import { faEnvelope, faPrint, faPhone, faLocationPin, faBars } from '@fortawesome/free-solid-svg-icons'
@@ -52,9 +53,6 @@ const MyHeader = (props: MyHeaderProps) => {
                 )}
 
                 <Nav navType={'desktop'} cmsNav={CMSLayout.cmsNav} themeStyles={themeStyles} />
-                {/*                 <button className={styles['nav-open']} onClick={navSwitch} aria-label="toggle navigation" style={{ color: themeStyles.textColorAccent }}>
-                    <FontAwesomeIcon icon={faBars} />
-                </button> */}
 
                 <NavToggle navSwitch={navSwitch} themeStyles={themeStyles} />
                 <MobileHeader navSwitch={navSwitch} navCheck={navCheck} themeStyles={themeStyles} CMSLayout={CMSLayout} />
@@ -105,28 +103,8 @@ const SocialBar = ({ CMSLayout, themeStyles }: SocialBarProps) => {
     )
 }
 
-/* const SocialLinks = ({ CMSLayout, themeStyles }: SocialBarProps) => {
-    return (
-        <ul className={styles['social-media-links']}>
-            <li>
-                <a aria-label="share-site" className={cn('socialIcon')}>
-                    <FontAwesomeIcon icon={faEnvelope} />
-                </a>
-            </li>
-
-            {CMSLayout.social.map((url: string, index: number) => (
-                <li key={index}>
-                    <a target="blank" aria-label={iconConvert(url)} className={cn('socialIcon')} href={extUrl(url)}>
-                        <FontAwesomeIcon icon={socialConvert(url)} />
-                    </a>
-                </li>
-            ))}
-        </ul>
-    )
-} */
-
 const MobileHeader = (props: MobileHeaderProps) => {
-    const { pages, navSwitch, navCheck, themeStyles, CMSLayout } = props
+    const { navSwitch, navCheck, themeStyles, CMSLayout } = props
 
     return (
         <div
@@ -142,7 +120,6 @@ const MobileHeader = (props: MobileHeaderProps) => {
                 aria-label="close-mobile-nav"
                 style={{ color: themeStyles.textColorAccent, backgroundColor: themeStyles.mainColor }}
             ></button>
-            {/* <NavToggle navSwitch={navSwitch} themeStyles={themeStyles}/> */}
 
             <div className={styles['mobile-body']}>
                 <div className={styles.social}>
@@ -155,7 +132,7 @@ const MobileHeader = (props: MobileHeaderProps) => {
     )
 }
 
-const Nav = (props: Pagelist) => {
+/* const Nav = (props: Pagelist) => {
     const { navType, cmsNav, themeStyles } = props
 
     const NavItem = ({ item, arrow = false }: any) => {
@@ -217,6 +194,6 @@ const Nav = (props: Pagelist) => {
             </ul>
         </div>
     )
-}
+} */
 
 export default MyHeader

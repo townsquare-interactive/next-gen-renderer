@@ -5,7 +5,7 @@ import Logo from './Logo'
 import { FooterProps, MyHeaderProps } from './types'
 import { domainImage } from '../functions'
 import SocialLinks from 'elements/SocialLinks'
-import MyText from './MyText'
+import MyText from 'elements/MyText'
 import NavToggle from 'elements/NavToggle'
 
 const MyFooter = (props: MyHeaderProps) => {
@@ -18,6 +18,7 @@ const MyFooter = (props: MyHeaderProps) => {
                     {CMSLayout.composites?.footer?.modules.items.map((item: any, index: number) => (
                         <div key={index} className={styles.item}>
                             {item.component === 'text' && <MyText text={item.text} title={item.title} />}
+                            {item.component === 'enhancedtext' && <MyText text={item.text} title={item.title} />}
                             {item.component === 'social_media' && <SocialLinks CMSLayout={CMSLayout} themeStyles={themeStyles} modType="widget" />}
                         </div>
                     ))}
