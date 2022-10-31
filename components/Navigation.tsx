@@ -1,9 +1,8 @@
 import styles from './navigation.module.scss'
 import Image from 'next/image'
 import Logo from './Logo'
-import Nav from './Nav'
 import cn from 'classnames'
-import { NavigationProps, NavBarProps, BurgerProps } from './types'
+import { NavigationProps, NavBarProps, BurgerProps } from '../types'
 import { useState } from 'react'
 import { domainImage } from '../functions'
 

@@ -5,7 +5,7 @@ import Image from 'next/image'
 import cn from 'classnames'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import { CarouselProps } from './types'
+import { CarouselProps } from '../types'
 import { domainImage } from '../functions'
 
 function Carousel(props: CarouselProps) {

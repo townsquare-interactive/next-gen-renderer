@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import MyArticle from '../components/MyArticle'
-import { ArticleItems } from '../components/types'
+import { ArticleItems } from '../types'
 import { themeStyles } from 'storydefaults'
 
 export default {

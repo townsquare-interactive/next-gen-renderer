@@ -1,6 +1,6 @@
 import styles from './header.module.scss'
 import Image from 'next/image'
-import { HeaderProps } from './types'
+import { HeaderProps } from '../types'
 import cn from 'classnames'
 import { domainImage } from '../functions'
 

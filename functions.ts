@@ -1,4 +1,4 @@
-import { ConditionalWrapperProps, Module, PageProps, CMSColors, Pagelist } from 'components/types'
+import { ConditionalWrapperProps, Module, PageProps, CMSColors, Pagelist } from 'types'
 
 import { faGoogle, faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faRocket, faEnvelope, faPrint, faPhone, faLocationPin, faBars } from '@fortawesome/free-solid-svg-icons'

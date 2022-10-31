@@ -1,5 +1,5 @@
 import styles from './CharlotteArticle.module.scss'
-import { ArticleProps, Media, TheListItemImageProps, TheListItemActionProps, TsiWrp, TheListItemProps } from './types'
+import { ArticleProps, Media, TheListItemImageProps, TheListItemActionProps, TsiWrp, TheListItemProps } from '../types'
 import Image from 'next/image'
 import cn from 'classnames'
 import Parser from 'html-react-parser'

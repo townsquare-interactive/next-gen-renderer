@@ -2,7 +2,7 @@ import styles from './images.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
 import cn from 'classnames'
-import { ImagesProps, TileImageProps } from './types'
+import { ImagesProps, TileImageProps } from '../types'
 import { domainImage } from '../functions'
 import Button from '../elements/Button'
 

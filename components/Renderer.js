@@ -28,7 +28,6 @@ const keysToComponentMap = {
     Article,
     CharlotteArticle,
     MyArticle,
-    MyFooter,
 }
 
 const mapPropsToConfig = (config) => {

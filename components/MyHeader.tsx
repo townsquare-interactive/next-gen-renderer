@@ -1,5 +1,5 @@
 import styles from './myheader.module.scss'
-import { MyHeaderProps, SocialBarProps, MobileHeaderProps } from './types'
+import { MyHeaderProps, SocialBarProps } from '../types'
 import cn from 'classnames'
 import { domainImage } from '../functions'
 import { useState, useEffect } from 'react'
@@ -8,8 +8,6 @@ import Logo from './Logo'
 import SocialLinks from 'elements/SocialLinks'
 import NavToggle from 'elements/NavToggle'
 import Nav from './Nav'
-
-// import your icons
 import { faEnvelope, faPhone, faLocationPin } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -55,9 +53,7 @@ const MyHeader = (props: MyHeaderProps) => {
                 )}
 
                 <Nav navType={'desktop'} cmsNav={CMSLayout.cmsNav} themeStyles={themeStyles} />
-
                 <NavToggle navSwitch={navSwitch} themeStyles={themeStyles} />
-                <MobileHeader navSwitch={navSwitch} navCheck={navCheck} themeStyles={themeStyles} CMSLayout={CMSLayout} />
             </div>
             <SocialBar CMSLayout={CMSLayout} themeStyles={themeStyles} />
         </header>
@@ -105,7 +101,7 @@ const SocialBar = ({ CMSLayout, themeStyles }: SocialBarProps) => {
     )
 }
 
-const MobileHeader = (props: MobileHeaderProps) => {
+/* const MobileHeader = (props: AltHeaderProps) => {
     const { navSwitch, navCheck, themeStyles, CMSLayout } = props
 
     return (
@@ -132,6 +128,6 @@ const MobileHeader = (props: MobileHeaderProps) => {
             </div>
         </div>
     )
-}
+} */
 
 export default MyHeader

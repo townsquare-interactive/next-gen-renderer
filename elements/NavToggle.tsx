@@ -1,4 +1,4 @@
-import { NavToggleProps } from '../components/types'
+import { NavToggleProps } from '../types'
 import styles from './navtoggle.module.scss'
 import cn from 'classnames'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

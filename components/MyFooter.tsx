@@ -2,11 +2,12 @@ import styles from './myfooter.module.scss'
 import cn from 'classnames'
 import Nav from './Nav'
 import Logo from './Logo'
-import { MyFooterProps } from './types'
+import { MyFooterProps } from '../types'
 import { domainImage } from '../functions'
 import SocialLinks from 'elements/SocialLinks'
 import MyText from 'elements/MyText'
 import NavToggle from 'elements/NavToggle'
+import { Renderer } from './Renderer'
 
 const MyFooter = (props: MyFooterProps) => {
     const { CMSLayout, themeStyles, navSwitch } = props
@@ -21,6 +22,8 @@ const MyFooter = (props: MyFooterProps) => {
                             {item.component === 'enhancedtext' && <MyText text={item.text} title={item.title} />}
                             {item.component === 'social_media' && <SocialLinks CMSLayout={CMSLayout} themeStyles={themeStyles} modType="widget" />}
                             {item.component === 'nav_menu' && <Nav navType={'footer'} themeStyles={themeStyles} cmsNav={CMSLayout.cmsNav} />}
+
+                            <Renderer config={CMSLayout.composites?.footer?.modules.items} themeStyles={themeStyles} />
                         </div>
                     ))}
                 </div>

@@ -1,5 +1,5 @@
 import styles from './myArticle.module.scss'
-import { ArticleProps, Media, TheListItemImageProps, BtnProps, ItemWrapProps, ModuleItemProps } from './types'
+import { ArticleProps, Media, TheListItemImageProps, BtnProps, ItemWrapProps, ModuleItemProps } from '../types'
 import Image from 'next/image'
 import cn from 'classnames'
 import Parser from 'html-react-parser'
@@ -13,8 +13,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 
 const MyArticle = (props: ArticleProps) => {
-
-    const {width='1060', columns=1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl, disabled} = props
+    const { width = '1060', columns = 1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl, disabled } = props
     //Defining style objects
     const textColorHeading = {
         color: themeStyles['headingColor'],
@@ -218,7 +217,7 @@ const ItemWrap = (props: ItemWrapProps) => {
     const beaconHero = type === 'article' && isFeatured === 'active'
 
     //Colors of text with classes for normal/hero/border
-    
+
     /*  const textColors = `.accent-txt{color:${themeStyles['textColorAccent']}} .txt-color{color:${themeStyles['textColor']}} .txt-color-heading{color:${themeStyles['headingColor']}}` */
 
     const linkAndBtn =
@@ -318,7 +317,7 @@ const Button = (props: BtnProps) => {
             label: props.actionlbl,
             active: props.actionlbl ? true : false,
             btnType: props.btnType,
-            btnSize: props.btnSize ,
+            btnSize: props.btnSize,
             linkType: props.pagelink ? 'local' : 'ext',
         },
         {
@@ -329,7 +328,7 @@ const Button = (props: BtnProps) => {
             label: props.actionlbl2,
             active: props.actionlbl2 ? true : false,
             btnType: props.btnType2,
-            btnSize: props.btnSize2 ,
+            btnSize: props.btnSize2,
             linkType: props.pagelink2 ? 'local' : 'ext',
         },
     ]
@@ -368,7 +367,7 @@ const Button = (props: BtnProps) => {
                                             ['btn_2']: bt.btnType === 'btn_2' || (!bt.btnType && index === 1),
                                             [styles.btn_1]: bt.btnType === 'btn_1' || (!bt.btnType && index === 0),
                                             [styles.btn_2]: bt.btnType === 'btn_2' || (!bt.btnType && index === 1),
-                                            [styles.btn_md]: bt.btnSize?.includes('md')|| !bt.btnSize,
+                                            [styles.btn_md]: bt.btnSize?.includes('md') || !bt.btnSize,
                                             [styles.btn_lg]: bt.btnSize?.includes('lg'),
                                             [styles.btn_sm]: bt.btnSize?.includes('sm'),
                                             [styles.btn_xs]: bt.btnSize?.includes('xs'),

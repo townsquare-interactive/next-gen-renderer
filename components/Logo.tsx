@@ -1,7 +1,7 @@
 import styles from './logo.module.scss'
 import Link from 'next/dist/client/link'
 import Image from 'next/image'
-import { LogoProps, Media } from './types'
+import { LogoProps, Media } from '../types'
 import { useState } from 'react'
 
 const Logo = (props: LogoProps) => {

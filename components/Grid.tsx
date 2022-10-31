@@ -1,5 +1,5 @@
 import styles from './grid.module.scss'
-import { GridProps, GridData } from './types'
+import { GridProps, GridData } from '../types'
 import Image from 'next/image'
 import cn from 'classnames'
 import Parser from 'html-react-parser'

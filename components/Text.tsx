@@ -1,5 +1,5 @@
 import styles from './text.module.scss'
-import { TextProps } from './types'
+import { TextProps } from '../types'
 import cn from 'classnames'
 import Parser from 'html-react-parser'
 

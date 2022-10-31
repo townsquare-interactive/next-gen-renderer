@@ -2,11 +2,8 @@ import styles from './footer.module.scss'
 import cn from 'classnames'
 import Nav from './Nav'
 import Logo from './Logo'
-import { FooterProps, HomeProps, NavProps, PagesProps } from './types'
+import { FooterProps, HomeProps, NavProps, PagesProps } from '../types'
 import { domainImage } from '../functions'
-
-// import the library
-import { library } from '@fortawesome/fontawesome-svg-core'
 
 // import your icons
 import { faGoogle, faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons'
@@ -82,11 +79,7 @@ const Footer = (props: FooterProps) => {
                         {props.phoneNumber}
                     </h3>
                 </div>
-                {props.pages && (
-                    <div className={cn(styles.block, styles.navInfo)}>
-                        {/*                         <Nav pages={props.pages} modLayout="footer" borderNum={props.borderNum} themeStyles={props.themeStyles} /> */}
-                    </div>
-                )}
+                {props.pages && <div className={cn(styles.block, styles.navInfo)}></div>}
                 {props.addressData && (
                     <div className={cn(styles.block, styles.addInfo)}>
                         <div>

@@ -1,7 +1,7 @@
 import styles from './nav.module.scss'
 import Link from 'next/dist/client/link'
 import cn from 'classnames'
-import { NavProps, Pagelist, NavItem } from '../components/types'
+import { Pagelist, NavItem } from '../types'
 import { Fragment } from 'react'
 
 const Nav = (props: Pagelist) => {

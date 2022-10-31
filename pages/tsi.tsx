@@ -1,4 +1,4 @@
-import { HomeProps, PageListProps, Context } from '../components/types'
+import { HomeProps, PageListProps, Context } from '../types'
 import Layout from '../components/Layout'
 import { Renderer } from '../components/Renderer'
 import pageData from '../cmspage.json'

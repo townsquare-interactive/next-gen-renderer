@@ -1,4 +1,4 @@
-import { ButtonProps } from '../components/types'
+import { ButtonProps } from '../types'
 import cn from 'classnames'
 import Link from 'next/link'
 import styles from '../elements/button.module.scss'

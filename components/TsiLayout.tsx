@@ -1,4 +1,4 @@
-import { tsiLayoutProps } from '../components/types'
+import { tsiLayoutProps } from '../types'
 import styles from './TsiLayout.module.scss'
 
 export default function Layout(props: tsiLayoutProps) {

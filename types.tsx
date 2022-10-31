@@ -135,7 +135,7 @@ export interface NavItem {
     submenu: [NavItem]
 }
 
-export interface MobileHeaderProps {
+export interface AltHeaderProps {
     navSwitch?: () => void
     /**Boolean that determines if navbar being shown or hidden*/
     navCheck?: boolean

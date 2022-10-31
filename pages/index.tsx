@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.scss'
-import { HomeProps, PageListProps, Context } from '../components/types'
+import { HomeProps, PageListProps, Context } from '../types'
 import Layout from '../components/Layout'
 import { Renderer } from '../components/Renderer'
 import { useRouter } from 'next/router'
