@@ -49,7 +49,15 @@
                 font-weight: 400;
                 font-size: 1.25rem;
                 //line-height: 3rem;
-                padding: 1rem;
+                padding: 0.2rem;
+
+                @include breakpoints.sm-min {
+                    padding: 0.5rem;
+                }
+
+                @include breakpoints.md-min {
+                    padding: 1rem;
+                }
                 display: block;
                 text-transform: initial;
                 text-align: center;

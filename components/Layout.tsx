@@ -21,9 +21,9 @@ export default function Layout(props: LayoutProps) {
             })}
         >
             <AltHeader navSwitch={navSwitch} navCheck={navCheck} themeStyles={themeStyles} CMSLayout={CMSLayout} />
-            <MyHeader CMSLayout={CMSLayout} themeStyles={themeStyles} navSwitch={navSwitch} navCheck={navCheck} />
+            <MyHeader CMSLayout={CMSLayout} themeStyles={themeStyles} navSwitch={navSwitch} />
             <main>{children}</main>
-            <MyFooter CMSLayout={CMSLayout} themeStyles={themeStyles} navSwitch={navSwitch} navCheck={navCheck} />
+            <MyFooter CMSLayout={CMSLayout} themeStyles={themeStyles} navSwitch={navSwitch} />
         </div>
     )
 }

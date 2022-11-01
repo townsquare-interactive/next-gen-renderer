@@ -12,7 +12,7 @@ import { faEnvelope, faPhone, faLocationPin } from '@fortawesome/free-solid-svg-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const MyHeader = (props: MyHeaderProps) => {
-    const { CMSLayout, themeStyles, navSwitch, navCheck } = props
+    const { CMSLayout, themeStyles, navSwitch } = props
     const [windowHeight, setWindowHeight] = useState(0)
 
     console.log(CMSLayout.cmsNav)
@@ -100,34 +100,5 @@ const SocialBar = ({ CMSLayout, themeStyles }: SocialBarProps) => {
         </div>
     )
 }
-
-/* const MobileHeader = (props: AltHeaderProps) => {
-    const { navSwitch, navCheck, themeStyles, CMSLayout } = props
-
-    return (
-        <div
-            className={cn(styles['mobile-header'], {
-                [styles.hidden]: !navCheck,
-                [styles.visible]: navCheck,
-            })}
-            style={{ background: themeStyles.headerBackground }}
-        >
-            <button
-                className={styles['nav-toggle']}
-                onClick={navSwitch}
-                aria-label="close-mobile-nav"
-                style={{ color: themeStyles.textColorAccent, backgroundColor: themeStyles.mainColor }}
-            ></button>
-
-            <div className={styles['mobile-body']}>
-                <div className={styles.social}>
-                    <SocialLinks CMSLayout={CMSLayout} themeStyles={themeStyles} modType="mob-header" />
-                </div>
-
-                <Nav navType={'mobile'} themeStyles={themeStyles} cmsNav={CMSLayout.cmsNav} />
-            </div>
-        </div>
-    )
-} */
 
 export default MyHeader

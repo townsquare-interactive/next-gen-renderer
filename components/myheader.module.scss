@@ -2,19 +2,12 @@
 @use './styles/breakpoints.scss';
 
 .root {
-    //position: fixed;
-    //temp: trying sticky
     position: sticky;
     top: 0%;
     width: 100%;
     margin: 0;
     z-index: 1009;
-
-    //header
     display: block;
-
-    //temp
-    // background: black;
 
     .wrapper {
         display: flex;
@@ -28,10 +21,7 @@
         .logo-block {
             position: relative;
             height: 100%;
-
-            //flex
             flex: 1 1 auto;
-
             flex-basis: auto;
 
             @include breakpoints.lg-min {
@@ -39,7 +29,6 @@
             }
 
             span {
-                //max-width: 8.75rem !important;
                 max-width: 6rem !important;
                 transition: all 0.3s ease-in-out;
 
@@ -72,39 +61,6 @@
                 }
             }
         }
-
-        /*  */
-        /* .nav-open {
-            @include breakpoints.lg-min {
-                display: none;
-            }
-
-            background: transparent;
-            padding: 0 0.5rem;
-            text-align: center;
-            letter-spacing: 0.1em;
-            visibility: visible;
-            opacity: 1;
-            max-width: initial;
-            cursor: pointer;
-
-            // &:before {
-            //font-family: "tsi-cms";
-            //content: "a";
-            //content: 'O';
-            font-size: 1.5em;
-            margin-top: 0.6666666667em;
-            margin-bottom: 0.5em;
-            margin-left: auto;
-            line-height: 1.1666666667em;
-            letter-spacing: -0.0125rem;
-            font-weight: 400;
-            vertical-align: middle;
-
-            //added
-            width: 1.5em;
-            border: none;
-        } */
     }
 
     .social-bar {
@@ -124,12 +80,9 @@
                 text-align: right;
                 width: 100%;
                 margin: 0.25rem 0;
-
-                //other
                 list-style-type: none;
                 padding: 0;
 
-                //I added
                 @media (max-width: 850px) {
                     display: flex;
                     justify-content: center;
@@ -151,8 +104,6 @@
                         display: inline-block;
                         vertical-align: text-bottom;
                         text-align: center;
-
-                        //temp
                         vertical-align: middle;
 
                         svg {
@@ -167,19 +118,10 @@
                 .icon {
                     font-size: 100%;
                     letter-spacing: 0.1em;
-                    //width: 100%;
-                    // margin: 0.25rem 0;
                     margin: 0;
                 }
             }
         }
-
-        /* .social-media-links {
-            display: none;
-            @include breakpoints.md-min {
-                display: block;
-            }
-        } */
     }
 
     &.shrink {
@@ -192,41 +134,4 @@
             }
         }
     }
-
-    /* .social-media-links {
-        flex: 1 0 30%;
-        padding: 0.25rem 0;
-        flex-wrap: wrap;
-        -webkit-box-flex: 1;
-
-        font-size: 100%;
-        margin: 0;
-        list-style-type: none;
-
-        li {
-            display: inline-block;
-
-            a {
-                font-size: 0.6875em;
-                line-height: 1.0909090909em;
-                border-radius: 2px;
-                font-weight: 400;
-                margin-top: 0.25em;
-                margin-bottom: 0.25em;
-                padding: 0.375em 1em 0.4375em;
-                display: inline-block;
-                text-transform: initial;
-
-                //before
-                vertical-align: middle;
-
-                //temp
-                font-weight: bold;
-            }
-            svg {
-                display: inline;
-                width: 1.25em;
-            }
-        }
-    } */
 }

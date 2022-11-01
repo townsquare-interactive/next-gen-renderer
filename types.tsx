@@ -793,7 +793,7 @@ export interface MyHeaderProps {
     pages?: PagesProps[]
     CMSLayout: GlobalData
     themeStyles: ThemeStyles
-    navCheck: boolean
+    // navCheck: boolean
     navSwitch: () => void
 }
 
@@ -801,7 +801,7 @@ export interface MyFooterProps {
     pages?: PagesProps[]
     CMSLayout: GlobalData
     themeStyles: ThemeStyles
-    navCheck: boolean
+    //navCheck: boolean
     navSwitch: () => void
 }
 
