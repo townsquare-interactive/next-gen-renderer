@@ -6,6 +6,10 @@ import styles from './sociallinks.module.scss'
 import cn from 'classnames'
 
 const SocialLinks = ({ CMSLayout, themeStyles, modType = 'header' }: SocialBarProps) => {
+    function printPage() {
+        print()
+        return
+    }
     return (
         <ul
             className={cn(styles['social-media-links'], {
@@ -33,9 +37,9 @@ const SocialLinks = ({ CMSLayout, themeStyles, modType = 'header' }: SocialBarPr
             </li>
             {modType != 'mob-header' && (
                 <li>
-                    <a aria-label="print-page" className={cn('socialIcon', 'print')} href="javascript:window.print()">
+                    <button aria-label="print-page" className={cn('socialIcon', 'print')} /* href="javascript:window.print()" */ onClick={printPage}>
                         <FontAwesomeIcon icon={faPrint} /> {modType === 'widget' && 'Print This Page'}
-                    </a>
+                    </button>
                 </li>
             )}
         </ul>

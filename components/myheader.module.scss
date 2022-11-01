@@ -3,6 +3,7 @@
 
 .root {
     position: sticky;
+    // position: fixed;
     top: 0%;
     width: 100%;
     margin: 0;
@@ -27,15 +28,6 @@
             @include breakpoints.lg-min {
                 padding: 0 0.5rem;
             }
-
-            /* span {
-                max-width: 6rem !important;
-                transition: all 0.3s ease-in-out;
-
-                @include breakpoints.lg-min {
-                    max-width: 13rem !important;
-                }
-            } */
 
             img {
                 max-width: 6rem !important;

@@ -38,10 +38,11 @@
         }
         .brand {
             .logo-block {
-                span {
+                img {
                     //max-width: 8.75rem !important;
                     max-width: 6rem !important;
                     transition: all 0.3s ease-in-out;
+                    height: auto;
                 }
 
                 @include breakpoints.sm-min {

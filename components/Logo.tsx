@@ -27,6 +27,7 @@ const Logo = (props: LogoProps) => {
                             height={logoHeight}
                             //layout="responsive"
                             quality="50"
+                            priority
                         />
                     </Link>
                 </div>

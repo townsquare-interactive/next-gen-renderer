@@ -28,7 +28,7 @@ const MyHeader = (props: MyHeaderProps) => {
     return (
         <header
             className={cn(styles.root, {
-                [styles.shrink]: windowHeight > 50,
+                [styles.shrink]: windowHeight > 150,
             })}
             style={{ background: themeStyles.headerBackground }}
         >

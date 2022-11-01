@@ -13,7 +13,8 @@
     li {
         display: inline-block;
 
-        a {
+        a,
+        button {
             font-size: 0.6875em;
             line-height: 1.0909090909em;
             border-radius: 2px;
@@ -30,9 +31,19 @@
             //temp
             font-weight: bold;
         }
+
         svg {
             display: inline;
             width: 1.25em;
+        }
+
+        button {
+            background-color: transparent;
+            border: none;
+
+            &:hover {
+                cursor: pointer;
+            }
         }
     }
 

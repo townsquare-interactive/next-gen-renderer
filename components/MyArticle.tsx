@@ -171,17 +171,16 @@ const ModuleItem = (props: ModuleItemProps) => {
             <ConditionalWrapper
                 condition={wrapLink ? true : false}
                 trueOutput={(children: ReactChild) => (
-                    (<Link
+                    <Link
                         href={item.pagelink || item.weblink || item.pagelink2 || item.weblink2 || ''}
                         passHref={item.weblink || item.weblink2 ? true : false}
                         className={cn(styles['item-wrap'], 'btn_link')}
                         target={item.newwindow == 1 ? '_blank' : item.newwindow2 == 1 ? '_blank' : '_self'}
                         style={item.isFeatured === 'active' && type === 'article' ? heroBackground : noBackground}
-                        aria-label={item.headline || 'block-link'}>
-
+                        aria-label={item.headline || 'block-link'}
+                    >
                         {children}
-
-                    </Link>)
+                    </Link>
                 )}
                 falseOutput={(children: ReactChild) => (
                     <div className={styles['item-wrap']} style={item.isFeatured === 'active' && type === 'article' ? heroBackground : noBackground}>
@@ -208,7 +207,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                 />
             </ConditionalWrapper>
         </article>
-    );
+    )
 }
 
 const ItemWrap = (props: ItemWrapProps) => {
@@ -334,58 +333,59 @@ const Button = (props: BtnProps) => {
         },
     ]
 
-    return <>
-        {props.well && <style>{linkHoverStyles}</style>}
-        <ConditionalWrapper
-            condition={props.actionlbl2 && props.actionlbl ? true : false}
-            trueOutput={(children: ReactChild) => <div className={cn(styles['btn-wrap'], styles['txt-wrap'])}>{children}</div>}
-            falseOutput={(children: ReactChild) => <>{children}</>}
-        >
-            <>
-                {buttons.map((bt, index) => (
-                    <Fragment key={index}>
-                        {bt.active && (
-                            <ConditionalWrapper
-                                condition={props.actionlbl2 && props.actionlbl ? true : false}
-                                trueOutput={(children: ReactChild) => (
-                                    (<Link
-                                        href={bt.link || ''}
-                                        key={index}
-                                        passHref={bt.linkType === 'ext' ? true : false}
-                                        target={bt.window == 1 ? '_blank' : '_self'}
-                                        className={cn('btn_link', {
-                                            [styles.btn_block]: bt.btnSize?.includes('btn_block') || bt.btnSize?.includes('btn_blk'),
-                                        })}>
-
-                                        {children}
-
-                                    </Link>)
-                                )}
-                                falseOutput={(children: ReactChild) => <>{children}</>}
-                            >
-                                <div
-                                    className={cn(styles['btn'], styles['transition'], `${bt.btnType}`, {
-                                        ['btn_1']: bt.btnType === 'btn_1' || (!bt.btnType && index === 0),
-                                        ['btn_2']: bt.btnType === 'btn_2' || (!bt.btnType && index === 1),
-                                        [styles.btn_1]: bt.btnType === 'btn_1' || (!bt.btnType && index === 0),
-                                        [styles.btn_2]: bt.btnType === 'btn_2' || (!bt.btnType && index === 1),
-                                        [styles.btn_md]: bt.btnSize?.includes('md') || !bt.btnSize,
-                                        [styles.btn_lg]: bt.btnSize?.includes('lg'),
-                                        [styles.btn_sm]: bt.btnSize?.includes('sm'),
-                                        [styles.btn_xs]: bt.btnSize?.includes('xs'),
-                                        [styles.btn_block]: bt.btnSize?.includes('btn_block') || bt.btnSize?.includes('btn_blk'),
-                                        [styles.btn_w]: props.well === '1',
-                                    })}
+    return (
+        <>
+            {props.well && <style>{linkHoverStyles}</style>}
+            <ConditionalWrapper
+                condition={props.actionlbl2 && props.actionlbl ? true : false}
+                trueOutput={(children: ReactChild) => <div className={cn(styles['btn-wrap'], styles['txt-wrap'])}>{children}</div>}
+                falseOutput={(children: ReactChild) => <>{children}</>}
+            >
+                <>
+                    {buttons.map((bt, index) => (
+                        <Fragment key={index}>
+                            {bt.active && (
+                                <ConditionalWrapper
+                                    condition={props.actionlbl2 && props.actionlbl ? true : false}
+                                    trueOutput={(children: ReactChild) => (
+                                        <Link
+                                            href={bt.link || ''}
+                                            key={index}
+                                            passHref={bt.linkType === 'ext' ? true : false}
+                                            target={bt.window == 1 ? '_blank' : '_self'}
+                                            className={cn('btn_link', {
+                                                [styles.btn_block]: bt.btnSize?.includes('btn_block') || bt.btnSize?.includes('btn_blk'),
+                                            })}
+                                        >
+                                            {children}
+                                        </Link>
+                                    )}
+                                    falseOutput={(children: ReactChild) => <>{children}</>}
                                 >
-                                    {bt.icon && <FontAwesomeIcon icon={bt.icon || faRocket} />} {bt.label}
-                                </div>
-                            </ConditionalWrapper>
-                        )}
-                    </Fragment>
-                ))}
-            </>
-        </ConditionalWrapper>
-    </>;
+                                    <div
+                                        className={cn(styles['btn'], styles['transition'], `${bt.btnType}`, {
+                                            ['btn_1']: bt.btnType === 'btn_1' || (!bt.btnType && index === 0),
+                                            ['btn_2']: bt.btnType === 'btn_2' || (!bt.btnType && index === 1),
+                                            [styles.btn_1]: bt.btnType === 'btn_1' || (!bt.btnType && index === 0),
+                                            [styles.btn_2]: bt.btnType === 'btn_2' || (!bt.btnType && index === 1),
+                                            [styles.btn_md]: bt.btnSize?.includes('md') || !bt.btnSize,
+                                            [styles.btn_lg]: bt.btnSize?.includes('lg'),
+                                            [styles.btn_sm]: bt.btnSize?.includes('sm'),
+                                            [styles.btn_xs]: bt.btnSize?.includes('xs'),
+                                            [styles.btn_block]: bt.btnSize?.includes('btn_block') || bt.btnSize?.includes('btn_blk'),
+                                            [styles.btn_w]: props.well === '1',
+                                        })}
+                                    >
+                                        {bt.icon && <FontAwesomeIcon icon={bt.icon || faRocket} />} {bt.label}
+                                    </div>
+                                </ConditionalWrapper>
+                            )}
+                        </Fragment>
+                    ))}
+                </>
+            </ConditionalWrapper>
+        </>
+    )
 }
 
 const HeaderBlock = (props: any) => {
@@ -461,13 +461,18 @@ const ImageBlock = (props: TheListItemImageProps) => {
                 {!imageNoSizings.includes(props.imgsize) ? (
                     <Image
                         src={domainImage(item.image, true, props.cmsUrl || '')}
-                        layout="fill"
-                        objectFit="cover"
+                        fill
+                        sizes="(max-width: 1920px) 100vw,
+                        (max-width: 1200px) 50vw,
+                        33vw"
+                        //objectFit="cover"
                         alt={item.img_alt_tag || ''}
-                        objectPosition="top"
+                        //objectPosition="top"
                         quality="50"
                         priority={item.desc ? false : true}
                         loading="eager"
+                        /* style={{object-fit:cover, object-position:top}} */
+                        style={{ objectFit: 'cover', objectPosition: 'top' }}
                     />
                 ) : (
                     //Setting width and height to image props if nosizing added
@@ -478,9 +483,10 @@ const ImageBlock = (props: TheListItemImageProps) => {
                         height={imageHeight}
                         layout="responsive"
                         alt={item.img_alt_tag || ''}
-                        objectPosition="top"
+                        //objectPosition="top"
                         quality="50"
                         priority={item.desc ? false : true}
+                        style={{ objectPosition: 'top' }}
                     />
                 )}
                 {item.icon3 && (
