@@ -31,11 +31,13 @@ const SocialLinks = ({ CMSLayout, themeStyles, modType = 'header' }: SocialBarPr
                     <FontAwesomeIcon icon={faEnvelope} /> {modType === 'widget' && 'Send to a Friend'}
                 </a>
             </li>
-            <li>
-                <a aria-label="print-page" className={cn('socialIcon', 'print')} href="javascript:window.print()">
-                    <FontAwesomeIcon icon={faPrint} /> {modType === 'widget' && 'Print This Page'}
-                </a>
-            </li>
+            {modType != 'mob-header' && (
+                <li>
+                    <a aria-label="print-page" className={cn('socialIcon', 'print')} href="javascript:window.print()">
+                        <FontAwesomeIcon icon={faPrint} /> {modType === 'widget' && 'Print This Page'}
+                    </a>
+                </li>
+            )}
         </ul>
     )
 }

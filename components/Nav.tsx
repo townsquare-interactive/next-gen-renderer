@@ -43,6 +43,7 @@ const Nav = (props: Pagelist) => {
                                         <ul
                                             className={cn({
                                                 [styles['sub-menu']]: navType === 'desktop',
+                                                [styles['sub-menu-mob']]: navType === 'mobile',
                                             })}
                                         >
                                             {item.submenu.map((subItem: any, idx: number) => (
