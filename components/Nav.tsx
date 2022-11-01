@@ -9,17 +9,17 @@ const Nav = (props: Pagelist) => {
 
     const NavItem = ({ item, arrow = false }: any) => {
         return (
-            <Link href={item.title ? item.title.toLowerCase() : ''} passHref={true}>
-                <a
-                    className={cn({
-                        [styles.arrow]: arrow == true,
-                        ['navLink']: navType === 'desktop' || navType === 'mobile',
-                        ['socialIcon']: navType === 'footer',
-                    })}
-                    aria-label={item.title}
-                >
-                    {item.title}
-                </a>
+            <Link
+                href={item.title ? item.title.toLowerCase() : ''}
+                passHref={true}
+                className={cn({
+                    [styles.arrow]: arrow == true,
+                    ['navLink']: navType === 'desktop' || navType === 'mobile',
+                    ['socialIcon']: navType === 'footer',
+                })}
+                aria-label={item.title}
+            >
+                {item.title}
             </Link>
         )
     }

@@ -191,22 +191,30 @@ const TheListItemAction = (props: TheListItemActionProps) => {
     return (
         <div className={styles.the_list_item_action}>
             {props.pagelink ? (
-                <Link href={props.pagelink}>
-                    <a target={props.newwindow === 1 ? '_blank' : '_self'} className="accent_color_bg accent_txt_color" style={btn1Styles}>
-                        {props.actionlbl}
-                    </a>
-                </Link>
+                (<Link
+                    href={props.pagelink}
+                    target={props.newwindow === 1 ? '_blank' : '_self'}
+                    className="accent_color_bg accent_txt_color"
+                    style={btn1Styles}>
+
+                    {props.actionlbl}
+
+                </Link>)
             ) : (
                 props.weblink && (
-                    <Link href={props.weblink}>
-                        <a target={props.newwindow === 1 ? '_blank' : '_self'} className="accent_color_bg accent_txt_color" style={btn1Styles}>
-                            {props.actionlbl}
-                        </a>
-                    </Link>
+                    (<Link
+                        href={props.weblink}
+                        target={props.newwindow === 1 ? '_blank' : '_self'}
+                        className="accent_color_bg accent_txt_color"
+                        style={btn1Styles}>
+
+                        {props.actionlbl}
+
+                    </Link>)
                 )
             )}
         </div>
-    )
+    );
 }
 const TheListItemImage = (props: TheListItemImageProps) => {
     const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgsize, well } = props
@@ -220,31 +228,34 @@ const TheListItemImage = (props: TheListItemImageProps) => {
         >
             <div className={styles.image}>
                 {item.pagelink ? (
-                    <Link href={item.pagelink}>
-                        <a target={item.newwindow === 1 ? '_blank' : '_self'} className="accent_color_bg accent_txt_color">
-                            {!imageNoSizings.includes(imgsize) ? (
-                                <Image
-                                    className={cn(styles['item_image'], 'item_image', 'beacon-lazy-load')}
-                                    src={domainImage(item.image)}
-                                    layout="fill"
-                                    objectFit="cover"
-                                    alt={item.img_alt_tag || ''}
-                                    objectPosition="top"
-                                />
-                            ) : (
-                                //Setting width and height to image props if nosizing added
-                                <Image
-                                    src={domainImage(item.image)}
-                                    onLoadingComplete={calcImageSize}
-                                    width={imageWidth}
-                                    height={imageHeight}
-                                    layout="responsive"
-                                    alt={item.img_alt_tag || ''}
-                                    objectPosition="top"
-                                />
-                            )}
-                        </a>
-                    </Link>
+                    (<Link
+                        href={item.pagelink}
+                        target={item.newwindow === 1 ? '_blank' : '_self'}
+                        className="accent_color_bg accent_txt_color">
+
+                        {!imageNoSizings.includes(imgsize) ? (
+                            <Image
+                                className={cn(styles['item_image'], 'item_image', 'beacon-lazy-load')}
+                                src={domainImage(item.image)}
+                                layout="fill"
+                                objectFit="cover"
+                                alt={item.img_alt_tag || ''}
+                                objectPosition="top"
+                            />
+                        ) : (
+                            //Setting width and height to image props if nosizing added
+                            <Image
+                                src={domainImage(item.image)}
+                                onLoadingComplete={calcImageSize}
+                                width={imageWidth}
+                                height={imageHeight}
+                                layout="responsive"
+                                alt={item.img_alt_tag || ''}
+                                objectPosition="top"
+                            />
+                        )}
+
+                    </Link>)
                 ) : (
                     //had to add an extra div here
                     <>
@@ -280,7 +291,7 @@ const TheListItemImage = (props: TheListItemImageProps) => {
                 </div>
             )}
         </div>
-    )
+    );
 }
 
 export default Article

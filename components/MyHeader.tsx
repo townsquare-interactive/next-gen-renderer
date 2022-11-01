@@ -15,8 +15,6 @@ const MyHeader = (props: MyHeaderProps) => {
     const { CMSLayout, themeStyles, navSwitch } = props
     const [windowHeight, setWindowHeight] = useState(0)
 
-    console.log(CMSLayout.cmsNav)
-
     //set state for scroll
     const handleScroll = () => {
         setWindowHeight(window.scrollY)
@@ -68,31 +66,25 @@ const SocialBar = ({ CMSLayout, themeStyles }: SocialBarProps) => {
                 <ul>
                     {CMSLayout.contact.phone[0] && (
                         <li className={cn(styles.icon, styles.phone)}>
-                            <Link href={'tel:' + CMSLayout.contact.phone[0].number}>
-                                <a aria-label="phone" className={cn('socialIcon')}>
-                                    <FontAwesomeIcon icon={faPhone} /> {CMSLayout.contact.phone[0].number}
-                                </a>
+                            <Link href={'tel:' + CMSLayout.contact.phone[0].number} aria-label="phone" className={cn('socialIcon')} passHref>
+                                <FontAwesomeIcon icon={faPhone} /> {CMSLayout.contact.phone[0].number}
                             </Link>
                         </li>
                     )}
                     {CMSLayout.contact.email[0] && (
                         <li className={cn(styles.icon, styles.email)}>
-                            <Link href={`mailto:${CMSLayout.contact.email[0].email}`}>
-                                <a aria-label="email" className={cn('socialIcon')}>
-                                    <FontAwesomeIcon icon={faEnvelope} /> {CMSLayout.contact.email[0].name}:{CMSLayout.contact.email[0].email}
-                                </a>
+                            <Link href={`mailto:${CMSLayout.contact.email[0].email}`} aria-label="email" className={cn('socialIcon')} passHref>
+                                <FontAwesomeIcon icon={faEnvelope} /> {CMSLayout.contact.email[0].name}:{CMSLayout.contact.email[0].email}
                             </Link>
                         </li>
                     )}
 
                     {CMSLayout.siteName && (
                         <li className={cn(styles.icon, styles.map)}>
-                            <Link href={'google.com'}>
-                                <a aria-label="location" className={cn('socialIcon')}>
-                                    <FontAwesomeIcon icon={faLocationPin} />
-                                    {CMSLayout.siteName}
-                                </a>
-                            </Link>
+                            <a href={'www.google.com'} aria-label="location" className={cn('socialIcon')}>
+                                <FontAwesomeIcon icon={faLocationPin} />
+                                {CMSLayout.siteName}
+                            </a>
                         </li>
                     )}
                 </ul>

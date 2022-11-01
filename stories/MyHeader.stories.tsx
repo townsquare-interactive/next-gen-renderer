@@ -1,7 +1,9 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
+
 import MyHeader from '../components/MyHeader'
 import { themeStyles } from 'storydefaults'
 import { social } from 'storydefaults'
+import { MyHeaderProps } from 'types'
 
 export default {
     title: 'New/MyHeader',
@@ -173,9 +175,6 @@ Default.args = {
                     navStyle: 'layout1',
                     borderNum: 7,
                     socialData: [
-                        {
-                            linkUrl: 'https://www.google.com/',
-                        },
                         {
                             linkUrl: 'https://www.facebook.com',
                         },

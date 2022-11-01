@@ -112,32 +112,29 @@ const TileImage = ({ itemNumber, modLayout, isMainImage = false, hero = false, t
                         src={domainImage(itemNumber.imageUrl)}
                         layout="fill"
                         objectFit="cover"
-                        alt={itemNumber.altText}
+                        alt={itemNumber.altText || ''}
                         quality="40"
                         priority={hero ? true : false}
                     />
 
-                    <Link href={itemNumber.linkUrl}>
-                        <a className={styles.link}>
-                            {itemNumber.headline ? (
-                                <div className={styles.headline}>
-                                    <h2>{itemNumber.headline || ''}</h2>
+                    <Link href={itemNumber.linkUrl} className={styles.link}>
+                        {itemNumber.headline ? (
+                            <div className={styles.headline}>
+                                <h2>{itemNumber.headline || ''}</h2>
+                            </div>
+                        ) : (
+                            /* itemNumber.linkText && <div className={styles.text}>{itemNumber.linkText}</div> */
+                            itemNumber.linkText && (
+                                <div className={styles.text}>
+                                    <Button linkUrl="/" text={itemNumber.linkText} btnType="accent" themeStyles={themeStyles} />
                                 </div>
-                            ) : (
-                                /* itemNumber.linkText && <div className={styles.text}>{itemNumber.linkText}</div> */
-                                itemNumber.linkText && (
-                                    <div className={styles.text}>
-                                        <Button linkUrl="/" text={itemNumber.linkText} btnType="accent" themeStyles={themeStyles} />
-                                    </div>
-                                )
-                            )}
-
-                            {itemNumber.body && (
-                                <div className={styles.description}>
-                                    <p>{itemNumber.body}</p>
-                                </div>
-                            )}
-                        </a>
+                            )
+                        )}
+                        {itemNumber.body && (
+                            <div className={styles.description}>
+                                <p>{itemNumber.body}</p>
+                            </div>
+                        )}
                     </Link>
                 </div>
             ) : (
@@ -146,7 +143,7 @@ const TileImage = ({ itemNumber, modLayout, isMainImage = false, hero = false, t
                         src={domainImage(itemNumber.imageUrl)}
                         layout="fill"
                         objectFit="cover"
-                        alt={itemNumber.altText}
+                        alt={itemNumber.altText || ''}
                         quality="40"
                         priority={hero ? true : false}
                     />

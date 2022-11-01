@@ -37,14 +37,4 @@ export const social = [
         input: ['http://www.twitter.com/', ''],
         url: 'http://www.twitter.com/cbs',
     },
-    {
-        id: 16,
-        name: 'custom-social-1',
-        format: '',
-        label: 'Stars',
-        value: 'facebook.com',
-        enabled: 1,
-        input: null,
-        url: 'facebook.com',
-    },
 ]

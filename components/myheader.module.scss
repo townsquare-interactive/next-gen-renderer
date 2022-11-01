@@ -28,8 +28,18 @@
                 padding: 0 0.5rem;
             }
 
-            span {
+            /* span {
                 max-width: 6rem !important;
+                transition: all 0.3s ease-in-out;
+
+                @include breakpoints.lg-min {
+                    max-width: 13rem !important;
+                }
+            } */
+
+            img {
+                max-width: 6rem !important;
+                height: auto;
                 transition: all 0.3s ease-in-out;
 
                 @include breakpoints.lg-min {
@@ -128,7 +138,7 @@
         .wrapper {
             padding: 0.5rem;
 
-            span {
+            img {
                 // max-width: 4.5rem !important;
                 max-width: 6rem !important;
             }

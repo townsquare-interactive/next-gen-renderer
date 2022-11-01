@@ -62,15 +62,11 @@ function Button(props: ButtonProps) {
                 >
                     {/* {btnType === 'alt' && <style>{altHover}</style> */}
                     {themeStyles ? (
-                        <Link href={linkUrl}>
-                            <a style={usedStyle} href={linkUrl}>
-                                {text}
-                            </a>
+                        <Link href={linkUrl} style={usedStyle}>
+                            {text}
                         </Link>
                     ) : (
-                        <Link href={linkUrl}>
-                            <a href={linkUrl}>{text}</a>
-                        </Link>
+                        <Link href={linkUrl}>{text}</Link>
                     )}
                 </div>
             </div>

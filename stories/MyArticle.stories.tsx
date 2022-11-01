@@ -44,7 +44,7 @@ const item1: ArticleItems = {
     id: '6574f9b4_f1d5_4b10_feb6_928e62803df3',
     headline: 'Article Module',
     subheader: 'Subheader',
-    image: '/files/2021/05/pic3.png?w=420&h=559',
+    image: '/files/2022/08/bellagioFountain1.jpg',
     icon: '',
     icon2: '',
     icon3: '',

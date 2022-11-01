@@ -19,17 +19,15 @@ const Logo = (props: LogoProps) => {
             <div className={styles.wrapper}>
                 <div className={styles.logo}>
                     <Link href={link}>
-                        <a>
-                            <Image
-                                src={logoUrl}
-                                alt="logo"
-                                onLoadingComplete={calcImageSize}
-                                width={logoWidth}
-                                height={logoHeight}
-                                //layout="responsive"
-                                quality="50"
-                            />
-                        </a>
+                        <Image
+                            src={logoUrl}
+                            alt="logo"
+                            onLoadingComplete={calcImageSize}
+                            width={logoWidth}
+                            height={logoHeight}
+                            //layout="responsive"
+                            quality="50"
+                        />
                     </Link>
                 </div>
             </div>
