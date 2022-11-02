@@ -84,8 +84,8 @@ const List = (props: ListProps) => {
                             {imageUrl && (
                                 <Image
                                     src={domainImage(imageUrl)}
-                                    height="450px"
-                                    width="600px"
+                                    //height="450px"
+                                    //width="600px"
                                     layout="responsive"
                                     objectFit="cover"
                                     alt={altText}
