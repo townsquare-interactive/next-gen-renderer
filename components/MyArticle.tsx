@@ -174,12 +174,17 @@ const ModuleItem = (props: ModuleItemProps) => {
                     <Link
                         href={item.pagelink || item.weblink || item.pagelink2 || item.weblink2 || ''}
                         passHref={item.weblink || item.weblink2 ? true : false}
-                        className={cn(styles['item-wrap'], 'btn_link')}
+                        className={cn('btn_link')}
                         target={item.newwindow == 1 ? '_blank' : item.newwindow2 == 1 ? '_blank' : '_self'}
-                        style={item.isFeatured === 'active' && type === 'article' ? heroBackground : noBackground}
                         aria-label={item.headline || 'block-link'}
                     >
-                        {children}
+                        <div
+                            className={cn(styles['item-wrap'], 'btn_link')}
+                            style={item.isFeatured === 'active' && type === 'article' ? heroBackground : noBackground}
+                            aria-label={item.headline || 'item-wrap'}
+                        >
+                            {children}
+                        </div>
                     </Link>
                 )}
                 falseOutput={(children: ReactChild) => (
@@ -486,7 +491,11 @@ const ImageBlock = (props: TheListItemImageProps) => {
                         //objectPosition="top"
                         quality="50"
                         priority={item.desc ? false : true}
-                        style={{ objectPosition: 'top', width: '100%' }}
+                        style={{ objectPosition: 'top', width: '100%', height: 'auto' }}
+                        /*                         sizes="(max-width: 500px) 100vw, (min-width: 700px) 70vw, 
+                        (min-width: 1500px) 100vw,
+                        100vw" */
+                        //sizes="responsive"
                     />
                 )}
                 {item.icon3 && (
