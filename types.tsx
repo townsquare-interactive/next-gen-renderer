@@ -795,6 +795,7 @@ export interface MyHeaderProps {
     themeStyles: ThemeStyles
     // navCheck: boolean
     navSwitch: () => void
+    setHeight: (height: any) => void
 }
 
 export interface MyFooterProps {

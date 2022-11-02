@@ -10,9 +10,10 @@ import NavToggle from 'elements/NavToggle'
 import Nav from './Nav'
 import { faEnvelope, faPhone, faLocationPin } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useRef } from 'react'
 
 const MyHeader = (props: MyHeaderProps) => {
-    const { CMSLayout, themeStyles, navSwitch } = props
+    const { CMSLayout, themeStyles, navSwitch, setHeight } = props
     const [windowHeight, setWindowHeight] = useState(0)
 
     //set state for scroll
@@ -25,12 +26,19 @@ const MyHeader = (props: MyHeaderProps) => {
         return () => window.removeEventListener('scroll', handleScroll)
     })
 
+    //Determine Height of header for margins in layout
+    const ref = useRef<HTMLDivElement>(null)
+    useEffect(() => {
+        setHeight(ref?.current?.offsetHeight)
+    }, [setHeight])
+
     return (
         <header
             className={cn(styles.root, {
                 [styles.shrink]: windowHeight > 150,
             })}
             style={{ background: themeStyles.headerBackground }}
+            ref={ref}
         >
             <div className={styles.wrapper}>
                 {CMSLayout.logos?.image_src && (

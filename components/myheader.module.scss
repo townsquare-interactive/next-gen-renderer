@@ -2,8 +2,8 @@
 @use './styles/breakpoints.scss';
 
 .root {
-    position: sticky;
-    // position: fixed;
+    // position: sticky;
+    position: fixed;
     top: 0%;
     width: 100%;
     margin: 0;
