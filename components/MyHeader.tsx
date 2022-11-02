@@ -30,7 +30,7 @@ const MyHeader = (props: MyHeaderProps) => {
     const ref = useRef<HTMLDivElement>(null)
     useEffect(() => {
         setHeight(ref?.current?.offsetHeight)
-    }, [setHeight])
+    }, [setHeight, ref?.current?.offsetHeight])
 
     return (
         <header
