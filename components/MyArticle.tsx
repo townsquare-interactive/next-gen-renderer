@@ -491,11 +491,10 @@ const ImageBlock = (props: TheListItemImageProps) => {
                         //objectPosition="top"
                         quality="50"
                         priority={item.desc ? false : true}
-                        style={{ objectPosition: 'top', width: '100%', height: 'auto' }}
-                        /*                         sizes="(max-width: 500px) 100vw, (min-width: 700px) 70vw, 
-                        (min-width: 1500px) 100vw,
-                        100vw" */
-                        //sizes="responsive"
+                        style={{ width: '100%', height: 'auto' }}
+                        sizes="(max-width: 1920px) 100vw,
+                        (max-width: 1200px) 50vw,
+                        33vw"
                     />
                 )}
                 {item.icon3 && (
