@@ -481,12 +481,12 @@ const ImageBlock = (props: TheListItemImageProps) => {
                         onLoadingComplete={calcImageSize}
                         width={imageWidth}
                         height={imageHeight}
-                        layout="responsive"
+                        //layout="responsive"
                         alt={item.img_alt_tag || ''}
                         //objectPosition="top"
                         quality="50"
                         priority={item.desc ? false : true}
-                        style={{ objectPosition: 'top' }}
+                        style={{ objectPosition: 'top', width: '100%' }}
                     />
                 )}
                 {item.icon3 && (
