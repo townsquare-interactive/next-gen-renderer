@@ -1,3 +1,4 @@
+'use client'
 import styles from './logo.module.scss'
 import Link from 'next/dist/client/link'
 import Image from 'next/image'

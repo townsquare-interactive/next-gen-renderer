@@ -1,3 +1,5 @@
+'use client'
+
 import styles from './myfooter.module.scss'
 import cn from 'classnames'
 import Nav from './Nav'

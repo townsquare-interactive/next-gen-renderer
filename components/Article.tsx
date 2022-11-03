@@ -1,3 +1,4 @@
+'use client'
 import styles from './article.module.scss'
 import { ArticleProps, Media, TheListItemActionProps, TheListItemImageProps } from '../types'
 import Image from 'next/image'
@@ -191,30 +192,23 @@ const TheListItemAction = (props: TheListItemActionProps) => {
     return (
         <div className={styles.the_list_item_action}>
             {props.pagelink ? (
-                (<Link
-                    href={props.pagelink}
-                    target={props.newwindow === 1 ? '_blank' : '_self'}
-                    className="accent_color_bg accent_txt_color"
-                    style={btn1Styles}>
-
+                <Link href={props.pagelink} target={props.newwindow === 1 ? '_blank' : '_self'} className="accent_color_bg accent_txt_color" style={btn1Styles}>
                     {props.actionlbl}
-
-                </Link>)
+                </Link>
             ) : (
                 props.weblink && (
-                    (<Link
+                    <Link
                         href={props.weblink}
                         target={props.newwindow === 1 ? '_blank' : '_self'}
                         className="accent_color_bg accent_txt_color"
-                        style={btn1Styles}>
-
+                        style={btn1Styles}
+                    >
                         {props.actionlbl}
-
-                    </Link>)
+                    </Link>
                 )
             )}
         </div>
-    );
+    )
 }
 const TheListItemImage = (props: TheListItemImageProps) => {
     const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgsize, well } = props
@@ -228,11 +222,7 @@ const TheListItemImage = (props: TheListItemImageProps) => {
         >
             <div className={styles.image}>
                 {item.pagelink ? (
-                    (<Link
-                        href={item.pagelink}
-                        target={item.newwindow === 1 ? '_blank' : '_self'}
-                        className="accent_color_bg accent_txt_color">
-
+                    <Link href={item.pagelink} target={item.newwindow === 1 ? '_blank' : '_self'} className="accent_color_bg accent_txt_color">
                         {!imageNoSizings.includes(imgsize) ? (
                             <Image
                                 className={cn(styles['item_image'], 'item_image', 'beacon-lazy-load')}
@@ -254,8 +244,7 @@ const TheListItemImage = (props: TheListItemImageProps) => {
                                 objectPosition="top"
                             />
                         )}
-
-                    </Link>)
+                    </Link>
                 ) : (
                     //had to add an extra div here
                     <>
@@ -291,7 +280,7 @@ const TheListItemImage = (props: TheListItemImageProps) => {
                 </div>
             )}
         </div>
-    );
+    )
 }
 
 export default Article

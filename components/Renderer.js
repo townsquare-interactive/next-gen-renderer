@@ -1,3 +1,4 @@
+'use client'
 import Images from './Images'
 import Text from './Text'
 import Label from './Label'

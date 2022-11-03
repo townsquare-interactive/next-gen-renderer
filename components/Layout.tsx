@@ -1,12 +1,11 @@
-import { LayoutProps, GlobalModule } from '../types'
+'use client'
+import { LayoutProps } from '../types'
 import styles from './layout.module.scss'
 import cn from 'classnames'
 import MyHeader from './MyHeader'
 import MyFooter from './MyFooter'
 import { useState } from 'react'
 import AltHeader from 'elements/AltHeader'
-import { useLayoutEffect } from 'react'
-import { useRef } from 'react'
 
 export default function Layout(props: LayoutProps) {
     const { children, CMSLayout, themeStyles } = props
@@ -16,8 +15,6 @@ export default function Layout(props: LayoutProps) {
     function navSwitch() {
         setNav(!navCheck)
     }
-
-    console.log(height)
 
     return (
         <div

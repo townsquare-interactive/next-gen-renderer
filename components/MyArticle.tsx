@@ -1,3 +1,5 @@
+'use client'
+
 import styles from './myArticle.module.scss'
 import { ArticleProps, Media, TheListItemImageProps, BtnProps, ItemWrapProps, ModuleItemProps } from '../types'
 import Image from 'next/image'
@@ -220,10 +222,6 @@ const ItemWrap = (props: ItemWrapProps) => {
 
     //Check if item is on beacon theme and hero
     const beaconHero = type === 'article' && isFeatured === 'active'
-
-    //Colors of text with classes for normal/hero/border
-
-    /*  const textColors = `.accent-txt{color:${themeStyles['textColorAccent']}} .txt-color{color:${themeStyles['textColor']}} .txt-color-heading{color:${themeStyles['headingColor']}}` */
 
     const linkAndBtn =
         (item.actionlbl && item.pagelink) || (item.actionlbl && item.weblink) || (item.actionlbl2 && item.pagelink2) || (item.actionlbl2 && item.weblink2)
@@ -467,16 +465,10 @@ const ImageBlock = (props: TheListItemImageProps) => {
                     <Image
                         src={domainImage(item.image, true, props.cmsUrl || '')}
                         fill
-                        sizes="(max-width: 1920px) 100vw,
-                        (max-width: 1200px) 50vw,
-                        33vw"
-                        //objectFit="cover"
                         alt={item.img_alt_tag || ''}
-                        //objectPosition="top"
                         quality="50"
                         priority={item.desc ? false : true}
-                        loading="eager"
-                        /* style={{object-fit:cover, object-position:top}} */
+                        //loading="eager"
                         style={{ objectFit: 'cover', objectPosition: 'top' }}
                     />
                 ) : (
@@ -486,15 +478,14 @@ const ImageBlock = (props: TheListItemImageProps) => {
                         onLoadingComplete={calcImageSize}
                         width={imageWidth}
                         height={imageHeight}
-                        //layout="responsive"
                         alt={item.img_alt_tag || ''}
-                        //objectPosition="top"
                         quality="50"
                         priority={item.desc ? false : true}
                         style={{ width: '100%', height: 'auto' }}
-                        sizes="(max-width: 1920px) 100vw,
+                        /* sizes="(max-width: 1920px) 100vw,
                         (max-width: 1200px) 50vw,
-                        33vw"
+                        33vw" */
+                        sizes="100vw"
                     />
                 )}
                 {item.icon3 && (
