@@ -1,5 +1,4 @@
 'use client'
-
 import styles from './myArticle.module.scss'
 import { ArticleProps, Media, TheListItemImageProps, BtnProps, ItemWrapProps, ModuleItemProps } from '../types'
 import Image from 'next/image'

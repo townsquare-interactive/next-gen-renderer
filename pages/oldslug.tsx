@@ -1,4 +1,5 @@
-import Head from 'next/head'
+export {}
+/* import Head from 'next/head'
 import styles from '../styles/Home.module.scss'
 import { HomeProps, PageListProps, Context } from '../types'
 import Layout from '../components/Layout'
@@ -151,3 +152,4 @@ const Slug = (props: HomeProps) => {
 }
 
 export default Slug
+ */

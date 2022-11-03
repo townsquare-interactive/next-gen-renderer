@@ -6,18 +6,26 @@ import { FooterProps, ModuleData, HomeProps, NavProps } from '../types'
 import { GetStaticProps } from 'next'
 import Layout from '../components/Layout'
 import Navigation from '../components/Navigation'
+import { Ubuntu } from '@next/font/google'
+import { Inter } from '@next/font/google'
+
+/* const ubuntu = Ubuntu({
+    weight: '400',
+    variable: '--oxygen-font',
+})
+ */
+const inter = Inter({
+    variable: '--inter-font',
+})
 
 function MyApp({ Component, pageProps }: AppProps) {
     const [navCheck, setNav] = useState<boolean>(false)
 
-    function navSwitch() {
-        setNav(!navCheck)
-        console.log(navCheck)
-    }
-
     return (
-        <div>
-            <Component {...pageProps} />
+        <div className={inter.variable}>
+            <div className={'text'}>
+                <Component {...pageProps} />
+            </div>
         </div>
     )
 }

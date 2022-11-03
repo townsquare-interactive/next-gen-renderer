@@ -146,14 +146,10 @@ export const decideColumns = (page: PageProps) => {
     }
 }
 
-export const findHomePageSlug = (pageList: Pagelist) => {
-    if (pageList.pages) {
-        const homePage = pageList.pages?.filter((e: any) => e.page_type === 'homepage')
-        const homePageSlug = homePage.length != 0 ? homePage[0].slug : pageList.pages[0].slug
-        return homePageSlug
-    } else {
-        return pageList
-    }
+export const findHomePageSlug = (pageList: any) => {
+    const homePage = pageList?.pages?.filter((e: any) => e.page_type === 'homepage')
+    const homePageSlug = homePage.length != 0 ? homePage[0].slug : pageList.pages[0].slug
+    return homePageSlug
 }
 
 export function iconConvert(str: string) {
@@ -191,6 +187,30 @@ export function extUrl(url: string) {
     } else {
         return 'http://' + url
     }
+}
+
+export default async function getData(slug = '') {
+    //const slug = context.params.slug
+
+    const resLayout = await fetch(getDomain(true) + '/layout.json', {
+        next: { revalidate: 5 },
+    })
+    const CMSLayout = await resLayout.json()
+
+    const resCmsGlobal = await fetch(getDomain(true) + '/siteData.json')
+    let cmsGlobal = await resCmsGlobal.json()
+
+    //add if home here
+    if (slug === '') {
+        const resPageList = await fetch(getDomain(true) + '/pages/page-list.json')
+        const pageList = await resPageList.json()
+        slug = findHomePageSlug(pageList)
+    }
+
+    const resPage = await fetch(getDomain(true) + '/pages/' + slug + '.json')
+    let page = await resPage.json()
+
+    return { CMSLayout: CMSLayout, cmsGlobal: cmsGlobal, page: page }
 }
 
 //Used to have conditional tag wraps around code without repeating inside code
