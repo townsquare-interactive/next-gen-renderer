@@ -5,9 +5,29 @@ import Layout from '../components/Layout'
 import { Renderer } from '../components/Renderer'
 import { useRouter } from 'next/router'
 import { getDomain, decideColumns, setColors, domainImage, findHomePageSlug } from '../functions'
-import getData from '../functions'
+/* import getData from '../functions' */
 import cn from 'classnames'
 import { Fragment, use } from 'react'
+
+async function getData() {
+    const resLayout = await fetch(getDomain(true) + '/layout.json', {
+        next: { revalidate: 5 },
+    })
+    const CMSLayout = await resLayout.json()
+
+    const resCmsGlobal = await fetch(getDomain(true) + '/siteData.json')
+    let cmsGlobal = await resCmsGlobal.json()
+
+    const resPageList = await fetch(getDomain(true) + '/pages/page-list.json')
+    const pageList = await resPageList.json()
+
+    const homePageSlug = findHomePageSlug(pageList)
+
+    const resPage = await fetch(getDomain(true) + '/pages/' + homePageSlug + '.json')
+    let page = await resPage.json()
+
+    return { CMSLayout: CMSLayout, cmsGlobal: cmsGlobal, page: page }
+}
 
 const Home = () => {
     const { CMSLayout, cmsGlobal, page } = use(getData())
@@ -73,7 +93,7 @@ const Home = () => {
 
     return (
         <div>
-            <head>
+            {/*  <head>
                 <title>{page.seo?.title || 'title'}</title>
                 {page.seo?.title && <meta property="og:title" content={page.seo.title} key="title" />}
                 {page.seo?.descr ? <meta name="description" content={page.seo.descr} /> : <meta name="description" content="description" />}
@@ -89,7 +109,7 @@ const Home = () => {
                 {cmsGlobal?.config?.website?.favicon?.src && (
                     <link rel="shortcut icon" href={domainImage(cmsGlobal.config.website.favicon.src, true, cmsUrl)} />
                 )}
-            </head>
+            </head> */}
 
             <Layout CMSLayout={CMSLayout} themeStyles={themeStyles}>
                 {page.data && (

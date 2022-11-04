@@ -1,5 +1,4 @@
 'use client'
-
 import styles from './myheader.module.scss'
 import { MyHeaderProps, SocialBarProps } from '../types'
 import cn from 'classnames'

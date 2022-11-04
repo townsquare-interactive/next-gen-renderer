@@ -39,23 +39,56 @@ import { Suspense } from 'react'
 
 //No longer need getStaticProps, can now use an async function,
 
+async function getData() {
+    const resLayout = await fetch(getDomain(true) + '/layout.json', {
+        next: { revalidate: 5 },
+    })
+    const CMSLayout = await resLayout.json()
+
+    const resCmsGlobal = await fetch(getDomain(true) + '/siteData.json')
+    let cmsGlobal = await resCmsGlobal.json()
+
+    const resPageList = await fetch(getDomain(true) + '/pages/page-list.json')
+    const pageList = await resPageList.json()
+
+    const homePageSlug = findHomePageSlug(pageList)
+
+    const resPage = await fetch(getDomain(true) + '/pages/' + homePageSlug + '.json')
+    let page = await resPage.json()
+
+    return { CMSLayout: CMSLayout, cmsGlobal: cmsGlobal, page: page }
+}
+
 const NewPage = () => {
-    async function getData() {
+    /* async function getData() {
         const resCmsGlobal = await fetch(getDomain(true) + '/layout.json', {
             next: { revalidate: 5 },
         })
         let cmsGlobal = await resCmsGlobal.json()
 
-        return cmsGlobal
-    }
+        const resPageList = await fetch(getDomain(true) + '/pages/page-list.json')
+        const pageList = await resPageList.json()
+
+        const homePageSlug = findHomePageSlug(pageList)
+
+        const resPage = await fetch(getDomain(true) + '/pages/' + homePageSlug + '.json')
+        let page = await resPage.json()
+
+        const resLayout = await fetch(getDomain(true) + '/layout.json', {
+            next: { revalidate: 5 },
+        })
+        const CMSLayout = await resLayout.json()
+
+        return { CMSLayout: CMSLayout, cmsGlobal: cmsGlobal, page: page }
+    } */
     //Server Components can get data using React use instead of async await
-    const data = use(getData())
+    const { CMSLayout, cmsGlobal, page } = use(getData())
 
     return (
         <div style={{ padding: '20px' }}>
             <h1>List of Page Names</h1>
 
-            {data.cmsNav.map((page: any, idx: number) => (
+            {CMSLayout.cmsNav.map((page: any, idx: number) => (
                 <div key={idx}>{page.title}</div>
             ))}
         </div>

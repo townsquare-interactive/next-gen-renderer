@@ -5,7 +5,7 @@ import Layout from '../../components/Layout'
 import { Renderer } from '../../components/Renderer'
 /* import { useRouter } from 'next/dist/client/router' */
 import { getDomain, decideColumns, setColors, domainImage } from '../../functions'
-import getData from '../../functions'
+/* import getData from '../../functions' */
 import cn from 'classnames'
 import { Fragment, use } from 'react'
 
@@ -15,7 +15,6 @@ export async function generateStaticParams() {
 
     return data.pages.map((page: PageListProps) => ({
         slug: page.slug.toString(),
-        fallback: true,
     }))
 }
 
@@ -36,7 +35,7 @@ export async function generateStaticParams() {
     }
 } */
 
-/* async function getData(slug: string) {
+async function getData(params: any) {
     //const slug = context.params.slug
 
     const resLayout = await fetch(getDomain(true) + '/layout.json', {
@@ -47,16 +46,18 @@ export async function generateStaticParams() {
     const resCmsGlobal = await fetch(getDomain(true) + '/siteData.json')
     let cmsGlobal = await resCmsGlobal.json()
 
-    const resPage = await fetch(getDomain(true) + '/pages/' + slug + '.json')
+    const resPage = await fetch(getDomain(true) + '/pages/' + params.slug + '.json')
     let page = await resPage.json()
 
     return { CMSLayout: CMSLayout, cmsGlobal: cmsGlobal, page: page }
-} */
+}
 
 const Slug = ({ params }: any) => {
-    const { slug } = params
+    /* const { slug } = params */
 
-    const { CMSLayout, cmsGlobal, page } = use(getData(slug))
+    const { CMSLayout, cmsGlobal, page } = use(getData(params))
+
+    /*    console.log(CMSLayout, cmsGlobal, page) */
     //test
     /* const router = useRouter() */
 
@@ -84,7 +85,7 @@ const Slug = ({ params }: any) => {
 
     return (
         <div>
-            <head>
+            {/*  <head>
                 <title>{page.seo?.title || 'title'}</title>
                 {page.seo?.title && <meta property="og:title" content={page.seo.title} key="title" />}
                 {page.seo?.descr ? <meta name="description" content={page.seo.descr} /> : <meta name="description" content="description of page" />}
@@ -98,7 +99,7 @@ const Slug = ({ params }: any) => {
                         </>
                     ))}
                 {cmsGlobal.config.website.favicon.src && <link rel="shortcut icon" href={domainImage(cmsGlobal.config.website.favicon.src, true, cmsUrl)} />}
-            </head>
+            </head> */}
 
             <style>{colorStyles}</style>
             <Layout CMSLayout={CMSLayout} themeStyles={themeStyles}>

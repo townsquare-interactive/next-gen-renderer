@@ -469,6 +469,7 @@ const ImageBlock = (props: TheListItemImageProps) => {
                         priority={item.desc ? false : true}
                         //loading="eager"
                         style={{ objectFit: 'cover', objectPosition: 'top' }}
+                        sizes="100vw"
                     />
                 ) : (
                     //Setting width and height to image props if nosizing added

@@ -192,6 +192,8 @@ export function extUrl(url: string) {
 export default async function getData(slug = '') {
     //const slug = context.params.slug
 
+    //console.log(slug)
+
     const resLayout = await fetch(getDomain(true) + '/layout.json', {
         next: { revalidate: 5 },
     })
