@@ -57,7 +57,7 @@ const Slug = ({ params }: any) => {
     const { slug } = params
 
     const { CMSLayout, cmsGlobal, page } = use(getData(slug))
-
+    //test
     /* const router = useRouter() */
 
     const cmsGlobalDesign = cmsGlobal ? cmsGlobal.design : ''
