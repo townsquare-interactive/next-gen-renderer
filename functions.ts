@@ -189,7 +189,7 @@ export function extUrl(url: string) {
     }
 }
 
-export default async function getData(slug = '') {
+/* export default async function getData(slug = '') {
     //const slug = context.params.slug
 
     //console.log(slug)
@@ -213,6 +213,49 @@ export default async function getData(slug = '') {
     let page = await resPage.json()
 
     return { CMSLayout: CMSLayout, cmsGlobal: cmsGlobal, page: page }
+} */
+
+async function getData() {
+    const resLayout = await fetch(getDomain(true) + '/layout.json', {
+        next: { revalidate: 5 },
+    })
+    const CMSLayout = await resLayout.json()
+
+    const resPageList = await fetch(getDomain(true) + '/pages/page-list.json')
+    const pageList = await resPageList.json()
+
+    const homePageSlug = findHomePageSlug(pageList)
+
+    const resPage = await fetch(getDomain(true) + '/pages/' + homePageSlug + '.json')
+    let page = await resPage.json()
+
+    return { CMSLayout: CMSLayout, page: page }
+}
+
+export async function getLayout() {
+    const resLayout = await fetch(getDomain(true) + '/layout.json', {
+        next: { revalidate: 5 },
+    })
+    const CMSLayout = await resLayout.json()
+
+    return { CMSLayout }
+}
+
+export async function getPageData(params: any) {
+    let pageSlug
+    if (!params) {
+        const resPageList = await fetch(getDomain(true) + '/pages/page-list.json')
+        const pageList = await resPageList.json()
+
+        pageSlug = findHomePageSlug(pageList)
+    } else {
+        pageSlug = params.slug
+    }
+
+    const resPage = await fetch(getDomain(true) + '/pages/' + pageSlug + '.json')
+    let page = await resPage.json()
+
+    return { page }
 }
 
 //Used to have conditional tag wraps around code without repeating inside code

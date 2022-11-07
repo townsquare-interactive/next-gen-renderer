@@ -4,7 +4,7 @@ import { HomeProps, PageListProps } from '../../types'
 import Layout from '../../components/Layout'
 import { Renderer } from '../../components/Renderer'
 /* import { useRouter } from 'next/dist/client/router' */
-import { getDomain, decideColumns, setColors, domainImage } from '../../functions'
+import { getDomain, decideColumns, setColors, domainImage, getPageData, getLayout } from '../../functions'
 /* import getData from '../../functions' */
 import cn from 'classnames'
 import { Fragment, use } from 'react'
@@ -16,60 +16,12 @@ export async function generateStaticParams() {
     return data.pages.map((page: PageListProps) => ({
         slug: page.slug.toString(),
     }))
-    /*  const paths = data.pages.map((page: PageListProps) => {
-        return {
-            params: { slug: page.slug.toString() },
-        }
-    })
-
-    return {
-        paths,
-    } */
-}
-
-//runs at build time just like static props
-/* export const getStaticPaths = async () => {
-    const res = await fetch(getDomain(true) + '/pages/page-list.json')
-    const data = await res.json()
-
-    const paths = data.pages.map((page: PageListProps) => {
-        return {
-            params: { slug: page.slug.toString() },
-        }
-    })
-
-    return {
-        paths,
-        fallback: false,
-    }
-} */
-
-async function getData(params: any) {
-    //const slug = context.params.slug
-
-    const resLayout = await fetch(getDomain(true) + '/layout.json', {
-        next: { revalidate: 5 },
-    })
-    const CMSLayout = await resLayout.json()
-
-    const resPage = await fetch(getDomain(true) + '/pages/' + params.slug + '.json')
-    let page = await resPage.json()
-
-    return { CMSLayout: CMSLayout, page: page }
 }
 
 const Slug = ({ params }: any) => {
-    /* const { slug } = params */
+    const { CMSLayout } = use(getLayout())
+    const { page } = use(getPageData(params))
 
-    console.log(params)
-
-    const { CMSLayout, page } = use(getData(params))
-
-    /*    console.log(CMSLayout, cmsGlobal, page) */
-    //test
-    /* const router = useRouter() */
-
-    /*  const cmsGlobalDesign = cmsGlobal ? cmsGlobal.design : '' */
     const cmsTheme = CMSLayout.theme
 
     const themeStyles = setColors(CMSLayout.cmsColors, cmsTheme)

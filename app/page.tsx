@@ -4,47 +4,22 @@ import { HomeProps, PageListProps, Context } from '../types'
 import Layout from '../components/Layout'
 import { Renderer } from '../components/Renderer'
 import { useRouter } from 'next/router'
-import { getDomain, decideColumns, setColors, domainImage, findHomePageSlug } from '../functions'
+import { getDomain, decideColumns, setColors, domainImage, findHomePageSlug, getLayout, getPageData } from '../functions'
 /* import getData from '../functions' */
 import cn from 'classnames'
 import { Fragment, use } from 'react'
 
-async function getData() {
-    const resLayout = await fetch(getDomain(true) + '/layout.json', {
-        next: { revalidate: 5 },
-    })
-    const CMSLayout = await resLayout.json()
-
-    const resPageList = await fetch(getDomain(true) + '/pages/page-list.json')
-    const pageList = await resPageList.json()
-
-    const homePageSlug = findHomePageSlug(pageList)
-
-    const resPage = await fetch(getDomain(true) + '/pages/' + homePageSlug + '.json')
-    let page = await resPage.json()
-
-    return { CMSLayout: CMSLayout, page: page }
-}
-
 const Home = () => {
-    const { CMSLayout, page } = use(getData())
+    const { CMSLayout } = use(getLayout())
+
+    const { page } = use(getPageData(null))
 
     const cmsTheme = CMSLayout.theme
 
     const themeStyles = setColors(CMSLayout.cmsColors, cmsTheme)
 
-    /*     for (let i = 0; i < CMSLayout.modules.length; i++) {
-        CMSLayout.modules[i].attributes.pages = pageList.pages
-    }
- */
-
-    //setting themestyles in CMSLayout, will probably change later
-    //CMSLayout = { ...CMSLayout, themeStyles: setColors(cmsGlobalDesign?.colors, cmsTheme) }
-
-    /*  CMSLayout.themeStyles = setColors(cmsGlobalDesign?.colors, cmsTheme) */
-
-    if (!page.data.sections) {
-        /*  page.data = {
+    /* if (!page.data.sections) {
+         page.data = {
             ...page.data,
             sections: [
                 {
@@ -63,9 +38,9 @@ const Home = () => {
                     wide: '232',
                 },
             ],
-        } */
+        } 
         console.log('false')
-    }
+    }*/
 
     const columnStyles = page ? decideColumns(page.data) : 'wide-column'
 
@@ -89,7 +64,7 @@ const Home = () => {
 
     return (
         <div>
-            {/*  <head>
+            <head>
                 <title>{page.seo?.title || 'title'}</title>
                 {page.seo?.title && <meta property="og:title" content={page.seo.title} key="title" />}
                 {page.seo?.descr ? <meta name="description" content={page.seo.descr} /> : <meta name="description" content="description" />}
@@ -102,10 +77,8 @@ const Home = () => {
                             <meta property="og:image:height" content="1024" />
                         </>
                     ))}
-                {cmsGlobal?.config?.website?.favicon?.src && (
-                    <link rel="shortcut icon" href={domainImage(cmsGlobal.config.website.favicon.src, true, cmsUrl)} />
-                )}
-            </head> */}
+                {CMSLayout.favicon && <link rel="shortcut icon" href={domainImage(CMSLayout.favicon, true, cmsUrl)} />}
+            </head>
 
             <Layout CMSLayout={CMSLayout} themeStyles={themeStyles}>
                 {page.data && (
