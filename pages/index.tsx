@@ -4,22 +4,55 @@ import { HomeProps, PageListProps, Context } from '../types'
 import Layout from '../components/Layout'
 import { Renderer } from '../components/Renderer'
 import { useRouter } from 'next/router'
-import { getDomain, decideColumns, setColors, domainImage, findHomePageSlug, getLayout, getPageData } from '../functions'
-/* import getData from '../functions' */
+import { getDomain, decideColumns, setColors, domainImage, findHomePageSlug } from '../functions'
 import cn from 'classnames'
-import { Fragment, use } from 'react'
+import { Fragment } from 'react'
+import Image from 'next/image'
 
-const Home = () => {
-    const { CMSLayout } = use(getLayout())
+//runs at build time just like static props
+export const getStaticProps = async (context: Context) => {
+    const resLayout = await fetch(getDomain(true) + '/layout.json')
+    const CMSLayout = await resLayout.json()
 
-    const { page } = use(getPageData(null))
+    const resPageList = await fetch(getDomain(true) + '/pages/page-list.json')
+    const pageList = await resPageList.json()
 
-    const cmsTheme = CMSLayout.theme
+    const homePageSlug = findHomePageSlug(pageList)
+
+    //const resPage = await fetch(getDomain(true) + '/pages/' + 'home' + '.json')
+    const resPage = await fetch(getDomain(true) + '/pages/' + homePageSlug + '.json')
+    let page = await resPage.json()
+
+    return {
+        props: { page, CMSLayout, pageList },
+        // Next.js will attempt to re-generate the page:
+        // - When a request comes in
+        // - At most once every 10 seconds
+        revalidate: 10, // In seconds
+    }
+}
+
+const Home = (props: HomeProps) => {
+    let { page, CMSLayout, pageList } = props
+    const router = useRouter()
+
+    /*  const cmsGlobalDesign = cmsGlobal ? cmsGlobal.design : '' */
+    const cmsTheme = CMSLayout.theme || 'charlotte'
+
+    /*     for (let i = 0; i < CMSLayout.modules.length; i++) {
+        CMSLayout.modules[i].attributes.pages = pageList.pages
+    }
+ */
 
     const themeStyles = setColors(CMSLayout.cmsColors, cmsTheme)
 
-    /* if (!page.data.sections) {
-         page.data = {
+    //setting themestyles in CMSLayout, will probably change later
+    //CMSLayout = { ...CMSLayout, themeStyles: setColors(cmsGlobalDesign?.colors, cmsTheme) }
+
+    /*  CMSLayout.themeStyles = setColors(cmsGlobalDesign?.colors, cmsTheme) */
+
+    if (!page.data.sections) {
+        /*  page.data = {
             ...page.data,
             sections: [
                 {
@@ -38,9 +71,9 @@ const Home = () => {
                     wide: '232',
                 },
             ],
-        } 
+        } */
         console.log('false')
-    }*/
+    }
 
     const columnStyles = page ? decideColumns(page.data) : 'wide-column'
 
@@ -58,13 +91,13 @@ const Home = () => {
 
     // If the page is not yet generated, this will be displayed
     // initially until getStaticProps() finishes running
-    /*     if (router.isFallback) {
+    if (router.isFallback) {
         return <div>Loading...</div>
-    } */
+    }
 
     return (
         <div>
-            <head>
+            <Head>
                 <title>{page.seo?.title || 'title'}</title>
                 {page.seo?.title && <meta property="og:title" content={page.seo.title} key="title" />}
                 {page.seo?.descr ? <meta name="description" content={page.seo.descr} /> : <meta name="description" content="description" />}
@@ -78,12 +111,12 @@ const Home = () => {
                         </>
                     ))}
                 {CMSLayout.favicon && <link rel="shortcut icon" href={domainImage(CMSLayout.favicon, true, cmsUrl)} />}
-            </head>
+            </Head>
 
-            <Layout CMSLayout={CMSLayout} themeStyles={themeStyles}>
+            <Layout CMSLayout={CMSLayout} themeStyles={themeStyles} page={page}>
+                <style>{colorStyles}</style>
                 {page.data && (
                     <div className={styles.root}>
-                        <style>{colorStyles}</style>
                         <div className={styles.featured}>
                             <Renderer
                                 config={page.data.modules[0]}
@@ -92,6 +125,7 @@ const Home = () => {
                                 cmsUrl={cmsUrl}
                             />
                         </div>
+
                         <div
                             className={cn(styles.columns, {
                                 [styles['wide-column']]: columnStyles === 'wide-column',
@@ -133,14 +167,6 @@ const Home = () => {
                                 </Fragment>
                             ))}
                         </div>
-                        {/* <div style={{ width: '30rem', height: '30rem', position: 'absolute' }}>
-                            <Image
-                                src="http://clttestsiteforjoshedwards.production.townsquareinteractive.com//files/2022/08/EiffelWater1.jpg"
-                                alt=""
-                                layout="fill"
-                                objectFit="cover"
-                            />
-                        </div> */}
                     </div>
                 )}
             </Layout>

@@ -8,6 +8,7 @@ import { getDomain, decideColumns, setColors, domainImage, getPageData, getLayou
 /* import getData from '../../functions' */
 import cn from 'classnames'
 import { Fragment, use } from 'react'
+import { Suspense } from 'react'
 
 export async function generateStaticParams() {
     const res = await fetch(getDomain(true) + '/pages/page-list.json')
@@ -60,9 +61,8 @@ const Slug = ({ params }: any) => {
                     ))}
                 {CMSLayout.favicon && <link rel="shortcut icon" href={domainImage(CMSLayout.favicon, true, cmsUrl)} />}
             </head>
-
-            <style>{colorStyles}</style>
-            <Layout CMSLayout={CMSLayout} themeStyles={themeStyles}>
+            <Layout CMSLayout={CMSLayout} themeStyles={themeStyles} page={page}>
+                <style>{colorStyles}</style>
                 {page.data && (
                     <div className={styles.root} style={{ backgroundColor: themeStyles.bckdContent }}>
                         <div className={styles.featured}>

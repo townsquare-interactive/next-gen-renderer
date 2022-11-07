@@ -51,6 +51,7 @@ export interface LayoutProps {
     children: ReactNode
     CMSLayout: GlobalData
     themeStyles: ThemeStyles
+    page?: CMSPage
 }
 
 export interface SocialBarProps {
@@ -79,6 +80,10 @@ export interface GlobalData {
     mobileLogos?: Logo
     footerLogos?: Logo
     composites?: { footer?: CompositeData; right_rail?: CompositeData }
+    theme?: string
+    cmsColors?: any
+    favicon?: string
+    cmsUrl?: string
 }
 
 export interface SocialItem {

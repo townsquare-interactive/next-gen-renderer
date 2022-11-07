@@ -6,9 +6,10 @@ import MyHeader from './MyHeader'
 import MyFooter from './MyFooter'
 import { useState } from 'react'
 import AltHeader from 'elements/AltHeader'
+import { domainImage } from 'functions'
 
 export default function Layout(props: LayoutProps) {
-    const { children, CMSLayout, themeStyles } = props
+    const { children, CMSLayout, themeStyles, page } = props
     const [navCheck, setNav] = useState<boolean>(false)
     const [height, setHeight] = useState<any>(0)
 
@@ -17,17 +18,15 @@ export default function Layout(props: LayoutProps) {
     }
 
     return (
-        <div
-            className={cn(styles.root, {
-                //[styles.layout1]: navigationModule[0].attributes.navStyle === 'layout1',
-            })}
-        >
-            <AltHeader navSwitch={navSwitch} navCheck={navCheck} themeStyles={themeStyles} CMSLayout={CMSLayout} />
+        <>
+            <div className={cn(styles.root)}>
+                <AltHeader navSwitch={navSwitch} navCheck={navCheck} themeStyles={themeStyles} CMSLayout={CMSLayout} />
 
-            <MyHeader CMSLayout={CMSLayout} themeStyles={themeStyles} navSwitch={navSwitch} setHeight={setHeight} />
+                <MyHeader CMSLayout={CMSLayout} themeStyles={themeStyles} navSwitch={navSwitch} setHeight={setHeight} />
 
-            <main style={{ marginTop: height }}>{children}</main>
-            <MyFooter CMSLayout={CMSLayout} themeStyles={themeStyles} navSwitch={navSwitch} />
-        </div>
+                <main style={{ marginTop: height }}>{children}</main>
+                <MyFooter CMSLayout={CMSLayout} themeStyles={themeStyles} navSwitch={navSwitch} />
+            </div>
+        </>
     )
 }
