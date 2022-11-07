@@ -15,9 +15,6 @@ async function getData() {
     })
     const CMSLayout = await resLayout.json()
 
-    const resCmsGlobal = await fetch(getDomain(true) + '/siteData.json')
-    let cmsGlobal = await resCmsGlobal.json()
-
     const resPageList = await fetch(getDomain(true) + '/pages/page-list.json')
     const pageList = await resPageList.json()
 
@@ -26,21 +23,20 @@ async function getData() {
     const resPage = await fetch(getDomain(true) + '/pages/' + homePageSlug + '.json')
     let page = await resPage.json()
 
-    return { CMSLayout: CMSLayout, cmsGlobal: cmsGlobal, page: page }
+    return { CMSLayout: CMSLayout, page: page }
 }
 
 const Home = () => {
-    const { CMSLayout, cmsGlobal, page } = use(getData())
+    const { CMSLayout, page } = use(getData())
 
-    const cmsGlobalDesign = cmsGlobal ? cmsGlobal.design : ''
-    const cmsTheme = cmsGlobalDesign ? cmsGlobalDesign?.themes.selected : ''
+    const cmsTheme = CMSLayout.theme
+
+    const themeStyles = setColors(CMSLayout.cmsColors, cmsTheme)
 
     /*     for (let i = 0; i < CMSLayout.modules.length; i++) {
         CMSLayout.modules[i].attributes.pages = pageList.pages
     }
  */
-
-    const themeStyles = setColors(cmsGlobalDesign?.colors, cmsTheme)
 
     //setting themestyles in CMSLayout, will probably change later
     //CMSLayout = { ...CMSLayout, themeStyles: setColors(cmsGlobalDesign?.colors, cmsTheme) }

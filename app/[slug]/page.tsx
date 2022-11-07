@@ -16,6 +16,15 @@ export async function generateStaticParams() {
     return data.pages.map((page: PageListProps) => ({
         slug: page.slug.toString(),
     }))
+    /*  const paths = data.pages.map((page: PageListProps) => {
+        return {
+            params: { slug: page.slug.toString() },
+        }
+    })
+
+    return {
+        paths,
+    } */
 }
 
 //runs at build time just like static props
@@ -43,28 +52,27 @@ async function getData(params: any) {
     })
     const CMSLayout = await resLayout.json()
 
-    const resCmsGlobal = await fetch(getDomain(true) + '/siteData.json')
-    let cmsGlobal = await resCmsGlobal.json()
-
     const resPage = await fetch(getDomain(true) + '/pages/' + params.slug + '.json')
     let page = await resPage.json()
 
-    return { CMSLayout: CMSLayout, cmsGlobal: cmsGlobal, page: page }
+    return { CMSLayout: CMSLayout, page: page }
 }
 
 const Slug = ({ params }: any) => {
     /* const { slug } = params */
 
-    const { CMSLayout, cmsGlobal, page } = use(getData(params))
+    console.log(params)
+
+    const { CMSLayout, page } = use(getData(params))
 
     /*    console.log(CMSLayout, cmsGlobal, page) */
     //test
     /* const router = useRouter() */
 
-    const cmsGlobalDesign = cmsGlobal ? cmsGlobal.design : ''
-    const cmsTheme = cmsGlobalDesign ? cmsGlobalDesign?.themes.selected : ''
+    /*  const cmsGlobalDesign = cmsGlobal ? cmsGlobal.design : '' */
+    const cmsTheme = CMSLayout.theme
 
-    const themeStyles = setColors(cmsGlobalDesign?.colors, cmsTheme)
+    const themeStyles = setColors(CMSLayout.cmsColors, cmsTheme)
 
     const columnStyles = page ? decideColumns(page.data) : 'wide-column'
 
@@ -75,7 +83,7 @@ const Slug = ({ params }: any) => {
 
     const colorStyles = textColors + btnStyles
 
-    const cmsUrl = cmsGlobal ? cmsGlobal.config.website.url : ''
+    const cmsUrl = CMSLayout.cmsUrl
 
     // If the page is not yet generated, this will be displayed
     // initially until getStaticProps() finishes running
@@ -85,7 +93,7 @@ const Slug = ({ params }: any) => {
 
     return (
         <div>
-            {/*  <head>
+            <head>
                 <title>{page.seo?.title || 'title'}</title>
                 {page.seo?.title && <meta property="og:title" content={page.seo.title} key="title" />}
                 {page.seo?.descr ? <meta name="description" content={page.seo.descr} /> : <meta name="description" content="description of page" />}
@@ -98,8 +106,8 @@ const Slug = ({ params }: any) => {
                             <meta property="og:image:height" content="1024" />
                         </>
                     ))}
-                {cmsGlobal.config.website.favicon.src && <link rel="shortcut icon" href={domainImage(cmsGlobal.config.website.favicon.src, true, cmsUrl)} />}
-            </head> */}
+                {CMSLayout.favicon && <link rel="shortcut icon" href={domainImage(CMSLayout.favicon, true, cmsUrl)} />}
+            </head>
 
             <style>{colorStyles}</style>
             <Layout CMSLayout={CMSLayout} themeStyles={themeStyles}>

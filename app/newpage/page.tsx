@@ -45,7 +45,7 @@ async function getData() {
     })
     const CMSLayout = await resLayout.json()
 
-    const resCmsGlobal = await fetch(getDomain(true) + '/siteData.json')
+    /* const resCmsGlobal = await fetch(getDomain(true) + '/siteData.json')
     let cmsGlobal = await resCmsGlobal.json()
 
     const resPageList = await fetch(getDomain(true) + '/pages/page-list.json')
@@ -54,9 +54,9 @@ async function getData() {
     const homePageSlug = findHomePageSlug(pageList)
 
     const resPage = await fetch(getDomain(true) + '/pages/' + homePageSlug + '.json')
-    let page = await resPage.json()
+    let page = await resPage.json() */
 
-    return { CMSLayout: CMSLayout, cmsGlobal: cmsGlobal, page: page }
+    return { CMSLayout }
 }
 
 const NewPage = () => {
@@ -82,7 +82,7 @@ const NewPage = () => {
         return { CMSLayout: CMSLayout, cmsGlobal: cmsGlobal, page: page }
     } */
     //Server Components can get data using React use instead of async await
-    const { CMSLayout, cmsGlobal, page } = use(getData())
+    const { CMSLayout } = use(getData())
 
     return (
         <div style={{ padding: '20px' }}>

@@ -26,6 +26,7 @@ module.exports = {
     experimental: {
         appDir: true,
     },
+    staticPageGenerationTimeout: 100,
 
     i18n: {
         locales: ['en'],
