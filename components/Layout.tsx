@@ -25,6 +25,7 @@ export default function Layout(props: LayoutProps) {
                 <MyHeader CMSLayout={CMSLayout} themeStyles={themeStyles} navSwitch={navSwitch} setHeight={setHeight} />
 
                 <main style={{ marginTop: height }}>{children}</main>
+
                 <MyFooter CMSLayout={CMSLayout} themeStyles={themeStyles} navSwitch={navSwitch} />
             </div>
         </>

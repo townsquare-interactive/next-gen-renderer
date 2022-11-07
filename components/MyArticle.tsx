@@ -469,7 +469,10 @@ const ImageBlock = (props: TheListItemImageProps) => {
                         priority={item.desc ? false : true}
                         //loading="eager"
                         style={{ objectFit: 'cover', objectPosition: 'top' }}
-                        sizes="100vw"
+                        /* sizes="100vw" */
+                        sizes="(max-width: 1920px) 100vw,
+                        (max-width: 1200px) 50vw,
+                        33vw"
                     />
                 ) : (
                     //Setting width and height to image props if nosizing added
@@ -482,10 +485,10 @@ const ImageBlock = (props: TheListItemImageProps) => {
                         quality="50"
                         priority={item.desc ? false : true}
                         style={{ width: '100%', height: 'auto' }}
-                        /* sizes="(max-width: 1920px) 100vw,
+                        sizes="(max-width: 1920px) 100vw,
                         (max-width: 1200px) 50vw,
-                        33vw" */
-                        sizes="100vw"
+                        33vw"
+                        /* sizes="100vw" */
                     />
                 )}
                 {item.icon3 && (
