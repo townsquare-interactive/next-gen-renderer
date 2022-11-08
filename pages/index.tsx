@@ -110,6 +110,7 @@ const Home = (props: HomeProps) => {
                             <meta property="og:image:height" content="1024" />
                         </>
                     ))}
+                <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"></meta>
                 {CMSLayout.favicon && <link rel="shortcut icon" href={domainImage(CMSLayout.favicon, true, cmsUrl)} />}
             </Head>
 

@@ -46,21 +46,6 @@ const Slug = ({ params }: any) => {
     return (
         <>
             <Layout CMSLayout={CMSLayout} themeStyles={themeStyles} page={page}>
-                {/*                 <head>
-                    <title>{page.seo?.title || 'title'}</title>
-                    {page.seo?.title && <meta property="og:title" content={page.seo.title} key="title" />}
-                    {page.seo?.descr ? <meta name="description" content={page.seo.descr} /> : <meta name="description" content="description" />}
-                    {page.seo?.imageOverride ||
-                        (page.seo?.selectedImage && (
-                            <>
-                                <meta property="og:image" content={domainImage(page.seo.imageOverride || page.seo.selectedImage[0], true, cmsUrl)} />
-                                <meta property="og:image:type" content="image/jpg" />
-                                <meta property="og:image:width" content="1024" />
-                                <meta property="og:image:height" content="1024" />
-                            </>
-                        ))}
-                    {CMSLayout.favicon && <link rel="shortcut icon" href={domainImage(CMSLayout.favicon, true, cmsUrl)} />}
-                </head>*/}
                 <style>{colorStyles}</style>
                 {page.data && (
                     <div className={styles.root} style={{ backgroundColor: themeStyles.bckdContent }}>
