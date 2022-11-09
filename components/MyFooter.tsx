@@ -47,7 +47,7 @@ const MyFooter = (props: MyFooterProps) => {
                             {CMSLayout.contact.address?.state && `${CMSLayout.contact.address.state} ,`}{' '}
                             {CMSLayout.contact.address?.zip && `${CMSLayout.contact.address.zip} ,`}
                         </span>{' '}
-                        {CMSLayout.contact.address?.phone && <span className={styles.phone}> {CMSLayout.contact.phone[0].number}</span>}
+                        {CMSLayout.contact.phone[0].number && <span className={styles.phone}> {CMSLayout.contact.phone[0].number}</span>}
                     </address>
                 </div>
                 <div className={styles['bottom']}>

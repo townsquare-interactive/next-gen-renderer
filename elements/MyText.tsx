@@ -11,7 +11,7 @@ const MyText = (props: any) => {
 
     return (
         <div className={styles.root}>
-            {title && <h3 className={styles.hd}>{title}</h3>}
+            {title && <h4 className={styles.hd}>{title}</h4>}
             {text && <div className={styles.dsc}>{Parser(text)}</div>}
         </div>
     )

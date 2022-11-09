@@ -26,9 +26,38 @@
                 padding: 1.5rem 0 1rem;
 
                 @include breakpoints.sm-min {
+                    ul {
+                        columns: 2;
+                    }
+
+                    ul li ul {
+                        columns: 1;
+                    }
+
+                    div {
+                        width: 100%;
+
+                        ul {
+                            width: 100%;
+                        }
+                    }
+                }
+
+                @include breakpoints.lg-min {
                     margin-left: 2.1220609456%;
                     margin-right: 2.1220609456%;
                     width: 29.0892114422%;
+
+                    ul {
+                        columns: 1;
+                    }
+
+                    div {
+                        width: 100%;
+                        ul {
+                            width: auto;
+                        }
+                    }
                 }
 
                 @include breakpoints.lg-min {
@@ -56,7 +85,21 @@
             border-bottom: 1px solid #1b1a1a;
         }
 
-        .copy,
+        .info-block {
+            padding: 0.5rem 0 0.5rem;
+            margin-left: 2.1220609456%;
+            margin-right: 2.1220609456%;
+            text-align: center;
+
+            .copy {
+                line-height: 1em;
+            }
+
+            @include breakpoints.sm-min {
+                text-align: left;
+            }
+        }
+
         .nav-block,
         .social-block {
             padding-top: 1rem;
@@ -88,6 +131,11 @@
 
         .social-block {
             padding: 0;
+            display: none;
+
+            @include breakpoints.md-min {
+                display: flex;
+            }
         }
 
         .bottom {
@@ -95,6 +143,7 @@
             padding-bottom: 1.5rem;
             display: flex;
             flex-wrap: wrap;
+            justify-content: end;
         }
 
         span {
@@ -116,7 +165,7 @@
             line-height: 1.2em;
             display: inline-block;
             font-style: normal;
-            padding-top: 1rem;
+            //padding-top: 1rem;
 
             //add
             width: 100%;
