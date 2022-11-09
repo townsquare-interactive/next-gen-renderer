@@ -58,8 +58,13 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
                 align-self: flex-start;
                 display: none;
 
+                .blockPicture {
+                    position: relative;
+                }
+
                 img {
                     width: 100%;
+                    position: inherit !important;
                 }
                 @include breakpoints.md {
                     width: 50%;
@@ -250,6 +255,7 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
                     }
 
                     img {
+                        position: absolute !important;
                         width: 100% !important;
                         object-fit: cover;
 

@@ -86,10 +86,13 @@ const List = (props: ListProps) => {
                                     src={domainImage(imageUrl)}
                                     //height="450px"
                                     //width="600px"
-                                    layout="responsive"
-                                    objectFit="cover"
+                                    fill
+                                    style={{ objectFit: 'cover' }}
                                     alt={altText}
                                     quality="50"
+                                    sizes="(max-width: 1920px) 100vw,
+                        (max-width: 1200px) 50vw,
+                        100vw"
                                 />
                             )}
                         </div>

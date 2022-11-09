@@ -30,26 +30,65 @@ function Hero(props: HeaderProps) {
                 <div className={styles.gutter} style={themeStylesObj}>
                     {backgroundImageUrl && (
                         <div className={styles.backgroundBlock}>
-                            <Image src={backgroundImage} layout="fill" objectFit="cover" alt="" quality="30" />
+                            <Image
+                                src={backgroundImage}
+                                fill
+                                style={{ objectFit: 'cover' }}
+                                alt=""
+                                quality="30"
+                                sizes="(max-width: 1920px) 100vw,
+                        (max-width: 1200px) 50vw,
+                        100vw"
+                            />
                         </div>
                     )}
                 </div>
                 {imageUrl && (
                     <div className={styles.heroImage}>
-                        <Image src={mainImage} layout="fill" objectFit="cover" alt={altText} priority quality="50" />
+                        <Image
+                            src={mainImage}
+                            fill
+                            style={{ objectFit: 'cover' }}
+                            alt={altText}
+                            priority
+                            quality="50"
+                            sizes="(max-width: 1920px) 100vw,
+                        (max-width: 1200px) 50vw,
+                        100vw"
+                        />
                     </div>
                 )}
 
                 <div className={styles.headline}>
                     <div className={styles.backgroundBlock} style={themeStylesObj}>
-                        {backgroundImageUrl && <Image src={backgroundImage} layout="fill" objectFit="cover" alt="" quality="30" />}
+                        {backgroundImageUrl && (
+                            <Image
+                                src={backgroundImage}
+                                fill
+                                style={{ objectFit: 'cover' }}
+                                alt=""
+                                quality="30"
+                                sizes="(max-width: 1920px) 100vw,
+                        (max-width: 1200px) 50vw,
+                        100vw"
+                            />
+                        )}
                         <h1 className={styles.text}>{headline}</h1>
                     </div>
                 </div>
                 <div className={cn(styles.gutter, styles.gutter_alt)} style={gutterAlt}>
                     {backgroundImageUrl && (
                         <div className={styles.backgroundBlock}>
-                            <Image src={backgroundImage} layout="fill" objectFit="cover" alt="" quality="30" />
+                            <Image
+                                src={backgroundImage}
+                                fill
+                                style={{ objectFit: 'cover' }}
+                                alt=""
+                                quality="30"
+                                sizes="(max-width: 1920px) 100vw,
+                        (max-width: 1200px) 50vw,
+                        100vw"
+                            />
                         </div>
                     )}
                 </div>

@@ -258,6 +258,22 @@ export async function getPageData(params: any) {
     return { page }
 }
 
+export async function getOtherPageData() {
+    const resPage = await fetch(getDomain(false) + '/pages/' + 'home' + '.json')
+    let page = await resPage.json()
+
+    return { page }
+}
+
+export async function getOtherLayout() {
+    const resLayout = await fetch(getDomain(false) + '/layout.json', {
+        next: { revalidate: 5 },
+    })
+    const CMSLayout = await resLayout.json()
+
+    return { CMSLayout }
+}
+
 //Used to have conditional tag wraps around code without repeating inside code
 export const ConditionalWrapper = ({ condition, falseOutput, trueOutput, children }: ConditionalWrapperProps) =>
     condition ? trueOutput(children) : falseOutput(children)

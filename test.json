@@ -1,0 +1,93 @@
+{
+    "name": "Home",
+    "slug": "home",
+    "id": "0",
+    "seo": {
+        "title": "Home",
+        "description": "Variety of sports leagues for all ages",
+        "ogImage": "/soccer-2.jpg"
+    },
+    "modules": [
+        {
+            "componentType": "header",
+            "attributes": {
+                "headline": "Elitesports Preview Page",
+                "imageUrl": "/soccer-3.jpg",
+                "altText": "Soccer ball on field",
+                "reverse": true,
+                "modLayout": "normal"
+            }
+        },
+        {
+            "componentType": "images",
+            "attributes": {
+                "modLayout": "1-hero",
+                "items": [
+                    {
+                        "imageUrl": "/football-1.jpg",
+                        "altText": "Football helmet",
+                        "linkUrl": "/football",
+                        "headline": "Maybe join a sports leage??"
+                    }
+                ]
+            }
+        },
+        {
+            "componentType": "label",
+            "attributes": {
+                "text": "We have leagues for everyone!",
+                "align": "center"
+            }
+        },
+        {
+            "componentType": "images",
+            "attributes": {
+                "gap": true,
+                "modLayout": "3-2/3",
+                "items": [
+                    {
+                        "imageUrl": "/hockey-1.jpg",
+                        "altText": "hockey",
+                        "linkText": "Hockey",
+                        "linkUrl": "/hockey"
+                    },
+                    {
+                        "imageUrl": "/football-2.jpg",
+                        "altText": "football",
+                        "linkText": "Football",
+                        "linkUrl": "/football"
+                    },
+                    {
+                        "imageUrl": "/football-3.jpg",
+                        "altText": "football",
+                        "linkText": "Contact",
+                        "linkUrl": "/contact"
+                    }
+                ]
+            }
+        },
+        {
+            "componentType": "list",
+            "attributes": {
+                "headline": "Play Anything",
+                "body": " EliteSports offers leagues for most every interest, whether it is volleyball, soccer, football, basketball, or hockey. We offer leagues for girls and boys of all ages, from youth league through the adult league and to the masters league.",
+                "imageUrl": "/soccer-3.jpg",
+                "altText": "Soccer",
+                "border": true,
+                "linkUrl": "/contact",
+                "btnText": "Contact Us",
+                "modLayout": "article",
+                "textSize": "md",
+                "align": "left",
+                "reverse": false
+            }
+        },
+        {
+            "componentType": "video",
+            "attributes": {
+                "modLayout": "ext",
+                "videoUrl": "https://youtu.be/cTCgU4Vz0rE"
+            }
+        }
+    ]
+}

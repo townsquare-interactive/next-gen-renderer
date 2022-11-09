@@ -112,6 +112,7 @@ const Home = (props: HomeProps) => {
                     ))}
                 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"></meta>
                 {CMSLayout.favicon && <link rel="shortcut icon" href={domainImage(CMSLayout.favicon, true, cmsUrl)} />}
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
             </Head>
 
             <Layout CMSLayout={CMSLayout} themeStyles={themeStyles} page={page}>

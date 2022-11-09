@@ -472,7 +472,7 @@ const ImageBlock = (props: TheListItemImageProps) => {
                         /* sizes="100vw" */
                         sizes="(max-width: 1920px) 100vw,
                         (max-width: 1200px) 50vw,
-                        33vw"
+                        100vw"
                     />
                 ) : (
                     //Setting width and height to image props if nosizing added
@@ -486,8 +486,8 @@ const ImageBlock = (props: TheListItemImageProps) => {
                         priority={item.desc ? false : true}
                         style={{ width: '100%', height: 'auto' }}
                         sizes="(max-width: 1920px) 100vw,
-                        (max-width: 1200px) 50vw,
-                        33vw"
+                        (max-width: 1200px) 70vw,
+                        100vw"
                         /* sizes="100vw" */
                     />
                 )}

@@ -110,11 +110,14 @@ const TileImage = ({ itemNumber, modLayout, isMainImage = false, hero = false, t
                 <div className={cn(styles.linkBlock, styles.linked)}>
                     <Image
                         src={domainImage(itemNumber.imageUrl)}
-                        layout="fill"
-                        objectFit="cover"
+                        fill
                         alt={itemNumber.altText || ''}
                         quality="40"
                         priority={hero ? true : false}
+                        style={{ objectFit: 'cover' }}
+                        sizes="(max-width: 1920px) 100vw,
+                        (max-width: 1200px) 50vw,
+                        100vw"
                     />
 
                     <Link href={itemNumber.linkUrl} className={styles.link}>
@@ -141,11 +144,14 @@ const TileImage = ({ itemNumber, modLayout, isMainImage = false, hero = false, t
                 <div className={styles.linkBlock}>
                     <Image
                         src={domainImage(itemNumber.imageUrl)}
-                        layout="fill"
-                        objectFit="cover"
+                        fill
                         alt={itemNumber.altText || ''}
                         quality="40"
                         priority={hero ? true : false}
+                        style={{ objectFit: 'cover' }}
+                        sizes="(max-width: 1920px) 100vw,
+                        (max-width: 1200px) 50vw,
+                        100vw"
                     />
 
                     {itemNumber.headline ? (
