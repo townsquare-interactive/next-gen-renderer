@@ -9,7 +9,7 @@ const ubuntu = Ubuntu({
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html>
+        <html lang="en">
             <head></head>
             <body className={ubuntu.variable}>{children}</body>
         </html>
