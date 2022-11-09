@@ -386,7 +386,7 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
     &.beacon {
         //Floating image to side of content, only when columns are not in play
         &.full-width {
-            &.medium {
+            /* &.medium {
                 @include breakpoints.sm-min {
                     .mod_left .image-block,
                     .mod_right .image-block {
@@ -402,9 +402,9 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
                         margin-left: 1rem;
                     }
                 }
-            }
+            } */
 
-            &.large {
+            /*  &.large {
                 @include breakpoints.sm-min {
                     .mod_left .image-block,
                     .mod_right .image-block {
@@ -420,7 +420,7 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
                         margin-left: 2rem;
                     }
                 }
-            }
+            } */
         }
 
         .btn {
@@ -450,7 +450,7 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
         line-height: 1.1764705882em;
     }
 
-    &.medium {
+    /* &.medium {
         @include breakpoints.sm-min {
             .sh {
                 font-size: 1.0625em;
@@ -474,9 +474,117 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
                 line-height: 1.4117647059em;
             }
         }
+    } */
+
+    &.root-contain .item {
+        container-type: inline-size;
+    }
+    @container (min-width:0px) {
+        .dsc {
+            font-size: 0.875em;
+            margin-top: 1.1428571429em;
+            margin-bottom: 1.1428571429em;
+            line-height: 1.4285714286em;
+        }
+
+        .sh {
+            font-size: 0.875em;
+            margin-top: 0.5714285714em;
+            margin-bottom: 0.5714285714em;
+            line-height: 1.1428571429em;
+        }
+
+        .hd {
+            font-size: 1.0625em;
+            margin-top: 0.7058823529em;
+            margin-bottom: 0.4705882353em;
+            line-height: 1.1764705882em;
+        }
+    }
+    //temp: medium screens, need to revise size maybe
+    @container (min-width:300px) {
+        .hd {
+            font-size: 1.5em;
+            margin-top: 0.6666666667em;
+            margin-bottom: 0.5em;
+            line-height: 1.1666666667em;
+            letter-spacing: -0.0125rem;
+        }
+
+        .sh {
+            font-size: 1.0625em;
+            margin-top: 0.7058823529em;
+            margin-bottom: 0.4705882353em;
+            line-height: 1.1764705882em;
+        }
+
+        .dsc {
+            font-size: 0.875em;
+            margin-top: 1.1428571429em;
+            margin-bottom: 1.1428571429em;
+            line-height: 1.4285714286em;
+        }
+
+        .item {
+            &.nHero:first-of-type {
+                margin-top: 2rem;
+            }
+        }
+    }
+    //temp: container for mod_left/right on .medium/large, need to fix !important
+    @container (min-width:500px) {
+        .mod_left .image-block,
+        .mod_right .image-block {
+            width: $third-width;
+            display: block;
+        }
+        .mod_left .image-block {
+            float: left;
+            margin-right: 1rem !important;
+        }
+        .mod_right .image-block {
+            float: right;
+            margin-left: 1rem !important;
+        }
+    }
+    //for larger screens
+    @container (min-width:800px) {
+        .hd {
+            font-size: 2.25em;
+            margin-top: 0.6666666667em;
+            margin-bottom: 0.4444444444em;
+            line-height: 1.1111111111em;
+            letter-spacing: -0.0125rem;
+        }
+
+        .sh {
+            font-size: 1.5em;
+            margin-top: 0.6666666667em;
+            margin-bottom: 0.5em;
+            line-height: 1.1666666667em;
+            letter-spacing: -0.0125rem;
+        }
+
+        .dsc {
+            font-size: 1.0625em;
+            margin-top: 0.9411764706em;
+            margin-bottom: 0.9411764706em;
+            line-height: 1.4117647059em;
+        }
+
+        .mod_left .image-block,
+        .mod_right .image-block {
+            width: math.div(5, 12) * 100%;
+        }
+        .mod_left .image-block {
+            margin-right: 2rem !important;
+        }
+        .mod_right .image-block {
+            margin-left: 2rem !important;
+        }
     }
 
-    &.large {
+    /* &.large {
         @include breakpoints.sm-min {
             .hd {
                 font-size: 1.5em;
@@ -530,7 +638,7 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
                 line-height: 1.4117647059em;
             }
         }
-    }
+    } */
 
     /*------------------------------------Border/well prop enabled-------------------------*/
     &.well {
@@ -586,10 +694,6 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
                     margin-bottom: 0 !important;
                     margin-top: auto;
                 }
-
-                /* .hd-block {
-                    padding: 0 2rem 1.5rem;
-                } */
             }
         }
 
@@ -630,6 +734,7 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
     }
 
     /*---------------------------------------- Column item sizes ------------------------------------------------*/
+
     @include breakpoints.sm-min {
         &.col_2,
         &.col_3,

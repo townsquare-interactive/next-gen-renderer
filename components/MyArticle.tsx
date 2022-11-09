@@ -24,7 +24,7 @@ const MyArticle = (props: ArticleProps) => {
     if (disabled != 'disabled') {
         return (
             <div
-                className={cn(styles['root'], styles['tsflex'], {
+                className={cn(styles['root'], styles['tsflex'], styles['root-contain'], {
                     [styles.a1]: type === 'article_1',
                     [styles.a2]: type === 'article_2',
                     [styles.a3]: type === 'article_3',
