@@ -7,6 +7,7 @@ import Parser from 'html-react-parser'
 import { domainImage, ConditionalWrapper } from '../functions'
 import { ReactChild, useState, Fragment } from 'react'
 import Link from 'next/link'
+import { Button } from '../elements/MyButton'
 
 // importing fontAwesome icons
 import { faRocket, faAnchor, faArchway } from '@fortawesome/free-solid-svg-icons'
@@ -101,7 +102,7 @@ const ModuleItem = (props: ModuleItemProps) => {
         backgroundColor: 'transparent',
     }
     const borderBackground = {
-        backgroundColor: themeStyles['headerBackground'],
+        backgroundColor: themeStyles['accentBackgroundColor'],
     }
     const heroBackground = {
         backgroundColor: themeStyles['altColor'],
@@ -210,6 +211,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                     columns={columns}
                     modId={modId}
                     cmsUrl={cmsUrl}
+                    align={item.align}
                 />
             </ConditionalWrapper>
         </article>
@@ -217,7 +219,8 @@ const ModuleItem = (props: ModuleItemProps) => {
 }
 
 const ItemWrap = (props: ItemWrapProps) => {
-    const { item, imageNoSizings, textColorAccent, textColor, imgsize, well, icons, icon3, isFeatured, themeStyles, type, modId, cmsUrl, columns } = props
+    const { item, imageNoSizings, textColorAccent, textColor, imgsize, well, icons, icon3, isFeatured, themeStyles, type, modId, cmsUrl, columns, align } =
+        props
 
     //Check if item is on beacon theme and hero
     const beaconHero = type === 'article' && isFeatured === 'active'
@@ -301,13 +304,15 @@ const ItemWrap = (props: ItemWrapProps) => {
                     btnSize2={item.btnSize2}
                     well={well}
                     modId={modId}
+                    type={type}
+                    align={align}
                 />
             )}
         </>
     )
 }
 
-const Button = (props: BtnProps) => {
+/* const Button = (props: BtnProps) => {
     const linkHoverStyles = `#id_${props.modId} .btn_link:hover .btn_1{color: ${props.themeStyles['mainColor']}; background-color: ${props.themeStyles['textColorAccent']}} #id_${props.modId} .btn_link:hover .btn_2{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['altColor']}}`
 
     let buttons = [
@@ -388,7 +393,7 @@ const Button = (props: BtnProps) => {
             </ConditionalWrapper>
         </>
     )
-}
+} */
 
 const HeaderBlock = (props: any) => {
     const { item, columns, well, beaconHero } = props

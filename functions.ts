@@ -58,7 +58,7 @@ export const setColors = (cmsGlobalDesign: CMSColors, cmsTheme: string) => {
             subHeadingColor: cmsGlobalDesign?.color_3.value,
             textColorAccent: cmsGlobalDesign.color_9.value,
             linkColor: cmsGlobalDesign.color_5.value,
-            accentBackgroundColor: cmsGlobalDesign.color_8.value,
+            accentBackgroundColor: cmsGlobalDesign.color_25.value,
             accentColor2: cmsGlobalDesign.color_32.value,
             altColor: cmsGlobalDesign.color_31.value,
             headerBackground: cmsGlobalDesign.color_23.value,
@@ -66,6 +66,7 @@ export const setColors = (cmsGlobalDesign: CMSColors, cmsTheme: string) => {
             navBackground: cmsGlobalDesign.color_23.value,
             BckdHeaderSocial: cmsGlobalDesign.color_24.value,
             NavText: cmsGlobalDesign.color_18.value,
+            navHover: cmsGlobalDesign.color_19.value,
             linkHover: cmsGlobalDesign.color_6.value,
             bckdContent: cmsGlobalDesign.color_22.value,
             footerText: cmsGlobalDesign.color_28.value,
@@ -88,6 +89,7 @@ export const setColors = (cmsGlobalDesign: CMSColors, cmsTheme: string) => {
             NavText: cmsGlobalDesign?.color_18.value,
             linkHover: cmsGlobalDesign?.color_7.value,
             footerText: cmsGlobalDesign?.color_12.value,
+            navHover: cmsGlobalDesign.color_19.value,
         }
     }
 }
@@ -256,22 +258,6 @@ export async function getPageData(params: any) {
     let page = await resPage.json()
 
     return { page }
-}
-
-export async function getOtherPageData() {
-    const resPage = await fetch(getDomain(false) + '/pages/' + 'home' + '.json')
-    let page = await resPage.json()
-
-    return { page }
-}
-
-export async function getOtherLayout() {
-    const resLayout = await fetch(getDomain(false) + '/layout.json', {
-        next: { revalidate: 5 },
-    })
-    const CMSLayout = await resLayout.json()
-
-    return { CMSLayout }
 }
 
 //Used to have conditional tag wraps around code without repeating inside code

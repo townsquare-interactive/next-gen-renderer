@@ -302,14 +302,14 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
     &.a1,
     &.a2 {
         //default alignments
-        .btn {
+        /*  .btn {
             align-self: flex-start;
 
             &.btn_w {
                 margin: auto 0 0;
                 width: 100%;
             }
-        }
+        } */
         .hd,
         .sh,
         .dsc {
@@ -318,13 +318,13 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
 
         //alignment modifiers
         .left {
-            .btn {
+            /*  .btn {
                 align-self: flex-start;
                 -ms-flex-item-align: flex-start;
             }
             .btn-wrap {
                 justify-content: left;
-            }
+            } */
         }
 
         .right {
@@ -334,13 +334,13 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
                 text-align: right;
             }
 
-            .btn {
+            /*  .btn {
                 align-self: flex-end;
                 -ms-flex-item-align: flex-end;
             }
             .btn-wrap {
                 justify-content: right;
-            }
+            } */
         }
 
         .center {
@@ -350,13 +350,13 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
                 text-align: center;
             }
 
-            .btn {
+            /*   .btn {
                 align-self: center;
                 -ms-flex-item-align: center;
             }
             .btn-wrap {
                 justify-content: center;
-            }
+            } */
         }
     }
 
@@ -423,9 +423,9 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
             } */
         }
 
-        .btn {
+        /*  .btn {
             align-self: flex-start;
-        }
+        } */
     }
 
     /* @include sm-min { */
@@ -478,8 +478,10 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
 
     &.root-contain .item {
         container-type: inline-size;
+        container-name: item;
     }
-    @container (min-width:0px) {
+
+    @container item (min-width:0px) {
         .dsc {
             font-size: 0.875em;
             margin-top: 1.1428571429em;
@@ -502,7 +504,7 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
         }
     }
     //temp: medium screens, need to revise size maybe
-    @container (min-width:300px) {
+    @container item (min-width:343px) {
         .hd {
             font-size: 1.5em;
             margin-top: 0.6666666667em;
@@ -532,7 +534,7 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
         }
     }
     //temp: container for mod_left/right on .medium/large, need to fix !important
-    @container (min-width:500px) {
+    @container item (min-width:637px) {
         .mod_left .image-block,
         .mod_right .image-block {
             width: $third-width;
@@ -547,8 +549,8 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
             margin-left: 1rem !important;
         }
     }
-    //for larger screens
-    @container (min-width:800px) {
+    //for larger screens (starts at 1025)
+    @container item (min-width:775px) {
         .hd {
             font-size: 2.25em;
             margin-top: 0.6666666667em;
@@ -583,6 +585,10 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
             margin-left: 2rem !important;
         }
     }
+
+    /*     .item-wrap {
+        padding: 2rem;
+    } */
 
     /* &.large {
         @include breakpoints.sm-min {
@@ -659,7 +665,7 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
         }
 
         &.a1 {
-            .btn-block,
+            /* .btn-block, */
             .dsc-block,
             .hd-block {
                 padding: 0 2rem 0;
@@ -700,7 +706,7 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
         &.a3,
         &.beacon {
             //changed from removed class txt-wrap to item-wrap
-            &.small {
+            /*  &.small {
                 .item-wrap {
                     padding: 1.5rem;
                 }
@@ -713,6 +719,29 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
             }
 
             &.large {
+                .item-wrap {
+                    padding: 2rem;
+
+                    @include breakpoints.lg-min {
+                        padding: 4rem 1.5rem;
+                    }
+                }
+            } */
+            /*             .item-wrap {
+                padding: 1.5rem;
+            } */
+
+            .item-wrap {
+                padding: 1.5rem;
+            }
+
+            @container item (min-width:637px) {
+                .item-wrap {
+                    padding: 3rem 2rem 2rem;
+                }
+            }
+
+            @container item (min-width:775px) {
                 .item-wrap {
                     padding: 2rem;
 

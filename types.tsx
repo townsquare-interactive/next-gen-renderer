@@ -51,7 +51,7 @@ export interface LayoutProps {
     children: ReactNode
     CMSLayout: GlobalData
     themeStyles: ThemeStyles
-    page?: CMSPage
+    page: CMSPage
 }
 
 export interface SocialBarProps {
@@ -446,6 +446,7 @@ export interface ItemWrapProps {
     columns: number | string
     modId: string
     cmsUrl?: string
+    align: string
 }
 
 export interface ModuleItemProps {
@@ -481,6 +482,8 @@ export interface BtnProps {
     btnSize2: string
     well?: string | number
     modId: string
+    type: string
+    align: string
 }
 
 export interface ConditionalWrapperProps {
