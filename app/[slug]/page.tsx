@@ -15,7 +15,7 @@ export async function generateStaticParams() {
     }))
 }
 
-const Slug = ({ params }: any) => {
+const Slug = ({ params }: { params: { slug: string } }) => {
     const { CMSLayout } = use(getLayout())
     const { page } = use(getPageData(params))
 

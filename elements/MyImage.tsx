@@ -1,6 +1,6 @@
 'use client'
 import styles from './myimage.module.scss'
-import { Media, TheListItemImageProps } from '../types'
+import { Media, MyImagesProps } from '../types'
 import Image from 'next/image'
 import cn from 'classnames'
 
@@ -11,8 +11,8 @@ import { useState } from 'react'
 import { faRocket, faAnchor, faArchway } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-export const MyImage = (props: TheListItemImageProps) => {
-    const { item, imageNoSizings, imgsize, cmsUrl, textColorAccent } = props
+export const MyImage = (props: MyImagesProps) => {
+    const { item, imgsize, cmsUrl, textColorAccent } = props
     const [imageHeight, setHeight] = useState(100)
     const [imageWidth, setWidth] = useState(300)
 
@@ -25,20 +25,14 @@ export const MyImage = (props: TheListItemImageProps) => {
 
     const imgSizes = ['landscape_4_3', 'square_1_1', 'portrait_3_4', 'portrait_2_3', 'widescreen_16_9', 'widescreen_3_1']
 
+    //non constrained images
+    const imageNoSizings = ['no_sizing', 'no_set_height']
+
     return (
         <>
             <div
-                className={cn(styles.image, {
-                    [styles.square_1_1]: imgsize === 'square_1_1',
-                    [styles.landscape_4_3]: imgsize === 'landscape_4_3' || !imgSizes.includes(imgsize) || !imgsize,
-                    [styles.landscape_3_2]: imgsize === 'landscape_3_2',
-                    [styles.portrait_3_4]: imgsize === 'portrait_3_4',
-                    [styles.portrait_2_3]: imgsize === 'portrait_2_3',
-                    [styles.widescreen_16_9]: imgsize === 'widescreen_16_9',
-                    [styles.widescreen_3_1]: imgsize === 'widescreen_3_1',
-                    [styles.widescreen_2_4_1]: imgsize === 'widescreen_2_4_1' || imgsize === 'widescreen_2-4_1',
-                    [styles.no_sizing]: imgsize === 'no_sizing',
-                    [styles.no_set_height]: imgsize === 'no_set_height',
+                className={cn(styles.image, styles[`${imgsize}`], {
+                    [styles.landscape_4_3]: !imgsize || (imgSizes.includes(imgsize) && imageNoSizings.includes(imgsize)),
                 })}
             >
                 {!imageNoSizings.includes(imgsize) ? (

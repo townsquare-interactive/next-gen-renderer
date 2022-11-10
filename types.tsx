@@ -399,9 +399,8 @@ export interface TheListItemProps {
     index: number
 }
 
-export interface TheListItemImageProps {
+export interface MyImagesProps {
     item: ArticleItems
-    imageNoSizings: string[]
     calcImageSize?: (loadedMedia: Media) => void
     imageWidth?: number
     imageHeight?: number
@@ -415,7 +414,6 @@ export interface TheListItemImageProps {
 }
 
 export interface TsiWrp {
-    imageNoSizings: string[]
     calcImageSize: (loadedMedia: Media) => void
     imageWidth: number
     imageHeight: number
@@ -431,7 +429,6 @@ export interface TsiWrp {
 }
 
 export interface ItemWrapProps {
-    imageNoSizings: string[]
     textColorAccent: Colors
     textColor: Colors
     imgsize: string
