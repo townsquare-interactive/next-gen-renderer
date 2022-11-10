@@ -69,21 +69,20 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
                     margin: 0;
                     margin-bottom: 0.5625em;
 
-                    .image {
+                    /*  .image {
                         position: relative;
                         margin: 0;
                         width: 100%;
                         max-width: 100%;
-                    }
+                    } */
 
-                    figcaption {
+                    /* figcaption {
                         display: block;
                         font-size: 0.75rem;
                         padding: 0.5rem 1rem;
                         text-align: center;
                         background: rgba(0, 0, 0, 0.5);
-                        /* z-index: 1;
-                        position: relative; */
+
                     }
 
                     .icon-block {
@@ -106,7 +105,7 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
                                 font-size: 6rem;
                             }
                         }
-                    }
+                    } */
                 }
 
                 .hd-block {
@@ -860,7 +859,7 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
     /*----------------------------------------------------------- End of Column Sizes -------------------------------------------*/
 
     //setting aspect ratio of images
-    &.square_1_1 .image-block .image {
+    /*     &.square_1_1 .image-block .image {
         aspect-ratio: math.div(1, 1);
     }
 
@@ -890,7 +889,7 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
 
     &.widescreen_2_4_1 .image-block .image {
         aspect-ratio: math.div(2000, 830);
-    }
+    } */
 
     //font sizes
     .font_xs {

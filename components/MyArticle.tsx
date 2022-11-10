@@ -8,6 +8,7 @@ import { domainImage, ConditionalWrapper } from '../functions'
 import { ReactChild, useState } from 'react'
 import Link from 'next/link'
 import { Button } from '../elements/MyButton'
+import { MyImage } from '../elements/MyImage'
 
 // importing fontAwesome icons
 import { faRocket, faAnchor, faArchway } from '@fortawesome/free-solid-svg-icons'
@@ -368,20 +369,20 @@ const HeaderBlock = (props: any) => {
 }
 
 const ImageBlock = (props: TheListItemImageProps) => {
-    const { item, imageNoSizings } = props
-    const [imageHeight, setHeight] = useState(100)
+    const { item, imageNoSizings, textColor, imgsize, well, icon3, cmsUrl, textColorAccent, icons } = props
+    /*     const [imageHeight, setHeight] = useState(100)
     const [imageWidth, setWidth] = useState(300)
 
     const calcImageSize = (loadedMedia: Media) => {
         setWidth(loadedMedia.naturalWidth)
         setHeight(loadedMedia.naturalHeight)
-    }
+    } */
 
-    let icon = props.icon3 ? props.icons[props.icon3] : faRocket
+    //let icon = props.icon3 ? props.icons[props.icon3] : faRocket
 
     return (
-        <figure className={cn(styles['image-block'], styles['theframe'], styles['imgtag'], styles['imgbase'], styles['img-loaded'])} data-alt="Headline">
-            <div className={styles.image}>
+        <figure className={cn(styles['image-block'])} data-alt="Headline">
+            {/* <div className={styles.image}>
                 {!imageNoSizings.includes(props.imgsize) ? (
                     <Image
                         src={domainImage(item.image, true, props.cmsUrl || '')}
@@ -418,7 +419,19 @@ const ImageBlock = (props: TheListItemImageProps) => {
                     </div>
                 )}
             </div>
-            {item.caption_tag && <figcaption style={props.textColorAccent}>{item.caption_tag}</figcaption>}
+            {item.caption_tag && <figcaption style={props.textColorAccent}>{item.caption_tag}</figcaption>} */}
+            <MyImage
+                item={item}
+                imageNoSizings={imageNoSizings}
+                textColorAccent={textColorAccent}
+                textColor={textColor}
+                imgsize={imgsize}
+                well={well}
+                //temp: can prob call icons in Image
+                icons={icons}
+                icon3={icon3}
+                cmsUrl={cmsUrl}
+            />
         </figure>
     )
 }
