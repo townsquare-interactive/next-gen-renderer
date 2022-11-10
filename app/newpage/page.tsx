@@ -2,27 +2,9 @@ import Head from 'next/head'
 import { Renderer } from 'components/Renderer'
 import test from '../../test.json'
 
-/* async function getOtherPageData() {
-    const resPage = await fetch(encodeURI('https://townsquareinteractive.s3.amazonaws.com/elitesports.com/preview/pages/home.json'))
-    let page = await resPage.json()
-
-    return { page }
-} */
-
-/* export async function getOtherLayout() {
-    const resLayout = await fetch(getDomain(false) + '/layout.json', {
-        next: { revalidate: 5 },
-    })
-    const CMSLayout = await resLayout.json()
-
-    return { CMSLayout }
-} */
-
 const Home = () => {
-    /*  const { CMSLayout } = use(getOtherLayout()) */
-
     const page = test
-    console.log(page)
+    /* console.log(page) */
 
     const themeStyles = {
         mainColor: '#365070',

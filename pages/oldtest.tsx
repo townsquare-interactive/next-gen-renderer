@@ -4,8 +4,6 @@ import test from '../test.json'
 
 /* import getData from '../functions' */
 
-import { Fragment, use } from 'react'
-
 const Home = () => {
     const page = test
 

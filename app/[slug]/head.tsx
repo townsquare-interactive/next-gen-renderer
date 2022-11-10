@@ -1,10 +1,12 @@
 import { getLayout, getPageData, domainImage } from 'functions'
 
-export default async function Head({ params }: any) {
+export default async function Head({ params }: { params: { slug: string } }) {
     const { CMSLayout } = await getLayout()
     const { page } = await getPageData(params)
 
     const cmsUrl = CMSLayout.cmsUrl
+
+    console.log(params)
 
     return (
         <>

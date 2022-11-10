@@ -1,13 +1,12 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.scss'
-import { HomeProps, PageListProps, Context } from '../types'
+import { HomeProps, Context } from '../types'
 import Layout from '../components/Layout'
 import { Renderer } from '../components/Renderer'
 import { useRouter } from 'next/router'
-import { getDomain, decideColumns, setColors, domainImage, findHomePageSlug } from '../functions'
+import { getDomain, decideColumns, setColors, domainImage, findHomePageSlug, createInlineStyles } from '../functions'
 import cn from 'classnames'
 import { Fragment } from 'react'
-import Image from 'next/image'
 
 //runs at build time just like static props
 export const getStaticProps = async (context: Context) => {
@@ -36,20 +35,9 @@ const Home = (props: HomeProps) => {
     let { page, CMSLayout, pageList } = props
     const router = useRouter()
 
-    /*  const cmsGlobalDesign = cmsGlobal ? cmsGlobal.design : '' */
     const cmsTheme = CMSLayout.theme || 'charlotte'
 
-    /*     for (let i = 0; i < CMSLayout.modules.length; i++) {
-        CMSLayout.modules[i].attributes.pages = pageList.pages
-    }
- */
-
     const themeStyles = setColors(CMSLayout.cmsColors, cmsTheme)
-
-    //setting themestyles in CMSLayout, will probably change later
-    //CMSLayout = { ...CMSLayout, themeStyles: setColors(cmsGlobalDesign?.colors, cmsTheme) }
-
-    /*  CMSLayout.themeStyles = setColors(cmsGlobalDesign?.colors, cmsTheme) */
 
     if (!page.data.sections) {
         /*  page.data = {
@@ -79,11 +67,7 @@ const Home = (props: HomeProps) => {
 
     //Global styles
 
-    const textColors = `.accent-txt{color:${themeStyles['textColorAccent']}} .txt-color{color:${themeStyles['textColor']}} .txt-color-heading{color:${themeStyles['headingColor']}} .navLink:hover{color: ${themeStyles['navHover']}} .navLink{color:${themeStyles['NavText']}} .socialIcon:hover{background-color: ${themeStyles['navHover']}} .socialIcon{color:${themeStyles['NavText']}}`
-
-    const btnStyles = `.btn_1{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['mainColor']}} .btn_1:hover{color: ${themeStyles['mainColor']}; background-color: ${themeStyles['textColorAccent']}} .btn_2{color: ${themeStyles['altColor']}; border-color: ${themeStyles['altColor']}} .btn_2:hover{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['altColor']}}`
-
-    const colorStyles = textColors + btnStyles
+    const colorStyles = createInlineStyles(themeStyles)
 
     //temp: temporary change need to change back, just using for pictures right now
     /* const cmsUrl = cmsGlobal ? cmsGlobal.config.website.url : '' */

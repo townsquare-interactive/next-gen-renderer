@@ -10,10 +10,6 @@ body {
     -webkit-text-size-adjust: 100%;
 }
 
-.text {
-    font-family: var(--inter-font);
-}
-
 a {
     color: inherit;
     text-decoration: none;

@@ -1,11 +1,8 @@
-import Head from 'next/head'
 import styles from '../../styles/Home.module.scss'
-import { HomeProps, PageListProps } from '../../types'
+import { PageListProps } from '../../types'
 import Layout from '../../components/Layout'
 import { Renderer } from '../../components/Renderer'
-/* import { useRouter } from 'next/dist/client/router' */
-import { getDomain, decideColumns, setColors, domainImage, getPageData, getLayout } from '../../functions'
-/* import getData from '../../functions' */
+import { getDomain, decideColumns, setColors, getPageData, getLayout, createInlineStyles } from '../../functions'
 import cn from 'classnames'
 import { Fragment, use } from 'react'
 
@@ -28,20 +25,9 @@ const Slug = ({ params }: any) => {
 
     const columnStyles = page ? decideColumns(page.data) : 'wide-column'
 
-    //setting color classes
-    const textColors = `.accent-txt{color:${themeStyles['textColorAccent']}} .txt-color{color:${themeStyles['textColor']}} .txt-color-heading{color:${themeStyles['headingColor']}} .navLink:hover{color: ${themeStyles['navHover']}} .navLink{color:${themeStyles['NavText']}} .socialIcon:hover{background-color: ${themeStyles['navHover']}} .socialIcon{color:${themeStyles['NavText']}}`
-
-    const btnStyles = `.btn_1{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['mainColor']}} .btn_1:hover{color: ${themeStyles['mainColor']}; background-color: ${themeStyles['textColorAccent']}} .btn_2{color: ${themeStyles['altColor']}; border-color: ${themeStyles['altColor']}} .btn_2:hover{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['altColor']}}`
-
-    const colorStyles = textColors + btnStyles
+    const colorStyles = createInlineStyles(themeStyles)
 
     const cmsUrl = CMSLayout.cmsUrl
-
-    // If the page is not yet generated, this will be displayed
-    // initially until getStaticProps() finishes running
-    /*   if (router.isFallback) {
-        return <div>Loading...</div>
-    } */
 
     return (
         <>

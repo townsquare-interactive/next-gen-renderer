@@ -1,10 +1,5 @@
 import styles from './mytext.module.scss'
-
 import Parser from 'html-react-parser'
-// importing fontAwesome icons
-import { faRocket, faAnchor, faArchway } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
 
 const MyText = (props: any) => {
     const { title, text } = props
