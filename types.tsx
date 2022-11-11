@@ -69,11 +69,11 @@ export interface GlobalData {
     seo?: SeoData
     url?: string
     email?: string
-    social: [SocialItem]
+    social: SocialItem[]
     siteName?: string
     phoneNumber?: String
     themeStyles: ThemeStyles
-    contact: { email: any; phone: any; hours: any; address: any }
+    contact: { email: any; phone: any; hours?: any; address?: any }
     cmsNav?: [NavItem]
     logos?: Logo
     mobileLogos?: Logo
@@ -89,7 +89,7 @@ export interface SocialItem {
     enabled: number
     format: string
     id: number
-    input: [string] | null
+    input: any
     label: string
     name: string
     url: string
@@ -432,6 +432,7 @@ export interface TsiWrp {
     item: ArticleItems
     textColorHeading: { color: string }
     themeStyles: ThemeStyles
+    imageNoSizings: any
 }
 
 export interface ItemWrapProps {
@@ -851,6 +852,21 @@ export interface SeoData {
     descr?: string
     imageOverride?: any
     selectedImage?: string
+}
+
+export interface TheListItemImageProps {
+    item: ArticleItems
+    calcImageSize?: (loadedMedia: Media) => void
+    imageWidth?: number
+    imageHeight?: number
+    textColorAccent: Colors
+    textColor: Colors
+    imgsize: string
+    well: string | number
+    icons: { [key: string]: IconProp }
+    icon3?: string
+    cmsUrl?: string
+    imageNoSizings: any
 }
 
 /*----------------------------Elements--------------------------------------*/
