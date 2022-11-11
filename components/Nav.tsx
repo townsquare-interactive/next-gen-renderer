@@ -26,16 +26,7 @@ const Nav = (props: Pagelist) => {
 
     return (
         <nav className={styles.access}>
-            <ul
-                className={cn(
-                    styles.menu,
-                    styles[`${navType}`] /* {
-                    [styles['desktop-nav']]: navType == 'desktop',
-                    [styles['mobile-nav']]: navType == 'mobile',
-                    [styles['footer-nav']]: navType == 'footer',
-                } */
-                )}
-            >
+            <ul className={cn(styles.menu, styles[`${navType}`])}>
                 {cmsNav &&
                     cmsNav.map((item: NavItem, index: number) => (
                         <Fragment key={index}>
@@ -43,25 +34,14 @@ const Nav = (props: Pagelist) => {
                                 <li>
                                     <NavItem item={item} arrow={item.submenu?.length ? true : false} />
                                     {item.submenu && (
-                                        <ul
-                                            className={cn(
-                                                styles['sub-menu'] /* {
-                                                [styles['sub-menu']]: navType === 'desktop-nav',
-                                                // [styles['sub-menu']]: navType === 'mobile-nav',
-                                            } */
-                                            )}
-                                        >
+                                        <ul className={cn(styles['sub-menu'])}>
                                             {item.submenu.map((subItem: any, idx: number) => (
                                                 <Fragment key={idx}>
                                                     <li>
                                                         <NavItem item={subItem} />
                                                     </li>
                                                     {subItem.submenu && (
-                                                        <ul
-                                                            className={cn(styles['sub-menu'], {
-                                                                /* [styles['sub-menu']]: navType === 'desktop-nav', */
-                                                            })}
-                                                        >
+                                                        <ul className={cn(styles['sub-menu'], {})}>
                                                             {subItem.submenu.map((subItem2: any, subidx: number) => (
                                                                 <li key={subidx}>
                                                                     <NavItem item={subItem2} />

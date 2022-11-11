@@ -3,7 +3,7 @@ import styles from './myfooter.module.scss'
 import cn from 'classnames'
 import Nav from './Nav'
 import Logo from './Logo'
-import { MyFooterProps } from '../types'
+import { MyFooterProps, CompositeItem } from '../types'
 import { domainImage } from '../functions'
 import SocialLinks from 'elements/SocialLinks'
 import MyText from 'elements/MyText'
@@ -17,7 +17,7 @@ const MyFooter = (props: MyFooterProps) => {
         <footer className={styles.root} style={{ backgroundColor: themeStyles.footerBackground, color: themeStyles.footerText }}>
             <div className={styles.wrapper}>
                 <div className={styles.content}>
-                    {CMSLayout.composites?.footer?.modules.items.map((item: any, index: number) => (
+                    {CMSLayout.composites?.footer?.modules.items.map((item: CompositeItem, index: number) => (
                         <div key={index} className={styles.item}>
                             {item.component === 'text' && <MyText text={item.text} title={item.title} />}
                             {item.component === 'enhancedtext' && <MyText text={item.text} title={item.title} />}

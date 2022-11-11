@@ -23,7 +23,7 @@ export const getStaticProps = async (context: Context) => {
     let page = await resPage.json()
 
     return {
-        props: { page, CMSLayout, pageList },
+        props: { page, CMSLayout },
         // Next.js will attempt to re-generate the page:
         // - When a request comes in
         // - At most once every 10 seconds
@@ -32,7 +32,7 @@ export const getStaticProps = async (context: Context) => {
 }
 
 const Home = (props: HomeProps) => {
-    let { page, CMSLayout, pageList } = props
+    let { page, CMSLayout } = props
     const router = useRouter()
 
     const cmsTheme = CMSLayout.theme || 'charlotte'

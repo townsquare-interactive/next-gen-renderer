@@ -1,6 +1,6 @@
 'use client'
 import styles from './myArticle.module.scss'
-import { ArticleProps, ItemWrapProps, ModuleItemProps, MyImagesProps } from '../types'
+import { ArticleProps, ItemWrapProps, ModuleItemProps, HeaderBlock } from '../types'
 import cn from 'classnames'
 import Parser from 'html-react-parser'
 import { ConditionalWrapper } from '../functions'
@@ -21,7 +21,6 @@ const MyArticle = (props: ArticleProps) => {
         color: themeStyles['headingColor'],
     }
 
-    const imgSizes = ['landscape_4_3', 'square_1_1', 'portrait_3_4', 'portrait_2_3', 'widescreen_16_9', 'widescreen_3_1']
     if (disabled != 'disabled') {
         return (
             <div
@@ -35,21 +34,7 @@ const MyArticle = (props: ArticleProps) => {
                     [styles.large]: columns == 1 && (width === '736' || width === '652' || width === '938' || width === '1060' || width === '988'),
                     [styles.medium]: columns == 2,
                     [styles.small]: columns == 3 || columns == 4,
-                    /* [styles.col_1]: columns == 1,
-                    [styles.col_2]: columns == 2,
-                    [styles.col_3]: columns == 3,
-                    [styles.col_4]: columns == 4, */
                     [styles[`cst_${props.class}`]]: props.class,
-                    /* [styles.square_1_1]: imgsize === 'square_1_1',
-                     [styles.landscape_4_3]: imgsize === 'landscape_4_3' || !imgSizes.includes(imgsize) || !imgsize,
-                    [styles.landscape_3_2]: imgsize === 'landscape_3_2',
-                    [styles.portrait_3_4]: imgsize === 'portrait_3_4',
-                    [styles.portrait_2_3]: imgsize === 'portrait_2_3',
-                    [styles.widescreen_16_9]: imgsize === 'widescreen_16_9',
-                    [styles.widescreen_3_1]: imgsize === 'widescreen_3_1',
-                    [styles.widescreen_2_4_1]: imgsize === 'widescreen_2_4_1' || imgsize === 'widescreen_2-4_1',
-                    [styles.no_sizing]: imgsize === 'no_sizing',
-                    [styles.no_set_height]: imgsize === 'no_set_height', */
                     [styles['full-width']]: width === '938' || width === '1060' || width === '988' || !width,
                     [styles['med-width']]: width === '736' || width === '652',
                 })}
@@ -143,9 +128,6 @@ const ModuleItem = (props: ModuleItemProps) => {
                 styles['item'],
                 styles[`${item.align}`],
                 {
-                    /* [styles.right]: item.align === 'right',
-                    [styles.left]: item.align === 'left', 
-                       [styles.center]: item.align === 'center',*/
                     [styles.hero]: item.isFeatured === 'active',
                     [styles.nHero]: !item.isFeatured,
                     [styles.yDsc]: item.desc,
@@ -154,7 +136,6 @@ const ModuleItem = (props: ModuleItemProps) => {
                     [styles.yImg]: item.image,
                     [styles.yHds]: item.headline || item.subheader,
                     [styles.nHds]: !item.headline || !item.subheader,
-
                     [styles.mod_left]: item.align === 'left' && (type === 'article_3' || type === 'article'),
                     [styles.mod_right]: item.align === 'right' && (type === 'article_3' || type === 'article'),
                     [styles.mod_center]: item.align === 'center' && (type === 'article_3' || type === 'article'),
@@ -308,7 +289,7 @@ const ItemWrap = (props: ItemWrapProps) => {
     )
 }
 
-const HeaderBlock = (props: any) => {
+const HeaderBlock = (props: HeaderBlock) => {
     const { item, columns, well, beaconHero } = props
     //Finding tag types for headline and subjeadline
     const HeadTag = decideHeadTag('hd')
@@ -355,58 +336,11 @@ const HeaderBlock = (props: any) => {
     )
 }
 
-const ImageBlock = (props: MyImagesProps) => {
+/* const ImageBlock = (props: MyImagesProps) => {
     const { item, textColor, imgsize, well, icon3, cmsUrl, textColorAccent, icons } = props
-    /*     const [imageHeight, setHeight] = useState(100)
-    const [imageWidth, setWidth] = useState(300)
-
-    const calcImageSize = (loadedMedia: Media) => {
-        setWidth(loadedMedia.naturalWidth)
-        setHeight(loadedMedia.naturalHeight)
-    } */
-
-    //let icon = props.icon3 ? props.icons[props.icon3] : faRocket
 
     return (
         <figure className={cn(styles['image-block'])} data-alt="Headline">
-            {/* <div className={styles.image}>
-                {!imageNoSizings.includes(props.imgsize) ? (
-                    <Image
-                        src={domainImage(item.image, true, props.cmsUrl || '')}
-                        fill
-                        alt={item.img_alt_tag || ''}
-                        quality="50"
-                        priority={item.desc ? false : true}
-                        style={{ objectFit: 'cover', objectPosition: 'top' }}
-                        sizes="(max-width: 1920px) 100vw,
-                        (max-width: 1200px) 50vw,
-                        100vw"
-                    />
-                ) : (
-                    //Setting width and height to image props if nosizing added
-                    <Image
-                        src={domainImage(item.image, true, props.cmsUrl || '')}
-                        onLoadingComplete={calcImageSize}
-                        width={imageWidth}
-                        height={imageHeight}
-                        alt={item.img_alt_tag || ''}
-                        quality="50"
-                        priority={item.desc ? false : true}
-                        style={{ width: '100%', height: 'auto' }}
-                        sizes="(max-width: 1920px) 100vw,
-                        (max-width: 1200px) 70vw,
-                        100vw"
-                    />
-                )}
-                {item.icon3 && (
-                    <div className={cn(styles['icon-block'])}>
-                        <div className={styles.icon}>
-                            <FontAwesomeIcon icon={icon} />
-                        </div>
-                    </div>
-                )}
-            </div>
-            {item.caption_tag && <figcaption style={props.textColorAccent}>{item.caption_tag}</figcaption>} */}
             <MyImage
                 item={item}
                 textColorAccent={textColorAccent}
@@ -420,6 +354,6 @@ const ImageBlock = (props: MyImagesProps) => {
             />
         </figure>
     )
-}
+} */
 
 export default MyArticle

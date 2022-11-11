@@ -23,13 +23,13 @@ export interface ThemeStyles {
 }
 
 export interface HomeProps {
-    moduleData: ModuleData
+    // moduleData?: ModuleData
     /* globalData: GlobalData */
     CMSLayout: GlobalData
     page: CMSPage
-    cmsGlobal: CMSGlobal
-    pageMods: PageProps
-    pageList: Pagelist
+    //cmsGlobal?: CMSGlobal
+    // pageMods?: PageProps
+    //pageList?: Pagelist
 }
 
 export interface CMSGlobal {
@@ -69,13 +69,12 @@ export interface GlobalData {
     seo?: SeoData
     url?: string
     email?: string
-    //social?: [string]
-    social: any
+    social: [SocialItem]
     siteName?: string
     phoneNumber?: String
     themeStyles: ThemeStyles
-    contact: any
-    cmsNav?: any
+    contact: { email: any; phone: any; hours: any; address: any }
+    cmsNav?: [NavItem]
     logos?: Logo
     mobileLogos?: Logo
     footerLogos?: Logo
@@ -102,10 +101,10 @@ interface CompositeData {
     layout: null | string
     columns: number
     sections: null | string
-    modules: { items: [CompositeItems]; type: string }
+    modules: { items: [CompositeItem]; type: string }
 }
 
-interface CompositeItems {
+export interface CompositeItem {
     filter: boolean
     title: string
     component: string
@@ -451,6 +450,13 @@ export interface ItemWrapProps {
     modId: string
     cmsUrl?: string
     align: string
+}
+
+export interface HeaderBlock {
+    item: ArticleItems
+    columns: number | string
+    well: string | number
+    beaconHero: boolean
 }
 
 export interface ModuleItemProps {
