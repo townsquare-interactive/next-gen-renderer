@@ -248,12 +248,13 @@ export async function getLayout() {
     const resLayout = await fetch(getDomain(true) + '/layout.json', {
         next: { revalidate: 5 },
     })
+
     const CMSLayout = await resLayout.json()
 
     return { CMSLayout }
 }
 
-export async function getPageData(params: any) {
+export async function getPageData(params: { slug: string }) {
     let pageSlug
     if (!params) {
         const resPageList = await fetch(getDomain(true) + '/pages/page-list.json')

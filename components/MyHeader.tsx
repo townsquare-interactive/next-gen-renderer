@@ -1,6 +1,6 @@
 'use client'
 import styles from './myheader.module.scss'
-import { MyHeaderProps, SocialBarProps } from '../types'
+import { MyHeaderProps, SocialBarProps, ContactLink } from '../types'
 import cn from 'classnames'
 import { domainImage } from '../functions'
 import { useState, useEffect } from 'react'
@@ -59,7 +59,7 @@ const MyHeader = (props: MyHeaderProps) => {
                     </div>
                 )}
 
-                <Nav navType={'desktop'} cmsNav={CMSLayout.cmsNav} themeStyles={themeStyles} />
+                <Nav navType={'desktop-nav'} cmsNav={CMSLayout.cmsNav} themeStyles={themeStyles} />
                 <NavToggle navSwitch={navSwitch} themeStyles={themeStyles} />
             </div>
             <SocialBar CMSLayout={CMSLayout} themeStyles={themeStyles} />
@@ -74,31 +74,37 @@ const SocialBar = ({ CMSLayout, themeStyles }: SocialBarProps) => {
             <aside className={styles.contact}>
                 <ul>
                     {CMSLayout.contact.phone[0] && (
-                        <li className={cn(styles.icon, styles.phone)}>
-                            <Link href={'tel:' + CMSLayout.contact.phone[0].number} aria-label="phone" className={cn('socialIcon')} passHref>
-                                <FontAwesomeIcon icon={faPhone} /> {CMSLayout.contact.phone[0].number}
-                            </Link>
-                        </li>
+                        <ContactLink
+                            cname="phone"
+                            link={'tel:' + CMSLayout.contact.phone[0].number}
+                            icon={faPhone}
+                            content={CMSLayout.contact.phone[0].number}
+                        />
                     )}
                     {CMSLayout.contact.email[0] && (
-                        <li className={cn(styles.icon, styles.email)}>
-                            <Link href={`mailto:${CMSLayout.contact.email[0].email}`} aria-label="email" className={cn('socialIcon')} passHref>
-                                <FontAwesomeIcon icon={faEnvelope} /> {CMSLayout.contact.email[0].name}:{CMSLayout.contact.email[0].email}
-                            </Link>
-                        </li>
+                        <ContactLink
+                            cname="email"
+                            link={`mailto:${CMSLayout.contact.email[0].email}`}
+                            icon={faEnvelope}
+                            content={CMSLayout.contact.email[0].name + ':' + CMSLayout.contact.email[0].email}
+                        />
                     )}
 
-                    {CMSLayout.siteName && (
-                        <li className={cn(styles.icon, styles.map)}>
-                            <a href={'www.google.com'} aria-label="location" className={cn('socialIcon')}>
-                                <FontAwesomeIcon icon={faLocationPin} />
-                                {CMSLayout.siteName}
-                            </a>
-                        </li>
-                    )}
+                    {CMSLayout.siteName && <ContactLink cname="map" link={'www.google.com'} icon={faLocationPin} content={CMSLayout.siteName} />}
                 </ul>
             </aside>
         </div>
+    )
+}
+
+const ContactLink = ({ cname, link, icon, content }: ContactLink) => {
+    return (
+        <li className={cn(styles[`${cname}`], styles.icon)}>
+            <a href={link} aria-label={cname} className={cn('socialIcon')}>
+                <FontAwesomeIcon icon={icon} />
+                {content}
+            </a>
+        </li>
     )
 }
 

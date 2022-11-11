@@ -9,24 +9,13 @@
     opacity: 1;
     max-width: initial;
     cursor: pointer;
-
-    // &:before {
-    //font-family: "tsi-cms";
-    //content: "a";
-    //content: 'O';
     font-size: 1.5em;
-
     line-height: 1.1666666667em;
     letter-spacing: -0.0125rem;
     font-weight: 400;
     vertical-align: middle;
     border: none;
     margin: 0.5em auto;
-
-    //added
-    svg {
-        width: 0.8em;
-    }
 
     @include breakpoints.sm {
         margin-top: 0.6666666667em;
@@ -43,16 +32,12 @@
 
     &.foot-toggle {
         font-size: 0.8em;
-        /* margin-top: 0.6666666667em;
-        margin-bottom: 0.5em; */
         margin-left: auto;
         line-height: 1.1666666667em;
         letter-spacing: -0.0125rem;
         font-weight: 400;
         vertical-align: middle;
         display: inline-block;
-
-        //temp: added
         display: flex;
         justify-content: center;
         gap: 0.5rem;

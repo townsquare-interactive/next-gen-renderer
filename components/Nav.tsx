@@ -14,8 +14,8 @@ const Nav = (props: Pagelist) => {
                 passHref={true}
                 className={cn({
                     [styles.arrow]: arrow == true,
-                    ['navLink']: navType === 'desktop' || navType === 'mobile',
-                    ['socialIcon']: navType === 'footer',
+                    ['navLink']: navType === 'desktop-nav' || navType === 'mobile-nav',
+                    ['socialIcon']: navType === 'footer-nav',
                 })}
                 aria-label={item.title}
             >
@@ -25,13 +25,16 @@ const Nav = (props: Pagelist) => {
     }
 
     return (
-        <div className={styles.access}>
+        <nav className={styles.access}>
             <ul
-                className={cn(styles.menu, {
+                className={cn(
+                    styles.menu,
+                    styles[`${navType}`] /* {
                     [styles['desktop-nav']]: navType == 'desktop',
                     [styles['mobile-nav']]: navType == 'mobile',
                     [styles['footer-nav']]: navType == 'footer',
-                })}
+                } */
+                )}
             >
                 {cmsNav &&
                     cmsNav.map((item: NavItem, index: number) => (
@@ -41,10 +44,12 @@ const Nav = (props: Pagelist) => {
                                     <NavItem item={item} arrow={item.submenu?.length ? true : false} />
                                     {item.submenu && (
                                         <ul
-                                            className={cn({
-                                                [styles['sub-menu']]: navType === 'desktop',
-                                                [styles['sub-menu-mob']]: navType === 'mobile',
-                                            })}
+                                            className={cn(
+                                                styles['sub-menu'] /* {
+                                                [styles['sub-menu']]: navType === 'desktop-nav',
+                                                // [styles['sub-menu']]: navType === 'mobile-nav',
+                                            } */
+                                            )}
                                         >
                                             {item.submenu.map((subItem: any, idx: number) => (
                                                 <Fragment key={idx}>
@@ -53,8 +58,8 @@ const Nav = (props: Pagelist) => {
                                                     </li>
                                                     {subItem.submenu && (
                                                         <ul
-                                                            className={cn({
-                                                                [styles['sub-menu']]: navType === 'desktop',
+                                                            className={cn(styles['sub-menu'], {
+                                                                /* [styles['sub-menu']]: navType === 'desktop-nav', */
                                                             })}
                                                         >
                                                             {subItem.submenu.map((subItem2: any, subidx: number) => (
@@ -73,7 +78,7 @@ const Nav = (props: Pagelist) => {
                         </Fragment>
                     ))}
             </ul>
-        </div>
+        </nav>
     )
 }
 

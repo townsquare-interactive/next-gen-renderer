@@ -1,103 +1,111 @@
 @use '../styles/breakpoints.scss';
 
 .root {
-    z-index: 9999;
-    padding: 1rem 1.5rem 0;
-    position: fixed;
-    top: 0;
-    height: 100vh;
-    max-height: -webkit-fill-available;
-    transition: all 0.2s ease-in-out;
-    width: 80%;
+    &.visible {
+        background: rgb(0, 0, 0, 0.5);
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        opacity: 1;
+        visibility: visible;
+        z-index: 7000;
 
-    @include breakpoints.sm-min {
-        width: 50%;
+        .wrapper {
+            right: 0;
+        }
     }
 
-    @include breakpoints.lg-min {
-        width: 30%;
-    }
-
-    .mobile-body {
-        overflow: auto;
-        position: relative;
-        padding: 1rem;
-        height: 100%;
-    }
-
-    &.hidden {
+    &.hidden .wrapper {
         right: -100%;
         width: 30%;
     }
 
-    &.visible {
-        right: 0;
-    }
-
-    .nav-toggle {
-        //close
-        right: auto;
-        left: -1rem;
-        top: 1.75rem;
-        border-radius: 2px;
-        font-family: 'tsi-cms';
-        font-size: 1.0625em;
-        // margin-top: 0.7058823529em;
-        // margin-bottom: 0.4705882353em;
-        line-height: 1.1764705882em;
-        margin: 0;
-        padding: 0.25rem 0.5rem;
-        position: absolute;
-        top: 0.75rem;
-        right: 1rem;
-        text-decoration: none;
-        z-index: 400;
-
-        //trigger
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        -ms-appearance: none;
-        -o-appearance: none;
-        appearance: none;
-        -webkit-font-smoothing: antialiased;
-        border: none;
-        cursor: pointer;
-        display: inline-block;
-        font-family: inherit;
-        text-decoration: none;
-        text-align: center;
-        user-select: none;
-        white-space: normal;
-        margin: 0;
-        padding: 0;
-        outline: none;
-        border: none;
-
-        //button
-        vertical-align: baseline;
-
-        //temp
-        width: 2rem;
-        height: 1.6rem;
-
-        &:before {
-            content: 'x';
-            //temp
-            font-size: 1.3rem;
-        }
-    }
-
-    .social {
+    .wrapper {
+        z-index: 9999;
         padding: 1rem 1.5rem 0;
+        position: fixed;
+        top: 0;
+        height: 100vh;
+        max-height: -webkit-fill-available;
+        transition: all 0.2s ease-in-out;
+        width: 80%;
 
-        //temp
-        font-size: 3rem;
-        text-align: center;
-    }
+        @include breakpoints.sm-min {
+            width: 50%;
+        }
 
-    .access {
-        li {
-            display: block !important;
+        @include breakpoints.lg-min {
+            width: 30%;
+        }
+
+        .access {
+            overflow: auto;
+            position: relative;
+            padding: 1rem;
+            height: 100%;
+        }
+
+        .nav-toggle {
+            //close
+            right: auto;
+            left: -1rem;
+            top: 1.75rem;
+            border-radius: 2px;
+            font-family: 'tsi-cms';
+            font-size: 1.0625em;
+            // margin-top: 0.7058823529em;
+            // margin-bottom: 0.4705882353em;
+            line-height: 1.1764705882em;
+            margin: 0;
+            padding: 0.25rem 0.5rem;
+            position: absolute;
+            top: 0.75rem;
+            right: 1rem;
+            text-decoration: none;
+            z-index: 400;
+
+            //trigger
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            -ms-appearance: none;
+            -o-appearance: none;
+            appearance: none;
+            -webkit-font-smoothing: antialiased;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+            font-family: inherit;
+            text-decoration: none;
+            text-align: center;
+            user-select: none;
+            white-space: normal;
+            margin: 0;
+            padding: 0;
+            outline: none;
+            border: none;
+
+            //button
+            vertical-align: baseline;
+
+            //temp
+            width: 2rem;
+            height: 1.6rem;
+
+            &:before {
+                content: 'x';
+                //temp
+                font-size: 1.3rem;
+            }
+        }
+
+        .social {
+            padding: 1rem 1.5rem 0;
+
+            //temp
+            font-size: 3rem;
+            text-align: center;
         }
     }
 }

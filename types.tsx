@@ -151,6 +151,13 @@ export interface AltHeaderProps {
     CMSLayout: GlobalData
 }
 
+export interface ContactLink {
+    cname: string
+    link: string
+    icon: IconProp
+    content: string
+}
+
 export interface NavToggleProps {
     navSwitch?: () => void
     themeStyles: ThemeStyles

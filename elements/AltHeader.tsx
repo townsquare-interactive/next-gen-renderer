@@ -9,13 +9,12 @@ const AltHeader = (props: AltHeaderProps) => {
 
     return (
         <div
-            className={cn(styles['root'], {
-                [styles.hidden]: !navCheck,
+            className={cn(styles.root, {
                 [styles.visible]: navCheck,
+                [styles.hidden]: !navCheck,
             })}
-            style={{ background: themeStyles.headerBackground }}
         >
-            <div className={styles.wrapper}>
+            <div className={styles['wrapper']} style={{ background: themeStyles.headerBackground }}>
                 <button
                     className={styles['nav-toggle']}
                     onClick={navSwitch}
@@ -23,12 +22,12 @@ const AltHeader = (props: AltHeaderProps) => {
                     style={{ color: themeStyles.textColorAccent, backgroundColor: themeStyles.mainColor }}
                 ></button>
 
-                <div className={styles['mobile-body']}>
+                <div className={styles['access']}>
                     <div className={styles.social}>
                         <SocialLinks CMSLayout={CMSLayout} themeStyles={themeStyles} modType="mob-header" />
                     </div>
 
-                    <Nav navType={'mobile'} themeStyles={themeStyles} cmsNav={CMSLayout.cmsNav} />
+                    <Nav navType={'mobile-nav'} themeStyles={themeStyles} cmsNav={CMSLayout.cmsNav} />
                 </div>
             </div>
         </div>
