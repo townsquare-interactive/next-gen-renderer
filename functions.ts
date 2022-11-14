@@ -70,6 +70,7 @@ export const setColors = (cmsGlobalDesign: CMSColors, cmsTheme: string) => {
             linkHover: cmsGlobalDesign.color_6.value,
             bckdContent: cmsGlobalDesign.color_22.value,
             footerText: cmsGlobalDesign.color_28.value,
+            navCurrent: cmsGlobalDesign.color_20.value,
         }
     } else {
         return {
@@ -90,12 +91,13 @@ export const setColors = (cmsGlobalDesign: CMSColors, cmsTheme: string) => {
             linkHover: cmsGlobalDesign?.color_7.value,
             footerText: cmsGlobalDesign?.color_12.value,
             navHover: cmsGlobalDesign.color_19.value,
+            navCurrent: cmsGlobalDesign.color_19.value,
         }
     }
 }
 
 export function createInlineStyles(themeStyles: any) {
-    const textColors = `.accent-txt{color:${themeStyles['textColorAccent']}} .txt-color{color:${themeStyles['textColor']}} .txt-color-heading{color:${themeStyles['headingColor']}} .navLink:hover{color: ${themeStyles['navHover']}} .navLink{color:${themeStyles['NavText']}} .socialIcon:hover{background-color: ${themeStyles['navHover']}} .socialIcon{color:${themeStyles['NavText']}} `
+    const textColors = `.accent-txt{color:${themeStyles['textColorAccent']}} .txt-color{color:${themeStyles['textColor']}} .txt-color-heading{color:${themeStyles['headingColor']}} .navLink:hover{color: ${themeStyles['navHover']}} .navLink{color:${themeStyles['NavText']}} .socialIcon:hover{background-color: ${themeStyles['navHover']}} .socialIcon{color:${themeStyles['NavText']}} .currentNav{color:${themeStyles['navCurrent']}}`
 
     const btnStyles = `.btn_1{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['mainColor']}} .btn_1:hover{color: ${themeStyles['mainColor']}; background-color: ${themeStyles['textColorAccent']}} .btn_2{color: ${themeStyles['linkColor']}; border-color: ${themeStyles['linkColor']}} .btn_2:hover{color: ${themeStyles['mainColor']}; border-color: ${themeStyles['mainColor']}}`
 
@@ -201,55 +203,10 @@ export function extUrl(url: string) {
     }
 }
 
-/* export default async function getData(slug = '') {
-    //const slug = context.params.slug
-
-    //console.log(slug)
-
-    const resLayout = await fetch(getDomain(true) + '/layout.json', {
-        next: { revalidate: 5 },
-    })
-    const CMSLayout = await resLayout.json()
-
-    const resCmsGlobal = await fetch(getDomain(true) + '/siteData.json')
-    let cmsGlobal = await resCmsGlobal.json()
-
-    //add if home here
-    if (slug === '') {
-        const resPageList = await fetch(getDomain(true) + '/pages/page-list.json')
-        const pageList = await resPageList.json()
-        slug = findHomePageSlug(pageList)
-    }
-
-    const resPage = await fetch(getDomain(true) + '/pages/' + slug + '.json')
-    let page = await resPage.json()
-
-    return { CMSLayout: CMSLayout, cmsGlobal: cmsGlobal, page: page }
-} */
-
-async function getData() {
-    const resLayout = await fetch(getDomain(true) + '/layout.json', {
-        next: { revalidate: 5 },
-    })
-    const CMSLayout = await resLayout.json()
-
-    const resPageList = await fetch(getDomain(true) + '/pages/page-list.json')
-    const pageList = await resPageList.json()
-
-    const homePageSlug = findHomePageSlug(pageList)
-
-    const resPage = await fetch(getDomain(true) + '/pages/' + homePageSlug + '.json')
-    let page = await resPage.json()
-
-    return { CMSLayout: CMSLayout, page: page }
-}
-
 export async function getLayout() {
-    const resLayout = await fetch(
-        getDomain(true) + '/layout.json' /* {
-next: { revalidate: 5 },
-} */
-    )
+    const resLayout = await fetch(getDomain(true) + '/layout.json', {
+        next: { revalidate: 10 },
+    })
 
     const CMSLayout = await resLayout.json()
 
@@ -259,7 +216,9 @@ next: { revalidate: 5 },
 export async function getPageData(params: { slug: string }) {
     let pageSlug
     if (!params) {
-        const resPageList = await fetch(getDomain(true) + '/pages/page-list.json')
+        const resPageList = await fetch(getDomain(true) + '/pages/page-list.json', {
+            next: { revalidate: 10 },
+        })
         const pageList = await resPageList.json()
 
         pageSlug = findHomePageSlug(pageList)
@@ -267,7 +226,9 @@ export async function getPageData(params: { slug: string }) {
         pageSlug = params.slug
     }
 
-    const resPage = await fetch(getDomain(true) + '/pages/' + pageSlug + '.json')
+    const resPage = await fetch(getDomain(true) + '/pages/' + pageSlug + '.json', {
+        next: { revalidate: 10 },
+    })
     let page = await resPage.json()
 
     return { page }

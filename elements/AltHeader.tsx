@@ -5,7 +5,7 @@ import SocialLinks from './SocialLinks'
 import Nav from 'components/Nav'
 
 const AltHeader = (props: AltHeaderProps) => {
-    const { navSwitch, navCheck, themeStyles, CMSLayout } = props
+    const { navSwitch, navCheck, themeStyles, CMSLayout, currentPage } = props
 
     return (
         <div
@@ -27,7 +27,7 @@ const AltHeader = (props: AltHeaderProps) => {
                         <SocialLinks CMSLayout={CMSLayout} themeStyles={themeStyles} modType="mob-header" />
                     </div>
 
-                    <Nav navType={'mobile-nav'} themeStyles={themeStyles} cmsNav={CMSLayout.cmsNav} />
+                    <Nav navType={'mobile-nav'} themeStyles={themeStyles} cmsNav={CMSLayout.cmsNav} currentPage={currentPage} />
                 </div>
             </div>
         </div>

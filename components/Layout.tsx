@@ -9,7 +9,7 @@ import AltHeader from 'elements/AltHeader'
 import { domainImage } from 'functions'
 
 export default function Layout(props: LayoutProps) {
-    const { children, CMSLayout, themeStyles, page } = props
+    const { children, CMSLayout, themeStyles, page, currentPage } = props
     const [navCheck, setNav] = useState<boolean>(false)
     const [height, setHeight] = useState<number>(0)
 
@@ -20,9 +20,9 @@ export default function Layout(props: LayoutProps) {
     return (
         <>
             <div className={cn(styles.root)}>
-                <AltHeader navSwitch={navSwitch} navCheck={navCheck} themeStyles={themeStyles} CMSLayout={CMSLayout} />
+                <AltHeader navSwitch={navSwitch} navCheck={navCheck} themeStyles={themeStyles} CMSLayout={CMSLayout} currentPage={currentPage} />
 
-                <MyHeader CMSLayout={CMSLayout} themeStyles={themeStyles} navSwitch={navSwitch} setHeight={setHeight} />
+                <MyHeader CMSLayout={CMSLayout} themeStyles={themeStyles} navSwitch={navSwitch} setHeight={setHeight} currentPage={currentPage} />
 
                 <main style={{ marginTop: height }}>{children}</main>
 

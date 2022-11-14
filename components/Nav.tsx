@@ -1,11 +1,11 @@
 import styles from './nav.module.scss'
 import Link from 'next/dist/client/link'
 import cn from 'classnames'
-import { Pagelist, NavItem } from '../types'
+import { MyNavProps, NavItem } from '../types'
 import { Fragment } from 'react'
 
-const Nav = (props: Pagelist) => {
-    const { navType, cmsNav, themeStyles } = props
+const Nav = (props: MyNavProps) => {
+    const { navType, cmsNav, themeStyles, currentPage } = props
 
     const NavItem = ({ item, arrow = false }: any) => {
         return (
@@ -15,6 +15,7 @@ const Nav = (props: Pagelist) => {
                     [styles.arrow]: arrow == true,
                     ['navLink']: navType === 'desktop-nav' || navType === 'mobile-nav',
                     ['socialIcon']: navType === 'footer-nav',
+                    ['currentNav']: currentPage == item.title,
                 })}
                 aria-label={item.title}
             >

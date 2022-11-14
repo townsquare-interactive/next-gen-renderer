@@ -52,6 +52,7 @@ export interface LayoutProps {
     CMSLayout: GlobalData
     themeStyles: ThemeStyles
     page: CMSPage
+    currentPage: string
 }
 
 export interface SocialBarProps {
@@ -148,6 +149,7 @@ export interface AltHeaderProps {
     logoUrl?: string
     themeStyles: ThemeStyles
     CMSLayout: GlobalData
+    currentPage: string
 }
 
 export interface ContactLinkProps {
@@ -701,6 +703,14 @@ export interface Pagelist {
     navType?: string
     cmsNav?: any
     themeStyles?: ThemeStyles
+    currentPage: string
+}
+
+export interface MyNavProps {
+    navType?: string
+    cmsNav: any
+    themeStyles?: ThemeStyles
+    currentPage?: string
 }
 
 export interface FooterProps {
@@ -810,6 +820,7 @@ export interface MyHeaderProps {
     // navCheck: boolean
     navSwitch: () => void
     setHeight: (height: any) => void
+    currentPage: string
 }
 
 export interface MyFooterProps {

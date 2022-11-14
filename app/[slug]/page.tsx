@@ -7,7 +7,9 @@ import cn from 'classnames'
 import { Fragment, use } from 'react'
 
 export async function generateStaticParams() {
-    const res = await fetch(getDomain(true) + '/pages/page-list.json')
+    const res = await fetch(getDomain(true) + '/pages/page-list.json', {
+        next: { revalidate: 10 },
+    })
     const data = await res.json()
 
     return data.pages.map((page: PageListProps) => ({
@@ -29,9 +31,11 @@ const Slug = ({ params }: { params: { slug: string } }) => {
 
     const cmsUrl = CMSLayout.cmsUrl
 
+    const currentPage = params.slug
+
     return (
         <>
-            <Layout CMSLayout={CMSLayout} themeStyles={themeStyles} page={page}>
+            <Layout CMSLayout={CMSLayout} themeStyles={themeStyles} page={page} currentPage={currentPage}>
                 <style>{colorStyles}</style>
                 {page.data && (
                     <div className={styles.root} style={{ backgroundColor: themeStyles.bckdContent }}>
