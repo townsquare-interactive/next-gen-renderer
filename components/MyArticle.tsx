@@ -1,6 +1,6 @@
 'use client'
 import styles from './myArticle.module.scss'
-import { ArticleProps, ItemWrapProps, ModuleItemProps, HeaderBlock } from '../types'
+import { ArticleProps, ItemWrapProps, ModuleItemProps, HeaderBlockProps } from '../types'
 import cn from 'classnames'
 import Parser from 'html-react-parser'
 import { ConditionalWrapper } from '../functions'
@@ -41,7 +41,7 @@ const MyArticle = (props: ArticleProps) => {
             >
                 <div className={styles.wrapper}>
                     {title && (
-                        <h2 className={cn(styles['mod-title'], styles['section_title'], 'head-text')} data-title="module headline">
+                        <h2 className={cn(styles['mod-title'], styles['section_title'], 'txt-color-heading')} data-title="module headline">
                             <span>{title}</span>
                         </h2>
                     )}
@@ -274,13 +274,14 @@ const ItemWrap = (props: ItemWrapProps) => {
                     modId={modId}
                     type={type}
                     align={align}
+                    columns={columns}
                 />
             )}
         </>
     )
 }
 
-const HeaderBlock = (props: HeaderBlock) => {
+const HeaderBlock = (props: HeaderBlockProps) => {
     const { item, columns, well, isBeaconHero } = props
     //Finding tag types for headline and subjeadline
     const HeadTag = decideHeadTag('hd')

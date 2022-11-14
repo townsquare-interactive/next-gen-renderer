@@ -61,6 +61,12 @@
     &.widescreen_2_4_1 {
         aspect-ratio: math.div(2000, 830);
     }
+
+    &.no_sizing {
+        img {
+            position: relative !important;
+        }
+    }
 }
 
 .caption {

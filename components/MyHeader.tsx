@@ -1,6 +1,6 @@
 'use client'
 import styles from './myheader.module.scss'
-import { MyHeaderProps, SocialBarProps, ContactLink } from '../types'
+import { MyHeaderProps, SocialBarProps, ContactLinkProps } from '../types'
 import cn from 'classnames'
 import { domainImage } from '../functions'
 import { useState, useEffect } from 'react'
@@ -97,7 +97,7 @@ const SocialBar = ({ CMSLayout, themeStyles }: SocialBarProps) => {
     )
 }
 
-const ContactLink = ({ cname, link, icon, content }: ContactLink) => {
+const ContactLink = ({ cname, link, icon, content }: ContactLinkProps) => {
     return (
         <li className={cn(styles[`${cname}`], styles.icon)}>
             <a href={link} aria-label={cname} className={cn('socialIcon')}>

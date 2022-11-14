@@ -33,6 +33,7 @@ export const MyImage = (props: MyImagesProps) => {
             <div
                 className={cn(styles.image, styles[`${imgsize}`], {
                     [styles.landscape_4_3]: !imgsize || (imgSizes.includes(imgsize) && imageNoSizings.includes(imgsize)),
+                    [styles.widescreen_2_4_1]: imgsize === 'widescreen_2-4_1',
                 })}
             >
                 {!imageNoSizings.includes(imgsize) ? (

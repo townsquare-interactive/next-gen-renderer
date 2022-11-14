@@ -150,7 +150,7 @@ export interface AltHeaderProps {
     CMSLayout: GlobalData
 }
 
-export interface ContactLink {
+export interface ContactLinkProps {
     cname: string
     link: string
     icon: IconProp
@@ -448,7 +448,7 @@ export interface ItemWrapProps {
     align: string
 }
 
-export interface HeaderBlock {
+export interface HeaderBlockProps {
     item: ArticleItems
     columns: number | string
     well: string | number
@@ -489,6 +489,7 @@ export interface BtnProps {
     modId: string
     type: string
     align: string
+    columns: number | string
 }
 
 export interface ConditionalWrapperProps {

@@ -11,7 +11,7 @@ import { domainImage } from 'functions'
 export default function Layout(props: LayoutProps) {
     const { children, CMSLayout, themeStyles, page } = props
     const [navCheck, setNav] = useState<boolean>(false)
-    const [height, setHeight] = useState<any>(0)
+    const [height, setHeight] = useState<number>(0)
 
     function navSwitch() {
         setNav(!navCheck)

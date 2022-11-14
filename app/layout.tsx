@@ -11,7 +11,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     return (
         <html lang="en">
             <head></head>
-            <body className={ubuntu.variable}>{children}</body>
+            {/* <body className={ubuntu.variable}>{children}</body> */}
+            <body>{children}</body>
         </html>
     )
 }
