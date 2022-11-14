@@ -4,7 +4,7 @@ import { MyHeaderProps, SocialBarProps, ContactLink } from '../types'
 import cn from 'classnames'
 import { domainImage } from '../functions'
 import { useState, useEffect } from 'react'
-import Link from 'next/link'
+
 import Logo from './Logo'
 import SocialLinks from 'elements/SocialLinks'
 import NavToggle from 'elements/NavToggle'

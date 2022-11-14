@@ -11,7 +11,6 @@ const Nav = (props: Pagelist) => {
         return (
             <Link
                 href={item.title ? item.title.toLowerCase() : ''}
-                passHref={true}
                 className={cn({
                     [styles.arrow]: arrow == true,
                     ['navLink']: navType === 'desktop-nav' || navType === 'mobile-nav',
@@ -39,16 +38,17 @@ const Nav = (props: Pagelist) => {
                                                 <Fragment key={idx}>
                                                     <li>
                                                         <NavItem item={subItem} />
+
+                                                        {subItem.submenu && (
+                                                            <ul className={cn(styles['sub-menu'])}>
+                                                                {subItem.submenu.map((subItem2: any, subidx: number) => (
+                                                                    <li key={subidx}>
+                                                                        <NavItem item={subItem2} />
+                                                                    </li>
+                                                                ))}
+                                                            </ul>
+                                                        )}
                                                     </li>
-                                                    {subItem.submenu && (
-                                                        <ul className={cn(styles['sub-menu'], {})}>
-                                                            {subItem.submenu.map((subItem2: any, subidx: number) => (
-                                                                <li key={subidx}>
-                                                                    <NavItem item={subItem2} />
-                                                                </li>
-                                                            ))}
-                                                        </ul>
-                                                    )}
                                                 </Fragment>
                                             ))}
                                         </ul>

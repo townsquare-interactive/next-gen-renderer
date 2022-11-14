@@ -11,15 +11,14 @@ import { MyImage } from '../elements/MyImage'
 
 // importing fontAwesome icons
 import { faRocket, faAnchor, faArchway } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 
 const MyArticle = (props: ArticleProps) => {
     const { width = '1060', columns = 1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl, disabled } = props
     //Defining style objects
-    const textColorHeading = {
+    /*     const textColorHeading = {
         color: themeStyles['headingColor'],
-    }
+    } */
 
     if (disabled != 'disabled') {
         return (
@@ -42,7 +41,7 @@ const MyArticle = (props: ArticleProps) => {
             >
                 <div className={styles.wrapper}>
                     {title && (
-                        <h2 className={cn(styles['mod-title'], styles['section_title'])} data-title="module headline" style={textColorHeading}>
+                        <h2 className={cn(styles['mod-title'], styles['section_title'], 'head-text')} data-title="module headline">
                             <span>{title}</span>
                         </h2>
                     )}
@@ -53,7 +52,6 @@ const MyArticle = (props: ArticleProps) => {
                                 well={well}
                                 modId={modId}
                                 themeStyles={themeStyles}
-                                textColorHeading={textColorHeading}
                                 key={index}
                                 imgsize={imgsize}
                                 type={type}
@@ -72,16 +70,16 @@ const MyArticle = (props: ArticleProps) => {
 }
 
 const ModuleItem = (props: ModuleItemProps) => {
-    const { item, modId, itemIndex, cmsUrl, themeStyles, type, textColorHeading, imgsize, columns, well } = props
+    const { item, modId, itemIndex, cmsUrl, themeStyles, type, imgsize, columns, well } = props
 
     //Defining style objects
-    const textColor = {
+    /*     const textColor = {
         color: themeStyles['textColor'],
-    }
+    } */
 
-    const textColorAccent = {
+    /*    const textColorAccent = {
         color: themeStyles['textColorAccent'],
-    }
+    } */
 
     const noBackground = {
         backgroundColor: 'transparent',
@@ -177,11 +175,8 @@ const ModuleItem = (props: ModuleItemProps) => {
             >
                 <ItemWrap
                     item={item}
-                    textColorAccent={textColorAccent}
-                    textColor={textColor}
                     imgsize={imgsize}
                     well={well}
-                    textColorHeading={textColorHeading}
                     icons={icons}
                     icon3={item.icon3}
                     type={type}
@@ -198,10 +193,10 @@ const ModuleItem = (props: ModuleItemProps) => {
 }
 
 const ItemWrap = (props: ItemWrapProps) => {
-    const { item, textColorAccent, textColor, imgsize, well, icons, icon3, isFeatured, themeStyles, type, modId, cmsUrl, columns, align } = props
+    const { item, imgsize, well, icons, icon3, isFeatured, themeStyles, type, modId, cmsUrl, columns, align } = props
 
     //Check if item is on beacon theme and hero
-    const beaconHero = type === 'article' && isFeatured === 'active'
+    const isBeaconHero = type === 'article' && isFeatured === 'active'
 
     const linkAndBtn =
         (item.actionlbl && item.pagelink) || (item.actionlbl && item.weblink) || (item.actionlbl2 && item.pagelink2) || (item.actionlbl2 && item.weblink2)
@@ -214,8 +209,6 @@ const ItemWrap = (props: ItemWrapProps) => {
                         <figure className={cn(styles['image-block'])} data-alt="Headline">
                             <MyImage
                                 item={item}
-                                textColorAccent={textColorAccent}
-                                textColor={textColor}
                                 imgsize={imgsize}
                                 well={well}
                                 //temp: can prob call icons in Image
@@ -225,18 +218,16 @@ const ItemWrap = (props: ItemWrapProps) => {
                             />
                         </figure>
                     )}
-                    {(item.headline || item.subheader) && <HeaderBlock item={item} well={well} columns={columns} beaconHero={beaconHero} />}
+                    {(item.headline || item.subheader) && <HeaderBlock item={item} well={well} columns={columns} isBeaconHero={isBeaconHero} />}
                 </>
             ) : (
                 <>
-                    {(item.headline || item.subheader) && <HeaderBlock item={item} well={well} columns={columns} beaconHero={beaconHero} />}
+                    {(item.headline || item.subheader) && <HeaderBlock item={item} well={well} columns={columns} isBeaconHero={isBeaconHero} />}
 
                     {item.image && (
                         <figure className={cn(styles['image-block'])} data-alt="Headline">
                             <MyImage
                                 item={item}
-                                textColorAccent={textColorAccent}
-                                textColor={textColor}
                                 imgsize={imgsize}
                                 well={well}
                                 //temp: can prob call icons in Image
@@ -253,8 +244,8 @@ const ItemWrap = (props: ItemWrapProps) => {
                 <div className={cn(styles['txt-block'])}>
                     <div
                         className={cn(styles['dsc-block'], styles[`${item.descSize}`], {
-                            ['accent-txt']: well || beaconHero,
-                            ['txt-color']: !well && !beaconHero,
+                            ['accent-txt']: well || isBeaconHero,
+                            ['txt-color']: !well && !isBeaconHero,
                         })}
                     >
                         <p className={cn(styles['dsc'])}>{Parser(item.desc)}</p>
@@ -290,7 +281,7 @@ const ItemWrap = (props: ItemWrapProps) => {
 }
 
 const HeaderBlock = (props: HeaderBlock) => {
-    const { item, columns, well, beaconHero } = props
+    const { item, columns, well, isBeaconHero } = props
     //Finding tag types for headline and subjeadline
     const HeadTag = decideHeadTag('hd')
     const SubTag = decideHeadTag('sh')
@@ -309,13 +300,14 @@ const HeaderBlock = (props: HeaderBlock) => {
             return 'h2'
         }
     }
+
     return (
         <header className={cn(styles['hd-block'], styles[`${item.headSize}`])}>
             {item.headline && (
                 <HeadTag
                     className={cn(styles['hd'], {
-                        ['accent-txt']: well || beaconHero,
-                        ['txt-color-heading']: !well && !beaconHero,
+                        ['accent-txt']: well || isBeaconHero,
+                        ['txt-color-heading']: !well && !isBeaconHero,
                     })}
                 >
                     {Parser(item.headline)}
@@ -325,8 +317,8 @@ const HeaderBlock = (props: HeaderBlock) => {
             {item.subheader && (
                 <SubTag
                     className={cn(styles['sh'], {
-                        ['accent-txt']: well || beaconHero,
-                        ['txt-color-heading']: !well && !beaconHero,
+                        ['accent-txt']: well || isBeaconHero,
+                        ['txt-color-heading']: !well && !isBeaconHero,
                     })}
                 >
                     {Parser(item.subheader)}
@@ -335,25 +327,5 @@ const HeaderBlock = (props: HeaderBlock) => {
         </header>
     )
 }
-
-/* const ImageBlock = (props: MyImagesProps) => {
-    const { item, textColor, imgsize, well, icon3, cmsUrl, textColorAccent, icons } = props
-
-    return (
-        <figure className={cn(styles['image-block'])} data-alt="Headline">
-            <MyImage
-                item={item}
-                textColorAccent={textColorAccent}
-                textColor={textColor}
-                imgsize={imgsize}
-                well={well}
-                //temp: can prob call icons in Image
-                icons={icons}
-                icon3={icon3}
-                cmsUrl={cmsUrl}
-            />
-        </figure>
-    )
-} */
 
 export default MyArticle

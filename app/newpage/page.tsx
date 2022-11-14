@@ -1,9 +1,18 @@
-import Head from 'next/head'
-import { Renderer } from 'components/Renderer'
-import test from '../../test.json'
+import styles from '../../styles/Home.module.scss'
+import { PageListProps } from '../../types'
+import Layout from '../../components/Layout'
+import { Renderer } from '../../components/Renderer'
+import { getDomain, decideColumns, setColors, getPageData, getLayout, createInlineStyles } from '../../functions'
+import cn from 'classnames'
+import { Fragment, use } from 'react'
+
+const params = { slug: 'article' }
 
 const Home = () => {
-    const page = test
+    const { CMSLayout } = use(getLayout())
+    const { page } = use(getPageData(params))
+
+    //const page = test
     /* console.log(page) */
 
     const themeStyles = {
@@ -26,18 +35,7 @@ const Home = () => {
 
     return (
         <div>
-            {/* {page.seo && (
-                <Head>
-                    <title>title</title>
-                    <meta property="og:title" content={'title'} key="title" />
-                    <meta name="description" content={'description'} />
-                    <meta property="og:image:type" content="image/jpg" />
-                    <meta property="og:image:width" content="1024" />
-                    <meta property="og:image:height" content="1024" />
-                    <link rel="shortcut icon" href={''} />
-                </Head>
-            )}*/}
-            {/*    <Renderer config={page.modules} themeStyles={themeStyles} /> */}
+            <Renderer config={page.data.modules[0]} themeStyles={themeStyles} />
         </div>
     )
 }

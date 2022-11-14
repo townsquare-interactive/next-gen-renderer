@@ -3,12 +3,6 @@ const nextConfig = {
     reactStrictMode: true,
 }
 
-/* module.exports = {
-    //nextConfig,
-    images: {
-        domains: ['via.placeholder.com', 'unsplash.com', 'images.pexels.com'], look down
-    },
-} */
 module.exports = {
     images: {
         domains: [
@@ -26,7 +20,6 @@ module.exports = {
     experimental: {
         appDir: true,
     },
-    staticPageGenerationTimeout: 100,
 
     i18n: {
         locales: ['en'],

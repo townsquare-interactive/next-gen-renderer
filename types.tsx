@@ -410,8 +410,6 @@ export interface MyImagesProps {
     calcImageSize?: (loadedMedia: Media) => void
     imageWidth?: number
     imageHeight?: number
-    textColorAccent: Colors
-    textColor: Colors
     imgsize: string
     well: string | number
     icons: { [key: string]: IconProp }
@@ -436,14 +434,11 @@ export interface TsiWrp {
 }
 
 export interface ItemWrapProps {
-    textColorAccent: Colors
-    textColor: Colors
     imgsize: string
     well: string | number
     icons: { [key: string]: IconProp }
     icon3?: string
     item: ArticleItems
-    textColorHeading: { color: string }
     themeStyles: ThemeStyles
     isFeatured?: string
     type: string
@@ -457,7 +452,7 @@ export interface HeaderBlock {
     item: ArticleItems
     columns: number | string
     well: string | number
-    beaconHero: boolean
+    isBeaconHero: boolean
 }
 
 export interface ModuleItemProps {
@@ -465,7 +460,6 @@ export interface ModuleItemProps {
     well: string | number
     itemIndex: number
     themeStyles: ThemeStyles
-    textColorHeading: { color: string }
     imgsize: string
     type: string
     columns: number | string

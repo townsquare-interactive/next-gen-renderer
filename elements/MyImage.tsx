@@ -12,7 +12,7 @@ import { faRocket, faAnchor, faArchway } from '@fortawesome/free-solid-svg-icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const MyImage = (props: MyImagesProps) => {
-    const { item, imgsize, cmsUrl, textColorAccent } = props
+    const { item, imgsize, cmsUrl } = props
     const [imageHeight, setHeight] = useState(100)
     const [imageWidth, setWidth] = useState(300)
 
@@ -71,11 +71,7 @@ export const MyImage = (props: MyImagesProps) => {
                     </div>
                 )}
             </div>
-            {item.caption_tag && (
-                <figcaption className={styles.caption} style={textColorAccent}>
-                    {item.caption_tag}
-                </figcaption>
-            )}
+            {item.caption_tag && <figcaption className={cn(styles.caption, 'accent-txt')}>{item.caption_tag}</figcaption>}
         </>
     )
 }

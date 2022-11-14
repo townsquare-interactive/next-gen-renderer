@@ -37,7 +37,7 @@ const SocialLinks = ({ CMSLayout, themeStyles, modType = 'header' }: SocialBarPr
             </li>
             {modType != 'mob-header' && (
                 <li>
-                    <button aria-label="print-page" className={cn('socialIcon', 'print')} /* href="javascript:window.print()" */ onClick={printPage}>
+                    <button aria-label="print-page" className={cn('socialIcon', 'print')} onClick={printPage}>
                         <FontAwesomeIcon icon={faPrint} /> {modType === 'widget' && 'Print This Page'}
                     </button>
                 </li>
