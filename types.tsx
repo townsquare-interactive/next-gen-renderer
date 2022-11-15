@@ -419,7 +419,6 @@ export interface MyImagesProps {
     imgsize: string
     well: string | number
     icons: { [key: string]: IconProp }
-    icon3?: string
     cmsUrl?: string
 }
 
@@ -432,7 +431,6 @@ export interface TsiWrp {
     imgsize: string
     well: string | number
     icons: { [key: string]: IconProp }
-    icon3?: string
     item: ArticleItems
     textColorHeading: { color: string }
     themeStyles: ThemeStyles
@@ -443,7 +441,6 @@ export interface ItemWrapProps {
     imgsize: string
     well: string | number
     icons: { [key: string]: IconProp }
-    icon3?: string
     item: ArticleItems
     themeStyles: ThemeStyles
     isFeatured?: string
@@ -712,7 +709,6 @@ export interface Pagelist {
 export interface MyNavProps {
     navType?: string
     cmsNav: any
-    themeStyles?: ThemeStyles
     currentPage?: string
 }
 
@@ -872,7 +868,6 @@ export interface TheListItemImageProps {
     imgsize: string
     well: string | number
     icons: { [key: string]: IconProp }
-    icon3?: string
     cmsUrl?: string
     imageNoSizings: any
 }

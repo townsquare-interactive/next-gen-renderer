@@ -316,15 +316,15 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
         }
 
         //alignment modifiers
-        .left {
-            /*  .btn {
+        /*  .left {
+         .btn {
                 align-self: flex-start;
                 -ms-flex-item-align: flex-start;
             }
             .btn-wrap {
                 justify-content: left;
-            } */
-        }
+            } 
+        }*/
 
         .right {
             .hd,
@@ -359,11 +359,11 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
         }
     }
 
-    &.a3,
+    /* &.a3,
     &.beacon {
         //Floating image to side of content, only when columns are not in play
-        &.full-width {
-            /* &.medium {
+          &.full-width {
+           &.medium {
                 @include breakpoints.sm-min {
                     .mod_left .image-block,
                     .mod_right .image-block {
@@ -379,9 +379,9 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
                         margin-left: 1rem;
                     }
                 }
-            } */
+            } 
 
-            /*  &.large {
+           &.large {
                 @include breakpoints.sm-min {
                     .mod_left .image-block,
                     .mod_right .image-block {
@@ -397,14 +397,14 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
                         margin-left: 2rem;
                     }
                 }
-            } */
+            } 
         }
 
-        /*  .btn {
+          .btn {
             align-self: flex-start;
-        } */
+        } 
     }
-
+    */
     /* @include sm-min { */
     .dsc {
         font-size: 0.875em;
@@ -453,7 +453,7 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
         }
     } */
 
-    &.root-contain {
+    &.root-container {
         container-type: inline-size;
         container-name: module;
 

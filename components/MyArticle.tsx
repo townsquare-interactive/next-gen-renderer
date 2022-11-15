@@ -15,15 +15,11 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core'
 
 const MyArticle = (props: ArticleProps) => {
     const { width = '1060', columns = 1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl, disabled } = props
-    //Defining style objects
-    /*     const textColorHeading = {
-        color: themeStyles['headingColor'],
-    } */
 
     if (disabled != 'disabled') {
         return (
             <div
-                className={cn(styles['root'], styles['tsflex'], styles['root-contain'], styles[`col_${columns}`], {
+                className={cn(styles['root'], styles['tsflex'], styles['root-container'], styles[`col_${columns}`], {
                     [styles.a1]: type === 'article_1',
                     [styles.a2]: type === 'article_2',
                     [styles.a3]: type === 'article_3',
@@ -72,15 +68,6 @@ const MyArticle = (props: ArticleProps) => {
 const ModuleItem = (props: ModuleItemProps) => {
     const { item, modId, itemIndex, cmsUrl, themeStyles, type, imgsize, columns, well } = props
 
-    //Defining style objects
-    /*     const textColor = {
-        color: themeStyles['textColor'],
-    } */
-
-    /*    const textColorAccent = {
-        color: themeStyles['textColorAccent'],
-    } */
-
     const noBackground = {
         backgroundColor: 'transparent',
     }
@@ -92,11 +79,11 @@ const ModuleItem = (props: ModuleItemProps) => {
     }
 
     //Key to determine which imported logo to use
-    const icons: { [key: string]: IconProp } = {
+    /*     const icons: { [key: string]: IconProp } = {
         faRocket,
         faAnchor,
         faArchway,
-    }
+    } */
 
     function isButton() {
         if (item.actionlbl || item.actionlbl2) {
@@ -144,8 +131,6 @@ const ModuleItem = (props: ModuleItemProps) => {
                 styles[`item_${itemIndex + 1}`]
             )}
             lang="en"
-            data-aos="fade-up"
-            data-aos-once="true"
             style={well == '1' ? borderBackground : noBackground}
         >
             <ConditionalWrapper
@@ -177,8 +162,6 @@ const ModuleItem = (props: ModuleItemProps) => {
                     item={item}
                     imgsize={imgsize}
                     well={well}
-                    icons={icons}
-                    icon3={item.icon3}
                     type={type}
                     themeStyles={themeStyles}
                     isFeatured={item.isFeatured}
@@ -193,7 +176,7 @@ const ModuleItem = (props: ModuleItemProps) => {
 }
 
 const ItemWrap = (props: ItemWrapProps) => {
-    const { item, imgsize, well, icons, icon3, isFeatured, themeStyles, type, modId, cmsUrl, columns, align } = props
+    const { item, imgsize, well, isFeatured, themeStyles, type, modId, cmsUrl, columns, align } = props
 
     //Check if item is on beacon theme and hero
     const isBeaconHero = type === 'article' && isFeatured === 'active'
@@ -212,8 +195,7 @@ const ItemWrap = (props: ItemWrapProps) => {
                                 imgsize={imgsize}
                                 well={well}
                                 //temp: can prob call icons in Image
-                                icons={icons}
-                                icon3={icon3}
+
                                 cmsUrl={cmsUrl}
                             />
                         </figure>
@@ -231,8 +213,7 @@ const ItemWrap = (props: ItemWrapProps) => {
                                 imgsize={imgsize}
                                 well={well}
                                 //temp: can prob call icons in Image
-                                icons={icons}
-                                icon3={icon3}
+
                                 cmsUrl={cmsUrl}
                             />
                         </figure>
@@ -264,7 +245,6 @@ const ItemWrap = (props: ItemWrapProps) => {
                     weblink={item.weblink}
                     icon={item.icon}
                     icon2={item.icon2}
-                    icons={icons}
                     btnType={item.btnType}
                     btnType2={item.btnType2}
                     themeStyles={themeStyles}

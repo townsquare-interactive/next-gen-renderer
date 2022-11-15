@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react'
 import Logo from './Logo'
 import SocialLinks from 'elements/SocialLinks'
 import NavToggle from 'elements/NavToggle'
-import Nav from './Nav'
+import Nav from '../elements/Nav'
 import { faEnvelope, faPhone, faLocationPin } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useRef } from 'react'
@@ -59,7 +59,7 @@ const MyHeader = (props: MyHeaderProps) => {
                     </div>
                 )}
 
-                <Nav navType={'desktop-nav'} cmsNav={CMSLayout.cmsNav} themeStyles={themeStyles} />
+                <Nav navType={'desktop-nav'} cmsNav={CMSLayout.cmsNav} />
                 <NavToggle navSwitch={navSwitch} themeStyles={themeStyles} />
             </div>
             <SocialBar CMSLayout={CMSLayout} themeStyles={themeStyles} />

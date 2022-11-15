@@ -1,6 +1,6 @@
 import styles from './footer.module.scss'
 import cn from 'classnames'
-import Nav from './Nav'
+import Nav from '../elements/Nav'
 import Logo from './Logo'
 import { FooterProps, HomeProps, NavProps, PagesProps } from '../types'
 import { domainImage } from '../functions'

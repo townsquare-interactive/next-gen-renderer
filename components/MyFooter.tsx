@@ -1,7 +1,7 @@
 'use client'
 import styles from './myfooter.module.scss'
 import cn from 'classnames'
-import Nav from './Nav'
+import Nav from '../elements/Nav'
 import Logo from './Logo'
 import { MyFooterProps, CompositeItem } from '../types'
 import { domainImage } from '../functions'
@@ -22,7 +22,7 @@ const MyFooter = (props: MyFooterProps) => {
                             {item.component === 'text' && <MyText text={item.text} title={item.title} />}
                             {item.component === 'enhancedtext' && <MyText text={item.text} title={item.title} />}
                             {item.component === 'social_media' && <SocialLinks CMSLayout={CMSLayout} themeStyles={themeStyles} modType="widget" />}
-                            {item.component === 'nav_menu' && <Nav navType={'footer-nav'} themeStyles={themeStyles} cmsNav={CMSLayout.cmsNav} />}
+                            {item.component === 'nav_menu' && <Nav navType={'footer-nav'} cmsNav={CMSLayout.cmsNav} />}
 
                             <Renderer config={CMSLayout.composites?.footer?.modules.items} themeStyles={themeStyles} />
                         </div>

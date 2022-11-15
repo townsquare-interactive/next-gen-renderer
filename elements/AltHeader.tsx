@@ -2,10 +2,10 @@ import { AltHeaderProps } from '../types'
 import cn from 'classnames'
 import styles from './altheader.module.scss'
 import SocialLinks from './SocialLinks'
-import Nav from 'components/Nav'
+import Nav from '../elements/Nav'
 
 const AltHeader = (props: AltHeaderProps) => {
-    const { navSwitch, navCheck, themeStyles, CMSLayout, currentPage } = props
+    const { navSwitch, navCheck, themeStyles, CMSLayout } = props
 
     return (
         <div
@@ -27,7 +27,7 @@ const AltHeader = (props: AltHeaderProps) => {
                         <SocialLinks CMSLayout={CMSLayout} themeStyles={themeStyles} modType="mob-header" />
                     </div>
 
-                    <Nav navType={'mobile-nav'} themeStyles={themeStyles} cmsNav={CMSLayout.cmsNav} currentPage={currentPage} />
+                    <Nav navType={'mobile-nav'} cmsNav={CMSLayout.cmsNav} />
                 </div>
             </div>
         </div>

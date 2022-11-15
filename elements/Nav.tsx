@@ -7,7 +7,7 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 
 const Nav = (props: MyNavProps) => {
-    const { navType, cmsNav, themeStyles } = props
+    const { navType, cmsNav } = props
 
     return (
         <nav className={styles.access}>
@@ -55,14 +55,16 @@ const NavListItem = ({ item, arrow = false, navType }: NavListItemProps) => {
         setCurrentPage(window.location.pathname.replace('/', ''))
     }, [])
 
+    const title = item.title ? item.title.toLowerCase() : ''
+
     return (
         <Link
-            href={item.title ? item.title.toLowerCase() : ''}
+            href={item.title ? title : ''}
             className={cn({
                 [styles.arrow]: arrow == true,
                 ['navLink']: navType === 'desktop-nav' || navType === 'mobile-nav',
                 ['socialIcon']: navType === 'footer-nav',
-                ['currentNav']: currentPage == item.title?.toLowerCase() || (currentPage == '' && item.title?.toLowerCase() === 'home'),
+                ['currentNav']: currentPage == title || (currentPage == '' && title === 'home'),
             })}
             aria-label={item.title}
         >

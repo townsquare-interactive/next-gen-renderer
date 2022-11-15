@@ -3,7 +3,7 @@
 import styles from './mybutton.module.scss'
 import { BtnProps } from '../types'
 import cn from 'classnames'
-import { ConditionalWrapper } from '../functions'
+import { ConditionalWrapper, capitalize, btnIconConver } from '../functions'
 import { ReactChild, Fragment } from 'react'
 import Link from 'next/link'
 
@@ -19,7 +19,7 @@ export const Button = (props: BtnProps) => {
             name: 'btn1',
             link: props.pagelink || props.weblink,
             window: props.newwindow,
-            icon: props.icons[props.icon || ''],
+            icon: btnIconConver(props.icon || ''),
             label: props.actionlbl,
             active: props.actionlbl && (props.pagelink || props.weblink),
             btnType: props.btnType,
@@ -30,7 +30,7 @@ export const Button = (props: BtnProps) => {
             name: 'btn2',
             link: props.pagelink2 || props.weblink2,
             window: props.newwindow2,
-            icon: props.icons[props.icon2 || ''],
+            icon: btnIconConver(props.icon2 || ''),
             label: props.actionlbl2,
             active: props.actionlbl2 && (props.pagelink2 || props.weblink2),
             btnType: props.btnType2,

@@ -10,6 +10,7 @@ import { useState } from 'react'
 // importing fontAwesome icons
 import { faRocket, faAnchor, faArchway } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { icons } from '../functions'
 
 export const MyImage = (props: MyImagesProps) => {
     const { item, imgsize, cmsUrl } = props
@@ -21,7 +22,7 @@ export const MyImage = (props: MyImagesProps) => {
         setHeight(loadedMedia.naturalHeight)
     }
 
-    let icon = props.icon3 ? props.icons[props.icon3] : faRocket
+    let icon = item.icon3 ? icons[item.icon3] : faRocket
 
     const imgSizes = ['landscape_4_3', 'square_1_1', 'portrait_3_4', 'portrait_2_3', 'widescreen_16_9', 'widescreen_3_1']
 

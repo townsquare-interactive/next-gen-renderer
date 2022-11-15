@@ -1,7 +1,8 @@
 import { ConditionalWrapperProps, Module, PageProps, CMSColors, Pagelist } from 'types'
 
 import { faGoogle, faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons'
-import { faRocket, faEnvelope, faPrint, faPhone, faLocationPin, faBars } from '@fortawesome/free-solid-svg-icons'
+import { faRocket, faEnvelope, faPrint, faPhone, faLocationPin, faBars, faAnchor, faArchway } from '@fortawesome/free-solid-svg-icons'
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
 
 const bucketUrl = 'https://townsquareinteractive.s3.amazonaws.com'
 const localUrl = 'elitesports.com/preview'
@@ -192,6 +193,26 @@ export function socialConvert(str: string) {
         return faTwitter
     } else {
         return faRocket
+    }
+}
+
+//Key to determine which imported logo to use
+export const icons: { [key: string]: IconProp } = {
+    faRocket,
+    faAnchor,
+    faArchway,
+}
+
+export function btnIconConver(icon: any) {
+    if (icon) {
+        //replaces fas fa-rocket with faRocket
+
+        const newicon = icon.replace('fas', '')
+        const newicon2 = newicon.replace(/^(.*?)-/, '')
+
+        const theicon = 'fa' + capitalize(newicon2)
+
+        return icons[theicon]
     }
 }
 
