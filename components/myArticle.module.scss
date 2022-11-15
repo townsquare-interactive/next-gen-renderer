@@ -359,28 +359,6 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
         }
     }
 
-    &.beacon {
-        &.full-width {
-            @include breakpoints.sm-min {
-                .mod_left .image-block,
-                .mod_right .image-block {
-                    width: math.div(5, 12) * 100%;
-                    display: block;
-                }
-
-                .mod_left .image-block {
-                    float: left;
-                    margin-right: 1rem;
-                }
-
-                .mod_right .image-block {
-                    float: right;
-                    margin-left: 1rem;
-                }
-            }
-        }
-    }
-
     &.a3,
     &.beacon {
         //Floating image to side of content, only when columns are not in play
@@ -475,9 +453,14 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
         }
     } */
 
-    &.root-contain .item {
+    &.root-contain {
         container-type: inline-size;
-        container-name: item;
+        container-name: module;
+
+        .item {
+            container-type: inline-size;
+            container-name: item;
+        }
     }
 
     @container item (min-width:0px) {
@@ -775,7 +758,7 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
 
         &.col_1 .item,
         &.col_2 .item {
-            width: $full-item-width;
+            width: $full-width;
         }
 
         &.col_3 .item {
@@ -788,9 +771,9 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
     }
 
     @include breakpoints.md-min {
-        &.col_1 .item {
-            width: $full-item-width;
-        }
+        /*         &.col_1 .item {
+            width: $full-width;
+        } */
 
         &.col_2 .item {
             width: $half-item-width;
@@ -822,7 +805,7 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
         }
     }
 
-    @include breakpoints.lg-min {
+    /*     @include breakpoints.lg-min {
         &.med-width,
         &.full-width {
             &.col_3 .nHero,
@@ -837,9 +820,57 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
                 width: $quarteritem-width;
             }
         }
+    } */
+
+    @container module (min-width:860px) {
+        &.col_3 .nHero,
+        &.beacon.col_3 .item {
+            width: $third-item-width;
+        }
+
+        &.col_4 .nHero,
+        &.beacon.col_4 .item {
+            width: $quarteritem-width;
+        }
     }
 
-    &.large {
+    //same as .large + sm-min
+    @container module (min-width:481px) {
+        &.beacon {
+            /* &.full-width { */
+            /*   @include breakpoints.sm-min { */
+            .mod_left .image-block,
+            .mod_right .image-block {
+                width: math.div(5, 12) * 100%;
+                display: block;
+            }
+
+            .mod_left .image-block {
+                float: left;
+                margin-right: 1rem;
+            }
+
+            .mod_right .image-block {
+                float: right;
+                margin-left: 1rem;
+            }
+        }
+
+        &.a1,
+        &.a2,
+        &.a3 {
+            .nHero {
+                width: $ten-12;
+                margin: 0 auto 4rem;
+
+                &:last-of-type {
+                    margin-bottom: 2rem;
+                }
+            }
+        }
+    }
+
+    /*  &.large {
         @include breakpoints.sm-min {
             &.a1,
             &.a2,
@@ -855,41 +886,9 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
                 }
             }
         }
-    }
-    /*----------------------------------------------------------- End of Column Sizes -------------------------------------------*/
-
-    //setting aspect ratio of images
-    /*     &.square_1_1 .image-block .image {
-        aspect-ratio: math.div(1, 1);
-    }
-
-    &.landscape_4_3 .image-block .image {
-        aspect-ratio: math.div(4, 3);
-    }
-
-    &.landscape_3_2 .image-block .image {
-        aspect-ratio: math.div(3, 2);
-    }
-
-    &.portrait_3_4 .image-block .image {
-        aspect-ratio: math.div(3, 4);
-    }
-
-    &.portrait_2_3 .image-block .image {
-        aspect-ratio: math.div(2, 3);
-    }
-
-    &.widescreen_16_9 .image-block .image {
-        aspect-ratio: math.div(16, 9);
-    }
-
-    &.widescreen_3_1 .image-block .image {
-        aspect-ratio: math.div(3, 1);
-    }
-
-    &.widescreen_2_4_1 .image-block .image {
-        aspect-ratio: math.div(2000, 830);
     } */
+
+    /*----------------------------------------------------------- End of Column Sizes -------------------------------------------*/
 
     //font sizes
     .font_xs {
