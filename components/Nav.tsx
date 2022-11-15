@@ -1,28 +1,13 @@
 import styles from './nav.module.scss'
 import Link from 'next/dist/client/link'
 import cn from 'classnames'
-import { MyNavProps, NavItem } from '../types'
+import { MyNavProps, NavItem, NavListItemProps } from '../types'
 import { Fragment } from 'react'
+import { useEffect } from 'react'
+import { useState } from 'react'
 
 const Nav = (props: MyNavProps) => {
-    const { navType, cmsNav, themeStyles, currentPage } = props
-
-    const NavItem = ({ item, arrow = false }: any) => {
-        return (
-            <Link
-                href={item.title ? item.title.toLowerCase() : ''}
-                className={cn({
-                    [styles.arrow]: arrow == true,
-                    ['navLink']: navType === 'desktop-nav' || navType === 'mobile-nav',
-                    ['socialIcon']: navType === 'footer-nav',
-                    ['currentNav']: currentPage == item.title,
-                })}
-                aria-label={item.title}
-            >
-                {item.title}
-            </Link>
-        )
-    }
+    const { navType, cmsNav, themeStyles } = props
 
     return (
         <nav className={styles.access}>
@@ -32,19 +17,19 @@ const Nav = (props: MyNavProps) => {
                         <Fragment key={index}>
                             {item.menu_item_parent == 0 && (
                                 <li>
-                                    <NavItem item={item} arrow={item.submenu?.length ? true : false} />
+                                    <NavListItem item={item} arrow={item.submenu?.length ? true : false} navType={navType} />
                                     {item.submenu && (
                                         <ul className={cn(styles['sub-menu'])}>
                                             {item.submenu.map((subItem: any, idx: number) => (
                                                 <Fragment key={idx}>
                                                     <li>
-                                                        <NavItem item={subItem} />
+                                                        <NavListItem item={subItem} navType={navType} />
 
                                                         {subItem.submenu && (
                                                             <ul className={cn(styles['sub-menu'])}>
                                                                 {subItem.submenu.map((subItem2: any, subidx: number) => (
                                                                     <li key={subidx}>
-                                                                        <NavItem item={subItem2} />
+                                                                        <NavListItem item={subItem2} navType={navType} />
                                                                     </li>
                                                                 ))}
                                                             </ul>
@@ -60,6 +45,29 @@ const Nav = (props: MyNavProps) => {
                     ))}
             </ul>
         </nav>
+    )
+}
+
+const NavListItem = ({ item, arrow = false, navType }: NavListItemProps) => {
+    const [currentPage, setCurrentPage] = useState('home')
+
+    useEffect(() => {
+        setCurrentPage(window.location.pathname.replace('/', ''))
+    }, [])
+
+    return (
+        <Link
+            href={item.title ? item.title.toLowerCase() : ''}
+            className={cn({
+                [styles.arrow]: arrow == true,
+                ['navLink']: navType === 'desktop-nav' || navType === 'mobile-nav',
+                ['socialIcon']: navType === 'footer-nav',
+                ['currentNav']: currentPage == item.title?.toLowerCase() || (currentPage == '' && item.title?.toLowerCase() === 'home'),
+            })}
+            aria-label={item.title}
+        >
+            {item.title}
+        </Link>
     )
 }
 

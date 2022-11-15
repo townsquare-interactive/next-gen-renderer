@@ -31,11 +31,9 @@ const Slug = ({ params }: { params: { slug: string } }) => {
 
     const cmsUrl = CMSLayout.cmsUrl
 
-    const currentPage = params.slug
-
     return (
         <>
-            <Layout CMSLayout={CMSLayout} themeStyles={themeStyles} page={page} currentPage={currentPage}>
+            <Layout CMSLayout={CMSLayout} themeStyles={themeStyles} page={page}>
                 <style>{colorStyles}</style>
                 {page.data && (
                     <div className={styles.root} style={{ backgroundColor: themeStyles.bckdContent }}>

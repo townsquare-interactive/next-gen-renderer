@@ -18,7 +18,6 @@ export const getStaticProps = async (context: Context) => {
 
     const homePageSlug = findHomePageSlug(pageList)
 
-    //const resPage = await fetch(getDomain(true) + '/pages/' + 'home' + '.json')
     const resPage = await fetch(getDomain(true) + '/pages/' + homePageSlug + '.json')
     let page = await resPage.json()
 

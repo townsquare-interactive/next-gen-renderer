@@ -14,7 +14,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useRef } from 'react'
 
 const MyHeader = (props: MyHeaderProps) => {
-    const { CMSLayout, themeStyles, navSwitch, setHeight, currentPage } = props
+    const { CMSLayout, themeStyles, navSwitch, setHeight } = props
     const [windowHeight, setWindowHeight] = useState(0)
 
     //set state for scroll
@@ -59,7 +59,7 @@ const MyHeader = (props: MyHeaderProps) => {
                     </div>
                 )}
 
-                <Nav navType={'desktop-nav'} cmsNav={CMSLayout.cmsNav} themeStyles={themeStyles} currentPage={currentPage} />
+                <Nav navType={'desktop-nav'} cmsNav={CMSLayout.cmsNav} themeStyles={themeStyles} />
                 <NavToggle navSwitch={navSwitch} themeStyles={themeStyles} />
             </div>
             <SocialBar CMSLayout={CMSLayout} themeStyles={themeStyles} />

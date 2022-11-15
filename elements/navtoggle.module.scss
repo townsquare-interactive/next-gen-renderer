@@ -17,6 +17,10 @@
     border: none;
     margin: 0.5em auto;
 
+    svg {
+        width: 0.8em;
+    }
+
     @include breakpoints.sm {
         margin-top: 0.6666666667em;
         margin-bottom: 0.5em;
