@@ -21,8 +21,6 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
 }
 
 .root {
-    padding-top: 3rem;
-
     * {
         box-sizing: border-box;
     }
@@ -659,11 +657,11 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
                 padding-bottom: 1.5rem;
             }
 
-            &.large .dsc-block {
+            /*             &.large .dsc-block {
                 @include breakpoints.lg-min {
                     padding-bottom: 3rem;
                 }
-            }
+            } */
         }
 
         &.a2 {
@@ -765,6 +763,10 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
 
     //same as .large + sm-min
     @container module (min-width:481px) {
+        .wrapper {
+            padding-top: 3rem;
+        }
+
         &.beacon {
             /* &.full-width { */
             /*   @include breakpoints.sm-min { */
@@ -790,11 +792,13 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
         &.a3 {
             .nHero {
                 width: $ten-12;
-                margin: 0 auto 4rem;
+                //margin: 0 auto;
+                // margin-bottom: 4rem;
+                // margin-bottom: 2rem;
 
-                &:last-of-type {
+                /* &:last-of-type {
                     margin-bottom: 2rem;
-                }
+                } */
             }
         }
     }
@@ -824,10 +828,6 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
     }
 
     @include breakpoints.md-min {
-        /*         &.col_1 .item {
-            width: $full-width;
-        } */
-
         &.col_2 .item {
             width: $half-item-width;
         }
@@ -840,7 +840,6 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
             width: $half-item-width;
         }
 
-        //need to check heros with columns still
         &.a1,
         &.a2,
         &.a3 {
@@ -867,6 +866,14 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
         &.col_4 .nHero,
         &.beacon.col_4 .item {
             width: $quarteritem-width;
+        }
+
+        &.a1 {
+            .dsc-block {
+                @include breakpoints.lg-min {
+                    padding-bottom: 3rem;
+                }
+            }
         }
     }
 

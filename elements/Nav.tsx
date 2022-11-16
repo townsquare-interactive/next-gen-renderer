@@ -57,6 +57,18 @@ const NavListItem = ({ item, arrow = false, navType }: NavListItemProps) => {
 
     const title = item.title ? item.title.toLowerCase() : ''
 
+    function currentNav() {
+        if (navType != 'footer-nav') {
+            if (currentPage == title || (currentPage == '' && title === 'home')) {
+                return true
+            } else {
+                return false
+            }
+        } else {
+            return false
+        }
+    }
+
     return (
         <Link
             href={item.title ? title : ''}
@@ -64,7 +76,7 @@ const NavListItem = ({ item, arrow = false, navType }: NavListItemProps) => {
                 [styles.arrow]: arrow == true,
                 ['navLink']: navType === 'desktop-nav' || navType === 'mobile-nav',
                 ['socialIcon']: navType === 'footer-nav',
-                ['currentNav']: currentPage == title || (currentPage == '' && title === 'home'),
+                ['currentNav']: currentNav(),
             })}
             aria-label={item.title}
         >
