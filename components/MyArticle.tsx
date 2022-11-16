@@ -9,10 +9,6 @@ import Link from 'next/link'
 import { Button } from '../elements/MyButton'
 import { MyImage } from '../elements/MyImage'
 
-// importing fontAwesome icons
-import { faRocket, faAnchor, faArchway } from '@fortawesome/free-solid-svg-icons'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
-
 const MyArticle = (props: ArticleProps) => {
     const { width = '1060', columns = 1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl, disabled } = props
 

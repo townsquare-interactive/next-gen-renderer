@@ -33,7 +33,7 @@ const Slug = ({ params }: { params: { slug: string } }) => {
 
     return (
         <>
-            <Layout CMSLayout={CMSLayout} themeStyles={themeStyles} page={page}>
+            <Layout CMSLayout={CMSLayout} themeStyles={themeStyles}>
                 <style>{colorStyles}</style>
                 {page.data && (
                     <div className={styles.root} style={{ backgroundColor: themeStyles.bckdContent }}>

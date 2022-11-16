@@ -6,10 +6,9 @@ import MyHeader from './MyHeader'
 import MyFooter from './MyFooter'
 import { useState } from 'react'
 import AltHeader from 'elements/AltHeader'
-import { domainImage } from 'functions'
 
 export default function Layout(props: LayoutProps) {
-    const { children, CMSLayout, themeStyles, page } = props
+    const { children, CMSLayout, themeStyles } = props
     const [navCheck, setNav] = useState<boolean>(false)
     const [height, setHeight] = useState<number>(0)
 

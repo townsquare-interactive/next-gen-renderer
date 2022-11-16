@@ -21,7 +21,7 @@ const MyFooter = (props: MyFooterProps) => {
                         <div key={index} className={styles.item}>
                             {item.component === 'text' && <MyText text={item.text} title={item.title} />}
                             {item.component === 'enhancedtext' && <MyText text={item.text} title={item.title} />}
-                            {item.component === 'social_media' && <SocialLinks CMSLayout={CMSLayout} themeStyles={themeStyles} modType="widget" />}
+                            {item.component === 'social_media' && <SocialLinks CMSLayout={CMSLayout} modType="widget" />}
                             {item.component === 'nav_menu' && <Nav navType={'footer-nav'} cmsNav={CMSLayout.cmsNav} />}
 
                             <Renderer config={CMSLayout.composites?.footer?.modules.items} themeStyles={themeStyles} />
@@ -51,7 +51,7 @@ const MyFooter = (props: MyFooterProps) => {
                 </div>
                 <div className={styles['bottom']}>
                     <div className={styles['social-block']}>
-                        <SocialLinks CMSLayout={CMSLayout} themeStyles={themeStyles} modType="foot-header" />
+                        <SocialLinks CMSLayout={CMSLayout} modType="foot-header" />
                     </div>
                     <div className={styles['nav-block']}>
                         <NavToggle navSwitch={navSwitch} themeStyles={themeStyles} modType="footer" />

@@ -47,7 +47,7 @@ export interface LayoutProps {
     children: ReactNode
     CMSLayout: GlobalData
     themeStyles: ThemeStyles
-    page: CMSPage
+    //page: CMSPage
 }
 
 export interface GlobalData {
@@ -500,6 +500,12 @@ export interface LogoProps {
 }
 
 export interface SocialBarProps {
+    CMSLayout: GlobalData
+    modType?: string
+    themeStyles: ThemeStyles
+}
+
+export interface SocialLinks {
     CMSLayout: GlobalData
     modType?: string
 }

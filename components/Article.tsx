@@ -4,15 +4,9 @@ import { ArticleProps, Media, TheListItemActionProps, TheListItemImageProps } fr
 import Image from 'next/image'
 import cn from 'classnames'
 import Parser from 'html-react-parser'
-import { domainImage, icons } from '../functions'
+import { domainImage } from '../functions'
 import { useState } from 'react'
 import Link from 'next/link'
-
-// importing fontAwesome
-import { library } from '@fortawesome/fontawesome-svg-core'
-// import your icons
-import { faRocket, faAnchor, faArchway } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Article = (props: ArticleProps) => {
     const [imageHeight, setHeight] = useState(100)

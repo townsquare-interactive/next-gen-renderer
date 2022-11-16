@@ -70,7 +70,7 @@ const MyHeader = (props: MyHeaderProps) => {
 const SocialBar = ({ CMSLayout, themeStyles }: SocialBarProps) => {
     return (
         <div className={styles['social-bar']} style={{ background: themeStyles.BckdHeaderSocial }}>
-            <SocialLinks CMSLayout={CMSLayout} themeStyles={themeStyles} />
+            <SocialLinks CMSLayout={CMSLayout} />
             <aside className={styles.contact}>
                 <ul>
                     {CMSLayout.contact.phone[0] && (

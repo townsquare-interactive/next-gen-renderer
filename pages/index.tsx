@@ -9,7 +9,7 @@ import cn from 'classnames'
 import { Fragment } from 'react'
 
 //runs at build time just like static props
-export const getStaticProps = async (context: Context) => {
+export const getStaticProps = async () => {
     const resLayout = await fetch(getDomain(true) + '/layout.json')
     const CMSLayout = await resLayout.json()
 
@@ -37,9 +37,9 @@ const Home = (props: HomeProps) => {
     const cmsTheme = CMSLayout.theme || 'charlotte'
 
     const themeStyles = setColors(CMSLayout.cmsColors, cmsTheme)
-
+    /* 
     if (!page.data.sections) {
-        /*  page.data = {
+        / page.data = {
             ...page.data,
             sections: [
                 {
@@ -58,9 +58,9 @@ const Home = (props: HomeProps) => {
                     wide: '232',
                 },
             ],
-        } */
+        } 
         console.log('false')
-    }
+    } */
 
     const columnStyles = page ? decideColumns(page.data) : 'wide-column'
 
@@ -98,7 +98,7 @@ const Home = (props: HomeProps) => {
                 <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
             </Head>
 
-            <Layout CMSLayout={CMSLayout} themeStyles={themeStyles} page={page}>
+            <Layout CMSLayout={CMSLayout} themeStyles={themeStyles}>
                 <style>{colorStyles}</style>
                 {page.data && (
                     <div className={styles.root}>

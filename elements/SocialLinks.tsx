@@ -1,11 +1,11 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faPrint } from '@fortawesome/free-solid-svg-icons'
 import { socialConvert, iconConvert, extUrl } from '../functions'
-import { SocialBarProps, SocialItem } from '../types'
+import { SocialLinks, SocialItem } from '../types'
 import styles from './sociallinks.module.scss'
 import cn from 'classnames'
 
-const SocialLinks = ({ CMSLayout, modType = 'header' }: SocialBarProps) => {
+const SocialLinks = ({ CMSLayout, modType = 'header' }: SocialLinks) => {
     function printPage() {
         print()
         return
