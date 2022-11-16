@@ -36,7 +36,7 @@ const List = (props: ListProps) => {
     }
 
     const gutterStyle = {
-        backgroundColor: `${themeStyles['mainColor']}`,
+        backgroundColor: `${themeStyles['promoColor']}`,
     }
 
     return (

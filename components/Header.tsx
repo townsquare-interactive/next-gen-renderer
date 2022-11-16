@@ -8,7 +8,7 @@ function Hero(props: HeaderProps) {
     const { reverse = false, backgroundImageUrl = '', imageUrl = '', headline = '', modLayout = 'normal', altText = '', themeStyles } = props
 
     const themeStylesObj = {
-        backgroundColor: `${themeStyles['mainColor']}`,
+        backgroundColor: `${themeStyles['promoColor']}`,
         color: `${themeStyles['textColorAccent']}`,
     }
 

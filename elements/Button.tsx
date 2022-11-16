@@ -15,15 +15,15 @@ function Button(props: ButtonProps) {
     }
 
     const themeStylesAlt = {
-        backgroundColor: `${themeStyles['mainColor']}`,
+        backgroundColor: `${themeStyles['promoColor']}`,
         color: `${themeStyles['textColorAccent']}`,
     }
 
-    /*  const themeStylesAlt = `.btn{backgroundColor: ${themeStyles['mainColor']}} color: ${themeStyles['textColorAccent']}} .btn:hover{background-color:transparent; color:red;height:2px;}` */
+    /*  const themeStylesAlt = `.btn{backgroundColor: ${themeStyles['promoColor']}} color: ${themeStyles['textColorAccent']}} .btn:hover{background-color:transparent; color:red;height:2px;}` */
 
     const themeStylesAlt2 = {
-        color: `${themeStyles['mainColor']}`,
-        border: `2px solid ${themeStyles['mainColor']}`,
+        color: `${themeStyles['promoColor']}`,
+        border: `2px solid ${themeStyles['promoColor']}`,
     }
 
     const themeStylesAlt3 = {

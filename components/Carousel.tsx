@@ -17,12 +17,12 @@ function Carousel(props: CarouselProps) {
         borderWidth: '4px 0 4px 0',
     }
     const imageStyles = {
-        borderColor: `${themeStyles['mainColor']}`,
+        borderColor: `${themeStyles['promoColor']}`,
         borderStyle: 'solid',
         borderWidth: '0 2px 0 2px',
     }
 
-    const arrowBackground = `.arrowNext{background: ${themeStyles['mainColor']}} .arrowNext:hover{background: ${themeStyles['accentColor2']}}`
+    const arrowBackground = `.arrowNext{background: ${themeStyles['promoColor']}} .arrowNext:hover{background: ${themeStyles['accentColor2']}}`
 
     //Sets slide count to 1 if there are more slides than items to show, or if text shows
     function setSlide() {

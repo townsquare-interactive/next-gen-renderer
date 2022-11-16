@@ -746,6 +746,59 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
 
     /*---------------------------------------- Column item sizes ------------------------------------------------*/
 
+    /*     @include breakpoints.lg-min {
+        &.med-width,
+        &.full-width {
+            &.col_3 .nHero,
+            &.beacon.col_3 .item {
+                width: $third-item-width;
+            }
+        }
+
+        &.full-width {
+            &.col_4 .nHero,
+            &.beacon.col_4 .item {
+                width: $quarteritem-width;
+            }
+        }
+    } */
+
+    //same as .large + sm-min
+    @container module (min-width:481px) {
+        &.beacon {
+            /* &.full-width { */
+            /*   @include breakpoints.sm-min { */
+            .mod_left .image-block,
+            .mod_right .image-block {
+                width: math.div(5, 12) * 100%;
+                display: block;
+            }
+
+            .mod_left .image-block {
+                float: left;
+                margin-right: 1rem;
+            }
+
+            .mod_right .image-block {
+                float: right;
+                margin-left: 1rem;
+            }
+        }
+
+        &.a1,
+        &.a2,
+        &.a3 {
+            .nHero {
+                width: $ten-12;
+                margin: 0 auto 4rem;
+
+                &:last-of-type {
+                    margin-bottom: 2rem;
+                }
+            }
+        }
+    }
+
     @include breakpoints.sm-min {
         &.col_2,
         &.col_3,
@@ -805,24 +858,7 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
         }
     }
 
-    /*     @include breakpoints.lg-min {
-        &.med-width,
-        &.full-width {
-            &.col_3 .nHero,
-            &.beacon.col_3 .item {
-                width: $third-item-width;
-            }
-        }
-
-        &.full-width {
-            &.col_4 .nHero,
-            &.beacon.col_4 .item {
-                width: $quarteritem-width;
-            }
-        }
-    } */
-
-    @container module (min-width:860px) {
+    @container module (min-width:850px) {
         &.col_3 .nHero,
         &.beacon.col_3 .item {
             width: $third-item-width;
@@ -831,42 +867,6 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
         &.col_4 .nHero,
         &.beacon.col_4 .item {
             width: $quarteritem-width;
-        }
-    }
-
-    //same as .large + sm-min
-    @container module (min-width:481px) {
-        &.beacon {
-            /* &.full-width { */
-            /*   @include breakpoints.sm-min { */
-            .mod_left .image-block,
-            .mod_right .image-block {
-                width: math.div(5, 12) * 100%;
-                display: block;
-            }
-
-            .mod_left .image-block {
-                float: left;
-                margin-right: 1rem;
-            }
-
-            .mod_right .image-block {
-                float: right;
-                margin-left: 1rem;
-            }
-        }
-
-        &.a1,
-        &.a2,
-        &.a3 {
-            .nHero {
-                width: $ten-12;
-                margin: 0 auto 4rem;
-
-                &:last-of-type {
-                    margin-bottom: 2rem;
-                }
-            }
         }
     }
 

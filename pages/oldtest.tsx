@@ -8,7 +8,7 @@ const Home = () => {
     const page = test
 
     const themeStyles = {
-        mainColor: '#365070',
+        promoColor: '#365070',
         textColor: 'rgb(46, 46, 46)',
         headingColor: 'rgb(46, 46, 46)',
         textColorAccent: '#fff',

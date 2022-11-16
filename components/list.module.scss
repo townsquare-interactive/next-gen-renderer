@@ -232,7 +232,7 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
                 }
 
                 .colorFill {
-                    //background-color: variables.$mainColor;
+                    //background-color: variables.$promoColor;
                     aspect-ratio: math.div($ratio, 2);
                     height: $image-height;
                 }
@@ -241,7 +241,7 @@ $max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
             .imageBlock {
                 @include breakpoints.md {
                     flex: 20 0 0;
-                    background-color: variables.$mainColor;
+                    background-color: variables.$promoColor;
                     align-self: flex-start;
                     max-width: $max-main-image-width;
                     width: $image-width;

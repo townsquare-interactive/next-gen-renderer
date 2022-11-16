@@ -53,7 +53,7 @@ export function domainImage(url: string, cms = false, cmsSiteUrl = '') {
 export const setColors = (cmsGlobalDesign: CMSColors, cmsTheme: string) => {
     if (cmsTheme === 'beacon-theme_charlotte') {
         return {
-            mainColor: cmsGlobalDesign.color_31.value,
+            promoColor: cmsGlobalDesign.color_31.value,
             textColor: cmsGlobalDesign.color_4.value,
             headingColor: cmsGlobalDesign.color_2.value,
             subHeadingColor: cmsGlobalDesign?.color_3.value,
@@ -75,7 +75,7 @@ export const setColors = (cmsGlobalDesign: CMSColors, cmsTheme: string) => {
         }
     } else {
         return {
-            mainColor: cmsGlobalDesign?.color_3.value,
+            promoColor: cmsGlobalDesign?.color_3.value,
             textColor: cmsGlobalDesign?.color_3a.value,
             headingColor: cmsGlobalDesign?.color_2.value,
             subHeadingColor: cmsGlobalDesign?.color_3.value,
@@ -100,7 +100,7 @@ export const setColors = (cmsGlobalDesign: CMSColors, cmsTheme: string) => {
 export function createInlineStyles(themeStyles: any) {
     const textColors = `.accent-txt{color:${themeStyles['textColorAccent']}} .txt-color{color:${themeStyles['textColor']}} .txt-color-heading{color:${themeStyles['headingColor']}} .navLink:hover{color: ${themeStyles['navHover']}} .navLink{color:${themeStyles['NavText']}} .socialIcon:hover{background-color: ${themeStyles['navHover']}} .socialIcon{color:${themeStyles['NavText']}} .currentNav{color:${themeStyles['navCurrent']}}`
 
-    const btnStyles = `.btn_1{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['mainColor']}} .btn_1:hover{color: ${themeStyles['mainColor']}; background-color: ${themeStyles['textColorAccent']}} .btn_2{color: ${themeStyles['linkColor']}; border-color: ${themeStyles['linkColor']}} .btn_2:hover{color: ${themeStyles['mainColor']}; border-color: ${themeStyles['mainColor']}}`
+    const btnStyles = `.btn_1{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['promoColor']}} .btn_1:hover{color: ${themeStyles['promoColor']}; background-color: ${themeStyles['textColorAccent']}} .btn_2{color: ${themeStyles['linkColor']}; border-color: ${themeStyles['linkColor']}} .btn_2:hover{color: ${themeStyles['promoColor']}; border-color: ${themeStyles['promoColor']}}`
 
     const colorStyles = textColors + btnStyles
 

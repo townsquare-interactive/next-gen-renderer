@@ -3,7 +3,7 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { ReactChild, ReactElement, ReactNode } from 'react'
 
 export interface ThemeStyles {
-    mainColor: string
+    promoColor: string
     textColor: string
     headingColor: string
     textColorAccent: string

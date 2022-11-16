@@ -4,7 +4,7 @@
 /*-----------------------------Button styles--------------------*/
 .btn-mod {
     display: flex;
-    //width: 100%;
+    width: 100%;
 
     .btn {
         border-style: solid;
@@ -147,8 +147,11 @@
 
         //alignment modifiers
         &.left {
-            align-self: flex-start;
-            -ms-flex-item-align: flex-start;
+            justify-content: flex-start;
+            /*  .btn {
+                align-self: flex-start;
+                -ms-flex-item-align: flex-start;
+            } */
 
             .btn-wrap {
                 justify-content: left;
@@ -156,8 +159,11 @@
         }
 
         &.right {
-            align-self: flex-end;
-            -ms-flex-item-align: flex-end;
+            justify-content: flex-end;
+            /*  .btn {
+                align-self: flex-end;
+                -ms-flex-item-align: flex-end;
+            } */
 
             .btn-wrap {
                 justify-content: right;
@@ -165,8 +171,11 @@
         }
 
         &.center {
-            align-self: center;
-            -ms-flex-item-align: center;
+            justify-content: center;
+            /*  .btn {
+                align-self: center;
+                -ms-flex-item-align: center;
+            } */
 
             .btn-wrap {
                 justify-content: center;
@@ -185,8 +194,8 @@
 
     &.well {
         &.a1 {
-            .btn-block {
-                padding: 0 2rem 0;
+            .btn {
+                //padding: 0 2rem 0;
                 width: 100%;
             }
         }

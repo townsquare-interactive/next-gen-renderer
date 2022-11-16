@@ -12,7 +12,7 @@ import { faRocket, faAnchor, faArchway } from '@fortawesome/free-solid-svg-icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const Button = (props: BtnProps) => {
-    const linkHoverStyles = `#id_${props.modId} .btn_link:hover .btn_1{color: ${props.themeStyles['mainColor']}; background-color: ${props.themeStyles['textColorAccent']}} #id_${props.modId} .btn_link:hover .btn_2{color: ${props.themeStyles['mainColor']}; border-color: ${props.themeStyles['mainColor']}}`
+    const linkHoverStyles = `#id_${props.modId} .btn_link:hover .btn_1{color: ${props.themeStyles['promoColor']}; background-color: ${props.themeStyles['textColorAccent']}} #id_${props.modId} .btn_link:hover .btn_2{color: ${props.themeStyles['promoColor']}; border-color: ${props.themeStyles['promoColor']}}`
 
     let buttons = [
         {
@@ -49,7 +49,7 @@ export const Button = (props: BtnProps) => {
                 [styles.right]: props.align == 'right',
                 [styles.left]: props.align == 'left',
                 [styles.center]: props.align == 'center',
-                [styles.well]: props.well === '1',
+                [styles.well]: props.well == '1',
             })}
         >
             {props.well && <style>{linkHoverStyles}</style>}
@@ -71,7 +71,8 @@ export const Button = (props: BtnProps) => {
                                             passHref={bt.linkType === 'ext'}
                                             target={bt.window == 1 ? '_blank' : '_self'}
                                             className={cn('btn_link', {
-                                                [styles.btn_block]: bt.btnSize.includes('btn_block') || bt.btnSize.includes('btn_blk'),
+                                                [styles['btn-block']]: bt.btnSize.includes('btn_block') || bt.btnSize.includes('btn_blk'),
+                                                [styles.btn_w]: props.well === '1',
                                             })}
                                         >
                                             {children}
@@ -89,7 +90,8 @@ export const Button = (props: BtnProps) => {
                                             [styles.btn_lg]: bt.btnSize.includes('lg') && props.columns == 1,
                                             [styles.btn_sm]: bt.btnSize.includes('sm') || props.columns != '1',
                                             [styles.btn_xs]: bt.btnSize.includes('xs'),
-                                            [styles.btn_block]: bt.btnSize.includes('btn_block') || bt.btnSize.includes('btn_blk'),
+                                            [styles['btn-block']]: bt.btnSize.includes('btn_block') || bt.btnSize.includes('btn_blk'),
+                                            [styles.btn_w]: props.well === '1',
                                         })}
                                     >
                                         {bt.icon && <FontAwesomeIcon icon={bt.icon || faRocket} />} {bt.label}

@@ -29,7 +29,7 @@ const Article = (props: ArticleProps) => {
         color: props.themeStyles['textColorAccent'],
     }
     const accentBackground = {
-        backgroundColor: props.themeStyles['mainColor'],
+        backgroundColor: props.themeStyles['promoColor'],
     }
     const noBackground = {
         backgroundColor: 'transparent',
@@ -172,7 +172,7 @@ const Article = (props: ArticleProps) => {
 const TheListItemAction = (props: TheListItemActionProps) => {
     const btn1Styles = {
         color: props.themeStyles['textColorAccent'],
-        backgroundColor: props.themeStyles['mainColor'],
+        backgroundColor: props.themeStyles['promoColor'],
     }
 
     return (

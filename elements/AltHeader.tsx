@@ -19,7 +19,7 @@ const AltHeader = (props: AltHeaderProps) => {
                     className={styles['nav-toggle']}
                     onClick={navSwitch}
                     aria-label="close-mobile-nav"
-                    style={{ color: themeStyles.textColorAccent, backgroundColor: themeStyles.mainColor }}
+                    style={{ color: themeStyles.textColorAccent, backgroundColor: themeStyles.promoColor }}
                 ></button>
 
                 <div className={styles['access']}>
