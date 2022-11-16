@@ -501,7 +501,6 @@ export interface LogoProps {
 
 export interface SocialBarProps {
     CMSLayout: GlobalData
-    themeStyles: ThemeStyles
     modType?: string
 }
 

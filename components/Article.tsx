@@ -4,7 +4,7 @@ import { ArticleProps, Media, TheListItemActionProps, TheListItemImageProps } fr
 import Image from 'next/image'
 import cn from 'classnames'
 import Parser from 'html-react-parser'
-import { domainImage } from '../functions'
+import { domainImage, icons } from '../functions'
 import { useState } from 'react'
 import Link from 'next/link'
 
@@ -42,12 +42,6 @@ const Article = (props: ArticleProps) => {
     }
     const borderBackground = {
         backgroundColor: props.themeStyles['headerBackground'],
-    }
-
-    const icons: { [key: string]: any } = {
-        faRocket,
-        faAnchor,
-        faArchway,
     }
 
     //non constrained images
@@ -126,7 +120,6 @@ const Article = (props: ArticleProps) => {
                                     textColor={textColor}
                                     imgsize={props.imgsize}
                                     well={props.well}
-                                    icons={icons}
                                 />
                             )}
 
@@ -168,7 +161,6 @@ const Article = (props: ArticleProps) => {
                                     actionlbl={item.actionlbl}
                                     newwindow={item.newwindow}
                                     themeStyles={props.themeStyles}
-                                    icons={icons}
                                     btnSize={item.btnSize}
                                     btnSize2={item.btnSize}
                                 />

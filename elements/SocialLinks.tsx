@@ -5,7 +5,7 @@ import { SocialBarProps, SocialItem } from '../types'
 import styles from './sociallinks.module.scss'
 import cn from 'classnames'
 
-const SocialLinks = ({ CMSLayout, themeStyles, modType = 'header' }: SocialBarProps) => {
+const SocialLinks = ({ CMSLayout, modType = 'header' }: SocialBarProps) => {
     function printPage() {
         print()
         return

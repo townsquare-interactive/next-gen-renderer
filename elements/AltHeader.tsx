@@ -24,7 +24,7 @@ const AltHeader = (props: AltHeaderProps) => {
 
                 <div className={styles['access']}>
                     <div className={styles.social}>
-                        <SocialLinks CMSLayout={CMSLayout} themeStyles={themeStyles} modType="mob-header" />
+                        <SocialLinks CMSLayout={CMSLayout} modType="mob-header" />
                     </div>
 
                     <Nav navType={'mobile-nav'} cmsNav={CMSLayout.cmsNav} />
