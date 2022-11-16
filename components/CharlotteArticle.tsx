@@ -4,7 +4,7 @@ import { ArticleProps, Media, TheListItemImageProps, TheListItemActionProps, Tsi
 import Image from 'next/image'
 import cn from 'classnames'
 import Parser from 'html-react-parser'
-import { domainImage } from '../functions'
+import { domainImage, icons } from '../functions'
 import { useState } from 'react'
 import Link from 'next/link'
 
@@ -187,8 +187,6 @@ const TheListItem = (props: TheListItemProps) => {
                             imgsize={props.imgsize}
                             well={props.well}
                             textColorHeading={props.textColorHeading}
-                            icons={icons}
-                            icon3={item.icon3}
                             themeStyles={props.themeStyles}
                         />
                     ) : props.type === 'article_2' ? (
@@ -203,8 +201,6 @@ const TheListItem = (props: TheListItemProps) => {
                             imgsize={props.imgsize}
                             well={props.well}
                             textColorHeading={props.textColorHeading}
-                            icons={icons}
-                            icon3={item.icon3}
                             themeStyles={props.themeStyles}
                         />
                     ) : props.type === 'article_3' ? (
@@ -219,8 +215,6 @@ const TheListItem = (props: TheListItemProps) => {
                             imgsize={props.imgsize}
                             well={props.well}
                             textColorHeading={props.textColorHeading}
-                            icons={icons}
-                            icon3={item.icon3}
                             themeStyles={props.themeStyles}
                         />
                     ) : (
@@ -245,8 +239,6 @@ const TheListItem = (props: TheListItemProps) => {
                             imgsize={props.imgsize}
                             well={props.well}
                             textColorHeading={props.textColorHeading}
-                            icons={icons}
-                            icon3={item.icon3}
                             themeStyles={props.themeStyles}
                         />
                     ) : props.type === 'article_2' ? (
@@ -261,8 +253,6 @@ const TheListItem = (props: TheListItemProps) => {
                             imgsize={props.imgsize}
                             well={props.well}
                             textColorHeading={props.textColorHeading}
-                            icons={icons}
-                            icon3={item.icon3}
                             themeStyles={props.themeStyles}
                         />
                     ) : props.type === 'article_3' ? (
@@ -277,8 +267,6 @@ const TheListItem = (props: TheListItemProps) => {
                             imgsize={props.imgsize}
                             well={props.well}
                             textColorHeading={props.textColorHeading}
-                            icons={icons}
-                            icon3={item.icon3}
                             themeStyles={props.themeStyles}
                         />
                     ) : (
@@ -291,7 +279,7 @@ const TheListItem = (props: TheListItemProps) => {
 }
 
 const TheListWrapV1 = (props: TsiWrp) => {
-    const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgsize, well, textColorHeading, icons, icon3 } = props
+    const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgsize, well, textColorHeading } = props
 
     const linkAndBtn =
         (item.actionlbl && item.pagelink) || (item.actionlbl && item.weblink) || (item.actionlbl2 && item.pagelink2) || (item.actionlbl2 && item.weblink2)
@@ -315,8 +303,6 @@ const TheListWrapV1 = (props: TsiWrp) => {
                         textColor={textColor}
                         imgsize={props.imgsize}
                         well={props.well}
-                        icons={icons}
-                        icon3={icon3}
                     />
 
                     {item.caption_tag && <figcaption style={textColorAccent}>{item.caption_tag}</figcaption>}
@@ -374,7 +360,6 @@ const TheListWrapV1 = (props: TsiWrp) => {
                     weblink2={item.weblink2}
                     icon={item.icon}
                     icon2={item.icon2}
-                    icons={icons}
                     btnType={item.btnType}
                     btnType2={item.btnType2}
                     themeStyles={props.themeStyles}
@@ -388,7 +373,7 @@ const TheListWrapV1 = (props: TsiWrp) => {
 }
 
 const TheListWrapV2 = (props: TsiWrp) => {
-    const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgsize, well, textColorHeading, icons, icon3 } = props
+    const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgsize, well, textColorHeading } = props
 
     const linkAndBtn =
         (item.actionlbl && item.pagelink) || (item.actionlbl && item.weblink) || (item.actionlbl2 && item.pagelink2) || (item.actionlbl2 && item.weblink2)
@@ -434,8 +419,6 @@ const TheListWrapV2 = (props: TsiWrp) => {
                         textColor={textColor}
                         imgsize={props.imgsize}
                         well={props.well}
-                        icons={icons}
-                        icon3={icon3}
                     />
 
                     {item.caption_tag && <figcaption style={textColorAccent}>{item.caption_tag}</figcaption>}
@@ -471,7 +454,6 @@ const TheListWrapV2 = (props: TsiWrp) => {
                     weblink2={item.weblink2}
                     icon={item.icon}
                     icon2={item.icon2}
-                    icons={icons}
                     btnType={item.btnType}
                     btnType2={item.btnType2}
                     themeStyles={props.themeStyles}
@@ -485,7 +467,7 @@ const TheListWrapV2 = (props: TsiWrp) => {
 }
 
 const TheListWrapV3 = (props: TsiWrp) => {
-    const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgsize, well, textColorHeading, icons, icon3 } = props
+    const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgsize, well, textColorHeading } = props
 
     const linkAndBtn =
         (item.actionlbl && item.pagelink) || (item.actionlbl && item.weblink) || (item.actionlbl2 && item.pagelink2) || (item.actionlbl2 && item.weblink2)
@@ -510,8 +492,6 @@ const TheListWrapV3 = (props: TsiWrp) => {
                             textColor={textColor}
                             imgsize={props.imgsize}
                             well={props.well}
-                            icons={icons}
-                            icon3={icon3}
                         />
 
                         {item.caption_tag && <figcaption style={textColorAccent}>{item.caption_tag}</figcaption>}
@@ -569,7 +549,6 @@ const TheListWrapV3 = (props: TsiWrp) => {
                         weblink2={item.weblink2}
                         icon={item.icon}
                         icon2={item.icon2}
-                        icons={icons}
                         btnType={item.btnType}
                         btnType2={item.btnType2}
                         themeStyles={props.themeStyles}
@@ -584,8 +563,8 @@ const TheListWrapV3 = (props: TsiWrp) => {
 }
 
 const TheListItemAction = (props: TheListItemActionProps) => {
-    let icon = props.icon ? props.icons[props.icon] : faRocket
-    let icon2 = props.icon2 ? props.icons[props.icon2] : faRocket
+    let icon = props.icon ? icons[props.icon] : faRocket
+    let icon2 = props.icon2 ? icons[props.icon2] : faRocket
 
     const btns = props.well
         ? `.btn1{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['mainColor']}} .btn_link:hover .btn1{color: ${props.themeStyles['mainColor']}; background-color: ${props.themeStyles['textColorAccent']}} .btn2{color: ${props.themeStyles['altColor']}; border-color: ${props.themeStyles['altColor']}} .btn_link:hover .btn2{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['altColor']}}`
@@ -681,7 +660,7 @@ const TheListItemAction = (props: TheListItemActionProps) => {
 const TheListItemImage = (props: TheListItemImageProps) => {
     const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor } = props
 
-    let icon = props.icon3 ? props.icons[props.icon3] : faRocket
+    //let icon = props.icon3 ? props.icons[props.icon3] : faRocket
 
     return (
         <>
@@ -700,11 +679,11 @@ const TheListItemImage = (props: TheListItemImageProps) => {
                         objectPosition="top"
                     />
                 )}
-                {item.icon3 && (
+                {/* {item.icon3 && (
                     <div className={cn(styles.tsI_icon, styles.icon_block)}>
                         <FontAwesomeIcon icon={icon} />
                     </div>
-                )}
+                )} */}
             </div>
         </>
     )

@@ -23,16 +23,12 @@ export interface ThemeStyles {
 }
 
 export interface HomeProps {
-    // moduleData?: ModuleData
-    /* globalData: GlobalData */
     CMSLayout: GlobalData
     page: CMSPage
-    //cmsGlobal?: CMSGlobal
-    // pageMods?: PageProps
-    //pageList?: Pagelist
 }
 
-export interface CMSGlobal {
+//temp maybe not needed
+/* export interface CMSGlobal {
     vars: any
     forms2: any
     design: any
@@ -46,18 +42,12 @@ export interface CMSGlobal {
     blogging: any
     composites: any
 }
-
+ */
 export interface LayoutProps {
     children: ReactNode
     CMSLayout: GlobalData
     themeStyles: ThemeStyles
     page: CMSPage
-}
-
-export interface SocialBarProps {
-    CMSLayout: GlobalData
-    themeStyles: ThemeStyles
-    modType?: string
 }
 
 export interface GlobalData {
@@ -85,15 +75,14 @@ export interface GlobalData {
     cmsUrl?: string
 }
 
-export interface SocialItem {
-    enabled: number
-    format: string
-    id: number
-    input: any
-    label: string
-    name: string
-    url: string
-    value: string
+export interface Logo {
+    show: number
+    type: string
+    markup: string
+    hasLinks: boolean
+    alignment: string
+    image_src: string
+    image_link: string
 }
 
 interface CompositeData {
@@ -109,16 +98,6 @@ export interface CompositeItem {
     title: string
     component: string
     text: string
-}
-
-export interface Logo {
-    show: number
-    type: string
-    markup: string
-    hasLinks: boolean
-    alignment: string
-    image_src: string
-    image_link: string
 }
 
 export interface NavItem {
@@ -143,17 +122,6 @@ export interface NavListItemProps {
     navType: string | undefined
     item: NavItem
     arrow?: boolean
-}
-
-export interface AltHeaderProps {
-    navSwitch?: () => void
-    /**Boolean that determines if navbar being shown or hidden*/
-    navCheck?: boolean
-    pages?: PagesProps[]
-    /**Image url for logo*/
-    logoUrl?: string
-    themeStyles: ThemeStyles
-    CMSLayout: GlobalData
 }
 
 export interface ContactLinkProps {
@@ -391,7 +359,6 @@ export interface TheListItemActionProps {
     btn2Styles?: btnColors
     icon?: string
     icon2?: string
-    icons: { [key: string]: IconProp }
     btnType?: string
     btnType2?: string
     themeStyles: ThemeStyles
@@ -411,17 +378,6 @@ export interface TheListItemProps {
     index: number
 }
 
-export interface MyImagesProps {
-    item: ArticleItems
-    calcImageSize?: (loadedMedia: Media) => void
-    imageWidth?: number
-    imageHeight?: number
-    imgsize: string
-    well: string | number
-    icons: { [key: string]: IconProp }
-    cmsUrl?: string
-}
-
 export interface TsiWrp {
     calcImageSize: (loadedMedia: Media) => void
     imageWidth: number
@@ -430,7 +386,6 @@ export interface TsiWrp {
     textColor: Colors
     imgsize: string
     well: string | number
-    icons: { [key: string]: IconProp }
     item: ArticleItems
     textColorHeading: { color: string }
     themeStyles: ThemeStyles
@@ -440,7 +395,6 @@ export interface TsiWrp {
 export interface ItemWrapProps {
     imgsize: string
     well: string | number
-    icons: { [key: string]: IconProp }
     item: ArticleItems
     themeStyles: ThemeStyles
     isFeatured?: string
@@ -470,6 +424,94 @@ export interface ModuleItemProps {
     cmsUrl?: string
 }
 
+export interface MyHeaderProps {
+    pages?: PagesProps[]
+    CMSLayout: GlobalData
+    themeStyles: ThemeStyles
+    // navCheck: boolean
+    navSwitch: () => void
+    setHeight: (height: any) => void
+}
+
+export interface SocialItem {
+    enabled: number
+    format: string
+    id: number
+    input: any
+    label: string
+    name: string
+    url: string
+    value: string
+}
+
+export interface MyFooterProps {
+    pages?: PagesProps[]
+    CMSLayout: GlobalData
+    themeStyles: ThemeStyles
+    //navCheck: boolean
+    navSwitch: () => void
+}
+
+export interface Params {
+    slug: 'string'
+}
+
+export interface Context {
+    params: Params
+}
+
+export interface Media {
+    naturalHeight: number
+    naturalWidth: number
+}
+
+/*----------------------------TSI Elements--------------------------------------*/
+
+export interface AltHeaderProps {
+    navSwitch?: () => void
+    /**Boolean that determines if navbar being shown or hidden*/
+    navCheck?: boolean
+    // pages?: PagesProps[]
+    /**Image url for logo*/
+    logoUrl?: string
+    themeStyles: ThemeStyles
+    CMSLayout: GlobalData
+}
+
+export interface MyImagesProps {
+    item: ArticleItems
+    calcImageSize?: (loadedMedia: Media) => void
+    imageWidth?: number
+    imageHeight?: number
+    imgsize: string
+    well: string | number
+    cmsUrl?: string
+}
+
+export interface MyNavProps {
+    navType?: string
+    cmsNav: any
+    currentPage?: string
+}
+
+export interface LogoProps {
+    logoUrl?: string
+    link?: string
+}
+
+export interface SocialBarProps {
+    CMSLayout: GlobalData
+    themeStyles: ThemeStyles
+    modType?: string
+}
+
+export interface ConditionalWrapperProps {
+    condition: boolean
+    children: ReactChild
+    falseOutput: (children: ReactChild) => ReactElement
+    trueOutput: (children: ReactChild) => ReactElement
+}
+
 export interface BtnProps {
     pagelink?: string
     pagelink2?: string
@@ -482,7 +524,6 @@ export interface BtnProps {
     btn2Styles?: btnColors
     icon?: string
     icon2?: string
-    icons: { [key: string]: IconProp }
     btnType?: string
     btnType2?: string
     themeStyles: ThemeStyles
@@ -495,14 +536,26 @@ export interface BtnProps {
     columns: number | string
 }
 
-export interface ConditionalWrapperProps {
-    condition: boolean
-    children: ReactChild
-    falseOutput: (children: ReactChild) => ReactElement
-    trueOutput: (children: ReactChild) => ReactElement
-}
-
 /*------------------------------Non CMS types-------------------------*/
+
+export interface NavBarProps {
+    /**Boolean that determines if navbar being shown or hidden*/
+    navCheck: boolean
+    /**Nav pages*/
+    pages: PagesProps[]
+    /**Layout changes based on where Nav is being called*/
+    modLayout?: 'header' | 'footer'
+    /**Mobile style layout of component*/
+    navStyle?: 'layout1' | 'layout2'
+    /**Determines which item to place bottom border under in Nav*/
+    borderNum?: number
+    /**Image that appears in navbar dropdown*/
+    navImage?: string
+    /**alt text for nav image*/
+    altText?: string
+    /**Global site styles*/
+    themeStyles: ThemeStyles
+}
 
 export interface HeaderProps {
     /**Headline content to appear */
@@ -519,11 +572,6 @@ export interface HeaderProps {
     modLayout: 'normal' | 'alt-layout'
     /**Global site styles*/
     themeStyles: ThemeStyles
-}
-
-export interface LogoProps {
-    logoUrl?: string
-    link?: string
 }
 
 export interface ListProps {
@@ -706,12 +754,6 @@ export interface Pagelist {
     themeStyles?: ThemeStyles
 }
 
-export interface MyNavProps {
-    navType?: string
-    cmsNav: any
-    currentPage?: string
-}
-
 export interface FooterProps {
     /**Data for links to social platforms*/
     socialData: SocialData[]
@@ -737,18 +779,6 @@ export interface VideoProps {
 
 export interface tsiLayoutProps {
     children: ReactNode
-}
-
-export interface Params {
-    slug: 'string'
-}
-
-export interface Context {
-    params: Params
-}
-export interface Media {
-    naturalHeight: number
-    naturalWidth: number
 }
 
 export interface PageListProps {
@@ -812,42 +842,6 @@ export interface NavigationProps {
     CMSLayout: GlobalData
 }
 
-export interface MyHeaderProps {
-    pages?: PagesProps[]
-    CMSLayout: GlobalData
-    themeStyles: ThemeStyles
-    // navCheck: boolean
-    navSwitch: () => void
-    setHeight: (height: any) => void
-}
-
-export interface MyFooterProps {
-    pages?: PagesProps[]
-    CMSLayout: GlobalData
-    themeStyles: ThemeStyles
-    //navCheck: boolean
-    navSwitch: () => void
-}
-
-export interface NavBarProps {
-    /**Boolean that determines if navbar being shown or hidden*/
-    navCheck: boolean
-    /**Nav pages*/
-    pages: PagesProps[]
-    /**Layout changes based on where Nav is being called*/
-    modLayout?: 'header' | 'footer'
-    /**Mobile style layout of component*/
-    navStyle?: 'layout1' | 'layout2'
-    /**Determines which item to place bottom border under in Nav*/
-    borderNum?: number
-    /**Image that appears in navbar dropdown*/
-    navImage?: string
-    /**alt text for nav image*/
-    altText?: string
-    /**Global site styles*/
-    themeStyles: ThemeStyles
-}
-
 export interface SeoData {
     title?: string
     description?: string
@@ -867,7 +861,6 @@ export interface TheListItemImageProps {
     textColor: Colors
     imgsize: string
     well: string | number
-    icons: { [key: string]: IconProp }
     cmsUrl?: string
     imageNoSizings: any
 }

@@ -24,7 +24,16 @@ export const MyImage = (props: MyImagesProps) => {
 
     let icon = item.icon3 ? icons[item.icon3] : faRocket
 
-    const imgSizes = ['landscape_4_3', 'square_1_1', 'portrait_3_4', 'portrait_2_3', 'widescreen_16_9', 'widescreen_3_1']
+    const imgSizes = [
+        'landscape_4_3',
+        'square_1_1',
+        'portrait_3_4',
+        'portrait_2_3',
+        'widescreen_16_9',
+        'widescreen_3_1',
+        'widescreen_2-4_1',
+        'widescreen_2_4_1',
+    ]
 
     //non constrained images
     const imageNoSizings = ['no_sizing', 'no_set_height']
@@ -33,7 +42,7 @@ export const MyImage = (props: MyImagesProps) => {
         <>
             <div
                 className={cn(styles.image, styles[`${imgsize}`], {
-                    [styles.landscape_4_3]: !imgsize || (imgSizes.includes(imgsize) && imageNoSizings.includes(imgsize)),
+                    [styles.landscape_4_3]: !imgsize || (!imgSizes.includes(imgsize) && !imageNoSizings.includes(imgsize)),
                     [styles.widescreen_2_4_1]: imgsize === 'widescreen_2-4_1',
                 })}
             >
