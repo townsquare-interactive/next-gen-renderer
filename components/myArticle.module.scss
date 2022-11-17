@@ -62,11 +62,6 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
             margin-right: 0;
 
             .item-wrap {
-                .image-block {
-                    margin: 0;
-                    margin-bottom: 0.5625em;
-                }
-
                 .hd-block {
                     .hd {
                         font-weight: 700;
@@ -208,6 +203,11 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
                     }
                 }
             }
+        }
+
+        .image-block {
+            margin: 0;
+            margin-bottom: 0.5625em;
         }
     }
     /*-----------------------------ENd of button styles--------------------*/
