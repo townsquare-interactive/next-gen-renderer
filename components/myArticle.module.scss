@@ -410,6 +410,10 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
         .mod_right .image-block {
             margin-left: 2rem;
         }
+
+        &.a2.not_well .yImg .txt-block {
+            padding-top: 1.5rem;
+        }
     }
 
     /*------------------------------------Border/well prop enabled-------------------------*/
