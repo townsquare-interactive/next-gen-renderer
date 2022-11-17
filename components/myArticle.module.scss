@@ -63,47 +63,8 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
 
             .item-wrap {
                 .image-block {
-                    /* display: block;*/
                     margin: 0;
                     margin-bottom: 0.5625em;
-
-                    /*  .image {
-                        position: relative;
-                        margin: 0;
-                        width: 100%;
-                        max-width: 100%;
-                    } */
-
-                    /* figcaption {
-                        display: block;
-                        font-size: 0.75rem;
-                        padding: 0.5rem 1rem;
-                        text-align: center;
-                        background: rgba(0, 0, 0, 0.5);
-
-                    }
-
-                    .icon-block {
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        bottom: 0;
-                        right: 0;
-                        z-index: 1;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        background: rgba(0, 0, 0, 0.5);
-
-                        .icon {
-                            color: #fff;
-                            font-size: 4rem;
-
-                            @include breakpoints.sm-min {
-                                font-size: 6rem;
-                            }
-                        }
-                    } */
                 }
 
                 .hd-block {
@@ -118,7 +79,6 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
 
                 .txt-block {
                     .dsc {
-                        //display: inline;
                         width: 100%;
                     }
                 }
@@ -208,7 +168,6 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
                 &.btn_1,
                 &.btn_2 {
                     border-style: solid;
-                    //border-color: transparent;
                     border-width: 1px;
                     border-radius: 2px;
                     margin: 0.5rem 0;
@@ -227,8 +186,6 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
             .btn-wrap {
                 display: flex;
                 flex-wrap: wrap;
-
-                //padding: 0 2rem 1.5rem;
 
                 a {
                     margin-left: 0.25rem;
@@ -268,7 +225,6 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
         }
 
         .item {
-            /*Full width*/
             @include tsFlex;
             box-flex: 0;
             flex: 0 1 auto;
@@ -276,7 +232,6 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
             -ms-flex-item-align: stretch;
             flex: 0 1 auto;
             align-self: stretch;
-            /*Full width ending*/
             box-orient: vertical;
             box-direction: normal;
             flex-direction: column;
@@ -298,31 +253,11 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
 
     &.a1,
     &.a2 {
-        //default alignments
-        /*  .btn {
-            align-self: flex-start;
-
-            &.btn_w {
-                margin: auto 0 0;
-                width: 100%;
-            }
-        } */
         .hd,
         .sh,
         .dsc {
             text-align: left;
         }
-
-        //alignment modifiers
-        /*  .left {
-         .btn {
-                align-self: flex-start;
-                -ms-flex-item-align: flex-start;
-            }
-            .btn-wrap {
-                justify-content: left;
-            } 
-        }*/
 
         .right {
             .hd,
@@ -330,14 +265,6 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
             .dsc {
                 text-align: right;
             }
-
-            /*  .btn {
-                align-self: flex-end;
-                -ms-flex-item-align: flex-end;
-            }
-            .btn-wrap {
-                justify-content: right;
-            } */
         }
 
         .center {
@@ -346,64 +273,9 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
             .dsc {
                 text-align: center;
             }
-
-            /*   .btn {
-                align-self: center;
-                -ms-flex-item-align: center;
-            }
-            .btn-wrap {
-                justify-content: center;
-            } */
         }
     }
 
-    /* &.a3,
-    &.beacon {
-        //Floating image to side of content, only when columns are not in play
-          &.full-width {
-           &.medium {
-                @include breakpoints.sm-min {
-                    .mod_left .image-block,
-                    .mod_right .image-block {
-                        width: $third-width;
-                        display: block;
-                    }
-                    .mod_left .image-block {
-                        float: left;
-                        margin-right: 1rem;
-                    }
-                    .mod_right .image-block {
-                        float: right;
-                        margin-left: 1rem;
-                    }
-                }
-            } 
-
-           &.large {
-                @include breakpoints.sm-min {
-                    .mod_left .image-block,
-                    .mod_right .image-block {
-                        width: math.div(5, 12) * 100%;
-                        display: block;
-                    }
-                    .mod_left .image-block {
-                        float: left;
-                        margin-right: 2rem;
-                    }
-                    .mod_right .image-block {
-                        float: right;
-                        margin-left: 2rem;
-                    }
-                }
-            } 
-        }
-
-          .btn {
-            align-self: flex-start;
-        } 
-    }
-    */
-    /* @include sm-min { */
     .dsc {
         font-size: 0.875em;
         margin-top: 1.1428571429em;
@@ -424,32 +296,6 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
         margin-bottom: 0.4705882353em;
         line-height: 1.1764705882em;
     }
-
-    /* &.medium {
-        @include breakpoints.sm-min {
-            .sh {
-                font-size: 1.0625em;
-                margin-top: 0.7058823529em;
-                margin-bottom: 0.4705882353em;
-                line-height: 1.1764705882em;
-            }
-
-            .hd {
-                font-size: 1.5em !important;
-                margin-top: 0.6666666667em;
-                margin-bottom: 0.5em;
-                line-height: 1.1666666667em;
-                letter-spacing: -0.0125rem;
-            }
-
-            .dsc {
-                font-size: 1.0625em;
-                margin-top: 0.9411764706em;
-                margin-bottom: 0.9411764706em;
-                line-height: 1.4117647059em;
-            }
-        }
-    } */
 
     &.root-container {
         container-type: inline-size;
@@ -512,23 +358,23 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
                 margin-top: 2rem;
             }
         }
+        @include breakpoints.sm-min {
+            .mod_left .image-block,
+            .mod_right .image-block {
+                width: $third-width;
+                display: block;
+            }
+            .mod_left .image-block {
+                float: left;
+                margin-right: 1rem;
+            }
+            .mod_right .image-block {
+                float: right;
+                margin-left: 1rem;
+            }
+        }
     }
-    //temp: container for mod_left/right on .medium/large, need to fix !important
-    @container item (min-width:637px) {
-        .mod_left .image-block,
-        .mod_right .image-block {
-            width: $third-width;
-            display: block;
-        }
-        .mod_left .image-block {
-            float: left;
-            margin-right: 1rem !important;
-        }
-        .mod_right .image-block {
-            float: right;
-            margin-left: 1rem !important;
-        }
-    }
+
     //for larger screens (starts at 1025)
     @container item (min-width:775px) {
         .hd {
@@ -559,72 +405,12 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
             width: math.div(5, 12) * 100%;
         }
         .mod_left .image-block {
-            margin-right: 2rem !important;
+            margin-right: 2rem;
         }
         .mod_right .image-block {
-            margin-left: 2rem !important;
+            margin-left: 2rem;
         }
     }
-
-    /*     .item-wrap {
-        padding: 2rem;
-    } */
-
-    /* &.large {
-        @include breakpoints.sm-min {
-            .hd {
-                font-size: 1.5em;
-                margin-top: 0.6666666667em;
-                margin-bottom: 0.5em;
-                line-height: 1.1666666667em;
-                letter-spacing: -0.0125rem;
-            }
-
-            .sh {
-                font-size: 1.0625em;
-                margin-top: 0.7058823529em;
-                margin-bottom: 0.4705882353em;
-                line-height: 1.1764705882em;
-            }
-
-            .dsc {
-                font-size: 0.875em;
-                margin-top: 1.1428571429em;
-                margin-bottom: 1.1428571429em;
-                line-height: 1.4285714286em;
-            }
-
-            .item {
-                &.nHero:first-of-type {
-                    margin-top: 2rem;
-                }
-            }
-        }
-        @include breakpoints.lg-min {
-            .hd {
-                font-size: 2.25em;
-                margin-top: 0.6666666667em;
-                margin-bottom: 0.4444444444em;
-                line-height: 1.1111111111em;
-                letter-spacing: -0.0125rem;
-            }
-
-            .sh {
-                font-size: 1.5em;
-                margin-top: 0.6666666667em;
-                margin-bottom: 0.5em;
-                line-height: 1.1666666667em;
-                letter-spacing: -0.0125rem;
-            }
-
-            .dsc {
-                font-size: 1.0625em;
-                margin-top: 0.9411764706em;
-                margin-bottom: 0.9411764706em;
-                line-height: 1.4117647059em;
-            }
-        }
-    } */
 
     /*------------------------------------Border/well prop enabled-------------------------*/
     &.well {
@@ -656,12 +442,6 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
             .dsc-block {
                 padding-bottom: 1.5rem;
             }
-
-            /*             &.large .dsc-block {
-                @include breakpoints.lg-min {
-                    padding-bottom: 3rem;
-                }
-            } */
         }
 
         &.a2 {
@@ -677,7 +457,7 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
 
             .nDsc {
                 .image-block {
-                    margin-bottom: 0 !important;
+                    margin-bottom: 0;
                     margin-top: auto;
                 }
             }
@@ -685,32 +465,6 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
 
         &.a3,
         &.beacon {
-            //changed from removed class txt-wrap to item-wrap
-            /*  &.small {
-                .item-wrap {
-                    padding: 1.5rem;
-                }
-            }
-
-            &.medium {
-                .item-wrap {
-                    padding: 3rem 2rem 2rem;
-                }
-            }
-
-            &.large {
-                .item-wrap {
-                    padding: 2rem;
-
-                    @include breakpoints.lg-min {
-                        padding: 4rem 1.5rem;
-                    }
-                }
-            } */
-            /*             .item-wrap {
-                padding: 1.5rem;
-            } */
-
             .item-wrap {
                 padding: 1.5rem;
             }
@@ -744,32 +498,12 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
 
     /*---------------------------------------- Column item sizes ------------------------------------------------*/
 
-    /*     @include breakpoints.lg-min {
-        &.med-width,
-        &.full-width {
-            &.col_3 .nHero,
-            &.beacon.col_3 .item {
-                width: $third-item-width;
-            }
-        }
-
-        &.full-width {
-            &.col_4 .nHero,
-            &.beacon.col_4 .item {
-                width: $quarteritem-width;
-            }
-        }
-    } */
-
-    //same as .large + sm-min
     @container module (min-width:481px) {
         .wrapper {
             padding-top: 3rem;
         }
 
         &.beacon {
-            /* &.full-width { */
-            /*   @include breakpoints.sm-min { */
             .mod_left .image-block,
             .mod_right .image-block {
                 width: math.div(5, 12) * 100%;
@@ -792,14 +526,11 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
         &.a3 {
             .nHero {
                 width: $ten-12;
-                //margin: 0 auto;
-                // margin-bottom: 4rem;
-                // margin-bottom: 2rem;
-
-                /* &:last-of-type {
-                    margin-bottom: 2rem;
-                } */
             }
+        }
+
+        &.tsflex .item {
+            margin-bottom: 4rem;
         }
     }
 
@@ -815,7 +546,9 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
 
         &.col_1 .item,
         &.col_2 .item {
-            width: $full-width;
+            width: $ten-12;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         &.col_3 .item {
@@ -828,16 +561,13 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
     }
 
     @include breakpoints.md-min {
-        &.col_2 .item {
+        &.col_2 .item,
+        &.col_4 .item {
             width: $half-item-width;
         }
 
         &.col_3 .item {
             width: $third-item-width;
-        }
-
-        &.col_4 .item {
-            width: $half-item-width;
         }
 
         &.a1,
@@ -857,7 +587,7 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
         }
     }
 
-    @container module (min-width:850px) {
+    @container module (min-width:1025px) {
         &.col_3 .nHero,
         &.beacon.col_3 .item {
             width: $third-item-width;
@@ -867,33 +597,7 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
         &.beacon.col_4 .item {
             width: $quarteritem-width;
         }
-
-        &.a1 {
-            .dsc-block {
-                @include breakpoints.lg-min {
-                    padding-bottom: 3rem;
-                }
-            }
-        }
     }
-
-    /*  &.large {
-        @include breakpoints.sm-min {
-            &.a1,
-            &.a2,
-            &.a3 {
-                .nHero {
-                    width: $ten-12;
-                    margin: 0 auto;
-                    margin-bottom: 4rem;
-
-                    &:last-of-type {
-                        margin-bottom: 2rem;
-                    }
-                }
-            }
-        }
-    } */
 
     /*----------------------------------------------------------- End of Column Sizes -------------------------------------------*/
 

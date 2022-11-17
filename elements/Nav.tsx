@@ -19,7 +19,7 @@ const Nav = (props: MyNavProps) => {
                                 <li>
                                     <NavListItem item={item} arrow={item.submenu?.length ? true : false} navType={navType} />
                                     {item.submenu && (
-                                        <ul className={cn(styles['sub-menu'])}>
+                                        <ul className={cn(styles['sub-menu'], styles['sub-1'])}>
                                             {item.submenu.map((subItem: any, idx: number) => (
                                                 <Fragment key={idx}>
                                                     <li>

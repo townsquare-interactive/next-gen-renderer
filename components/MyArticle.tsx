@@ -74,13 +74,6 @@ const ModuleItem = (props: ModuleItemProps) => {
         backgroundColor: themeStyles['altColor'],
     }
 
-    //Key to determine which imported logo to use
-    /*     const icons: { [key: string]: IconProp } = {
-        faRocket,
-        faAnchor,
-        faArchway,
-    } */
-
     function isButton() {
         if (item.actionlbl || item.actionlbl2) {
             return true
@@ -186,14 +179,7 @@ const ItemWrap = (props: ItemWrapProps) => {
                 <>
                     {item.image && (
                         <figure className={cn(styles['image-block'])} data-alt="Headline">
-                            <MyImage
-                                item={item}
-                                imgsize={imgsize}
-                                well={well}
-                                //temp: can prob call icons in Image
-
-                                cmsUrl={cmsUrl}
-                            />
+                            <MyImage item={item} imgsize={imgsize} well={well} cmsUrl={cmsUrl} />
                         </figure>
                     )}
                     {(item.headline || item.subheader) && <HeaderBlock item={item} well={well} columns={columns} isBeaconHero={isBeaconHero} />}
@@ -204,14 +190,7 @@ const ItemWrap = (props: ItemWrapProps) => {
 
                     {item.image && (
                         <figure className={cn(styles['image-block'])} data-alt="Headline">
-                            <MyImage
-                                item={item}
-                                imgsize={imgsize}
-                                well={well}
-                                //temp: can prob call icons in Image
-
-                                cmsUrl={cmsUrl}
-                            />
+                            <MyImage item={item} imgsize={imgsize} well={well} cmsUrl={cmsUrl} />
                         </figure>
                     )}
                 </>

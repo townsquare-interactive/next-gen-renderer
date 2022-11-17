@@ -4,11 +4,10 @@
 /*-----------------------------Button styles--------------------*/
 .btn-mod {
     display: flex;
-    width: 100%;
+    //width: 100%;
 
     .btn {
         border-style: solid;
-        //border-color: transparent;
         border-width: 1px;
         border-radius: 2px;
         margin: 0.5rem 0;
@@ -21,6 +20,7 @@
         user-select: none;
         white-space: normal;
         display: inline-block;
+        text-transform: uppercase;
 
         &.btn_xs {
             font-size: 0.8125em;
@@ -64,7 +64,7 @@
             }
         }
 
-        &.btn_block {
+        &.btn-block {
             display: block;
             width: 100%;
         }
@@ -88,7 +88,6 @@
         &.btn_1,
         &.btn_2 {
             border-style: solid;
-            //border-color: transparent;
             border-width: 1px;
             border-radius: 2px;
             margin: 0.5rem 0;
@@ -107,15 +106,13 @@
     .btn-wrap {
         display: flex;
         flex-wrap: wrap;
-        //width: 100%;
-
-        //padding: 0 2rem 1.5rem;
+        width: 100%;
 
         a {
             margin-left: 0.25rem;
             margin-right: 0.25rem;
 
-            &.btn_block {
+            &.btn-block {
                 display: block;
                 width: 100%;
             }
@@ -135,7 +132,6 @@
 
     &.a1,
     &.a2 {
-        //default alignments
         .btn {
             align-self: flex-start;
 
@@ -148,10 +144,6 @@
         //alignment modifiers
         &.left {
             justify-content: flex-start;
-            /*  .btn {
-                align-self: flex-start;
-                -ms-flex-item-align: flex-start;
-            } */
 
             .btn-wrap {
                 justify-content: left;
@@ -160,10 +152,6 @@
 
         &.right {
             justify-content: flex-end;
-            /*  .btn {
-                align-self: flex-end;
-                -ms-flex-item-align: flex-end;
-            } */
 
             .btn-wrap {
                 justify-content: right;
@@ -172,10 +160,6 @@
 
         &.center {
             justify-content: center;
-            /*  .btn {
-                align-self: center;
-                -ms-flex-item-align: center;
-            } */
 
             .btn-wrap {
                 justify-content: center;
@@ -185,8 +169,6 @@
 
     &.a3,
     &.beacon {
-        //Floating image to side of content, only when columns are not in play
-
         .btn {
             align-self: flex-start;
         }
@@ -195,7 +177,6 @@
     &.well {
         &.a1 {
             .btn {
-                //padding: 0 2rem 0;
                 width: 100%;
             }
         }

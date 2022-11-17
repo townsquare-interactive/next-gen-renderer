@@ -8,7 +8,7 @@ import { ReactChild, Fragment } from 'react'
 import Link from 'next/link'
 
 // importing fontAwesome icons
-import { faRocket, faAnchor, faArchway } from '@fortawesome/free-solid-svg-icons'
+import { faRocket } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const Button = (props: BtnProps) => {
