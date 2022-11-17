@@ -1,0 +1,584 @@
+@use 'sass:math';
+@use './styles/breakpoints.scss';
+
+$full-width: 100%;
+$half-width: 50%;
+$third-width: math.div($full-width, 3);
+$quarter-width: 25%;
+$item-margins: 2%;
+$full-item-width: $full-width - ($item-margins * 2);
+$half-item-width: $half-width - ($item-margins * 2);
+$third-item-width: $third-width - ($item-margins * 2);
+$quarteritem-width: $quarter-width - ($item-margins * 2);
+
+//grid system
+$col3-hero: (math.div(8, 12) * 100%) - ($item-margins * 2);
+$ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
+
+@mixin tsFlex {
+    display: -moz-flex;
+    display: flex;
+}
+
+.root {
+    * {
+        box-sizing: border-box;
+    }
+
+    .wrapper {
+        max-width: 75.5em;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 1.5rem 1rem;
+
+        //module title
+        .mod-title {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            font-size: 1.5em;
+            text-align: center;
+            margin: 1rem;
+
+            span {
+                max-width: 35rem;
+                margin: 0 auto;
+                padding: 0 1rem;
+
+                &:after {
+                    content: ' ';
+                    display: block;
+                    border-bottom: 3px solid;
+                    width: 4rem;
+                    margin: 1rem auto;
+                }
+            }
+        }
+
+        .item {
+            margin-bottom: 2rem;
+            width: $full-width;
+            margin-left: 0;
+            margin-right: 0;
+
+            .item-wrap {
+                .hd-block {
+                    .hd {
+                        font-weight: 700;
+                    }
+
+                    .sh {
+                        font-weight: 400;
+                    }
+                }
+
+                .txt-block {
+                    .dsc {
+                        width: 100%;
+                    }
+                }
+            }
+
+            /*-----------------------------Button styles--------------------*/
+
+            .btn {
+                border-style: solid;
+                //border-color: transparent;
+                border-width: 1px;
+                border-radius: 2px;
+                margin: 0.5rem 0;
+                appearance: none;
+                cursor: pointer;
+                font-weight: 700;
+                letter-spacing: 0.1em;
+                text-decoration: none;
+                text-align: center;
+                user-select: none;
+                white-space: normal;
+                display: inline-block;
+
+                &.btn_xs {
+                    font-size: 0.8125em;
+                    line-height: 1.2307692308em;
+                    padding: 0.25em 0.75em;
+                }
+
+                &.btn_sm {
+                    font-size: 0.8125em;
+                    line-height: 1.2307692308em;
+                    padding: 0.5em 1em;
+                }
+
+                &.btn_md {
+                    font-size: 0.875em;
+                    line-height: 1.4285714286em;
+                    padding: 0.625em 1.25em;
+                }
+
+                &.btn_lg {
+                    font-size: 0.875em;
+                    line-height: 1.4285714286em;
+                    padding: 0.625em 1.25em;
+                }
+
+                &.btn_xl {
+                    font-size: 0.875em;
+                    padding: 0.625em 1.25em;
+                    line-height: 1.4285714286em;
+                }
+
+                @include breakpoints.md-min {
+                    &.btn_lg {
+                        padding: 0.825em 2.25em;
+                    }
+
+                    &.btn_xl {
+                        font-size: 1em;
+                        line-height: 1.5em;
+                        padding: 1.125em 2.75em;
+                    }
+                }
+
+                &.btn_block {
+                    display: block;
+                    width: 100%;
+                }
+
+                &.btn_1 {
+                    box-shadow: 0 2px 10px rgb(0 0 0 / 25%);
+                    border-color: transparent;
+
+                    &:hover {
+                        box-shadow: 0 3px 13px rgb(0 0 0 / 20%), 0 8px 25px rgb(0 0 0 / 15%);
+                    }
+                }
+
+                &.btn_2 {
+                    border-style: solid;
+                    border-width: 1px;
+                    border-radius: 2px;
+                    margin: 0.5rem 0;
+                }
+
+                &.btn_1,
+                &.btn_2 {
+                    border-style: solid;
+                    border-width: 1px;
+                    border-radius: 2px;
+                    margin: 0.5rem 0;
+                }
+
+                &.transition {
+                    transition: all 0.2s ease-in-out;
+                }
+
+                &.btn_w {
+                    margin: auto 0 0;
+                    width: 100%;
+                }
+            }
+
+            .btn-wrap {
+                display: flex;
+                flex-wrap: wrap;
+
+                a {
+                    margin-left: 0.25rem;
+                    margin-right: 0.25rem;
+
+                    &.btn_block {
+                        display: block;
+                        width: 100%;
+                    }
+                }
+
+                .btn {
+                    flex: 0 1 auto;
+                    align-self: stretch;
+                    justify-content: center;
+                    min-width: 6.875rem;
+
+                    &.btn_w {
+                        margin: 0.25rem 0;
+                    }
+                }
+            }
+        }
+
+        .image-block {
+            margin: 0;
+            margin-bottom: 0.5625em;
+        }
+    }
+    /*-----------------------------ENd of button styles--------------------*/
+
+    &.tsflex {
+        @include tsFlex;
+        box-lines: multiple;
+        flex-wrap: wrap;
+
+        .wrapper {
+            @include tsFlex;
+            box-lines: multiple;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .item {
+            @include tsFlex;
+            box-flex: 0;
+            flex: 0 1 auto;
+            align-self: stretch;
+            -ms-flex-item-align: stretch;
+            flex: 0 1 auto;
+            align-self: stretch;
+            box-orient: vertical;
+            box-direction: normal;
+            flex-direction: column;
+            margin-bottom: 2rem;
+        }
+
+        .item-wrap {
+            @include tsFlex;
+            box-orient: vertical;
+            box-direction: normal;
+            flex-direction: column;
+            box-flex: 1;
+            flex: 1 1 auto;
+        }
+    }
+
+    .hd,
+    .sh,
+    .dsc {
+        text-align: left;
+    }
+
+    .right {
+        .hd,
+        .sh,
+        .dsc {
+            text-align: right;
+        }
+    }
+
+    .center {
+        .hd,
+        .sh,
+        .dsc {
+            text-align: center;
+        }
+    }
+
+    .dsc {
+        font-size: 0.875em;
+        margin-top: 1.1428571429em;
+        margin-bottom: 1.1428571429em;
+        line-height: 1.4285714286em;
+    }
+
+    .sh {
+        font-size: 0.875em;
+        margin-top: 0.5714285714em;
+        margin-bottom: 0.5714285714em;
+        line-height: 1.1428571429em;
+    }
+
+    .hd {
+        font-size: 1.0625em;
+        margin-top: 0.7058823529em;
+        margin-bottom: 0.4705882353em;
+        line-height: 1.1764705882em;
+    }
+
+    &.root-container {
+        container-type: inline-size;
+        container-name: module;
+
+        .item {
+            container-type: inline-size;
+            container-name: item;
+        }
+    }
+
+    @container item (min-width:0px) {
+        .dsc {
+            font-size: 0.875em;
+            margin-top: 1.1428571429em;
+            margin-bottom: 1.1428571429em;
+            line-height: 1.4285714286em;
+        }
+
+        .sh {
+            font-size: 0.875em;
+            margin-top: 0.5714285714em;
+            margin-bottom: 0.5714285714em;
+            line-height: 1.1428571429em;
+        }
+
+        .hd {
+            font-size: 1.0625em;
+            margin-top: 0.7058823529em;
+            margin-bottom: 0.4705882353em;
+            line-height: 1.1764705882em;
+        }
+    }
+    //temp: medium screens, need to revise size maybe
+    @container item (min-width:343px) {
+        .hd {
+            font-size: 1.5em;
+            margin-top: 0.6666666667em;
+            margin-bottom: 0.5em;
+            line-height: 1.1666666667em;
+            letter-spacing: -0.0125rem;
+        }
+
+        .sh {
+            font-size: 1.0625em;
+            margin-top: 0.7058823529em;
+            margin-bottom: 0.4705882353em;
+            line-height: 1.1764705882em;
+        }
+
+        .dsc {
+            font-size: 0.875em;
+            margin-top: 1.1428571429em;
+            margin-bottom: 1.1428571429em;
+            line-height: 1.4285714286em;
+        }
+
+        .item {
+            &.nHero:first-of-type {
+                margin-top: 2rem;
+            }
+        }
+        @include breakpoints.sm-min {
+            .mod_left .image-block,
+            .mod_right .image-block {
+                width: $third-width;
+                display: block;
+            }
+            .mod_left .image-block {
+                float: left;
+                margin-right: 1rem;
+            }
+            .mod_right .image-block {
+                float: right;
+                margin-left: 1rem;
+            }
+        }
+    }
+
+    //for larger screens (starts at 1025)
+    @container item (min-width:775px) {
+        .hd {
+            font-size: 2.25em;
+            margin-top: 0.6666666667em;
+            margin-bottom: 0.4444444444em;
+            line-height: 1.1111111111em;
+            letter-spacing: -0.0125rem;
+        }
+
+        .sh {
+            font-size: 1.5em;
+            margin-top: 0.6666666667em;
+            margin-bottom: 0.5em;
+            line-height: 1.1666666667em;
+            letter-spacing: -0.0125rem;
+        }
+
+        .dsc {
+            font-size: 1.0625em;
+            margin-top: 0.9411764706em;
+            margin-bottom: 0.9411764706em;
+            line-height: 1.4117647059em;
+        }
+
+        /*  .mod_left .image-block,
+        .mod_right .image-block {
+            width: math.div(5, 12) * 100%;
+        }
+        .mod_left .image-block {
+            margin-right: 2rem;
+        }
+        .mod_right .image-block {
+            margin-left: 2rem;
+        }
+
+        &.a2.not_well .yImg .txt-block {
+            padding-top: 1.5rem;
+        } */
+    }
+
+    /*------------------------------------Border/well prop enabled-------------------------*/
+    &.well {
+        .hd-block,
+        .txt-block {
+            max-width: 100%;
+        }
+
+        .item {
+            box-shadow: 0 0 2px rgb(0 0 0 / 6%), 0 2px 4px rgb(0 0 0 / 12%);
+
+            &.yLk:hover {
+                transition: all 0.1s ease-in-out;
+                transform: scale(1.01);
+                box-shadow: 1px 1px 10px rgb(0 0 0 / 25%);
+                // z-index: 1;
+            }
+        }
+
+        /*         &.a1 {
+
+            .dsc-block,
+            .hd-block {
+                padding: 0 2rem 0;
+                width: 100%;
+            }
+
+            .nDsc .hd-block,
+            .dsc-block {
+                padding-bottom: 1.5rem;
+            }
+        }
+
+        &.a2 {
+            //well padding
+            .hd-block {
+                padding: 1rem 2rem;
+                width: 100%;
+            }
+
+            .dsc-block {
+                padding: 0 2rem 1.5rem;
+            }
+
+            .nDsc {
+                .image-block {
+                    margin-bottom: 0;
+                    margin-top: auto;
+                }
+            }
+        } */
+
+        /* &.a3,
+        &.beacon {
+            .item-wrap {
+                padding: 1.5rem;
+            }
+
+            @container item (min-width:637px) {
+                .item-wrap {
+                    padding: 3rem 2rem 2rem;
+                }
+            }
+
+            @container item (min-width:775px) {
+                .item-wrap {
+                    padding: 2rem;
+
+                    @include breakpoints.lg-min {
+                        padding: 4rem 1.5rem;
+                    }
+                }
+            }
+        } */
+    }
+    /*------------------------------------End of border/well ----------------------------*/
+
+    /*---------------------------------------- Column item sizes ------------------------------------------------*/
+
+    @container module (min-width:481px) {
+        .wrapper {
+            padding-top: 3rem;
+        }
+
+        .nHero {
+            width: $ten-12;
+        }
+    }
+
+    @include breakpoints.sm-min {
+        &.col_2,
+        &.col_3,
+        &.col_4 {
+            .item {
+                margin-left: $item-margins;
+                margin-right: $item-margins;
+            }
+        }
+
+        &.col_1 .item,
+        &.col_2 .item {
+            width: $ten-12;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        &.col_3 .item {
+            width: $half-item-width;
+        }
+
+        &.col_4 .item {
+            width: $half-item-width;
+        }
+    }
+
+    @include breakpoints.md-min {
+        &.col_2 .item,
+        &.col_4 .item {
+            width: $half-item-width;
+        }
+
+        &.col_3 .item {
+            width: $third-item-width;
+        }
+
+        &.col_2 .hero {
+            width: $full-item-width;
+        }
+
+        &.col_3 .hero {
+            width: $col3-hero;
+        }
+
+        &.col_4 .hero {
+            width: $half-item-width;
+        }
+    }
+
+    @container module (min-width:1025px) {
+        &.col_3 .nHero,
+        &.beacon.col_3 .item {
+            width: $third-item-width;
+        }
+
+        &.col_4 .nHero,
+        &.beacon.col_4 .item {
+            width: $quarteritem-width;
+        }
+    }
+
+    /*----------------------------------------------------------- End of Column Sizes -------------------------------------------*/
+
+    //font sizes
+    .font_xs {
+        font-size: 62.5%;
+    }
+
+    .font_sm {
+        font-size: 75%;
+    }
+
+    .font_md {
+        font-size: 87.5%;
+    }
+
+    .font_lg {
+        font-size: 112.5%;
+    }
+
+    .font_xl {
+        font-size: 125%;
+    }
+}
