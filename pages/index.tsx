@@ -37,39 +37,11 @@ const Home = (props: HomeProps) => {
     const cmsTheme = CMSLayout.theme || 'charlotte'
 
     const themeStyles = setColors(CMSLayout.cmsColors, cmsTheme)
-    /* 
-    if (!page.data.sections) {
-        / page.data = {
-            ...page.data,
-            sections: [
-                {
-                    wide: '1060',
-                },
-                {
-                    wide: '232',
-                },
-                {
-                    wide: '232',
-                },
-                {
-                    wide: '232',
-                },
-                {
-                    wide: '232',
-                },
-            ],
-        } 
-        console.log('false')
-    } */
 
     const columnStyles = page ? decideColumns(page.data) : 'wide-column'
 
-    //Global styles
-
     const colorStyles = createInlineStyles(themeStyles)
 
-    //temp: temporary change need to change back, just using for pictures right now
-    /* const cmsUrl = cmsGlobal ? cmsGlobal.config.website.url : '' */
     const cmsUrl = 'clttestsiteforjoshedwards.production.townsquareinteractive.com'
 
     // If the page is not yet generated, this will be displayed

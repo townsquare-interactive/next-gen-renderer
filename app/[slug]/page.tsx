@@ -1,5 +1,5 @@
 import styles from '../../styles/Home.module.scss'
-import { PageListProps } from '../../types'
+import { PageListProps, ModuleProps } from '../../types'
 import Layout from '../../components/Layout'
 import { Renderer } from '../../components/Renderer'
 import { getDomain, decideColumns, setColors, getPageData, getLayout, createInlineStyles } from '../../functions'
@@ -61,7 +61,7 @@ const Slug = ({ params }: { params: { slug: string } }) => {
                                 [styles['one-fourth_half_one-fourth']]: columnStyles === 'one-fourth_half_one-fourth',
                             })}
                         >
-                            {page.data.modules.map((data: any, idx: number) => (
+                            {page.data.modules.map((data: [ModuleProps], idx: number) => (
                                 <Fragment key={idx}>
                                     {data && idx != 0 ? (
                                         <div
