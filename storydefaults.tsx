@@ -1,4 +1,6 @@
-export const themeStyles = {
+import { ThemeStyles } from 'types'
+
+export const themeStyles: ThemeStyles = {
     promoColor: '#365070',
     textColor: 'rgb(46, 46, 46)',
     headingColor: 'rgb(46, 46, 46)',
@@ -14,6 +16,10 @@ export const themeStyles = {
     NavText: 'rgba(237,237,223,1)',
     subHeadingColor: '#5b5b5b',
     footerText: '#fff',
+    navHover: '#365070',
+    navCurrent: '#365070',
+    captionBackground: '#365070',
+    captionText: '#365070',
 }
 
 export const social = [

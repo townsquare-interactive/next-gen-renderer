@@ -20,6 +20,10 @@ export interface ThemeStyles {
     linkHover?: string
     bckdContent?: string
     footerText: string
+    captionBackground: string
+    navCurrent: string
+    captionText: string
+    navHover: string
 }
 
 export interface HomeProps {
@@ -441,6 +445,18 @@ export interface HeaderBlockProps {
 }
 
 export interface ModuleItemProps {
+    item: ArticleItems
+    well: string | number
+    itemIndex: number
+    themeStyles: ThemeStyles
+    imgsize: string
+    type: string
+    columns: number | string
+    modId: string
+    cmsUrl?: string
+}
+
+export interface PhotoItemProps {
     item: ArticleItems
     well: string | number
     itemIndex: number

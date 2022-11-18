@@ -1,17 +1,12 @@
 'use client'
-import styles from './myimage.module.scss'
-import { Media, MyImagesProps, ArticleProps } from '../types'
-import Image from 'next/image'
+import styles from './photogrid.module.scss'
+import { ArticleProps, PhotoItemProps } from '../types'
+import { Button } from '../elements/MyButton'
+import Parser from 'html-react-parser'
+
 import cn from 'classnames'
 
-import { domainImage } from '../functions'
-import { useState } from 'react'
-
-// importing fontAwesome icons
-import { faRocket, faAnchor, faArchway } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { icons } from '../functions'
-import { MyImage } from 'elements/MyImage'
+import { MyImage } from '../elements/MyImage'
 
 export const PhotoGrid = (props: ArticleProps) => {
     const { width = '1060', columns = 1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl, disabled } = props
@@ -36,36 +31,93 @@ export const PhotoGrid = (props: ArticleProps) => {
         >
             <div className={styles.wrapper}>
                 {items.map((item, index) => (
-                    <article
-                        className={cn(
-                            styles['item'],
-                            styles[`${item.align}`],
-                            {
-                                [styles.hero]: item.isFeatured === 'active',
-                                [styles.nHero]: !item.isFeatured,
-                                [styles.yDsc]: item.desc,
-                                [styles.nDsc]: !item.desc,
-                                [styles.nImg]: !item.image,
-                                [styles.yImg]: item.image,
-                                // [styles.yHds]: item.headline || item.subheader,
-                                // [styles.nHds]: !item.headline || !item.subheader,
-                                //[styles.mod_left]: item.align === 'left' && (type === 'article_3' || type === 'article'),
-                                // [styles.mod_right]: item.align === 'right' && (type === 'article_3' || type === 'article'),
-                                // [styles.mod_center]: item.align === 'center' && (type === 'article_3' || type === 'article'),
-                                // [styles.yLk]: (item.pagelink || item.weblink || item.pagelink2 || item.weblink2) && !twoButtons,
-                                // [styles.yLks]: twoButtons,
-                            },
-                            `item_${index + 1}`,
-                            styles[`item_${index + 1}`]
-                        )}
-                        lang="en"
-                        //style={well == '1' ? borderBackground : noBackground}
+                    <PhotoItem
+                        item={item}
+                        well={well}
+                        modId={modId}
+                        themeStyles={themeStyles}
                         key={index}
-                    >
-                        <MyImage item={item} well={well} imgsize={imgsize} cmsUrl={cmsUrl} />
-                    </article>
+                        imgsize={imgsize}
+                        type={type}
+                        columns={columns}
+                        itemIndex={index}
+                        cmsUrl={cmsUrl}
+                    />
                 ))}
             </div>
         </div>
+    )
+}
+
+const PhotoItem = (props: PhotoItemProps) => {
+    const { item, itemIndex, well, themeStyles, type, cmsUrl, imgsize, columns, modId } = props
+    const linkAndBtn =
+        (item.actionlbl && item.pagelink) || (item.actionlbl && item.weblink) || (item.actionlbl2 && item.pagelink2) || (item.actionlbl2 && item.weblink2)
+
+    function isLink() {
+        if (item.pagelink || item.pagelink2 || item.weblink || item.weblink2 || item.headline) {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    return (
+        <article
+            className={cn(
+                styles['item'],
+                styles[`${item.align}`],
+                {
+                    [styles.hero]: item.isFeatured === 'active',
+                    [styles.nHero]: !item.isFeatured,
+                    [styles.yDsc]: item.desc,
+                    [styles.nDsc]: !item.desc,
+                    [styles.nImg]: !item.image,
+                    [styles.yImg]: item.image,
+                    // [styles.yHds]: item.headline || item.subheader,
+                    // [styles.nHds]: !item.headline || !item.subheader,
+                    //[styles.mod_left]: item.align === 'left' && (type === 'article_3' || type === 'article'),
+                    // [styles.mod_right]: item.align === 'right' && (type === 'article_3' || type === 'article'),
+                    // [styles.mod_center]: item.align === 'center' && (type === 'article_3' || type === 'article'),
+                    // [styles.yLk]: (item.pagelink || item.weblink || item.pagelink2 || item.weblink2) && !twoButtons,
+                    // [styles.yLks]: twoButtons,
+                },
+                `item_${itemIndex + 1}`,
+                styles[`item_${itemIndex + 1}`]
+            )}
+            lang="en"
+            //style={well == '1' ? borderBackground : noBackground}
+        >
+            {item.image && <MyImage item={item} well={well} imgsize={imgsize} cmsUrl={cmsUrl} />}
+            {isLink() && (
+                <figcaption className={cn(styles.caption)} style={{ background: themeStyles.captionBackground }}>
+                    {item.headline && <h3 className={cn(styles['hd'], ['caption-txt'])}>{Parser(item.headline)}</h3>}
+                    {linkAndBtn && (
+                        <Button
+                            pagelink={item.pagelink}
+                            actionlbl={item.actionlbl}
+                            newwindow={item.newwindow}
+                            newwindow2={item.newwindow2}
+                            actionlbl2={item.actionlbl2}
+                            pagelink2={item.pagelink2}
+                            weblink2={item.weblink2}
+                            weblink={item.weblink}
+                            icon={item.icon}
+                            icon2={item.icon2}
+                            btnType={item.btnType}
+                            btnType2={item.btnType2}
+                            themeStyles={themeStyles}
+                            btnSize={item.btnSize}
+                            btnSize2={item.btnSize2}
+                            well={well}
+                            modId={modId}
+                            type={type}
+                            align={item.align}
+                            columns={columns}
+                        />
+                    )}
+                </figcaption>
+            )}
+        </article>
     )
 }

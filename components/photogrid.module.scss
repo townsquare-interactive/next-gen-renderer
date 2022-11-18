@@ -582,3 +582,15 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
         font-size: 125%;
     }
 }
+
+.caption {
+    font-size: 0.75rem;
+    text-align: center;
+    //background: rgba(0, 0, 0, 0.5);
+    padding: 0.5rem 1rem 0.75rem;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* z-index: 1;
+    position: relative; */
+}

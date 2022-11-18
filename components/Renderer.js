@@ -13,6 +13,7 @@ import Article from './Article'
 import CharlotteArticle from './CharlotteArticle'
 import MyArticle from './MyArticle'
 import MyFooter from './MyFooter'
+import { PhotoGrid } from './PhotoGrid'
 import { capitalize } from '../functions'
 
 const keysToComponentMap = {
@@ -29,6 +30,7 @@ const keysToComponentMap = {
     Article,
     CharlotteArticle,
     MyArticle,
+    PhotoGrid,
 }
 
 const mapPropsToConfig = (config) => {

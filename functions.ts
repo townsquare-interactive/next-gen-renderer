@@ -72,6 +72,8 @@ export const setColors = (cmsGlobalDesign: CMSColors, cmsTheme: string) => {
             bckdContent: cmsGlobalDesign.color_22.value,
             footerText: cmsGlobalDesign.color_28.value,
             navCurrent: cmsGlobalDesign.color_20.value,
+            captionText: cmsGlobalDesign.color_16.value,
+            captionBackground: cmsGlobalDesign.color_17.value,
         }
     } else {
         return {
@@ -93,12 +95,15 @@ export const setColors = (cmsGlobalDesign: CMSColors, cmsTheme: string) => {
             footerText: cmsGlobalDesign?.color_12.value,
             navHover: cmsGlobalDesign.color_19.value,
             navCurrent: cmsGlobalDesign.color_19.value,
+            //clt
+            captionText: cmsGlobalDesign.color_16.value,
+            captionBackground: cmsGlobalDesign.color_17.value,
         }
     }
 }
 
 export function createInlineStyles(themeStyles: any) {
-    const textColors = `.accent-txt{color:${themeStyles['textColorAccent']}} .txt-color{color:${themeStyles['textColor']}} .txt-color-heading{color:${themeStyles['headingColor']}} .navLink:hover{color: ${themeStyles['navHover']}} .navLink{color:${themeStyles['NavText']}} .socialIcon:hover{background-color: ${themeStyles['navHover']}} .socialIcon{color:${themeStyles['NavText']}} .currentNav{color:${themeStyles['navCurrent']}}`
+    const textColors = `.accent-txt{color:${themeStyles['textColorAccent']}} .txt-color{color:${themeStyles['textColor']}} .txt-color-heading{color:${themeStyles['headingColor']}} .navLink:hover{color: ${themeStyles['navHover']}} .navLink{color:${themeStyles['NavText']}} .socialIcon:hover{background-color: ${themeStyles['navHover']}} .socialIcon{color:${themeStyles['NavText']}} .currentNav{color:${themeStyles['navCurrent']}} .caption-txt{color:${themeStyles.captionText}}`
 
     const btnStyles = `.btn_1{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['promoColor']}} .btn_1:hover{color: ${themeStyles['promoColor']}; background-color: ${themeStyles['textColorAccent']}} .btn_2{color: ${themeStyles['linkColor']}; border-color: ${themeStyles['linkColor']}} .btn_2:hover{color: ${themeStyles['promoColor']}; border-color: ${themeStyles['promoColor']}}`
 
