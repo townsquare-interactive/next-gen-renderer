@@ -20,6 +20,11 @@ export interface ThemeStyles {
     linkHover?: string
     bckdContent?: string
     footerText: string
+    captionBackground: string
+    navCurrent: string
+    captionText: string
+    navHover: string
+    btnBackground: string
 }
 
 export interface HomeProps {
