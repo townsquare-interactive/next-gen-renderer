@@ -63,6 +63,7 @@ const Slug = ({ params }: { params: { slug: string } }) => {
                         >
                             {page.data.modules.map((data: [ModuleProps], idx: number) => (
                                 <Fragment key={idx}>
+                                    {/*  <span>{data}</span> */}
                                     {data && idx != 0 ? (
                                         <div
                                             className={cn(styles['column' + (idx + 1)], {
