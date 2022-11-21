@@ -548,7 +548,7 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
     }
 
     @container module (min-width:1025px) {
-        &.col_3 .nHero,
+        /*  &.col_3 .nHero,
         &.beacon.col_3 .item {
             width: $third-item-width;
         }
@@ -556,6 +556,27 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
         &.col_4 .nHero,
         &.beacon.col_4 .item {
             width: $quarteritem-width;
+        } */
+
+        &.grid {
+            .wrapper {
+                display: grid;
+                gap: 2%;
+            }
+
+            &.col_3 .wrapper,
+            &.beacon.col_3 .wrapper {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+
+            &.col_4 .wrapper,
+            &.beacon.col_4 .wrapper {
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+            }
+
+            .item {
+                width: 100%;
+            }
         }
     }
 

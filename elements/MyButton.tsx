@@ -14,8 +14,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 export const Button = (props: BtnProps) => {
     const linkHoverStyles = `#id_${props.modId} .btn_link:hover .btn_1{color: ${props.themeStyles['promoColor']}; background-color: ${props.themeStyles['textColorAccent']}} #id_${props.modId} .btn_link:hover .btn_2{color: ${props.themeStyles['promoColor']}; border-color: ${props.themeStyles['promoColor']}}`
 
-    console.log(props.align)
-
     let buttons = [
         {
             name: 'btn1',
