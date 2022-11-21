@@ -1,4 +1,4 @@
-import { ConditionalWrapperProps, Module, PageProps, CMSColors, Pagelist } from 'types'
+import { ConditionalWrapperProps, Module, PageProps, CMSColors, Pagelist, ThemeStyles } from 'types'
 
 import { faGoogle, faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faRocket, faEnvelope, faPrint, faPhone, faLocationPin, faBars, faAnchor, faArchway } from '@fortawesome/free-solid-svg-icons'
@@ -58,6 +58,7 @@ export const setColors = (cmsGlobalDesign: CMSColors, cmsTheme: string) => {
             headingColor: cmsGlobalDesign.color_2.value,
             subHeadingColor: cmsGlobalDesign?.color_3.value,
             textColorAccent: cmsGlobalDesign.color_9.value,
+            btnBackground: cmsGlobalDesign.color_8.value,
             linkColor: cmsGlobalDesign.color_5.value,
             accentBackgroundColor: cmsGlobalDesign.color_25.value,
             accentColor2: cmsGlobalDesign.color_32.value,
@@ -82,6 +83,7 @@ export const setColors = (cmsGlobalDesign: CMSColors, cmsTheme: string) => {
             headingColor: cmsGlobalDesign?.color_2.value,
             subHeadingColor: cmsGlobalDesign?.color_3.value,
             textColorAccent: cmsGlobalDesign?.color_4.value,
+            btnBackground: cmsGlobalDesign.color_8.value,
             linkColor: cmsGlobalDesign?.color_19.value,
             accentBackgroundColor: cmsGlobalDesign?.color_3.value,
             accentColor2: cmsGlobalDesign?.color_16.value,
@@ -102,10 +104,10 @@ export const setColors = (cmsGlobalDesign: CMSColors, cmsTheme: string) => {
     }
 }
 
-export function createInlineStyles(themeStyles: any) {
+export function createInlineStyles(themeStyles: ThemeStyles) {
     const textColors = `.accent-txt{color:${themeStyles['textColorAccent']}} .txt-color{color:${themeStyles['textColor']}} .txt-color-heading{color:${themeStyles['headingColor']}} .navLink:hover{color: ${themeStyles['navHover']}} .navLink{color:${themeStyles['NavText']}} .socialIcon:hover{background-color: ${themeStyles['navHover']}} .socialIcon{color:${themeStyles['NavText']}} .currentNav{color:${themeStyles['navCurrent']}} .caption-txt{color:${themeStyles.captionText}}`
 
-    const btnStyles = `.btn_1{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['promoColor']}} .btn_1:hover{color: ${themeStyles['promoColor']}; background-color: ${themeStyles['textColorAccent']}} .btn_2{color: ${themeStyles['linkColor']}; border-color: ${themeStyles['linkColor']}} .btn_2:hover{color: ${themeStyles['promoColor']}; border-color: ${themeStyles['promoColor']}}`
+    const btnStyles = `.btn_1{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['btnBackground']}} .btn_1:hover{color: ${themeStyles['btnBackground']}; background-color: ${themeStyles['textColorAccent']}} .btn_2{color: ${themeStyles['linkColor']}; border-color: ${themeStyles['linkColor']}} .btn_2:hover{color: ${themeStyles['btnBackground']}; border-color: ${themeStyles['btnBackground']}}`
 
     const colorStyles = textColors + btnStyles
 

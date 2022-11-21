@@ -20,6 +20,7 @@ export const themeStyles: ThemeStyles = {
     navCurrent: '#365070',
     captionBackground: '#365070',
     captionText: '#365070',
+    btnBackground: '#365070',
 }
 
 export const social = [

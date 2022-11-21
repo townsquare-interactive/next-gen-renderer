@@ -33,6 +33,7 @@ export const PhotoGrid = (props: ArticleProps) => {
                         columns={columns}
                         itemIndex={index}
                         cmsUrl={cmsUrl}
+                        items={items}
                     />
                 ))}
             </div>
@@ -41,7 +42,7 @@ export const PhotoGrid = (props: ArticleProps) => {
 }
 
 const PhotoItem = (props: PhotoItemProps) => {
-    const { item, itemIndex, well, themeStyles, type, cmsUrl, imgsize, columns, modId } = props
+    const { item, itemIndex, well, themeStyles, type, cmsUrl, imgsize, columns, modId, items } = props
     const linkAndBtn =
         (item.actionlbl && item.pagelink) || (item.actionlbl && item.weblink) || (item.actionlbl2 && item.pagelink2) || (item.actionlbl2 && item.weblink2)
 
@@ -52,6 +53,8 @@ const PhotoItem = (props: PhotoItemProps) => {
             return false
         }
     }
+
+    /*     const noConstraintsCol3 = items[itemIndex - 1]?.isFeatured === 'active' || items[itemIndex - 1]?.isFeatured === 'active' */
 
     return (
         <article
@@ -82,31 +85,33 @@ const PhotoItem = (props: PhotoItemProps) => {
             {item.image && <MyImage item={item} well={well} imgsize={imgsize} cmsUrl={cmsUrl} />}
             {isLink() && (
                 <figcaption className={cn(styles.caption)} style={{ background: themeStyles.captionBackground }}>
-                    {item.headline && <h3 className={cn(styles['hd'], ['caption-txt'])}>{Parser(item.headline)}</h3>}
-                    {linkAndBtn && (
-                        <Button
-                            pagelink={item.pagelink}
-                            actionlbl={item.actionlbl}
-                            newwindow={item.newwindow}
-                            newwindow2={item.newwindow2}
-                            actionlbl2={item.actionlbl2}
-                            pagelink2={item.pagelink2}
-                            weblink2={item.weblink2}
-                            weblink={item.weblink}
-                            icon={item.icon}
-                            icon2={item.icon2}
-                            btnType={item.btnType}
-                            btnType2={item.btnType2}
-                            themeStyles={themeStyles}
-                            btnSize={item.btnSize}
-                            btnSize2={item.btnSize2}
-                            well={well}
-                            modId={modId}
-                            type={type}
-                            align={item.align}
-                            columns={columns}
-                        />
-                    )}
+                    <div>
+                        {item.headline && <h3 className={cn(styles['hd'], ['caption-txt'])}>{Parser(item.headline)}</h3>}
+                        {linkAndBtn && (
+                            <Button
+                                pagelink={item.pagelink}
+                                actionlbl={item.actionlbl}
+                                newwindow={item.newwindow}
+                                newwindow2={item.newwindow2}
+                                actionlbl2={item.actionlbl2}
+                                pagelink2={item.pagelink2}
+                                weblink2={item.weblink2}
+                                weblink={item.weblink}
+                                icon={item.icon}
+                                icon2={item.icon2}
+                                btnType={item.btnType}
+                                btnType2={item.btnType2}
+                                themeStyles={themeStyles}
+                                btnSize={item.btnSize}
+                                btnSize2={item.btnSize2}
+                                well={well}
+                                modId={modId}
+                                type={type}
+                                align={item.align}
+                                columns={columns}
+                            />
+                        )}
+                    </div>
                 </figcaption>
             )}
         </article>

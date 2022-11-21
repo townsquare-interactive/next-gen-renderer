@@ -230,8 +230,8 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
             flex: 0 1 auto;
             align-self: stretch;
             -ms-flex-item-align: stretch;
+            /*  align-self: start; */
             flex: 0 1 auto;
-            align-self: stretch;
             box-orient: vertical;
             box-direction: normal;
             flex-direction: column;
@@ -260,6 +260,10 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
         .dsc {
             text-align: right;
         }
+
+        .caption {
+            justify-content: flex-end;
+        }
     }
 
     .center {
@@ -267,6 +271,10 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
         .sh,
         .dsc {
             text-align: center;
+        }
+
+        .caption {
+            justify-content: center;
         }
     }
 
@@ -548,7 +556,7 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
     }
 
     @container module (min-width:1025px) {
-        /*  &.col_3 .nHero,
+        &.col_3 .nHero,
         &.beacon.col_3 .item {
             width: $third-item-width;
         }
@@ -556,28 +564,33 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
         &.col_4 .nHero,
         &.beacon.col_4 .item {
             width: $quarteritem-width;
-        } */
+        }
 
-        &.grid {
+        /*  &.grid {
             .wrapper {
                 display: grid;
                 gap: 2%;
             }
 
-            &.col_3 .wrapper,
-            &.beacon.col_3 .wrapper {
+            &.col_3 .wrapper {
                 grid-template-columns: 1fr 1fr 1fr;
             }
 
-            &.col_4 .wrapper,
-            &.beacon.col_4 .wrapper {
+            &.col_4 .wrapper {
                 grid-template-columns: 1fr 1fr 1fr 1fr;
             }
 
             .item {
                 width: 100%;
             }
-        }
+
+            &.col_3 .item {
+                &.hero.item_1 {
+                    grid-column: 1 / 3;
+                }
+               
+            }
+        } */
     }
 
     /*----------------------------------------------------------- End of Column Sizes -------------------------------------------*/
@@ -602,16 +615,22 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
     .font_xl {
         font-size: 125%;
     }
-}
 
-.caption {
-    font-size: 0.75rem;
-    text-align: center;
-    //background: rgba(0, 0, 0, 0.5);
-    padding: 0.5rem 1rem 0.75rem;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    /* z-index: 1;
-    position: relative; */
+    .caption {
+        font-size: 0.75rem;
+        text-align: center;
+        //background: rgba(0, 0, 0, 0.5);
+        padding: 0.5rem 1rem 0.75rem;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        /* z-index: 1;
+        position: relative; */
+        display: flex;
+    }
+
+    .hero .caption {
+        height: 100%;
+        align-items: center;
+    }
 }

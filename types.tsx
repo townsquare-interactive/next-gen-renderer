@@ -24,6 +24,7 @@ export interface ThemeStyles {
     navCurrent: string
     captionText: string
     navHover: string
+    btnBackground: string
 }
 
 export interface HomeProps {
@@ -466,6 +467,7 @@ export interface PhotoItemProps {
     columns: number | string
     modId: string
     cmsUrl?: string
+    items: ArticleItems[]
 }
 
 export interface MyHeaderProps {
