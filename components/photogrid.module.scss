@@ -1,5 +1,111 @@
 @use 'sass:math';
 @use './styles/breakpoints.scss';
+@use './styles/utils.scss';
+
+/* @mixin grid {
+    .wrapper {
+        display: grid;
+        gap: $item-margins;
+    }
+
+    .item {
+        width: 100%;
+    }
+
+    @include breakpoints.sm-min {
+        &.col_3 .wrapper,
+        &.col_4 .wrapper {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .hero {
+            grid-column: span 2;
+        }
+    }
+
+    @include breakpoints.md-min {
+        &.col_2 .wrapper,
+        &.col_4 .wrapper {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        &.col_3 .wrapper {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+    }
+
+    @container module (min-width:1025px) {
+        &.col_4 .wrapper {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+    }
+} */
+
+@mixin flex {
+    @include breakpoints.sm-min {
+        &.col_2,
+        &.col_3,
+        &.col_4 {
+            .item {
+                margin-left: $item-margins;
+                margin-right: $item-margins;
+            }
+        }
+
+        &.col_1 .item,
+        &.col_2 .item {
+            /* width: $ten-12;
+            margin-left: auto;
+            margin-right: auto; */
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        &.col_3 .item {
+            width: $half-item-width;
+        }
+
+        &.col_4 .item {
+            width: $half-item-width;
+        }
+    }
+
+    @include breakpoints.md-min {
+        &.col_2 .item,
+        &.col_4 .item {
+            width: $half-item-width;
+        }
+
+        &.col_3 .item {
+            width: $third-item-width;
+        }
+
+        &.col_2 .hero {
+            width: $full-item-width;
+        }
+
+        &.col_3 .hero {
+            width: $col3-hero;
+        }
+
+        &.col_4 .hero {
+            width: $half-item-width;
+        }
+    }
+
+    @container module (min-width:1025px) {
+        &.col_3 .nHero,
+        &.beacon.col_3 .item {
+            width: $third-item-width;
+        }
+
+        &.col_4 .nHero,
+        &.beacon.col_4 .item {
+            width: $quarteritem-width;
+        }
+    }
+}
 
 $full-width: 100%;
 $half-width: 50%;
@@ -26,7 +132,8 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
     }
 
     .wrapper {
-        max-width: 75.5em;
+        //max-width: 75.5em;
+        max-width: 74em;
         margin-left: auto;
         margin-right: auto;
         padding: 0 1.5rem 1rem;
@@ -520,94 +627,12 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
         }
     }
 
-    @include breakpoints.sm-min {
-        &.col_2,
-        &.col_3,
-        &.col_4 {
-            .item {
-                margin-left: $item-margins;
-                margin-right: $item-margins;
-            }
-        }
-
-        &.col_1 .item,
-        &.col_2 .item {
-            /* width: $ten-12;
-            margin-left: auto;
-            margin-right: auto; */
-            width: 100%;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        &.col_3 .item {
-            width: $half-item-width;
-        }
-
-        &.col_4 .item {
-            width: $half-item-width;
-        }
+    &.flex {
+        @include flex;
     }
 
-    @include breakpoints.md-min {
-        &.col_2 .item,
-        &.col_4 .item {
-            width: $half-item-width;
-        }
-
-        &.col_3 .item {
-            width: $third-item-width;
-        }
-
-        &.col_2 .hero {
-            width: $full-item-width;
-        }
-
-        &.col_3 .hero {
-            width: $col3-hero;
-        }
-
-        &.col_4 .hero {
-            width: $half-item-width;
-        }
-    }
-
-    @container module (min-width:1025px) {
-        &.col_3 .nHero,
-        &.beacon.col_3 .item {
-            width: $third-item-width;
-        }
-
-        &.col_4 .nHero,
-        &.beacon.col_4 .item {
-            width: $quarteritem-width;
-        }
-
-        /*  &.grid {
-            .wrapper {
-                display: grid;
-                gap: 2%;
-            }
-
-            &.col_3 .wrapper {
-                grid-template-columns: 1fr 1fr 1fr;
-            }
-
-            &.col_4 .wrapper {
-                grid-template-columns: 1fr 1fr 1fr 1fr;
-            }
-
-            .item {
-                width: 100%;
-            }
-
-            &.col_3 .item {
-                &.hero.item_1 {
-                    grid-column: 1 / 3;
-                }
-               
-            }
-        } */
+    &.grid {
+        @include utils.grid;
     }
 
     /*----------------------------------------------------------- End of Column Sizes -------------------------------------------*/
