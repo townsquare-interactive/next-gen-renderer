@@ -55,24 +55,6 @@ const MyArticle = (props: ArticleProps) => {
                             <></>
                         )
                     )}
-                    {/* <div className={styles.item}>
-                        <h1>hello</h1>
-                        <div className={styles['item-wrap']} style={{ padding: '4rem', backgroundColor: 'red' }}>
-                            Yes
-                        </div>
-                    </div>
-                    <div className={styles.item}>
-                        <h1>hello</h1>
-                        <div className={styles['item-wrap']} style={{ padding: '4rem', backgroundColor: 'blue ' }}>
-                            Yes
-                        </div>
-                    </div>
-                    <div className={styles.item}>
-                        <h1>hello</h1>
-                        <div className={styles['item-wrap']} style={{ padding: '4rem', backgroundColor: 'green' }}>
-                            Yes
-                        </div>
-                    </div>*/}
                 </div>
             </div>
         )
