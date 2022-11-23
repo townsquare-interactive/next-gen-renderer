@@ -12,7 +12,7 @@ import Video from './Video'
 import Article from './Article'
 import CharlotteArticle from './CharlotteArticle'
 import MyArticle from './MyArticle'
-import MyFooter from './MyFooter'
+import { Fragment } from 'react'
 import { capitalize } from '../functions'
 
 const keysToComponentMap = {
@@ -61,7 +61,9 @@ export const Renderer = ({ config, themeStyles, width = '', cmsUrl = '' }) => {
                 const { Component, ...props } = item
                 //Changes json string to component value
                 const Comp = keysToComponentMap[Component]
-                return <Comp {...props.attributes} key={index} themeStyles={themeStyles} width={width} cmsUrl={cmsUrl} />
+                if (Comp) {
+                    return <Comp {...props.attributes} key={index} themeStyles={themeStyles} width={width} cmsUrl={cmsUrl} />
+                }
             })}
         </>
     )
