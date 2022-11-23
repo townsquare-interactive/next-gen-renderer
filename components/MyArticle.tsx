@@ -8,6 +8,7 @@ import { ReactChild } from 'react'
 import Link from 'next/link'
 import { Button } from '../elements/MyButton'
 import { MyImage } from '../elements/MyImage'
+import ModuleTitle from 'elements/ModuleTitle'
 
 const MyArticle = (props: ArticleProps) => {
     const { width = '1060', columns = 1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl, disabled } = props
@@ -31,11 +32,7 @@ const MyArticle = (props: ArticleProps) => {
                 })}
                 id={`id_${modId}`}
             >
-                {title && (
-                    <h2 className={cn(styles['mod-title'], styles['section_title'], 'txt-color-heading')} data-title="module headline">
-                        <span>{title}</span>
-                    </h2>
-                )}
+                {title && <ModuleTitle title={title} />}
                 <div className={styles.wrapper}>
                     {items.map((item, index) =>
                         item.disabled != 'disabled' ? (
@@ -55,24 +52,6 @@ const MyArticle = (props: ArticleProps) => {
                             <></>
                         )
                     )}
-                    {/* <div className={styles.item}>
-                        <h1>hello</h1>
-                        <div className={styles['item-wrap']} style={{ padding: '4rem', backgroundColor: 'red' }}>
-                            Yes
-                        </div>
-                    </div>
-                    <div className={styles.item}>
-                        <h1>hello</h1>
-                        <div className={styles['item-wrap']} style={{ padding: '4rem', backgroundColor: 'blue ' }}>
-                            Yes
-                        </div>
-                    </div>
-                    <div className={styles.item}>
-                        <h1>hello</h1>
-                        <div className={styles['item-wrap']} style={{ padding: '4rem', backgroundColor: 'green' }}>
-                            Yes
-                        </div>
-                    </div>*/}
                 </div>
             </div>
         )

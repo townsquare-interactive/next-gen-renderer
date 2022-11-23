@@ -1,0 +1,22 @@
+.mod-title {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    font-size: 1.5em;
+    text-align: center;
+    margin: 1rem;
+
+    span {
+        max-width: 35rem;
+        margin: 0 auto;
+        padding: 0 1rem;
+
+        &:after {
+            content: ' ';
+            display: block;
+            border-bottom: 3px solid;
+            width: 4rem;
+            margin: 1rem auto;
+        }
+    }
+}
