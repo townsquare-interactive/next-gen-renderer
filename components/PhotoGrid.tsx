@@ -22,8 +22,8 @@ export const PhotoGrid = (props: ArticleProps) => {
             })}
             id={`id_${modId}`}
         >
+            {title && <ModuleTitle title={title} />}
             <div className={styles.wrapper}>
-                {title && <ModuleTitle title={title} />}
                 {items.map((item, index) => (
                     <PhotoItem
                         item={item}
