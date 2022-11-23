@@ -8,6 +8,7 @@ import { MyImage } from '../elements/MyImage'
 import { ConditionalWrapper } from 'functions'
 import Link from 'next/link'
 import { ReactChild } from 'react'
+import ModuleTitle from 'elements/ModuleTitle'
 
 export const PhotoGrid = (props: ArticleProps) => {
     const { width = '1060', columns = 1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl, disabled } = props
@@ -22,6 +23,7 @@ export const PhotoGrid = (props: ArticleProps) => {
             id={`id_${modId}`}
         >
             <div className={styles.wrapper}>
+                {title && <ModuleTitle title={title} />}
                 {items.map((item, index) => (
                     <PhotoItem
                         item={item}

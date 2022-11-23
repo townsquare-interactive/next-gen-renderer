@@ -1,11 +1,9 @@
 import cn from 'classnames'
-import styles from './altheader.module.scss'
+import styles from './moduletitle.module.scss'
 
-const ModuleTitle = (props: any) => {
-    const { title } = props
-
+const ModuleTitle = ({ title }: { title: string }) => {
     return (
-        <h2 className={cn(styles['mod-title'], 'txt-color-heading')} data-title="module headline">
+        <h2 className={cn(styles['root'], 'txt-color-heading')} data-title="module headline">
             <span>{title}</span>
         </h2>
     )
