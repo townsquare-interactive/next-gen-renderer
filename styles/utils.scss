@@ -1,7 +1,24 @@
 @use '../styles/variables.scss';
 @use './styles/breakpoints.scss';
+@use 'sass:math';
 
+/*-------------------------------- Variables-----------------------*/
+
+$full-width: 100%;
+$half-width: 50%;
+$third-width: math.div($full-width, 3);
+$quarter-width: 25%;
 $item-margins: 2%;
+$full-item-width: $full-width - ($item-margins * 2);
+$half-item-width: $half-width - ($item-margins * 2);
+$third-item-width: $third-width - ($item-margins * 2);
+$quarteritem-width: $quarter-width - ($item-margins * 2);
+
+//grid system
+$col3-hero: (math.div(8, 12) * 100%) - ($item-margins * 2);
+$ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
+
+/*-------------------------------- Mixins-----------------------*/
 
 @mixin useFlex {
     display: flex;
@@ -10,40 +27,113 @@ $item-margins: 2%;
 }
 
 @mixin grid {
-    .wrapper {
-        display: grid;
-        gap: $item-margins;
-    }
-
-    .item {
-        width: 100%;
-    }
-
     @include breakpoints.sm-min {
-        &.col_3 .wrapper,
-        &.col_4 .wrapper {
-            grid-template-columns: 1fr 1fr;
+        .wrapper {
+            display: grid;
+            gap: $item-margins;
         }
 
-        .hero {
-            grid-column: span 2;
+        .item {
+            width: 100%;
+        }
+
+        @include breakpoints.sm-min {
+            &.col_3 .wrapper,
+            &.col_4 .wrapper {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            &.col_4 .hero {
+                grid-column: span 2;
+            }
+        }
+
+        @include breakpoints.md-min {
+            .hero {
+                grid-column: span 2;
+            }
+
+            &.col_2 .wrapper,
+            &.col_4 .wrapper {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            &.col_3 .wrapper {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+
+        @container module (min-width:1025px) {
+            &.col_4 .wrapper {
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+            }
+        }
+    }
+}
+
+@mixin article_flex {
+    @include breakpoints.sm-min {
+        &.col_2,
+        &.col_3,
+        &.col_4 {
+            .item {
+                margin-left: $item-margins;
+                margin-right: $item-margins;
+            }
+        }
+
+        &.col_1 .item,
+        &.col_2 .item {
+            width: $ten-12;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        &.col_3 .item {
+            width: $half-item-width;
+        }
+
+        &.col_4 .item {
+            width: $half-item-width;
         }
     }
 
     @include breakpoints.md-min {
-        &.col_2 .wrapper,
-        &.col_4 .wrapper {
-            grid-template-columns: 1fr 1fr;
+        &.col_2 .item,
+        &.col_4 .item {
+            width: $half-item-width;
         }
 
-        &.col_3 .wrapper {
-            grid-template-columns: 1fr 1fr 1fr;
+        &.col_3 .item {
+            width: $third-item-width;
+        }
+
+        &.a1,
+        &.a2,
+        &.a3 {
+            &.col_2 .hero {
+                width: $full-item-width;
+            }
+
+            &.col_3 .hero {
+                width: $col3-hero;
+            }
+
+            &.col_4 .hero {
+                width: $half-item-width;
+            }
         }
     }
 
     @container module (min-width:1025px) {
-        &.col_4 .wrapper {
-            grid-template-columns: 1fr 1fr 1fr 1fr;
+        &.col_3 .nHero,
+        &.beacon.col_3 .item {
+            width: $third-item-width;
+        }
+
+        &.col_4 .nHero,
+        &.beacon.col_4 .item {
+            width: $quarteritem-width;
         }
     }
 }

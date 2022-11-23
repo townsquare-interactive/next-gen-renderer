@@ -18,8 +18,6 @@ export const PhotoGrid = (props: ArticleProps) => {
                 [styles.well]: well == '1',
                 [styles.not_well]: !well,
                 [styles[`cst_${props.class}`]]: props.class,
-                [styles['full-width']]: width === '938' || width === '1060' || width === '988' || !width,
-                [styles['med-width']]: width === '736' || width === '652',
             })}
             id={`id_${modId}`}
         >
@@ -125,7 +123,7 @@ const PhotoItem = (props: PhotoItemProps) => {
                 falseOutput={(children: ReactChild) => <div className={styles['item-wrap']}>{children}</div>}
             >
                 <>
-                    {item.image && <MyImage item={item} well={well} imgsize={imgsize} cmsUrl={cmsUrl} />}
+                    {item.image && <MyImage item={item} well={well} imgsize={imgsize} cmsUrl={cmsUrl} modType="photo_grid" />}
                     {isCap() && (
                         <figcaption className={cn(styles.caption)} style={{ background: themeStyles.captionBackground }}>
                             <div>

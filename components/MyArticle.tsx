@@ -15,7 +15,7 @@ const MyArticle = (props: ArticleProps) => {
     if (disabled != 'disabled') {
         return (
             <div
-                className={cn(styles['root'], styles['tsflex'], styles['root-container'], styles[`col_${columns}`], {
+                className={cn(styles['root'], styles['tsflex'], styles['grid'], /* styles['item-flex'], */ styles['root-container'], styles[`col_${columns}`], {
                     [styles.a1]: type === 'article_1',
                     [styles.a2]: type === 'article_2',
                     [styles.a3]: type === 'article_3',
@@ -31,12 +31,12 @@ const MyArticle = (props: ArticleProps) => {
                 })}
                 id={`id_${modId}`}
             >
+                {title && (
+                    <h2 className={cn(styles['mod-title'], styles['section_title'], 'txt-color-heading')} data-title="module headline">
+                        <span>{title}</span>
+                    </h2>
+                )}
                 <div className={styles.wrapper}>
-                    {title && (
-                        <h2 className={cn(styles['mod-title'], styles['section_title'], 'txt-color-heading')} data-title="module headline">
-                            <span>{title}</span>
-                        </h2>
-                    )}
                     {items.map((item, index) =>
                         item.disabled != 'disabled' ? (
                             <ModuleItem
@@ -55,6 +55,24 @@ const MyArticle = (props: ArticleProps) => {
                             <></>
                         )
                     )}
+                    {/* <div className={styles.item}>
+                        <h1>hello</h1>
+                        <div className={styles['item-wrap']} style={{ padding: '4rem', backgroundColor: 'red' }}>
+                            Yes
+                        </div>
+                    </div>
+                    <div className={styles.item}>
+                        <h1>hello</h1>
+                        <div className={styles['item-wrap']} style={{ padding: '4rem', backgroundColor: 'blue ' }}>
+                            Yes
+                        </div>
+                    </div>
+                    <div className={styles.item}>
+                        <h1>hello</h1>
+                        <div className={styles['item-wrap']} style={{ padding: '4rem', backgroundColor: 'green' }}>
+                            Yes
+                        </div>
+                    </div>*/}
                 </div>
             </div>
         )

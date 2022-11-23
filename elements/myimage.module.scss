@@ -8,9 +8,6 @@
     max-width: 100%;
     line-height: 0;
 
-    //added for hero?
-    height: 100%;
-
     .icon-block {
         position: absolute;
         top: 0;
@@ -75,6 +72,10 @@
         aspect-ratio: auto;
 
     } */
+
+    &.photo-grid {
+        height: 100%;
+    }
 }
 
 .caption {

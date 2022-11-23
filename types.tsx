@@ -532,6 +532,7 @@ export interface MyImagesProps {
     imgsize: string
     well: string | number
     cmsUrl?: string
+    modType?: string
 }
 
 export interface MyNavProps {

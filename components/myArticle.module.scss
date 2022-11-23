@@ -1,19 +1,6 @@
 @use 'sass:math';
 @use './styles/breakpoints.scss';
-
-$full-width: 100%;
-$half-width: 50%;
-$third-width: math.div($full-width, 3);
-$quarter-width: 25%;
-$item-margins: 2%;
-$full-item-width: $full-width - ($item-margins * 2);
-$half-item-width: $half-width - ($item-margins * 2);
-$third-item-width: $third-width - ($item-margins * 2);
-$quarteritem-width: $quarter-width - ($item-margins * 2);
-
-//grid system
-$col3-hero: (math.div(8, 12) * 100%) - ($item-margins * 2);
-$ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
+@use './styles/utils.scss';
 
 @mixin tsFlex {
     display: -moz-flex;
@@ -25,38 +12,38 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
         box-sizing: border-box;
     }
 
+    .mod-title {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        font-size: 1.5em;
+        text-align: center;
+        margin: 1rem;
+
+        span {
+            max-width: 35rem;
+            margin: 0 auto;
+            padding: 0 1rem;
+
+            &:after {
+                content: ' ';
+                display: block;
+                border-bottom: 3px solid;
+                width: 4rem;
+                margin: 1rem auto;
+            }
+        }
+    }
+
     .wrapper {
         max-width: 75.5em;
         margin-left: auto;
         margin-right: auto;
         padding: 0 1.5rem 1rem;
 
-        .mod-title {
-            display: flex;
-            justify-content: center;
-            width: 100%;
-            font-size: 1.5em;
-            text-align: center;
-            margin: 1rem;
-
-            span {
-                max-width: 35rem;
-                margin: 0 auto;
-                padding: 0 1rem;
-
-                &:after {
-                    content: ' ';
-                    display: block;
-                    border-bottom: 3px solid;
-                    width: 4rem;
-                    margin: 1rem auto;
-                }
-            }
-        }
-
         .item {
             margin-bottom: 2rem;
-            width: $full-width;
+            width: utils.$full-width;
             margin-left: 0;
             margin-right: 0;
 
@@ -234,7 +221,7 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
         @include breakpoints.sm-min {
             .mod_left .image-block,
             .mod_right .image-block {
-                width: $third-width;
+                width: utils.$third-width;
                 display: block;
             }
             .mod_left .image-block {
@@ -371,8 +358,6 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
         }
     }
 
-    /*---------------------------------------- Column item sizes ------------------------------------------------*/
-
     @container module (min-width:481px) {
         .wrapper {
             padding-top: 3rem;
@@ -400,7 +385,7 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
         &.a2,
         &.a3 {
             .nHero {
-                width: $ten-12;
+                width: utils.$ten-12;
             }
         }
 
@@ -410,71 +395,13 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
     }
 
     @include breakpoints.sm-min {
-        &.col_2,
-        &.col_3,
-        &.col_4 {
-            .item {
-                margin-left: $item-margins;
-                margin-right: $item-margins;
-            }
-        }
-
         &.col_1 .item,
         &.col_2 .item {
-            width: $ten-12;
+            width: utils.$ten-12;
             margin-left: auto;
             margin-right: auto;
         }
-
-        &.col_3 .item {
-            width: $half-item-width;
-        }
-
-        &.col_4 .item {
-            width: $half-item-width;
-        }
     }
-
-    @include breakpoints.md-min {
-        &.col_2 .item,
-        &.col_4 .item {
-            width: $half-item-width;
-        }
-
-        &.col_3 .item {
-            width: $third-item-width;
-        }
-
-        &.a1,
-        &.a2,
-        &.a3 {
-            &.col_2 .hero {
-                width: $full-item-width;
-            }
-
-            &.col_3 .hero {
-                width: $col3-hero;
-            }
-
-            &.col_4 .hero {
-                width: $half-item-width;
-            }
-        }
-    }
-
-    @container module (min-width:1025px) {
-        &.col_3 .nHero,
-        &.beacon.col_3 .item {
-            width: $third-item-width;
-        }
-
-        &.col_4 .nHero,
-        &.beacon.col_4 .item {
-            width: $quarteritem-width;
-        }
-    }
-
-    /*----------------------------------------------------------- End of Column Sizes -------------------------------------------*/
 
     //font sizes
     .font_xs {
@@ -504,5 +431,15 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
         * {
             color: red !important;
         }
+    }
+
+    &.grid {
+        &:not(.col_1) {
+            @include utils.grid;
+        }
+    }
+
+    &.item-flex {
+        @include utils.article_flex;
     }
 }

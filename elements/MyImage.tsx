@@ -13,7 +13,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { icons } from '../functions'
 
 export const MyImage = (props: MyImagesProps) => {
-    const { item, imgsize, cmsUrl } = props
+    const { item, imgsize, cmsUrl, modType = 'article' } = props
     const [imageHeight, setHeight] = useState(100)
     const [imageWidth, setWidth] = useState(300)
 
@@ -44,6 +44,7 @@ export const MyImage = (props: MyImagesProps) => {
                 className={cn(styles.image, styles[`${imgsize}`], {
                     [styles.landscape_4_3]: !imgsize || (!imgSizes.includes(imgsize) && !imageNoSizings.includes(imgsize)),
                     [styles.widescreen_2_4_1]: imgsize === 'widescreen_2-4_1',
+                    [styles['photo-grid']]: modType === 'photo_grid',
                 })}
             >
                 {!imageNoSizings.includes(imgsize) ? (
