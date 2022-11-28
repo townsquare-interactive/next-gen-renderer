@@ -466,7 +466,8 @@ export interface HeaderBlockProps {
     item: ArticleItems
     columns: number | string
     well: string | number
-    isBeaconHero: boolean
+    isBeaconHero?: boolean
+    modType?: string
 }
 
 export interface ModuleItemProps {

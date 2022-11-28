@@ -174,18 +174,10 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
         } */
     }
 
-    .hd,
-    .sh,
-    .dsc {
-        text-align: left;
-    }
+    text-align: left;
 
     .right {
-        .hd,
-        .sh,
-        .dsc {
-            text-align: right;
-        }
+        text-align: right;
 
         .caption {
             justify-content: flex-end;
@@ -193,11 +185,7 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
     }
 
     .center {
-        .hd,
-        .sh,
-        .dsc {
-            text-align: center;
-        }
+        text-align: center;
 
         .caption {
             justify-content: center;

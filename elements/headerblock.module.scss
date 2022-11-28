@@ -1,0 +1,170 @@
+@use 'sass:math';
+@use './styles/breakpoints.scss';
+@use './styles/utils.scss';
+@value well from '../components/myArticle.module.scss';
+@value nDsc from '../components/myArticle.module.scss';
+@value a1 from '../components/myArticle.module.scss';
+@value a2 from '../components/myArticle.module.scss';
+@value nDsc from '../components/myArticle.module.scss';
+@value hero from '../components/photogrid.module.scss';
+
+.hd-block {
+    .sh {
+        font-size: 0.875em;
+        margin-top: 0.5714285714em;
+        margin-bottom: 0.5714285714em;
+        line-height: 1.1428571429em;
+        font-weight: 400;
+    }
+
+    .hd {
+        font-size: 1.0625em;
+        margin-top: 0.7058823529em;
+        margin-bottom: 0.4705882353em;
+        line-height: 1.1764705882em;
+        font-weight: 700;
+    }
+
+    &.article {
+        @container item (min-width:0px) {
+            .dsc {
+                font-size: 0.875em;
+                margin-top: 1.1428571429em;
+                margin-bottom: 1.1428571429em;
+                line-height: 1.4285714286em;
+            }
+
+            .sh {
+                font-size: 0.875em;
+                margin-top: 0.5714285714em;
+                margin-bottom: 0.5714285714em;
+                line-height: 1.1428571429em;
+            }
+
+            .hd {
+                font-size: 1.0625em;
+                margin-top: 0.7058823529em;
+                margin-bottom: 0.4705882353em;
+                line-height: 1.1764705882em;
+            }
+        }
+        //temp: medium screens, need to revise size maybe
+        @container item (min-width:343px) {
+            .hd {
+                font-size: 1.5em;
+                margin-top: 0.6666666667em;
+                margin-bottom: 0.5em;
+                line-height: 1.1666666667em;
+                letter-spacing: -0.0125rem;
+            }
+
+            .sh {
+                font-size: 1.0625em;
+                margin-top: 0.7058823529em;
+                margin-bottom: 0.4705882353em;
+                line-height: 1.1764705882em;
+            }
+
+            .dsc {
+                font-size: 0.875em;
+                margin-top: 1.1428571429em;
+                margin-bottom: 1.1428571429em;
+                line-height: 1.4285714286em;
+            }
+        }
+
+        //for larger screens (starts at 1025)
+        @container item (min-width:775px) {
+            .hd {
+                font-size: 2.25em;
+                margin-top: 0.6666666667em;
+                margin-bottom: 0.4444444444em;
+                line-height: 1.1111111111em;
+                letter-spacing: -0.0125rem;
+            }
+
+            .sh {
+                font-size: 1.5em;
+                margin-top: 0.6666666667em;
+                margin-bottom: 0.5em;
+                line-height: 1.1666666667em;
+                letter-spacing: -0.0125rem;
+            }
+        }
+    }
+}
+
+.hero {
+    .photo-grid {
+        /* .hd {
+        font-size: 1.0625em;
+        margin-top: 0.7058823529em;
+        margin-bottom: 0.4705882353em;
+        line-height: 1.1764705882em;
+    }
+
+    .sh {
+        font-size: 0.875em;
+        margin-top: 0.5714285714em;
+        margin-bottom: 0.5714285714em;
+        line-height: 1.1428571429em;
+    } */
+
+        .hd {
+            font-size: 1.5em;
+            margin-top: 0.6666666667em;
+            margin-bottom: 0.5em;
+            line-height: 1.1666666667em;
+            letter-spacing: -0.0125rem;
+        }
+
+        .sh {
+            font-size: 1.0625em;
+            margin-top: 0.7058823529em;
+            margin-bottom: 0.4705882353em;
+            line-height: 1.1764705882em;
+        }
+
+        @container item (min-width:343px) {
+            .hd {
+                font-size: 2.25em;
+                margin-top: 0.6666666667em;
+                margin-bottom: 0.4444444444em;
+                line-height: 1.1111111111em;
+                letter-spacing: -0.0125rem;
+            }
+
+            .sh {
+                font-size: 1.5em;
+                margin-top: 0.6666666667em;
+                margin-bottom: 0.5em;
+                line-height: 1.1666666667em;
+                letter-spacing: -0.0125rem;
+            }
+        }
+    }
+}
+
+.well {
+    &.a1 {
+        .hd-block {
+            padding: 0 2rem 0;
+        }
+
+        .nDsc {
+            .hd-block {
+                padding-bottom: 1.5rem;
+            }
+        }
+    }
+
+    &.a2 {
+        .hd-block {
+            padding: 1rem 2rem;
+        }
+    }
+
+    .hd-block {
+        width: 100%;
+    }
+}

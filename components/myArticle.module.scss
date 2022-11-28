@@ -26,13 +26,13 @@
 
             .item-wrap {
                 .hd-block {
-                    .hd {
+                    /*    .hd {
                         font-weight: 700;
                     }
 
                     .sh {
                         font-weight: 400;
-                    }
+                    } */
                 }
 
                 .txt-block {
@@ -90,26 +90,14 @@
 
     &.a1,
     &.a2 {
-        .hd,
-        .sh,
-        .dsc {
-            text-align: left;
-        }
+        text-align: left;
 
         .right {
-            .hd,
-            .sh,
-            .dsc {
-                text-align: right;
-            }
+            text-align: right;
         }
 
         .center {
-            .hd,
-            .sh,
-            .dsc {
-                text-align: center;
-            }
+            text-align: center;
         }
     }
 

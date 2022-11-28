@@ -9,6 +9,7 @@ import { ConditionalWrapper, decideHeadTag } from 'functions'
 import Link from 'next/link'
 import { ReactChild } from 'react'
 import ModuleTitle from 'elements/ModuleTitle'
+import { HeaderBlock } from 'elements/HeaderBlock'
 
 export const PhotoGrid = (props: PhotoGridProps) => {
     const { columns = 1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl } = props
@@ -83,8 +84,6 @@ const PhotoItem = (props: PhotoItemProps) => {
     const linkNoBtn = isButton() === false && isLink() === true
     const wrapLink = (oneButton || linkNoBtn) && type != 'article'
 
-    const HeadTag = item.headline ? decideHeadTag(columns, 'hd', item.headerTag) : ''
-
     return (
         <article
             className={cn(
@@ -133,7 +132,8 @@ const PhotoItem = (props: PhotoItemProps) => {
                     {isCap() && (
                         <figcaption className={cn(styles.caption)} style={{ background: themeStyles.captionBackground }}>
                             <div>
-                                {HeadTag && <HeadTag className={cn(styles['hd'], ['caption-txt'])}>{Parser(item.headline)}</HeadTag>}
+                                {/* {HeadTag && <HeadTag className={cn(styles['hd'], ['caption-txt'])}>{Parser(item.headline)}</HeadTag>} */}
+                                {(item.headline || item.subheader) && <HeaderBlock item={item} well={well} columns={columns} modType="photo-grid" />}
                                 {linkAndBtn && (
                                     <Button
                                         pagelink={item.pagelink}

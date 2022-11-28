@@ -9,6 +9,7 @@ import Link from 'next/link'
 import { Button } from '../elements/MyButton'
 import { MyImage } from '../elements/MyImage'
 import ModuleTitle from 'elements/ModuleTitle'
+import { HeaderBlock } from 'elements/HeaderBlock'
 
 const MyArticle = (props: ArticleProps) => {
     const { width = '1060', columns = 1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl, disabled } = props
@@ -179,11 +180,11 @@ const ItemWrap = (props: ItemWrapProps) => {
                             <MyImage item={item} imgsize={imgsize} well={well} cmsUrl={cmsUrl} />
                         </figure>
                     )}
-                    {(item.headline || item.subheader) && <HeaderBlock item={item} well={well} columns={columns} isBeaconHero={isBeaconHero} />}
+                    {(item.headline || item.subheader) && <HeaderBlock item={item} well={well} columns={columns} isBeaconHero={isBeaconHero} modType={type} />}
                 </>
             ) : (
                 <>
-                    {(item.headline || item.subheader) && <HeaderBlock item={item} well={well} columns={columns} isBeaconHero={isBeaconHero} />}
+                    {(item.headline || item.subheader) && <HeaderBlock item={item} well={well} columns={columns} isBeaconHero={isBeaconHero} modType={type} />}
 
                     {item.image && (
                         <figure className={cn(styles['image-block'])} data-alt="Headline">
@@ -233,7 +234,7 @@ const ItemWrap = (props: ItemWrapProps) => {
     )
 }
 
-const HeaderBlock = (props: HeaderBlockProps) => {
+/* const HeaderBlock = (props: HeaderBlockProps) => {
     const { item, columns, well, isBeaconHero } = props
     //Finding tag types for headline and subjeadline
     const HeadTag = decideHeadTag(columns, 'hd', item.headerTag)
@@ -264,6 +265,6 @@ const HeaderBlock = (props: HeaderBlockProps) => {
             )}
         </header>
     )
-}
+} */
 
 export default MyArticle
