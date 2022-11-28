@@ -1,17 +1,17 @@
 'use client'
 import styles from './photogrid.module.scss'
-import { ArticleProps, PhotoItemProps } from '../types'
+import { PhotoGridProps, PhotoItemProps } from '../types'
 import { Button } from '../elements/MyButton'
 import Parser from 'html-react-parser'
 import cn from 'classnames'
 import { MyImage } from '../elements/MyImage'
-import { ConditionalWrapper } from 'functions'
+import { ConditionalWrapper, decideHeadTag } from 'functions'
 import Link from 'next/link'
 import { ReactChild } from 'react'
 import ModuleTitle from 'elements/ModuleTitle'
 
-export const PhotoGrid = (props: ArticleProps) => {
-    const { width = '1060', columns = 1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl, disabled } = props
+export const PhotoGrid = (props: PhotoGridProps) => {
+    const { columns = 1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl } = props
 
     return (
         <div
@@ -24,21 +24,25 @@ export const PhotoGrid = (props: ArticleProps) => {
         >
             {title && <ModuleTitle title={title} />}
             <div className={styles.wrapper}>
-                {items.map((item, index) => (
-                    <PhotoItem
-                        item={item}
-                        well={well}
-                        modId={modId}
-                        themeStyles={themeStyles}
-                        key={index}
-                        imgsize={imgsize}
-                        type={type}
-                        columns={columns}
-                        itemIndex={index}
-                        cmsUrl={cmsUrl}
-                        items={items}
-                    />
-                ))}
+                {items.map((item, index) =>
+                    item.disabled != 'disabled' ? (
+                        <PhotoItem
+                            item={item}
+                            well={well}
+                            modId={modId}
+                            themeStyles={themeStyles}
+                            key={index}
+                            imgsize={imgsize}
+                            type={type}
+                            columns={columns}
+                            itemIndex={index}
+                            cmsUrl={cmsUrl}
+                            items={items}
+                        />
+                    ) : (
+                        <></>
+                    )
+                )}
             </div>
         </div>
     )
@@ -56,8 +60,6 @@ const PhotoItem = (props: PhotoItemProps) => {
             return false
         }
     }
-
-    /*     const noConstraintsCol3 = items[itemIndex - 1]?.isFeatured === 'active' || items[itemIndex - 1]?.isFeatured === 'active' */
 
     function isButton() {
         if (item.actionlbl || item.actionlbl2) {
@@ -80,6 +82,8 @@ const PhotoItem = (props: PhotoItemProps) => {
     /* const twoButtons = item.actionlbl && item.actionlbl2 && (item.pagelink || item.weblink) && (item.pagelink2 || item.weblink2) */
     const linkNoBtn = isButton() === false && isLink() === true
     const wrapLink = (oneButton || linkNoBtn) && type != 'article'
+
+    const HeadTag = item.headline ? decideHeadTag(columns, 'hd', item.headerTag) : ''
 
     return (
         <article
@@ -129,7 +133,7 @@ const PhotoItem = (props: PhotoItemProps) => {
                     {isCap() && (
                         <figcaption className={cn(styles.caption)} style={{ background: themeStyles.captionBackground }}>
                             <div>
-                                {item.headline && <h3 className={cn(styles['hd'], ['caption-txt'])}>{Parser(item.headline)}</h3>}
+                                {HeadTag && <HeadTag className={cn(styles['hd'], ['caption-txt'])}>{Parser(item.headline)}</HeadTag>}
                                 {linkAndBtn && (
                                     <Button
                                         pagelink={item.pagelink}

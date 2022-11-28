@@ -370,6 +370,30 @@ export interface ArticleProps {
     disabled?: string
     cmsUrl?: string
 }
+export interface PhotoGridProps {
+    uid: string
+    modId: string
+    /* type: string */
+    type: string
+    /**Border background on items*/
+    well: string | number
+    align?: string
+    items: ArticleItems[]
+    imgsize: string
+    /**Custom class addition*/
+    class: string
+    /**Title text to go above module*/
+    title: string
+    hideTitle?: number
+    export: number
+    columns: number | string
+    lightbox: string
+    blockSwitch1: number
+    scale_to_fit: string
+    /**Global styles for site*/
+    themeStyles: ThemeStyles
+    cmsUrl?: string
+}
 
 export interface Colors {
     color?: string

@@ -262,6 +262,20 @@ export async function getPageData(params: { slug: string }) {
     return { page }
 }
 
+export function decideHeadTag(columns: number | string, tag: string, headerTag: string) {
+    if (headerTag === '1' && tag === 'hd') {
+        return 'h1'
+    } else if (columns === 4) {
+        return 'h5'
+    } else if (columns === 3) {
+        return 'h4'
+    } else if (columns === 2) {
+        return 'h2'
+    } else {
+        return 'h2'
+    }
+}
+
 //Used to have conditional tag wraps around code without repeating inside code
 export const ConditionalWrapper = ({ condition, falseOutput, trueOutput, children }: ConditionalWrapperProps) =>
     condition ? trueOutput(children) : falseOutput(children)

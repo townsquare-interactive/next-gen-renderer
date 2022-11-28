@@ -3,7 +3,7 @@ import styles from './myArticle.module.scss'
 import { ArticleProps, ItemWrapProps, ModuleItemProps, HeaderBlockProps } from '../types'
 import cn from 'classnames'
 import Parser from 'html-react-parser'
-import { ConditionalWrapper } from '../functions'
+import { ConditionalWrapper, decideHeadTag } from '../functions'
 import { ReactChild } from 'react'
 import Link from 'next/link'
 import { Button } from '../elements/MyButton'
@@ -236,23 +236,8 @@ const ItemWrap = (props: ItemWrapProps) => {
 const HeaderBlock = (props: HeaderBlockProps) => {
     const { item, columns, well, isBeaconHero } = props
     //Finding tag types for headline and subjeadline
-    const HeadTag = decideHeadTag('hd')
-    const SubTag = decideHeadTag('sh')
-
-    function decideHeadTag(tag: string) {
-        if (columns === 4) {
-            return 'h5'
-        }
-        if (columns === 3) {
-            return 'h4'
-        } else if (columns === 2) {
-            return 'h2'
-        } else if (columns === 1 && item.headerTag === '1' && tag === 'hd') {
-            return 'h1'
-        } else {
-            return 'h2'
-        }
-    }
+    const HeadTag = decideHeadTag(columns, 'hd', item.headerTag)
+    const SubTag = decideHeadTag(columns, 'sh', item.headerTag)
 
     return (
         <header className={cn(styles['hd-block'], styles[`${item.headSize}`])}>
