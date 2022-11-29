@@ -3,7 +3,7 @@
 import styles from './mybutton.module.scss'
 import { BtnProps } from '../types'
 import cn from 'classnames'
-import { ConditionalWrapper, capitalize, btnIconConver } from '../functions'
+import { ConditionalWrapper, btnIconConver } from '../functions'
 import { ReactChild, Fragment } from 'react'
 import Link from 'next/link'
 
