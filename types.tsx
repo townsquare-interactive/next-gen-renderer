@@ -32,6 +32,12 @@ export interface HomeProps {
     page: CMSPage
 }
 
+export interface PageHeadProps {
+    CMSLayout: GlobalData
+    page: CMSPage
+    pageType?: 'slug' | 'index'
+}
+
 //temp maybe not needed
 /* export interface CMSGlobal {
     vars: any

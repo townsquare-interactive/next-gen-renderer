@@ -50,60 +50,6 @@ export function domainImage(url: string, cms = false, cmsSiteUrl = '') {
     }
 }
 
-export const setColors = (cmsGlobalDesign: CMSColors, cmsTheme: string) => {
-    if (cmsTheme === 'beacon-theme_charlotte') {
-        return {
-            promoColor: cmsGlobalDesign.color_31.value,
-            textColor: cmsGlobalDesign.color_4.value,
-            headingColor: cmsGlobalDesign.color_2.value,
-            subHeadingColor: cmsGlobalDesign?.color_3.value,
-            textColorAccent: cmsGlobalDesign.color_9.value,
-            btnBackground: cmsGlobalDesign.color_8.value,
-            linkColor: cmsGlobalDesign.color_5.value,
-            accentBackgroundColor: cmsGlobalDesign.color_25.value,
-            accentColor2: cmsGlobalDesign.color_32.value,
-            altColor: cmsGlobalDesign.color_31.value,
-            headerBackground: cmsGlobalDesign.color_23.value,
-            footerBackground: cmsGlobalDesign.color_27.value,
-            navBackground: cmsGlobalDesign.color_23.value,
-            BckdHeaderSocial: cmsGlobalDesign.color_24.value,
-            NavText: cmsGlobalDesign.color_18.value,
-            navHover: cmsGlobalDesign.color_19.value,
-            linkHover: cmsGlobalDesign.color_6.value,
-            bckdContent: cmsGlobalDesign.color_22.value,
-            footerText: cmsGlobalDesign.color_28.value,
-            navCurrent: cmsGlobalDesign.color_20.value,
-            captionText: cmsGlobalDesign.color_16.value,
-            captionBackground: cmsGlobalDesign.color_17.value,
-        }
-    } else {
-        return {
-            promoColor: cmsGlobalDesign?.color_3.value,
-            textColor: cmsGlobalDesign?.color_3a.value,
-            headingColor: cmsGlobalDesign?.color_2.value,
-            subHeadingColor: cmsGlobalDesign?.color_3.value,
-            textColorAccent: cmsGlobalDesign?.color_4.value,
-            btnBackground: cmsGlobalDesign.color_8.value,
-            linkColor: cmsGlobalDesign?.color_19.value,
-            accentBackgroundColor: cmsGlobalDesign?.color_3.value,
-            accentColor2: cmsGlobalDesign?.color_16.value,
-            altColor: cmsGlobalDesign?.color_16.value,
-            headerBackground: cmsGlobalDesign?.color_17.value,
-            footerBackground: cmsGlobalDesign?.color_20.value,
-            navBackground: cmsGlobalDesign?.color_16.value,
-            BckdHeaderSocial: cmsGlobalDesign?.color_17.value,
-            NavText: cmsGlobalDesign?.color_18.value,
-            linkHover: cmsGlobalDesign?.color_7.value,
-            footerText: cmsGlobalDesign?.color_12.value,
-            navHover: cmsGlobalDesign.color_19.value,
-            navCurrent: cmsGlobalDesign.color_19.value,
-            //clt
-            captionText: cmsGlobalDesign.color_16.value,
-            captionBackground: cmsGlobalDesign.color_17.value,
-        }
-    }
-}
-
 export function createInlineStyles(themeStyles: ThemeStyles) {
     const textColors = `.accent-txt{color:${themeStyles['textColorAccent']}} .txt-color{color:${themeStyles['textColor']}} .txt-color-heading{color:${themeStyles['headingColor']}} .navLink:hover{color: ${themeStyles['navHover']}} .navLink{color:${themeStyles['NavText']}} .socialIcon:hover{background-color: ${themeStyles['navHover']}} .socialIcon{color:${themeStyles['NavText']}} .currentNav{color:${themeStyles['navCurrent']}} .caption-txt{color:${themeStyles.captionText}}`
 
@@ -140,32 +86,6 @@ export function cmsPageDataMod(page: Module) {
         newData.push(arr)
     }
     return newData
-}
-
-export const decideColumns = (page: PageProps) => {
-    if (page.sections[1].wide == '938') {
-        return 'wide-column'
-    } else if (page.sections[1].wide == '484' && page.sections[2].wide == '484') {
-        return 'half-columns'
-    } else if (page.sections[1].wide == '316' && page.sections[2].wide == '316' && page.sections[3].wide == '316') {
-        return 'third-columns'
-    } else if (page.sections[1].wide == '232' && page.sections[2].wide == '232' && page.sections[3].wide == '232' && page.sections[4].wide == '232') {
-        return 'fourth-columns'
-    } else if (page.sections[1].wide == '652' && page.sections[2].wide == '316') {
-        return 'two-third_one-third'
-    } else if (page.sections[1].wide == '316' && page.sections[2].wide == '652') {
-        return 'one-third_two-third'
-    } else if (page.sections[1].wide == '232' && page.sections[2].wide == '736') {
-        return 'one-fourth_three-fourth'
-    } else if (page.sections[1].wide == '736' && page.sections[2].wide == '232') {
-        return 'three-fourth_one-fourth'
-    } else if (page.sections[1].wide == '484' && page.sections[2].wide == '232' && page.sections[3].wide == '232') {
-        return 'half_one-fourth_one-fourth'
-    } else if (page.sections[1].wide == '232' && page.sections[2].wide == '232' && page.sections[3].wide == '484') {
-        return 'one-fourth_one-fourth_half'
-    } else if (page.sections[1].wide == '232' && page.sections[2].wide == '484' && page.sections[3].wide == '232') {
-        return 'one-fourth_half_one-fourth'
-    }
 }
 
 export const findHomePageSlug = (pageList: any) => {
