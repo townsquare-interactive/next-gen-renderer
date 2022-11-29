@@ -2,7 +2,7 @@ import styles from '../../styles/Home.module.scss'
 import { PageListProps } from '../../types'
 import Layout from '../../components/Layout'
 import { Renderer } from '../../components/Renderer'
-import { getDomain, decideColumns, setColors, getPageData, getLayout, createInlineStyles } from '../../functions'
+import { getDomain, getPageData, getLayout, createInlineStyles } from '../../functions'
 import cn from 'classnames'
 import { Fragment, use } from 'react'
 
