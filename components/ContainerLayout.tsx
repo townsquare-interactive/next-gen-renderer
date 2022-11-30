@@ -1,11 +1,11 @@
 'use client'
 import { LayoutProps } from '../types'
-import styles from './layout.module.scss'
+import styles from './containerlayout.module.scss'
 import cn from 'classnames'
 import MyHeader from './MyHeader'
 import MyFooter from './MyFooter'
 import { useState } from 'react'
-import AltHeader from 'elements/AltHeader'
+import SlidingHeader from 'elements/SlidingHeader'
 
 export default function Layout(props: LayoutProps) {
     const { children, CMSLayout, themeStyles } = props
@@ -19,7 +19,7 @@ export default function Layout(props: LayoutProps) {
     return (
         <>
             <div className={cn(styles.root)}>
-                <AltHeader navSwitch={navSwitch} navCheck={navCheck} themeStyles={themeStyles} CMSLayout={CMSLayout} />
+                <SlidingHeader navSwitch={navSwitch} navCheck={navCheck} themeStyles={themeStyles} CMSLayout={CMSLayout} />
 
                 <MyHeader CMSLayout={CMSLayout} themeStyles={themeStyles} navSwitch={navSwitch} setHeight={setHeight} />
 

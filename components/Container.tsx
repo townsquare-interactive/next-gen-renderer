@@ -1,13 +1,12 @@
 import styles from '../styles/Home.module.scss'
 import { HomeProps, Module } from '../types'
-import Layout from './Layout'
+import ContainerLayout from './ContainerLayout'
 import { Renderer } from './Renderer'
 import { createInlineStyles } from '../functions'
 import cn from 'classnames'
 import { Fragment } from 'react'
 import { useRouter } from 'next/router'
 
-//HomeProps
 export const Container = (props: HomeProps) => {
     const { page, CMSLayout } = props
     const router = useRouter()
@@ -26,7 +25,7 @@ export const Container = (props: HomeProps) => {
 
     return (
         <>
-            <Layout CMSLayout={CMSLayout} themeStyles={themeStyles}>
+            <ContainerLayout CMSLayout={CMSLayout} themeStyles={themeStyles}>
                 <style>{colorStyles}</style>
                 {page.data && (
                     <div className={styles.root} style={{ backgroundColor: themeStyles.bckdContent }}>
@@ -59,7 +58,7 @@ export const Container = (props: HomeProps) => {
                         </div>
                     </div>
                 )}
-            </Layout>
+            </ContainerLayout>
         </>
     )
 }

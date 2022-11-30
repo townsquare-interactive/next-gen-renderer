@@ -1,10 +1,10 @@
-import { AltHeaderProps } from '../types'
+import { SlidingHeaderProps } from '../types'
 import cn from 'classnames'
-import styles from './altheader.module.scss'
+import styles from './slidingheader.module.scss'
 import SocialLinks from './SocialLinks'
-import Nav from '../elements/Nav'
+import Nav from './Nav'
 
-const AltHeader = (props: AltHeaderProps) => {
+const SlidingHeader = (props: SlidingHeaderProps) => {
     const { navSwitch, navCheck, themeStyles, CMSLayout } = props
 
     return (
@@ -34,4 +34,4 @@ const AltHeader = (props: AltHeaderProps) => {
     )
 }
 
-export default AltHeader
+export default SlidingHeader

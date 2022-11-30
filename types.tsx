@@ -545,11 +545,10 @@ export interface Media {
 
 /*----------------------------TSI Elements--------------------------------------*/
 
-export interface AltHeaderProps {
+export interface SlidingHeaderProps {
     navSwitch?: () => void
     /**Boolean that determines if navbar being shown or hidden*/
     navCheck?: boolean
-    // pages?: PagesProps[]
     /**Image url for logo*/
     logoUrl?: string
     themeStyles: ThemeStyles
