@@ -5,6 +5,7 @@ import { MyNavProps, NavItem, NavListItemProps } from '../types'
 import { Fragment } from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import { useRouter } from 'next/router'
 
 const Nav = (props: MyNavProps) => {
     const { navType, cmsNav } = props
@@ -50,10 +51,12 @@ const Nav = (props: MyNavProps) => {
 
 const NavListItem = ({ item, arrow = false, navType }: NavListItemProps) => {
     const [currentPage, setCurrentPage] = useState('home')
+    const router = useRouter()
 
     useEffect(() => {
-        setCurrentPage(window.location.pathname.replace('/', ''))
-    }, [])
+        /* setCurrentPage(window.location.pathname.replace('/', '')) */
+        setCurrentPage(router.asPath.replace('/', ''))
+    }, [router])
 
     const title = item.title ? item.title.toLowerCase() : ''
 

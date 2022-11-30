@@ -219,6 +219,7 @@ export interface CMSPageData {
     head_script: string | null
     hideTitle: number
     sections: [{ wide: string }, { wide: string }, { wide: string }, { wide: string }, { wide: string }]
+    columnStyles: string
 }
 
 export interface GlobalModule {

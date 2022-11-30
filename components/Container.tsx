@@ -1,16 +1,16 @@
 import styles from '../styles/Home.module.scss'
-import { HomeProps, ModuleProps } from '../types'
+import { HomeProps, Module } from '../types'
 import Layout from './Layout'
 import { Renderer } from './Renderer'
 import { createInlineStyles } from '../functions'
 import cn from 'classnames'
 import { Fragment } from 'react'
+import { useRouter } from 'next/router'
 
 //HomeProps
-export const Container = (props: any) => {
+export const Container = (props: HomeProps) => {
     const { page, CMSLayout } = props
-
-    const cmsTheme = CMSLayout.theme || 'beacon-theme_charlotte'
+    const router = useRouter()
 
     const cmsUrl = CMSLayout.cmsUrl
 
@@ -19,6 +19,10 @@ export const Container = (props: any) => {
     const columnStyles = page.data.columnStyles
 
     const colorStyles = createInlineStyles(themeStyles)
+
+    if (router.isFallback) {
+        return <div>Loading...</div>
+    }
 
     return (
         <>
@@ -36,7 +40,7 @@ export const Container = (props: any) => {
                         </div>
 
                         <div className={cn(styles.columns, styles[`${columnStyles}`])}>
-                            {page.data.modules.map((data: [ModuleProps], idx: number) => (
+                            {page.data.modules.map((data: Module, idx: number) => (
                                 <Fragment key={idx}>
                                     {data && idx != 0 ? (
                                         <div className={cn(styles['column' + (idx + 1)], {})}>

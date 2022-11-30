@@ -72,4 +72,71 @@
                 )}
             </Layout>
         </>
-    ) */
+    ) 
+    
+    
+    
+    /////slug page ----------------------------------------------------------
+    
+    import Head from 'next/head'
+import styles from '../styles/Home.module.scss'
+import { HomeProps, PageListProps, Context } from '../types'
+import Layout from '../components/Layout'
+import { Renderer } from '../components/Renderer'
+import { useRouter } from 'next/dist/client/router'
+import { getDomain, domainImage } from '../functions'
+import cn from 'classnames'
+import { Fragment } from 'react'
+import PageHead from 'components/PageHead'
+import { Container } from 'components/Container'
+
+//runs at build time just like static props
+export const getStaticPaths = async () => {
+    const res = await fetch(getDomain(true) + '/pages/page-list.json')
+    const data = await res.json()
+
+    const paths = data.pages.map((page: PageListProps) => {
+        return {
+            params: { slug: page.slug.toString() },
+        }
+    })
+
+    return {
+        paths,
+        fallback: true,
+    }
+}
+
+export const getStaticProps = async (context: Context) => {
+    const slug = context.params.slug
+    
+
+    const resLayout = await fetch(getDomain(true) + '/layout.json')
+    const CMSLayout = await resLayout.json()
+
+    const resPage = await fetch(getDomain(true) + '/pages/' + slug + '.json')
+    let page = await resPage.json()
+
+    return {
+        props: { page, CMSLayout },
+        // Next.js will attempt to re-generate the page:
+        // - When a request comes in
+        // - At most once every 10 seconds
+        revalidate: 10, // In seconds
+    }
+}
+
+const Slug = (props: HomeProps) => {
+    let { page, CMSLayout } = props
+
+    return (
+        <>
+            <PageHead page={page} CMSLayout={CMSLayout} pageType="index" />
+
+            <Container page={page} CMSLayout={CMSLayout} />
+        </>
+    )
+}
+
+export default Slug
+*/
