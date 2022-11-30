@@ -54,7 +54,6 @@ const NavListItem = ({ item, arrow = false, navType }: NavListItemProps) => {
     const router = useRouter()
 
     useEffect(() => {
-        /* setCurrentPage(window.location.pathname.replace('/', '')) */
         setCurrentPage(router.asPath.replace('/', ''))
     }, [router])
 

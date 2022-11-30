@@ -11,6 +11,7 @@ const cmsUrl = 'clttestsiteforjoshedwards'
 //const cmsUrl = 'kaseypaztest'
 const env = process.env.NEXT_PUBLIC_URL_ENV
 const domain = process.env.NEXT_PUBLIC_BASE_URL
+export const bucketAndSiteUrl = getDomain(true)
 
 //determines environment (preview/live) and creates url for it
 function envCheck(api: string) {
@@ -152,7 +153,7 @@ export function extUrl(url: string) {
 }
 
 export async function getLayout() {
-    const resLayout = await fetch(getDomain(true) + '/layout.json', {
+    const resLayout = await fetch(bucketAndSiteUrl + '/layout.json', {
         next: { revalidate: 10 },
     })
 
@@ -164,7 +165,7 @@ export async function getLayout() {
 export async function getPageData(params: { slug: string }) {
     let pageSlug
     if (!params) {
-        const resPageList = await fetch(getDomain(true) + '/pages/page-list.json', {
+        const resPageList = await fetch(bucketAndSiteUrl + '/pages/page-list.json', {
             next: { revalidate: 10 },
         })
         const pageList = await resPageList.json()
@@ -174,7 +175,7 @@ export async function getPageData(params: { slug: string }) {
         pageSlug = params.slug
     }
 
-    const resPage = await fetch(getDomain(true) + '/pages/' + pageSlug + '.json', {
+    const resPage = await fetch(bucketAndSiteUrl + '/pages/' + pageSlug + '.json', {
         next: { revalidate: 10 },
     })
     let page = await resPage.json()

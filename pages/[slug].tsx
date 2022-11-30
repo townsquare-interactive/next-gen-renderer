@@ -1,12 +1,12 @@
 import { HomeProps, PageListProps, Context } from '../types'
 import { useRouter } from 'next/dist/client/router'
-import { getDomain } from '../functions'
+import { bucketAndSiteUrl } from '../functions'
 import { Container } from 'components/Container'
 import PageHead from 'components/PageHead'
 
 //runs at build time just like static props
 export const getStaticPaths = async () => {
-    const res = await fetch(getDomain(true) + '/pages/page-list.json')
+    const res = await fetch(bucketAndSiteUrl + '/pages/page-list.json')
     const data = await res.json()
 
     const paths = data.pages.map((page: PageListProps) => {
@@ -24,10 +24,10 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context: Context) => {
     const slug = context.params.slug
 
-    const resLayout = await fetch(getDomain(true) + '/layout.json')
+    const resLayout = await fetch(bucketAndSiteUrl + '/layout.json')
     const CMSLayout = await resLayout.json()
 
-    const resPage = await fetch(getDomain(true) + '/pages/' + slug + '.json')
+    const resPage = await fetch(bucketAndSiteUrl + '/pages/' + slug + '.json')
     let page = await resPage.json()
 
     return {

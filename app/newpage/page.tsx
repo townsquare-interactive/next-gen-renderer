@@ -9,7 +9,7 @@ import { Fragment, use } from 'react'
 const params = { slug: 'article' }
 
 const Home = () => {
-    const { CMSLayout } = use(getLayout())
+    //const { CMSLayout } = use(getLayout())
     const { page } = use(getPageData(params))
 
     //const page = test

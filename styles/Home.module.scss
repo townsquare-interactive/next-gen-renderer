@@ -18,7 +18,8 @@
         @include breakpoints.md-min {
             display: grid;
 
-            &.wide-column {
+            &.wide-column,
+            &.full-column {
                 grid-template-columns: 1fr;
             }
 

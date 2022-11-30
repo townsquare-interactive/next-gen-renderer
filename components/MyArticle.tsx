@@ -1,9 +1,9 @@
 'use client'
 import styles from './myArticle.module.scss'
-import { ArticleProps, ItemWrapProps, ModuleItemProps, HeaderBlockProps } from '../types'
+import { ArticleProps, ItemWrapProps, ModuleItemProps } from '../types'
 import cn from 'classnames'
 import Parser from 'html-react-parser'
-import { ConditionalWrapper, decideHeadTag } from '../functions'
+import { ConditionalWrapper } from '../functions'
 import { ReactChild } from 'react'
 import Link from 'next/link'
 import { Button } from '../elements/MyButton'
@@ -233,38 +233,5 @@ const ItemWrap = (props: ItemWrapProps) => {
         </>
     )
 }
-
-/* const HeaderBlock = (props: HeaderBlockProps) => {
-    const { item, columns, well, isBeaconHero } = props
-    //Finding tag types for headline and subjeadline
-    const HeadTag = decideHeadTag(columns, 'hd', item.headerTag)
-    const SubTag = decideHeadTag(columns, 'sh', item.headerTag)
-
-    return (
-        <header className={cn(styles['hd-block'], styles[`${item.headSize}`])}>
-            {item.headline && (
-                <HeadTag
-                    className={cn(styles['hd'], {
-                        ['accent-txt']: well || isBeaconHero,
-                        ['txt-color-heading']: !well && !isBeaconHero,
-                    })}
-                >
-                    {Parser(item.headline)}
-                </HeadTag>
-            )}
-
-            {item.subheader && (
-                <SubTag
-                    className={cn(styles['sh'], {
-                        ['accent-txt']: well || isBeaconHero,
-                        ['txt-color-heading']: !well && !isBeaconHero,
-                    })}
-                >
-                    {Parser(item.subheader)}
-                </SubTag>
-            )}
-        </header>
-    )
-} */
 
 export default MyArticle

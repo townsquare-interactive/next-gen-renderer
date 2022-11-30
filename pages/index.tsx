@@ -1,20 +1,20 @@
 import { HomeProps } from '../types'
 import { useRouter } from 'next/router'
-import { getDomain, findHomePageSlug } from '../functions'
+import { bucketAndSiteUrl, findHomePageSlug } from '../functions'
 import { Container } from 'components/Container'
 import PageHead from 'components/PageHead'
 
 //runs at build time just like static props
 export const getStaticProps = async () => {
-    const resLayout = await fetch(getDomain(true) + '/layout.json')
+    const resLayout = await fetch(bucketAndSiteUrl + '/layout.json')
     const CMSLayout = await resLayout.json()
 
-    const resPageList = await fetch(getDomain(true) + '/pages/page-list.json')
+    const resPageList = await fetch(bucketAndSiteUrl + '/pages/page-list.json')
     const pageList = await resPageList.json()
 
     const homePageSlug = findHomePageSlug(pageList)
 
-    const resPage = await fetch(getDomain(true) + '/pages/' + homePageSlug + '.json')
+    const resPage = await fetch(bucketAndSiteUrl + '/pages/' + homePageSlug + '.json')
     let page = await resPage.json()
 
     return {
