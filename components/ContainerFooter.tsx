@@ -22,7 +22,7 @@ const ContainerFooter = (props: ContainerFooterProps) => {
                             {item.component === 'text' && <TextWidget text={item.text} title={item.title} />}
                             {item.component === 'enhancedtext' && <TextWidget text={item.text} title={item.title} />}
                             {item.component === 'social_media' && <SocialLinks CMSLayout={CMSLayout} modType="widget" />}
-                            {item.component === 'nav_menu' && <Nav navType={'footer-nav'} cmsNav={CMSLayout.cmsNav} />}
+                            {item.component === 'nav_menu' && <Nav navType={'footer-nav'} cmsNav={CMSLayout.cmsNav} navSwitch={navSwitch} />}
 
                             <Renderer config={CMSLayout.composites?.footer?.modules.items} themeStyles={themeStyles} />
                         </div>
