@@ -1,4 +1,4 @@
-import styles from '../styles/Home.module.scss'
+import styles from './container.module.scss'
 import { HomeProps, Module } from '../types'
 import ContainerLayout from './ContainerLayout'
 import { Renderer } from './Renderer'

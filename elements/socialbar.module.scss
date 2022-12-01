@@ -1,0 +1,60 @@
+.social-bar {
+    box-shadow: 0 2px 2px 1px rgb(0 0 0 / 20%);
+    padding: 0 1rem;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    .contact {
+        flex: 1 0 70%;
+
+        ul {
+            font-size: 100%;
+            letter-spacing: 0.1em;
+            text-align: right;
+            width: 100%;
+            margin: 0.25rem 0;
+            list-style-type: none;
+            padding: 0;
+
+            @media (max-width: 850px) {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            li {
+                display: inline-block;
+                text-transform: uppercase;
+
+                a {
+                    font-size: 0.6875em;
+                    line-height: 1.0909090909em;
+                    border-radius: 2px;
+                    font-weight: 400;
+                    margin-top: 0.25em;
+                    margin-bottom: 0.25em;
+                    padding: 0.375em 1em 0.4375em;
+                    display: inline-block;
+                    vertical-align: text-bottom;
+                    text-align: center;
+                    vertical-align: middle;
+
+                    svg {
+                        width: 0.7em;
+                        display: inline;
+                        margin-right: 0.3em;
+                        font-size: 130%;
+                    }
+                }
+            }
+
+            .icon {
+                font-size: 100%;
+                letter-spacing: 0.1em;
+                margin: 0;
+            }
+        }
+    }
+}

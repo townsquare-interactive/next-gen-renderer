@@ -1,6 +1,5 @@
-import styles from '../../styles/Home.module.scss'
 import { PageListProps } from '../../types'
-import Layout from '../../components/Layout'
+import Layout from '../../components/ContainerLayout'
 import { Renderer } from '../../components/Renderer'
 import { getDomain, getPageData, getLayout, createInlineStyles } from '../../functions'
 import cn from 'classnames'

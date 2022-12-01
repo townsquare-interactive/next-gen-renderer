@@ -39,7 +39,7 @@ export const getStaticProps = async (context: Context) => {
     }
 }
 
-const Slug = (props: HomeProps) => {
+const Page = (props: HomeProps) => {
     const { page, CMSLayout } = props
     const router = useRouter()
 
@@ -58,4 +58,4 @@ const Slug = (props: HomeProps) => {
     )
 }
 
-export default Slug
+export default Page

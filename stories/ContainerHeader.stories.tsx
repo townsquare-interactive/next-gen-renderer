@@ -1,16 +1,14 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-
-import MyHeader from '../components/MyHeader'
+import ContainerHeader from '../components/ContainerHeader'
 import { themeStyles } from 'storydefaults'
 import { social } from 'storydefaults'
-import { MyHeaderProps } from 'types'
 
 export default {
-    title: 'New/MyHeader',
-    component: MyHeader,
-} as ComponentMeta<typeof MyHeader>
+    title: 'New/ContainerHeader',
+    component: ContainerHeader,
+} as ComponentMeta<typeof ContainerHeader>
 
-const Template: ComponentStory<typeof MyHeader> = (args) => <MyHeader {...args} />
+const Template: ComponentStory<typeof ContainerHeader> = (args) => <ContainerHeader {...args} />
 
 const Default = Template.bind({})
 Default.args = {

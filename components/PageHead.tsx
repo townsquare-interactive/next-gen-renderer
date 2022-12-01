@@ -25,12 +25,10 @@ export default function PageHead(props: PageHeadProps) {
                                 <meta property="og:image:type" content="image/jpg" />
                                 <meta property="og:image:width" content="1024" />
                                 <meta property="og:image:height" content="1024" />
-                                <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests"></meta>
                             </>
                         ))}
                     {CMSLayout.favicon && <link rel="shortcut icon" href={domainImage(CMSLayout.favicon, true, cmsUrl)} />}
                     <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
-                    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"></meta>
                 </>
             </ConditionalWrapper>
         </>

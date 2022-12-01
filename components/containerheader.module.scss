@@ -1,0 +1,77 @@
+@use 'sass:math';
+@use './styles/breakpoints.scss';
+
+.root {
+    position: fixed;
+    top: 0%;
+    width: 100%;
+    margin: 0;
+    z-index: 1009;
+    display: block;
+
+    .wrapper {
+        display: flex;
+        padding: 1rem 0.5rem;
+        width: 100%;
+        position: relative;
+        z-index: 1009;
+
+        align-items: center;
+
+        .logo-block {
+            position: relative;
+            height: 100%;
+            flex: 1 1 auto;
+            flex-basis: auto;
+
+            @include breakpoints.lg-min {
+                padding: 0 0.5rem;
+            }
+
+            img {
+                max-width: 6rem !important;
+                height: auto;
+                transition: all 0.3s ease-in-out;
+
+                @include breakpoints.lg-min {
+                    max-width: 13rem !important;
+                }
+            }
+
+            &.desktop-logo-block {
+                display: none;
+
+                @include breakpoints.lg-min {
+                    display: block;
+                }
+            }
+
+            &.mobile-logo-block {
+                display: block;
+
+                @include breakpoints.lg-min {
+                    display: none;
+                }
+
+                &.center {
+                    text-align: center;
+                }
+
+                &.right {
+                    text-align: center;
+                }
+            }
+        }
+    }
+
+    &.shrink {
+        .wrapper {
+            padding: 0.5rem;
+
+            img {
+                // max-width: 4.5rem !important;
+                max-width: 6rem !important;
+            }
+        }
+    }
+}

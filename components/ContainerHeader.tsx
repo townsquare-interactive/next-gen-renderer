@@ -1,19 +1,16 @@
 'use client'
-import styles from './myheader.module.scss'
-import { MyHeaderProps, SocialBarProps, ContactLinkProps } from '../types'
+import styles from './containerheader.module.scss'
+import { ContainerHeaderProps } from '../types'
 import cn from 'classnames'
 import { domainImage } from '../functions'
 import { useState, useEffect } from 'react'
-
 import Logo from './Logo'
-import SocialLinks from 'elements/SocialLinks'
 import NavToggle from 'elements/NavToggle'
 import Nav from '../elements/Nav'
-import { faEnvelope, faPhone, faLocationPin } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useRef } from 'react'
+import SocialBar from 'elements/SocialBar'
 
-const MyHeader = (props: MyHeaderProps) => {
+const ContainerHeader = (props: ContainerHeaderProps) => {
     const { CMSLayout, themeStyles, navSwitch, setHeight } = props
     const [windowHeight, setWindowHeight] = useState(0)
 
@@ -67,45 +64,4 @@ const MyHeader = (props: MyHeaderProps) => {
     )
 }
 
-const SocialBar = ({ CMSLayout, themeStyles }: SocialBarProps) => {
-    return (
-        <div className={styles['social-bar']} style={{ background: themeStyles.BckdHeaderSocial }}>
-            <SocialLinks CMSLayout={CMSLayout} />
-            <aside className={styles.contact}>
-                <ul>
-                    {CMSLayout.contact.phone[0] && (
-                        <ContactLink
-                            cname="phone"
-                            link={'tel:' + CMSLayout.contact.phone[0].number}
-                            icon={faPhone}
-                            content={CMSLayout.contact.phone[0].number}
-                        />
-                    )}
-                    {CMSLayout.contact.email[0] && (
-                        <ContactLink
-                            cname="email"
-                            link={`mailto:${CMSLayout.contact.email[0].email}`}
-                            icon={faEnvelope}
-                            content={CMSLayout.contact.email[0].name + ':' + CMSLayout.contact.email[0].email}
-                        />
-                    )}
-
-                    {CMSLayout.siteName && <ContactLink cname="map" link={'www.google.com'} icon={faLocationPin} content={CMSLayout.siteName} />}
-                </ul>
-            </aside>
-        </div>
-    )
-}
-
-const ContactLink = ({ cname, link, icon, content }: ContactLinkProps) => {
-    return (
-        <li className={cn(styles[`${cname}`], styles.icon)}>
-            <a href={link} aria-label={cname} className={cn('socialIcon')}>
-                <FontAwesomeIcon icon={icon} />
-                {content}
-            </a>
-        </li>
-    )
-}
-
-export default MyHeader
+export default ContainerHeader

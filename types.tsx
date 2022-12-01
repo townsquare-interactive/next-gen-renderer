@@ -502,7 +502,7 @@ export interface PhotoItemProps {
     items: ArticleItems[]
 }
 
-export interface MyHeaderProps {
+export interface ContainerHeaderProps {
     pages?: PagesProps[]
     CMSLayout: GlobalData
     themeStyles: ThemeStyles
@@ -522,7 +522,7 @@ export interface SocialItem {
     value: string
 }
 
-export interface MyFooterProps {
+export interface ContainerFooterProps {
     pages?: PagesProps[]
     CMSLayout: GlobalData
     themeStyles: ThemeStyles

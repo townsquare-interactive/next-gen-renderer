@@ -2,8 +2,8 @@
 import { LayoutProps } from '../types'
 import styles from './containerlayout.module.scss'
 import cn from 'classnames'
-import MyHeader from './MyHeader'
-import MyFooter from './MyFooter'
+import ContainerHeader from './ContainerHeader'
+import ContainerFooter from './ContainerFooter'
 import { useState } from 'react'
 import SlidingHeader from 'elements/SlidingHeader'
 
@@ -21,11 +21,11 @@ export default function Layout(props: LayoutProps) {
             <div className={cn(styles.root)}>
                 <SlidingHeader navSwitch={navSwitch} navCheck={navCheck} themeStyles={themeStyles} CMSLayout={CMSLayout} />
 
-                <MyHeader CMSLayout={CMSLayout} themeStyles={themeStyles} navSwitch={navSwitch} setHeight={setHeight} />
+                <ContainerHeader CMSLayout={CMSLayout} themeStyles={themeStyles} navSwitch={navSwitch} setHeight={setHeight} />
 
                 <main style={{ marginTop: height }}>{children}</main>
 
-                <MyFooter CMSLayout={CMSLayout} themeStyles={themeStyles} navSwitch={navSwitch} />
+                <ContainerFooter CMSLayout={CMSLayout} themeStyles={themeStyles} navSwitch={navSwitch} />
             </div>
         </>
     )

@@ -1,16 +1,16 @@
 'use client'
-import styles from './myfooter.module.scss'
+import styles from './containerfooter.module.scss'
 import cn from 'classnames'
 import Nav from '../elements/Nav'
 import Logo from './Logo'
-import { MyFooterProps, CompositeItem } from '../types'
+import { ContainerFooterProps, CompositeItem } from '../types'
 import { domainImage } from '../functions'
 import SocialLinks from 'elements/SocialLinks'
-import MyText from 'elements/MyText'
+import TextWidget from 'elements/TextWidget'
 import NavToggle from 'elements/NavToggle'
 import { Renderer } from './Renderer'
 
-const MyFooter = (props: MyFooterProps) => {
+const ContainerFooter = (props: ContainerFooterProps) => {
     const { CMSLayout, themeStyles, navSwitch } = props
 
     return (
@@ -19,8 +19,8 @@ const MyFooter = (props: MyFooterProps) => {
                 <div className={styles.content}>
                     {CMSLayout.composites?.footer?.modules.items.map((item: CompositeItem, index: number) => (
                         <div key={index} className={styles.item}>
-                            {item.component === 'text' && <MyText text={item.text} title={item.title} />}
-                            {item.component === 'enhancedtext' && <MyText text={item.text} title={item.title} />}
+                            {item.component === 'text' && <TextWidget text={item.text} title={item.title} />}
+                            {item.component === 'enhancedtext' && <TextWidget text={item.text} title={item.title} />}
                             {item.component === 'social_media' && <SocialLinks CMSLayout={CMSLayout} modType="widget" />}
                             {item.component === 'nav_menu' && <Nav navType={'footer-nav'} cmsNav={CMSLayout.cmsNav} />}
 
@@ -62,4 +62,4 @@ const MyFooter = (props: MyFooterProps) => {
     )
 }
 
-export default MyFooter
+export default ContainerFooter

@@ -12,7 +12,6 @@ import Video from './Video'
 import Article from './Article'
 import CharlotteArticle from './CharlotteArticle'
 import MyArticle from './MyArticle'
-import { Fragment } from 'react'
 import { PhotoGrid } from './PhotoGrid'
 import { capitalize } from '../functions'
 
