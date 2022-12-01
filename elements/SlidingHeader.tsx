@@ -27,7 +27,7 @@ const SlidingHeader = (props: SlidingHeaderProps) => {
                         <SocialLinks CMSLayout={CMSLayout} modType="mob-header" />
                     </div>
 
-                    <Nav navType={'mobile-nav'} cmsNav={CMSLayout.cmsNav} />
+                    <Nav navType={'mobile-nav'} cmsNav={CMSLayout.cmsNav} navSwitch={navSwitch} />
                 </div>
             </div>
         </div>

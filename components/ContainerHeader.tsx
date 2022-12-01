@@ -56,7 +56,7 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
                     </div>
                 )}
 
-                <Nav navType={'desktop-nav'} cmsNav={CMSLayout.cmsNav} />
+                <Nav navType={'desktop-nav'} cmsNav={CMSLayout.cmsNav} navSwitch={navSwitch} />
                 <NavToggle navSwitch={navSwitch} themeStyles={themeStyles} />
             </div>
             <SocialBar CMSLayout={CMSLayout} themeStyles={themeStyles} />

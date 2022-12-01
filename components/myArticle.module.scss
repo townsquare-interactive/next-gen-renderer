@@ -16,7 +16,7 @@
         max-width: 75.5em;
         margin-left: auto;
         margin-right: auto;
-        padding: 0 1.5rem 1rem;
+        //padding: 0 1.5rem 1rem;
 
         .item {
             margin-bottom: 2rem;
@@ -356,6 +356,10 @@
 
         &.tsflex .item {
             margin-bottom: 4rem;
+
+            &:last-of-type {
+                margin-bottom: 2rem;
+            }
         }
     }
 

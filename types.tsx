@@ -133,6 +133,7 @@ export interface NavListItemProps {
     navType: string | undefined
     item: NavItem
     arrow?: boolean
+    navSwitch: () => void
 }
 
 export interface ContactLinkProps {
@@ -570,6 +571,7 @@ export interface MyNavProps {
     navType?: string
     cmsNav: any
     currentPage?: string
+    navSwitch: () => void
 }
 
 export interface LogoProps {
@@ -905,7 +907,7 @@ export interface BurgerProps {
 }
 
 export interface NavigationProps {
-    navSwitch?: () => void
+    navSwitch: () => void
     /**Boolean that determines if navbar being shown or hidden*/
     navCheck?: boolean
     pages: PagesProps[]
