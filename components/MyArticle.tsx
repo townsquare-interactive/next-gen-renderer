@@ -17,20 +17,22 @@ const MyArticle = (props: ArticleProps) => {
     if (disabled != 'disabled') {
         return (
             <div
-                className={cn(styles['root'], styles['tsflex'], styles['grid'], /* styles['item-flex'], */ styles['root-container'], styles[`col_${columns}`], {
-                    [styles.a1]: type === 'article_1',
-                    [styles.a2]: type === 'article_2',
-                    [styles.a3]: type === 'article_3',
-                    [styles.beacon]: type === 'article',
-                    [styles.well]: well == '1',
-                    [styles.not_well]: !well,
-                    [styles.large]: columns == 1 && (width === '736' || width === '652' || width === '938' || width === '1060' || width === '988'),
-                    [styles.medium]: columns == 2,
-                    [styles.small]: columns == 3 || columns == 4,
-                    [styles[`cst_${props.class}`]]: props.class,
-                    [styles['full-width']]: width === '938' || width === '1060' || width === '988' || !width,
-                    [styles['med-width']]: width === '736' || width === '652',
-                })}
+                className={cn(
+                    styles['root'],
+                    styles['tsflex'],
+                    styles['grid'],
+                    /* styles['item-flex'], */ styles['root-container'],
+                    styles[`col_${columns}`],
+                    styles[`${type}`],
+                    {
+                        [styles.beacon]: type === 'article',
+                        [styles.well]: well == '1',
+                        [styles.not_well]: !well,
+                        [styles[`cst_${props.class}`]]: props.class,
+                        [styles['full-width']]: width === '938' || width === '1060' || width === '988' || !width,
+                        [styles['med-width']]: width === '736' || width === '652',
+                    }
+                )}
                 id={`id_${modId}`}
             >
                 {title && <ModuleTitle title={title} />}

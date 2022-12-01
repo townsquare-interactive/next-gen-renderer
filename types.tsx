@@ -547,7 +547,7 @@ export interface Media {
 /*----------------------------TSI Elements--------------------------------------*/
 
 export interface SlidingHeaderProps {
-    navSwitch?: () => void
+    navSwitch: () => void
     /**Boolean that determines if navbar being shown or hidden*/
     navCheck?: boolean
     /**Image url for logo*/

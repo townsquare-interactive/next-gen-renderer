@@ -3,8 +3,8 @@
 @use './styles/utils.scss';
 @value well from '../components/myArticle.module.scss';
 @value nDsc from '../components/myArticle.module.scss';
-@value a1 from '../components/myArticle.module.scss';
-@value a2 from '../components/myArticle.module.scss';
+@value article_1 from '../components/myArticle.module.scss';
+@value article_2 from '../components/myArticle.module.scss';
 @value nDsc from '../components/myArticle.module.scss';
 @value hero from '../components/photogrid.module.scss';
 
@@ -146,7 +146,7 @@
 }
 
 .well {
-    &.a1 {
+    &.article_1 {
         .hd-block {
             padding: 0 2rem 0;
         }
@@ -158,7 +158,7 @@
         }
     }
 
-    &.a2 {
+    &.article_2 {
         .hd-block {
             padding: 1rem 2rem;
         }

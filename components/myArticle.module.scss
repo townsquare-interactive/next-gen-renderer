@@ -16,7 +16,7 @@
         max-width: 75.5em;
         margin-left: auto;
         margin-right: auto;
-        //padding: 0 1.5rem 1rem;
+        padding: 0 1.5rem 1rem;
 
         .item {
             margin-bottom: 2rem;
@@ -25,16 +25,6 @@
             margin-right: 0;
 
             .item-wrap {
-                .hd-block {
-                    /*    .hd {
-                        font-weight: 700;
-                    }
-
-                    .sh {
-                        font-weight: 400;
-                    } */
-                }
-
                 .txt-block {
                     .dsc {
                         width: 100%;
@@ -75,8 +65,8 @@
             margin-bottom: 2rem;
         }
 
-        &.a1,
-        &.a2 {
+        &.article_1,
+        &.article_2 {
             .item-wrap {
                 @include tsFlex;
                 box-orient: vertical;
@@ -88,8 +78,8 @@
         }
     }
 
-    &.a1,
-    &.a2 {
+    &.article_1,
+    &.article_2 {
         text-align: left;
 
         .right {
@@ -236,7 +226,7 @@
             margin-left: 2rem;
         }
 
-        &.a2.not_well .yImg .txt-block {
+        &.article_2.not_well .yImg .txt-block {
             padding-top: 1.5rem;
         }
     }
@@ -258,7 +248,7 @@
             }
         }
 
-        &.a1 {
+        &.article_1 {
             .dsc-block,
             .hd-block {
                 padding: 0 2rem 0;
@@ -271,7 +261,7 @@
             }
         }
 
-        &.a2 {
+        &.article_2 {
             //well padding
             .hd-block {
                 padding: 1rem 2rem;
@@ -290,8 +280,8 @@
             }
         }
 
-        &.a3,
-        &.beacon {
+        &.article_3,
+        &.article {
             .item-wrap {
                 padding: 1.5rem;
             }
@@ -315,7 +305,7 @@
     }
     /*------------------------------------End of border/well ----------------------------*/
 
-    &.beacon {
+    &.article {
         .hero {
             .item-wrap {
                 padding: 1.5rem;
@@ -328,7 +318,7 @@
             padding-top: 3rem;
         }
 
-        &.beacon {
+        &.article {
             .mod_left .image-block,
             .mod_right .image-block {
                 width: math.div(5, 12) * 100%;
@@ -346,9 +336,9 @@
             }
         }
 
-        &.a1,
-        &.a2,
-        &.a3 {
+        &.article_1,
+        &.article_2,
+        &.article_3 {
             .nHero {
                 width: utils.$ten-12;
             }
@@ -357,7 +347,7 @@
         &.tsflex .item {
             margin-bottom: 4rem;
 
-            &:last-of-type {
+            &:last-of-type &.col_1 {
                 margin-bottom: 2rem;
             }
         }

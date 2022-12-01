@@ -41,15 +41,7 @@ export const Button = (props: BtnProps) => {
 
     return (
         <div
-            className={cn(styles['btn-mod'], {
-                [styles.a1]: props.type == 'article_1',
-                [styles.a2]: props.type == 'article_2',
-                [styles.a3]: props.type == 'article_3',
-                [styles.grid]: props.type == 'photo_grid',
-                [styles.beacon]: props.type == 'article',
-                [styles.right]: props.align == 'right',
-                [styles.left]: props.align == 'left',
-                [styles.center]: props.align == 'center',
+            className={cn(styles['btn-mod'], styles[`${props.type}`], styles[`${props.align}`], {
                 [styles.well]: props.well == '1' && props.type.includes('article'),
             })}
         >

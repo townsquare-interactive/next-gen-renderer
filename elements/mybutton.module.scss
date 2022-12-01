@@ -1,7 +1,6 @@
 @use '../styles/utils.scss';
 @use './styles/breakpoints.scss';
 
-/*-----------------------------Button styles--------------------*/
 .btn-mod {
     display: flex;
     //width: 100%;
@@ -130,9 +129,9 @@
         }
     }
 
-    &.a1,
-    &.a2,
-    &.grid {
+    &.article_1,
+    &.article_2,
+    &.photo_grid {
         .btn {
             align-self: flex-start;
 
@@ -169,19 +168,17 @@
     }
 
     &.a3,
-    &.beacon {
+    &.article {
         .btn {
             align-self: flex-start;
         }
     }
 
     &.well {
-        &.a1 {
+        &.article_1 {
             .btn {
                 width: 100%;
             }
         }
     }
 }
-
-/*-----------------------------ENd of button styles--------------------*/
