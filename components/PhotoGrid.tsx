@@ -8,7 +8,7 @@ import { ConditionalWrapper } from 'functions'
 import Link from 'next/link'
 import { ReactChild } from 'react'
 import ModuleTitle from 'elements/ModuleTitle'
-import { HeaderBlock } from 'elements/HeaderBlock'
+import { HeadlineBlock } from 'elements/HeadlineBlock'
 
 export const PhotoGrid = (props: PhotoGridProps) => {
     const { columns = 1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl } = props
@@ -131,7 +131,7 @@ const PhotoItem = (props: PhotoItemProps) => {
                     {isCap() && (
                         <figcaption className={cn(styles.caption)} style={{ background: themeStyles.captionBackground }}>
                             <div>
-                                {(item.headline || item.subheader) && <HeaderBlock item={item} well={well} columns={columns} modType="photo_grid" />}
+                                {(item.headline || item.subheader) && <HeadlineBlock item={item} well={well} columns={columns} modType="photo_grid" />}
                                 {linkAndBtn && (
                                     <Button
                                         pagelink={item.pagelink}

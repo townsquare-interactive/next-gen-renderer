@@ -469,7 +469,7 @@ export interface ItemWrapProps {
     align: string
 }
 
-export interface HeaderBlockProps {
+export interface HeadlineBlockProps {
     item: ArticleItems
     columns: number | string
     well: string | number

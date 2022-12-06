@@ -9,7 +9,7 @@ import Link from 'next/link'
 import { Button } from '../elements/MyButton'
 import { MyImage } from '../elements/MyImage'
 import ModuleTitle from 'elements/ModuleTitle'
-import { HeaderBlock } from 'elements/HeaderBlock'
+import { HeadlineBlock } from 'elements/HeadlineBlock'
 
 const MyArticle = (props: ArticleProps) => {
     const { columns = 1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl, disabled } = props
@@ -176,11 +176,15 @@ const ItemWrap = (props: ItemWrapProps) => {
                             <MyImage item={item} imgsize={imgsize} well={well} cmsUrl={cmsUrl} />
                         </figure>
                     )}
-                    {(item.headline || item.subheader) && <HeaderBlock item={item} well={well} columns={columns} isBeaconHero={isBeaconHero} modType={type} />}
+                    {(item.headline || item.subheader) && (
+                        <HeadlineBlock item={item} well={well} columns={columns} isBeaconHero={isBeaconHero} modType={type} />
+                    )}
                 </>
             ) : (
                 <>
-                    {(item.headline || item.subheader) && <HeaderBlock item={item} well={well} columns={columns} isBeaconHero={isBeaconHero} modType={type} />}
+                    {(item.headline || item.subheader) && (
+                        <HeadlineBlock item={item} well={well} columns={columns} isBeaconHero={isBeaconHero} modType={type} />
+                    )}
 
                     {item.image && (
                         <figure className={cn(styles['image-block'])} data-alt="Headline">

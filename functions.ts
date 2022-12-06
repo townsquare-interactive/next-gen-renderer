@@ -1,14 +1,11 @@
 import { ConditionalWrapperProps, Module, PageProps, CMSColors, Pagelist, ThemeStyles } from 'types'
 
-import { faGoogle, faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons'
-import { faRocket, faEnvelope, faPrint, faPhone, faLocationPin, faBars, faAnchor, faArchway } from '@fortawesome/free-solid-svg-icons'
+import { faRocket, faAnchor, faArchway } from '@fortawesome/free-solid-svg-icons'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
-
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
-
 library.add(fas, fab, far)
 
 const bucketUrl = 'https://townsquareinteractive.s3.amazonaws.com'

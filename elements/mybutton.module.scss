@@ -21,35 +21,35 @@
         text-transform: uppercase;
 
         svg {
-            width: 1.2em;
+            width: 1.1em;
         }
 
         &.btn_xs {
-            font-size: 0.8125em;
+            font-size: utils.$xss-txt;
             line-height: 1.2307692308em;
             padding: 0.25em 0.75em;
         }
 
         &.btn_sm {
-            font-size: 0.8125em;
+            font-size: utils.$xss-txt;
             line-height: 1.2307692308em;
             padding: 0.5em 1em;
         }
 
         &.btn_md {
-            font-size: 0.875em;
+            font-size: utils.$xs-txt;
             line-height: 1.4285714286em;
             padding: 0.625em 1.25em;
         }
 
         &.btn_lg {
-            font-size: 0.875em;
+            font-size: utils.$xs-txt;
             line-height: 1.4285714286em;
             padding: 0.625em 1.25em;
         }
 
         &.btn_xl {
-            font-size: 0.875em;
+            font-size: utils.$xs-txt;
             padding: 0.625em 1.25em;
             line-height: 1.4285714286em;
         }

@@ -18,6 +18,13 @@ $quarteritem-width: $quarter-width - ($item-margins * 2);
 $col3-hero: (math.div(8, 12) * 100%) - ($item-margins * 2);
 $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
 
+//text
+$xss-txt: 0.8125em;
+$xs-txt: 0.875em;
+$sm-txt: 1.0625em;
+$md-txt: 1.5em;
+$lg-txt: 2.25em;
+
 /*-------------------------------- Mixins-----------------------*/
 
 @mixin useFlex {
@@ -172,6 +179,39 @@ $root-bottom-margin: 30px;
     }
 }
 /*Font size mixins */
+
+/*-----------CMS-------------------*/
+
+@mixin sm-text-sizes {
+    font-size: $sm-txt;
+    margin-top: 0.7058823529em;
+    margin-bottom: 0.4705882353em;
+    line-height: 1.1764705882em;
+}
+
+@mixin xs-text-sizes {
+    font-size: $xs-txt;
+    margin-top: 0.5714285714em;
+    margin-bottom: 0.5714285714em;
+    line-height: 1.1428571429em;
+}
+@mixin md-text-sizes {
+    font-size: $md-txt;
+    margin-top: 0.6666666667em;
+    margin-bottom: 0.5em;
+    line-height: 1.1666666667em;
+    letter-spacing: -0.0125rem;
+}
+@mixin lg-text-sizes {
+    font-size: $lg-txt;
+    margin-top: 0.6666666667em;
+    margin-bottom: 0.4444444444em;
+    line-height: 1.1111111111em;
+    letter-spacing: -0.0125rem;
+}
+
+/*-----------------------------------------------*/
+
 @mixin text-sizes-sm {
     font-size: variables.$text-size-body-xsm;
 

@@ -1,15 +1,11 @@
 import { decideHeadTag } from 'functions'
-import { HeaderBlockProps } from 'types'
+import { HeadlineBlockProps } from 'types'
 import Parser from 'html-react-parser'
-import styles from './headerblock.module.scss'
+import styles from './headlineblock.module.scss'
 import cn from 'classnames'
-import { Tangerine } from '@next/font/google'
 
-export const HeaderBlock = (props: HeaderBlockProps) => {
+export const HeadlineBlock = (props: HeadlineBlockProps) => {
     const { item, columns, well, isBeaconHero, modType } = props
-    //Finding tag types for headline and subjeadline
-    /*     const HeadTag = decideHeadTag(columns, 'hd', item.headerTag)
-    const SubTag = decideHeadTag(columns, 'sh', item.headerTag) */
 
     return (
         <header
@@ -19,14 +15,6 @@ export const HeaderBlock = (props: HeaderBlockProps) => {
             })}
         >
             {item.headline && (
-                /* <HeadTag
-                    className={cn(styles['hd'], {
-                        ['accent-txt']: well || isBeaconHero || modType === 'photo-grid',
-                        ['txt-color-heading']: !well && !isBeaconHero && modType != 'photo-grid',
-                    })}
-                >
-                    {Parser(item.headline)}
-                </HeadTag> */
                 <Heading
                     textType="hd"
                     text={item.headline}

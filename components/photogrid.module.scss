@@ -88,6 +88,8 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
 }
 
 .root {
+    padding-top: 3rem;
+
     * {
         box-sizing: border-box;
     }
@@ -361,7 +363,7 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
     }
 
     .hd {
-        font-size: 1.0625em;
+        font-size: utils.$sm-txt;
         margin-top: 0.7058823529em;
         margin-bottom: 0.4705882353em;
         line-height: 1.1764705882em;
@@ -374,7 +376,7 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
         }
 
         .hd {
-            font-size: 1.5em;
+            font-size: utils.$md-txt;
             margin-top: 0.6666666667em;
             margin-bottom: 0.5em;
             line-height: 1.1666666667em;
@@ -383,7 +385,7 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
 
         @container item (min-width:343px) {
             .hd {
-                font-size: 2.25em;
+                font-size: utils.$lg-txt;
                 margin-top: 0.6666666667em;
                 margin-bottom: 0.4444444444em;
                 line-height: 1.1111111111em;

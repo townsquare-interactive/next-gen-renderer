@@ -8,6 +8,8 @@
 }
 
 .root {
+    padding-top: 3rem;
+
     * {
         box-sizing: border-box;
     }
@@ -92,21 +94,21 @@
     }
 
     .dsc {
-        font-size: 0.875em;
+        font-size: utils.$xs-txt;
         margin-top: 1.1428571429em;
         margin-bottom: 1.1428571429em;
         line-height: 1.4285714286em;
     }
 
     .sh {
-        font-size: 0.875em;
+        font-size: utils.$xs-txt;
         margin-top: 0.5714285714em;
         margin-bottom: 0.5714285714em;
         line-height: 1.1428571429em;
     }
 
     .hd {
-        font-size: 1.0625em;
+        font-size: utils.$sm-txt;
         margin-top: 0.7058823529em;
         margin-bottom: 0.4705882353em;
         line-height: 1.1764705882em;
@@ -124,21 +126,21 @@
 
     @container item (min-width:0px) {
         .dsc {
-            font-size: 0.875em;
+            font-size: utils.$xs-txt;
             margin-top: 1.1428571429em;
             margin-bottom: 1.1428571429em;
             line-height: 1.4285714286em;
         }
 
         .sh {
-            font-size: 0.875em;
+            font-size: utils.$xs-txt;
             margin-top: 0.5714285714em;
             margin-bottom: 0.5714285714em;
             line-height: 1.1428571429em;
         }
 
         .hd {
-            font-size: 1.0625em;
+            font-size: utils.$sm-txt;
             margin-top: 0.7058823529em;
             margin-bottom: 0.4705882353em;
             line-height: 1.1764705882em;
@@ -147,7 +149,7 @@
     //temp: medium screens, need to revise size maybe
     @container item (min-width:343px) {
         .hd {
-            font-size: 1.5em;
+            font-size: utils.$md-txt;
             margin-top: 0.6666666667em;
             margin-bottom: 0.5em;
             line-height: 1.1666666667em;
@@ -155,14 +157,14 @@
         }
 
         .sh {
-            font-size: 1.0625em;
+            font-size: utils.$sm-txt;
             margin-top: 0.7058823529em;
             margin-bottom: 0.4705882353em;
             line-height: 1.1764705882em;
         }
 
         .dsc {
-            font-size: 0.875em;
+            font-size: utils.$xs-txt;
             margin-top: 1.1428571429em;
             margin-bottom: 1.1428571429em;
             line-height: 1.4285714286em;
@@ -193,7 +195,7 @@
     //for larger screens (starts at 1025)
     @container item (min-width:775px) {
         .hd {
-            font-size: 2.25em;
+            font-size: utils.$lg-txt;
             margin-top: 0.6666666667em;
             margin-bottom: 0.4444444444em;
             line-height: 1.1111111111em;
@@ -201,7 +203,7 @@
         }
 
         .sh {
-            font-size: 1.5em;
+            font-size: utils.$md-txt;
             margin-top: 0.6666666667em;
             margin-bottom: 0.5em;
             line-height: 1.1666666667em;
@@ -209,7 +211,7 @@
         }
 
         .dsc {
-            font-size: 1.0625em;
+            font-size: utils.$sm-txt;
             margin-top: 0.9411764706em;
             margin-bottom: 0.9411764706em;
             line-height: 1.4117647059em;
