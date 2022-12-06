@@ -4,11 +4,16 @@ import { faGoogle, faFacebook, faInstagram, faTwitter } from '@fortawesome/free-
 import { faRocket, faEnvelope, faPrint, faPhone, faLocationPin, faBars, faAnchor, faArchway } from '@fortawesome/free-solid-svg-icons'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { far } from '@fortawesome/free-regular-svg-icons'
+
+library.add(fas, fab, far)
+
 const bucketUrl = 'https://townsquareinteractive.s3.amazonaws.com'
 const localUrl = 'elitesports.com/preview'
 const cmsUrl = 'clttestsiteforjoshedwards'
-//const cmsUrl = 'joshedwards'
-//const cmsUrl = 'kaseypaztest'
 const env = process.env.NEXT_PUBLIC_URL_ENV
 const domain = process.env.NEXT_PUBLIC_BASE_URL
 export const bucketAndSiteUrl = getDomain(true)
@@ -112,15 +117,20 @@ export function iconConvert(str: string) {
 export function socialConvert(str: string) {
     let icon = iconConvert(str)
     if (icon === 'google') {
-        return faGoogle
+        //return faGoogle
+        return ['fab', 'google']
     } else if (icon === 'facebook') {
-        return faFacebook
+        //return faFacebook
+        return ['fab', 'facebook']
     } else if (icon === 'instagram') {
-        return faInstagram
+        // return faInstagram
+        return ['fab', 'instagram']
     } else if (icon === 'twitter') {
-        return faTwitter
+        return ['fab', 'twitter']
+        //return faTwitter
     } else {
-        return faRocket
+        //return faRocket
+        return ['fab', 'rocket']
     }
 }
 
@@ -131,10 +141,9 @@ export const icons: { [key: string]: IconProp } = {
     faArchway,
 }
 
-export function btnIconConver(icon: any) {
+export function btnIconConvert(icon: any) {
     if (icon) {
         //replaces fas fa-rocket with faRocket
-
         const newicon = icon.replace('fas', '')
         const newicon2 = newicon.replace(/^(.*?)-/, '')
 
@@ -157,9 +166,9 @@ export async function getLayout() {
         next: { revalidate: 10 },
     })
 
-    const CMSLayout = await resLayout.json()
+    const siteData = await resLayout.json()
 
-    return { CMSLayout }
+    return { siteData }
 }
 
 export async function getPageData(params: { slug: string }) {
@@ -195,6 +204,11 @@ export function decideHeadTag(columns: number | string, tag: string, headerTag: 
     } else {
         return 'h2'
     }
+}
+
+export function printPage() {
+    print()
+    return
 }
 
 //Used to have conditional tag wraps around code without repeating inside code

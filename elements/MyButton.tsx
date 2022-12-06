@@ -3,41 +3,15 @@
 import styles from './mybutton.module.scss'
 import { BtnProps } from '../types'
 import cn from 'classnames'
-import { ConditionalWrapper, btnIconConver } from '../functions'
+import { ConditionalWrapper, btnIconConvert, icons } from '../functions'
 import { ReactChild, Fragment } from 'react'
 import Link from 'next/link'
 
 // importing fontAwesome icons
-import { faRocket } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const Button = (props: BtnProps) => {
     const linkHoverStyles = `#id_${props.modId} .btn_link:hover .btn_1{color: ${props.themeStyles['promoColor']}; background-color: ${props.themeStyles['textColorAccent']}} #id_${props.modId} .btn_link:hover .btn_2{color: ${props.themeStyles['promoColor']}; border-color: ${props.themeStyles['promoColor']}}`
-
-    let buttons = [
-        {
-            name: 'btn1',
-            link: props.pagelink || props.weblink,
-            window: props.newwindow,
-            icon: btnIconConver(props.icon || ''),
-            label: props.actionlbl,
-            active: props.actionlbl && (props.pagelink || props.weblink),
-            btnType: props.btnType,
-            btnSize: props.btnSize,
-            linkType: props.pagelink ? 'local' : 'ext',
-        },
-        {
-            name: 'btn2',
-            link: props.pagelink2 || props.weblink2,
-            window: props.newwindow2,
-            icon: btnIconConver(props.icon2 || ''),
-            label: props.actionlbl2,
-            active: props.actionlbl2 && (props.pagelink2 || props.weblink2),
-            btnType: props.btnType2,
-            btnSize: props.btnSize2,
-            linkType: props.pagelink2 ? 'local' : 'ext',
-        },
-    ]
 
     return (
         <div
@@ -52,7 +26,7 @@ export const Button = (props: BtnProps) => {
                 falseOutput={(children: ReactChild) => <>{children}</>}
             >
                 <>
-                    {buttons.map((bt, index) => (
+                    {props.buttonList.map((bt, index) => (
                         <Fragment key={index}>
                             {bt.active && (
                                 <ConditionalWrapper
@@ -87,7 +61,8 @@ export const Button = (props: BtnProps) => {
                                             [styles.btn_w]: props.well === '1' && props.type.includes('article'),
                                         })}
                                     >
-                                        {bt.icon && <FontAwesomeIcon icon={bt.icon || faRocket} />} {bt.label}
+                                        {bt.icon && <FontAwesomeIcon icon={[bt.icon.iconPrefix, bt.icon.iconModel]} />}
+                                        {` ${bt.label}`}
                                     </div>
                                 </ConditionalWrapper>
                             )}

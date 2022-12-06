@@ -131,8 +131,7 @@ const PhotoItem = (props: PhotoItemProps) => {
                     {isCap() && (
                         <figcaption className={cn(styles.caption)} style={{ background: themeStyles.captionBackground }}>
                             <div>
-                                {/* {HeadTag && <HeadTag className={cn(styles['hd'], ['caption-txt'])}>{Parser(item.headline)}</HeadTag>} */}
-                                {(item.headline || item.subheader) && <HeaderBlock item={item} well={well} columns={columns} modType="photo-grid" />}
+                                {(item.headline || item.subheader) && <HeaderBlock item={item} well={well} columns={columns} modType="photo_grid" />}
                                 {linkAndBtn && (
                                     <Button
                                         pagelink={item.pagelink}
@@ -155,6 +154,7 @@ const PhotoItem = (props: PhotoItemProps) => {
                                         type={type}
                                         align={item.align}
                                         columns={columns}
+                                        buttonList={item.buttonList}
                                     />
                                 )}
                             </div>

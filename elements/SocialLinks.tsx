@@ -1,15 +1,10 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope, faPrint } from '@fortawesome/free-solid-svg-icons'
-import { socialConvert, iconConvert, extUrl } from '../functions'
+import { socialConvert, iconConvert, extUrl, printPage } from '../functions'
 import { SocialLinks, SocialItem } from '../types'
 import styles from './sociallinks.module.scss'
 import cn from 'classnames'
 
-const SocialLinks = ({ CMSLayout, modType = 'header' }: SocialLinks) => {
-    function printPage() {
-        print()
-        return
-    }
+const SocialLinks = ({ siteData, modType = 'header' }: SocialLinks) => {
     return (
         <ul
             className={cn(styles['social-media-links'], {
@@ -19,7 +14,7 @@ const SocialLinks = ({ CMSLayout, modType = 'header' }: SocialLinks) => {
                 [styles['widget']]: modType === 'widget',
             })}
         >
-            {CMSLayout.social.map((item: SocialItem, index: number) => (
+            {siteData.social.map((item: SocialItem, index: number) => (
                 <li key={index}>
                     <a target="blank" aria-label={iconConvert(item.url)} className={cn('socialIcon')} href={extUrl(item.url)}>
                         <FontAwesomeIcon icon={socialConvert(item.url)} /> {modType === 'widget' && item.label}
@@ -30,15 +25,15 @@ const SocialLinks = ({ CMSLayout, modType = 'header' }: SocialLinks) => {
                 <a
                     aria-label="share-site"
                     className={cn('socialIcon', 'email-to-friend')}
-                    href={`mailto:?subject=Check out ${CMSLayout.siteName}&body=I thought you%27d be interested in this site%3A%0A${CMSLayout.url}%2F`}
+                    href={`mailto:?subject=Check out ${siteData.siteName}&body=I thought you%27d be interested in this site%3A%0A${siteData.url}%2F`}
                 >
-                    <FontAwesomeIcon icon={faEnvelope} /> {modType === 'widget' && 'Send to a Friend'}
+                    <FontAwesomeIcon icon={['fas', 'envelope']} /> {modType === 'widget' && 'Send to a Friend'}
                 </a>
             </li>
             {modType != 'mob-header' && (
                 <li>
                     <button aria-label="print-page" className={cn('socialIcon', 'print')} onClick={printPage}>
-                        <FontAwesomeIcon icon={faPrint} /> {modType === 'widget' && 'Print This Page'}
+                        <FontAwesomeIcon icon={['fas', 'print']} /> {modType === 'widget' && 'Print This Page'}
                     </button>
                 </li>
             )}

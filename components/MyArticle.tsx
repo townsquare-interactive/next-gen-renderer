@@ -4,7 +4,7 @@ import { ArticleProps, ItemWrapProps, ModuleItemProps } from '../types'
 import cn from 'classnames'
 import Parser from 'html-react-parser'
 import { ConditionalWrapper } from '../functions'
-import { ReactChild } from 'react'
+import { Fragment, ReactChild } from 'react'
 import Link from 'next/link'
 import { Button } from '../elements/MyButton'
 import { MyImage } from '../elements/MyImage'
@@ -12,53 +12,47 @@ import ModuleTitle from 'elements/ModuleTitle'
 import { HeaderBlock } from 'elements/HeaderBlock'
 
 const MyArticle = (props: ArticleProps) => {
-    const { width = '1060', columns = 1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl, disabled } = props
+    const { columns = 1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl, disabled } = props
 
-    if (disabled != 'disabled') {
+    if (disabled === 'disabled') {
+        return <></>
+    } else {
         return (
             <div
-                className={cn(
-                    styles['root'],
-                    styles['tsflex'],
-                    styles['grid'],
-                    /* styles['item-flex'], */ styles['root-container'],
-                    styles[`col_${columns}`],
-                    styles[`${type}`],
-                    {
-                        [styles.beacon]: type === 'article',
-                        [styles.well]: well == '1',
-                        [styles.not_well]: !well,
-                        [styles[`cst_${props.class}`]]: props.class,
-                        [styles['full-width']]: width === '938' || width === '1060' || width === '988' || !width,
-                        [styles['med-width']]: width === '736' || width === '652',
-                    }
-                )}
+                className={cn(styles['root'], styles['tsflex'], styles['grid'], styles['root-container'], styles[`col_${columns}`], styles[`${type}`], {
+                    [styles.beacon]: type === 'article',
+                    [styles.well]: well == '1',
+                    [styles.not_well]: !well,
+                    [styles[`cst_${props.class}`]]: props.class,
+                })}
                 id={`id_${modId}`}
             >
                 {title && <ModuleTitle title={title} />}
                 <div className={styles.wrapper}>
-                    {items.map((item, index) =>
-                        item.disabled != 'disabled' ? (
-                            <ModuleItem
-                                item={item}
-                                well={well}
-                                modId={modId}
-                                themeStyles={themeStyles}
-                                key={index}
-                                imgsize={imgsize}
-                                type={type}
-                                columns={columns}
-                                itemIndex={index}
-                                cmsUrl={cmsUrl}
-                            />
-                        ) : (
-                            <></>
-                        )
-                    )}
+                    {items.map((item, index) => (
+                        <Fragment key={index}>
+                            {item.disabled != 'disabled' ? (
+                                <ModuleItem
+                                    item={item}
+                                    well={well}
+                                    modId={modId}
+                                    themeStyles={themeStyles}
+                                    key={index}
+                                    imgsize={imgsize}
+                                    type={type}
+                                    columns={columns}
+                                    itemIndex={index}
+                                    cmsUrl={cmsUrl}
+                                />
+                            ) : (
+                                <></>
+                            )}
+                        </Fragment>
+                    ))}
                 </div>
             </div>
         )
-    } else return <></>
+    }
 }
 
 const ModuleItem = (props: ModuleItemProps) => {
@@ -92,8 +86,11 @@ const ModuleItem = (props: ModuleItemProps) => {
 
     const oneButton =
         (item.actionlbl && !item.actionlbl2 && (item.pagelink || item.weblink)) || (!item.actionlbl && item.actionlbl2 && (item.pagelink2 || item.weblink2))
+
     const twoButtons = item.actionlbl && item.actionlbl2 && (item.pagelink || item.weblink) && (item.pagelink2 || item.weblink2)
+
     const linkNoBtn = isButton() === false && isLink() === true
+
     const wrapLink = (oneButton || linkNoBtn) && type != 'article'
 
     return (
@@ -112,11 +109,8 @@ const ModuleItem = (props: ModuleItemProps) => {
                     [styles.nHds]: !item.headline || !item.subheader,
                     [styles.mod_left]: item.align === 'left' && (type === 'article_3' || type === 'article'),
                     [styles.mod_right]: item.align === 'right' && (type === 'article_3' || type === 'article'),
-                    [styles.mod_center]: item.align === 'center' && (type === 'article_3' || type === 'article'),
                     [styles.yLk]: (item.pagelink || item.weblink || item.pagelink2 || item.weblink2) && !twoButtons,
-                    [styles.yLks]: twoButtons,
                 },
-                `item_${itemIndex + 1}`,
                 styles[`item_${itemIndex + 1}`]
             )}
             lang="en"
@@ -230,6 +224,7 @@ const ItemWrap = (props: ItemWrapProps) => {
                     type={type}
                     align={align}
                     columns={columns}
+                    buttonList={item.buttonList}
                 />
             )}
         </>

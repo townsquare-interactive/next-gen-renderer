@@ -28,12 +28,12 @@ export interface ThemeStyles {
 }
 
 export interface HomeProps {
-    CMSLayout: GlobalData
+    siteData: GlobalData
     page: CMSPage
 }
 
 export interface PageHeadProps {
-    CMSLayout: GlobalData
+    siteData: GlobalData
     page: CMSPage
     pageType?: 'slug' | 'index'
 }
@@ -56,7 +56,7 @@ export interface PageHeadProps {
  */
 export interface LayoutProps {
     children: ReactNode
-    CMSLayout: GlobalData
+    siteData: GlobalData
     themeStyles: ThemeStyles
     //page: CMSPage
 }
@@ -139,7 +139,7 @@ export interface NavListItemProps {
 export interface ContactLinkProps {
     cname: string
     link: string
-    icon: IconProp
+    icon: IconProp | [string, string]
     content: string
 }
 
@@ -309,7 +309,6 @@ export interface ModuleProps {
     /**Global styles for site*/
     themeStyles: ThemeStyles
     /**Check to see if element is hidden */
-    width?: string
     disabled?: string
     cmsUrl?: string
 }
@@ -349,6 +348,7 @@ export interface ArticleItems {
     headSize?: string
     descSize?: string
     cmsUrl?: string
+    buttonList?: any
 }
 
 export interface ArticleProps {
@@ -374,7 +374,6 @@ export interface ArticleProps {
     /**Global styles for site*/
     themeStyles: ThemeStyles
     /**Check to see if element is hidden */
-    width?: string
     disabled?: string
     cmsUrl?: string
 }
@@ -505,7 +504,7 @@ export interface PhotoItemProps {
 
 export interface ContainerHeaderProps {
     pages?: PagesProps[]
-    CMSLayout: GlobalData
+    siteData: GlobalData
     themeStyles: ThemeStyles
     // navCheck: boolean
     navSwitch: () => void
@@ -525,7 +524,7 @@ export interface SocialItem {
 
 export interface ContainerFooterProps {
     pages?: PagesProps[]
-    CMSLayout: GlobalData
+    siteData: GlobalData
     themeStyles: ThemeStyles
     //navCheck: boolean
     navSwitch: () => void
@@ -553,7 +552,7 @@ export interface SlidingHeaderProps {
     /**Image url for logo*/
     logoUrl?: string
     themeStyles: ThemeStyles
-    CMSLayout: GlobalData
+    siteData: GlobalData
 }
 
 export interface MyImagesProps {
@@ -580,13 +579,13 @@ export interface LogoProps {
 }
 
 export interface SocialBarProps {
-    CMSLayout: GlobalData
+    siteData: GlobalData
     modType?: string
     themeStyles: ThemeStyles
 }
 
 export interface SocialLinks {
-    CMSLayout: GlobalData
+    siteData: GlobalData
     modType?: string
 }
 
@@ -619,6 +618,7 @@ export interface BtnProps {
     type: string
     align: string
     columns: number | string
+    buttonList: any[]
 }
 
 /*------------------------------Non CMS types-------------------------*/
@@ -924,7 +924,7 @@ export interface NavigationProps {
     /**Image url for logo*/
     logoUrl?: string
     themeStyles: ThemeStyles
-    CMSLayout: GlobalData
+    siteData: GlobalData
 }
 
 export interface SeoData {

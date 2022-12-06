@@ -11,7 +11,7 @@ import { useRef } from 'react'
 import SocialBar from 'elements/SocialBar'
 
 const ContainerHeader = (props: ContainerHeaderProps) => {
-    const { CMSLayout, themeStyles, navSwitch, setHeight } = props
+    const { siteData, themeStyles, navSwitch, setHeight } = props
     const [windowHeight, setWindowHeight] = useState(0)
 
     //set state for scroll
@@ -39,27 +39,27 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
             ref={ref}
         >
             <div className={styles.wrapper}>
-                {CMSLayout.logos?.image_src && (
+                {siteData.logos?.image_src && (
                     <div className={cn(styles['logo-block'], styles['desktop-logo-block'])}>
-                        <Logo logoUrl={domainImage(CMSLayout.logos.image_src, true)} link={CMSLayout.logos.image_link} />
+                        <Logo logoUrl={domainImage(siteData.logos.image_src, true)} link={siteData.logos.image_link} />
                     </div>
                 )}
 
-                {CMSLayout.mobileLogos?.image_src && (
+                {siteData.mobileLogos?.image_src && (
                     <div
                         className={cn(styles['logo-block'], styles['mobile-logo-block'], {
-                            [styles.center]: CMSLayout.mobileLogos.alignment == 'center',
-                            [styles.right]: CMSLayout.mobileLogos.alignment == 'right',
+                            [styles.center]: siteData.mobileLogos.alignment == 'center',
+                            [styles.right]: siteData.mobileLogos.alignment == 'right',
                         })}
                     >
-                        <Logo logoUrl={domainImage(CMSLayout.mobileLogos.image_src, true)} link={CMSLayout.mobileLogos.image_link} />
+                        <Logo logoUrl={domainImage(siteData.mobileLogos.image_src, true)} link={siteData.mobileLogos.image_link} />
                     </div>
                 )}
 
-                <Nav navType={'desktop-nav'} cmsNav={CMSLayout.cmsNav} navSwitch={navSwitch} />
+                <Nav navType={'desktop-nav'} cmsNav={siteData.cmsNav} navSwitch={navSwitch} />
                 <NavToggle navSwitch={navSwitch} themeStyles={themeStyles} />
             </div>
-            <SocialBar CMSLayout={CMSLayout} themeStyles={themeStyles} />
+            <SocialBar siteData={siteData} themeStyles={themeStyles} />
         </header>
     )
 }

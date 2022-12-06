@@ -11,47 +11,47 @@ import NavToggle from 'elements/NavToggle'
 import { Renderer } from './Renderer'
 
 const ContainerFooter = (props: ContainerFooterProps) => {
-    const { CMSLayout, themeStyles, navSwitch } = props
+    const { siteData, themeStyles, navSwitch } = props
 
     return (
         <footer className={styles.root} style={{ backgroundColor: themeStyles.footerBackground, color: themeStyles.footerText }}>
             <div className={styles.wrapper}>
                 <div className={styles.content}>
-                    {CMSLayout.composites?.footer?.modules.items.map((item: CompositeItem, index: number) => (
+                    {siteData.composites?.footer?.modules.items.map((item: CompositeItem, index: number) => (
                         <div key={index} className={styles.item}>
                             {item.component === 'text' && <TextWidget text={item.text} title={item.title} />}
                             {item.component === 'enhancedtext' && <TextWidget text={item.text} title={item.title} />}
-                            {item.component === 'social_media' && <SocialLinks CMSLayout={CMSLayout} modType="widget" />}
-                            {item.component === 'nav_menu' && <Nav navType={'footer-nav'} cmsNav={CMSLayout.cmsNav} navSwitch={navSwitch} />}
+                            {item.component === 'social_media' && <SocialLinks siteData={siteData} modType="widget" />}
+                            {item.component === 'nav_menu' && <Nav navType={'footer-nav'} cmsNav={siteData.cmsNav} navSwitch={navSwitch} />}
 
-                            <Renderer config={CMSLayout.composites?.footer?.modules.items} themeStyles={themeStyles} />
+                            <Renderer config={siteData.composites?.footer?.modules.items} themeStyles={themeStyles} />
                         </div>
                     ))}
                 </div>
                 <div className={styles.brand}>
-                    {CMSLayout.footerLogos?.image_src && (
+                    {siteData.footerLogos?.image_src && (
                         <div className={cn(styles['logo-block'], styles['desktop-logo-block'])}>
-                            <Logo logoUrl={domainImage(CMSLayout.footerLogos.image_src, true)} link={CMSLayout.footerLogos?.image_link} />
+                            <Logo logoUrl={domainImage(siteData.footerLogos.image_src, true)} link={siteData.footerLogos?.image_link} />
                         </div>
                     )}
                 </div>
                 <div className={styles['info-block']}>
                     <address className={styles.copy}>
                         <span className={styles.copyright}>
-                            Copyright &#169; {new Date().getFullYear()} {CMSLayout.siteName}, all rights reserved.
+                            Copyright &#169; {new Date().getFullYear()} {siteData.siteName}, all rights reserved.
                         </span>{' '}
-                        {CMSLayout.contact.address?.street && <span className={styles['street-address']}>{CMSLayout.contact.address.street}, </span>}
+                        {siteData.contact.address?.street && <span className={styles['street-address']}>{siteData.contact.address.street}, </span>}
                         <span className={styles['city-state-zip-address']}>
-                            {CMSLayout.contact.address?.city && `${CMSLayout.contact.address.city} ,`}{' '}
-                            {CMSLayout.contact.address?.state && `${CMSLayout.contact.address.state} ,`}{' '}
-                            {CMSLayout.contact.address?.zip && `${CMSLayout.contact.address.zip} ,`}
+                            {siteData.contact.address?.city && `${siteData.contact.address.city} ,`}{' '}
+                            {siteData.contact.address?.state && `${siteData.contact.address.state} ,`}{' '}
+                            {siteData.contact.address?.zip && `${siteData.contact.address.zip} ,`}
                         </span>{' '}
-                        {CMSLayout.contact.phone[0].number && <span className={styles.phone}> {CMSLayout.contact.phone[0].number}</span>}
+                        {siteData.contact.phone[0].number && <span className={styles.phone}> {siteData.contact.phone[0].number}</span>}
                     </address>
                 </div>
                 <div className={styles['bottom']}>
                     <div className={styles['social-block']}>
-                        <SocialLinks CMSLayout={CMSLayout} modType="foot-header" />
+                        <SocialLinks siteData={siteData} modType="foot-header" />
                     </div>
                     <div className={styles['nav-block']}>
                         <NavToggle navSwitch={navSwitch} themeStyles={themeStyles} modType="footer" />

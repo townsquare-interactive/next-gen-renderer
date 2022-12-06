@@ -7,7 +7,7 @@ import PageHead from 'components/PageHead'
 //runs at build time just like static props
 export const getStaticProps = async () => {
     const resLayout = await fetch(bucketAndSiteUrl + '/layout.json')
-    const CMSLayout = await resLayout.json()
+    const siteData = await resLayout.json()
 
     const resPageList = await fetch(bucketAndSiteUrl + '/pages/page-list.json')
     const pageList = await resPageList.json()
@@ -18,7 +18,7 @@ export const getStaticProps = async () => {
     let page = await resPage.json()
 
     return {
-        props: { page, CMSLayout },
+        props: { page, siteData },
         // Next.js will attempt to re-generate the page:
         // - When a request comes in
         // - At most once every 10 seconds
@@ -27,9 +27,8 @@ export const getStaticProps = async () => {
 }
 
 const Home = (props: HomeProps) => {
-    let { page, CMSLayout } = props
+    let { page, siteData } = props
     const router = useRouter()
-    const cmsUrl = CMSLayout.cmsUrl
 
     // If the page is not yet generated, this will be displayed
     // initially until getStaticProps() finishes running
@@ -39,9 +38,7 @@ const Home = (props: HomeProps) => {
 
     return (
         <>
-            <PageHead page={page} CMSLayout={CMSLayout} pageType="index" />
-
-            <Container page={page} CMSLayout={CMSLayout} />
+            <Container page={page} siteData={siteData} />
         </>
     )
 }

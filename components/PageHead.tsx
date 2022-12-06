@@ -4,8 +4,8 @@ import { ReactChild } from 'react'
 import { PageHeadProps } from 'types'
 
 export default function PageHead(props: PageHeadProps) {
-    const { CMSLayout, page, pageType = 'slug' } = props
-    const cmsUrl = CMSLayout.cmsUrl
+    const { siteData, page, pageType = 'index' } = props
+    const cmsUrl = siteData.cmsUrl
 
     return (
         <>
@@ -27,7 +27,7 @@ export default function PageHead(props: PageHeadProps) {
                                 <meta property="og:image:height" content="1024" />
                             </>
                         ))}
-                    {CMSLayout.favicon && <link rel="shortcut icon" href={domainImage(CMSLayout.favicon, true, cmsUrl)} />}
+                    {siteData.favicon && <link rel="shortcut icon" href={domainImage(siteData.favicon, true, cmsUrl)} />}
                     <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
                 </>
             </ConditionalWrapper>

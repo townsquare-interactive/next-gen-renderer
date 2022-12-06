@@ -8,7 +8,7 @@ import { useState } from 'react'
 import SlidingHeader from 'elements/SlidingHeader'
 
 export default function Layout(props: LayoutProps) {
-    const { children, CMSLayout, themeStyles } = props
+    const { children, siteData, themeStyles } = props
     const [navCheck, setNav] = useState<boolean>(false)
     const [height, setHeight] = useState<number>(0)
 
@@ -19,13 +19,13 @@ export default function Layout(props: LayoutProps) {
     return (
         <>
             <div className={cn(styles.root)}>
-                <SlidingHeader navSwitch={navSwitch} navCheck={navCheck} themeStyles={themeStyles} CMSLayout={CMSLayout} />
+                <SlidingHeader navSwitch={navSwitch} navCheck={navCheck} themeStyles={themeStyles} siteData={siteData} />
 
-                <ContainerHeader CMSLayout={CMSLayout} themeStyles={themeStyles} navSwitch={navSwitch} setHeight={setHeight} />
+                <ContainerHeader siteData={siteData} themeStyles={themeStyles} navSwitch={navSwitch} setHeight={setHeight} />
 
                 <main style={{ marginTop: height }}>{children}</main>
 
-                <ContainerFooter CMSLayout={CMSLayout} themeStyles={themeStyles} navSwitch={navSwitch} />
+                <ContainerFooter siteData={siteData} themeStyles={themeStyles} navSwitch={navSwitch} />
             </div>
         </>
     )

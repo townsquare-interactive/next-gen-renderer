@@ -51,7 +51,7 @@ Default.args = {
     ],
     themeStyles: themeStyles,
 
-    CMSLayout: {
+    siteData: {
         themeStyles: themeStyles,
 
         logos: { show: 1, type: 'image', markup: '', hasLinks: false, alignment: 'center', image_src: '/files/2022/09/Yos2.jpg', image_link: '/' },

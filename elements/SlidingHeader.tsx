@@ -5,7 +5,7 @@ import SocialLinks from './SocialLinks'
 import Nav from './Nav'
 
 const SlidingHeader = (props: SlidingHeaderProps) => {
-    const { navSwitch, navCheck, themeStyles, CMSLayout } = props
+    const { navSwitch, navCheck, themeStyles, siteData } = props
 
     return (
         <div
@@ -24,10 +24,10 @@ const SlidingHeader = (props: SlidingHeaderProps) => {
 
                 <div className={styles['access']}>
                     <div className={styles.social}>
-                        <SocialLinks CMSLayout={CMSLayout} modType="mob-header" />
+                        <SocialLinks siteData={siteData} modType="mob-header" />
                     </div>
 
-                    <Nav navType={'mobile-nav'} cmsNav={CMSLayout.cmsNav} navSwitch={navSwitch} />
+                    <Nav navType={'mobile-nav'} cmsNav={siteData.cmsNav} navSwitch={navSwitch} />
                 </div>
             </div>
         </div>

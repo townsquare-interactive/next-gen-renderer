@@ -92,24 +92,14 @@
             }
         }
     }
+
+    &.photo_grid {
+        font-size: 16px;
+    }
 }
 
 .hero {
-    .photo-grid {
-        /* .hd {
-        font-size: 1.0625em;
-        margin-top: 0.7058823529em;
-        margin-bottom: 0.4705882353em;
-        line-height: 1.1764705882em;
-    }
-
-    .sh {
-        font-size: 0.875em;
-        margin-top: 0.5714285714em;
-        margin-bottom: 0.5714285714em;
-        line-height: 1.1428571429em;
-    } */
-
+    .photo_grid {
         .hd {
             font-size: 1.5em;
             margin-top: 0.6666666667em;
