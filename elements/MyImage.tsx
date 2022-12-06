@@ -73,7 +73,7 @@ export const MyImage = (props: MyImagesProps) => {
         100vw"
                     />
                 )}
-                {item.icon3 && (
+                {item.imageIcon && (
                     <div className={cn(styles['icon-block'])}>
                         <div className={styles.icon}>
                             <FontAwesomeIcon icon={[item.imageIcon.iconPrefix, item.imageIcon.iconModel]} />

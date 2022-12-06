@@ -139,7 +139,7 @@ export interface NavListItemProps {
 export interface ContactLinkProps {
     cname: string
     link: string
-    icon: IconProp | [string, string]
+    icon: IconProp | { iconPrefix: string; iconModel: string }
     content: string
 }
 
@@ -349,7 +349,7 @@ export interface ArticleItems {
     descSize?: string
     cmsUrl?: string
     buttonList?: any
-    imageIcon?: [string, string]
+    imageIcon: { iconPrefix: string; iconModel: string }
 }
 
 export interface ArticleProps {
