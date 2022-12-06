@@ -73,7 +73,7 @@ export function capitalize(str: string) {
 }
 
 //modifies cms page data
-export function cmsPageDataMod(page: Module) {
+/* export function cmsPageDataMod(page: Module) {
     let newData = []
 
     for (const [key, value] of Object.entries(page)) {
@@ -89,7 +89,7 @@ export function cmsPageDataMod(page: Module) {
         newData.push(arr)
     }
     return newData
-}
+} */
 
 export const findHomePageSlug = (pageList: any) => {
     const homePage = pageList?.pages?.filter((e: any) => e.page_type === 'homepage')
@@ -97,7 +97,7 @@ export const findHomePageSlug = (pageList: any) => {
     return homePageSlug
 }
 
-export function iconConvert(str: string) {
+/* export function iconConvert(str: string) {
     if (str.indexOf('google') !== -1) {
         return 'google'
     } else if (str.indexOf('facebook') !== -1) {
@@ -129,16 +129,17 @@ export function socialConvert(str: string) {
         //return faRocket
         return ['fab', 'rocket']
     }
-}
+} */
 
 //Key to determine which imported logo to use
+//can hide in future most ikely
 export const icons: { [key: string]: IconProp } = {
     faRocket,
     faAnchor,
     faArchway,
 }
 
-export function btnIconConvert(icon: any) {
+/* export function btnIconConvert(icon: any) {
     if (icon) {
         //replaces fas fa-rocket with faRocket
         const newicon = icon.replace('fas', '')
@@ -149,7 +150,7 @@ export function btnIconConvert(icon: any) {
         return icons[theicon]
     }
 }
-
+ */
 export function extUrl(url: string) {
     if (url.includes('http')) {
         return url

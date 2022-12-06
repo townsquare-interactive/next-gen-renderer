@@ -22,6 +22,8 @@ export const MyImage = (props: MyImagesProps) => {
         setHeight(loadedMedia.naturalHeight)
     }
 
+    console.log(item.imageIcon)
+
     const imgSizes = [
         'landscape_4_3',
         'square_1_1',

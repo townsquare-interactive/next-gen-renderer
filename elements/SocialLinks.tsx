@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { socialConvert, iconConvert, extUrl, printPage } from '../functions'
+import { extUrl, printPage } from '../functions'
 import { SocialLinks, SocialItem } from '../types'
 import styles from './sociallinks.module.scss'
 import cn from 'classnames'
@@ -16,8 +16,8 @@ const SocialLinks = ({ siteData, modType = 'header' }: SocialLinks) => {
         >
             {siteData.social.map((item: SocialItem, index: number) => (
                 <li key={index}>
-                    <a target="blank" aria-label={iconConvert(item.url)} className={cn('socialIcon')} href={extUrl(item.url)}>
-                        <FontAwesomeIcon icon={socialConvert(item.url)} /> {modType === 'widget' && item.label}
+                    <a target="blank" aria-label={item.name} className={cn('socialIcon')} href={extUrl(item.url)}>
+                        <FontAwesomeIcon icon={item.icon} /> {modType === 'widget' && item.label}
                     </a>
                 </li>
             ))}
