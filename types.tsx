@@ -349,6 +349,7 @@ export interface ArticleItems {
     descSize?: string
     cmsUrl?: string
     buttonList?: any
+    imageIcon?: [string, string]
 }
 
 export interface ArticleProps {

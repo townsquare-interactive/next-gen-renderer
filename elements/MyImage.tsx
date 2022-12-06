@@ -8,7 +8,7 @@ import { domainImage } from '../functions'
 import { useState } from 'react'
 
 // importing fontAwesome icons
-import { faRocket, faAnchor, faArchway } from '@fortawesome/free-solid-svg-icons'
+import { faRocket } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { icons } from '../functions'
 
@@ -21,8 +21,6 @@ export const MyImage = (props: MyImagesProps) => {
         setWidth(loadedMedia.naturalWidth)
         setHeight(loadedMedia.naturalHeight)
     }
-
-    let icon = item.icon3 ? icons[item.icon3] : faRocket
 
     const imgSizes = [
         'landscape_4_3',
@@ -78,7 +76,7 @@ export const MyImage = (props: MyImagesProps) => {
                 {item.icon3 && (
                     <div className={cn(styles['icon-block'])}>
                         <div className={styles.icon}>
-                            <FontAwesomeIcon icon={icon} />
+                            <FontAwesomeIcon icon={[item.imageIcon.iconPrefix, item.imageIcon.iconModel]} />
                         </div>
                     </div>
                 )}
