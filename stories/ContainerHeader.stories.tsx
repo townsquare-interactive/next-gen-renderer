@@ -78,6 +78,11 @@ Default.args = {
                 disabled: '',
                 isPrimaryEmail: true,
             },
+            icons: {
+                phone: ['fas', 'phone'],
+                email: ['fas', 'envelope'],
+                location: ['fas', 'location-pin'],
+            },
         },
         siteName: "Plastic Mind's Friends & Co.",
         phoneNumber: '9195400390',

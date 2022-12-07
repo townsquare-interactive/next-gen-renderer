@@ -355,7 +355,7 @@ export interface ArticleItems {
     descSize?: string
     cmsUrl?: string
     buttonList?: any
-    imageIcon: { iconPrefix: any; iconModel: any }
+    imageIcon?: { iconPrefix: any; iconModel: any }
 }
 
 export interface ArticleProps {
