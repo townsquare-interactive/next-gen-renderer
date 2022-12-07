@@ -1,7 +1,4 @@
-import { ConditionalWrapperProps, Module, PageProps, CMSColors, Pagelist, ThemeStyles } from 'types'
-
-import { faRocket, faAnchor, faArchway } from '@fortawesome/free-solid-svg-icons'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import { ConditionalWrapperProps, ThemeStyles } from 'types'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
@@ -133,11 +130,11 @@ export function socialConvert(str: string) {
 
 //Key to determine which imported logo to use
 //can hide in future most ikely
-export const icons: { [key: string]: IconProp } = {
+/* export const icons: { [key: string]: IconProp } = {
     faRocket,
     faAnchor,
     faArchway,
-}
+} */
 
 /* export function btnIconConvert(icon: any) {
     if (icon) {
@@ -151,13 +148,15 @@ export const icons: { [key: string]: IconProp } = {
     }
 }
  */
-export function extUrl(url: string) {
+
+//Was using in social links, I dont think necessary
+/* export function extUrl(url: string) {
     if (url.includes('http')) {
         return url
     } else {
         return 'http://' + url
     }
-}
+} */
 
 export async function getLayout() {
     const resLayout = await fetch(bucketAndSiteUrl + '/layout.json', {

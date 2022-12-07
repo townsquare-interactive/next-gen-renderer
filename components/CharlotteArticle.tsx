@@ -4,13 +4,20 @@ import { ArticleProps, Media, TheListItemImageProps, TheListItemActionProps, Tsi
 import Image from 'next/image'
 import cn from 'classnames'
 import Parser from 'html-react-parser'
-import { domainImage, icons } from '../functions'
+import { domainImage } from '../functions'
 import { useState } from 'react'
 import Link from 'next/link'
 
 // import your icons from fontawesome
 import { faRocket, faAnchor, faArchway } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
+
+const icons: { [key: string]: IconProp } = {
+    faRocket,
+    faAnchor,
+    faArchway,
+}
 
 const CharlotteArticle = (props: ArticleProps) => {
     const textColorHeading = {

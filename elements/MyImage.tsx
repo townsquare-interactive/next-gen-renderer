@@ -10,7 +10,6 @@ import { useState } from 'react'
 // importing fontAwesome icons
 import { faRocket } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { icons } from '../functions'
 
 export const MyImage = (props: MyImagesProps) => {
     const { item, imgsize, cmsUrl, modType = 'article' } = props
@@ -21,8 +20,6 @@ export const MyImage = (props: MyImagesProps) => {
         setWidth(loadedMedia.naturalWidth)
         setHeight(loadedMedia.naturalHeight)
     }
-
-    console.log(item.imageIcon)
 
     const imgSizes = [
         'landscape_4_3',
@@ -37,6 +34,8 @@ export const MyImage = (props: MyImagesProps) => {
 
     //non constrained images
     const imageNoSizings = ['no_sizing', 'no_set_height']
+
+    const rock = ['fa', 'rocket']
 
     return (
         <>
