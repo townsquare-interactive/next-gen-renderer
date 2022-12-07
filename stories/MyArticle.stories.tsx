@@ -275,6 +275,25 @@ Button.args = {
             btnSize: 'md',
             // btnSize:'md btn_block',
             /*   btnSize2: 'md', */
+            buttonList: [
+                {
+                    name: 'btn1',
+                    link: '/',
+                    window: '',
+                    icon: { iconPrefix: 'fas', iconModel: 'rocket' },
+                    label: 'Contact Us Today',
+                    active: true,
+                    linkType: 'local',
+                },
+                {
+                    name: 'btn2',
+                    link: '/columns/',
+                    icon: { iconPrefix: 'fab', iconModel: 'facebook-square' },
+                    label: 'button 2',
+                    active: false,
+                    linkType: 'local',
+                },
+            ],
         },
     ],
 }
@@ -299,6 +318,25 @@ TwoButtons.args = {
             btnSize2: 'md',
             newwindow: 1,
             newwindow2: 1,
+            buttonList: [
+                {
+                    name: 'btn1',
+                    link: '/',
+                    window: '',
+                    icon: { iconPrefix: 'fas', iconModel: 'rocket' },
+                    label: 'Contact Us Today',
+                    active: true,
+                    linkType: 'local',
+                },
+                {
+                    name: 'btn2',
+                    link: '/columns/',
+                    icon: { iconPrefix: 'fab', iconModel: 'facebook-square' },
+                    label: 'button 2',
+                    active: true,
+                    linkType: 'local',
+                },
+            ],
         },
     ],
 }

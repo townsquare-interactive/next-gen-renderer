@@ -20,8 +20,13 @@
         display: inline-block;
         text-transform: uppercase;
 
+        @include breakpoints.sm {
+            display: flex;
+        }
+
         svg {
             width: 1.1em;
+            margin-right: 0.2rem;
         }
 
         &.btn_xs {
@@ -111,12 +116,21 @@
         width: 100%;
 
         a {
-            margin-left: 0.25rem;
-            margin-right: 0.25rem;
-
             &.btn-block {
                 display: block;
                 width: 100%;
+            }
+
+            @include breakpoints.sm {
+                &:first-of-type {
+                    margin-left: 0;
+                    margin-right: 0.25rem;
+                }
+
+                &:last-of-type {
+                    margin-right: 0;
+                    margin-left: 0.25rem;
+                }
             }
         }
 
