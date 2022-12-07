@@ -1,4 +1,4 @@
-import { getLayout, getPageData, domainImage } from 'functions'
+/* import { getLayout, getPageData, domainImage } from 'functions'
 
 export default async function Head({ params }: { params: { slug: string } }) {
     const { CMSLayout } = await getLayout()
@@ -28,4 +28,8 @@ export default async function Head({ params }: { params: { slug: string } }) {
             <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests"></meta>
         </>
     )
+}
+ */
+export default async function Head({ params }: { params: { slug: string } }) {
+    return <></>
 }
