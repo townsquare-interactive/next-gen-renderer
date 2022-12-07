@@ -1,5 +1,4 @@
 import { ConditionalWrapperProps, ThemeStyles } from 'types'
-//import { library } from '@fortawesome/fontawesome-svg-core'
 //had to use require here to avoid hydration
 const { library } = require('@fortawesome/fontawesome-svg-core')
 import { fas } from '@fortawesome/free-solid-svg-icons'
@@ -35,7 +34,6 @@ export function getDomain(cms = false) {
         return domainUrl
     } else {
         let domainUrl = bucketUrl + '/' + cmsUrl
-        /*  let domainUrl = bucketUrl + '/' + 'wordpress' */
         return domainUrl
     }
 }
@@ -62,7 +60,6 @@ export function createInlineStyles(themeStyles: ThemeStyles) {
     return colorStyles
 }
 
-//Capitalize first letter of word
 export function capitalize(str: string) {
     if (!str) {
         return ''
@@ -71,94 +68,11 @@ export function capitalize(str: string) {
     return str[0].toUpperCase() + str.slice(1)
 }
 
-//modifies cms page data
-/* export function cmsPageDataMod(page: Module) {
-    let newData = []
-
-    for (const [key, value] of Object.entries(page)) {
-        let modType
-
-        if (value.type === 'article_1' || value.type === 'article_2' || value.type === 'article_3' || value.type === 'article') {
-            modType = 'MyArticle'
-        }
-
-        const modData = { ...value, modId: key }
-
-        const arr = { attributes: modData, componentType: modType }
-        newData.push(arr)
-    }
-    return newData
-} */
-
 export const findHomePageSlug = (pageList: any) => {
     const homePage = pageList?.pages?.filter((e: any) => e.page_type === 'homepage')
     const homePageSlug = homePage.length != 0 ? homePage[0].slug : pageList.pages[0].slug
     return homePageSlug
 }
-
-/* export function iconConvert(str: string) {
-    if (str.indexOf('google') !== -1) {
-        return 'google'
-    } else if (str.indexOf('facebook') !== -1) {
-        return 'facebook'
-    } else if (str.indexOf('instagram') !== -1) {
-        return 'instagram'
-    } else if (str.indexOf('twitter') !== -1) {
-        return 'twitter'
-    } else {
-        return 'social'
-    }
-}
-
-export function socialConvert(str: string) {
-    let icon = iconConvert(str)
-    if (icon === 'google') {
-        //return faGoogle
-        return ['fab', 'google']
-    } else if (icon === 'facebook') {
-        //return faFacebook
-        return ['fab', 'facebook']
-    } else if (icon === 'instagram') {
-        // return faInstagram
-        return ['fab', 'instagram']
-    } else if (icon === 'twitter') {
-        return ['fab', 'twitter']
-        //return faTwitter
-    } else {
-        //return faRocket
-        return ['fab', 'rocket']
-    }
-} */
-
-//Key to determine which imported logo to use
-//can hide in future most ikely
-/* export const icons: { [key: string]: IconProp } = {
-    faRocket,
-    faAnchor,
-    faArchway,
-} */
-
-/* export function btnIconConvert(icon: any) {
-    if (icon) {
-        //replaces fas fa-rocket with faRocket
-        const newicon = icon.replace('fas', '')
-        const newicon2 = newicon.replace(/^(.*?)-/, '')
-
-        const theicon = 'fa' + capitalize(newicon2)
-
-        return icons[theicon]
-    }
-}
- */
-
-//Was using in social links, I dont think necessary
-/* export function extUrl(url: string) {
-    if (url.includes('http')) {
-        return url
-    } else {
-        return 'http://' + url
-    }
-} */
 
 export async function getLayout() {
     const resLayout = await fetch(bucketAndSiteUrl + '/layout.json', {

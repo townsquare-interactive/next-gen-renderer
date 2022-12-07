@@ -22,6 +22,7 @@
 
         @include breakpoints.sm {
             display: flex;
+            justify-content: center;
         }
 
         svg {

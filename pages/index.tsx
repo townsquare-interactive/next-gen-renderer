@@ -2,7 +2,6 @@ import { HomeProps } from '../types'
 import { useRouter } from 'next/router'
 import { bucketAndSiteUrl, findHomePageSlug } from '../functions'
 import { Container } from 'components/Container'
-import PageHead from 'components/PageHead'
 
 //runs at build time just like static props
 export const getStaticProps = async () => {

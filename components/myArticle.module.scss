@@ -316,8 +316,8 @@
     }
 
     @container module (min-width:481px) {
-        .wrapper {
-            padding-top: 3rem;
+        &.col_1 .item:first-of-type {
+            margin-top: 2rem;
         }
 
         &.article {

@@ -36,10 +36,9 @@
                     margin-top: 0.25em;
                     margin-bottom: 0.25em;
                     padding: 0.375em 1em 0.4375em;
-                    display: inline-block;
-                    vertical-align: text-bottom;
                     text-align: center;
                     vertical-align: middle;
+                    display: flex;
 
                     svg {
                         width: 0.7em;

@@ -8,7 +8,6 @@ import { domainImage } from '../functions'
 import { useState } from 'react'
 
 // importing fontAwesome icons
-import { faRocket } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const MyImage = (props: MyImagesProps) => {
