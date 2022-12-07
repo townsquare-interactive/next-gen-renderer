@@ -9,7 +9,7 @@ const params = { slug: 'article' }
 
 const Home = () => {
     //const { siteData } = use(getLayout())
-    const { page } = use(getPageData(params))
+    //const { page } = use(getPageData(params))
 
     //const page = test
     /* console.log(page) */
@@ -32,11 +32,7 @@ const Home = () => {
         footerText: '#fff',
     }
 
-    return (
-        <div>
-            <Renderer config={page.data.modules[0]} themeStyles={themeStyles} />
-        </div>
-    )
+    return <div>{/* <Renderer config={page.data.modules[0]} themeStyles={themeStyles} /> */}</div>
 }
 
 export default Home
