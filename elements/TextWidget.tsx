@@ -1,7 +1,7 @@
-import styles from './mytext.module.scss'
+import styles from './textwidget.module.scss'
 import Parser from 'html-react-parser'
 
-const MyText = (props: any) => {
+const MyText = (props: { title: string; text: string }) => {
     const { title, text } = props
 
     return (

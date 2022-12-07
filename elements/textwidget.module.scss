@@ -1,8 +1,9 @@
 @use './styles/breakpoints.scss';
+@use './styles/utils.scss';
 
 .root {
     .dsc {
-        font-size: 0.8125em;
+        font-size: utils.$xss-txt;
         margin-top: 0.9230769231em;
         margin-bottom: 0.9230769231em;
         line-height: 1.5384615385em;

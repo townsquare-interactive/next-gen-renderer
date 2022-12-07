@@ -5,9 +5,10 @@ import { MyNavProps, NavItem, NavListItemProps } from '../types'
 import { Fragment } from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import { useRouter } from 'next/router'
 
 const Nav = (props: MyNavProps) => {
-    const { navType, cmsNav } = props
+    const { navType, cmsNav, navSwitch } = props
 
     return (
         <nav className={styles.access}>
@@ -17,19 +18,19 @@ const Nav = (props: MyNavProps) => {
                         <Fragment key={index}>
                             {item.menu_item_parent == 0 && (
                                 <li>
-                                    <NavListItem item={item} arrow={item.submenu?.length ? true : false} navType={navType} />
+                                    <NavListItem item={item} arrow={item.submenu?.length ? true : false} navType={navType} navSwitch={navSwitch} />
                                     {item.submenu && (
                                         <ul className={cn(styles['sub-menu'], styles['sub-1'])}>
                                             {item.submenu.map((subItem: any, idx: number) => (
                                                 <Fragment key={idx}>
                                                     <li>
-                                                        <NavListItem item={subItem} navType={navType} />
+                                                        <NavListItem item={subItem} navType={navType} navSwitch={navSwitch} />
 
                                                         {subItem.submenu && (
                                                             <ul className={cn(styles['sub-menu'])}>
                                                                 {subItem.submenu.map((subItem2: any, subidx: number) => (
                                                                     <li key={subidx}>
-                                                                        <NavListItem item={subItem2} navType={navType} />
+                                                                        <NavListItem item={subItem2} navType={navType} navSwitch={navSwitch} />
                                                                     </li>
                                                                 ))}
                                                             </ul>
@@ -48,12 +49,13 @@ const Nav = (props: MyNavProps) => {
     )
 }
 
-const NavListItem = ({ item, arrow = false, navType }: NavListItemProps) => {
+const NavListItem = ({ item, arrow = false, navType, navSwitch }: NavListItemProps) => {
     const [currentPage, setCurrentPage] = useState('home')
+    const router = useRouter()
 
     useEffect(() => {
-        setCurrentPage(window.location.pathname.replace('/', ''))
-    }, [])
+        setCurrentPage(router.asPath.replace('/', ''))
+    }, [router])
 
     const title = item.title ? item.title.toLowerCase() : ''
 
@@ -79,6 +81,7 @@ const NavListItem = ({ item, arrow = false, navType }: NavListItemProps) => {
                 ['currentNav']: currentNav(),
             })}
             aria-label={item.title}
+            onClick={navType != 'desktop-nav' ? navSwitch : undefined}
         >
             {item.title}
         </Link>

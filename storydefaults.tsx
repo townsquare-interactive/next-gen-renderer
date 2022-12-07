@@ -33,6 +33,7 @@ export const social = [
         enabled: 1,
         input: ['http://www.facebook.com/', ''],
         url: 'http://www.facebook.com/Tipsyburro',
+        icon: ['fas', 'Rocket'],
     },
     {
         id: 2,
@@ -43,5 +44,6 @@ export const social = [
         enabled: 1,
         input: ['http://www.twitter.com/', ''],
         url: 'http://www.twitter.com/cbs',
+        icon: ['fas', 'Rocket'],
     },
 ]

@@ -22,10 +22,10 @@
 
         .icon {
             color: #fff;
-            font-size: 4rem;
+            width: 4rem;
 
             @include breakpoints.sm-min {
-                font-size: 6rem;
+                width: 3rem;
             }
         }
     }
@@ -66,6 +66,10 @@
         img {
             position: relative !important;
         }
+    }
+
+    &.photo-grid {
+        height: 100%;
     }
 }
 

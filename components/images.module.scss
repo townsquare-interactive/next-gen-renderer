@@ -1,7 +1,7 @@
 @use '../styles/breakpoints.scss';
 @use 'sass:math';
 @use '../styles/variables.scss';
-@use '../styles/utils.module.scss';
+@use '../styles/utils.scss';
 
 //$tile-height: math.div(variables.$max-main-width, 2.5);
 $ratio: math.div(4, 3);

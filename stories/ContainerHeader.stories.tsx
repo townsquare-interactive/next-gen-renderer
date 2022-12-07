@@ -1,16 +1,14 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-
-import MyHeader from '../components/MyHeader'
+import ContainerHeader from '../components/ContainerHeader'
 import { themeStyles } from 'storydefaults'
 import { social } from 'storydefaults'
-import { MyHeaderProps } from 'types'
 
 export default {
-    title: 'New/MyHeader',
-    component: MyHeader,
-} as ComponentMeta<typeof MyHeader>
+    title: 'New/ContainerHeader',
+    component: ContainerHeader,
+} as ComponentMeta<typeof ContainerHeader>
 
-const Template: ComponentStory<typeof MyHeader> = (args) => <MyHeader {...args} />
+const Template: ComponentStory<typeof ContainerHeader> = (args) => <ContainerHeader {...args} />
 
 const Default = Template.bind({})
 Default.args = {
@@ -53,7 +51,7 @@ Default.args = {
     ],
     themeStyles: themeStyles,
 
-    CMSLayout: {
+    siteData: {
         themeStyles: themeStyles,
 
         logos: { show: 1, type: 'image', markup: '', hasLinks: false, alignment: 'center', image_src: '/files/2022/09/Yos2.jpg', image_link: '/' },
@@ -79,6 +77,11 @@ Default.args = {
                 email: 'email@email.com',
                 disabled: '',
                 isPrimaryEmail: true,
+            },
+            icons: {
+                phone: ['fas', 'phone'],
+                email: ['fas', 'envelope'],
+                location: ['fas', 'location-pin'],
             },
         },
         siteName: "Plastic Mind's Friends & Co.",

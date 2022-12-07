@@ -28,8 +28,14 @@ export interface ThemeStyles {
 }
 
 export interface HomeProps {
-    CMSLayout: GlobalData
+    siteData: GlobalData
     page: CMSPage
+}
+
+export interface PageHeadProps {
+    siteData: GlobalData
+    page: CMSPage
+    pageType?: 'slug' | 'index'
 }
 
 //temp maybe not needed
@@ -50,7 +56,7 @@ export interface HomeProps {
  */
 export interface LayoutProps {
     children: ReactNode
-    CMSLayout: GlobalData
+    siteData: GlobalData
     themeStyles: ThemeStyles
     //page: CMSPage
 }
@@ -68,7 +74,7 @@ export interface GlobalData {
     siteName?: string
     phoneNumber?: String
     themeStyles: ThemeStyles
-    contact: { email: any; phone: any; hours?: any; address?: any }
+    contact: { email: any; phone: any; hours?: any; address?: any; icons: ContactIcons }
     cmsNav?: [NavItem]
     logos?: Logo
     mobileLogos?: Logo
@@ -78,6 +84,12 @@ export interface GlobalData {
     cmsColors?: any
     favicon?: string
     cmsUrl?: string
+}
+
+interface ContactIcons {
+    phone: IconProp
+    email: IconProp
+    location: IconProp
 }
 
 export interface Logo {
@@ -127,6 +139,7 @@ export interface NavListItemProps {
     navType: string | undefined
     item: NavItem
     arrow?: boolean
+    navSwitch: () => void
 }
 
 export interface ContactLinkProps {
@@ -213,6 +226,7 @@ export interface CMSPageData {
     head_script: string | null
     hideTitle: number
     sections: [{ wide: string }, { wide: string }, { wide: string }, { wide: string }, { wide: string }]
+    columnStyles: string
 }
 
 export interface GlobalModule {
@@ -301,7 +315,6 @@ export interface ModuleProps {
     /**Global styles for site*/
     themeStyles: ThemeStyles
     /**Check to see if element is hidden */
-    width?: string
     disabled?: string
     cmsUrl?: string
 }
@@ -341,6 +354,8 @@ export interface ArticleItems {
     headSize?: string
     descSize?: string
     cmsUrl?: string
+    buttonList?: any
+    imageIcon?: { iconPrefix: any; iconModel: any }
 }
 
 export interface ArticleProps {
@@ -366,8 +381,31 @@ export interface ArticleProps {
     /**Global styles for site*/
     themeStyles: ThemeStyles
     /**Check to see if element is hidden */
-    width?: string
     disabled?: string
+    cmsUrl?: string
+}
+export interface PhotoGridProps {
+    uid: string
+    modId: string
+    /* type: string */
+    type: string
+    /**Border background on items*/
+    well: string | number
+    align?: string
+    items: ArticleItems[]
+    imgsize: string
+    /**Custom class addition*/
+    class: string
+    /**Title text to go above module*/
+    title: string
+    hideTitle?: number
+    export: number
+    columns: number | string
+    lightbox: string
+    blockSwitch1: number
+    scale_to_fit: string
+    /**Global styles for site*/
+    themeStyles: ThemeStyles
     cmsUrl?: string
 }
 
@@ -438,11 +476,12 @@ export interface ItemWrapProps {
     align: string
 }
 
-export interface HeaderBlockProps {
+export interface HeadlineBlockProps {
     item: ArticleItems
     columns: number | string
     well: string | number
-    isBeaconHero: boolean
+    isBeaconHero?: boolean
+    modType?: string
 }
 
 export interface ModuleItemProps {
@@ -457,9 +496,22 @@ export interface ModuleItemProps {
     cmsUrl?: string
 }
 
-export interface MyHeaderProps {
+export interface PhotoItemProps {
+    item: ArticleItems
+    well: string | number
+    itemIndex: number
+    themeStyles: ThemeStyles
+    imgsize: string
+    type: string
+    columns: number | string
+    modId: string
+    cmsUrl?: string
+    items: ArticleItems[]
+}
+
+export interface ContainerHeaderProps {
     pages?: PagesProps[]
-    CMSLayout: GlobalData
+    siteData: GlobalData
     themeStyles: ThemeStyles
     // navCheck: boolean
     navSwitch: () => void
@@ -475,11 +527,12 @@ export interface SocialItem {
     name: string
     url: string
     value: string
+    icon: any
 }
 
-export interface MyFooterProps {
+export interface ContainerFooterProps {
     pages?: PagesProps[]
-    CMSLayout: GlobalData
+    siteData: GlobalData
     themeStyles: ThemeStyles
     //navCheck: boolean
     navSwitch: () => void
@@ -500,15 +553,14 @@ export interface Media {
 
 /*----------------------------TSI Elements--------------------------------------*/
 
-export interface AltHeaderProps {
-    navSwitch?: () => void
+export interface SlidingHeaderProps {
+    navSwitch: () => void
     /**Boolean that determines if navbar being shown or hidden*/
     navCheck?: boolean
-    // pages?: PagesProps[]
     /**Image url for logo*/
     logoUrl?: string
     themeStyles: ThemeStyles
-    CMSLayout: GlobalData
+    siteData: GlobalData
 }
 
 export interface MyImagesProps {
@@ -519,12 +571,14 @@ export interface MyImagesProps {
     imgsize: string
     well: string | number
     cmsUrl?: string
+    modType?: string
 }
 
 export interface MyNavProps {
     navType?: string
     cmsNav: any
     currentPage?: string
+    navSwitch: () => void
 }
 
 export interface LogoProps {
@@ -533,13 +587,13 @@ export interface LogoProps {
 }
 
 export interface SocialBarProps {
-    CMSLayout: GlobalData
+    siteData: GlobalData
     modType?: string
     themeStyles: ThemeStyles
 }
 
 export interface SocialLinks {
-    CMSLayout: GlobalData
+    siteData: GlobalData
     modType?: string
 }
 
@@ -572,6 +626,7 @@ export interface BtnProps {
     type: string
     align: string
     columns: number | string
+    buttonList: any[]
 }
 
 /*------------------------------Non CMS types-------------------------*/
@@ -860,7 +915,7 @@ export interface BurgerProps {
 }
 
 export interface NavigationProps {
-    navSwitch?: () => void
+    navSwitch: () => void
     /**Boolean that determines if navbar being shown or hidden*/
     navCheck?: boolean
     pages: PagesProps[]
@@ -877,7 +932,7 @@ export interface NavigationProps {
     /**Image url for logo*/
     logoUrl?: string
     themeStyles: ThemeStyles
-    CMSLayout: GlobalData
+    siteData: GlobalData
 }
 
 export interface SeoData {

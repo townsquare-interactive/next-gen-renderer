@@ -265,16 +265,29 @@ Button.args = {
             ...item1,
             actionlbl: 'Contact Us',
             pagelink: '/home',
-            /*  actionlbl2: 'Contact 2',
-            pagelink2: '/', */
-            // align: 'center',
             icon: 'faArchway',
-            /* icon2: 'faAnchor', */
             btnType: 'btn_1',
-            /*           btnType2: 'btn_2', */
             btnSize: 'md',
-            // btnSize:'md btn_block',
-            /*   btnSize2: 'md', */
+
+            buttonList: [
+                {
+                    name: 'btn1',
+                    link: '/',
+                    window: '',
+                    icon: { iconPrefix: 'fas', iconModel: 'rocket' },
+                    label: 'Contact Us Today',
+                    active: true,
+                    linkType: 'local',
+                },
+                {
+                    name: 'btn2',
+                    link: '/columns/',
+                    icon: { iconPrefix: 'fab', iconModel: 'facebook-square' },
+                    label: 'button 2',
+                    active: false,
+                    linkType: 'local',
+                },
+            ],
         },
     ],
 }
@@ -299,6 +312,25 @@ TwoButtons.args = {
             btnSize2: 'md',
             newwindow: 1,
             newwindow2: 1,
+            buttonList: [
+                {
+                    name: 'btn1',
+                    link: '/',
+                    window: '',
+                    icon: { iconPrefix: 'fas', iconModel: 'rocket' },
+                    label: 'Contact Us Today',
+                    active: true,
+                    linkType: 'local',
+                },
+                {
+                    name: 'btn2',
+                    link: '/columns/',
+                    icon: { iconPrefix: 'fab', iconModel: 'facebook-square' },
+                    label: 'button 2',
+                    active: true,
+                    linkType: 'local',
+                },
+            ],
         },
     ],
 }

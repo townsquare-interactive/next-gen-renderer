@@ -1,6 +1,6 @@
 @use 'sass:math';
 @use './styles/breakpoints.scss';
-@use './styles/utils.module.scss';
+@use './styles/utils.scss';
 
 @mixin tsFlex {
     display: -moz-flex;
@@ -8,31 +8,10 @@
 }
 
 .root {
+    padding-top: 3rem;
+
     * {
         box-sizing: border-box;
-    }
-
-    .mod-title {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        font-size: 1.5em;
-        text-align: center;
-        margin: 1rem;
-
-        span {
-            max-width: 35rem;
-            margin: 0 auto;
-            padding: 0 1rem;
-
-            &:after {
-                content: ' ';
-                display: block;
-                border-bottom: 3px solid;
-                width: 4rem;
-                margin: 1rem auto;
-            }
-        }
     }
 
     .wrapper {
@@ -48,16 +27,6 @@
             margin-right: 0;
 
             .item-wrap {
-                .hd-block {
-                    .hd {
-                        font-weight: 700;
-                    }
-
-                    .sh {
-                        font-weight: 400;
-                    }
-                }
-
                 .txt-block {
                     .dsc {
                         width: 100%;
@@ -98,8 +67,8 @@
             margin-bottom: 2rem;
         }
 
-        &.a1,
-        &.a2 {
+        &.article_1,
+        &.article_2 {
             .item-wrap {
                 @include tsFlex;
                 box-orient: vertical;
@@ -111,47 +80,35 @@
         }
     }
 
-    &.a1,
-    &.a2 {
-        .hd,
-        .sh,
-        .dsc {
-            text-align: left;
-        }
+    &.article_1,
+    &.article_2 {
+        text-align: left;
 
         .right {
-            .hd,
-            .sh,
-            .dsc {
-                text-align: right;
-            }
+            text-align: right;
         }
 
         .center {
-            .hd,
-            .sh,
-            .dsc {
-                text-align: center;
-            }
+            text-align: center;
         }
     }
 
     .dsc {
-        font-size: 0.875em;
+        font-size: utils.$xs-txt;
         margin-top: 1.1428571429em;
         margin-bottom: 1.1428571429em;
         line-height: 1.4285714286em;
     }
 
     .sh {
-        font-size: 0.875em;
+        font-size: utils.$xs-txt;
         margin-top: 0.5714285714em;
         margin-bottom: 0.5714285714em;
         line-height: 1.1428571429em;
     }
 
     .hd {
-        font-size: 1.0625em;
+        font-size: utils.$sm-txt;
         margin-top: 0.7058823529em;
         margin-bottom: 0.4705882353em;
         line-height: 1.1764705882em;
@@ -169,21 +126,21 @@
 
     @container item (min-width:0px) {
         .dsc {
-            font-size: 0.875em;
+            font-size: utils.$xs-txt;
             margin-top: 1.1428571429em;
             margin-bottom: 1.1428571429em;
             line-height: 1.4285714286em;
         }
 
         .sh {
-            font-size: 0.875em;
+            font-size: utils.$xs-txt;
             margin-top: 0.5714285714em;
             margin-bottom: 0.5714285714em;
             line-height: 1.1428571429em;
         }
 
         .hd {
-            font-size: 1.0625em;
+            font-size: utils.$sm-txt;
             margin-top: 0.7058823529em;
             margin-bottom: 0.4705882353em;
             line-height: 1.1764705882em;
@@ -192,7 +149,7 @@
     //temp: medium screens, need to revise size maybe
     @container item (min-width:343px) {
         .hd {
-            font-size: 1.5em;
+            font-size: utils.$md-txt;
             margin-top: 0.6666666667em;
             margin-bottom: 0.5em;
             line-height: 1.1666666667em;
@@ -200,14 +157,14 @@
         }
 
         .sh {
-            font-size: 1.0625em;
+            font-size: utils.$sm-txt;
             margin-top: 0.7058823529em;
             margin-bottom: 0.4705882353em;
             line-height: 1.1764705882em;
         }
 
         .dsc {
-            font-size: 0.875em;
+            font-size: utils.$xs-txt;
             margin-top: 1.1428571429em;
             margin-bottom: 1.1428571429em;
             line-height: 1.4285714286em;
@@ -238,7 +195,7 @@
     //for larger screens (starts at 1025)
     @container item (min-width:775px) {
         .hd {
-            font-size: 2.25em;
+            font-size: utils.$lg-txt;
             margin-top: 0.6666666667em;
             margin-bottom: 0.4444444444em;
             line-height: 1.1111111111em;
@@ -246,7 +203,7 @@
         }
 
         .sh {
-            font-size: 1.5em;
+            font-size: utils.$md-txt;
             margin-top: 0.6666666667em;
             margin-bottom: 0.5em;
             line-height: 1.1666666667em;
@@ -254,7 +211,7 @@
         }
 
         .dsc {
-            font-size: 1.0625em;
+            font-size: utils.$sm-txt;
             margin-top: 0.9411764706em;
             margin-bottom: 0.9411764706em;
             line-height: 1.4117647059em;
@@ -271,7 +228,7 @@
             margin-left: 2rem;
         }
 
-        &.a2.not_well .yImg .txt-block {
+        &.article_2.not_well .yImg .txt-block {
             padding-top: 1.5rem;
         }
     }
@@ -293,7 +250,7 @@
             }
         }
 
-        &.a1 {
+        &.article_1 {
             .dsc-block,
             .hd-block {
                 padding: 0 2rem 0;
@@ -306,7 +263,7 @@
             }
         }
 
-        &.a2 {
+        &.article_2 {
             //well padding
             .hd-block {
                 padding: 1rem 2rem;
@@ -325,8 +282,8 @@
             }
         }
 
-        &.a3,
-        &.beacon {
+        &.article_3,
+        &.article {
             .item-wrap {
                 padding: 1.5rem;
             }
@@ -350,7 +307,7 @@
     }
     /*------------------------------------End of border/well ----------------------------*/
 
-    &.beacon {
+    &.article {
         .hero {
             .item-wrap {
                 padding: 1.5rem;
@@ -359,11 +316,11 @@
     }
 
     @container module (min-width:481px) {
-        .wrapper {
-            padding-top: 3rem;
+        &.col_1 .item:first-of-type {
+            margin-top: 2rem;
         }
 
-        &.beacon {
+        &.article {
             .mod_left .image-block,
             .mod_right .image-block {
                 width: math.div(5, 12) * 100%;
@@ -381,9 +338,9 @@
             }
         }
 
-        &.a1,
-        &.a2,
-        &.a3 {
+        &.article_1,
+        &.article_2,
+        &.article_3 {
             .nHero {
                 width: utils.$ten-12;
             }
@@ -391,6 +348,10 @@
 
         &.tsflex .item {
             margin-bottom: 4rem;
+
+            &:last-of-type &.col_1 {
+                margin-bottom: 2rem;
+            }
         }
     }
 

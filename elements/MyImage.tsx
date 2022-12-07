@@ -8,12 +8,10 @@ import { domainImage } from '../functions'
 import { useState } from 'react'
 
 // importing fontAwesome icons
-import { faRocket, faAnchor, faArchway } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { icons } from '../functions'
 
 export const MyImage = (props: MyImagesProps) => {
-    const { item, imgsize, cmsUrl } = props
+    const { item, imgsize, cmsUrl, modType = 'article' } = props
     const [imageHeight, setHeight] = useState(100)
     const [imageWidth, setWidth] = useState(300)
 
@@ -21,8 +19,6 @@ export const MyImage = (props: MyImagesProps) => {
         setWidth(loadedMedia.naturalWidth)
         setHeight(loadedMedia.naturalHeight)
     }
-
-    let icon = item.icon3 ? icons[item.icon3] : faRocket
 
     const imgSizes = [
         'landscape_4_3',
@@ -38,12 +34,15 @@ export const MyImage = (props: MyImagesProps) => {
     //non constrained images
     const imageNoSizings = ['no_sizing', 'no_set_height']
 
+    const rock = ['fa', 'rocket']
+
     return (
         <>
             <div
                 className={cn(styles.image, styles[`${imgsize}`], {
                     [styles.landscape_4_3]: !imgsize || (!imgSizes.includes(imgsize) && !imageNoSizings.includes(imgsize)),
                     [styles.widescreen_2_4_1]: imgsize === 'widescreen_2-4_1',
+                    [styles['photo-grid']]: modType === 'photo_grid',
                 })}
             >
                 {!imageNoSizings.includes(imgsize) ? (
@@ -74,10 +73,10 @@ export const MyImage = (props: MyImagesProps) => {
         100vw"
                     />
                 )}
-                {item.icon3 && (
+                {item.imageIcon && (
                     <div className={cn(styles['icon-block'])}>
                         <div className={styles.icon}>
-                            <FontAwesomeIcon icon={icon} />
+                            <FontAwesomeIcon icon={[item.imageIcon.iconPrefix, item.imageIcon.iconModel]} />
                         </div>
                     </div>
                 )}

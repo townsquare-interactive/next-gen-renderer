@@ -1,11 +1,11 @@
-import { AltHeaderProps } from '../types'
+import { SlidingHeaderProps } from '../types'
 import cn from 'classnames'
-import styles from './altheader.module.scss'
+import styles from './slidingheader.module.scss'
 import SocialLinks from './SocialLinks'
-import Nav from '../elements/Nav'
+import Nav from './Nav'
 
-const AltHeader = (props: AltHeaderProps) => {
-    const { navSwitch, navCheck, themeStyles, CMSLayout } = props
+const SlidingHeader = (props: SlidingHeaderProps) => {
+    const { navSwitch, navCheck, themeStyles, siteData } = props
 
     return (
         <div
@@ -24,14 +24,14 @@ const AltHeader = (props: AltHeaderProps) => {
 
                 <div className={styles['access']}>
                     <div className={styles.social}>
-                        <SocialLinks CMSLayout={CMSLayout} modType="mob-header" />
+                        <SocialLinks siteData={siteData} modType="mob-header" />
                     </div>
 
-                    <Nav navType={'mobile-nav'} cmsNav={CMSLayout.cmsNav} />
+                    <Nav navType={'mobile-nav'} cmsNav={siteData.cmsNav} navSwitch={navSwitch} />
                 </div>
             </div>
         </div>
     )
 }
 
-export default AltHeader
+export default SlidingHeader
