@@ -74,7 +74,7 @@ export interface GlobalData {
     siteName?: string
     phoneNumber?: String
     themeStyles: ThemeStyles
-    contact: { email: any; phone: any; hours?: any; address?: any }
+    contact: { email: any; phone: any; hours?: any; address?: any; icons: ContactIcons }
     cmsNav?: [NavItem]
     logos?: Logo
     mobileLogos?: Logo
@@ -84,6 +84,12 @@ export interface GlobalData {
     cmsColors?: any
     favicon?: string
     cmsUrl?: string
+}
+
+interface ContactIcons {
+    phone: IconProp
+    email: IconProp
+    location: IconProp
 }
 
 export interface Logo {
@@ -139,7 +145,7 @@ export interface NavListItemProps {
 export interface ContactLinkProps {
     cname: string
     link: string
-    icon: IconProp | { iconPrefix: any; iconModel: any }
+    icon: IconProp
     content: string
 }
 

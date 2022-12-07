@@ -3,7 +3,6 @@ import styles from './socialbar.module.scss'
 import { SocialBarProps, ContactLinkProps } from '../types'
 import cn from 'classnames'
 import SocialLinks from 'elements/SocialLinks'
-import { faEnvelope, faPhone, faLocationPin } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const SocialBar = ({ siteData, themeStyles }: SocialBarProps) => {
@@ -24,18 +23,25 @@ const SocialBar = ({ siteData, themeStyles }: SocialBarProps) => {
             <aside className={styles.contact}>
                 <ul>
                     {siteData.contact.phone[0] && (
-                        <ContactLink cname="phone" link={'tel:' + siteData.contact.phone[0].number} icon={faPhone} content={siteData.contact.phone[0].number} />
+                        <ContactLink
+                            cname="phone"
+                            link={'tel:' + siteData.contact.phone[0].number}
+                            icon={siteData.contact.icons.phone}
+                            content={siteData.contact.phone[0].number}
+                        />
                     )}
                     {siteData.contact.email[0] && (
                         <ContactLink
                             cname="email"
                             link={`mailto:${siteData.contact.email[0].email}`}
-                            icon={faEnvelope}
+                            icon={siteData.contact.icons.email}
                             content={siteData.contact.email[0].name + ':' + siteData.contact.email[0].email}
                         />
                     )}
 
-                    {siteData.siteName && <ContactLink cname="map" link={'www.google.com'} icon={faLocationPin} content={siteData.siteName} />}
+                    {siteData.siteName && (
+                        <ContactLink cname="map" link={'www.google.com'} icon={siteData.contact.icons.location} content={siteData.siteName} />
+                    )}
                 </ul>
             </aside>
         </div>
