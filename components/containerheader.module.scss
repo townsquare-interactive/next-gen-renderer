@@ -15,7 +15,6 @@
         width: 100%;
         position: relative;
         z-index: 1009;
-
         align-items: center;
 
         .logo-block {
@@ -29,12 +28,12 @@
             }
 
             img {
-                max-width: 6rem !important;
+                max-width: 6rem;
                 height: auto;
                 transition: all 0.3s ease-in-out;
 
                 @include breakpoints.lg-min {
-                    max-width: 13rem !important;
+                    max-width: 13rem;
                 }
             }
 
@@ -71,6 +70,8 @@
             img {
                 // max-width: 4.5rem !important;
                 max-width: 6rem !important;
+                //transform: scale(0.8);
+                width: 100%;
             }
         }
     }

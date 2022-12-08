@@ -2,19 +2,23 @@ import styles from './container.module.scss'
 import { HomeProps, Module } from '../types'
 import ContainerLayout from './ContainerLayout'
 import { Renderer } from './Renderer'
-import { createInlineStyles } from '../functions'
+import { defineContainerVars } from '../functions'
 import cn from 'classnames'
 import { Fragment } from 'react'
 import { useRouter } from 'next/router'
 import PageHead from './PageHead'
 
+const { library } = require('@fortawesome/fontawesome-svg-core')
+
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { far } from '@fortawesome/free-regular-svg-icons'
+library.add(fas, fab, far)
+
 export const Container = (props: HomeProps) => {
     const { page, siteData } = props
     const router = useRouter()
-    const cmsUrl = siteData.cmsUrl
-    const themeStyles = siteData.cmsColors
-    const columnStyles = page.data.columnStyles
-    const colorStyles = createInlineStyles(themeStyles)
+    const { cmsUrl, themeStyles, columnStyles, colorStyles } = defineContainerVars(page, siteData)
 
     if (router.isFallback) {
         return <div>Loading...</div>

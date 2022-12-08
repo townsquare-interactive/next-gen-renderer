@@ -515,7 +515,7 @@ export interface ContainerHeaderProps {
     themeStyles: ThemeStyles
     // navCheck: boolean
     navSwitch: () => void
-    setHeight: (height: any) => void
+    setContentMargin: (height: any) => void
 }
 
 export interface SocialItem {
