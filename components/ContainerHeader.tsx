@@ -3,7 +3,7 @@ import styles from './containerheader.module.scss'
 import { ContainerHeaderProps } from '../types'
 import cn from 'classnames'
 import { domainImage } from '../functions'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useLayoutEffect } from 'react'
 import Logo from './Logo'
 import NavToggle from 'elements/NavToggle'
 import Nav from '../elements/Nav'
@@ -27,8 +27,14 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
     //Determine Height of header for margins in layout
     const ref = useRef<HTMLDivElement>(null)
     useEffect(() => {
-        setHeight(ref?.current?.offsetHeight)
-    }, [setHeight, ref?.current?.offsetHeight])
+        const myObserver = new ResizeObserver((entries) => {
+            entries.forEach((entry) => {
+                setHeight(entry.contentRect.height)
+            })
+        })
+
+        ref.current && myObserver.observe(ref.current)
+    })
 
     return (
         <header
