@@ -23,8 +23,6 @@ const ContainerFooter = (props: ContainerFooterProps) => {
                             {item.component === 'enhancedtext' && <TextWidget text={item.text} title={item.title} />}
                             {item.component === 'social_media' && <SocialLinks siteData={siteData} modType="widget" />}
                             {item.component === 'nav_menu' && <Nav navType={'footer-nav'} cmsNav={siteData.cmsNav} navSwitch={navSwitch} />}
-
-                            <Renderer config={siteData.composites?.footer?.modules.items} themeStyles={themeStyles} />
                         </div>
                     ))}
                 </div>
