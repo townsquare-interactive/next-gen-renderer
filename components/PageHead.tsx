@@ -27,7 +27,7 @@ export default function PageHead(props: PageHeadProps) {
                                 <meta property="og:image:height" content="1024" />
                             </>
                         ))}
-                    {siteData.favicon && <link rel="shortcut icon" href={domainImage(siteData.favicon, true, cmsUrl)} />}
+                    {/*  {siteData.favicon && <link rel="shortcut icon" href={domainImage(siteData.favicon, true, cmsUrl)} />} */}
                     <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
                 </>
             </ConditionalWrapper>

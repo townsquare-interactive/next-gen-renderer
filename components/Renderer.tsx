@@ -14,7 +14,7 @@ import CharlotteArticle from './practice/CharlotteArticle'
 import MyArticle from './MyArticle'
 import { PhotoGrid } from './PhotoGrid'
 import { capitalize } from '../functions'
-import { GlobalModule, Module, ModuleData, ModuleProps, RendererProps } from 'types'
+import { GlobalModule, ModuleProps, RendererProps } from 'types'
 
 const keysToComponentMap: any = {
     Text,

@@ -3,7 +3,11 @@ const nextConfig = {
     reactStrictMode: true,
 }
 
-module.exports = {
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+    enabled: process.env.ANALYZE === 'true',
+})
+
+module.exports = withBundleAnalyzer({
     images: {
         domains: [
             'via.placeholder.com',
@@ -64,4 +68,4 @@ module.exports = {
             },
         ]
     }, */
-}
+})
