@@ -1,7 +1,7 @@
-import { ButtonProps } from '../types'
+import { ButtonProps } from '../../types'
 import cn from 'classnames'
 import Link from 'next/link'
-import styles from '../elements/button.module.scss'
+import styles from './button.module.scss'
 import { useEffect, useState } from 'react'
 
 function Button(props: ButtonProps) {
@@ -18,8 +18,6 @@ function Button(props: ButtonProps) {
         backgroundColor: `${themeStyles['promoColor']}`,
         color: `${themeStyles['textColorAccent']}`,
     }
-
-    /*  const themeStylesAlt = `.btn{backgroundColor: ${themeStyles['promoColor']}} color: ${themeStyles['textColorAccent']}} .btn:hover{background-color:transparent; color:red;height:2px;}` */
 
     const themeStylesAlt2 = {
         color: `${themeStyles['promoColor']}`,

@@ -50,7 +50,9 @@ export function createInlineStyles(themeStyles: ThemeStyles) {
 
     const btnStyles = `.btn_1{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['btnBackground']}} .btn_1:hover{color: ${themeStyles['btnBackground']}; background-color: ${themeStyles['textColorAccent']}} .btn_2{color: ${themeStyles['linkColor']}; border-color: ${themeStyles['linkColor']}} .btn_2:hover{color: ${themeStyles['btnBackground']}; border-color: ${themeStyles['btnBackground']}}`
 
-    const colorStyles = textColors + btnStyles
+    const backgroundStyles = `.border-background{background-color:${themeStyles['accentBackgroundColor']}} .hero-background{background-color:${themeStyles['altColor']}}`
+
+    const colorStyles = textColors + btnStyles + backgroundStyles
 
     return colorStyles
 }

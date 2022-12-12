@@ -1,10 +1,10 @@
 import styles from './grid.module.scss'
-import { GridProps, GridData } from '../types'
+import { GridProps, GridData } from '../../types'
 import Image from 'next/image'
 import cn from 'classnames'
 import Parser from 'html-react-parser'
-import { domainImage } from '../functions'
-import Button from '../elements/Button'
+import { domainImage } from '../../functions'
+import Button from './Button'
 
 const Grid = (props: GridProps) => {
     const { items, themeStyles } = props

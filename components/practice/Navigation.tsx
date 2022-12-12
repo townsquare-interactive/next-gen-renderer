@@ -1,10 +1,10 @@
 import styles from './navigation.module.scss'
 import Image from 'next/image'
-import Logo from './Logo'
+import Logo from '../Logo'
 import cn from 'classnames'
-import { NavigationProps, NavBarProps, BurgerProps } from '../types'
+import { NavigationProps, NavBarProps, BurgerProps } from '../../types'
 import { useState } from 'react'
-import { domainImage } from '../functions'
+import { domainImage } from '../../functions'
 
 const Navigation = (props: NavigationProps) => {
     const { navStyle = 'layout1', logoUrl, pages, navImage, borderNum, altText = '', themeStyles } = props

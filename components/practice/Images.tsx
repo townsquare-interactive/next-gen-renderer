@@ -2,9 +2,9 @@ import styles from './images.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
 import cn from 'classnames'
-import { ImagesProps, TileImageProps } from '../types'
-import { domainImage } from '../functions'
-import Button from '../elements/Button'
+import { ImagesProps, TileImageProps } from '../../types'
+import { domainImage } from '../../functions'
+import Button from './Button'
 
 const Images = ({ items, modLayout = '3-2/3', gap = false, themeStyles }: ImagesProps) => {
     if (items.length === 3) {

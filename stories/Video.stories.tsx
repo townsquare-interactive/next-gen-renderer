@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import Video from '../components/Video'
+import Video from '../components/practice/Video'
 
 export default {
     title: 'Modules/Video',

@@ -1,4 +1,7 @@
+@use '../../styles/breakpoints.scss';
 @use 'sass:math';
+@use '../../styles/variables.scss';
+@use '../../styles/utils.scss';
 
 $column-margin: 2.0242915%;
 /*$two-item-width: math.div((100- ($column-margin * 2)), 2);

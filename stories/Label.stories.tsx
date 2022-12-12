@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import Label from '../components/Label'
+import Label from '../components/practice/Label'
 import { themeStyles } from 'storydefaults'
 export default {
     title: 'Modules/Label',

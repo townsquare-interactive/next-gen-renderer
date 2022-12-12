@@ -1,8 +1,8 @@
 import styles from './video.module.scss'
-import { VideoProps } from '../types'
+import { VideoProps } from '../../types'
 import ReactPlayer from 'react-player/lazy'
 import { useEffect, useState } from 'react'
-import { domainImage } from '../functions'
+import { domainImage } from '../../functions'
 
 const Video = (props: VideoProps) => {
     const { videoUrl, modLayout = 'local' } = props

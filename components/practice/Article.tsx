@@ -1,10 +1,10 @@
 'use client'
 import styles from './article.module.scss'
-import { ArticleProps, Media, TheListItemActionProps, TheListItemImageProps } from '../types'
+import { ArticleProps, Media, TheListItemActionProps, TheListItemImageProps } from '../../types'
 import Image from 'next/image'
 import cn from 'classnames'
 import Parser from 'html-react-parser'
-import { domainImage } from '../functions'
+import { domainImage } from '../../functions'
 import { useState } from 'react'
 import Link from 'next/link'
 

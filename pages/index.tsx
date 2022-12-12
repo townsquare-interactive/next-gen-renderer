@@ -1,4 +1,4 @@
-import { HomeProps } from '../types'
+import { ContainerProps } from '../types'
 import { useRouter } from 'next/router'
 import { bucketAndSiteUrl, findHomePageSlug } from '../functions'
 import { Container } from 'components/Container'
@@ -25,7 +25,7 @@ export const getStaticProps = async () => {
     }
 }
 
-const Home = (props: HomeProps) => {
+const Home = (props: ContainerProps) => {
     let { page, siteData } = props
     const router = useRouter()
 

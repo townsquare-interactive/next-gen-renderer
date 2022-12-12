@@ -58,16 +58,6 @@ const MyArticle = (props: ArticleProps) => {
 const ModuleItem = (props: ModuleItemProps) => {
     const { item, modId, itemIndex, cmsUrl, themeStyles, type, imgsize, columns, well } = props
 
-    const noBackground = {
-        backgroundColor: 'transparent',
-    }
-    const borderBackground = {
-        backgroundColor: themeStyles['accentBackgroundColor'],
-    }
-    const heroBackground = {
-        backgroundColor: themeStyles['altColor'],
-    }
-
     function isButton() {
         if (item.actionlbl || item.actionlbl2) {
             return true
@@ -110,11 +100,11 @@ const ModuleItem = (props: ModuleItemProps) => {
                     [styles.mod_left]: item.align === 'left' && (type === 'article_3' || type === 'article'),
                     [styles.mod_right]: item.align === 'right' && (type === 'article_3' || type === 'article'),
                     [styles.yLk]: (item.pagelink || item.weblink || item.pagelink2 || item.weblink2) && !twoButtons,
+                    ['border-background']: well == '1',
                 },
                 styles[`item_${itemIndex + 1}`]
             )}
             lang="en"
-            style={well == '1' ? borderBackground : noBackground}
         >
             <ConditionalWrapper
                 condition={wrapLink ? true : false}
@@ -127,8 +117,9 @@ const ModuleItem = (props: ModuleItemProps) => {
                         aria-label={item.headline || 'block-link'}
                     >
                         <div
-                            className={cn(styles['item-wrap'], 'btn_link')}
-                            style={item.isFeatured === 'active' && type === 'article' ? heroBackground : noBackground}
+                            className={cn(styles['item-wrap'], 'btn_link', {
+                                ['hero-background']: item.isFeatured === 'active' && type === 'article',
+                            })}
                             aria-label={item.headline || 'item-wrap'}
                         >
                             {children}
@@ -136,7 +127,11 @@ const ModuleItem = (props: ModuleItemProps) => {
                     </Link>
                 )}
                 falseOutput={(children: ReactChild) => (
-                    <div className={styles['item-wrap']} style={item.isFeatured === 'active' && type === 'article' ? heroBackground : noBackground}>
+                    <div
+                        className={cn(styles['item-wrap'], {
+                            ['hero-background']: item.isFeatured === 'active' && type === 'article',
+                        })}
+                    >
                         {children}
                     </div>
                 )}

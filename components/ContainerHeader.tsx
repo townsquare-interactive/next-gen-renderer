@@ -30,15 +30,17 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
 
     //This works better but may be slower on site speed?
     useEffect(() => {
+        const currentItem = ref.current
+
         const myObserver = new ResizeObserver((entries) => {
             entries.forEach((entry) => {
                 setContentMargin(entry.contentRect.height)
             })
         })
-        ref.current && myObserver.observe(ref.current)
+        currentItem && myObserver.observe(currentItem)
 
         return () => {
-            if (ref.current) myObserver.unobserve(ref.current)
+            if (currentItem) myObserver.unobserve(currentItem)
         }
     })
 
@@ -55,24 +57,10 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
             ref={ref}
         >
             <div className={styles.wrapper}>
-                {siteData.logos?.image_src && (
-                    /*                     <div className={cn(styles['logo-block'], styles['desktop-logo-block'])}>
-                        <Logo logoUrl={domainImage(siteData.logos.image_src, true)} link={siteData.logos.image_link} />
-                    </div> */
-                    <LogoBlock type="desktop" logoSrc={siteData.logos.image_src} link={siteData.logos.image_link} />
-                )}
+                {siteData.logos?.image_src && <HeaderLogoBlock type="desktop" logoSrc={siteData.logos.image_src} link={siteData.logos.image_link} />}
 
                 {siteData.mobileLogos?.image_src && (
-                    /*  <div
-                        className={cn(styles['logo-block'], styles['mobile-logo-block'], {
-                            [styles.center]: siteData.mobileLogos.alignment == 'center',
-                            [styles.right]: siteData.mobileLogos.alignment == 'right',
-                        })}
-                    >
-                        <Logo logoUrl={domainImage(siteData.mobileLogos.image_src, true)} link={siteData.mobileLogos.image_link} />
-                    </div> */
-
-                    <LogoBlock type="mobile" logoSrc={siteData.mobileLogos.image_src} link={siteData.mobileLogos.image_link} />
+                    <HeaderLogoBlock type="mobile" logoSrc={siteData.mobileLogos.image_src} link={siteData.mobileLogos.image_link} />
                 )}
 
                 <Nav navType={'desktop-nav'} cmsNav={siteData.cmsNav} navSwitch={navSwitch} />
@@ -85,10 +73,10 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
 
 export default ContainerHeader
 
-const LogoBlock = (props: any) => {
+const HeaderLogoBlock = (props: any) => {
     const { type, alignment, logoSrc, link } = props
     return (
-        <div className={cn(styles['logo-block'], styles[`${type}-logo-block`], styles[`${alignment}`])}>
+        <div className={cn(styles['logo-block'], styles[`${type}`], styles[`${alignment}`])}>
             <Logo logoUrl={domainImage(logoSrc, true)} link={link} />
         </div>
     )

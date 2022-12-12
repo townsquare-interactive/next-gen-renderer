@@ -1,18 +1,18 @@
-import styles from './label.module.scss'
-import { LabelProps } from '../types'
+import styles from './text.module.scss'
+import { TextProps } from '../../types'
 import cn from 'classnames'
 import Parser from 'html-react-parser'
 
-function Label(props: LabelProps) {
-    const { text = '', border = false, gap = false, align = 'left', textSize = 'md', themeStyles } = props
+function Text(props: TextProps) {
+    const { border = false, gap = false, align = 'left', textSize = 'md', text = '', themeStyles } = props
 
     const themeStylesObj = {
-        color: `${themeStyles['headingColor']}`,
+        color: `${themeStyles['textColor']}`,
     }
 
     const borderStyles = {
-        color: `${themeStyles['headingColor']}`,
-        borderBottom: `4px solid ${themeStyles['headingColor']}`,
+        color: `${themeStyles['textColor']}`,
+        border: `4px solid ${themeStyles['textColor']}`,
     }
 
     return (
@@ -20,13 +20,13 @@ function Label(props: LabelProps) {
             <div className={styles.wrapper}>
                 <div
                     className={cn({
-                        [styles.headline]: true,
+                        [styles.body]: true,
                         [styles.bordered]: border,
                         [styles.gap]: gap,
                     })}
                     style={border ? borderStyles : themeStylesObj}
                 >
-                    <h2
+                    <div
                         className={cn(styles.text, {
                             [styles.center]: align === 'center',
                             [styles.left]: align === 'left',
@@ -37,11 +37,11 @@ function Label(props: LabelProps) {
                         })}
                     >
                         {Parser(text)}
-                    </h2>
+                    </div>
                 </div>
             </div>
         </div>
     )
 }
 
-export default Label
+export default Text

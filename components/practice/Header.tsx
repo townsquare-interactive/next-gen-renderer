@@ -1,8 +1,8 @@
 import styles from './header.module.scss'
 import Image from 'next/image'
-import { HeaderProps } from '../types'
+import { HeaderProps } from '../../types'
 import cn from 'classnames'
-import { domainImage } from '../functions'
+import { domainImage } from '../../functions'
 
 function Hero(props: HeaderProps) {
     const { reverse = false, backgroundImageUrl = '', imageUrl = '', headline = '', modLayout = 'normal', altText = '', themeStyles } = props

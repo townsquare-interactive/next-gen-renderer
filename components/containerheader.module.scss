@@ -37,7 +37,7 @@
                 }
             }
 
-            &.desktop-logo-block {
+            &.desktop {
                 display: none;
 
                 @include breakpoints.lg-min {
@@ -45,7 +45,7 @@
                 }
             }
 
-            &.mobile-logo-block {
+            &.mobile {
                 display: block;
 
                 @include breakpoints.lg-min {

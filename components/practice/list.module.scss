@@ -1,7 +1,7 @@
-@use '../styles/utils.scss';
-@use './styles/breakpoints.scss';
-@use '../styles/variables.scss';
+@use '../../styles/breakpoints.scss';
 @use 'sass:math';
+@use '../../styles/variables.scss';
+@use '../../styles/utils.scss';
 //Variables
 $lh-height: 1.3;
 $ratio: math.div(4, 3);

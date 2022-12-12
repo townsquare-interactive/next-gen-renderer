@@ -27,7 +27,7 @@ export interface ThemeStyles {
     btnBackground: string
 }
 
-export interface HomeProps {
+export interface ContainerProps {
     siteData: GlobalData
     page: CMSPage
 }
@@ -60,6 +60,11 @@ export interface LayoutProps {
     themeStyles: ThemeStyles
     //page: CMSPage
 }
+export interface RendererProps {
+    config: any
+    cmsUrl: string
+    themeStyles: ThemeStyles
+}
 
 export interface GlobalData {
     logoUrl?: string
@@ -83,7 +88,7 @@ export interface GlobalData {
     theme?: string
     cmsColors?: any
     favicon?: string
-    cmsUrl?: string
+    cmsUrl: string
 }
 
 interface ContactIcons {
@@ -213,12 +218,12 @@ export interface CMSPage {
 }
 
 export interface Module {
-    [key: string]: ModuleData
+    [key: string]: ModuleProps
 }
 
 export interface CMSPageData {
     attributes: NavigationProps | FooterProps
-    modules: Module[]
+    modules: ModuleData[]
     type?: string
     layout?: number
     columns?: number | string
@@ -233,6 +238,7 @@ export interface GlobalModule {
     componentType: string
     /* attributes: NavigationProps | FooterProps */
     attributes: LayoutComponentAttributes
+    component: any
 }
 
 export interface LayoutComponentAttributes {
@@ -263,7 +269,7 @@ export interface LayoutComponentAttributes {
 export interface ModuleData {
     logoUrl?: string
     /* modules?: ImagesProps | ListProps | HeaderProps | LabelProps | TextData | CarouselProps | FooterProps | NavProps | VideoProps | GridProps*/
-    modules: Module[]
+    modules: ModuleProps[]
     navStyle?: 'layout1' | 'layout2'
     name?: string
     seo?: SeoData
@@ -592,7 +598,7 @@ export interface SocialBarProps {
     themeStyles: ThemeStyles
 }
 
-export interface SocialLinks {
+export interface SocialLinksProps {
     siteData: GlobalData
     modType?: string
 }

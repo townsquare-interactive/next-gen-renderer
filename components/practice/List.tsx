@@ -1,10 +1,10 @@
 import styles from './list.module.scss'
-import { ListProps } from '../types'
+import { ListProps } from '../../types'
 import Image from 'next/image'
 import cn from 'classnames'
 import Parser from 'html-react-parser'
-import { domainImage } from '../functions'
-import Button from '../elements/Button'
+import { domainImage } from '../../functions'
+import Button from './Button'
 
 const List = (props: ListProps) => {
     const {

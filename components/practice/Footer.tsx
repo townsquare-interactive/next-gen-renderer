@@ -1,8 +1,8 @@
 import styles from './footer.module.scss'
 import cn from 'classnames'
-import Logo from './Logo'
-import { FooterProps } from '../types'
-import { domainImage } from '../functions'
+import Logo from '../Logo'
+import { FooterProps } from '../../types'
+import { domainImage } from '../../functions'
 
 // import your icons
 import { faGoogle, faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons'
