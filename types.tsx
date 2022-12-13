@@ -366,6 +366,7 @@ export interface ArticleItems {
     isWrapLink?: boolean
     isBeaconHero?: boolean
     visibleButton?: boolean
+    imagePriority?: boolean
 }
 
 export interface ArticleProps {

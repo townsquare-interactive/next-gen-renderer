@@ -51,7 +51,8 @@ export const MyImage = (props: MyImagesProps) => {
                         fill
                         alt={item.img_alt_tag || ''}
                         quality="50"
-                        priority={item.desc ? false : true}
+                        //priority={item.desc ? false : true}
+                        priority={item.imagePriority}
                         style={{ objectFit: 'cover', objectPosition: 'top' }}
                         sizes="(max-width: 1920px) 100vw,
         (max-width: 1200px) 50vw,
@@ -66,7 +67,8 @@ export const MyImage = (props: MyImagesProps) => {
                         height={imageHeight}
                         alt={item.img_alt_tag || ''}
                         quality="50"
-                        priority={item.desc ? false : true}
+                        //priority={item.desc ? false : true}
+                        priority={item.imagePriority}
                         style={{ width: '100%', height: 'auto' }}
                         sizes="(max-width: 1920px) 100vw,
         (max-width: 1200px) 70vw,
