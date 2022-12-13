@@ -1,17 +1,17 @@
 'use client'
-import styles from './myArticle.module.scss'
+import styles from './article.module.scss'
 import { ArticleProps, ItemWrapProps, ModuleItemProps } from '../types'
 import cn from 'classnames'
 import Parser from 'html-react-parser'
 import { ConditionalWrapper } from '../functions'
 import { Fragment, ReactChild } from 'react'
 import Link from 'next/link'
-import { Button } from '../elements/MyButton'
-import { MyImage } from '../elements/MyImage'
+import { Button } from '../elements/Button'
+import { MyImage } from '../elements/Image'
 import ModuleTitle from 'elements/ModuleTitle'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
 
-const MyArticle = (props: ArticleProps) => {
+const Article = (props: ArticleProps) => {
     const { columns = 1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl, disabled } = props
 
     if (disabled === 'disabled') {
@@ -58,31 +58,6 @@ const MyArticle = (props: ArticleProps) => {
 const ModuleItem = (props: ModuleItemProps) => {
     const { item, modId, itemIndex, cmsUrl, themeStyles, type, imgsize, columns, well } = props
 
-    function isButton() {
-        if (item.actionlbl || item.actionlbl2) {
-            return true
-        } else {
-            return false
-        }
-    }
-
-    function isLink() {
-        if (item.pagelink || item.pagelink2 || item.weblink || item.weblink2) {
-            return true
-        } else {
-            return false
-        }
-    }
-
-    const oneButton =
-        (item.actionlbl && !item.actionlbl2 && (item.pagelink || item.weblink)) || (!item.actionlbl && item.actionlbl2 && (item.pagelink2 || item.weblink2))
-
-    const twoButtons = item.actionlbl && item.actionlbl2 && (item.pagelink || item.weblink) && (item.pagelink2 || item.weblink2)
-
-    const linkNoBtn = isButton() === false && isLink() === true
-
-    const wrapLink = (oneButton || linkNoBtn) && type != 'article'
-
     return (
         <article
             className={cn(
@@ -99,7 +74,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                     [styles.nHds]: !item.headline || !item.subheader,
                     [styles.mod_left]: item.align === 'left' && (type === 'article_3' || type === 'article'),
                     [styles.mod_right]: item.align === 'right' && (type === 'article_3' || type === 'article'),
-                    [styles.yLk]: (item.pagelink || item.weblink || item.pagelink2 || item.weblink2) && !twoButtons,
+                    [styles.yLk]: (item.pagelink || item.weblink || item.pagelink2 || item.weblink2) && !item.twoButtons,
                     ['border-background']: well == '1',
                 },
                 styles[`item_${itemIndex + 1}`]
@@ -107,7 +82,7 @@ const ModuleItem = (props: ModuleItemProps) => {
             lang="en"
         >
             <ConditionalWrapper
-                condition={wrapLink ? true : false}
+                condition={item.isWrapLink ? true : false}
                 trueOutput={(children: ReactChild) => (
                     <Link
                         href={item.pagelink || item.weblink || item.pagelink2 || item.weblink2 || ''}
@@ -156,12 +131,6 @@ const ModuleItem = (props: ModuleItemProps) => {
 const ItemWrap = (props: ItemWrapProps) => {
     const { item, imgsize, well, isFeatured, themeStyles, type, modId, cmsUrl, columns, align } = props
 
-    //Check if item is on beacon theme and hero
-    const isBeaconHero = type === 'article' && isFeatured === 'active'
-
-    const linkAndBtn =
-        (item.actionlbl && item.pagelink) || (item.actionlbl && item.weblink) || (item.actionlbl2 && item.pagelink2) || (item.actionlbl2 && item.weblink2)
-
     return (
         <>
             {props.type != 'article_2' ? (
@@ -172,13 +141,13 @@ const ItemWrap = (props: ItemWrapProps) => {
                         </figure>
                     )}
                     {(item.headline || item.subheader) && (
-                        <HeadlineBlock item={item} well={well} columns={columns} isBeaconHero={isBeaconHero} modType={type} />
+                        <HeadlineBlock item={item} well={well} columns={columns} isBeaconHero={item.isBeaconHero} modType={type} />
                     )}
                 </>
             ) : (
                 <>
                     {(item.headline || item.subheader) && (
-                        <HeadlineBlock item={item} well={well} columns={columns} isBeaconHero={isBeaconHero} modType={type} />
+                        <HeadlineBlock item={item} well={well} columns={columns} isBeaconHero={item.isBeaconHero} modType={type} />
                     )}
 
                     {item.image && (
@@ -193,15 +162,15 @@ const ItemWrap = (props: ItemWrapProps) => {
                 <div className={cn(styles['txt-block'])}>
                     <div
                         className={cn(styles['dsc-block'], styles[`${item.descSize}`], {
-                            ['accent-txt']: well || isBeaconHero,
-                            ['txt-color']: !well && !isBeaconHero,
+                            ['accent-txt']: well || item.isBeaconHero,
+                            ['txt-color']: !well && !item.isBeaconHero,
                         })}
                     >
                         <p className={cn(styles['dsc'])}>{Parser(item.desc)}</p>
                     </div>
                 </div>
             )}
-            {linkAndBtn && (
+            {item.visibleButton && (
                 <Button
                     pagelink={item.pagelink}
                     actionlbl={item.actionlbl}
@@ -230,4 +199,4 @@ const ItemWrap = (props: ItemWrapProps) => {
     )
 }
 
-export default MyArticle
+export default Article

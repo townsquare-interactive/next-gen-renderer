@@ -1,5 +1,5 @@
 'use client'
-import styles from './myimage.module.scss'
+import styles from './image.module.scss'
 import { Media, MyImagesProps } from '../types'
 import Image from 'next/image'
 import cn from 'classnames'

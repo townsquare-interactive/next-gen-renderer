@@ -1,6 +1,5 @@
 'use client'
-/* import styles from './myArticle.module.scss' */
-import styles from './mybutton.module.scss'
+import styles from './button.module.scss'
 import { BtnProps } from '../types'
 import cn from 'classnames'
 import { ConditionalWrapper } from '../functions'

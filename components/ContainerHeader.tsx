@@ -23,7 +23,7 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
     useEffect(() => {
         window.addEventListener('scroll', handleScroll)
         return () => window.removeEventListener('scroll', handleScroll)
-    }, [windowHeight])
+    }, [])
 
     //Determine Height of header for margins in layout
     const ref = useRef<HTMLDivElement>(null)

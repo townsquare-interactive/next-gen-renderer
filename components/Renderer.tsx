@@ -9,9 +9,9 @@ import Grid from './practice/Grid'
 import Footer from './practice/Footer'
 import Carousel from './practice/Carousel'
 import Video from './practice/Video'
-import Article from './practice/Article'
+import BeaconArticle from './practice/BeaconArticle'
 import CharlotteArticle from './practice/CharlotteArticle'
-import MyArticle from './MyArticle'
+import Article from './Article'
 import { PhotoGrid } from './PhotoGrid'
 import { capitalize } from '../functions'
 import { GlobalModule, ModuleProps, RendererProps } from 'types'
@@ -27,9 +27,9 @@ const keysToComponentMap: any = {
     Carousel,
     Video,
     Navigation,
-    Article,
+    BeaconArticle,
     CharlotteArticle,
-    MyArticle,
+    Article,
     PhotoGrid,
 }
 

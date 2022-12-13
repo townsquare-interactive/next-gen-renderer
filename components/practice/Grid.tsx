@@ -4,7 +4,7 @@ import Image from 'next/image'
 import cn from 'classnames'
 import Parser from 'html-react-parser'
 import { domainImage } from '../../functions'
-import Button from './Button'
+import Button from './ProtoButton'
 
 const Grid = (props: GridProps) => {
     const { items, themeStyles } = props

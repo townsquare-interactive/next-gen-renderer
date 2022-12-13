@@ -362,6 +362,10 @@ export interface ArticleItems {
     cmsUrl?: string
     buttonList?: any
     imageIcon?: { iconPrefix: any; iconModel: any }
+    twoButtons?: boolean
+    isWrapLink?: boolean
+    isBeaconHero?: boolean
+    visibleButton?: boolean
 }
 
 export interface ArticleProps {
