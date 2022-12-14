@@ -61,28 +61,6 @@ const PhotoItem = (props: PhotoItemProps) => {
         }
     }
 
-    function isButton() {
-        if (item.actionlbl || item.actionlbl2) {
-            return true
-        } else {
-            return false
-        }
-    }
-
-    function isLink() {
-        if (item.pagelink || item.pagelink2 || item.weblink || item.weblink2) {
-            return true
-        } else {
-            return false
-        }
-    }
-
-    const oneButton =
-        (item.actionlbl && !item.actionlbl2 && (item.pagelink || item.weblink)) || (!item.actionlbl && item.actionlbl2 && (item.pagelink2 || item.weblink2))
-    /* const twoButtons = item.actionlbl && item.actionlbl2 && (item.pagelink || item.weblink) && (item.pagelink2 || item.weblink2) */
-    const linkNoBtn = isButton() === false && isLink() === true
-    const wrapLink = (oneButton || linkNoBtn) && type != 'article'
-
     return (
         <article
             className={cn(
@@ -110,7 +88,7 @@ const PhotoItem = (props: PhotoItemProps) => {
             //style={well == '1' ? borderBackground : noBackground}
         >
             <ConditionalWrapper
-                condition={wrapLink ? true : false}
+                condition={item.isWrapLink ? true : false}
                 trueOutput={(children: ReactChild) => (
                     <Link
                         href={item.pagelink || item.weblink || item.pagelink2 || item.weblink2 || ''}

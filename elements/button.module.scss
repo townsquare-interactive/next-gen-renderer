@@ -185,6 +185,17 @@
         }
     }
 
+    &.photo_grid {
+        .btn-wrap {
+            a {
+                @include breakpoints.sm {
+                    margin-left: 0.25rem;
+                    margin-right: 0.25rem;
+                }
+            }
+        }
+    }
+
     &.a3,
     &.article {
         .btn {
