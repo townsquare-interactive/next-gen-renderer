@@ -37,7 +37,6 @@ export const PhotoGrid = (props: PhotoGridProps) => {
                             columns={columns}
                             itemIndex={index}
                             cmsUrl={cmsUrl}
-                            items={items}
                         />
                     ) : (
                         <></>
@@ -49,17 +48,9 @@ export const PhotoGrid = (props: PhotoGridProps) => {
 }
 
 const PhotoItem = (props: PhotoItemProps) => {
-    const { item, itemIndex, well, themeStyles, type, cmsUrl, imgsize, columns, modId, items } = props
+    const { item, itemIndex, well, themeStyles, type, cmsUrl, imgsize, columns, modId } = props
     const linkAndBtn =
         (item.actionlbl && item.pagelink) || (item.actionlbl && item.weblink) || (item.actionlbl2 && item.pagelink2) || (item.actionlbl2 && item.weblink2)
-
-    /*     function isCap() {
-        if (item.pagelink || item.pagelink2 || item.weblink || item.weblink2 || item.headline) {
-            return true
-        } else {
-            return false
-        }
-    } */
 
     return (
         <article
@@ -70,7 +61,6 @@ const PhotoItem = (props: PhotoItemProps) => {
                     [styles.hero]: item.isFeatured === 'active',
                     [styles.nHero]: !item.isFeatured,
                     [styles.yDsc]: item.desc,
-                    [styles.nDsc]: !item.desc,
                     [styles.nImg]: !item.image,
                     [styles.yImg]: item.image,
                     // [styles.yHds]: item.headline || item.subheader,
@@ -105,9 +95,12 @@ const PhotoItem = (props: PhotoItemProps) => {
                 falseOutput={(children: ReactChild) => <div className={styles['item-wrap']}>{children}</div>}
             >
                 <>
-                    {item.image && <MyImage item={item} well={well} imgsize={imgsize} cmsUrl={cmsUrl} modType="photo_grid" />}
+                    <MyImage item={item} well={well} imgsize={imgsize} cmsUrl={cmsUrl} modType="photo_grid" />
                     {item.hasGridCaption && (
-                        <figcaption className={cn(styles.caption)} style={{ background: themeStyles.captionBackground }}>
+                        <figcaption
+                            className={cn(styles.caption)}
+                            style={item.image ? { background: themeStyles.captionBackground } : { background: themeStyles.promoColor }}
+                        >
                             <div>
                                 {(item.headline || item.subheader) && <HeadlineBlock item={item} well={well} columns={columns} modType="photo_grid" />}
                                 {linkAndBtn && (

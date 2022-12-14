@@ -518,7 +518,6 @@ export interface PhotoItemProps {
     columns: number | string
     modId: string
     cmsUrl?: string
-    items: ArticleItems[]
 }
 
 export interface ContainerHeaderProps {

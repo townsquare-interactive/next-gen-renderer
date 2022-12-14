@@ -7,6 +7,7 @@
 @value article_2 from '../components/article.module.scss';
 @value nDsc from '../components/article.module.scss';
 @value hero from '../components/photogrid.module.scss';
+@value nImg from '../components/photogrid.module.scss';
 
 $xs-txt: utils.$xs-txt;
 $sm-txt: utils.$sm-txt;
@@ -101,7 +102,8 @@ $sm-txt: utils.$sm-txt;
     }
 }
 
-.hero {
+.hero,
+.nImg {
     .photo_grid {
         .hd {
             font-size: utils.$md-txt;

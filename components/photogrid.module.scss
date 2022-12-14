@@ -348,20 +348,28 @@
         display: flex;
     }
 
-    .hd {
+    /*  .hd {
         font-size: utils.$sm-txt;
         margin-top: 0.7058823529em;
         margin-bottom: 0.4705882353em;
         line-height: 1.1764705882em;
-    }
+    } */
 
-    .hero {
+    /*     .nImg {
+        .caption {
+            height: 100%;
+            align-items: center;
+        }
+    } */
+
+    .hero,
+    .nImg {
         .caption {
             height: 100%;
             align-items: center;
         }
 
-        .hd {
+        /* .hd {
             font-size: utils.$md-txt;
             margin-top: 0.6666666667em;
             margin-bottom: 0.5em;
@@ -377,6 +385,6 @@
                 line-height: 1.1111111111em;
                 letter-spacing: -0.0125rem;
             }
-        }
+        } */
     }
 }

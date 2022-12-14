@@ -34,8 +34,6 @@ export const MyImage = (props: MyImagesProps) => {
     //non constrained images
     const imageNoSizings = ['no_sizing', 'no_set_height']
 
-    const rock = ['fa', 'rocket']
-
     return (
         <>
             <div
@@ -45,36 +43,37 @@ export const MyImage = (props: MyImagesProps) => {
                     [styles['photo-grid']]: modType === 'photo_grid',
                 })}
             >
-                {!imageNoSizings.includes(imgsize) ? (
-                    <Image
-                        src={domainImage(item.image, true, cmsUrl || '')}
-                        fill
-                        alt={item.img_alt_tag || ''}
-                        quality="50"
-                        //priority={item.desc ? false : true}
-                        priority={item.imagePriority}
-                        style={{ objectFit: 'cover', objectPosition: 'top' }}
-                        sizes="(max-width: 1920px) 100vw,
-        (max-width: 1200px) 50vw,
-        100vw"
-                    />
-                ) : (
-                    //Setting width and height to image props if nosizing added
-                    <Image
-                        src={domainImage(item.image, true, cmsUrl || '')}
-                        onLoadingComplete={calcImageSize}
-                        width={imageWidth}
-                        height={imageHeight}
-                        alt={item.img_alt_tag || ''}
-                        quality="50"
-                        //priority={item.desc ? false : true}
-                        priority={item.imagePriority}
-                        style={{ width: '100%', height: 'auto' }}
-                        sizes="(max-width: 1920px) 100vw,
-        (max-width: 1200px) 70vw,
-        100vw"
-                    />
-                )}
+                {item.image &&
+                    (!imageNoSizings.includes(imgsize) ? (
+                        <Image
+                            src={domainImage(item.image, true, cmsUrl || '')}
+                            fill
+                            alt={item.img_alt_tag || ''}
+                            quality="50"
+                            //priority={item.desc ? false : true}
+                            priority={item.imagePriority}
+                            style={{ objectFit: 'cover', objectPosition: 'top' }}
+                            sizes="(max-width: 1920px) 100vw,
+                            (max-width: 1200px) 50vw,
+                            100vw"
+                        />
+                    ) : (
+                        //Setting width and height to image props if nosizing added
+                        <Image
+                            src={domainImage(item.image, true, cmsUrl || '')}
+                            onLoadingComplete={calcImageSize}
+                            width={imageWidth}
+                            height={imageHeight}
+                            alt={item.img_alt_tag || ''}
+                            quality="50"
+                            //priority={item.desc ? false : true}
+                            priority={item.imagePriority}
+                            style={{ width: '100%', height: 'auto' }}
+                            sizes="(max-width: 1920px) 100vw,
+                            (max-width: 1200px) 70vw,
+                            100vw"
+                        />
+                    ))}
                 {item.imageIcon && (
                     <div className={cn(styles['icon-block'])}>
                         <div className={styles.icon}>
