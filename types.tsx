@@ -367,6 +367,7 @@ export interface ArticleItems {
     isBeaconHero?: boolean
     visibleButton?: boolean
     imagePriority?: boolean
+    hasGridCaption?: boolean
 }
 
 export interface ArticleProps {

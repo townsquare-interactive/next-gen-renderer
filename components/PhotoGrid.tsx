@@ -53,13 +53,13 @@ const PhotoItem = (props: PhotoItemProps) => {
     const linkAndBtn =
         (item.actionlbl && item.pagelink) || (item.actionlbl && item.weblink) || (item.actionlbl2 && item.pagelink2) || (item.actionlbl2 && item.weblink2)
 
-    function isCap() {
+    /*     function isCap() {
         if (item.pagelink || item.pagelink2 || item.weblink || item.weblink2 || item.headline) {
             return true
         } else {
             return false
         }
-    }
+    } */
 
     return (
         <article
@@ -106,7 +106,7 @@ const PhotoItem = (props: PhotoItemProps) => {
             >
                 <>
                     {item.image && <MyImage item={item} well={well} imgsize={imgsize} cmsUrl={cmsUrl} modType="photo_grid" />}
-                    {isCap() && (
+                    {item.hasGridCaption && (
                         <figcaption className={cn(styles.caption)} style={{ background: themeStyles.captionBackground }}>
                             <div>
                                 {(item.headline || item.subheader) && <HeadlineBlock item={item} well={well} columns={columns} modType="photo_grid" />}
