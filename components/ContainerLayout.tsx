@@ -10,7 +10,7 @@ import SlidingHeader from 'elements/SlidingHeader'
 export default function Layout(props: LayoutProps) {
     const { children, siteData, themeStyles } = props
     const [navCheck, setNav] = useState<boolean>(false)
-    const [height, setHeight] = useState<number>(0)
+    const [contentMargin, setContentMargin] = useState<number>(0)
 
     function navSwitch() {
         setNav(!navCheck)
@@ -21,9 +21,9 @@ export default function Layout(props: LayoutProps) {
             <div className={cn(styles.root)}>
                 <SlidingHeader navSwitch={navSwitch} navCheck={navCheck} themeStyles={themeStyles} siteData={siteData} />
 
-                <ContainerHeader siteData={siteData} themeStyles={themeStyles} navSwitch={navSwitch} setHeight={setHeight} />
+                <ContainerHeader siteData={siteData} themeStyles={themeStyles} navSwitch={navSwitch} setContentMargin={setContentMargin} />
 
-                <main style={{ marginTop: height }}>{children}</main>
+                <main style={{ marginTop: contentMargin }}>{children}</main>
 
                 <ContainerFooter siteData={siteData} themeStyles={themeStyles} navSwitch={navSwitch} />
             </div>

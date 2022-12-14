@@ -1,0 +1,157 @@
+@use '../../styles/breakpoints.scss';
+@use 'sass:math';
+@use '../../styles/variables.scss';
+@use '../../styles/utils.scss';
+
+$arrowSize: 30px;
+
+.root {
+    @include utils.root;
+
+    .wrapper {
+        max-width: variables.$max-main-width;
+        margin: 0 auto;
+        box-sizing: border-box;
+        //padding: 0 0 30px 0;
+
+        @include breakpoints.sm {
+            width: variables.$content-width;
+            margin: 0 auto;
+        }
+
+        .slideItems {
+            .item {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .text {
+                    padding-top: 0;
+                    margin: 0 auto;
+                    p {
+                        font-style: italic;
+                    }
+                }
+
+                div {
+                    div {
+                        line-height: 0 !important;
+                    }
+                }
+            }
+
+            .imageTile {
+                position: relative;
+                aspect-ratio: variables.$aspect-ratio-4_3;
+            }
+        }
+
+        &.hasImage {
+            line-height: 0 !important;
+            /*  border-left: 2px solid variables.$linkColor;
+            border-right: 2px solid variables.$linkColor; */
+        }
+
+        &.hasText {
+            //border-bottom: 4px solid variables.$label-color;
+            //border-top: 4px solid variables.$label-color;
+            padding: 0 variables.$gap variables.$gap variables.$gap;
+            line-height: auto;
+
+            @include breakpoints.sm {
+                padding: 0;
+            }
+
+            .item {
+                margin-bottom: variables.$gap;
+
+                @include breakpoints.sm {
+                    padding: 0;
+                }
+
+                h3 {
+                    font-weight: normal;
+                }
+            }
+
+            .nextBtn {
+                font-size: 20px;
+                //color: #000;
+                line-height: auto;
+                width: 100%;
+                text-align: right;
+                position: static;
+
+                &:before {
+                    display: none;
+                }
+            }
+
+            .prevBtn {
+                display: none !important;
+            }
+
+            .nextBtn:before {
+                color: #000;
+            }
+
+            .slick-arrow.slick-next.nextImageBtm {
+                right: 0 !important;
+            }
+
+            .slideItems {
+                margin: 15px auto;
+
+                .slick-next {
+                    right: 0 !important;
+                }
+            }
+
+            .slick-slider {
+                button {
+                    left: 0;
+
+                    &:before {
+                        color: #fff;
+                    }
+                }
+            }
+        }
+
+        .imageBtns {
+            z-index: 999;
+            height: $arrowSize;
+            width: $arrowSize;
+
+            @include breakpoints.sm {
+                height: $arrowSize + 20px;
+                width: $arrowSize;
+                /* background-color: variables.$linkColor; */
+            }
+
+            &:before {
+                color: #fff;
+                font-size: $arrowSize;
+                @include breakpoints.sm {
+                    display: none;
+                }
+            }
+
+            &.nextImageBtn {
+                right: 0;
+                @include breakpoints.sm {
+                    clip-path: polygon(100% 50%, 0 0, 0 100%);
+                    right: -$arrowSize;
+                }
+            }
+
+            &.prevImageBtn {
+                left: 0;
+                @include breakpoints.sm {
+                    clip-path: polygon(0 50%, 100% 0, 100% 100%);
+                    left: -$arrowSize;
+                }
+            }
+        }
+    }
+}

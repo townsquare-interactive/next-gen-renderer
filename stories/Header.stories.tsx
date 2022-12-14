@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import Header from '../components/Header'
+import Header from '../components/practice/Header'
 import { themeStyles } from 'storydefaults'
 
 export default {

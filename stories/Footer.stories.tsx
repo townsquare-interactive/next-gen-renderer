@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import Footer from '../components/Footer'
+import Footer from '../components/practice/Footer'
 import { themeStyles } from 'storydefaults'
 
 export default {

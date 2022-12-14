@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import Carousel from '../components/Carousel'
+import Carousel from '../components/practice/Carousel'
 import { themeStyles } from 'storydefaults'
 
 export default {

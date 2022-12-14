@@ -53,6 +53,7 @@ Default.args = {
 
     siteData: {
         themeStyles: themeStyles,
+        cmsUrl: 'clt.com',
 
         logos: { show: 1, type: 'image', markup: '', hasLinks: false, alignment: 'center', image_src: '/files/2022/09/Yos2.jpg', image_link: '/' },
         mobileLogos: {
@@ -91,6 +92,7 @@ Default.args = {
         modules: [
             {
                 componentType: 'navigation',
+                component: 'navigation',
                 attributes: {
                     logoUrl: '/files/2022/08/EiffelWater1.jpg',
                     pages: [
@@ -137,6 +139,7 @@ Default.args = {
             },
             {
                 componentType: 'footer',
+                component: 'footer',
                 attributes: {
                     pages: [
                         {

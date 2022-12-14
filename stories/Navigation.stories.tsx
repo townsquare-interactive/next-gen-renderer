@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import Navigation from '../components/Navigation'
+import Navigation from '../components/practice/Navigation'
 import { themeStyles } from 'storydefaults'
 
 export default {

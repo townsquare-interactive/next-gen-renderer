@@ -1,20 +1,23 @@
 import styles from './container.module.scss'
-import { HomeProps, Module } from '../types'
+import { ContainerProps, ModuleData } from '../types'
 import ContainerLayout from './ContainerLayout'
 import { Renderer } from './Renderer'
-import { createInlineStyles } from '../functions'
+import { defineContainerVars } from '../functions'
 import cn from 'classnames'
 import { Fragment } from 'react'
 import { useRouter } from 'next/router'
 import PageHead from './PageHead'
 
-export const Container = (props: HomeProps) => {
+const { library } = require('@fortawesome/fontawesome-svg-core')
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { far } from '@fortawesome/free-regular-svg-icons'
+library.add(fas, fab, far)
+
+export const Container = (props: ContainerProps) => {
     const { page, siteData } = props
     const router = useRouter()
-    const cmsUrl = siteData.cmsUrl
-    const themeStyles = siteData.cmsColors
-    const columnStyles = page.data.columnStyles
-    const colorStyles = createInlineStyles(themeStyles)
+    const { cmsUrl, themeStyles, columnStyles, colorStyles } = defineContainerVars(page, siteData)
 
     if (router.isFallback) {
         return <div>Loading...</div>
@@ -32,7 +35,7 @@ export const Container = (props: HomeProps) => {
                         </div>
 
                         <div className={cn(styles.columns, styles[`${columnStyles}`])}>
-                            {page.data.modules.map((data: Module, idx: number) => (
+                            {page.data.modules.map((data: ModuleData, idx: number) => (
                                 <Fragment key={idx}>
                                     {data && idx != 0 ? (
                                         <div className={cn(styles['column' + (idx + 1)], {})}>

@@ -1,10 +1,10 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { printPage } from '../functions'
-import { SocialLinks, SocialItem } from '../types'
+import { SocialLinksProps, SocialItem } from '../types'
 import styles from './sociallinks.module.scss'
 import cn from 'classnames'
 
-const SocialLinks = ({ siteData, modType = 'header' }: SocialLinks) => {
+const SocialLinks = ({ siteData, modType = 'header' }: SocialLinksProps) => {
     return (
         <ul
             className={cn(styles['social-media-links'], {

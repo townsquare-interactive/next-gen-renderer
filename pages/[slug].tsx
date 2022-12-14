@@ -1,4 +1,4 @@
-import { HomeProps, PageListProps, Context } from '../types'
+import { ContainerProps, PageListProps, Context } from '../types'
 import { useRouter } from 'next/dist/client/router'
 import { bucketAndSiteUrl } from '../functions'
 import { Container } from 'components/Container'
@@ -39,7 +39,7 @@ export const getStaticProps = async (context: Context) => {
     }
 }
 
-const Page = (props: HomeProps) => {
+const Page = (props: ContainerProps) => {
     const { page, siteData } = props
     const router = useRouter()
 

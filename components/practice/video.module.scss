@@ -1,0 +1,25 @@
+@use '../../styles/breakpoints.scss';
+@use 'sass:math';
+@use '../../styles/variables.scss';
+@use '../../styles/utils.scss';
+
+.root {
+    @include utils.root;
+    .wrapper {
+        max-width: variables.$max-main-width;
+
+        @include breakpoints.sm {
+            width: variables.$content-width;
+            margin: 0 auto;
+        }
+
+        .videoBlock {
+            & > div:first-child {
+                width: 100% !important;
+                max-width: 100%;
+                aspect-ratio: variables.$aspect-ratio-16_9;
+                height: auto !important;
+            }
+        }
+    }
+}

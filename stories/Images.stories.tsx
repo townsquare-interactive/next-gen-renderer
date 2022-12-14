@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import Images from '../components/Images'
+import Images from '../components/practice/Images'
 import { themeStyles } from 'storydefaults'
 
 export default {

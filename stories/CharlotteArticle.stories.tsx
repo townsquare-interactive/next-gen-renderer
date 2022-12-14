@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import CharlotteArticle from '../components/CharlotteArticle'
+import CharlotteArticle from '../components/practice/CharlotteArticle'
 import { ArticleItems } from '../types'
 import { themeStyles } from 'storydefaults'
 

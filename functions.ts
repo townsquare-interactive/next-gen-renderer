@@ -1,10 +1,5 @@
-import { ConditionalWrapperProps, ThemeStyles } from 'types'
+import { ConditionalWrapperProps, ThemeStyles, GlobalData, CMSPage } from 'types'
 //had to use require here to avoid hydration
-const { library } = require('@fortawesome/fontawesome-svg-core')
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { fab } from '@fortawesome/free-brands-svg-icons'
-import { far } from '@fortawesome/free-regular-svg-icons'
-library.add(fas, fab, far)
 
 const bucketUrl = 'https://townsquareinteractive.s3.amazonaws.com'
 const localUrl = 'elitesports.com/preview'
@@ -55,7 +50,9 @@ export function createInlineStyles(themeStyles: ThemeStyles) {
 
     const btnStyles = `.btn_1{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['btnBackground']}} .btn_1:hover{color: ${themeStyles['btnBackground']}; background-color: ${themeStyles['textColorAccent']}} .btn_2{color: ${themeStyles['linkColor']}; border-color: ${themeStyles['linkColor']}} .btn_2:hover{color: ${themeStyles['btnBackground']}; border-color: ${themeStyles['btnBackground']}}`
 
-    const colorStyles = textColors + btnStyles
+    const backgroundStyles = `.border-background{background-color:${themeStyles['accentBackgroundColor']}} .hero-background{background-color:${themeStyles['altColor']}}`
+
+    const colorStyles = textColors + btnStyles + backgroundStyles
 
     return colorStyles
 }
@@ -122,6 +119,15 @@ export function decideHeadTag(columns: number | string, tag: string, headerTag: 
 export function printPage() {
     print()
     return
+}
+
+export function defineContainerVars(page: CMSPage, siteData: GlobalData) {
+    const cmsUrl = siteData.cmsUrl
+    const themeStyles = siteData.cmsColors
+    const columnStyles = page.data.columnStyles
+    const colorStyles = createInlineStyles(themeStyles)
+
+    return { cmsUrl, themeStyles, columnStyles, colorStyles }
 }
 
 //Used to have conditional tag wraps around code without repeating inside code

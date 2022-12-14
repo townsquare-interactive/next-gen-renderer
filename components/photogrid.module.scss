@@ -8,8 +8,8 @@
         &.col_3,
         &.col_4 {
             .item {
-                margin-left: $item-margins;
-                margin-right: $item-margins;
+                margin-left: utils.$item-margins;
+                margin-right: utils.$item-margins;
             }
         }
 
@@ -24,63 +24,49 @@
         }
 
         &.col_3 .item {
-            width: $half-item-width;
+            width: utils.$half-item-width;
         }
 
         &.col_4 .item {
-            width: $half-item-width;
+            width: utils.$half-item-width;
         }
     }
 
     @include breakpoints.md-min {
         &.col_2 .item,
         &.col_4 .item {
-            width: $half-item-width;
+            width: utils.$half-item-width;
         }
 
         &.col_3 .item {
-            width: $third-item-width;
+            width: utils.$third-item-width;
         }
 
         &.col_2 .hero {
-            width: $full-item-width;
+            width: utils.$full-item-width;
         }
 
         &.col_3 .hero {
-            width: $col3-hero;
+            width: utils.$col3-hero;
         }
 
         &.col_4 .hero {
-            width: $half-item-width;
+            width: utils.$half-item-width;
         }
     }
 
     @container module (min-width:1025px) {
         &.col_3 .nHero,
         &.beacon.col_3 .item {
-            width: $third-item-width;
+            width: utils.$third-item-width;
         }
 
         &.col_4 .nHero,
         &.beacon.col_4 .item {
-            width: $quarteritem-width;
+            width: utils.$quarteritem-width;
         }
     }
 }
-
-$full-width: 100%;
-$half-width: 50%;
-$third-width: math.div($full-width, 3);
-$quarter-width: 25%;
-$item-margins: 2%;
-$full-item-width: $full-width - ($item-margins * 2);
-$half-item-width: $half-width - ($item-margins * 2);
-$third-item-width: $third-width - ($item-margins * 2);
-$quarteritem-width: $quarter-width - ($item-margins * 2);
-
-//grid system
-$col3-hero: (math.div(8, 12) * 100%) - ($item-margins * 2);
-$ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
 
 @mixin tsFlex {
     display: -moz-flex;
@@ -103,7 +89,7 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
 
         .item {
             margin-bottom: 2rem;
-            width: $full-width;
+            width: utils.$full-width;
             margin-left: 0;
             margin-right: 0;
             width: 100%;
@@ -314,7 +300,7 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
         }
 
         .nHero {
-            width: $ten-12;
+            width: utils.$ten-12;
         }
     }
 
@@ -350,7 +336,7 @@ $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
     }
 
     .caption {
-        font-size: 0.75rem;
+        // font-size: 0.75rem;
         text-align: center;
         //background: rgba(0, 0, 0, 0.5);
         padding: 0.5rem 1rem 0.75rem;

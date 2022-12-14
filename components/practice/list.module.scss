@@ -1,0 +1,438 @@
+@use '../../styles/breakpoints.scss';
+@use 'sass:math';
+@use '../../styles/variables.scss';
+@use '../../styles/utils.scss';
+//Variables
+$lh-height: 1.3;
+$ratio: math.div(4, 3);
+
+//Setting image sizes
+$image-width-percentage: 25%;
+$image-width-decimal: 0.25;
+$image-width: #{$image-width-decimal * 100}vw;
+$image-height: $image-width / $ratio;
+
+//Image and content size calculations
+$img-height-max: math.div($image-width-decimal * variables.$max-main-width, $ratio);
+$max-main-image-width: variables.$max-main-width * $image-width-decimal;
+$max-main-content-width: variables.$max-main-width * (1 - $image-width-decimal);
+
+/*Mixins Shared between layouts */
+@mixin features {
+    display: flex;
+    flex-direction: column;
+    @include breakpoints.md {
+        flex-direction: row;
+    }
+}
+
+/* @mixin bordered {
+    //background-color: variables.$dark-accent-color;
+
+    * {
+        color: #fff;
+    } 
+} */
+
+@mixin article {
+    .wrapper {
+        max-width: variables.$max-main-width;
+        margin: 15px auto;
+        width: 100%;
+
+        @include breakpoints.sm {
+            width: variables.$content-width;
+        }
+
+        .features {
+            width: 100%;
+            @include features;
+            box-sizing: border-box;
+            align-items: center;
+
+            .imageBlock {
+                position: relative;
+                width: 100%;
+                max-width: 100%;
+                height: 100%;
+                align-self: flex-start;
+                display: none;
+
+                .blockPicture {
+                    position: relative;
+                }
+
+                img {
+                    width: 100%;
+                    position: inherit !important;
+                }
+                @include breakpoints.md {
+                    width: 50%;
+                    height: auto;
+                }
+            }
+
+            .allText {
+                align-self: flex-start;
+                display: flex;
+                flex-direction: column;
+                //color: variables.$textColor-main;
+                padding: variables.$gap;
+                //margin-right: variables.$gap;
+
+                @include breakpoints.sm {
+                    padding: 0;
+                }
+                /* 
+                @media (min-width: breakpoints.$screen-sm-min) and (max-width: breakpoints.$screen-md-min) {
+                    padding: 0;
+                } */
+
+                .title {
+                    margin-bottom: variables.$gap;
+                    line-height: $lh-height;
+
+                    .text {
+                        line-height: $lh-height;
+                        @include utils.lhCrop($lh-height);
+                        margin-top: 30px;
+                        margin-bottom: 0;
+
+                        @include breakpoints.md {
+                            margin-top: 0;
+                        }
+                    }
+                }
+
+                .textBlock .text {
+                    margin-top: 0;
+                }
+
+                /*                 .textBlock {
+                    margin-right: variables.$gap;
+                } */
+
+                .cta_btn {
+                    text-transform: uppercase;
+                    margin-top: variables.$gap;
+                }
+            }
+        }
+
+        &.imageArticle {
+            .imageBlock {
+                display: block;
+            }
+
+            .allText {
+                justify-content: flex-start;
+                @include breakpoints.sm {
+                    padding-left: variables.$gap;
+                }
+                @include breakpoints.md {
+                    width: 50%;
+                }
+            }
+        }
+
+        &.reverse {
+            .features {
+                @include breakpoints.md {
+                    flex-direction: row-reverse;
+                }
+            }
+            .allText {
+                @include breakpoints.sm {
+                    padding-right: variables.$gap;
+                    padding-left: 0;
+                }
+            }
+        }
+
+        &.bordered {
+            /* @include bordered; */
+
+            .features {
+                padding: variables.$gap;
+            }
+        }
+    }
+}
+
+/*-----------------------------CARD----------------------*/
+
+@mixin card {
+    .wrapper {
+        @include breakpoints.sm {
+            width: variables.$content-width;
+            margin: 0 auto;
+        }
+        @include breakpoints.md {
+            width: 100%;
+        }
+
+        .title {
+            @include breakpoints.md {
+                display: flex;
+                flex-direction: row;
+                margin-top: 20px;
+                margin-bottom: 10px;
+
+                .text {
+                    margin-bottom: 0;
+                }
+            }
+
+            .textGutter {
+                flex: 10 0 0;
+            }
+
+            .insideTextGutter {
+                flex: 20 0 0;
+                max-width: $max-main-image-width;
+            }
+
+            .titleText {
+                display: flex;
+                align-self: flex-start;
+
+                @include breakpoints.md {
+                    align-self: flex-start;
+                    flex: 60 0 0;
+                    max-width: $max-main-content-width;
+                }
+
+                .text {
+                    //color: variables.$textColor-main;
+                    padding-left: variables.$gap;
+                    width: 100%;
+                    padding: 10px 0 10px 20px;
+                    margin-top: 0;
+
+                    @include breakpoints.md {
+                        margin-left: auto;
+                        flex: 60 0 0;
+                    }
+
+                    @media (min-width: breakpoints.$screen-sm-min) and (max-width: breakpoints.$screen-md-min) {
+                        padding: 10px 0 10px 0;
+                    }
+                }
+            }
+        }
+        .features {
+            @include features;
+
+            .colorBlock {
+                flex: 10 0 0;
+                display: none;
+
+                @include breakpoints.md {
+                    display: block;
+                }
+
+                .colorFill {
+                    //background-color: variables.$promoColor;
+                    aspect-ratio: math.div($ratio, 2);
+                    height: $image-height;
+                }
+            }
+
+            .imageBlock {
+                @include breakpoints.md {
+                    flex: 20 0 0;
+                    background-color: variables.$promoColor;
+                    align-self: flex-start;
+                    max-width: $max-main-image-width;
+                    width: $image-width;
+                }
+                .blockPicture {
+                    width: 100%;
+                    position: relative;
+
+                    @include breakpoints.md {
+                        aspect-ratio: $ratio;
+                    }
+
+                    img {
+                        position: absolute !important;
+                        width: 100% !important;
+                        object-fit: cover;
+
+                        @include breakpoints.md {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            height: 100%;
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+
+            .textBlock {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                max-width: $max-main-content-width;
+
+                @include breakpoints.md {
+                    flex: 60 0 0;
+                    position: relative;
+                }
+
+                .text {
+                    padding-top: 0;
+                    padding: variables.$gap;
+                    margin-top: 0;
+                    @include breakpoints.md {
+                        line-height: $lh-height;
+                        @include utils.lhCrop($lh-height);
+                        padding: 0;
+                        padding-left: variables.$gap;
+                    }
+                }
+
+                .cta_btn {
+                    /* @include utils.cta_btn; */
+                    //color: variables.$textColor-main;
+                    padding-left: variables.$gap;
+                    text-transform: uppercase;
+                    margin-top: variables.$gap;
+                    @include breakpoints.md {
+                        margin-left: variables.$gap;
+                        padding: 0;
+                    }
+                }
+            }
+        }
+
+        &.bordered .textBlock {
+            /* @include bordered; */
+
+            .text {
+                padding: variables.$gap;
+            }
+            .cta_btn {
+                padding-bottom: variables.$gap;
+            }
+        }
+
+        &.reverse {
+            .features,
+            .title {
+                @include breakpoints.md {
+                    flex-direction: row-reverse;
+                }
+            }
+        }
+
+        //Unsetting aspect-ratio and changing height to account for 1200px max-width
+        @include breakpoints.custom(math.div(variables.$max-main-width, math.div(variables.$content-width, 100%))) {
+            .features .colorBlock .colorFill {
+                height: $img-height-max;
+                aspect-ratio: auto;
+            }
+        }
+
+        &.reverse {
+            @include breakpoints.md {
+                .features {
+                    flex-direction: row-reverse;
+                }
+                .title {
+                    flex-direction: row-reverse;
+                }
+
+                .titleText .text,
+                .textBlock .text {
+                    padding-left: 0 !important;
+                    padding-right: variables.$gap !important;
+                }
+
+                .cta_btn {
+                    margin-left: 0 !important;
+                }
+            }
+        }
+    }
+}
+
+.root {
+    @include utils.root;
+
+    &.articleLayout {
+        @include article;
+    }
+    /*     .cardLayout {
+        
+    } */
+
+    &.cardLayout {
+        @include card;
+    }
+
+    &.left {
+        .textBlock .text,
+        .titleText .text,
+        .title .text,
+        .allText,
+        .cta_btn {
+            text-align: left;
+        }
+    }
+
+    &.right {
+        .textBlock .text,
+        .titleText .text,
+        .title .text,
+        .allText,
+        .cta_btn {
+            text-align: right;
+        }
+    }
+
+    &.center {
+        .textBlock .text,
+        .titleText .text,
+        .title .text,
+        .allText,
+        .cta_btn {
+            text-align: center;
+        }
+    }
+
+    &.sm {
+        .textBlock .text,
+        .cta_btn {
+            @include utils.text-sizes-sm;
+        }
+
+        .titleText .text,
+        .title .text {
+            @include utils.headline-sizes-sm;
+        }
+    }
+    &.md {
+        .textBlock .text,
+        .cta_btn {
+            @include utils.text-sizes-md;
+        }
+
+        .titleText .text,
+        .title .text {
+            @include utils.headline-sizes-md;
+        }
+    }
+    &.lg {
+        .textBlock .text,
+        .cta_btn {
+            @include utils.text-sizes-lg;
+        }
+
+        .titleText .text,
+        .title .text {
+            @include utils.headline-sizes-lg;
+        }
+    }
+}

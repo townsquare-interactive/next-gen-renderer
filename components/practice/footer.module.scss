@@ -1,0 +1,153 @@
+@use '../../styles/breakpoints.scss';
+@use 'sass:math';
+@use '../../styles/variables.scss';
+@use '../../styles/utils.scss';
+
+.root {
+    width: 100%;
+    //background: linear-gradient(rgba(0, 0, 0, 0.6) 0%, #000 23%);
+    //color: #fff;
+    // border-top: 30px solid red;
+
+    .wrapper {
+        max-width: variables.$max-main-width;
+        margin: 0 auto;
+
+        @include breakpoints.md {
+            display: grid;
+            width: variables.$content-width;
+        }
+
+        grid-template-columns: repeat(4, 1fr);
+        padding: 30px;
+        padding-top: 70px;
+
+        @include breakpoints.md {
+            padding-top: 50px;
+        }
+
+        .block {
+            text-align: center;
+            margin-bottom: 40px;
+
+            @include breakpoints.md {
+                text-align: left;
+                margin-bottom: 0;
+            }
+
+            p {
+                margin: 10px 0 10px 0;
+            }
+
+            &.logoInfo {
+                grid-column: 1/ 2;
+                @include utils.text-sizes-md;
+
+                div {
+                    margin: 0 auto;
+                    text-align: center;
+                }
+
+                .social {
+                    display: flex;
+                    margin: 20px 0;
+                    justify-content: space-around;
+                    align-items: center;
+                    @include utils.headline-sizes-md;
+
+                    @include breakpoints.md {
+                        justify-content: space-between;
+                        margin: 0;
+                    }
+
+                    a {
+                        flex: 25 0 0;
+                        text-align: center;
+                        max-width: 25px;
+
+                        @include breakpoints.md {
+                            padding: 10px;
+                            max-width: 15px;
+
+                            &:first-of-type {
+                                padding-left: 0;
+                            }
+
+                            &:last-of-type {
+                                padding-right: 0;
+                            }
+                        }
+
+                        @include breakpoints.md {
+                            padding: 10px;
+                            max-width: 25px;
+                        }
+                    }
+
+                    /*                     a:hover {
+                        color: variables.$altColor;
+                    } */
+                }
+
+                .phone {
+                    //color: variables.$altColor;
+                    font-size: variables.$text-size-body-md;
+                    margin: 0;
+
+                    @include breakpoints.sm {
+                        font-size: variables.$text-size-body-md;
+                    }
+
+                    @include breakpoints.xl {
+                        font-size: variables.$text-size-body-lg;
+                    }
+                }
+            }
+
+            &.navInfo {
+                grid-column: 2/4;
+                padding: 0 20px 0 20px;
+
+                @include breakpoints.md {
+                    width: 70%;
+                    margin: 0 auto;
+                    padding: 0;
+                }
+            }
+
+            &.addInfo {
+                grid-column: 4/5;
+                line-height: 1;
+                font-size: 15px;
+
+                @include breakpoints.md {
+                    display: flex;
+                    justify-content: flex-end;
+                    font-size: 15px;
+                }
+
+                @include breakpoints.lg {
+                    font-size: 23px;
+                }
+            }
+
+            &.siteInfo {
+                grid-row: 5/7;
+                line-height: 1;
+                font-size: 15px;
+
+                @include breakpoints.sm {
+                    font-size: 10px;
+                }
+
+                @include breakpoints.md {
+                    font-size: 15px;
+                }
+
+                @include breakpoints.lg {
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+}

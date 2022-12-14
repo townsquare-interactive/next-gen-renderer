@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import Button from '../../elements/Button'
+import Button from '../../components/practice/ProtoButton'
 import { themeStyles } from 'storydefaults'
 
 export default {
