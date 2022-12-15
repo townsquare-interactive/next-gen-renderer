@@ -39,8 +39,8 @@ const SocialBar = ({ siteData, themeStyles }: SocialBarProps) => {
                         />
                     )}
 
-                    {siteData.siteName && (
-                        <ContactLink cname="map" link={siteData.contact.mapLink} icon={siteData.contact.icons.location} content={siteData.siteName} />
+                    {siteData.contact.mapLink && (
+                        <ContactLink cname="map" link={siteData.contact.mapLink} icon={siteData.contact.icons.location} content={siteData.siteName || ''} />
                     )}
                 </ul>
             </aside>
