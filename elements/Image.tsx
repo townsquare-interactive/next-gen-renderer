@@ -3,7 +3,6 @@ import styles from './image.module.scss'
 import { Media, MyImagesProps } from '../types'
 import Image from 'next/image'
 import cn from 'classnames'
-
 import { domainImage } from '../functions'
 import { useState } from 'react'
 
@@ -11,7 +10,7 @@ import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const MyImage = (props: MyImagesProps) => {
-    const { item, imgsize, cmsUrl, modType = 'article' } = props
+    const { item, imgsize = 'landscape_4_3', cmsUrl, modType = 'article' } = props
     const [imageHeight, setHeight] = useState(100)
     const [imageWidth, setWidth] = useState(300)
 
@@ -20,17 +19,6 @@ export const MyImage = (props: MyImagesProps) => {
         setHeight(loadedMedia.naturalHeight)
     }
 
-    const imgSizes = [
-        'landscape_4_3',
-        'square_1_1',
-        'portrait_3_4',
-        'portrait_2_3',
-        'widescreen_16_9',
-        'widescreen_3_1',
-        'widescreen_2-4_1',
-        'widescreen_2_4_1',
-    ]
-
     //non constrained images
     const imageNoSizings = ['no_sizing', 'no_set_height']
 
@@ -38,7 +26,6 @@ export const MyImage = (props: MyImagesProps) => {
         <>
             <div
                 className={cn(styles.image, styles[`${imgsize}`], {
-                    [styles.landscape_4_3]: !imgsize || (!imgSizes.includes(imgsize) && !imageNoSizings.includes(imgsize)),
                     [styles.widescreen_2_4_1]: imgsize === 'widescreen_2-4_1',
                     [styles['photo-grid']]: modType === 'photo_grid',
                 })}
