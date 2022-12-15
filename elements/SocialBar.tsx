@@ -9,7 +9,7 @@ const SocialBar = ({ siteData, themeStyles }: SocialBarProps) => {
     const ContactLink = ({ cname, link, icon, content }: ContactLinkProps) => {
         return (
             <li className={cn(styles[`${cname}`], styles.icon)}>
-                <a href={link} aria-label={cname} className={cn('socialIcon')}>
+                <a href={link} aria-label={cname} className={cn('socialIcon')} target="_blank" rel="noopener noreferrer">
                     <FontAwesomeIcon icon={icon} />
                     {content}
                 </a>
@@ -39,8 +39,8 @@ const SocialBar = ({ siteData, themeStyles }: SocialBarProps) => {
                         />
                     )}
 
-                    {siteData.siteName && (
-                        <ContactLink cname="map" link={'www.google.com'} icon={siteData.contact.icons.location} content={siteData.siteName} />
+                    {siteData.contact.mapLink && (
+                        <ContactLink cname="map" link={siteData.contact.mapLink} icon={siteData.contact.icons.location} content={siteData.siteName || ''} />
                     )}
                 </ul>
             </aside>

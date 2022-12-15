@@ -27,14 +27,6 @@ export const HeadlineBlock = (props: HeadlineBlockProps) => {
             )}
 
             {item.subheader && (
-                /*                 <SubTag
-                    className={cn(styles['sh'], {
-                        ['accent-txt']: well || isBeaconHero || modType === 'photo-grid',
-                        ['txt-color-heading']: !well && !isBeaconHero && modType != 'photo-grid',
-                    })}
-                >
-                    {Parser(item.subheader)}
-                </SubTag> */
                 <Heading
                     textType="sh"
                     text={item.subheader}

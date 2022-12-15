@@ -79,7 +79,7 @@ export interface GlobalData {
     siteName?: string
     phoneNumber?: String
     themeStyles: ThemeStyles
-    contact: { email: any; phone: any; hours?: any; address?: any; icons: ContactIcons }
+    contact: { email: any; phone: any; hours?: any; address?: any; icons: ContactIcons; mapLink?: string }
     cmsNav?: [NavItem]
     logos?: Logo
     mobileLogos?: Logo
@@ -518,7 +518,6 @@ export interface PhotoItemProps {
     columns: number | string
     modId: string
     cmsUrl?: string
-    items: ArticleItems[]
 }
 
 export interface ContainerHeaderProps {
