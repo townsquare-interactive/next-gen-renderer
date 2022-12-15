@@ -79,7 +79,7 @@ export interface GlobalData {
     siteName?: string
     phoneNumber?: String
     themeStyles: ThemeStyles
-    contact: { email: any; phone: any; hours?: any; address?: any; icons: ContactIcons }
+    contact: { email: any; phone: any; hours?: any; address?: any; icons: ContactIcons; mapLink: string }
     cmsNav?: [NavItem]
     logos?: Logo
     mobileLogos?: Logo

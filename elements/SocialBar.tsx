@@ -40,7 +40,7 @@ const SocialBar = ({ siteData, themeStyles }: SocialBarProps) => {
                     )}
 
                     {siteData.siteName && (
-                        <ContactLink cname="map" link={'https://www.google.com'} icon={siteData.contact.icons.location} content={siteData.siteName} />
+                        <ContactLink cname="map" link={siteData.contact.mapLink} icon={siteData.contact.icons.location} content={siteData.siteName} />
                     )}
                 </ul>
             </aside>
