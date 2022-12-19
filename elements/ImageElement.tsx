@@ -1,6 +1,6 @@
 'use client'
-import styles from './image.module.scss'
-import { Media, MyImagesProps } from '../types'
+import styles from './imageelement.module.scss'
+import { Media, ImageElementsProps } from '../types'
 import Image from 'next/image'
 import cn from 'classnames'
 import { domainImage } from '../functions'
@@ -9,7 +9,7 @@ import { useState } from 'react'
 // importing fontAwesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-export const MyImage = (props: MyImagesProps) => {
+export const ImageElement = (props: ImageElementsProps) => {
     const { item, imgsize = 'landscape_4_3', cmsUrl, modType = 'article' } = props
     const [imageHeight, setHeight] = useState(100)
     const [imageWidth, setWidth] = useState(300)

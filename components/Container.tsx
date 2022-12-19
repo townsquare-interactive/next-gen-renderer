@@ -6,14 +6,7 @@ import { Renderer } from './Renderer'
 import { defineContainerVars } from '../functions'
 import cn from 'classnames'
 import { Fragment } from 'react'
-import { useRouter } from 'next/router'
 import PageHead from './PageHead'
-
-const { library } = require('@fortawesome/fontawesome-svg-core')
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { fab } from '@fortawesome/free-brands-svg-icons'
-import { far } from '@fortawesome/free-regular-svg-icons'
-library.add(fas, fab, far)
 
 export const Container = (props: ContainerProps) => {
     const { page, siteData } = props

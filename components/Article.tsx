@@ -7,7 +7,7 @@ import { ConditionalWrapper } from '../functions'
 import { Fragment, ReactChild } from 'react'
 import Link from 'next/link'
 import { Button } from '../elements/Button'
-import { MyImage } from '../elements/Image'
+import { ImageElement } from '../elements/ImageElement'
 import ModuleTitle from 'elements/ModuleTitle'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
 
@@ -137,7 +137,7 @@ const ItemWrap = (props: ItemWrapProps) => {
                 <>
                     {item.image && (
                         <figure className={cn(styles['image-block'])} data-alt="Headline">
-                            <MyImage item={item} imgsize={imgsize} well={well} cmsUrl={cmsUrl} />
+                            <ImageElement item={item} imgsize={imgsize} well={well} cmsUrl={cmsUrl} />
                         </figure>
                     )}
                     {(item.headline || item.subheader) && (
@@ -152,7 +152,7 @@ const ItemWrap = (props: ItemWrapProps) => {
 
                     {item.image && (
                         <figure className={cn(styles['image-block'])} data-alt="Headline">
-                            <MyImage item={item} imgsize={imgsize} well={well} cmsUrl={cmsUrl} />
+                            <ImageElement item={item} imgsize={imgsize} well={well} cmsUrl={cmsUrl} />
                         </figure>
                     )}
                 </>
@@ -170,31 +170,7 @@ const ItemWrap = (props: ItemWrapProps) => {
                     </div>
                 </div>
             )}
-            {item.visibleButton && (
-                <Button
-                    pagelink={item.pagelink}
-                    actionlbl={item.actionlbl}
-                    newwindow={item.newwindow}
-                    newwindow2={item.newwindow2}
-                    actionlbl2={item.actionlbl2}
-                    pagelink2={item.pagelink2}
-                    weblink2={item.weblink2}
-                    weblink={item.weblink}
-                    icon={item.icon}
-                    icon2={item.icon2}
-                    btnType={item.btnType}
-                    btnType2={item.btnType2}
-                    themeStyles={themeStyles}
-                    btnSize={item.btnSize}
-                    btnSize2={item.btnSize2}
-                    well={well}
-                    modId={modId}
-                    type={type}
-                    align={align}
-                    columns={columns}
-                    buttonList={item.buttonList}
-                />
-            )}
+            {item.visibleButton && <Button well={well} modId={modId} type={type} columns={columns} themeStyles={themeStyles} {...item} />}
         </>
     )
 }

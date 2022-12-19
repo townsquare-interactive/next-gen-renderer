@@ -4,7 +4,7 @@ import styles from './containerlayout.module.scss'
 import cn from 'classnames'
 import ContainerHeader from './ContainerHeader'
 import ContainerFooter from './ContainerFooter'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import SlidingHeader from 'elements/SlidingHeader'
 
 export default function Layout(props: LayoutProps) {

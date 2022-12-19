@@ -362,7 +362,7 @@ export interface ArticleItems {
     headSize?: string
     descSize?: string
     cmsUrl?: string
-    buttonList?: any
+    buttonList: any
     imageIcon?: { iconPrefix: any; iconModel: any }
     twoButtons?: boolean
     isWrapLink?: boolean
@@ -576,7 +576,7 @@ export interface SlidingHeaderProps {
     siteData: GlobalData
 }
 
-export interface MyImagesProps {
+export interface ImageElementsProps {
     item: ArticleItems
     calcImageSize?: (loadedMedia: Media) => void
     imageWidth?: number

@@ -1,4 +1,3 @@
-@use 'sass:math';
 @use './styles/breakpoints.scss';
 @use './styles/utils.scss';
 
@@ -15,9 +14,6 @@
 
         &.col_1 .item,
         &.col_2 .item {
-            /* width: $ten-12;
-            margin-left: auto;
-            margin-right: auto; */
             width: 100%;
             margin-left: auto;
             margin-right: auto;
@@ -102,7 +98,6 @@
                     transition: all 0.1s ease-in-out;
                     transform: scale(1.01);
                     box-shadow: 1px 1px 10px rgb(0 0 0 / 25%);
-                    // z-index: 1;
                 }
             }
 
@@ -192,75 +187,7 @@
         .txt-block {
             max-width: 100%;
         }
-
-        /* .link-wrap {
-            box-shadow: 0 0 2px rgb(0 0 0 / 6%), 0 2px 4px rgb(0 0 0 / 12%);
-
-            &:hover {
-                transition: all 0.1s ease-in-out;
-                transform: scale(1.01);
-                box-shadow: 1px 1px 10px rgb(0 0 0 / 25%);
-                // z-index: 1;
-            }
-        } */
-
-        /*         &.a1 {
-
-            .dsc-block,
-            .hd-block {
-                padding: 0 2rem 0;
-                width: 100%;
-            }
-
-            .nDsc .hd-block,
-            .dsc-block {
-                padding-bottom: 1.5rem;
-            }
-        }
-
-        &.a2 {
-            //well padding
-            .hd-block {
-                padding: 1rem 2rem;
-                width: 100%;
-            }
-
-            .dsc-block {
-                padding: 0 2rem 1.5rem;
-            }
-
-            .nDsc {
-                .image-block {
-                    margin-bottom: 0;
-                    margin-top: auto;
-                }
-            }
-        } */
-
-        /* &.a3,
-        &.beacon {
-            .item-wrap {
-                padding: 1.5rem;
-            }
-
-            @container item (min-width:utils.$lg-container) {
-                .item-wrap {
-                    padding: 3rem 2rem 2rem;
-                }
-            }
-
-            @container item (min-width:utils.$xl-container) {
-                .item-wrap {
-                    padding: 2rem;
-
-                    @include breakpoints.lg-min {
-                        padding: 4rem 1.5rem;
-                    }
-                }
-            }
-        } */
     }
-    /*------------------------------------End of border/well ----------------------------*/
 
     /*---------------------------------------- Column item sizes ------------------------------------------------*/
 
@@ -306,24 +233,13 @@
     }
 
     .caption {
-        // font-size: 0.75rem;
         text-align: center;
-        //background: rgba(0, 0, 0, 0.5);
         padding: 0.5rem 1rem 0.75rem;
         position: absolute;
         bottom: 0;
         width: 100%;
-        /* z-index: 1;
-        position: relative; */
         display: flex;
     }
-
-    /*     .nImg {
-        .caption {
-            height: 100%;
-            align-items: center;
-        }
-    } */
 
     .hero,
     .nImg {
