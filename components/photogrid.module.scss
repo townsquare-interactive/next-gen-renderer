@@ -115,8 +115,6 @@
                     }
                 }
             }
-
-            /*-----------------------------Button styles--------------------*/
         }
 
         .image-block {
@@ -124,7 +122,6 @@
             margin-bottom: 0.5625em;
         }
     }
-    /*-----------------------------ENd of button styles--------------------*/
 
     &.tsflex {
         @include tsFlex;
@@ -151,15 +148,6 @@
             flex-direction: column;
             margin-bottom: 2rem;
         }
-
-        /* .item-wrap {
-            @include tsFlex;
-            box-orient: vertical;
-            box-direction: normal;
-            flex-direction: column;
-            box-flex: 1;
-            flex: 1 1 auto;
-        } */
     }
 
     text-align: left;
@@ -191,32 +179,14 @@
     }
 
     //temp: medium screens, need to revise size maybe
-    @container item (min-width:343px) {
+    @container item (min-width:utils.$med-container) {
         .item {
             &.nHero:first-of-type {
                 margin-top: 2rem;
             }
         }
-        /*  @include breakpoints.sm-min {
-            .mod_left .image-block,
-            .mod_right .image-block {
-                width: $third-width;
-                display: block;
-            }
-            .mod_left .image-block {
-                float: left;
-                margin-right: 1rem;
-            }
-            .mod_right .image-block {
-                float: right;
-                margin-left: 1rem;
-            }
-        } */
     }
 
-    //for larger screens (starts at 1025)
-
-    /*------------------------------------Border/well prop enabled-------------------------*/
     &.well {
         .hd-block,
         .txt-block {
@@ -273,13 +243,13 @@
                 padding: 1.5rem;
             }
 
-            @container item (min-width:637px) {
+            @container item (min-width:utils.$lg-container) {
                 .item-wrap {
                     padding: 3rem 2rem 2rem;
                 }
             }
 
-            @container item (min-width:775px) {
+            @container item (min-width:utils.$xl-container) {
                 .item-wrap {
                     padding: 2rem;
 
@@ -348,13 +318,6 @@
         display: flex;
     }
 
-    /*  .hd {
-        font-size: utils.$sm-txt;
-        margin-top: 0.7058823529em;
-        margin-bottom: 0.4705882353em;
-        line-height: 1.1764705882em;
-    } */
-
     /*     .nImg {
         .caption {
             height: 100%;
@@ -368,23 +331,5 @@
             height: 100%;
             align-items: center;
         }
-
-        /* .hd {
-            font-size: utils.$md-txt;
-            margin-top: 0.6666666667em;
-            margin-bottom: 0.5em;
-            line-height: 1.1666666667em;
-            letter-spacing: -0.0125rem;
-        }
-
-        @container item (min-width:343px) {
-            .hd {
-                font-size: utils.$lg-txt;
-                margin-top: 0.6666666667em;
-                margin-bottom: 0.4444444444em;
-                line-height: 1.1111111111em;
-                letter-spacing: -0.0125rem;
-            }
-        } */
     }
 }

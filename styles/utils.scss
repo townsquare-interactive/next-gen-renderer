@@ -18,6 +18,11 @@ $quarteritem-width: $quarter-width - ($item-margins * 2);
 $col3-hero: (math.div(8, 12) * 100%) - ($item-margins * 2);
 $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
 
+//container sizes
+$med-container: 343px;
+$lg-container: 637px;
+$xl-container: 775px;
+
 //text
 $xss-txt: 0.8125em;
 $xs-txt: 0.875em;

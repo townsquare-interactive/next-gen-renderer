@@ -14,14 +14,15 @@ const ContainerFooter = (props: ContainerFooterProps) => {
     const { siteData, themeStyles, navSwitch } = props
 
     return (
-        <footer className={styles.root} style={{ backgroundColor: themeStyles.footerBackground, color: themeStyles.footerText }}>
+        <footer className={cn(styles.root, 'footer')}>
             <div className={styles.wrapper}>
                 <div className={styles.content}>
                     {siteData.composites?.footer?.modules.items.map((item: CompositeItem, index: number) => (
                         <div key={index} className={styles.item}>
-                            {item.component === 'text' && <TextWidget text={item.text} title={item.title} />}
-                            {item.component === 'enhancedtext' && <TextWidget text={item.text} title={item.title} />}
+                            {(item.component === 'text' || item.component === 'enhancedtext') && <TextWidget text={item.text} title={item.title} />}
+
                             {item.component === 'social_media' && <SocialLinks siteData={siteData} modType="widget" />}
+
                             {item.component === 'nav_menu' && <Nav navType={'footer-nav'} cmsNav={siteData.cmsNav} navSwitch={navSwitch} />}
                         </div>
                     ))}

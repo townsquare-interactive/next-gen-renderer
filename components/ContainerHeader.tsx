@@ -3,7 +3,7 @@ import styles from './containerheader.module.scss'
 import { ContainerHeaderProps } from '../types'
 import cn from 'classnames'
 import { domainImage } from '../functions'
-import { useState, useEffect, useLayoutEffect } from 'react'
+import { useState, useEffect } from 'react'
 import Logo from './Logo'
 import NavToggle from 'elements/NavToggle'
 import Nav from '../elements/Nav'
@@ -29,7 +29,7 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
     const ref = useRef<HTMLDivElement>(null)
 
     //This works better but may be slower on site speed?
-    useEffect(() => {
+    /*  useEffect(() => {
         const currentItem = ref.current
 
         const myObserver = new ResizeObserver((entries) => {
@@ -42,18 +42,18 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
         return () => {
             if (currentItem) myObserver.unobserve(currentItem)
         }
-    })
+    }) */
 
-    /* useEffect(() => {
+    /*     useEffect(() => {
         setContentMargin(ref?.current?.offsetHeight)
-    }, [setContentMargin, ref?.current?.offsetHeight]) */
+    }, [setContentMargin, ref?.current?.offsetHeight])   */
 
     return (
         <header
-            className={cn(styles.root, {
-                [styles.shrink]: windowHeight > 150,
+            className={cn(styles.root, 'header-background', {
+                [styles.shrink]: ref?.current?.offsetHeight && windowHeight > ref?.current?.offsetHeight,
             })}
-            style={{ background: themeStyles.headerBackground }}
+            //style={{ height: '203px', top: 203 - newH }}
             ref={ref}
         >
             <div className={styles.wrapper}>

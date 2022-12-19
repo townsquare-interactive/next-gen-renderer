@@ -54,6 +54,7 @@ export interface PageHeadProps {
     composites: any
 }
  */
+
 export interface LayoutProps {
     children: ReactNode
     siteData: GlobalData
@@ -64,6 +65,7 @@ export interface RendererProps {
     config: any
     cmsUrl: string
     themeStyles: ThemeStyles
+    renderType?: string
 }
 
 export interface GlobalData {

@@ -147,7 +147,7 @@
         }
     }
     //temp: medium screens, need to revise size maybe
-    @container item (min-width:343px) {
+    @container item (min-width:utils.$med-container) {
         .hd {
             font-size: utils.$md-txt;
             margin-top: 0.6666666667em;
@@ -193,7 +193,7 @@
     }
 
     //for larger screens (starts at 1025)
-    @container item (min-width:775px) {
+    @container item (min-width:utils.$xl-container) {
         .hd {
             font-size: utils.$lg-txt;
             margin-top: 0.6666666667em;
@@ -288,13 +288,13 @@
                 padding: 1.5rem;
             }
 
-            @container item (min-width:637px) {
+            @container item (min-width:utils.$lg-container) {
                 .item-wrap {
                     padding: 3rem 2rem 2rem;
                 }
             }
 
-            @container item (min-width:775px) {
+            @container item (min-width:utils.$xl-container) {
                 .item-wrap {
                     padding: 2rem;
 
