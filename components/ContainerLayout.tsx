@@ -11,15 +11,10 @@ export default function Layout(props: LayoutProps) {
     const { children, siteData, themeStyles } = props
     const [navCheck, setNav] = useState<boolean>(false)
     const [contentMargin, setContentMargin] = useState<number>(203)
-    /* const [showChild, setShowChild] = useState(false)
-     */
+
     function navSwitch() {
         setNav(!navCheck)
     }
-
-    /*     useEffect(() => {
-        setShowChild(true)
-    }, []) */
 
     return (
         <>
