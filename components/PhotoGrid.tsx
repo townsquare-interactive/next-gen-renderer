@@ -3,7 +3,7 @@ import styles from './photogrid.module.scss'
 import { PhotoGridProps, PhotoItemProps } from '../types'
 import { Button } from '../elements/Button'
 import cn from 'classnames'
-import { MyImage } from '../elements/Image'
+import { ImageElement } from '../elements/ImageElement'
 import { ConditionalWrapper } from 'functions'
 import Link from 'next/link'
 import { ReactChild } from 'react'
@@ -63,19 +63,11 @@ const PhotoItem = (props: PhotoItemProps) => {
                     [styles.yDsc]: item.desc,
                     [styles.nImg]: !item.image,
                     [styles.yImg]: item.image,
-                    // [styles.yHds]: item.headline || item.subheader,
-                    // [styles.nHds]: !item.headline || !item.subheader,
-                    //[styles.mod_left]: item.align === 'left' && (type === 'article_3' || type === 'article'),
-                    // [styles.mod_right]: item.align === 'right' && (type === 'article_3' || type === 'article'),
-                    // [styles.mod_center]: item.align === 'center' && (type === 'article_3' || type === 'article'),
-                    // [styles.yLk]: (item.pagelink || item.weblink || item.pagelink2 || item.weblink2) && !twoButtons,
-                    // [styles.yLks]: twoButtons,
                 },
                 `item_${itemIndex + 1}`,
                 styles[`item_${itemIndex + 1}`]
             )}
             lang="en"
-            //style={well == '1' ? borderBackground : noBackground}
         >
             <ConditionalWrapper
                 condition={item.isWrapLink ? true : false}
@@ -95,7 +87,7 @@ const PhotoItem = (props: PhotoItemProps) => {
                 falseOutput={(children: ReactChild) => <div className={styles['item-wrap']}>{children}</div>}
             >
                 <>
-                    <MyImage item={item} well={well} imgsize={imgsize} cmsUrl={cmsUrl} modType="photo_grid" />
+                    <ImageElement item={item} well={well} imgsize={imgsize} cmsUrl={cmsUrl} modType="photo_grid" />
                     {item.hasGridCaption && (
                         <figcaption
                             className={cn(styles.caption)}
@@ -103,31 +95,7 @@ const PhotoItem = (props: PhotoItemProps) => {
                         >
                             <div>
                                 {(item.headline || item.subheader) && <HeadlineBlock item={item} well={well} columns={columns} modType="photo_grid" />}
-                                {linkAndBtn && (
-                                    <Button
-                                        pagelink={item.pagelink}
-                                        actionlbl={item.actionlbl}
-                                        newwindow={item.newwindow}
-                                        newwindow2={item.newwindow2}
-                                        actionlbl2={item.actionlbl2}
-                                        pagelink2={item.pagelink2}
-                                        weblink2={item.weblink2}
-                                        weblink={item.weblink}
-                                        icon={item.icon}
-                                        icon2={item.icon2}
-                                        btnType={item.btnType}
-                                        btnType2={item.btnType2}
-                                        themeStyles={themeStyles}
-                                        btnSize={item.btnSize}
-                                        btnSize2={item.btnSize2}
-                                        well={well}
-                                        modId={modId}
-                                        type={type}
-                                        align={item.align}
-                                        columns={columns}
-                                        buttonList={item.buttonList}
-                                    />
-                                )}
+                                {linkAndBtn && <Button well={well} modId={modId} type={type} columns={columns} themeStyles={themeStyles} {...item} />}
                             </div>
                         </figcaption>
                     )}

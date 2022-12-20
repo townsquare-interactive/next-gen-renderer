@@ -2,7 +2,6 @@ import { ContainerProps, PageListProps, Context } from '../types'
 import { useRouter } from 'next/dist/client/router'
 import { bucketAndSiteUrl } from '../functions'
 import { Container } from 'components/Container'
-import PageHead from 'components/PageHead'
 
 //runs at build time just like static props
 export const getStaticPaths = async () => {

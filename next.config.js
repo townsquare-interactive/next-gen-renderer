@@ -21,7 +21,7 @@ module.exports = withBundleAnalyzer({
         ],
     },
 
-    /* experimental: {
+    /*     experimental: {
         appDir: true,
     },
  */

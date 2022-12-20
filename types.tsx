@@ -54,6 +54,7 @@ export interface PageHeadProps {
     composites: any
 }
  */
+
 export interface LayoutProps {
     children: ReactNode
     siteData: GlobalData
@@ -64,6 +65,7 @@ export interface RendererProps {
     config: any
     cmsUrl: string
     themeStyles: ThemeStyles
+    renderType?: string
 }
 
 export interface GlobalData {
@@ -360,7 +362,7 @@ export interface ArticleItems {
     headSize?: string
     descSize?: string
     cmsUrl?: string
-    buttonList?: any
+    buttonList: any
     imageIcon?: { iconPrefix: any; iconModel: any }
     twoButtons?: boolean
     isWrapLink?: boolean
@@ -574,7 +576,7 @@ export interface SlidingHeaderProps {
     siteData: GlobalData
 }
 
-export interface MyImagesProps {
+export interface ImageElementsProps {
     item: ArticleItems
     calcImageSize?: (loadedMedia: Media) => void
     imageWidth?: number

@@ -100,20 +100,6 @@
         line-height: 1.4285714286em;
     }
 
-    .sh {
-        font-size: utils.$xs-txt;
-        margin-top: 0.5714285714em;
-        margin-bottom: 0.5714285714em;
-        line-height: 1.1428571429em;
-    }
-
-    .hd {
-        font-size: utils.$sm-txt;
-        margin-top: 0.7058823529em;
-        margin-bottom: 0.4705882353em;
-        line-height: 1.1764705882em;
-    }
-
     &.root-container {
         container-type: inline-size;
         container-name: module;
@@ -131,38 +117,9 @@
             margin-bottom: 1.1428571429em;
             line-height: 1.4285714286em;
         }
-
-        .sh {
-            font-size: utils.$xs-txt;
-            margin-top: 0.5714285714em;
-            margin-bottom: 0.5714285714em;
-            line-height: 1.1428571429em;
-        }
-
-        .hd {
-            font-size: utils.$sm-txt;
-            margin-top: 0.7058823529em;
-            margin-bottom: 0.4705882353em;
-            line-height: 1.1764705882em;
-        }
     }
-    //temp: medium screens, need to revise size maybe
+
     @container item (min-width:343px) {
-        .hd {
-            font-size: utils.$md-txt;
-            margin-top: 0.6666666667em;
-            margin-bottom: 0.5em;
-            line-height: 1.1666666667em;
-            letter-spacing: -0.0125rem;
-        }
-
-        .sh {
-            font-size: utils.$sm-txt;
-            margin-top: 0.7058823529em;
-            margin-bottom: 0.4705882353em;
-            line-height: 1.1764705882em;
-        }
-
         .dsc {
             font-size: utils.$xs-txt;
             margin-top: 1.1428571429em;
@@ -194,22 +151,6 @@
 
     //for larger screens (starts at 1025)
     @container item (min-width:775px) {
-        .hd {
-            font-size: utils.$lg-txt;
-            margin-top: 0.6666666667em;
-            margin-bottom: 0.4444444444em;
-            line-height: 1.1111111111em;
-            letter-spacing: -0.0125rem;
-        }
-
-        .sh {
-            font-size: utils.$md-txt;
-            margin-top: 0.6666666667em;
-            margin-bottom: 0.5em;
-            line-height: 1.1666666667em;
-            letter-spacing: -0.0125rem;
-        }
-
         .dsc {
             font-size: utils.$sm-txt;
             margin-top: 0.9411764706em;
@@ -233,7 +174,6 @@
         }
     }
 
-    /*------------------------------------Border/well prop enabled-------------------------*/
     &.well {
         .hd-block,
         .txt-block {
@@ -264,7 +204,6 @@
         }
 
         &.article_2 {
-            //well padding
             .hd-block {
                 padding: 1rem 2rem;
                 width: 100%;
@@ -305,7 +244,6 @@
             }
         }
     }
-    /*------------------------------------End of border/well ----------------------------*/
 
     &.article {
         .hero {
@@ -343,6 +281,8 @@
         &.article_3 {
             .nHero {
                 width: utils.$ten-12;
+                margin-left: auto;
+                margin-right: auto;
             }
         }
 
@@ -354,36 +294,19 @@
             }
         }
     }
-
-    @include breakpoints.sm-min {
-        &.col_1 .item,
-        &.col_2 .item {
-            width: utils.$ten-12;
-            margin-left: auto;
-            margin-right: auto;
+    @container item (min-width:343px) {
+        @include breakpoints.sm-min {
+            &.col_1 .wrapper .item,
+            &.col_2 .wrapper .item {
+                width: utils.$ten-12;
+                margin-left: auto;
+                margin-right: auto;
+            }
         }
     }
 
     //font sizes
-    .font_xs {
-        font-size: 62.5%;
-    }
-
-    .font_sm {
-        font-size: 75%;
-    }
-
-    .font_md {
-        font-size: 87.5%;
-    }
-
-    .font_lg {
-        font-size: 112.5%;
-    }
-
-    .font_xl {
-        font-size: 125%;
-    }
+    @include utils.text-sizes;
 
     //custom class test
     &.cst_hello {

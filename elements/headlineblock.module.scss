@@ -1,6 +1,7 @@
 @use 'sass:math';
 @use './styles/breakpoints.scss';
 @use './styles/utils.scss';
+
 @value well from '../components/article.module.scss';
 @value nDsc from '../components/article.module.scss';
 @value article_1 from '../components/article.module.scss';
@@ -8,9 +9,6 @@
 @value nDsc from '../components/article.module.scss';
 @value hero from '../components/photogrid.module.scss';
 @value nImg from '../components/photogrid.module.scss';
-
-$xs-txt: utils.$xs-txt;
-$sm-txt: utils.$sm-txt;
 
 .hd-block {
     .sh {
@@ -30,14 +28,7 @@ $sm-txt: utils.$sm-txt;
     }
 
     &.article {
-        @container item (min-width:0px) {
-            .dsc {
-                font-size: utils.$xs-txt;
-                margin-top: 1.1428571429em;
-                margin-bottom: 1.1428571429em;
-                line-height: 1.4285714286em;
-            }
-
+        /* @container item (min-width:0px) {
             .sh {
                 font-size: utils.$xs-txt;
                 margin-top: 0.5714285714em;
@@ -51,9 +42,9 @@ $sm-txt: utils.$sm-txt;
                 margin-bottom: 0.4705882353em;
                 line-height: 1.1764705882em;
             }
-        }
+        } */
         //temp: medium screens, need to revise size maybe
-        @container item (min-width:343px) {
+        @container item (min-width: 343px) {
             .hd {
                 font-size: utils.$md-txt;
                 margin-top: 0.6666666667em;
@@ -68,17 +59,10 @@ $sm-txt: utils.$sm-txt;
                 margin-bottom: 0.4705882353em;
                 line-height: 1.1764705882em;
             }
-
-            .dsc {
-                font-size: utils.$xs-txt;
-                margin-top: 1.1428571429em;
-                margin-bottom: 1.1428571429em;
-                line-height: 1.4285714286em;
-            }
         }
 
         //for larger screens (starts at 1025)
-        @container item (min-width:775px) {
+        @container item (min-width: 775px) {
             .hd {
                 font-size: utils.$lg-txt;
                 margin-top: 0.6666666667em;
@@ -95,10 +79,6 @@ $sm-txt: utils.$sm-txt;
                 letter-spacing: -0.0125rem;
             }
         }
-    }
-
-    &.photo_grid {
-        font-size: 16px;
     }
 }
 
@@ -120,7 +100,7 @@ $sm-txt: utils.$sm-txt;
             line-height: 1.1764705882em;
         }
 
-        @container item (min-width:343px) {
+        @container item (min-width: 343px) {
             .hd {
                 font-size: utils.$lg-txt;
                 margin-top: 0.6666666667em;
@@ -163,3 +143,5 @@ $sm-txt: utils.$sm-txt;
         width: 100%;
     }
 }
+
+@include utils.text-sizes;

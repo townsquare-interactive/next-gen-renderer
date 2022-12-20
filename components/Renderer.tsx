@@ -15,6 +15,9 @@ import Article from './Article'
 import { PhotoGrid } from './PhotoGrid'
 import { capitalize } from '../functions'
 import { GlobalModule, ModuleProps, RendererProps } from 'types'
+import TextWidget from '../elements/TextWidget'
+import SocialLinks from 'elements/SocialLinks'
+import Nav from 'elements/Nav'
 
 const keysToComponentMap: any = {
     Text,
@@ -31,6 +34,12 @@ const keysToComponentMap: any = {
     CharlotteArticle,
     Article,
     PhotoGrid,
+}
+
+const keysToWidgetMap: any = {
+    TextWidget,
+    SocialLinks,
+    Nav,
 }
 
 const mapPropsToConfig = (config: ModuleProps[]) => {
@@ -50,7 +59,7 @@ const mapPropsToConfig = (config: ModuleProps[]) => {
     return configWithProps
 }
 
-export const Renderer = ({ config, themeStyles, cmsUrl = '' }: RendererProps) => {
+export const Renderer = ({ config, themeStyles, cmsUrl = '', renderType = 'module' }: RendererProps) => {
     if (!config) {
         throw new Error('You are calling Renderer with no config.')
     }
@@ -62,9 +71,26 @@ export const Renderer = ({ config, themeStyles, cmsUrl = '' }: RendererProps) =>
             {configWithProps.map((item: GlobalModule, index: number) => {
                 const { component, ...props } = item
                 //Changes json string to component value
+
+                /*                 let footerComp = 'text'
+                if (component === 'text' || component === 'enhancedtext') {
+                    footerComp = 'TextWidget'
+                } else if (component === 'social_media') {
+                    footerComp = 'SocialLinks'
+                } else if (component === 'nav_menu') {
+                    footerComp = 'Nav'
+                }
+ */
+                //const Comp = renderType === 'module' ? keysToComponentMap[component] : keysToWidgetMap[footerComp]
+
                 const Comp = keysToComponentMap[component]
+
                 if (Comp) {
-                    return <Comp {...props.attributes} key={index} themeStyles={themeStyles} cmsUrl={cmsUrl} />
+                    if (renderType === 'module') {
+                        return <Comp {...props.attributes} key={index} themeStyles={themeStyles} cmsUrl={cmsUrl} />
+                    } else {
+                        return <Comp {...props} key={index} />
+                    }
                 }
             })}
         </>
