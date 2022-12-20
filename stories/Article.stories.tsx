@@ -68,6 +68,25 @@ const item1: ArticleItems = {
     headerTag: '',
     plugin: '',
     disabled: '',
+    buttonList: [
+        {
+            name: 'btn1',
+            link: '/',
+            window: '',
+            icon: { iconPrefix: 'fas', iconModel: 'rocket' },
+            label: 'Contact Us Today',
+            active: false,
+            linkType: 'local',
+        },
+        {
+            name: 'btn2',
+            link: '/columns/',
+            icon: { iconPrefix: 'fab', iconModel: 'facebook-square' },
+            label: 'button 2',
+            active: false,
+            linkType: 'local',
+        },
+    ],
 }
 const item2 = item1
 const item3 = item1
@@ -268,26 +287,6 @@ Button.args = {
             icon: 'faArchway',
             btnType: 'btn_1',
             btnSize: 'md',
-
-            buttonList: [
-                {
-                    name: 'btn1',
-                    link: '/',
-                    window: '',
-                    icon: { iconPrefix: 'fas', iconModel: 'rocket' },
-                    label: 'Contact Us Today',
-                    active: true,
-                    linkType: 'local',
-                },
-                {
-                    name: 'btn2',
-                    link: '/columns/',
-                    icon: { iconPrefix: 'fab', iconModel: 'facebook-square' },
-                    label: 'button 2',
-                    active: false,
-                    linkType: 'local',
-                },
-            ],
         },
     ],
 }
