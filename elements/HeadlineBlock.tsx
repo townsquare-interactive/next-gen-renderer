@@ -9,7 +9,7 @@ export const HeadlineBlock = (props: HeadlineBlockProps) => {
 
     return (
         <header
-            className={cn(styles['hd-block'], styles[`${item.headSize}`], styles[`${modType}`], {
+            className={cn(styles['hd-block'], styles[`${item.headSize}`], styles[`${modType}`], styles[`${item.headSize}`], {
                 [styles.article]: modType != 'photo_grid',
                 [styles.beacon]: modType === 'article',
             })}

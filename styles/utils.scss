@@ -18,7 +18,7 @@ $quarteritem-width: $quarter-width - ($item-margins * 2);
 $col3-hero: (math.div(8, 12) * 100%) - ($item-margins * 2);
 $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
 
-//container sizes
+//container sizes (not working for some reason in queries)
 $med-container: 343px;
 $lg-container: 637px;
 $xl-container: 775px;
@@ -80,6 +80,28 @@ $lg-txt: 2.25em;
                 grid-template-columns: 1fr 1fr 1fr 1fr;
             }
         }
+    }
+}
+
+@mixin text-sizes {
+    .font_xs {
+        font-size: 62.5%;
+    }
+
+    .font_sm {
+        font-size: 75%;
+    }
+
+    .font_md {
+        font-size: 87.5%;
+    }
+
+    .font_lg {
+        font-size: 112.5%;
+    }
+
+    .font_xl {
+        font-size: 125%;
     }
 }
 
@@ -146,6 +168,69 @@ $lg-txt: 2.25em;
         &.col_4 .nHero,
         &.beacon.col_4 .item {
             width: $quarteritem-width;
+        }
+    }
+}
+
+@mixin photoFlex {
+    @include breakpoints.sm-min {
+        &.col_2,
+        &.col_3,
+        &.col_4 {
+            .item {
+                margin-left: utils.$item-margins;
+                margin-right: utils.$item-margins;
+            }
+        }
+
+        &.col_1 .item,
+        &.col_2 .item {
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        &.col_3 .item {
+            width: utils.$half-item-width;
+        }
+
+        &.col_4 .item {
+            width: utils.$half-item-width;
+        }
+    }
+
+    @include breakpoints.md-min {
+        &.col_2 .item,
+        &.col_4 .item {
+            width: utils.$half-item-width;
+        }
+
+        &.col_3 .item {
+            width: utils.$third-item-width;
+        }
+
+        &.col_2 .hero {
+            width: utils.$full-item-width;
+        }
+
+        &.col_3 .hero {
+            width: utils.$col3-hero;
+        }
+
+        &.col_4 .hero {
+            width: utils.$half-item-width;
+        }
+    }
+
+    @container module (min-width:1025px) {
+        &.col_3 .nHero,
+        &.beacon.col_3 .item {
+            width: utils.$third-item-width;
+        }
+
+        &.col_4 .nHero,
+        &.beacon.col_4 .item {
+            width: utils.$quarteritem-width;
         }
     }
 }
