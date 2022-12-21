@@ -50,7 +50,7 @@ export function createInlineStyles(themeStyles: ThemeStyles) {
 
     const btnStyles = `.btn_1{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['btnBackground']}} .btn_1:hover{color: ${themeStyles['btnBackground']}; background-color: ${themeStyles['textColorAccent']}} .btn_2{color: ${themeStyles['linkColor']}; border-color: ${themeStyles['linkColor']}} .btn_2:hover{color: ${themeStyles['btnBackground']}; border-color: ${themeStyles['btnBackground']}}`
 
-    const backgroundStyles = `.border-background{background-color:${themeStyles['accentBackgroundColor']}} .hero-background{background-color:${themeStyles['altColor']}} .content-background{background-color:${themeStyles['bckdContent']}} .footer{background-color:${themeStyles['footerBackground']}; color: ${themeStyles['footerText']}} .header-background{background-color:${themeStyles['headerBackground']}}`
+    const backgroundStyles = `.border-background{background-color:${themeStyles['accentBackgroundColor']}} .hero-background{background-color:${themeStyles['promoColor']}} .content-background{background-color:${themeStyles['bckdContent']}} .footer{background-color:${themeStyles['footerBackground']}; color: ${themeStyles['footerText']}} .header-background{background-color:${themeStyles['headerBackground']}}`
 
     const colorStyles = textColors + btnStyles + backgroundStyles
 

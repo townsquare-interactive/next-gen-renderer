@@ -13,7 +13,7 @@ function Hero(props: HeaderProps) {
     }
 
     const gutterAlt = {
-        backgroundColor: `${themeStyles['accentColor2']}`,
+        backgroundColor: `${themeStyles['promoColor2']}`,
     }
 
     const backgroundImage = domainImage(backgroundImageUrl)

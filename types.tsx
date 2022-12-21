@@ -3,28 +3,58 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { ReactChild, ReactElement, ReactNode } from 'react'
 
 export interface ThemeStyles {
-    promoColor: string
-    textColor: string
+    logoColor: string
+
     headingColor: string
-    textColorAccent: string
-    linkColor: string
-    accentBackgroundColor: string
-    accentColor2: string
-    altColor: string
-    headerBackground: string
-    footerBackground: string
-    navBackground: string
-    BckdHeaderSocial: string
     subHeadingColor: string
-    NavText: string
-    linkHover?: string
-    bckdContent?: string
-    footerText: string
-    captionBackground: string
-    navCurrent: string
-    captionText: string
-    navHover: string
+    textColor: string
+    linkColor: string
+    linkHover: string
+
+    //ad
+    btnText: string
+
     btnBackground: string
+    textColorAccent: string
+
+    //addd
+    heroSubheadline: string
+    heroText: string
+    heroBtnText: string
+    heroBtnBackground: string
+    heroLink: string
+    heroLinkHover: string
+
+    captionText: string
+    captionBackground: string
+    NavText: string
+    navHover: string
+    navCurrent: string
+    //add
+    backgroundMain: string
+
+    bckdContent: string
+    // headerBackground: cmsColors.color_23.value,
+    headerBackground: string
+
+    BckdHeaderSocial: string
+    accentBackgroundColor: string
+    //add
+    backgroundHero: string
+    footerBackground: string
+    footerText: string
+    //add
+    footerLink: string
+    promoText: string
+
+    //accentColor2: cmsColors.color_32.value,
+
+    promoColor: string
+    promoColor2: string
+    promoColor3: string
+    promoColor4: string
+    promoColor5: string
+    promoColor6: string
 }
 
 export interface ContainerProps {

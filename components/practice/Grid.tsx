@@ -41,7 +41,7 @@ const GridBlock = (props: GridData) => {
 
     const borderStyles = {
         /* color: `${themeStyles['textColorAccent']}`, */
-        backgroundColor: `${themeStyles['altColor']}`,
+        backgroundColor: `${themeStyles['promoColor']}`,
     }
 
     const headingColor = {
