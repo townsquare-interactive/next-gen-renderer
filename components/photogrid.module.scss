@@ -125,8 +125,6 @@
         }
     }
 
-    /*---------------------------------------- Column item sizes ------------------------------------------------*/
-
     @container module (min-width:481px) {
         .wrapper {
             padding-top: 3rem;
@@ -141,30 +139,9 @@
         @include utils.grid;
     }
 
-    /*----------------------------------------------------------- End of Column Sizes -------------------------------------------*/
-
-    //font sizes
-    /*     .font_xs {
-        font-size: 62.5%;
+    &.flexAlt {
+        @include utils.item_flex;
     }
-
-    .font_sm {
-        font-size: 75%;
-    }
-
-    .font_md {
-        font-size: 87.5%;
-    }
-
-    .font_lg {
-        font-size: 112.5%;
-    }
-
-    .font_xl {
-        font-size: 125%;
-    } */
-
-    //@include utils.textSizes;
 
     .caption {
         text-align: center;
@@ -182,4 +159,11 @@
             align-items: center;
         }
     }
+
+    /*  .nImg {
+        .caption:first-of-type {
+            //backdrop-filter: brightness(35%);
+            backdrop-filter: brightness(35%);
+        }
+    } */
 }

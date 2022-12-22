@@ -400,6 +400,7 @@ export interface ArticleItems {
     visibleButton?: boolean
     imagePriority?: boolean
     hasGridCaption?: boolean
+    gridColor?: string
 }
 
 export interface ArticleProps {

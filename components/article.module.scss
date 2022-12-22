@@ -324,6 +324,6 @@
     }
 
     &.item-flex {
-        @include utils.article_flex;
+        @include utils.item_flex;
     }
 }
