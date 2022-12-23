@@ -22,7 +22,6 @@ export const PhotoGrid = (props: PhotoGridProps) => {
             })}
             id={`id_${modId}`}
         >
-            {/*   <style>{theStyle}</style> */}
             {title && <ModuleTitle title={title} />}
             <div className={styles.wrapper}>
                 {items.map((item, index) =>

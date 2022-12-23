@@ -18,6 +18,7 @@ import { GlobalModule, ModuleProps, RendererProps } from 'types'
 import TextWidget from '../elements/TextWidget'
 import SocialLinks from 'elements/SocialLinks'
 import Nav from 'elements/Nav'
+import Banner from './Banner'
 
 const keysToComponentMap: any = {
     Text,
@@ -34,6 +35,7 @@ const keysToComponentMap: any = {
     CharlotteArticle,
     Article,
     PhotoGrid,
+    Banner,
 }
 
 const keysToWidgetMap: any = {

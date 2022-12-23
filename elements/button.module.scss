@@ -122,7 +122,7 @@
                 width: 100%;
             }
 
-            @include breakpoints.sm {
+            /*  @include breakpoints.sm {
                 &:first-of-type {
                     margin-left: 0;
                     margin-right: 0.25rem;
@@ -132,7 +132,7 @@
                     margin-right: 0;
                     margin-left: 0.25rem;
                 }
-            }
+            } */
         }
 
         .btn {
@@ -149,7 +149,8 @@
 
     &.article_1,
     &.article_2,
-    &.photo_grid {
+    &.photo_grid,
+    &.banner {
         .btn {
             align-self: flex-start;
 
@@ -207,6 +208,22 @@
         &.article_1 {
             .btn {
                 width: 100%;
+            }
+        }
+    }
+
+    &:not(.banner) {
+        a {
+            @include breakpoints.sm {
+                &:first-of-type {
+                    margin-left: 0;
+                    margin-right: 0.25rem;
+                }
+
+                &:last-of-type {
+                    margin-right: 0;
+                    margin-left: 0.25rem;
+                }
             }
         }
     }
