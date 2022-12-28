@@ -401,7 +401,7 @@ export interface ArticleItems {
     imagePriority?: boolean
     hasGridCaption?: boolean
     promoColor?: string
-    itemCount: number
+    itemCount?: number
 }
 
 export interface ArticleProps {
@@ -673,7 +673,7 @@ export interface BtnProps {
     columns: number | string
     buttonList: any[]
     promoColor?: string
-    itemCount: number
+    itemCount?: number
 }
 
 /*------------------------------Non CMS types-------------------------*/
