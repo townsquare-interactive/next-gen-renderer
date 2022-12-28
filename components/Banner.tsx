@@ -17,7 +17,7 @@ const Banner = (props: ArticleProps) => {
     } else {
         return (
             <div
-                className={cn(styles['root'], styles['tsflex'], styles['root-container'], styles[`col_${columns}`], styles[`${type}`], 'hero-background', {
+                className={cn(styles['root'], styles['tsflex'], styles['root-container'], styles[`col_${columns}`], styles[`${type}`], {
                     [styles.beacon]: type === 'article',
                     [styles.well]: well == '1',
                     [styles.not_well]: !well,
@@ -56,6 +56,8 @@ const Banner = (props: ArticleProps) => {
 const ModuleItem = (props: ModuleItemProps) => {
     const { item, modId, itemIndex, cmsUrl, themeStyles, type, imgsize, columns, well } = props
 
+    console.log(item.buttonList)
+
     return (
         <article
             className={cn(
@@ -71,9 +73,11 @@ const ModuleItem = (props: ModuleItemProps) => {
                     [styles.yLk]: (item.pagelink || item.weblink || item.pagelink2 || item.weblink2) && !item.twoButtons,
                     ['border-background']: well == '1',
                 },
-                styles[`item_${itemIndex + 1}`]
+                styles[`item_${itemIndex + 1}`],
+                `item_${itemIndex + 1}`
             )}
             lang="en"
+            style={{ background: `${item.promoColor}` }}
         >
             <ConditionalWrapper
                 condition={item.isWrapLink ? true : false}

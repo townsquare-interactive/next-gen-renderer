@@ -89,7 +89,7 @@ const PhotoItem = (props: PhotoItemProps) => {
                     {item.hasGridCaption && (
                         <figcaption
                             className={cn(styles.caption)}
-                            style={item.image ? { background: themeStyles.captionBackground } : { background: `${item.gridColor}` }}
+                            style={item.image ? { background: themeStyles.captionBackground } : { background: `${item.promoColor}` }}
                         >
                             <div>
                                 {(item.headline || item.subheader) && <HeadlineBlock item={item} well={well} columns={columns} modType="photo_grid" />}

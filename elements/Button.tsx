@@ -10,9 +10,13 @@ import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const Button = (props: BtnProps) => {
-    const { actionlbl, themeStyles, well, actionlbl2, type, buttonList, modId, columns, align } = props
+    const { actionlbl, themeStyles, well, actionlbl2, type, buttonList, modId, columns, align, promoColor, itemCount } = props
 
-    const linkHoverStyles = `#id_${modId} .btn_link:hover .btn_1{color: ${themeStyles['promoColor']}; background-color: ${themeStyles['textColorAccent']}} #id_${modId} .btn_link:hover .btn_2{color: ${themeStyles['promoColor']}; border-color: ${themeStyles['promoColor']}} #id_${modId} .btn_link:hover .btn_alt{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['promoColor']}}`
+    const linkHoverStyles = `#id_${modId} .btn_link:hover .btn_1{color: ${themeStyles['promoColor']}; background-color: ${themeStyles['textColorAccent']}} #id_${modId} .btn_link:hover .btn_2{color: ${themeStyles['promoColor']}; border-color: ${themeStyles['promoColor']}} #id_${modId}}`
+
+    //.btn_link:hover .btn_alt{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['promoColor']}
+
+    const promoButtonStyles = `#id_${modId} .item_${itemCount} .btn_promo {color: ${promoColor}; background-color: ${themeStyles['textColorAccent']}} #id_${modId} .item_${itemCount} .btn_promo:hover{color: ${themeStyles['textColorAccent']}; background-color: ${promoColor}}`
 
     return (
         <div
@@ -21,6 +25,7 @@ export const Button = (props: BtnProps) => {
             })}
         >
             {well && <style>{linkHoverStyles}</style>}
+            <style>{promoButtonStyles}</style>
             <ConditionalWrapper
                 condition={actionlbl2 && actionlbl ? true : false}
                 trueOutput={(children: ReactChild) => <div className={cn(styles['btn-wrap'], styles['txt-wrap'])}>{children}</div>}
@@ -52,7 +57,8 @@ export const Button = (props: BtnProps) => {
                                         className={cn(styles['btn'], styles['transition'], `${bt.btnType}`, {
                                             ['btn_1']: bt.btnType === 'btn_1' || (!bt.btnType && index === 0),
                                             ['btn_2']: bt.btnType === 'btn_2' || (!bt.btnType && index === 1),
-                                            ['btn_alt']: bt.btnType === 'alt_btn',
+                                            // [styles.btn_alt]: bt.btnType === 'btn_alt',
+                                            [styles.btn_promo]: bt.btnType === 'btn_promo',
                                             [styles.btn_1]: bt.btnType === 'btn_1' || (!bt.btnType && index === 0),
                                             [styles.btn_2]: bt.btnType === 'btn_2' || (!bt.btnType && index === 1),
                                             [styles.btn_md]: (bt.btnSize?.includes('md') || !bt.btnSize) && (columns == 1 || columns == 2),
