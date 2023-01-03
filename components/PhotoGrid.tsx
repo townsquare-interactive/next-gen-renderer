@@ -4,7 +4,7 @@ import { PhotoGridProps, PhotoItemProps } from '../types'
 import { Button } from '../elements/Button'
 import cn from 'classnames'
 import { ImageElement } from '../elements/ImageElement'
-import { ConditionalWrapper } from 'functions'
+import { ConditionalWrapper, domainImage } from 'functions'
 import Link from 'next/link'
 import { ReactChild } from 'react'
 import ModuleTitle from 'elements/ModuleTitle'
@@ -66,6 +66,7 @@ const PhotoItem = (props: PhotoItemProps) => {
                 styles[`item_${itemIndex + 1}`]
             )}
             lang="en"
+            style={{ backgroundImage: item.textureImage?.gradient }}
         >
             <ConditionalWrapper
                 condition={item.isWrapLink ? true : false}
@@ -89,7 +90,15 @@ const PhotoItem = (props: PhotoItemProps) => {
                     {item.hasGridCaption && (
                         <figcaption
                             className={cn(styles.caption)}
-                            style={item.image ? { background: themeStyles.captionBackground } : { background: `${item.promoColor}` }}
+                            style={
+                                item.image
+                                    ? { background: themeStyles.captionBackground }
+                                    : well === '1'
+                                    ? {
+                                          backgroundImage: `url(${item.textureImage?.image ? domainImage(item.textureImage.image, true, cmsUrl) : ''})`,
+                                      }
+                                    : { background: `${item.promoColor}` }
+                            }
                         >
                             <div>
                                 {(item.headline || item.subheader) && <HeadlineBlock item={item} well={well} columns={columns} modType="photo_grid" />}

@@ -402,6 +402,7 @@ export interface ArticleItems {
     hasGridCaption?: boolean
     promoColor?: string
     itemCount?: number
+    textureImage?: { image: string; gradient: string }
 }
 
 export interface ArticleProps {

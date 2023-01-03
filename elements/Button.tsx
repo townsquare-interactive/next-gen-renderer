@@ -14,8 +14,6 @@ export const Button = (props: BtnProps) => {
 
     const linkHoverStyles = `#id_${modId} .btn_link:hover .btn_1{color: ${themeStyles['promoColor']}; background-color: ${themeStyles['textColorAccent']}} #id_${modId} .btn_link:hover .btn_2{color: ${themeStyles['promoColor']}; border-color: ${themeStyles['promoColor']}} #id_${modId}}`
 
-    //.btn_link:hover .btn_alt{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['promoColor']}
-
     const promoButtonStyles = `#id_${modId} .item_${itemCount} .btn_promo {color: ${promoColor}; background-color: ${themeStyles['textColorAccent']}} #id_${modId} .item_${itemCount} .btn_promo:hover{color: ${themeStyles['textColorAccent']}; background-color: ${promoColor}}`
 
     return (
