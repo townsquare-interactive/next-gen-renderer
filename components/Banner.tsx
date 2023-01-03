@@ -2,7 +2,7 @@
 import styles from './banner.module.scss'
 import { ArticleProps, ItemWrapProps, ModuleItemProps } from '../types'
 import cn from 'classnames'
-import { ConditionalWrapper } from '../functions'
+import { ConditionalWrapper, domainImage } from '../functions'
 import { Fragment, ReactChild } from 'react'
 import Link from 'next/link'
 import { Button } from '../elements/Button'
@@ -56,8 +56,6 @@ const Banner = (props: ArticleProps) => {
 const ModuleItem = (props: ModuleItemProps) => {
     const { item, modId, itemIndex, cmsUrl, themeStyles, type, imgsize, columns, well } = props
 
-    console.log(item.buttonList)
-
     return (
         <article
             className={cn(
@@ -71,13 +69,12 @@ const ModuleItem = (props: ModuleItemProps) => {
                     [styles.yHds]: item.headline || item.subheader,
                     [styles.nHds]: !item.headline || !item.subheader,
                     [styles.yLk]: (item.pagelink || item.weblink || item.pagelink2 || item.weblink2) && !item.twoButtons,
-                    ['border-background']: well == '1',
                 },
                 styles[`item_${itemIndex + 1}`],
                 `item_${itemIndex + 1}`
             )}
             lang="en"
-            style={{ background: `${item.promoColor}` }}
+            style={well === '1' ? { backgroundImage: item.textureImage?.gradient } : { background: `${item.promoColor}` }}
         >
             <ConditionalWrapper
                 condition={item.isWrapLink ? true : false}
@@ -88,6 +85,13 @@ const ModuleItem = (props: ModuleItemProps) => {
                         className={cn('btn_link')}
                         target={item.newwindow == 1 ? '_blank' : item.newwindow2 == 1 ? '_blank' : '_self'}
                         aria-label={item.headline || 'block-link'}
+                        style={
+                            well === '1'
+                                ? {
+                                      backgroundImage: `url(${item.textureImage?.image ? domainImage(item.textureImage.image, true, cmsUrl) : ''})`,
+                                  }
+                                : { background: 'transparent' }
+                        }
                     >
                         <div
                             className={cn(styles['item-wrap'], 'btn_link', {
@@ -104,6 +108,13 @@ const ModuleItem = (props: ModuleItemProps) => {
                         className={cn(styles['item-wrap'], {
                             ['hero-background']: item.isFeatured === 'active' && type === 'article',
                         })}
+                        style={
+                            well === '1'
+                                ? {
+                                      backgroundImage: `url(${item.textureImage?.image ? domainImage(item.textureImage.image, true, cmsUrl) : ''})`,
+                                  }
+                                : { background: 'transparent' }
+                        }
                     >
                         {children}
                     </div>

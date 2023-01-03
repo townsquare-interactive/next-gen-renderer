@@ -107,10 +107,10 @@
             transition: all 0.2s ease-in-out;
         }
 
-        &.btn_w {
+        /* &.btn_w {
             margin: auto 0 0;
             width: 100%;
-        }
+        } */
     }
 
     .btn-wrap {
@@ -156,10 +156,10 @@
         .btn {
             align-self: flex-start;
 
-            &.btn_w {
+            /* &.btn_w {
                 margin: auto 0 0;
                 width: 100%;
-            }
+            } */
         }
 
         //alignment modifiers
@@ -214,27 +214,38 @@
         }
     }
 
-    .article,
-    .article_1,
-    .article_2,
-    .article_3 {
-        a {
-            @include breakpoints.sm {
-                &:first-of-type {
-                    margin-left: 0;
-                    margin-right: 0.25rem;
-                }
+    &.article,
+    &.article_1,
+    &.article_2,
+    &.article_3 {
+        .btn-wrap {
+            a {
+                @include breakpoints.sm {
+                    &:first-of-type {
+                        margin-left: 0;
+                        margin-right: 0.25rem;
+                    }
 
-                &:last-of-type {
-                    margin-right: 0;
-                    margin-left: 0.25rem;
+                    &:last-of-type {
+                        margin-right: 0;
+                        margin-left: 0.25rem;
+                    }
                 }
             }
         }
     }
+
+    .one-btn-w {
+        width: 100%;
+
+        .btn_w {
+            margin: auto 0 0 !important;
+            width: 100% !important;
+        }
+    }
 }
 
-.h {
+/* .h {
     //on item
     background-image: linear-gradient(-45deg, #3eb183, #8c2ac7);
 
@@ -259,21 +270,4 @@
         linear-gradient(45deg, transparent 100%, #ccc 95%), linear-gradient(-45deg, transparent 95%, #ccc 95%);
     background-size: 20px 20px;
     background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
-}
-
-//checkerboard
-/* background-color: white;
-background-image:
-  linear-gradient(45deg, #ccc 25%, transparent 25%),
-  linear-gradient(-45deg, #ccc 25%, transparent 25%),
-  linear-gradient(45deg, transparent 75%, #ccc 75%),
-  linear-gradient(-45deg, transparent 75%, #ccc 75%);
-background-size:20px 20px;
-background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
-
-
-background:
-  linear-gradient(rgb(0,0,0,.3) 8px, transparent 8px) 0 -4px,
-  linear-gradient(90deg, rgb(0,0,0,.3) 8px, transparent 8px) -4px 0;
-background-color: #00c2d8;
-background-size: 100px 100px, 100px 100px, 50px 50px, 50px 50px; */
+} */

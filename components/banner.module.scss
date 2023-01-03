@@ -195,27 +195,8 @@
             }
         }
 
-        &.article_3,
-        &.article {
-            .item-wrap {
-                padding: 1.5rem;
-            }
-
-            @container item (min-width:637px) {
-                .item-wrap {
-                    padding: 3rem 2rem 2rem;
-                }
-            }
-
-            @container item (min-width:775px) {
-                .item-wrap {
-                    padding: 2rem;
-
-                    @include breakpoints.lg-min {
-                        padding: 4rem 1.5rem;
-                    }
-                }
-            }
+        .item-wrap {
+            padding: 1.5rem;
         }
     }
 
