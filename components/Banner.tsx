@@ -88,7 +88,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                         style={
                             well === '1'
                                 ? {
-                                      backgroundImage: `url(${item.textureImage?.image ? domainImage(item.textureImage.image, true, cmsUrl) : ''})`,
+                                      backgroundImage: `url(${item.textureImage?.image ? domainImage(item.textureImage.image, false) : ''})`,
                                   }
                                 : { background: 'transparent' }
                         }
@@ -111,7 +111,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                         style={
                             well === '1'
                                 ? {
-                                      backgroundImage: `url(${item.textureImage?.image ? domainImage(item.textureImage.image, true, cmsUrl) : ''})`,
+                                      backgroundImage: `url(${item.textureImage?.image ? domainImage(item.textureImage.image, false) : ''})`,
                                   }
                                 : { background: 'transparent' }
                         }

@@ -4,6 +4,8 @@ import { ConditionalWrapperProps, ThemeStyles, GlobalData, CMSPage } from 'types
 const bucketUrl = 'https://townsquareinteractive.s3.amazonaws.com'
 const localUrl = 'elitesports.com/preview'
 const cmsUrl = 'clttestsiteforjoshedwards'
+
+const globalAssets = bucketUrl + '/global-assets'
 const env = process.env.NEXT_PUBLIC_URL_ENV
 const domain = process.env.NEXT_PUBLIC_BASE_URL
 export const bucketAndSiteUrl = getDomain(true)
@@ -38,9 +40,12 @@ export function domainImage(url: string, cms = false, cmsSiteUrl = '') {
     if (cms == true) {
         let imageUrl = 'http://' + (cmsSiteUrl || cmsUrl + '.production.townsquareinteractive.com') + url
         return encodeURI(imageUrl)
-    } else {
+    } /* else {
         const assetsApi = process.env.NEXT_PUBLIC_API_URL_ASSETS || bucketUrl
         let imageUrl = process.env.NEXT_PUBLIC_URL_ENV ? envCheck(assetsApi) + '/assets' + url : assetsApi + '/' + localUrl + '/assets' + url
+        return encodeURI(imageUrl)
+    } */ else {
+        let imageUrl = globalAssets + url
         return encodeURI(imageUrl)
     }
 }
