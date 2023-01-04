@@ -66,7 +66,7 @@ const PhotoItem = (props: PhotoItemProps) => {
                 styles[`item_${itemIndex + 1}`]
             )}
             lang="en"
-            style={{ backgroundImage: item.textureImage?.gradient }}
+            style={{ backgroundImage: `linear-gradient(-45deg, ${item.textureImage?.gradientColors[0]}, ${item.textureImage?.gradientColors[1]})` }}
         >
             <ConditionalWrapper
                 condition={item.isWrapLink ? true : false}

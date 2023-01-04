@@ -4,6 +4,7 @@ import { ConditionalWrapperProps, ThemeStyles, GlobalData, CMSPage } from 'types
 const bucketUrl = 'https://townsquareinteractive.s3.amazonaws.com'
 const localUrl = 'elitesports.com/preview'
 const cmsUrl = 'clttestsiteforjoshedwards'
+const assetFolder = '/assets/'
 
 const globalAssets = bucketUrl + '/global-assets'
 const env = process.env.NEXT_PUBLIC_URL_ENV
@@ -36,7 +37,7 @@ export function getDomain(cms = false) {
 }
 
 //Determines url for grabbing images
-export function domainImage(url: string, cms = false, cmsSiteUrl = '') {
+export function domainImage(url: string, cms = false, cmsSiteUrl = '', type = '') {
     if (cms == true) {
         let imageUrl = 'http://' + (cmsSiteUrl || cmsUrl + '.production.townsquareinteractive.com') + url
         return encodeURI(imageUrl)
@@ -44,7 +45,10 @@ export function domainImage(url: string, cms = false, cmsSiteUrl = '') {
         const assetsApi = process.env.NEXT_PUBLIC_API_URL_ASSETS || bucketUrl
         let imageUrl = process.env.NEXT_PUBLIC_URL_ENV ? envCheck(assetsApi) + '/assets' + url : assetsApi + '/' + localUrl + '/assets' + url
         return encodeURI(imageUrl)
-    } */ else {
+    } */ else if (type === 'favicon') {
+        let imageUrl = bucketUrl + '/' + cmsSiteUrl + assetFolder + url
+        return encodeURI(imageUrl)
+    } else {
         let imageUrl = globalAssets + url
         return encodeURI(imageUrl)
     }
@@ -54,8 +58,6 @@ export function createInlineStyles(themeStyles: ThemeStyles) {
     const textColors = `.accent-txt{color:${themeStyles['textColorAccent']}} .txt-color{color:${themeStyles['textColor']}} .txt-color-heading{color:${themeStyles['headingColor']}} .navLink:hover{color: ${themeStyles['navHover']}} .navLink{color:${themeStyles['NavText']}} .socialIcon:hover{background-color: ${themeStyles['navHover']}} .socialIcon{color:${themeStyles['NavText']}} .currentNav{color:${themeStyles['navCurrent']}} .caption-txt{color:${themeStyles.captionText}}`
 
     const btnStyles = `.btn_1{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['btnBackground']}} .btn_1:hover{color: ${themeStyles['btnBackground']}; background-color: ${themeStyles['textColorAccent']}} .btn_2{color: ${themeStyles['linkColor']}; border-color: ${themeStyles['linkColor']}} .btn_2:hover{color: ${themeStyles['btnBackground']}; border-color: ${themeStyles['btnBackground']}} .btn_alt{color: ${themeStyles['promoColor']}; background-color: ${themeStyles['textColorAccent']}} .btn_alt:hover{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['promoColor']}}`
-
-    //
 
     const backgroundStyles = `.border-background{background-color:${themeStyles['accentBackgroundColor']}} .hero-background{background-color:${themeStyles['promoColor']}} .content-background{background-color:${themeStyles['bckdContent']}} .footer{background-color:${themeStyles['footerBackground']}; color: ${themeStyles['footerText']}} .header-background{background-color:${themeStyles['headerBackground']}}`
 

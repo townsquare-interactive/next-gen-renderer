@@ -74,7 +74,11 @@ const ModuleItem = (props: ModuleItemProps) => {
                 `item_${itemIndex + 1}`
             )}
             lang="en"
-            style={well === '1' ? { backgroundImage: item.textureImage?.gradient } : { background: `${item.promoColor}` }}
+            style={
+                well === '1'
+                    ? { backgroundImage: `linear-gradient(-45deg, ${item.textureImage?.gradientColors[0]}, ${item.textureImage?.gradientColors[1]})` }
+                    : { background: `${item.promoColor}` }
+            }
         >
             <ConditionalWrapper
                 condition={item.isWrapLink ? true : false}

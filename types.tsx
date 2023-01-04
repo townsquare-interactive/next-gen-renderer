@@ -121,6 +121,7 @@ export interface GlobalData {
     cmsColors?: any
     favicon?: string
     cmsUrl: string
+    s3Folder: string
 }
 
 interface ContactIcons {
@@ -402,7 +403,7 @@ export interface ArticleItems {
     hasGridCaption?: boolean
     promoColor?: string
     itemCount?: number
-    textureImage?: { image: string; gradient: string }
+    textureImage?: { image: string; gradientColors: [string, string] }
 }
 
 export interface ArticleProps {
