@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { Button } from '../elements/Button'
 import ModuleTitle from 'elements/ModuleTitle'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
+import Image from 'next/image'
 
 const Banner = (props: ArticleProps) => {
     const { columns = 1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl, disabled } = props
@@ -80,6 +81,20 @@ const ModuleItem = (props: ModuleItemProps) => {
                     : { background: `${item.promoColor}` }
             }
         >
+            {/*             {item.textureImage?.image && (
+                <Image
+                    src={domainImage(item.textureImage?.image, false)}
+                    alt={item.img_alt_tag || ''}
+                    quality="50"
+                    //priority={item.desc ? false : true}
+                    //style={{ width: '100%', height: 'auto' }}
+                    sizes="(max-width: 1920px) 100vw,
+                            (max-width: 1200px) 70vw,
+                            100vw"
+                    fill
+                />
+            )} */}
+
             <ConditionalWrapper
                 condition={item.isWrapLink ? true : false}
                 trueOutput={(children: ReactChild) => (
@@ -119,6 +134,14 @@ const ModuleItem = (props: ModuleItemProps) => {
                                   }
                                 : { background: 'transparent' }
                         }
+                        /* style={
+                            well === '1'
+                                ? {
+                                      backgroundImage: `url(data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='13' height='13' viewBox='0 0 4 4'%3E%3Cpath fill='%239C92AC' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E;)`,
+                                      
+                                  }
+                                : { background: 'transparent' }
+                        } */
                     >
                         {children}
                     </div>

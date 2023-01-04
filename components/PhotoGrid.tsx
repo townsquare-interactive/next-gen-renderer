@@ -25,7 +25,9 @@ export const PhotoGrid = (props: PhotoGridProps) => {
             {title && <ModuleTitle title={title} />}
             <div className={styles.wrapper}>
                 {items.map((item, index) =>
-                    item.disabled != 'disabled' ? (
+                    item.disabled === 'disabled' ? (
+                        <></>
+                    ) : (
                         <PhotoItem
                             item={item}
                             well={well}
@@ -38,8 +40,6 @@ export const PhotoGrid = (props: PhotoGridProps) => {
                             itemIndex={index}
                             cmsUrl={cmsUrl}
                         />
-                    ) : (
-                        <></>
                     )
                 )}
             </div>

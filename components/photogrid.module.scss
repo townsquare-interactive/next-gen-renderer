@@ -16,7 +16,6 @@
     }
 
     .wrapper {
-        //max-width: 75.5em;
         max-width: 74em;
         margin-left: auto;
         margin-right: auto;
@@ -84,7 +83,6 @@
     }
 
     .caption {
-        //text-align: center;
         padding: 0.5rem 1rem 0.75rem;
         position: absolute;
         bottom: 0;
@@ -161,11 +159,4 @@
             align-items: center;
         }
     }
-
-    /*  .nImg {
-        .caption:first-of-type {
-            //backdrop-filter: brightness(35%);
-            backdrop-filter: brightness(35%);
-        }
-    } */
 }

@@ -9,8 +9,8 @@ const assetFolder = '/assets/'
 const globalAssets = bucketUrl + '/global-assets'
 const env = process.env.NEXT_PUBLIC_URL_ENV
 const domain = process.env.NEXT_PUBLIC_BASE_URL
-export const bucketAndSiteUrl = getDomain(true)
 
+export const bucketAndSiteUrl = getDomain(true)
 //determines environment (preview/live) and creates url for it
 function envCheck(api: string) {
     if (env === '1') {
