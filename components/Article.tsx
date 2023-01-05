@@ -19,7 +19,7 @@ const Article = (props: ArticleProps) => {
     } else {
         return (
             <div
-                className={cn(styles['root'], styles['tsflex'], styles['grid'], styles['root-container'], styles[`col_${columns}`], styles[`${type}`], {
+                className={cn(styles['root'], styles['flex-mod'], styles['grid'], styles['root-container'], styles[`col_${columns}`], styles[`${type}`], {
                     [styles.beacon]: type === 'article',
                     [styles.well]: well == '1',
                     [styles.not_well]: !well,

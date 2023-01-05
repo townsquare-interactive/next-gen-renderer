@@ -1,26 +1,20 @@
 @use 'sass:math';
 @use './styles/breakpoints.scss';
 @use './styles/utils.scss';
-
-@mixin tsFlex {
-    display: -moz-flex;
-    display: flex;
-}
+@value columns from '../components/container.module.scss';
 
 .root {
     padding-top: 3rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-
-    * {
-        box-sizing: border-box;
-    }
+    /*     padding-left: utils.$item-margins;
+    padding-right: utils.$item-margins; */
+    padding-left: utils.$container-margins;
+    padding-right: utils.$container-margins;
 
     .wrapper {
         max-width: 75.5em;
         margin-left: auto;
         margin-right: auto;
-        padding: 0 1.5rem 1rem;
+        padding-top: 0;
 
         .item {
             margin-bottom: 2rem;
@@ -43,38 +37,14 @@
         }
     }
 
-    &.tsflex {
-        @include tsFlex;
-        box-lines: multiple;
-        flex-wrap: wrap;
-
-        .wrapper {
-            @include tsFlex;
-            box-lines: multiple;
-            flex-wrap: wrap;
-            width: 100%;
-        }
-
-        .item {
-            @include tsFlex;
-            box-flex: 0;
-            flex: 0 1 auto;
-            align-self: stretch;
-            -ms-flex-item-align: stretch;
-            flex: 0 1 auto;
-            align-self: stretch;
-            box-orient: vertical;
-            box-direction: normal;
-            flex-direction: column;
-            margin-bottom: 2rem;
-        }
+    &.flex-mod {
+        @include utils.flex-mod;
 
         &.article_1,
         &.article_2 {
             .item-wrap {
-                @include tsFlex;
-                box-orient: vertical;
-                box-direction: normal;
+                display: -moz-flex;
+                display: flex;
                 flex-direction: column;
                 box-flex: 1;
                 flex: 1 1 auto;
@@ -288,7 +258,7 @@
             }
         }
 
-        &.tsflex .item {
+        &.flex-mod .item {
             margin-bottom: 4rem;
 
             &:last-of-type &.col_1 {
@@ -328,4 +298,8 @@
     &.item-flex {
         @include utils.item_flex;
     }
+}
+
+.columns .root {
+    @include utils.column-module;
 }

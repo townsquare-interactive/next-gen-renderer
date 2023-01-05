@@ -27,19 +27,20 @@ export const Container = (props: ContainerProps) => {
                         <div className={styles.featured}>
                             <Renderer config={page.data.modules[0]} themeStyles={themeStyles} cmsUrl={cmsUrl} />
                         </div>
-
-                        <div className={cn(styles.columns, styles[`${columnStyles}`])}>
-                            {page.data.modules.map((data: ModuleData, idx: number) => (
-                                <Fragment key={idx}>
-                                    {data && idx != 0 ? (
-                                        <div className={cn(styles['column' + (idx + 1)])}>
-                                            <Renderer config={data} themeStyles={themeStyles} cmsUrl={cmsUrl} />
-                                        </div>
-                                    ) : (
-                                        <></>
-                                    )}
-                                </Fragment>
-                            ))}
+                        <div className={styles['column-blocks']}>
+                            <div className={cn(styles.columns, styles[`${columnStyles}`])}>
+                                {page.data.modules.map((data: ModuleData, idx: number) => (
+                                    <Fragment key={idx}>
+                                        {data && idx != 0 ? (
+                                            <div className={cn(styles['column' + (idx + 1)], styles.column)}>
+                                                <Renderer config={data} themeStyles={themeStyles} cmsUrl={cmsUrl} />
+                                            </div>
+                                        ) : (
+                                            <></>
+                                        )}
+                                    </Fragment>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 )}
