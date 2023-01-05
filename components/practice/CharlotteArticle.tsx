@@ -56,7 +56,7 @@ const CharlotteArticle = (props: ArticleProps) => {
                     [styles.col_2]: props.columns === 2,
                     [styles.col_3]: props.columns === 3,
                     [styles.col_4]: props.columns === 4,
-                    [styles[`tsD_${props.class}`]]: props.class,
+                    [styles[`tsD_${props.customClassName}`]]: props.customClassName,
                 }
             )}
         >

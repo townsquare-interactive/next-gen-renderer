@@ -11,7 +11,7 @@ import { useRef } from 'react'
 import SocialBar from 'elements/SocialBar'
 
 const ContainerHeader = (props: ContainerHeaderProps) => {
-    const { siteData, themeStyles, navSwitch, setContentMargin } = props
+    const { siteData, themeStyles, navSwitch } = props
     const [windowHeight, setWindowHeight] = useState(0)
 
     //set state for scroll
@@ -28,32 +28,11 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
     //Determine Height of header for margins in layout
     const ref = useRef<HTMLDivElement>(null)
 
-    //This works better but may be slower on site speed?
-    /*  useEffect(() => {
-        const currentItem = ref.current
-
-        const myObserver = new ResizeObserver((entries) => {
-            entries.forEach((entry) => {
-                setContentMargin(entry.contentRect.height)
-            })
-        })
-        currentItem && myObserver.observe(currentItem)
-
-        return () => {
-            if (currentItem) myObserver.unobserve(currentItem)
-        }
-    }) */
-
-    /*     useEffect(() => {
-        setContentMargin(ref?.current?.offsetHeight)
-    }, [setContentMargin, ref?.current?.offsetHeight])   */
-
     return (
         <header
             className={cn(styles.root, 'header-background', {
                 [styles.shrink]: ref?.current?.offsetHeight && windowHeight > ref?.current?.offsetHeight,
             })}
-            //style={{ height: '203px', top: 203 - newH }}
             ref={ref}
         >
             <div className={styles.wrapper}>
@@ -81,32 +60,3 @@ const HeaderLogoBlock = (props: any) => {
         </div>
     )
 }
-
-/* const useObserver = ({ callback, element }: any) => {
-    const current = element && element.current
-
-    const observer = useRef<any>(null)
-
-    useEffect(() => {
-        // if we are already observing old element
-        if (observer && observer.current && current) {
-            observer.current.unobserve(current)
-        }
-        const resizeObserverOrPolyfill = ResizeObserver
-        observer.current = new resizeObserverOrPolyfill(callback)
-        observe()
-
-        return () => {
-            if (observer && observer.current && element && element.current) {
-                observer.current.unobserve(element.current)
-            }
-        }
-    }, [current])
-
-    const observe = () => {
-        if (element && element.current && observer.current) {
-            observer.current.observe(element.current)
-        }
-    }
-}
- */

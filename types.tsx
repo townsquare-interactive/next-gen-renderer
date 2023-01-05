@@ -561,9 +561,7 @@ export interface ContainerHeaderProps {
     pages?: PagesProps[]
     siteData: GlobalData
     themeStyles: ThemeStyles
-    // navCheck: boolean
     navSwitch: () => void
-    setContentMargin: (height: any) => void
 }
 
 export interface SocialItem {

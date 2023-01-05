@@ -69,7 +69,7 @@ const BeaconArticle = (props: ArticleProps) => {
                     [styles.column_amt_2]: props.columns === 2,
                     [styles.column_amt_3]: props.columns === 3,
                     [styles.column_amt_4]: props.columns === 4,
-                    [styles[`tsidesign_${props.class}`]]: props.class,
+                    [styles[`tsidesign_${props.customClassName}`]]: props.customClassName,
                 }
             )}
         >
