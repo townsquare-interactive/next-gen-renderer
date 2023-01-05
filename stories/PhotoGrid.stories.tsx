@@ -1,11 +1,11 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import Article from '../components/Article'
-import { ArticleItems } from '../types'
+import { PhotoGrid } from '../components/PhotoGrid'
 import { themeStyles } from 'storydefaults'
+import { ArticleItems } from '../types'
 
 export default {
-    title: 'new/Article',
-    component: Article,
+    title: 'new/PhotoGrid',
+    component: PhotoGrid,
     argTypes: {
         imgsize: {
             options: ['landscape_4_3', 'landscape_3_2', 'portrait_3_4', 'portrait_2_3', 'square_1_1', 'widescreen_16_9', 'widescreen_2_4_1', 'widescreen_3_1'],
@@ -19,10 +19,7 @@ export default {
             options: [1, 2, 3, 4],
             control: { type: 'radio' },
         },
-        type: {
-            options: ['article_1', 'article_2', 'article_3', 'article'],
-            control: { type: 'radio' },
-        },
+
         items: {
             align: {
                 options: ['left', 'right', 'center'],
@@ -30,44 +27,18 @@ export default {
             },
         },
     },
-} as ComponentMeta<typeof Article>
+} as ComponentMeta<typeof PhotoGrid>
 
-const Template: ComponentStory<typeof Article> = (args) => (
+const Template: ComponentStory<typeof PhotoGrid> = (args) => (
     <>
         {colorStyles && <style>{colorStyles}</style>}
-        <Article {...args} />
+        <PhotoGrid {...args} />
     </>
 )
 
 const Default = Template.bind({})
 const item1: ArticleItems = {
-    id: '6574f9b4_f1d5_4b10_feb6_928e62803df3',
-    headline: 'Article Module',
-    subheader: 'Subheader',
-    image: '/files/2022/08/bellagioFountain1.jpg',
-    icon: '',
-    icon2: '',
-    icon3: '',
-    bkgrd_color: '',
-    btnType: '',
-    btnType2: '',
-    btnSize: '',
-    btnSize2: '',
-    desc: 'This is the desc',
-    pagelink: '',
-    weblink: '',
-    actionlbl: '',
-    newwindow: null,
-    pagelink2: '',
-    weblink2: '',
-    actionlbl2: '',
-    newwindow2: null,
-    align: '',
-    isFeatured: '',
-    isPlugin: '',
-    headerTag: '',
-    plugin: '',
-    disabled: '',
+    id: '90ef65f9_4954_42b0_d634_aa27fde549e1',
     buttonList: [
         {
             name: 'btn1',
@@ -87,13 +58,42 @@ const item1: ArticleItems = {
             linkType: 'local',
         },
     ],
+    desc: '',
+    icon: '',
+    align: 'center',
+    icon2: '',
+    icon3: '',
+    image: '/files/2022/08/AngelTop.jpg',
+    plugin: '',
+    btnSize: '',
+    btnType: '',
+    weblink: '',
+    btnSize2: '',
+    btnType2: '',
+    disabled: '',
+    isPlugin: '',
+    pagelink: '/article/',
+    weblink2: '',
+    actionlbl: 'Contact Us',
+    headerTag: '',
+    newwindow: '',
+    pagelink2: '',
+    subheader: 'sub',
+    actionlbl2: '',
+    isFeatured: '',
+    newwindow2: '',
+    bkgrd_color: '',
+    headline: 'Headline',
+    hasGridCaption: true,
+    visibleButton: true,
 }
+
 const item2 = item1
 const item3 = item1
 
 Default.args = {
     modId: '1',
-    type: 'article_1',
+    type: 'banner_1',
     well: '',
     align: 'left',
     imgsize: 'landscape_4_3',
@@ -167,48 +167,7 @@ H1.args = {
         },
     ],
 }
-export const OnlySub = Template.bind({})
-OnlySub.args = {
-    ...Plain.args,
-    items: [
-        {
-            ...item1,
-            subheader: 'Only Subheadline',
-            headline: '',
-            desc: '',
-            image: '',
-            align: '',
-        },
-    ],
-}
-export const OnlyHeadline = Template.bind({})
-OnlyHeadline.args = {
-    ...Plain.args,
-    items: [
-        {
-            ...item1,
-            subheader: '',
-            headline: 'Only Headline',
-            desc: '',
-            image: '',
-            align: '',
-        },
-    ],
-}
-export const OnlyDesc = Template.bind({})
-OnlyDesc.args = {
-    ...Plain.args,
-    items: [
-        {
-            ...item1,
-            subheader: '',
-            headline: '',
-            desc: 'Only Desc',
-            image: '',
-            align: '',
-        },
-    ],
-}
+
 export const OnlyImage = Template.bind({})
 OnlyImage.args = {
     ...Plain.args,
@@ -287,6 +246,25 @@ Button.args = {
             icon: 'faArchway',
             btnType: 'btn_1',
             btnSize: 'md',
+            buttonList: [
+                {
+                    name: 'btn1',
+                    link: '/',
+                    window: '',
+                    icon: { iconPrefix: 'fas', iconModel: 'rocket' },
+                    label: 'Contact Us Today',
+                    active: true,
+                    linkType: 'local',
+                },
+                {
+                    name: 'btn2',
+                    link: '/columns/',
+                    icon: { iconPrefix: 'fab', iconModel: 'facebook-square' },
+                    label: 'button 2',
+                    active: false,
+                    linkType: 'local',
+                },
+            ],
         },
     ],
 }
@@ -328,6 +306,7 @@ TwoButtons.args = {
                     label: 'button 2',
                     active: true,
                     linkType: 'local',
+                    btnType: 'btn_2',
                 },
             ],
         },
@@ -345,6 +324,26 @@ Button2.args = {
             icon2: 'faAnchor',
             btnType2: 'btn_2',
             btnSize2: 'md',
+            buttonList: [
+                {
+                    name: 'btn1',
+                    link: '/',
+                    window: '',
+                    icon: { iconPrefix: 'fas', iconModel: 'rocket' },
+                    label: 'Contact Us Today',
+                    active: false,
+                    linkType: 'local',
+                },
+                {
+                    name: 'btn2',
+                    link: '/columns/',
+                    icon: { iconPrefix: 'fab', iconModel: 'facebook-square' },
+                    label: 'button 2',
+                    active: true,
+                    linkType: 'local',
+                    btnType: 'btn_2',
+                },
+            ],
         },
     ],
 }
@@ -379,18 +378,8 @@ LinkNoButton.args = {
             weblink: 'https://www.facebook.com/',
             align: 'left',
             newwindow: 1,
-        },
-    ],
-}
-
-export const ButtonNoLink = Template.bind({})
-ButtonNoLink.args = {
-    ...Default.args,
-    items: [
-        {
-            ...item1,
-            actionlbl: 'hello',
-            align: 'left',
+            isWrapLink: true,
+            pagelink: '/',
         },
     ],
 }
@@ -512,140 +501,9 @@ MultipleBorderLinked.args = {
         },
     ],
 }
-export const CustomClass = Template.bind({})
-CustomClass.args = {
-    ...AlignLeft.args,
-    customClassName: 'hello',
-}
-
-export const Caption = Template.bind({})
-Caption.args = {
-    ...Plain.args,
-
-    items: [{ ...item1, caption_tag: 'caption', captionOn: 0 }],
-}
 
 export const Hidden = Template.bind({})
 Hidden.args = {
     ...Plain.args,
     items: [{ ...item1, disabled: 'disabled' }],
-}
-export const V2 = Template.bind({})
-V2.args = {
-    ...Plain.args,
-    type: 'article_2',
-}
-export const V2Multiple = Template.bind({})
-V2Multiple.args = {
-    ...Plain.args,
-    type: 'article_2',
-    columns: 2,
-    items: [{ ...item1 }, { ...item1 }, { ...item1 }, { ...item1 }],
-}
-export const V3 = Template.bind({})
-V3.args = {
-    ...Plain.args,
-    type: 'article_3',
-    items: [{ ...item1 }],
-}
-export const V3Left = Template.bind({})
-V3Left.args = {
-    ...Plain.args,
-    type: 'article_3',
-    items: [{ ...item1, align: 'left' }],
-}
-export const V3Multiple = Template.bind({})
-V3Multiple.args = {
-    ...Plain.args,
-    type: 'article_3',
-    columns: 2,
-    items: [
-        { ...item1, align: 'right' },
-        { ...item1, align: 'right' },
-        { ...item1, align: 'right' },
-        { ...item1, align: 'right' },
-    ],
-}
-export const V3TextSizes = Template.bind({})
-V3TextSizes.args = {
-    ...Plain.args,
-    type: 'article_3',
-    columns: 3,
-    items: [
-        { ...item1, headSize: 'font_xs', descSize: 'font_sm' },
-        { ...item1, headSize: 'font_md', descSize: 'font_md' },
-        { ...item1, headSize: 'font_xl', descSize: 'font_xl' },
-    ],
-}
-export const Icon3 = Template.bind({})
-Icon3.args = {
-    ...Plain.args,
-
-    items: [{ ...item1, icon3: 'faAnchor' }],
-}
-
-export const Beacon = Template.bind({})
-Beacon.args = {
-    ...Plain.args,
-    type: 'article',
-    items: [{ ...item1 }],
-}
-export const BeaconLeft = Template.bind({})
-BeaconLeft.args = {
-    ...Plain.args,
-    type: 'article',
-    items: [{ ...item1, align: 'left' }],
-}
-
-export const BeaconHero = Template.bind({})
-BeaconHero.args = {
-    ...Plain.args,
-    type: 'article',
-    items: [
-        { ...item1, align: 'left', isFeatured: 'active' },
-        /*        { ...item2, align: 'left' }, */
-    ],
-}
-
-export const BeaconHeroMultiple = Template.bind({})
-BeaconHeroMultiple.args = {
-    ...Plain.args,
-    columns: 3,
-    type: 'article',
-    items: [
-        {
-            ...item1,
-            actionlbl: 'Contact Us',
-            pagelink: '/',
-            // actionlbl2: 'Contact 2',
-            //pagelink2: '/',
-            align: 'center',
-            icon: 'faArchway',
-            icon2: 'faAnchor',
-            btnType: 'btn_1',
-        },
-        {
-            ...item1,
-            actionlbl: 'Contact Us',
-            pagelink: '/',
-            // actionlbl2: 'Contact 2',
-            //pagelink2: '/',
-            align: 'center',
-            icon: 'faArchway',
-            icon2: 'faAnchor',
-            btnType: 'btn_1',
-            isFeatured: 'active',
-        },
-        {
-            ...item1,
-            actionlbl: 'Contact Us',
-            pagelink: '/',
-            // actionlbl2: 'Contact 2',
-            //pagelink2: '/',
-            align: 'center',
-            icon: 'faArchway',
-            icon2: 'faAnchor',
-            btnType: 'btn_1',
-        },
-    ],
 }

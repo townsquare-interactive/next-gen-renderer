@@ -11,14 +11,14 @@ import ModuleTitle from 'elements/ModuleTitle'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
 
 export const PhotoGrid = (props: PhotoGridProps) => {
-    const { columns = 1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl } = props
+    const { columns = 1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl, customClassName } = props
 
     return (
         <div
             className={cn(styles['root'], styles['tsflex'], styles['root-container'], styles[`col_${columns}`], styles['grid'], `col_${columns}`, {
                 [styles.well]: well == '1',
                 [styles.not_well]: !well,
-                [styles[`cst_${props.class}`]]: props.class,
+                [styles[`cst_${customClassName}`]]: customClassName,
             })}
             id={`id_${modId}`}
         >

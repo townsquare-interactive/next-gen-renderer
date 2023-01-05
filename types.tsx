@@ -417,7 +417,7 @@ export interface ArticleProps {
     items: ArticleItems[]
     imgsize: string
     /**Custom class addition*/
-    class: string
+    customClassName: string
     /**Title text to go above module*/
     title: string
     hideTitle?: number
@@ -443,7 +443,8 @@ export interface PhotoGridProps {
     items: ArticleItems[]
     imgsize: string
     /**Custom class addition*/
-    class: string
+    class?: string
+    customClassName?: string
     /**Title text to go above module*/
     title: string
     hideTitle?: number

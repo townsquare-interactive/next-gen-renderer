@@ -11,7 +11,7 @@ import { HeadlineBlock } from 'elements/HeadlineBlock'
 import Image from 'next/image'
 
 const Banner = (props: ArticleProps) => {
-    const { columns = 1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl, disabled } = props
+    const { columns = 1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl, disabled, customClassName } = props
 
     if (disabled === 'disabled') {
         return <></>
@@ -22,7 +22,7 @@ const Banner = (props: ArticleProps) => {
                     [styles.beacon]: type === 'article',
                     [styles.well]: well == '1',
                     [styles.not_well]: !well,
-                    [styles[`cst_${props.class}`]]: props.class,
+                    [styles[`cst_${customClassName}`]]: customClassName,
                 })}
                 id={`id_${modId}`}
             >

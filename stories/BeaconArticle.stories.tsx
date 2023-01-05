@@ -312,7 +312,7 @@ export const CustomClass = Template.bind({})
 CustomClass.args = {
     ...AlignLeft.args,
     well: '1',
-    class: 'hello',
+    customClassName: 'hello',
 }
 
 export const Caption = Template.bind({})
