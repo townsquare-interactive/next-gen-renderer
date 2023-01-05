@@ -15,7 +15,7 @@ export const PhotoGrid = (props: PhotoGridProps) => {
 
     return (
         <div
-            className={cn(styles['root'], styles['tsflex'], styles['root-container'], styles[`col_${columns}`], styles['grid'], `col_${columns}`, {
+            className={cn(styles['root'], styles['flex-mod'], styles['root-container'], styles[`col_${columns}`], styles['grid'], `col_${columns}`, {
                 [styles.well]: well == '1',
                 [styles.not_well]: !well,
                 [styles[`cst_${customClassName}`]]: customClassName,

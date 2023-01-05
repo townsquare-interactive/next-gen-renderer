@@ -3,7 +3,7 @@
 @use '../../styles/variables.scss';
 @use '../../styles/utils.scss';
 
-@mixin tsFlex {
+@mixin flex-mod {
     display: -webkit-box;
     display: -moz-box;
     //display: box;
@@ -328,15 +328,15 @@
         }
     }
 
-    &.tsflex {
-        @include tsFlex;
+    &.flex-mod {
+        @include flex-mod;
         -webkit-box-lines: multiple;
         -moz-box-lines: multiple;
         box-lines: multiple;
         flex-wrap: wrap;
 
         .tsR {
-            @include tsFlex;
+            @include flex-mod;
             -webkit-box-lines: multiple;
             -moz-box-lines: multiple;
             box-lines: multiple;
@@ -355,7 +355,7 @@
             align-self: stretch;
             /*Full width ending*/
 
-            @include tsFlex;
+            @include flex-mod;
             box-orient: vertical;
             box-direction: normal;
             -moz-flex-direction: column;
@@ -363,7 +363,7 @@
             margin-bottom: 2rem;
 
             .tsI_wrp {
-                @include tsFlex;
+                @include flex-mod;
                 box-orient: vertical;
                 box-direction: normal;
                 -moz-flex-direction: column;

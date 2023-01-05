@@ -30,7 +30,7 @@ const CharlotteArticle = (props: ArticleProps) => {
             className={cn(
                 styles['tsB'],
                 styles['tsT_article'],
-                styles['tsflex'],
+                styles['flex-mod'],
 
                 {
                     [styles.a1]: props.type === 'article_1',

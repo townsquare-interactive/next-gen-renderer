@@ -8,7 +8,6 @@ import Link from 'next/link'
 import { Button } from '../elements/Button'
 import ModuleTitle from 'elements/ModuleTitle'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
-import Image from 'next/image'
 
 const Banner = (props: ArticleProps) => {
     const { columns = 1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl, disabled, customClassName } = props
@@ -18,8 +17,7 @@ const Banner = (props: ArticleProps) => {
     } else {
         return (
             <div
-                className={cn(styles['root'], styles['tsflex'], styles['root-container'], styles[`col_${columns}`], styles[`${type}`], {
-                    [styles.beacon]: type === 'article',
+                className={cn(styles['root'], styles['flex-mod'], styles['root-container'], styles[`${type}`], {
                     [styles.well]: well == '1',
                     [styles.not_well]: !well,
                     [styles[`cst_${customClassName}`]]: customClassName,
@@ -65,10 +63,6 @@ const ModuleItem = (props: ModuleItemProps) => {
                 {
                     [styles.hero]: item.isFeatured === 'active',
                     [styles.nHero]: !item.isFeatured,
-                    [styles.nImg]: !item.image,
-                    [styles.yImg]: item.image,
-                    [styles.yHds]: item.headline || item.subheader,
-                    [styles.nHds]: !item.headline || !item.subheader,
                     [styles.yLk]: (item.pagelink || item.weblink || item.pagelink2 || item.weblink2) && !item.twoButtons,
                 },
                 styles[`item_${itemIndex + 1}`],
