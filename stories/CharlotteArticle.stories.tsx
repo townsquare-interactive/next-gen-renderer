@@ -477,7 +477,7 @@ MultipleBorderLinked.args = {
 export const CustomClass = Template.bind({})
 CustomClass.args = {
     ...AlignLeft.args,
-    class: 'hello',
+    customClassName: 'hello',
 }
 
 export const Caption = Template.bind({})
