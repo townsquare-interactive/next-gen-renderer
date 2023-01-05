@@ -55,7 +55,7 @@ const Navbar = (props: NavBarProps) => {
     const { navCheck = false, navStyle = 'layout1', navImage, pages, borderNum, altText = '', themeStyles } = props
 
     const navStyles = {
-        background: `${themeStyles['navBackground']}`,
+        background: `${themeStyles['headerBackground']}`,
     }
 
     return (

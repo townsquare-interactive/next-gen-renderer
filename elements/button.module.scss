@@ -77,7 +77,9 @@
             width: 100%;
         }
 
-        &.btn_1 {
+        &.btn_1,
+        &.btn_alt,
+        &.btn_promo {
             box-shadow: 0 2px 10px rgb(0 0 0 / 25%);
             border-color: transparent;
 
@@ -105,10 +107,10 @@
             transition: all 0.2s ease-in-out;
         }
 
-        &.btn_w {
+        /* &.btn_w {
             margin: auto 0 0;
             width: 100%;
-        }
+        } */
     }
 
     .btn-wrap {
@@ -122,7 +124,7 @@
                 width: 100%;
             }
 
-            @include breakpoints.sm {
+            /*  @include breakpoints.sm {
                 &:first-of-type {
                     margin-left: 0;
                     margin-right: 0.25rem;
@@ -132,7 +134,7 @@
                     margin-right: 0;
                     margin-left: 0.25rem;
                 }
-            }
+            } */
         }
 
         .btn {
@@ -149,14 +151,15 @@
 
     &.article_1,
     &.article_2,
-    &.photo_grid {
+    &.photo_grid,
+    &.banner {
         .btn {
             align-self: flex-start;
 
-            &.btn_w {
+            /* &.btn_w {
                 margin: auto 0 0;
                 width: 100%;
-            }
+            } */
         }
 
         //alignment modifiers
@@ -210,4 +213,96 @@
             }
         }
     }
+
+    &.article,
+    &.article_1,
+    &.article_2,
+    &.article_3 {
+        .btn-wrap {
+            a {
+                @include breakpoints.sm {
+                    &:first-of-type {
+                        margin-left: 0;
+                        margin-right: 0.25rem;
+                    }
+
+                    &:last-of-type {
+                        margin-right: 0;
+                        margin-left: 0.25rem;
+                    }
+                }
+            }
+        }
+    }
+
+    .one-btn-w {
+        width: 100%;
+
+        .btn_w {
+            margin: auto 0 0 !important;
+            width: 100% !important;
+        }
+    }
 }
+
+/* .h {
+    //on item
+    background-image: linear-gradient(-45deg, #3eb183, #8c2ac7);
+
+    //on fig caption
+    background: linear-gradient(27deg, rgb(21, 21, 21, 0.3) 5px, transparent 5px) 0 5px,
+        linear-gradient(207deg, rgba(57, 56, 56, 0.3) 5px, transparent 5px) 10px 0px, linear-gradient(27deg, rgb(57, 57, 57, 0.3) 5px, transparent 5px) 0px 10px,
+        linear-gradient(207deg, rgb(57, 57, 57, 0.3) 5px, transparent 5px) 10px 5px, linear-gradient(90deg, rgba(160, 160, 160, 0.3) 10px, transparent 10px),
+        linear-gradient(
+            rgba(115, 115, 115, 0.3) 25%,
+            rgba(115, 115, 115, 0.3) 25%,
+            rgba(115, 115, 115, 0.3) 50%,
+            transparent 50%,
+            transparent 75%,
+            rgba(115, 115, 115, 0.3) 75%,
+            rgba(115, 115, 115, 0.3)
+        );
+    //background-color: #131313;
+    background-size: 20px 20px;
+
+    ///starry night one
+    background-image: linear-gradient(45deg, #ccc 5%, transparent 5%), linear-gradient(-45deg, #ccc 5%, transparent 5%),
+        linear-gradient(45deg, transparent 100%, #ccc 95%), linear-gradient(-45deg, transparent 95%, #ccc 95%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+} */
+
+/* background: linear-gradient(90deg, rgb(0,0,0,.1) 10px, transparent 10px) 10px 0 / 30px 35px,
+linear-gradient(180deg, rgb(0,0,0,.1) 10px, transparent 10px) 10px 0 / 30px 35px
+
+
+//Wavy good
+background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, rgb(229, 229, 247,.1) 10px ), repeating-linear-gradient( rgb(24, 170, 184,.1), rgb(10, 64, 69,.1) );
+
+
+//studded
+background-image:  linear-gradient(135deg, rgb(0,0,0,.1) 25%, transparent 25%), linear-gradient(225deg, rgb(0,0,0,.1) 25%, transparent 25%), linear-gradient(45deg, rgb(0,0,0,.1) 25%, transparent 25%), linear-gradient(315deg, rgb(0,0,0,.1) 25%, rgb(0,0,0,0) 25%);
+background-position:  10px 0, 10px 0, 0 0, 0 0;
+background-size: 5px 5px;
+background-repeat: repeat;
+
+//can also leave off background size
+
+
+background-image: radial-gradient(circle at center center, rgb(255,255,255,.1), rgb(255,255,255,.1)), repeating-radial-gradient(circle at center center, rgb(255,255,255,.1), rgb(255,255,255,.1), 10px, transparent 20px, transparent 10px);
+background-blend-mode: multiply;
+ */
+
+/* ,
+ linear-gradient(-60deg, transparent calc(50% - 2px), rgb(0,0,0,.2) calc(50% - 2px), rgb(0,0,0,.2) calc(50% + 1px), transparent calc(50% + 1px)) 0 0 / 40px 70px,
+ linear-gradient(60deg, transparent calc(50% - 2px), rgb(0,0,0,.2) calc(50% - 2px), rgb(0,0,0,.2) calc(50% + 1px), transparent calc(50% + 1px)) 0 0 / 40px 70px, */
+
+//images from other site svgs
+
+/*  background-image: url(data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='18' viewBox='0 0 100 18'%3E%3Cpath fill='%239C92AC' fill-opacity='0.4' d='M61.82 18c3.47-1.45 6.86-3.78 11.3-7.34C78 6.76 80.34 5.1 83.87 3.42 88.56 1.16 93.75 0 100 0v6.16C98.76 6.05 97.43 6 96 6c-9.59 0-14.23 2.23-23.13 9.34-1.28 1.03-2.39 1.9-3.4 2.66h-7.65zm-23.64 0H22.52c-1-.76-2.1-1.63-3.4-2.66C11.57 9.3 7.08 6.78 0 6.16V0c6.25 0 11.44 1.16 16.14 3.42 3.53 1.7 5.87 3.35 10.73 7.24 4.45 3.56 7.84 5.9 11.31 7.34zM61.82 0h7.66a39.57 39.57 0 0 1-7.34 4.58C57.44 6.84 52.25 8 46 8S34.56 6.84 29.86 4.58A39.57 39.57 0 0 1 22.52 0h15.66C41.65 1.44 45.21 2 50 2c4.8 0 8.35-.56 11.82-2z'%3E%3C/path%3E%3C/svg%3E);
+
+
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='13' height='13' viewBox='0 0 4 4'%3E%3Cpath fill='%239C92AC' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+
+
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='12' viewBox='0 0 20 12'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='charlie-brown' fill='%239C92AC' fill-opacity='0.4'%3E%3Cpath d='M9.8 12L0 2.2V.8l10 10 10-10v1.4L10.2 12h-.4zm-4 0L0 6.2V4.8L7.2 12H5.8zm8.4 0L20 6.2V4.8L12.8 12h1.4zM9.8 0l.2.2.2-.2h-.4zm-4 0L10 4.2 14.2 0h-1.4L10 2.8 7.2 0H5.8z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); */

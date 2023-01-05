@@ -56,7 +56,7 @@ const CharlotteArticle = (props: ArticleProps) => {
                     [styles.col_2]: props.columns === 2,
                     [styles.col_3]: props.columns === 3,
                     [styles.col_4]: props.columns === 4,
-                    [styles[`tsD_${props.class}`]]: props.class,
+                    [styles[`tsD_${props.customClassName}`]]: props.customClassName,
                 }
             )}
         >
@@ -574,8 +574,8 @@ const TheListItemAction = (props: TheListItemActionProps) => {
     let icon2 = props.icon2 ? icons[props.icon2] : faRocket
 
     const btns = props.well
-        ? `.btn1{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['promoColor']}} .btn_link:hover .btn1{color: ${props.themeStyles['promoColor']}; background-color: ${props.themeStyles['textColorAccent']}} .btn2{color: ${props.themeStyles['altColor']}; border-color: ${props.themeStyles['altColor']}} .btn_link:hover .btn2{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['altColor']}}`
-        : `.btn1{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['promoColor']}} .btn1:hover{color: ${props.themeStyles['promoColor']}; background-color: ${props.themeStyles['textColorAccent']}} .btn2{color: ${props.themeStyles['altColor']}; border-color: ${props.themeStyles['altColor']}} .btn2:hover{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['altColor']}}`
+        ? `.btn1{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['promoColor']}} .btn_link:hover .btn1{color: ${props.themeStyles['promoColor']}; background-color: ${props.themeStyles['textColorAccent']}} .btn2{color: ${props.themeStyles['promoColor']}; border-color: ${props.themeStyles['promoColor']}} .btn_link:hover .btn2{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['promoColor']}}`
+        : `.btn1{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['promoColor']}} .btn1:hover{color: ${props.themeStyles['promoColor']}; background-color: ${props.themeStyles['textColorAccent']}} .btn2{color: ${props.themeStyles['promoColor']}; border-color: ${props.themeStyles['promoColor']}} .btn2:hover{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['promoColor']}}`
 
     const link1 = props.pagelink || props.weblink
 

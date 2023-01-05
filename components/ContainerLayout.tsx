@@ -20,7 +20,7 @@ export default function Layout(props: LayoutProps) {
         <>
             <div className={cn(styles.root)}>
                 <SlidingHeader navSwitch={navSwitch} navCheck={navCheck} themeStyles={themeStyles} siteData={siteData} />
-                <ContainerHeader siteData={siteData} themeStyles={themeStyles} navSwitch={navSwitch} setContentMargin={setContentMargin} />
+                <ContainerHeader siteData={siteData} themeStyles={themeStyles} navSwitch={navSwitch} />
 
                 <main
                 //style={{ marginTop: contentMargin }}

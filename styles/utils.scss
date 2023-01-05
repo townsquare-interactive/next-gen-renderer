@@ -39,6 +39,9 @@ $lg-txt: 2.25em;
 }
 
 @mixin grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(auto, auto);
+
     @include breakpoints.sm-min {
         .wrapper {
             display: grid;
@@ -52,7 +55,10 @@ $lg-txt: 2.25em;
         @include breakpoints.sm-min {
             &.col_3 .wrapper,
             &.col_4 .wrapper {
-                grid-template-columns: 1fr 1fr;
+                //grid-template-columns: 1fr 1fr;
+                grid-template-columns: repeat(2, 1fr);
+                //grid-auto-rows: minmax(300px, auto);
+                grid-auto-rows: minmax(100px, auto);
             }
 
             &.col_4 .hero {
@@ -67,17 +73,23 @@ $lg-txt: 2.25em;
 
             &.col_2 .wrapper,
             &.col_4 .wrapper {
-                grid-template-columns: 1fr 1fr;
+                //grid-template-columns: 1fr 1fr;
+                grid-template-columns: repeat(2, 1fr);
+                grid-auto-rows: minmax(100px, auto);
             }
 
             &.col_3 .wrapper {
-                grid-template-columns: 1fr 1fr 1fr;
+                // grid-template-columns: 1fr 1fr 1fr;
+                grid-template-columns: repeat(3, 1fr);
+                grid-auto-rows: minmax(100px, auto);
             }
         }
 
         @container module (min-width:1025px) {
             &.col_4 .wrapper {
-                grid-template-columns: 1fr 1fr 1fr 1fr;
+                // grid-template-columns: 1fr 1fr 1fr 1fr;
+                grid-template-columns: repeat(4, 1fr);
+                grid-auto-rows: minmax(100px, auto);
             }
         }
     }
@@ -105,7 +117,7 @@ $lg-txt: 2.25em;
     }
 }
 
-@mixin article_flex {
+@mixin item_flex {
     @include breakpoints.sm-min {
         &.col_2,
         &.col_3,
@@ -172,14 +184,14 @@ $lg-txt: 2.25em;
     }
 }
 
-@mixin photoFlex {
+/* @mixin photoFlex {
     @include breakpoints.sm-min {
         &.col_2,
         &.col_3,
         &.col_4 {
             .item {
-                margin-left: utils.$item-margins;
-                margin-right: utils.$item-margins;
+                margin-left: $item-margins;
+                margin-right: $item-margins;
             }
         }
 
@@ -191,49 +203,49 @@ $lg-txt: 2.25em;
         }
 
         &.col_3 .item {
-            width: utils.$half-item-width;
+            width: $half-item-width;
         }
 
         &.col_4 .item {
-            width: utils.$half-item-width;
+            width: $half-item-width;
         }
     }
 
     @include breakpoints.md-min {
         &.col_2 .item,
         &.col_4 .item {
-            width: utils.$half-item-width;
+            width: $half-item-width;
         }
 
         &.col_3 .item {
-            width: utils.$third-item-width;
+            width: $third-item-width;
         }
 
         &.col_2 .hero {
-            width: utils.$full-item-width;
+            width: $full-item-width;
         }
 
         &.col_3 .hero {
-            width: utils.$col3-hero;
+            width: $col3-hero;
         }
 
         &.col_4 .hero {
-            width: utils.$half-item-width;
+            width: $half-item-width;
         }
     }
 
     @container module (min-width:1025px) {
         &.col_3 .nHero,
         &.beacon.col_3 .item {
-            width: utils.$third-item-width;
+            width: $third-item-width;
         }
 
         &.col_4 .nHero,
         &.beacon.col_4 .item {
-            width: utils.$quarteritem-width;
+            width: $quarteritem-width;
         }
     }
-}
+} */
 
 $root-bottom-margin: 30px;
 @mixin root {

@@ -16,10 +16,10 @@ const Footer = (props: FooterProps) => {
     }
 
     const phoneColor = {
-        color: `${props.themeStyles['altColor']}`,
+        color: `${props.themeStyles['promoColor']}`,
     }
 
-    const socialHover = `.socialLink:hover{color: ${props.themeStyles['altColor']}}`
+    const socialHover = `.socialLink:hover{color: ${props.themeStyles['promoColor']}}`
 
     const logo = props.logoUrl && domainImage(props.logoUrl)
 

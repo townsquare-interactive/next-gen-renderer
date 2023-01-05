@@ -8,22 +8,21 @@
 }
 
 .root {
-    padding-top: 3rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    //padding-top: 3rem;
 
     * {
         box-sizing: border-box;
     }
 
     .wrapper {
-        max-width: 75.5em;
+        //max-width: 75.5em;
         margin-left: auto;
         margin-right: auto;
-        padding: 0 1.5rem 1rem;
+        //padding: 0 1.5rem 1rem;
+        //padding: 1.5rem;
 
         .item {
-            margin-bottom: 2rem;
+            // margin-bottom: 2rem;
             width: utils.$full-width;
             margin-left: 0;
             margin-right: 0;
@@ -66,7 +65,7 @@
             box-orient: vertical;
             box-direction: normal;
             flex-direction: column;
-            margin-bottom: 2rem;
+            // margin-bottom: 2rem;
         }
 
         &.article_1,
@@ -82,17 +81,16 @@
         }
     }
 
-    &.article_1,
-    &.article_2 {
-        text-align: left;
+    /*     &.article_1,
+    &.article_2 { */
+    text-align: left;
 
-        .right {
-            text-align: right;
-        }
+    .right {
+        text-align: right;
+    }
 
-        .center {
-            text-align: center;
-        }
+    .center {
+        text-align: center;
     }
 
     .dsc {
@@ -129,26 +127,11 @@
             line-height: 1.4285714286em;
         }
 
-        .item {
+        /* .item {
             &.nHero:first-of-type {
                 margin-top: 2rem;
             }
-        }
-        @include breakpoints.sm-min {
-            .mod_left .image-block,
-            .mod_right .image-block {
-                width: utils.$third-width;
-                display: block;
-            }
-            .mod_left .image-block {
-                float: left;
-                margin-right: 1rem;
-            }
-            .mod_right .image-block {
-                float: right;
-                margin-left: 1rem;
-            }
-        }
+        } */
     }
 
     //for larger screens (starts at 1025)
@@ -158,17 +141,6 @@
             margin-top: 0.9411764706em;
             margin-bottom: 0.9411764706em;
             line-height: 1.4117647059em;
-        }
-
-        .mod_left .image-block,
-        .mod_right .image-block {
-            width: math.div(5, 12) * 100%;
-        }
-        .mod_left .image-block {
-            margin-right: 2rem;
-        }
-        .mod_right .image-block {
-            margin-left: 2rem;
         }
 
         &.article_2.not_well .yImg .txt-block {
@@ -184,12 +156,6 @@
 
         .item {
             box-shadow: 0 0 2px rgb(0 0 0 / 6%), 0 2px 4px rgb(0 0 0 / 12%);
-
-            &.yLk:hover {
-                transition: all 0.1s ease-in-out;
-                transform: scale(1.01);
-                box-shadow: 1px 1px 10px rgb(0 0 0 / 25%);
-            }
         }
 
         &.article_1 {
@@ -223,28 +189,17 @@
             }
         }
 
-        &.article_3,
-        &.article {
-            .item-wrap {
-                padding: 1.5rem;
-            }
-
-            @container item (min-width:637px) {
-                .item-wrap {
-                    padding: 3rem 2rem 2rem;
-                }
-            }
-
-            @container item (min-width:775px) {
-                .item-wrap {
-                    padding: 2rem;
-
-                    @include breakpoints.lg-min {
-                        padding: 4rem 1.5rem;
-                    }
-                }
-            }
+        .item-wrap {
+            padding: 1.5rem;
         }
+
+        /* .item:nth-child(odd) .item-wrap {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='12' viewBox='0 0 20 12'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='charlie-brown' fill='%239C92AC' fill-opacity='0.4'%3E%3Cpath d='M9.8 12L0 2.2V.8l10 10 10-10v1.4L10.2 12h-.4zm-4 0L0 6.2V4.8L7.2 12H5.8zm8.4 0L20 6.2V4.8L12.8 12h1.4zM9.8 0l.2.2.2-.2h-.4zm-4 0L10 4.2 14.2 0h-1.4L10 2.8 7.2 0H5.8z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .item:nth-child(even) .item-wrap {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='52' viewBox='0 0 52 52'%3E%3Cpath fill='%239C92AC' fill-opacity='0.4' d='M0 17.83V0h17.83a3 3 0 0 1-5.66 2H5.9A5 5 0 0 1 2 5.9v6.27a3 3 0 0 1-2 5.66zm0 18.34a3 3 0 0 1 2 5.66v6.27A5 5 0 0 1 5.9 52h6.27a3 3 0 0 1 5.66 0H0V36.17zM36.17 52a3 3 0 0 1 5.66 0h6.27a5 5 0 0 1 3.9-3.9v-6.27a3 3 0 0 1 0-5.66V52H36.17zM0 31.93v-9.78a5 5 0 0 1 3.8.72l4.43-4.43a3 3 0 1 1 1.42 1.41L5.2 24.28a5 5 0 0 1 0 5.52l4.44 4.43a3 3 0 1 1-1.42 1.42L3.8 31.2a5 5 0 0 1-3.8.72zm52-14.1a3 3 0 0 1 0-5.66V5.9A5 5 0 0 1 48.1 2h-6.27a3 3 0 0 1-5.66-2H52v17.83zm0 14.1a4.97 4.97 0 0 1-1.72-.72l-4.43 4.44a3 3 0 1 1-1.41-1.42l4.43-4.43a5 5 0 0 1 0-5.52l-4.43-4.43a3 3 0 1 1 1.41-1.41l4.43 4.43c.53-.35 1.12-.6 1.72-.72v9.78zM22.15 0h9.78a5 5 0 0 1-.72 3.8l4.44 4.43a3 3 0 1 1-1.42 1.42L29.8 5.2a5 5 0 0 1-5.52 0l-4.43 4.44a3 3 0 1 1-1.41-1.42l4.43-4.43a5 5 0 0 1-.72-3.8zm0 52c.13-.6.37-1.19.72-1.72l-4.43-4.43a3 3 0 1 1 1.41-1.41l4.43 4.43a5 5 0 0 1 5.52 0l4.43-4.43a3 3 0 1 1 1.42 1.41l-4.44 4.43c.36.53.6 1.12.72 1.72h-9.78zm9.75-24a5 5 0 0 1-3.9 3.9v6.27a3 3 0 1 1-2 0V31.9a5 5 0 0 1-3.9-3.9h-6.27a3 3 0 1 1 0-2h6.27a5 5 0 0 1 3.9-3.9v-6.27a3 3 0 1 1 2 0v6.27a5 5 0 0 1 3.9 3.9h6.27a3 3 0 1 1 0 2H31.9z'%3E%3C/path%3E%3C/svg%3E");
+        } */
     }
 
     &.article {
@@ -256,27 +211,9 @@
     }
 
     @container module (min-width:481px) {
-        &.col_1 .item:first-of-type {
+        /*  &.col_1 .item:first-of-type {
             margin-top: 2rem;
-        }
-
-        &.article {
-            .mod_left .image-block,
-            .mod_right .image-block {
-                width: math.div(5, 12) * 100%;
-                display: block;
-            }
-
-            .mod_left .image-block {
-                float: left;
-                margin-right: 1rem;
-            }
-
-            .mod_right .image-block {
-                float: right;
-                margin-left: 1rem;
-            }
-        }
+        } */
 
         &.article_1,
         &.article_2,
@@ -289,7 +226,7 @@
         }
 
         &.tsflex .item {
-            margin-bottom: 4rem;
+            //margin-bottom: 4rem;
 
             &:last-of-type &.col_1 {
                 margin-bottom: 2rem;
@@ -319,11 +256,11 @@
         }
     }
 
-    &.grid {
+    /*     &.grid {
         &:not(.col_1) {
             @include utils.grid;
         }
-    }
+    } */
 
     &.item-flex {
         @include utils.item_flex;

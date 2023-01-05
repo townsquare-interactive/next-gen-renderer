@@ -54,6 +54,7 @@ Default.args = {
     siteData: {
         themeStyles: themeStyles,
         cmsUrl: 'clt.com',
+        s3Folder: 'cltsiteforjoshedwards',
 
         logos: { show: 1, type: 'image', markup: '', hasLinks: false, alignment: 'center', image_src: '/files/2022/09/Yos2.jpg', image_link: '/' },
         mobileLogos: {

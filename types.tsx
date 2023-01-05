@@ -3,28 +3,58 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { ReactChild, ReactElement, ReactNode } from 'react'
 
 export interface ThemeStyles {
-    promoColor: string
-    textColor: string
+    logoColor: string
+
     headingColor: string
-    textColorAccent: string
-    linkColor: string
-    accentBackgroundColor: string
-    accentColor2: string
-    altColor: string
-    headerBackground: string
-    footerBackground: string
-    navBackground: string
-    BckdHeaderSocial: string
     subHeadingColor: string
-    NavText: string
-    linkHover?: string
-    bckdContent?: string
-    footerText: string
-    captionBackground: string
-    navCurrent: string
-    captionText: string
-    navHover: string
+    textColor: string
+    linkColor: string
+    linkHover: string
+
+    //ad
+    btnText: string
+
     btnBackground: string
+    textColorAccent: string
+
+    //addd
+    heroSubheadline: string
+    heroText: string
+    heroBtnText: string
+    heroBtnBackground: string
+    heroLink: string
+    heroLinkHover: string
+
+    captionText: string
+    captionBackground: string
+    NavText: string
+    navHover: string
+    navCurrent: string
+    //add
+    backgroundMain: string
+
+    bckdContent: string
+    // headerBackground: cmsColors.color_23.value,
+    headerBackground: string
+
+    BckdHeaderSocial: string
+    accentBackgroundColor: string
+    //add
+    backgroundHero: string
+    footerBackground: string
+    footerText: string
+    //add
+    footerLink: string
+    promoText: string
+
+    //accentColor2: cmsColors.color_32.value,
+
+    promoColor: string
+    promoColor2: string
+    promoColor3: string
+    promoColor4: string
+    promoColor5: string
+    promoColor6: string
 }
 
 export interface ContainerProps {
@@ -91,6 +121,7 @@ export interface GlobalData {
     cmsColors?: any
     favicon?: string
     cmsUrl: string
+    s3Folder: string
 }
 
 interface ContactIcons {
@@ -370,6 +401,9 @@ export interface ArticleItems {
     visibleButton?: boolean
     imagePriority?: boolean
     hasGridCaption?: boolean
+    promoColor?: string
+    itemCount?: number
+    textureImage?: { image: string; gradientColors: [string, string] }
 }
 
 export interface ArticleProps {
@@ -383,7 +417,7 @@ export interface ArticleProps {
     items: ArticleItems[]
     imgsize: string
     /**Custom class addition*/
-    class: string
+    customClassName: string
     /**Title text to go above module*/
     title: string
     hideTitle?: number
@@ -409,7 +443,8 @@ export interface PhotoGridProps {
     items: ArticleItems[]
     imgsize: string
     /**Custom class addition*/
-    class: string
+    class?: string
+    customClassName?: string
     /**Title text to go above module*/
     title: string
     hideTitle?: number
@@ -526,9 +561,7 @@ export interface ContainerHeaderProps {
     pages?: PagesProps[]
     siteData: GlobalData
     themeStyles: ThemeStyles
-    // navCheck: boolean
     navSwitch: () => void
-    setContentMargin: (height: any) => void
 }
 
 export interface SocialItem {
@@ -640,6 +673,8 @@ export interface BtnProps {
     align: string
     columns: number | string
     buttonList: any[]
+    promoColor?: string
+    itemCount?: number
 }
 
 /*------------------------------Non CMS types-------------------------*/
