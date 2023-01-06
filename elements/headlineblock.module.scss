@@ -1,6 +1,7 @@
 @use 'sass:math';
 @use './styles/breakpoints.scss';
 @use './styles/utils.scss';
+@use '../styles/variables.scss';
 
 @value well from '../components/article.module.scss';
 @value nDsc from '../components/article.module.scss';
@@ -12,7 +13,7 @@
 
 .hd-block {
     .sh {
-        font-size: utils.$xs-txt;
+        font-size: variables.$xs-txt;
         margin-top: 0.5714285714em;
         margin-bottom: 0.5714285714em;
         line-height: 1.1428571429em;
@@ -20,7 +21,7 @@
     }
 
     .hd {
-        font-size: utils.$sm-txt;
+        font-size: variables.$sm-txt;
         margin-top: 0.7058823529em;
         margin-bottom: 0.4705882353em;
         line-height: 1.1764705882em;
@@ -46,7 +47,7 @@
         //temp: medium screens, need to revise size maybe
         @container item (min-width: 343px) {
             .hd {
-                font-size: utils.$md-txt;
+                font-size: variables.$md-txt;
                 margin-top: 0.6666666667em;
                 margin-bottom: 0.5em;
                 line-height: 1.1666666667em;
@@ -54,7 +55,7 @@
             }
 
             .sh {
-                font-size: utils.$sm-txt;
+                font-size: variables.$sm-txt;
                 margin-top: 0.7058823529em;
                 margin-bottom: 0.4705882353em;
                 line-height: 1.1764705882em;
@@ -64,7 +65,7 @@
         //for larger screens (starts at 1025)
         @container item (min-width: 775px) {
             .hd {
-                font-size: utils.$lg-txt;
+                font-size: variables.$lg-txt;
                 margin-top: 0.6666666667em;
                 margin-bottom: 0.4444444444em;
                 line-height: 1.1111111111em;
@@ -72,7 +73,7 @@
             }
 
             .sh {
-                font-size: utils.$md-txt;
+                font-size: variables.$md-txt;
                 margin-top: 0.6666666667em;
                 margin-bottom: 0.5em;
                 line-height: 1.1666666667em;
@@ -86,7 +87,7 @@
 .nImg {
     .photo_grid {
         .hd {
-            font-size: utils.$md-txt;
+            font-size: variables.$md-txt;
             margin-top: 0.6666666667em;
             margin-bottom: 0.5em;
             line-height: 1.1666666667em;
@@ -94,7 +95,7 @@
         }
 
         .sh {
-            font-size: utils.$sm-txt;
+            font-size: variables.$sm-txt;
             margin-top: 0.7058823529em;
             margin-bottom: 0.4705882353em;
             line-height: 1.1764705882em;
@@ -102,7 +103,7 @@
 
         @container item (min-width: 343px) {
             .hd {
-                font-size: utils.$lg-txt;
+                font-size: variables.$lg-txt;
                 margin-top: 0.6666666667em;
                 margin-bottom: 0.4444444444em;
                 line-height: 1.1111111111em;
@@ -110,7 +111,7 @@
             }
 
             .sh {
-                font-size: utils.$md-txt;
+                font-size: variables.$md-txt;
                 margin-top: 0.6666666667em;
                 margin-bottom: 0.5em;
                 line-height: 1.1666666667em;

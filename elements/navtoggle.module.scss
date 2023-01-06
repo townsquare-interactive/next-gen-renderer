@@ -1,5 +1,5 @@
 @use './styles/breakpoints.scss';
-@use './styles/utils.scss';
+@use './styles/variables.scss';
 
 .nav-open {
     background: transparent;
@@ -10,7 +10,7 @@
     opacity: 1;
     max-width: initial;
     cursor: pointer;
-    font-size: utils.$md-txt;
+    font-size: variables.$md-txt;
     line-height: 1.1666666667em;
     letter-spacing: -0.0125rem;
     font-weight: 400;

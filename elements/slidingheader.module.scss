@@ -1,5 +1,5 @@
 @use '../styles/breakpoints.scss';
-@use '../styles/utils.scss';
+@use './styles/variables.scss';
 
 .root {
     &.visible {
@@ -55,9 +55,7 @@
             top: 1.75rem;
             border-radius: 2px;
             font-family: 'tsi-cms';
-            font-size: utils.$sm-txt;
-            // margin-top: 0.7058823529em;
-            // margin-bottom: 0.4705882353em;
+            font-size: variables.$sm-txt;
             line-height: 1.1764705882em;
             margin: 0;
             padding: 0.25rem 0.5rem;

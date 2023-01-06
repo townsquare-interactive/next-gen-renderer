@@ -1,5 +1,6 @@
 @use './styles/breakpoints.scss';
 @use './styles/utils.scss';
+@use './styles/variables.scss';
 
 .root {
     * {
@@ -19,7 +20,7 @@
             margin-left: auto;
             margin-right: auto;
             padding-top: 3rem;
-            gap: utils.$grid-gap;
+            gap: variables.$grid-gap;
 
             @include breakpoints.md-min {
                 display: grid;

@@ -1,14 +1,15 @@
 @use 'sass:math';
 @use './styles/breakpoints.scss';
 @use './styles/utils.scss';
+@use './styles/variables.scss';
 @value columns from '../components/container.module.scss';
 
 .root {
     padding-top: 3rem;
-    /*     padding-left: utils.$item-margins;
-    padding-right: utils.$item-margins; */
-    padding-left: utils.$container-margins;
-    padding-right: utils.$container-margins;
+    /*     padding-left: variables.$item-margins;
+    padding-right: variables.$item-margins; */
+    padding-left: variables.$container-margins;
+    padding-right: variables.$container-margins;
 
     .wrapper {
         max-width: 75.5em;
@@ -18,7 +19,7 @@
 
         .item {
             margin-bottom: 2rem;
-            width: utils.$full-width;
+            width: variables.$full-width;
             margin-left: 0;
             margin-right: 0;
 
@@ -66,7 +67,7 @@
     }
 
     .dsc {
-        font-size: utils.$xs-txt;
+        font-size: variables.$xs-txt;
         margin-top: 1.1428571429em;
         margin-bottom: 1.1428571429em;
         line-height: 1.4285714286em;
@@ -84,7 +85,7 @@
 
     @container item (min-width:0px) {
         .dsc {
-            font-size: utils.$xs-txt;
+            font-size: variables.$xs-txt;
             margin-top: 1.1428571429em;
             margin-bottom: 1.1428571429em;
             line-height: 1.4285714286em;
@@ -93,7 +94,7 @@
 
     @container item (min-width:343px) {
         .dsc {
-            font-size: utils.$xs-txt;
+            font-size: variables.$xs-txt;
             margin-top: 1.1428571429em;
             margin-bottom: 1.1428571429em;
             line-height: 1.4285714286em;
@@ -107,7 +108,7 @@
         @include breakpoints.sm-min {
             .mod_left .image-block,
             .mod_right .image-block {
-                width: utils.$third-width;
+                width: variables.$third-width;
                 display: block;
             }
             .mod_left .image-block {
@@ -124,7 +125,7 @@
     //for larger screens (starts at 1025)
     @container item (min-width:775px) {
         .dsc {
-            font-size: utils.$sm-txt;
+            font-size: variables.$sm-txt;
             margin-top: 0.9411764706em;
             margin-bottom: 0.9411764706em;
             line-height: 1.4117647059em;
@@ -252,7 +253,7 @@
         &.article_2,
         &.article_3 {
             .nHero {
-                width: utils.$ten-12;
+                width: variables.$ten-12;
                 margin-left: auto;
                 margin-right: auto;
             }
@@ -270,7 +271,7 @@
         @include breakpoints.sm-min {
             &.col_1 .wrapper .item,
             &.col_2 .wrapper .item {
-                width: utils.$ten-12;
+                width: variables.$ten-12;
                 margin-left: auto;
                 margin-right: auto;
             }
@@ -296,10 +297,10 @@
     }
 
     &.item-flex {
-        @include utils.item_flex;
+        @include utils.item-flex;
     }
 }
 
 .columns .root {
-    @include utils.column-module;
+    @include utils.column-mod;
 }

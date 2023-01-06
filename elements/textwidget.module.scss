@@ -1,9 +1,8 @@
-@use './styles/breakpoints.scss';
-@use './styles/utils.scss';
+@use './styles/variables.scss';
 
 .root {
     .dsc {
-        font-size: utils.$xss-txt;
+        font-size: variables.$xss-txt;
         margin-top: 0.9230769231em;
         margin-bottom: 0.9230769231em;
         line-height: 1.5384615385em;

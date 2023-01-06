@@ -1,11 +1,12 @@
 @use './styles/breakpoints.scss';
 @use './styles/utils.scss';
+@use './styles/variables.scss';
 @value columns from '../components/container.module.scss';
 
 .root {
     padding-top: 3rem;
-    padding-left: utils.$container-margins;
-    padding-right: utils.$container-margins;
+    padding-left: variables.$container-margins;
+    padding-right: variables.$container-margins;
 
     .wrapper {
         max-width: 75.5em;
@@ -15,7 +16,7 @@
 
         .item {
             margin-bottom: 2rem;
-            width: utils.$full-width;
+            width: variables.$full-width;
             margin-left: 0;
             margin-right: 0;
             width: 100%;
@@ -89,7 +90,7 @@
     }
 
     //temp: medium screens, need to revise size maybe
-    @container item (min-width: utils.$med-container) {
+    @container item (min-width: variables.$med-container) {
         .item {
             &.nHero:first-of-type {
                 margin-top: 2rem;
@@ -110,7 +111,7 @@
         }
 
         .nHero {
-            width: utils.$ten-12;
+            width: variables.$ten-12;
         }
     }
 
@@ -119,7 +120,7 @@
     }
 
     &.flexAlt {
-        @include utils.item_flex;
+        @include utils.item-flex;
     }
 
     .hero,
@@ -132,5 +133,5 @@
 }
 
 .columns .root {
-    @include utils.column-module;
+    @include utils.column-mod;
 }
