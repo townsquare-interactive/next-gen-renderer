@@ -5,17 +5,10 @@
 @value columns from '../components/container.module.scss';
 
 .root {
-    padding-top: 3rem;
-    /*     padding-left: variables.$item-margins;
-    padding-right: variables.$item-margins; */
-    padding-left: variables.$container-margins;
-    padding-right: variables.$container-margins;
+    @include utils.module-root;
 
     .wrapper {
-        max-width: 75.5em;
-        margin-left: auto;
-        margin-right: auto;
-        padding-top: 0;
+        @include utils.wrapper-size(0);
 
         .item {
             margin-bottom: 2rem;
@@ -93,13 +86,6 @@
     }
 
     @container item (min-width:343px) {
-        .dsc {
-            font-size: variables.$xs-txt;
-            margin-top: 1.1428571429em;
-            margin-bottom: 1.1428571429em;
-            line-height: 1.4285714286em;
-        }
-
         .item {
             &.nHero:first-of-type {
                 margin-top: 2rem;
@@ -195,7 +181,7 @@
         }
 
         &.article_3,
-        &.article {
+        &.beacon {
             .item-wrap {
                 padding: 1.5rem;
             }
@@ -218,7 +204,7 @@
         }
     }
 
-    &.article {
+    &.beacon {
         .hero {
             .item-wrap {
                 padding: 1.5rem;
@@ -231,7 +217,7 @@
             margin-top: 2rem;
         }
 
-        &.article {
+        &.beacon {
             .mod_left .image-block,
             .mod_right .image-block {
                 width: math.div(5, 12) * 100%;

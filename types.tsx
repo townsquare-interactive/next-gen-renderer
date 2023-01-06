@@ -404,6 +404,8 @@ export interface ArticleItems {
     promoColor?: string
     itemCount?: number
     textureImage?: { image: string; gradientColors: [string, string] }
+    modOne?: number
+    modTwo?: number
 }
 
 export interface ArticleProps {

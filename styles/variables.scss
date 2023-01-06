@@ -12,14 +12,16 @@ $half-item-width: $half-width - ($item-margins * 2);
 $third-item-width: $third-width - ($item-margins * 2);
 $quarteritem-width: $quarter-width - ($item-margins * 2);
 
-//grid system
+//grid sizes
 $col3-hero: (math.div(8, 12) * 100%) - ($item-margins * 2);
 $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
 
-//container sizes (not working for some reason in queries)
+//container sizes
 $med-container: 343px;
 $lg-container: 637px;
 $xl-container: 775px;
+
+$wrap-max-width: 75.5em;
 
 //text
 $xss-txt: 0.8125em;

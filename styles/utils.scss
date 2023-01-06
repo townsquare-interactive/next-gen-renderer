@@ -2,14 +2,25 @@
 @use './styles/breakpoints.scss';
 @use 'sass:math';
 
-/*-------------------------------- Variables-----------------------*/
-
 /*-------------------------------- Mixins-----------------------*/
 
 @mixin useFlex {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+@mixin wrapper-size($padding) {
+    max-width: variables.$wrap-max-width;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: #{$padding};
+}
+
+@mixin module-root {
+    padding-top: 3rem;
+    padding-left: variables.$container-margins;
+    padding-right: variables.$container-margins;
 }
 
 @mixin grid {
@@ -344,7 +355,6 @@
 
 /*------------------Other-----------------*/
 
-$root-bottom-margin: 30px;
 @mixin root {
     width: 100%;
     margin-bottom: variables.$root-bottom-margin;

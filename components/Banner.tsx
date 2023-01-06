@@ -71,7 +71,9 @@ const ModuleItem = (props: ModuleItemProps) => {
             lang="en"
             style={
                 well === '1'
-                    ? { backgroundImage: `linear-gradient(-45deg, ${item.textureImage?.gradientColors[0]}, ${item.textureImage?.gradientColors[1]})` }
+                    ? {
+                          backgroundImage: `linear-gradient(-45deg, ${item.textureImage?.gradientColors[0]}, ${item.textureImage?.gradientColors[1]})`,
+                      }
                     : { background: `${item.promoColor}` }
             }
         >
@@ -98,19 +100,21 @@ const ModuleItem = (props: ModuleItemProps) => {
                         className={cn('btn_link')}
                         target={item.newwindow == 1 ? '_blank' : item.newwindow2 == 1 ? '_blank' : '_self'}
                         aria-label={item.headline || 'block-link'}
-                        style={
-                            well === '1'
-                                ? {
-                                      backgroundImage: `url(${item.textureImage?.image ? domainImage(item.textureImage.image, false) : ''})`,
-                                  }
-                                : { background: 'transparent' }
-                        }
                     >
                         <div
                             className={cn(styles['item-wrap'], 'btn_link', {
                                 ['hero-background']: item.isFeatured === 'active' && type === 'article',
                             })}
                             aria-label={item.headline || 'item-wrap'}
+                            style={
+                                well === '1'
+                                    ? {
+                                          backgroundImage: `url(${item.textureImage?.image ? domainImage(item.textureImage.image, false) : ''})`,
+                                          backgroundPositionY: item.modTwo + '%',
+                                          height: item.modOne,
+                                      }
+                                    : { background: 'transparent', height: item.modOne }
+                            }
                         >
                             {children}
                         </div>
@@ -125,6 +129,8 @@ const ModuleItem = (props: ModuleItemProps) => {
                             well === '1'
                                 ? {
                                       backgroundImage: `url(${item.textureImage?.image ? domainImage(item.textureImage.image, false) : ''})`,
+                                      backgroundPositionY: item.modTwo + '%',
+                                      height: item.modOne,
                                   }
                                 : { background: 'transparent' }
                         }
@@ -141,18 +147,22 @@ const ModuleItem = (props: ModuleItemProps) => {
                     </div>
                 )}
             >
-                <ItemWrap
-                    item={item}
-                    imgsize={imgsize}
-                    well={well}
-                    type={type}
-                    themeStyles={themeStyles}
-                    isFeatured={item.isFeatured}
-                    columns={columns}
-                    modId={modId}
-                    cmsUrl={cmsUrl}
-                    align={item.align}
-                />
+                <>
+                    {(!item.modOne || item.modOne >= 200) && (
+                        <ItemWrap
+                            item={item}
+                            imgsize={imgsize}
+                            well={well}
+                            type={type}
+                            themeStyles={themeStyles}
+                            isFeatured={item.isFeatured}
+                            columns={columns}
+                            modId={modId}
+                            cmsUrl={cmsUrl}
+                            align={item.align}
+                        />
+                    )}
+                </>
             </ConditionalWrapper>
         </article>
     )

@@ -16,10 +16,7 @@
         padding-right: 1.5rem;
 
         .columns {
-            max-width: 75.5em;
-            margin-left: auto;
-            margin-right: auto;
-            padding-top: 3rem;
+            @include utils.wrapper-size(3rem);
             gap: variables.$grid-gap;
 
             @include breakpoints.md-min {
