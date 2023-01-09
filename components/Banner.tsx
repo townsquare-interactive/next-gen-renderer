@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { Button } from '../elements/Button'
 import ModuleTitle from 'elements/ModuleTitle'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Banner = (props: ArticleProps) => {
     const { columns = 1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl, disabled, customClassName } = props
@@ -113,7 +114,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                                           backgroundPositionY: item.modTwo + '%',
                                           height: item.modOne,
                                       }
-                                    : { background: 'transparent', height: item.modOne }
+                                    : { height: item.modOne }
                             }
                         >
                             {children}
@@ -132,7 +133,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                                       backgroundPositionY: item.modTwo + '%',
                                       height: item.modOne,
                                   }
-                                : { background: 'transparent' }
+                                : {}
                         }
                         /* style={
                             well === '1'
@@ -148,20 +149,17 @@ const ModuleItem = (props: ModuleItemProps) => {
                 )}
             >
                 <>
-                    {(!item.modOne || item.modOne >= 200) && (
-                        <ItemWrap
-                            item={item}
-                            imgsize={imgsize}
-                            well={well}
-                            type={type}
-                            themeStyles={themeStyles}
-                            isFeatured={item.isFeatured}
-                            columns={columns}
-                            modId={modId}
-                            cmsUrl={cmsUrl}
-                            align={item.align}
-                        />
-                    )}
+                    <ItemWrap
+                        item={item}
+                        imgsize={imgsize}
+                        well={well}
+                        type={type}
+                        themeStyles={themeStyles}
+                        isFeatured={item.isFeatured}
+                        columns={columns}
+                        modId={modId}
+                        align={item.align}
+                    />
                 </>
             </ConditionalWrapper>
         </article>
@@ -169,14 +167,36 @@ const ModuleItem = (props: ModuleItemProps) => {
 }
 
 const ItemWrap = (props: ItemWrapProps) => {
-    const { item, well, isFeatured, themeStyles, type, modId, cmsUrl, columns, align } = props
+    const { item, well, themeStyles, type, modId, columns } = props
 
     return (
         <>
-            <>{(item.headline || item.subheader) && <HeadlineBlock item={item} well={1} columns={columns} isBeaconHero={item.isBeaconHero} modType={type} />}</>
+            {item.imageIcon && (
+                <>
+                    {(!item.modOne || item.modOne >= 350) && (
+                        <div className={cn(styles['icon-block'])}>
+                            <svg height="100" width="100" className={styles.circle}>
+                                <circle cx="50" cy="50" r="50" fill="#fff" />
+                            </svg>
 
-            {item.visibleButton && (
-                <Button well={well} modId={modId} type={type === 'banner_1' ? 'banner' : 'article'} columns={columns} themeStyles={themeStyles} {...item} />
+                            <div className={styles.icon} style={{ color: item.promoColor }}>
+                                <FontAwesomeIcon icon={[item.imageIcon.iconPrefix, item.imageIcon.iconModel]} />
+                            </div>
+                        </div>
+                    )}
+                </>
+            )}
+
+            {(!item.modOne || item.modOne >= 200) && (
+                <>
+                    <>
+                        {(item.headline || item.subheader) && (
+                            <HeadlineBlock item={item} well={1} columns={columns} isBeaconHero={item.isBeaconHero} modType={type} />
+                        )}
+                    </>
+
+                    {item.visibleButton && <Button well={well} modId={modId} type="banner" columns={columns} themeStyles={themeStyles} {...item} />}
+                </>
             )}
         </>
     )
