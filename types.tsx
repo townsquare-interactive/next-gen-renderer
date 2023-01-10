@@ -95,7 +95,12 @@ export interface RendererProps {
     config: any
     cmsUrl: string
     themeStyles: ThemeStyles
-    renderType?: string
+}
+
+export interface WidgetRendererProps {
+    item: { component: string; filter: boolean; text: string; title: string }
+    siteData: GlobalData
+    navSwitch: () => void
 }
 
 export interface GlobalData {
@@ -111,7 +116,7 @@ export interface GlobalData {
     siteName?: string
     phoneNumber?: String
     themeStyles: ThemeStyles
-    contact: { email: any; phone: any; hours?: any; address?: any; contactLinks: [ContactLinks] }
+    contact: { email: any; phone: any; hours?: any; address?: any; contactLinks: ContactLinks[] }
     cmsNav?: [NavItem]
     logos?: Logo
     mobileLogos?: Logo

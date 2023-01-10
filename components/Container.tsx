@@ -2,7 +2,7 @@
 import styles from './container.module.scss'
 import { ContainerProps, ModuleData } from '../types'
 import ContainerLayout from './ContainerLayout'
-import { Renderer } from './Renderer'
+import { ModuleRenderer } from './ModuleRenderer'
 import { defineContainerVars } from '../functions'
 import cn from 'classnames'
 import { Fragment } from 'react'
@@ -25,7 +25,7 @@ export const Container = (props: ContainerProps) => {
                 {page.data && (
                     <div className={cn(styles.root, 'content-background')}>
                         <div className={styles.featured}>
-                            <Renderer config={page.data.modules[0]} themeStyles={themeStyles} cmsUrl={cmsUrl} />
+                            <ModuleRenderer config={page.data.modules[0]} themeStyles={themeStyles} cmsUrl={cmsUrl} />
                         </div>
                         <div className={styles['column-blocks']}>
                             <div className={cn(styles.columns, styles[`${columnStyles}`])}>
@@ -33,7 +33,7 @@ export const Container = (props: ContainerProps) => {
                                     <Fragment key={idx}>
                                         {data && idx != 0 ? (
                                             <div className={cn(styles['column' + (idx + 1)], styles.column)}>
-                                                <Renderer config={data} themeStyles={themeStyles} cmsUrl={cmsUrl} />
+                                                <ModuleRenderer config={data} themeStyles={themeStyles} cmsUrl={cmsUrl} />
                                             </div>
                                         ) : (
                                             <></>

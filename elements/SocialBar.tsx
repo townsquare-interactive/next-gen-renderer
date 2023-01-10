@@ -18,6 +18,8 @@ const SocialBar = ({ siteData, themeStyles }: SocialBarProps) => {
         )
     }
 
+    console.log(siteData.contact.contactLinks)
+
     return (
         <div className={styles['social-bar']} style={{ background: themeStyles.BckdHeaderSocial }}>
             <SocialLinks siteData={siteData} />

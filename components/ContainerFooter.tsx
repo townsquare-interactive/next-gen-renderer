@@ -1,14 +1,12 @@
 'use client'
 import styles from './containerfooter.module.scss'
 import cn from 'classnames'
-import Nav from '../elements/Nav'
 import Logo from './Logo'
 import { ContainerFooterProps, CompositeItem } from '../types'
 import { domainImage } from '../functions'
 import SocialLinks from 'elements/SocialLinks'
-import TextWidget from 'elements/TextWidget'
 import NavToggle from 'elements/NavToggle'
-import { Renderer } from './Renderer'
+import { WidgetRenderer } from 'elements/WidgetRenderer'
 
 const ContainerFooter = (props: ContainerFooterProps) => {
     const { siteData, themeStyles, navSwitch } = props
@@ -19,11 +17,7 @@ const ContainerFooter = (props: ContainerFooterProps) => {
                 <div className={styles.content}>
                     {siteData.composites?.footer?.modules.items.map((item: CompositeItem, index: number) => (
                         <div key={index} className={styles.item}>
-                            {(item.component === 'text' || item.component === 'enhancedtext') && <TextWidget text={item.text} title={item.title} />}
-
-                            {item.component === 'social_media' && <SocialLinks siteData={siteData} modType="widget" />}
-
-                            {item.component === 'nav_menu' && <Nav navType={'footer-nav'} cmsNav={siteData.cmsNav} navSwitch={navSwitch} />}
+                            <WidgetRenderer item={item} siteData={siteData} navSwitch={navSwitch} />
                         </div>
                     ))}
                 </div>
