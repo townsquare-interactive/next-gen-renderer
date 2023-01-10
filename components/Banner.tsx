@@ -110,11 +110,11 @@ const ModuleItem = (props: ModuleItemProps) => {
                             style={
                                 well === '1'
                                     ? {
-                                          backgroundImage: `url(${item.textureImage?.image ? domainImage(item.textureImage.image, false) : ''})`,
-                                          backgroundPositionY: item.modTwo + '%',
-                                          height: item.modOne,
+                                          backgroundImage: item.textureImage?.image ? `url(${domainImage(item.textureImage.image, false)})` : 'none',
+                                          backgroundPositionY: item.modTwo ? item.modTwo + '%' : 'auto',
+                                          height: item.modOne || 'auto',
                                       }
-                                    : { height: item.modOne }
+                                    : { height: item.modOne || 'auto' }
                             }
                         >
                             {children}
@@ -129,9 +129,9 @@ const ModuleItem = (props: ModuleItemProps) => {
                         style={
                             well === '1'
                                 ? {
-                                      backgroundImage: `url(${item.textureImage?.image ? domainImage(item.textureImage.image, false) : ''})`,
-                                      backgroundPositionY: item.modTwo + '%',
-                                      height: item.modOne,
+                                      backgroundImage: item.textureImage?.image ? `url(${domainImage(item.textureImage.image, false)})` : 'none',
+                                      backgroundPositionY: item.modTwo ? item.modTwo + '%' : 'auto',
+                                      height: item.modOne || 'auto',
                                   }
                                 : {}
                         }

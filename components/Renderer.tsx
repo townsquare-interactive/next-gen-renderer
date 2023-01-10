@@ -38,11 +38,11 @@ const keysToComponentMap: any = {
     Banner,
 }
 
-const keysToWidgetMap: any = {
+/* const keysToWidgetMap: any = {
     TextWidget,
     SocialLinks,
     Nav,
-}
+} */
 
 const mapPropsToConfig = (config: ModuleProps[]) => {
     const configWithProps: any = []

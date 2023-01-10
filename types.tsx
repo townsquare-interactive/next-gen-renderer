@@ -111,7 +111,7 @@ export interface GlobalData {
     siteName?: string
     phoneNumber?: String
     themeStyles: ThemeStyles
-    contact: { email: any; phone: any; hours?: any; address?: any; icons: ContactIcons; mapLink?: string }
+    contact: { email: any; phone: any; hours?: any; address?: any; contactLinks: [ContactLinks] }
     cmsNav?: [NavItem]
     logos?: Logo
     mobileLogos?: Logo
@@ -122,6 +122,14 @@ export interface GlobalData {
     favicon?: string
     cmsUrl: string
     s3Folder: string
+}
+
+export interface ContactLinks {
+    cName: string
+    link: string
+    icon: any
+    content: string
+    active: boolean
 }
 
 interface ContactIcons {

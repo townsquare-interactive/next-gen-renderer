@@ -9,9 +9,6 @@
     }
 
     .wrapper {
-        /*         margin-left: auto;
-        margin-right: auto; */
-
         .item {
             width: variables.$full-width;
             margin-left: 0;
@@ -131,8 +128,4 @@
 
     //font sizes
     @include utils.text-sizes;
-
-    &.item-flex {
-        @include utils.item-flex;
-    }
 }

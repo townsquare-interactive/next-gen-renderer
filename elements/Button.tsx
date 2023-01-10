@@ -56,7 +56,6 @@ export const Button = (props: BtnProps) => {
                                     className={cn(styles['btn'], styles['transition'], `${bt.btnType}`, {
                                         ['btn_1']: bt.btnType === 'btn_1' || (!bt.btnType && index === 0),
                                         ['btn_2']: bt.btnType === 'btn_2' || (!bt.btnType && index === 1),
-                                        // [styles.btn_alt]: bt.btnType === 'btn_alt',
                                         [styles.btn_promo]: bt.btnType === 'btn_promo',
                                         [styles.btn_1]: bt.btnType === 'btn_1' || (!bt.btnType && index === 0),
                                         [styles.btn_2]: bt.btnType === 'btn_2' || (!bt.btnType && index === 1),

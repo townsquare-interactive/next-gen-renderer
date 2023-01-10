@@ -4,12 +4,7 @@ import { SocialBarProps, ContactLinkProps } from '../types'
 import cn from 'classnames'
 import SocialLinks from 'elements/SocialLinks'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
-/* const { library } = require('@fortawesome/fontawesome-svg-core')
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { fab } from '@fortawesome/free-brands-svg-icons'
-import { far } from '@fortawesome/free-regular-svg-icons'
-library.add(fas, fab, far) */
+import { Fragment } from 'react'
 
 const SocialBar = ({ siteData, themeStyles }: SocialBarProps) => {
     const ContactLink = ({ cname, link, icon, content }: ContactLinkProps) => {
@@ -28,26 +23,11 @@ const SocialBar = ({ siteData, themeStyles }: SocialBarProps) => {
             <SocialLinks siteData={siteData} />
             <aside className={styles.contact}>
                 <ul>
-                    {siteData.contact.phone[0] && (
-                        <ContactLink
-                            cname="phone"
-                            link={'tel:' + siteData.contact.phone[0].number}
-                            icon={siteData.contact.icons.phone}
-                            content={siteData.contact.phone[0].number}
-                        />
-                    )}
-                    {siteData.contact.email[0] && (
-                        <ContactLink
-                            cname="email"
-                            link={`mailto:${siteData.contact.email[0].email}`}
-                            icon={siteData.contact.icons.email}
-                            content={siteData.contact.email[0].name + ':' + siteData.contact.email[0].email}
-                        />
-                    )}
-
-                    {siteData.contact.mapLink && (
-                        <ContactLink cname="map" link={siteData.contact.mapLink} icon={siteData.contact.icons.location} content={siteData.siteName || ''} />
-                    )}
+                    {siteData.contact.contactLinks.map((item, index) => (
+                        <Fragment key={index}>
+                            {item.active && <ContactLink cname={item.cName} link={item.link} icon={item.icon} content={item.content} />}
+                        </Fragment>
+                    ))}
                 </ul>
             </aside>
         </div>
