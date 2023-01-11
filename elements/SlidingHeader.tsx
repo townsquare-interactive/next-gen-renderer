@@ -15,11 +15,11 @@ const SlidingHeader = (props: SlidingHeaderProps) => {
             })}
         >
             <div className={cn(styles['wrapper'], 'header-background')}>
-                <button className={cn(styles['nav-toggle'], 'accent-txt', 'promo-background')} onClick={navSwitch} aria-label="close-mobile-nav"></button>
+                <button className={cn(styles['nav-close'], 'close-toggle')} onClick={navSwitch} aria-label="close-mobile-nav"></button>
 
                 <div className={styles['access']}>
                     <div className={styles.social}>
-                        <SocialLinks siteData={siteData} modType="mob-header" />
+                        <SocialLinks siteData={siteData} modType="slide-header" />
                     </div>
 
                     <Nav navType={'mobile-nav'} cmsNav={siteData.cmsNav} navSwitch={navSwitch} />

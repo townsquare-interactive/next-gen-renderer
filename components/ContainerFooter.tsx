@@ -44,7 +44,7 @@ const ContainerFooter = (props: ContainerFooterProps) => {
                 </div>
                 <div className={styles['bottom']}>
                     <div className={styles['social-block']}>
-                        <SocialLinks siteData={siteData} modType="foot-header" />
+                        <SocialLinks siteData={siteData} modType="footer" />
                     </div>
                     <div className={styles['nav-block']}>
                         <NavToggle navSwitch={navSwitch} modType="footer" />

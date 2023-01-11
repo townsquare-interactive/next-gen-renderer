@@ -4,12 +4,7 @@ function Document() {
     return (
         <Html>
             <Head>
-                <link
-                    rel="stylesheet"
-                    href="https://townsquareinteractive.s3.amazonaws.com/clttestsiteforjoshedwards/global.scss"
-                    type="text/css"
-                    precedence="default"
-                ></link>
+                <link rel="stylesheet" href="https://townsquareinteractive.s3.amazonaws.com/clttestsiteforjoshedwards/global.scss" type="text/css"></link>
             </Head>
             <body>
                 <Main />

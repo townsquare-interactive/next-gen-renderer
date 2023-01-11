@@ -9,9 +9,11 @@ const NavToggle = (props: NavToggleProps) => {
 
     return (
         <button
-            className={cn(styles['nav-open'], 'accent-txt', {
+            className={cn(styles['nav-open'], {
                 [styles['head-toggle']]: modType === 'header',
                 [styles['foot-toggle']]: modType === 'footer',
+                ['footer-icon']: modType === 'footer',
+                ['accent-txt']: modType === 'header',
             })}
             onClick={navSwitch}
             aria-label="toggle navigation"

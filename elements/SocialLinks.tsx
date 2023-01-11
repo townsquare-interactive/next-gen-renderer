@@ -8,7 +8,7 @@ const SocialLinks = ({ siteData, modType = 'header' }: SocialLinksProps) => {
     return (
         <ul
             className={cn(styles['social-media-links'], {
-                [styles['mob-social']]: modType === 'mob-header',
+                [styles['slide-social']]: modType === 'slide-header',
                 [styles['head-social']]: modType === 'header',
                 [styles['foot-social']]: modType === 'footer',
                 [styles['widget']]: modType === 'widget',
@@ -16,7 +16,15 @@ const SocialLinks = ({ siteData, modType = 'header' }: SocialLinksProps) => {
         >
             {siteData.social.map((item: SocialItem, index: number) => (
                 <li key={index}>
-                    <a target="blank" aria-label={item.name} className={cn('social-icon')} href={item.url}>
+                    <a
+                        target="blank"
+                        aria-label={item.name}
+                        className={cn({
+                            ['social-icon']: modType === 'slide-header' || modType === 'header',
+                            ['footer-icon']: modType === 'footer' || modType === 'widget',
+                        })}
+                        href={item.url}
+                    >
                         <FontAwesomeIcon icon={item.icon} /> {modType === 'widget' && item.label}
                     </a>
                 </li>
@@ -24,15 +32,31 @@ const SocialLinks = ({ siteData, modType = 'header' }: SocialLinksProps) => {
             <li>
                 <a
                     aria-label="share-site"
-                    className={cn('social-icon', 'email-to-friend')}
+                    className={cn(
+                        {
+                            ['social-icon']: modType === 'slide-header' || modType === 'header',
+                            ['footer-icon']: modType === 'footer' || modType === 'widget',
+                        },
+                        'email-to-friend'
+                    )}
                     href={`mailto:?subject=Check out ${siteData.siteName}&body=I thought you%27d be interested in this site%3A%0A${siteData.url}%2F`}
                 >
                     <FontAwesomeIcon icon={['fas', 'envelope']} /> {modType === 'widget' && 'Send to a Friend'}
                 </a>
             </li>
-            {modType != 'mob-header' && (
+            {modType != 'slide-header' && (
                 <li>
-                    <button aria-label="print-page" className={cn('social-icon', 'print')} onClick={printPage}>
+                    <button
+                        aria-label="print-page"
+                        className={cn(
+                            {
+                                ['social-icon']: modType === 'slide-header' || modType === 'header',
+                                ['footer-icon']: modType === 'footer' || modType === 'widget',
+                            },
+                            'print'
+                        )}
+                        onClick={printPage}
+                    >
                         <FontAwesomeIcon icon={['fas', 'print']} /> {modType === 'widget' && 'Print This Page'}
                     </button>
                 </li>
