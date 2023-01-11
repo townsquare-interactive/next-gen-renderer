@@ -16,7 +16,7 @@ const SocialLinks = ({ siteData, modType = 'header' }: SocialLinksProps) => {
         >
             {siteData.social.map((item: SocialItem, index: number) => (
                 <li key={index}>
-                    <a target="blank" aria-label={item.name} className={cn('socialIcon')} href={item.url}>
+                    <a target="blank" aria-label={item.name} className={cn('social-icon')} href={item.url}>
                         <FontAwesomeIcon icon={item.icon} /> {modType === 'widget' && item.label}
                     </a>
                 </li>
@@ -24,7 +24,7 @@ const SocialLinks = ({ siteData, modType = 'header' }: SocialLinksProps) => {
             <li>
                 <a
                     aria-label="share-site"
-                    className={cn('socialIcon', 'email-to-friend')}
+                    className={cn('social-icon', 'email-to-friend')}
                     href={`mailto:?subject=Check out ${siteData.siteName}&body=I thought you%27d be interested in this site%3A%0A${siteData.url}%2F`}
                 >
                     <FontAwesomeIcon icon={['fas', 'envelope']} /> {modType === 'widget' && 'Send to a Friend'}
@@ -32,7 +32,7 @@ const SocialLinks = ({ siteData, modType = 'header' }: SocialLinksProps) => {
             </li>
             {modType != 'mob-header' && (
                 <li>
-                    <button aria-label="print-page" className={cn('socialIcon', 'print')} onClick={printPage}>
+                    <button aria-label="print-page" className={cn('social-icon', 'print')} onClick={printPage}>
                         <FontAwesomeIcon icon={['fas', 'print']} /> {modType === 'widget' && 'Print This Page'}
                     </button>
                 </li>

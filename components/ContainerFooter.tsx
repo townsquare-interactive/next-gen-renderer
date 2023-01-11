@@ -9,7 +9,7 @@ import NavToggle from 'elements/NavToggle'
 import { WidgetRenderer } from 'elements/WidgetRenderer'
 
 const ContainerFooter = (props: ContainerFooterProps) => {
-    const { siteData, themeStyles, navSwitch } = props
+    const { siteData, navSwitch } = props
 
     return (
         <footer className={cn(styles.root, 'footer')}>
@@ -47,7 +47,7 @@ const ContainerFooter = (props: ContainerFooterProps) => {
                         <SocialLinks siteData={siteData} modType="foot-header" />
                     </div>
                     <div className={styles['nav-block']}>
-                        <NavToggle navSwitch={navSwitch} themeStyles={themeStyles} modType="footer" />
+                        <NavToggle navSwitch={navSwitch} modType="footer" />
                     </div>
                 </div>
             </div>

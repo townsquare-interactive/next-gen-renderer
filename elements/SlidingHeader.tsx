@@ -14,13 +14,8 @@ const SlidingHeader = (props: SlidingHeaderProps) => {
                 [styles.hidden]: !navCheck,
             })}
         >
-            <div className={styles['wrapper']} style={{ background: themeStyles.headerBackground }}>
-                <button
-                    className={styles['nav-toggle']}
-                    onClick={navSwitch}
-                    aria-label="close-mobile-nav"
-                    style={{ color: themeStyles.textColorAccent, backgroundColor: themeStyles.promoColor }}
-                ></button>
+            <div className={cn(styles['wrapper'], 'header-background')}>
+                <button className={cn(styles['nav-toggle'], 'accent-txt', 'promo-background')} onClick={navSwitch} aria-label="close-mobile-nav"></button>
 
                 <div className={styles['access']}>
                     <div className={styles.social}>

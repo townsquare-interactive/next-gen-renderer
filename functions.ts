@@ -1,6 +1,4 @@
 import { ConditionalWrapperProps, ThemeStyles, GlobalData, CMSPage } from 'types'
-//had to use require here to avoid hydration
-
 const bucketUrl = 'https://townsquareinteractive.s3.amazonaws.com'
 const localUrl = 'elitesports.com/preview'
 const cmsUrl = process.env.CMS_URL || 'clttestsiteforjoshedwards'
@@ -55,7 +53,7 @@ export function domainImage(url: string, cms = false, cmsSiteUrl = '', type = ''
 }
 
 export function createInlineStyles(themeStyles: ThemeStyles) {
-    const textColors = `.accent-txt{color:${themeStyles['textColorAccent']}} .txt-color{color:${themeStyles['textColor']}} .txt-color-heading{color:${themeStyles['headingColor']}} .navLink:hover{color: ${themeStyles['navHover']}} .navLink{color:${themeStyles['NavText']}} .socialIcon:hover{background-color: ${themeStyles['navHover']}} .socialIcon{color:${themeStyles['NavText']}} .currentNav{color:${themeStyles['navCurrent']}} .caption-txt{color:${themeStyles.captionText}}`
+    const textColors = `.accent-txt{color:${themeStyles['textColorAccent']}} .txt-color{color:${themeStyles['textColor']}} .txt-color-hd{color:${themeStyles['headingColor']}} .navLink:hover{color: ${themeStyles['navHover']}} .navLink{color:${themeStyles['NavText']}} .social-icon:hover{background-color: ${themeStyles['navHover']}} .social-icon{color:${themeStyles['NavText']}} .currentNav{color:${themeStyles['navCurrent']}} .caption-txt{color:${themeStyles.captionText}}`
 
     const btnStyles = `.btn_1{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['btnBackground']}} .btn_1:hover{color: ${themeStyles['btnBackground']}; background-color: ${themeStyles['textColorAccent']}} .btn_2{color: ${themeStyles['linkColor']}; border-color: ${themeStyles['linkColor']}} .btn_2:hover{color: ${themeStyles['btnBackground']}; border-color: ${themeStyles['btnBackground']}} .btn_alt{color: ${themeStyles['promoColor']}; background-color: ${themeStyles['textColorAccent']}} .btn_alt:hover{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['promoColor']}}`
 

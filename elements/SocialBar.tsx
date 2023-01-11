@@ -6,11 +6,11 @@ import SocialLinks from 'elements/SocialLinks'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Fragment } from 'react'
 
-const SocialBar = ({ siteData, themeStyles }: SocialBarProps) => {
+const SocialBar = ({ siteData }: SocialBarProps) => {
     const ContactLink = ({ cname, link, icon, content }: ContactLinkProps) => {
         return (
             <li className={cn(styles[`${cname}`], styles.icon)}>
-                <a href={link} aria-label={cname} className={cn('socialIcon')} target="_blank" rel="noopener noreferrer">
+                <a href={link} aria-label={cname} className={cn('social-icon')} target="_blank" rel="noopener noreferrer">
                     <FontAwesomeIcon icon={icon} />
                     {content}
                 </a>
@@ -18,10 +18,8 @@ const SocialBar = ({ siteData, themeStyles }: SocialBarProps) => {
         )
     }
 
-    console.log(siteData.contact.contactLinks)
-
     return (
-        <div className={styles['social-bar']} style={{ background: themeStyles.BckdHeaderSocial }}>
+        <div className={cn(styles['social-bar'], 'social-bar-background')}>
             <SocialLinks siteData={siteData} />
             <aside className={styles.contact}>
                 <ul>

@@ -50,7 +50,7 @@ const Heading = (props: any) => {
         <HeadTag
             className={cn(styles[textType], {
                 ['accent-txt']: well || isBeaconHero || modType === 'photo_grid',
-                ['txt-color-heading']: !well && !isBeaconHero && modType != 'photo_grid',
+                ['txt-color-hd']: !well && !isBeaconHero && modType != 'photo_grid',
             })}
         >
             {Parser(text)}

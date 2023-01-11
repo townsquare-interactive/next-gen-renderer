@@ -202,7 +202,6 @@ export interface ContactLinkProps {
 
 export interface NavToggleProps {
     navSwitch?: () => void
-    themeStyles: ThemeStyles
     modType?: 'header' | 'footer'
 }
 
@@ -575,7 +574,6 @@ export interface PhotoItemProps {
 export interface ContainerHeaderProps {
     pages?: PagesProps[]
     siteData: GlobalData
-    themeStyles: ThemeStyles
     navSwitch: () => void
 }
 
@@ -594,8 +592,6 @@ export interface SocialItem {
 export interface ContainerFooterProps {
     pages?: PagesProps[]
     siteData: GlobalData
-    themeStyles: ThemeStyles
-    //navCheck: boolean
     navSwitch: () => void
 }
 
@@ -650,7 +646,6 @@ export interface LogoProps {
 export interface SocialBarProps {
     siteData: GlobalData
     modType?: string
-    themeStyles: ThemeStyles
 }
 
 export interface SocialLinksProps {

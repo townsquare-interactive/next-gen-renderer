@@ -20,15 +20,11 @@ export default function Layout(props: LayoutProps) {
         <>
             <div className={cn(styles.root)}>
                 <SlidingHeader navSwitch={navSwitch} navCheck={navCheck} themeStyles={themeStyles} siteData={siteData} />
-                <ContainerHeader siteData={siteData} themeStyles={themeStyles} navSwitch={navSwitch} />
+                <ContainerHeader siteData={siteData} navSwitch={navSwitch} />
 
-                <main
-                //style={{ marginTop: contentMargin }}
-                >
-                    {children}
-                </main>
+                <main>{children}</main>
 
-                <ContainerFooter siteData={siteData} themeStyles={themeStyles} navSwitch={navSwitch} />
+                <ContainerFooter siteData={siteData} navSwitch={navSwitch} />
             </div>
         </>
     )

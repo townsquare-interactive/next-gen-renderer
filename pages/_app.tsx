@@ -1,4 +1,5 @@
 import '../styles/globals.css'
+
 import type { AppProps } from 'next/app'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'

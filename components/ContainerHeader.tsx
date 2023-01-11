@@ -11,7 +11,7 @@ import { useRef } from 'react'
 import SocialBar from 'elements/SocialBar'
 
 const ContainerHeader = (props: ContainerHeaderProps) => {
-    const { siteData, themeStyles, navSwitch } = props
+    const { siteData, navSwitch } = props
     const [windowHeight, setWindowHeight] = useState(0)
 
     //set state for scroll
@@ -43,9 +43,9 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
                 )}
 
                 <Nav navType={'desktop-nav'} cmsNav={siteData.cmsNav} navSwitch={navSwitch} />
-                <NavToggle navSwitch={navSwitch} themeStyles={themeStyles} />
+                <NavToggle navSwitch={navSwitch} />
             </div>
-            <SocialBar siteData={siteData} themeStyles={themeStyles} />
+            <SocialBar siteData={siteData} />
         </header>
     )
 }

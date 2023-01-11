@@ -11,7 +11,7 @@ import PageHead from './PageHead'
 export const Container = (props: ContainerProps) => {
     const { page, siteData } = props
     //const router = useRouter()
-    const { cmsUrl, themeStyles, columnStyles, colorStyles } = defineContainerVars(page, siteData)
+    const { cmsUrl, themeStyles, columnStyles } = defineContainerVars(page, siteData)
     /* 
     if (router.isFallback) {
         return <div>Loading...</div>
@@ -21,7 +21,6 @@ export const Container = (props: ContainerProps) => {
         <>
             <PageHead page={page} siteData={siteData} />
             <ContainerLayout siteData={siteData} themeStyles={themeStyles}>
-                <style>{colorStyles}</style>
                 {page.data && (
                     <div className={cn(styles.root, 'content-background')}>
                         <div className={styles.featured}>

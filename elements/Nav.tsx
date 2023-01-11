@@ -77,7 +77,7 @@ const NavListItem = ({ item, arrow = false, navType, navSwitch }: NavListItemPro
             className={cn({
                 [styles.arrow]: arrow == true,
                 ['navLink']: navType === 'desktop-nav' || navType === 'mobile-nav',
-                ['socialIcon']: navType === 'footer-nav',
+                ['social-icon']: navType === 'footer-nav',
                 ['currentNav']: currentNav(),
             })}
             aria-label={item.title}
