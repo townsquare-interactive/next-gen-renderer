@@ -49,7 +49,6 @@ Default.args = {
             page_type: 'blank',
         },
     ],
-    themeStyles: themeStyles,
 
     siteData: {
         themeStyles: themeStyles,
