@@ -1,9 +1,10 @@
 import { ConditionalWrapperProps, ThemeStyles, GlobalData, CMSPage } from 'types'
-const bucketUrl = 'https://townsquareinteractive.s3.amazonaws.com'
+const bucketUrl = process.env.BUCKET_URL || 'https://townsquareinteractive.s3.amazonaws.com'
 const localUrl = 'elitesports.com/preview'
 const cmsUrl = process.env.CMS_URL || 'clttestsiteforjoshedwards'
 const assetFolder = '/assets/'
-
+export const cssUrl = bucketUrl + '/' + cmsUrl + '/' + 'global.scss'
+console.log(cssUrl)
 const globalAssets = bucketUrl + '/global-assets'
 const env = process.env.NEXT_PUBLIC_URL_ENV
 const domain = process.env.NEXT_PUBLIC_BASE_URL
