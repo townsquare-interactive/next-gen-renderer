@@ -9,16 +9,16 @@ import { useState } from 'react'
 import Link from 'next/link'
 
 // import your icons from fontawesome
-import { faRocket, faAnchor, faArchway } from '@fortawesome/free-solid-svg-icons'
+/* import { faRocket, faAnchor, faArchway } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import { IconProp } from '@fortawesome/fontawesome-svg-core' */
 
-const icons: { [key: string]: IconProp } = {
+/* const icons: { [key: string]: IconProp } = {
     faRocket,
     faAnchor,
     faArchway,
 }
-
+ */
 const CharlotteArticle = (props: ArticleProps) => {
     const textColorHeading = {
         color: props.themeStyles['headingColor'],
@@ -114,11 +114,11 @@ const TheListItem = (props: TheListItemProps) => {
         backgroundColor: props.themeStyles['headerBackground'],
     }
 
-    const icons: { [key: string]: any } = {
+    /*     const icons: { [key: string]: any } = {
         faRocket,
         faAnchor,
         faArchway,
-    }
+    } */
 
     //non constrained images
     const imageNoSizings = ['no_sizing', 'no_set_height']
@@ -570,8 +570,8 @@ const TheListWrapV3 = (props: TsiWrp) => {
 }
 
 const TheListItemAction = (props: TheListItemActionProps) => {
-    let icon = props.icon ? icons[props.icon] : faRocket
-    let icon2 = props.icon2 ? icons[props.icon2] : faRocket
+    /*     let icon = props.icon ? icons[props.icon] : faRocket
+    let icon2 = props.icon2 ? icons[props.icon2] : faRocket */
 
     const btns = props.well
         ? `.btn1{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['promoColor']}} .btn_link:hover .btn1{color: ${props.themeStyles['promoColor']}; background-color: ${props.themeStyles['textColorAccent']}} .btn2{color: ${props.themeStyles['promoColor']}; border-color: ${props.themeStyles['promoColor']}} .btn_link:hover .btn2{color: ${props.themeStyles['textColorAccent']}; background-color: ${props.themeStyles['promoColor']}}`
@@ -604,7 +604,7 @@ const TheListItemAction = (props: TheListItemActionProps) => {
                                 [styles.btn_block]: props.btnSize.includes('btn_block'),
                             })}
                         >
-                            {props.icon && <FontAwesomeIcon icon={icon || faRocket} />} {props.actionlbl}
+                            {/*  {props.icon && <FontAwesomeIcon icon={icon || faRocket} />} {props.actionlbl} */}
                         </div>
                     </Link>
 
@@ -626,7 +626,7 @@ const TheListItemAction = (props: TheListItemActionProps) => {
                                 [styles.btn_block]: props.btnSize2.includes('btn_block'),
                             })}
                         >
-                            {props.icon2 && <FontAwesomeIcon icon={icon2 || faRocket} />} {props.actionlbl2}
+                            {/*  {props.icon2 && <FontAwesomeIcon icon={icon2 || faRocket} />} */} {props.actionlbl2}
                         </div>
                     </Link>
                 </div>
@@ -643,7 +643,8 @@ const TheListItemAction = (props: TheListItemActionProps) => {
                         [styles.btn_block]: props.btnSize.includes('btn_block'),
                     })}
                 >
-                    {props.icon && <FontAwesomeIcon icon={icon || faRocket} />} {props.actionlbl}
+                    {/*  {props.icon && <FontAwesomeIcon icon={icon || faRocket} />}  */}
+                    {props.actionlbl}
                 </div>
             ) : (
                 <div
@@ -658,7 +659,8 @@ const TheListItemAction = (props: TheListItemActionProps) => {
                         [styles.btn_block]: props.btnSize2.includes('btn_block'),
                     })}
                 >
-                    {props.icon2 && <FontAwesomeIcon icon={icon2 || faRocket} />} {props.actionlbl2}
+                    {/*  {props.icon2 && <FontAwesomeIcon icon={icon2 || faRocket} />}  */}
+                    {props.actionlbl2}
                 </div>
             )}
         </>

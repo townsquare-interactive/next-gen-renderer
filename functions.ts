@@ -3,8 +3,7 @@ const bucketUrl = process.env.BUCKET_URL || 'https://townsquareinteractive.s3.am
 const localUrl = 'elitesports.com/preview'
 const cmsUrl = process.env.CMS_URL || 'clttestsiteforjoshedwards'
 const assetFolder = '/assets/'
-export const cssUrl = bucketUrl + '/' + cmsUrl + '/' + 'global.scss'
-console.log(cssUrl)
+/* const cssUrl = bucketUrl + '/' + cmsUrl + '/' + 'global.scss' */
 const globalAssets = bucketUrl + '/global-assets'
 const env = process.env.NEXT_PUBLIC_URL_ENV
 const domain = process.env.NEXT_PUBLIC_BASE_URL
@@ -86,6 +85,8 @@ export const findHomePageSlug = (pageList: any) => {
     })
 
     const siteData = await resLayout.json()
+
+    console.log(siteData)
 
     return { siteData }
 }

@@ -41,27 +41,30 @@
                     }
 
                     .icon {
-                        /*  height: 2em;
-                        width: 2.25em;
-                        z-index: 2; */
-                        height: 3em;
+                        /*  height: 3em;
                         width: 3.25em;
+                        z-index: 2; */
+
+                        //
+                        height: 7em;
+                        width: 7.25em;
                         z-index: 2;
+                        padding: 2rem;
                     }
+                }
+            }
+            @include breakpoints.sm-min {
+                &.left .item-wrap {
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    text-align: left;
                 }
             }
         }
     }
 
-    text-align: left;
-
-    .right {
-        text-align: right;
-    }
-
-    .center {
-        text-align: center;
-    }
+    text-align: center;
 
     &.root-container {
         container-type: inline-size;
@@ -72,14 +75,6 @@
             container-name: item;
         }
     }
-
-    /* @container item (min-width:343px) {
-        .icon {
-            height: 3em;
-            width: 3.25em;
-            z-index: 2;
-        }
-    } */
 
     //for larger screens (starts at 1025)
 

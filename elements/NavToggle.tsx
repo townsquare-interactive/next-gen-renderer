@@ -2,7 +2,6 @@ import { NavToggleProps } from '../types'
 import styles from './navtoggle.module.scss'
 import cn from 'classnames'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
 
 const NavToggle = (props: NavToggleProps) => {
     const { navSwitch, modType = 'header' } = props
@@ -18,7 +17,7 @@ const NavToggle = (props: NavToggleProps) => {
             onClick={navSwitch}
             aria-label="toggle navigation"
         >
-            <FontAwesomeIcon icon={faBars} /> {modType === 'footer' && 'Menu'}
+            <FontAwesomeIcon icon={['fas', 'bars']} /> {modType === 'footer' && 'Menu'}
         </button>
     )
 }

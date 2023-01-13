@@ -267,8 +267,8 @@ export interface Module {
 }
 
 export interface CMSPageData {
-    attributes: NavigationProps | FooterProps
-    modules: ModuleData[]
+    //attributes: NavigationProps | FooterProps
+    modules: ModuleData[][]
     type?: string
     layout?: number
     columns?: number | string

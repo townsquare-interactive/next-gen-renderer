@@ -189,6 +189,16 @@
         }
     }
 
+    &.banner {
+        &.left {
+            justify-content: center;
+
+            .btn-wrap {
+                justify-content: center;
+            }
+        }
+    }
+
     &.photo_grid {
         .btn-wrap {
             a {

@@ -171,7 +171,7 @@ const ItemWrap = (props: ItemWrapProps) => {
 
     return (
         <>
-            {item.imageIcon && (
+            {/*  {item.imageIcon && (
                 <>
                     {(!item.modOne || item.modOne >= 350) && (
                         <div className={cn(styles['icon-block'])}>
@@ -185,13 +185,13 @@ const ItemWrap = (props: ItemWrapProps) => {
                         </div>
                     )}
                 </>
-            )}
+            )} */}
 
             {(!item.modOne || item.modOne >= 200) && (
                 <>
                     <>
                         {(item.headline || item.subheader) && (
-                            <HeadlineBlock item={item} well={1} columns={columns} isBeaconHero={item.isBeaconHero} modType={type} />
+                            <HeadlineBlock item={item} well={1} columns={columns} isBeaconHero={item.isBeaconHero} modType={'banner'} />
                         )}
                     </>
 

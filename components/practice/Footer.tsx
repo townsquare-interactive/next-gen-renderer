@@ -6,7 +6,7 @@ import { domainImage } from '../../functions'
 
 // import your icons
 import { faGoogle, faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons'
-import { faRocket } from '@fortawesome/free-solid-svg-icons'
+/* import { faRocket } from '@fortawesome/free-solid-svg-icons' */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Footer = (props: FooterProps) => {
@@ -47,8 +47,6 @@ const Footer = (props: FooterProps) => {
             return faInstagram
         } else if (icon === 'twitter') {
             return faTwitter
-        } else {
-            return faRocket
         }
     }
 
@@ -69,7 +67,7 @@ const Footer = (props: FooterProps) => {
                                     aria-label={iconConvert(item.linkUrl)}
                                     className="socialLink"
                                 >
-                                    <FontAwesomeIcon icon={socialConvert(item.linkUrl)} />
+                                    {/* <FontAwesomeIcon icon={socialConvert(item.linkUrl)} /> */}
                                 </a>
                             ))}
                         </div>
