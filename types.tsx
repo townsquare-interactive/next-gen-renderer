@@ -418,6 +418,7 @@ export interface ArticleItems {
     textureImage?: { image: string; gradientColors: [string, string] }
     modOne?: number
     modTwo?: number
+    modColor1?: string
 }
 
 export interface ArticleProps {
@@ -685,6 +686,7 @@ export interface BtnProps {
     buttonList: any[]
     promoColor?: string
     itemCount?: number
+    modColor1?: string
 }
 
 /*------------------------------Non CMS types-------------------------*/

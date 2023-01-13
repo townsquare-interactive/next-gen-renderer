@@ -10,11 +10,11 @@ import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const Button = (props: BtnProps) => {
-    const { actionlbl, themeStyles, well, actionlbl2, type, buttonList, modId, columns, align, promoColor, itemCount } = props
+    const { actionlbl, themeStyles, well, actionlbl2, type, buttonList, modId, columns, align, promoColor, itemCount, modColor1 } = props
 
     const linkHoverStyles = `#id_${modId} .btn_link:hover .btn_1{color: ${themeStyles['promoColor']}; background-color: ${themeStyles['textColorAccent']}} #id_${modId} .btn_link:hover .btn_2{color: ${themeStyles['promoColor']}; border-color: ${themeStyles['promoColor']}} #id_${modId}}`
 
-    const promoButtonStyles = `#id_${modId} .item_${itemCount} .btn_promo {color: ${promoColor}; background-color: ${themeStyles['textColorAccent']}} #id_${modId} .item_${itemCount} .btn_promo:hover{color: ${themeStyles['textColorAccent']}; background-color: ${promoColor}}`
+    const promoButtonStyles = `#id_${modId} .item_${itemCount} .btn_promo {color: ${promoColor}; background-color: ${themeStyles['textColorAccent']}} #id_${modId} .item_${itemCount} .btn_promo:hover{color: ${themeStyles['textColorAccent']}; background-color: ${promoColor}} .btn_override {color: ${modColor1}; background-color: ${themeStyles['textColorAccent']}} #id_${modId} .item_${itemCount} .btn_override:hover{color: ${themeStyles['textColorAccent']}; background-color: ${modColor1}}`
 
     return (
         <div
@@ -57,6 +57,7 @@ export const Button = (props: BtnProps) => {
                                         ['btn_1']: bt.btnType === 'btn_1' || (!bt.btnType && index === 0),
                                         ['btn_2']: bt.btnType === 'btn_2' || (!bt.btnType && index === 1),
                                         [styles.btn_promo]: bt.btnType === 'btn_promo',
+                                        [styles.btn_override]: bt.btnType === 'btn_override',
                                         [styles.btn_1]: bt.btnType === 'btn_1' || (!bt.btnType && index === 0),
                                         [styles.btn_2]: bt.btnType === 'btn_2' || (!bt.btnType && index === 1),
                                         [styles.btn_md]: (bt.btnSize?.includes('md') || !bt.btnSize) && (columns == 1 || columns == 2),

@@ -8,7 +8,6 @@ import Link from 'next/link'
 import { Button } from '../elements/Button'
 import ModuleTitle from 'elements/ModuleTitle'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Banner = (props: ArticleProps) => {
     const { columns = 1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl, disabled, customClassName } = props
@@ -71,7 +70,11 @@ const ModuleItem = (props: ModuleItemProps) => {
             )}
             lang="en"
             style={
-                well === '1'
+                item.modColor1
+                    ? {
+                          background: `${item.modColor1}`,
+                      }
+                    : well === '1'
                     ? {
                           backgroundImage: `linear-gradient(-45deg, ${item.textureImage?.gradientColors[0]}, ${item.textureImage?.gradientColors[1]})`,
                       }
@@ -108,7 +111,11 @@ const ModuleItem = (props: ModuleItemProps) => {
                             })}
                             aria-label={item.headline || 'item-wrap'}
                             style={
-                                well === '1'
+                                item.modColor1
+                                    ? {
+                                          background: `${item.modColor1}`,
+                                      }
+                                    : well === '1'
                                     ? {
                                           backgroundImage: item.textureImage?.image ? `url(${domainImage(item.textureImage.image, false)})` : 'none',
                                           backgroundPositionY: item.modTwo ? item.modTwo + '%' : 'auto',
@@ -127,7 +134,9 @@ const ModuleItem = (props: ModuleItemProps) => {
                             ['hero-background']: item.isFeatured === 'active' && type === 'article',
                         })}
                         style={
-                            well === '1'
+                            item.modColor1
+                                ? {}
+                                : well === '1'
                                 ? {
                                       backgroundImage: item.textureImage?.image ? `url(${domainImage(item.textureImage.image, false)})` : 'none',
                                       backgroundPositionY: item.modTwo ? item.modTwo + '%' : 'auto',
