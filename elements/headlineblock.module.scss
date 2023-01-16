@@ -67,21 +67,6 @@
 
     &.article,
     &.banner {
-        /* @container item (min-width:0px) {
-            .sh {
-                font-size: utils.$xs-txt;
-                margin-top: 0.5714285714em;
-                margin-bottom: 0.5714285714em;
-                line-height: 1.1428571429em;
-            }
-
-            .hd {
-                font-size: utils.$sm-txt;
-                margin-top: 0.7058823529em;
-                margin-bottom: 0.4705882353em;
-                line-height: 1.1764705882em;
-            }
-        } */
         //temp: medium screens, need to revise size maybe
         @container item (min-width: 343px) {
             margin-top: 0.6666666667em;

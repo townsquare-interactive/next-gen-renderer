@@ -161,7 +161,7 @@ const ItemWrap = (props: ItemWrapProps) => {
             {item.desc && (
                 <div className={cn(styles['txt-block'])}>
                     <div
-                        className={cn(styles['dsc-block'], styles[`${item.descSize}`], {
+                        className={cn(styles['dsc-block'], styles[`${item.descSize}`], 'txt-font', {
                             ['accent-txt']: well || item.isBeaconHero,
                             ['txt-color']: !well && !item.isBeaconHero,
                         })}

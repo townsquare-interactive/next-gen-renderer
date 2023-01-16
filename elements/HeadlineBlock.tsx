@@ -10,10 +10,18 @@ export const HeadlineBlock = (props: HeadlineBlockProps) => {
 
     return (
         <header
-            className={cn(styles['hd-block'], styles[`${item.headSize}`], styles[`${modType}`], styles[`${item.headSize}`], styles[`${item.align}`], {
-                [styles.article]: modType?.includes('article'),
-                [styles.beacon]: modType === 'article',
-            })}
+            className={cn(
+                styles['hd-block'],
+                styles[`${item.headSize}`],
+                styles[`${modType}`],
+                styles[`${item.headSize}`],
+                styles[`${item.align}`],
+
+                {
+                    [styles.article]: modType?.includes('article'),
+                    [styles.beacon]: modType === 'article',
+                }
+            )}
         >
             {item.imageIcon && (
                 <div className={cn(styles['icon-block'])}>
@@ -65,6 +73,8 @@ const Heading = (props: any) => {
             className={cn(styles[textType], {
                 ['accent-txt']: well || isBeaconHero || modType === 'photo_grid',
                 ['txt-color-hd']: !well && !isBeaconHero && modType != 'photo_grid',
+                ['txt-font']: textType === 'sh',
+                ['hd-font']: textType === 'hd',
             })}
         >
             {Parser(text)}

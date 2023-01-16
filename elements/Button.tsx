@@ -18,7 +18,7 @@ export const Button = (props: BtnProps) => {
 
     return (
         <div
-            className={cn(styles['btn-mod'], styles[`${type}`], styles[`${align}`], {
+            className={cn(styles['btn-mod'], styles[`${type}`], styles[`${align}`], 'txt-font', {
                 [styles.well]: well == '1' && type.includes('article'),
             })}
         >
