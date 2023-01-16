@@ -17,8 +17,6 @@ export const Container = (props: ContainerProps) => {
         return <div>Loading...</div>
     } */
 
-    //console.log(page.data.modules)
-
     return (
         <>
             <PageHead page={page} siteData={siteData} />

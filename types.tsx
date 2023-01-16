@@ -184,6 +184,7 @@ export interface NavItem {
     mi_url: string | null
     url: string
     submenu: [NavItem]
+    slug: string
 }
 
 export interface NavListItemProps {

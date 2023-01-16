@@ -75,7 +75,7 @@ const NavListItem = ({ item, arrow = false, navType, navSwitch }: NavListItemPro
 
     return (
         <Link
-            href={item.title ? title : ''}
+            href={item.slug ? item.slug : ''}
             className={cn({
                 [styles.arrow]: arrow == true,
                 ['navLink']: navType === 'desktop-nav' || navType === 'mobile-nav',
