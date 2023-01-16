@@ -54,6 +54,8 @@
         bottom: 0;
         width: 100%;
         display: flex;
+        overflow: auto;
+        max-height: 100%;
     }
 
     text-align: left;
