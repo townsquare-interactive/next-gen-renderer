@@ -52,7 +52,7 @@ export function domainImage(url: string, cms = false, cmsSiteUrl = '', type = ''
     }
 }
 
-export function createInlineStyles(themeStyles: ThemeStyles) {
+/* export function createInlineStyles(themeStyles: ThemeStyles) {
     const textColors = `.accent-txt{color:${themeStyles['textColorAccent']}} .txt-color{color:${themeStyles['textColor']}} .txt-color-hd{color:${themeStyles['headingColor']}} .navLink:hover{color: ${themeStyles['navHover']}} .navLink{color:${themeStyles['NavText']}} .social-icon:hover{background-color: ${themeStyles['navHover']}} .social-icon{color:${themeStyles['NavText']}} .currentNav{color:${themeStyles['navCurrent']}} .caption-txt{color:${themeStyles.captionText}}`
 
     const btnStyles = `.btn_1{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['btnBackground']}} .btn_1:hover{color: ${themeStyles['btnBackground']}; background-color: ${themeStyles['textColorAccent']}} .btn_2{color: ${themeStyles['linkColor']}; border-color: ${themeStyles['linkColor']}} .btn_2:hover{color: ${themeStyles['btnBackground']}; border-color: ${themeStyles['btnBackground']}} .btn_alt{color: ${themeStyles['promoColor']}; background-color: ${themeStyles['textColorAccent']}} .btn_alt:hover{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['promoColor']}}`
@@ -63,7 +63,7 @@ export function createInlineStyles(themeStyles: ThemeStyles) {
 
     return colorStyles
 }
-
+ */
 export function capitalize(str: string) {
     if (!str) {
         return ''
@@ -135,9 +135,9 @@ export function defineContainerVars(page: CMSPage, siteData: GlobalData) {
     const cmsUrl = siteData.cmsUrl
     const themeStyles = siteData.cmsColors
     const columnStyles = page.data.columnStyles
-    const colorStyles = createInlineStyles(themeStyles)
+    //const colorStyles = createInlineStyles(themeStyles)
 
-    return { cmsUrl, themeStyles, columnStyles, colorStyles }
+    return { cmsUrl, themeStyles, columnStyles }
 }
 
 //Used to have conditional tag wraps around code without repeating inside code

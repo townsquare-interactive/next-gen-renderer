@@ -1,6 +1,6 @@
 import { Html, Head, Main, NextScript } from 'next/document'
 const cmsUrl = process.env.CMS_URL || 'clttestsiteforjoshedwards'
-const s3ColorStyles = process.env.BUCKET_URL + '/' + cmsUrl + '/' + 'global.scss'
+const s3ColorStyles = process.env.BUCKET_URL + '/' + cmsUrl + '/' + 'global.css'
 const s3CustomStyles = process.env.BUCKET_URL + '/' + cmsUrl + '/' + 'custom.css'
 
 function Document() {

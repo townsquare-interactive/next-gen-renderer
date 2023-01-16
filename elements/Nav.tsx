@@ -5,7 +5,7 @@ import { MyNavProps, NavItem, NavListItemProps } from '../types'
 import { Fragment } from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 
 const Nav = (props: MyNavProps) => {
     const { navType, cmsNav, navSwitch } = props
@@ -61,7 +61,7 @@ const NavListItem = ({ item, arrow = false, navType, navSwitch }: NavListItemPro
 
     const title = item.title ? item.title.toLowerCase() : ''
 
-    function currentNav() {
+    function checkCurrentPage() {
         if (navType != 'footer-nav') {
             if (currentPage == title || (currentPage == '' && title === 'home')) {
                 return true
@@ -80,7 +80,7 @@ const NavListItem = ({ item, arrow = false, navType, navSwitch }: NavListItemPro
                 [styles.arrow]: arrow == true,
                 ['navLink']: navType === 'desktop-nav' || navType === 'mobile-nav',
                 ['footer-icon']: navType === 'footer-nav',
-                ['currentNav']: currentNav(),
+                ['current-page']: checkCurrentPage(),
             })}
             aria-label={item.title}
             onClick={navType != 'desktop-nav' ? navSwitch : undefined}
