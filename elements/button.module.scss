@@ -190,16 +190,6 @@
         }
     }
 
-    &.banner {
-        &.left {
-            justify-content: center;
-
-            .btn-wrap {
-                justify-content: center;
-            }
-        }
-    }
-
     &.photo_grid {
         .btn-wrap {
             a {
@@ -243,6 +233,29 @@
                         margin-left: 0.25rem;
                     }
                 }
+            }
+        }
+    }
+    &.banner {
+        &.left {
+            justify-content: center;
+
+            .btn-wrap {
+                justify-content: center;
+            }
+        }
+
+        .btn-wrap {
+            flex-direction: column;
+            @include breakpoints.sm {
+                a {
+                    &:first-of-type {
+                        margin-left: 0;
+                        margin-right: 0.25rem;
+                    }
+                }
+
+                flex-direction: row;
             }
         }
     }
