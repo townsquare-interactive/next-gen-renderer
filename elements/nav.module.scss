@@ -73,6 +73,10 @@
                 padding-left: 1rem;
             }
 
+            .sub-menu li {
+                display: block;
+            }
+
             @include breakpoints.lg-min {
                 display: block;
             }
