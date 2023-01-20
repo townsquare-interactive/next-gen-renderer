@@ -32,6 +32,7 @@
             display: grid;
             gap: variables.$grid-gap;
             grid-auto-rows: minmax(100px, auto);
+            //grid-template-rows: minmax(100px, auto);
         }
 
         .item {
@@ -194,14 +195,14 @@
     }
 }
 
-/* @mixin photo-flex {
+@mixin photo-flex {
     @include breakpoints.sm-min {
         &.col_2,
         &.col_3,
         &.col_4 {
             .item {
-                margin-left: $item-margins;
-                margin-right: $item-margins;
+                margin-left: variables.$item-margins;
+                margin-right: variables.$item-margins;
             }
         }
 
@@ -213,49 +214,49 @@
         }
 
         &.col_3 .item {
-            width: $half-item-width;
+            width: variables.$half-item-width;
         }
 
         &.col_4 .item {
-            width: $half-item-width;
+            width: variables.$half-item-width;
         }
     }
 
     @include breakpoints.md-min {
         &.col_2 .item,
         &.col_4 .item {
-            width: $half-item-width;
+            width: variables.$half-item-width;
         }
 
         &.col_3 .item {
-            width: $third-item-width;
+            width: variables.$third-item-width;
         }
 
         &.col_2 .hero {
-            width: $full-item-width;
+            width: variables.$full-item-width;
         }
 
         &.col_3 .hero {
-            width: $col3-hero;
+            width: variables.$col3-hero;
         }
 
         &.col_4 .hero {
-            width: $half-item-width;
+            width: variables.$half-item-width;
         }
     }
 
     @container module (min-width:1025px) {
         &.col_3 .nHero,
         &.beacon.col_3 .item {
-            width: $third-item-width;
+            width: variables.$third-item-width;
         }
 
         &.col_4 .nHero,
         &.beacon.col_4 .item {
-            width: $quarteritem-width;
+            width: variables.$quarteritem-width;
         }
     }
-} */
+}
 
 /*-----------Text Sizes-------------------*/
 

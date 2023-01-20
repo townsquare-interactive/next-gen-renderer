@@ -1,6 +1,7 @@
 @use '../styles/utils.scss';
 @use '../styles/variables.scss';
 @use './styles/breakpoints.scss';
+@value nDsc from '../components/article.module.scss';
 
 .btn-mod {
     display: flex;
@@ -214,6 +215,24 @@
                 width: 100%;
             }
         }
+        &.article,
+        &.article_1,
+        &.article_2,
+        &.article_3 {
+            margin-top: auto;
+
+            .one-btn-w {
+                margin-top: auto;
+
+                .btn {
+                    margin-bottom: 0;
+                }
+            }
+
+            &.two-btns {
+                padding: 0 2rem 1.5rem;
+            }
+        }
     }
 
     &.article,
@@ -264,8 +283,19 @@
         width: 100%;
 
         .btn_w {
-            margin: auto 0 0 !important;
+            // margin: auto 0 0 !important;
             width: 100% !important;
         }
+    }
+}
+
+.nDsc {
+    //Two buttons do not display when there is no description. Not sure if this is intentional
+    .two-btns {
+        display: none;
+    }
+
+    .btn-mod.article_2 .btn {
+        margin-top: 0;
     }
 }

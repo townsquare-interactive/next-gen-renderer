@@ -27,8 +27,10 @@
                 }
             }
 
+            //
             .item-wrap {
                 height: 100%;
+                position: relative;
 
                 .hd-block {
                     .hd {
@@ -113,7 +115,8 @@
     }
 
     &.grid {
-        @include utils.grid;
+        @include utils.item-flex;
+        //@include utils.grid;
     }
 
     &.flexAlt {

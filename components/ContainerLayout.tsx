@@ -8,9 +8,8 @@ import { useState } from 'react'
 import SlidingHeader from 'elements/SlidingHeader'
 
 export default function Layout(props: LayoutProps) {
-    const { children, siteData, themeStyles } = props
+    const { children, siteData, themeStyles, cName } = props
     const [navCheck, setNav] = useState<boolean>(false)
-    const [contentMargin, setContentMargin] = useState<number>(203)
 
     function navSwitch() {
         setNav(!navCheck)
@@ -18,7 +17,7 @@ export default function Layout(props: LayoutProps) {
 
     return (
         <>
-            <div className={cn(styles.root)}>
+            <div className={cn(styles.root, `page-${cName}`)}>
                 <SlidingHeader navSwitch={navSwitch} navCheck={navCheck} themeStyles={themeStyles} siteData={siteData} />
                 <ContainerHeader siteData={siteData} navSwitch={navSwitch} />
 

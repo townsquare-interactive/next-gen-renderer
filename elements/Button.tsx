@@ -20,6 +20,7 @@ export const Button = (props: BtnProps) => {
         <div
             className={cn(styles['btn-mod'], styles[`${type}`], styles[`${align}`], 'txt-font', {
                 [styles.well]: well == '1' && type.includes('article'),
+                [styles['two-btns']]: buttonList[0].active === true && buttonList[1].active === true,
             })}
         >
             {well && <style>{linkHoverStyles}</style>}

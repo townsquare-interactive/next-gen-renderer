@@ -15,11 +15,20 @@ export const PhotoGrid = (props: PhotoGridProps) => {
 
     return (
         <div
-            className={cn(styles['root'], styles['flex-mod'], styles['root-container'], styles[`col_${columns}`], styles['grid'], `col_${columns}`, {
-                [styles.well]: well == '1',
-                [styles.not_well]: !well,
-                [styles[`cst_${customClassName}`]]: customClassName,
-            })}
+            className={cn(
+                styles['root'],
+                styles['flex-mod'],
+                styles['root-container'],
+                styles[`col_${columns}`],
+                styles['grid'],
+                `col_${columns}`,
+                'photo-grid-mod',
+                {
+                    [styles.well]: well == '1',
+                    [styles.not_well]: !well,
+                    [styles[`cst_${customClassName}`]]: customClassName,
+                }
+            )}
             id={`id_${modId}`}
         >
             {title && <ModuleTitle title={title} />}
@@ -66,7 +75,6 @@ const PhotoItem = (props: PhotoItemProps) => {
                 styles[`item_${itemIndex + 1}`]
             )}
             lang="en"
-            style={{ backgroundImage: `linear-gradient(-45deg, ${item.textureImage?.gradientColors[0]}, ${item.textureImage?.gradientColors[1]})` }}
         >
             <ConditionalWrapper
                 condition={item.isWrapLink ? true : false}
@@ -78,12 +86,31 @@ const PhotoItem = (props: PhotoItemProps) => {
                         target={item.newwindow == 1 ? '_blank' : item.newwindow2 == 1 ? '_blank' : '_self'}
                         aria-label={item.headline || 'block-link'}
                     >
-                        <div className={cn(styles['item-wrap'], 'btn_link')} aria-label={item.headline || 'item-wrap'}>
+                        <div
+                            className={cn(styles['item-wrap'], 'btn_link')}
+                            aria-label={item.headline || 'item-wrap'}
+                            style={
+                                item.textureImage && {
+                                    backgroundImage: `linear-gradient(-45deg, ${item.textureImage?.gradientColors[0]}, ${item.textureImage?.gradientColors[1]})`,
+                                }
+                            }
+                        >
                             {children}
                         </div>
                     </Link>
                 )}
-                falseOutput={(children: ReactChild) => <div className={styles['item-wrap']}>{children}</div>}
+                falseOutput={(children: ReactChild) => (
+                    <div
+                        className={styles['item-wrap']}
+                        style={
+                            item.textureImage && {
+                                backgroundImage: `linear-gradient(-45deg, ${item.textureImage?.gradientColors[0]}, ${item.textureImage?.gradientColors[1]})`,
+                            }
+                        }
+                    >
+                        {children}
+                    </div>
+                )}
             >
                 <>
                     <ImageElement item={item} well={well} imgsize={imgsize} cmsUrl={cmsUrl} modType="photo_grid" />

@@ -12,6 +12,8 @@
 @value nImg from '../components/photogrid.module.scss';
 
 .hd-block {
+    margin-top: 0.7058823529em;
+
     .sh {
         font-size: variables.$xs-txt;
         margin-top: 0.5714285714em;
@@ -22,7 +24,6 @@
 
     .hd {
         font-size: variables.$sm-txt;
-
         margin-bottom: 0.4705882353em;
         line-height: 1.1764705882em;
         font-weight: 700;
@@ -31,21 +32,12 @@
         margin-top: 0;
     }
 
-    margin-top: 0.7058823529em;
-
     .icon-block {
         display: flex;
         justify-content: center;
         flex-direction: column;
         align-items: center;
-
-        //temp added
-        /*  margin-bottom: 2em;
-        margin-top: 2em; */
-
-        /* @include breakpoints.md-min {
-            margin-bottom: 1em;
-        } */
+        margin-bottom: 0.5rem;
 
         .circle {
             position: absolute;
@@ -53,21 +45,22 @@
         }
 
         .icon {
-            /*  height: 3em;
-            width: 3.25em;
-            z-index: 2; */
-
             //
-            height: 6em;
-            width: 6.25em;
+            height: 6rem;
+            width: 6rem;
             z-index: 2;
-            padding: 2rem;
+            padding: 1.5rem;
+
+            @include breakpoints.md-min {
+                height: 7rem;
+                width: 7rem;
+                padding: 2rem;
+            }
         }
     }
 
-    &.article,
-    &.banner {
-        //temp: medium screens, need to revise size maybe
+    &.article {
+        //medium screens
         @container item (min-width: 343px) {
             margin-top: 0.6666666667em;
             .hd {
@@ -104,13 +97,61 @@
             }
         }
     }
+
+    &.banner {
+        @container item (min-width: 481px) {
+            margin-top: 0.6666666667em;
+            .hd {
+                font-size: variables.$md-txt;
+                margin-bottom: 0.5em;
+                line-height: 1.1666666667em;
+                letter-spacing: -0.0125rem;
+            }
+
+            .sh {
+                font-size: variables.$sm-txt;
+                margin-top: 0.7058823529em;
+                margin-bottom: 0.4705882353em;
+                line-height: 1.1764705882em;
+            }
+        }
+
+        @container item (min-width: 1025px) {
+            margin-top: 0.6666666667em;
+            .hd {
+                font-size: variables.$lg-txt;
+                margin-bottom: 0.4444444444em;
+                line-height: 1.1111111111em;
+                letter-spacing: -0.0125rem;
+            }
+
+            .sh {
+                font-size: variables.$md-txt;
+                margin-top: 0.6666666667em;
+                margin-bottom: 0.5em;
+                line-height: 1.1666666667em;
+                letter-spacing: -0.0125rem;
+            }
+        }
+
+        &.left {
+            .icon-block {
+                @include breakpoints.sm-min {
+                    margin-right: 0.5rem;
+                }
+
+                @include breakpoints.md-min {
+                    margin-right: 1rem;
+                }
+            }
+        }
+    }
+
     @include breakpoints.sm-min {
         &.banner.left {
             display: flex;
             flex: 1 1 66.666%;
-            // text-align: left;
             align-items: center;
-            //text-align: left;
         }
     }
 }

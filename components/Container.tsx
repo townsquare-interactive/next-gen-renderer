@@ -20,7 +20,7 @@ export const Container = (props: ContainerProps) => {
     return (
         <>
             <PageHead page={page} siteData={siteData} />
-            <ContainerLayout siteData={siteData} themeStyles={themeStyles}>
+            <ContainerLayout siteData={siteData} themeStyles={themeStyles} cName={page.data.slug}>
                 {page.data && (
                     <div className={cn(styles.root, 'content-background')}>
                         <div className={styles.featured}>

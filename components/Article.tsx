@@ -14,21 +14,33 @@ import { HeadlineBlock } from 'elements/HeadlineBlock'
 const Article = (props: ArticleProps) => {
     const { columns = 1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl, disabled, customClassName } = props
 
+    console.log(props)
+
     if (disabled === 'disabled') {
         return <></>
     } else {
         return (
             <div
-                className={cn(styles['root'], styles['flex-mod'], styles['grid'], styles['root-container'], styles[`col_${columns}`], styles[`${type}`], {
-                    [styles.beacon]: type === 'article',
-                    [styles.well]: well == '1',
-                    [styles.not_well]: !well,
-                    [styles[`cst_${customClassName}`]]: customClassName,
-                })}
+                className={cn(
+                    styles['root'],
+                    styles['flex-mod'],
+                    styles['grid'],
+                    styles['root-container'],
+                    styles[`col_${columns}`],
+                    styles[`${type}`],
+                    'article-mod',
+                    {
+                        [styles.beacon]: type === 'article',
+                        [styles.well]: well == '1',
+                        [styles.not_well]: !well,
+                        [styles[`cst_${customClassName}`]]: customClassName,
+                        [`cst_${customClassName}`]: customClassName,
+                    }
+                )}
                 id={`id_${modId}`}
             >
                 {title && <ModuleTitle title={title} />}
-                <div className={styles.wrapper}>
+                <div className={cn(styles.wrapper, 'wrapper')}>
                     {items.map((item, index) => (
                         <Fragment key={index}>
                             {item.disabled != 'disabled' ? (
@@ -63,6 +75,7 @@ const ModuleItem = (props: ModuleItemProps) => {
             className={cn(
                 styles['item'],
                 styles[`${item.align}`],
+                'item',
                 {
                     [styles.hero]: item.isFeatured === 'active',
                     [styles.nHero]: !item.isFeatured,
@@ -87,7 +100,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                     <Link
                         href={item.pagelink || item.weblink || item.pagelink2 || item.weblink2 || ''}
                         passHref={item.weblink || item.weblink2 ? true : false}
-                        className={cn('btn_link')}
+                        className={cn('btn_link', styles.btn_link)}
                         target={item.newwindow == 1 ? '_blank' : item.newwindow2 == 1 ? '_blank' : '_self'}
                         aria-label={item.headline || 'block-link'}
                     >

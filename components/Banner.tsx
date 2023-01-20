@@ -17,7 +17,7 @@ const Banner = (props: ArticleProps) => {
     } else {
         return (
             <div
-                className={cn(styles['root'], styles['flex-mod'], styles['root-container'], styles[`${type}`], {
+                className={cn(styles['root'], styles['flex-mod'], styles['root-container'], styles[`${type}`], 'banner-mod', {
                     [styles.well]: well == '1',
                     [styles.not_well]: !well,
                     [styles[`cst_${customClassName}`]]: customClassName,

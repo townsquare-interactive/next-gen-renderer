@@ -89,6 +89,7 @@ export interface LayoutProps {
     children: ReactNode
     siteData: GlobalData
     themeStyles: ThemeStyles
+    cName?: string
     //page: CMSPage
 }
 export interface RendererProps {
@@ -268,7 +269,6 @@ export interface Module {
 }
 
 export interface CMSPageData {
-    //attributes: NavigationProps | FooterProps
     modules: ModuleData[][]
     type?: string
     layout?: number
@@ -278,6 +278,7 @@ export interface CMSPageData {
     hideTitle: number
     sections: [{ wide: string }, { wide: string }, { wide: string }, { wide: string }, { wide: string }]
     columnStyles: string
+    slug: string
 }
 
 export interface GlobalModule {

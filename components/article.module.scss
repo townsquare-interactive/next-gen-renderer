@@ -202,6 +202,12 @@
                 }
             }
         }
+
+        //new
+        .item-wrap,
+        .btn_link {
+            height: 100%;
+        }
     }
 
     &.beacon {
@@ -245,11 +251,19 @@
             }
         }
 
-        &.flex-mod .item {
-            margin-bottom: 4rem;
-
-            &:last-of-type &.col_1 {
+        &.flex-mod {
+            .item {
                 margin-bottom: 2rem;
+            }
+
+            &.col_1 {
+                .item {
+                    margin-bottom: 4rem;
+
+                    &:last-of-type &.col_1 {
+                        margin-bottom: 2rem;
+                    }
+                }
             }
         }
     }
@@ -278,7 +292,8 @@
 
     &.grid {
         &:not(.col_1) {
-            @include utils.grid;
+            //@include utils.grid;
+            @include utils.item-flex;
         }
     }
 
