@@ -191,7 +191,7 @@
         }
     }
 
-    &.photo_grid {
+    /* &.photo_grid {
         .btn-wrap {
             a {
                 @include breakpoints.sm {
@@ -200,7 +200,7 @@
                 }
             }
         }
-    }
+    } */
 
     &.a3,
     &.article {
@@ -238,7 +238,8 @@
     &.article,
     &.article_1,
     &.article_2,
-    &.article_3 {
+    &.article_3,
+    &.photo_grid {
         .btn-wrap {
             a {
                 @include breakpoints.sm {

@@ -294,6 +294,7 @@ export interface LayoutComponentAttributes {
     addressData?: AddressData
     siteName?: string
     phoneNumber?: string
+    disabled?: string
 
     navSwitch?: () => void
     /**Boolean that determines if navbar being shown or hidden*/

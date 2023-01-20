@@ -292,8 +292,7 @@
 
     &.grid {
         &:not(.col_1) {
-            //@include utils.grid;
-            @include utils.item-flex;
+            @include utils.grid;
         }
     }
 

@@ -80,7 +80,6 @@
 
         //for larger screens (starts at 1025)
         @container item (min-width: 775px) {
-            margin-top: 0.6666666667em;
             .hd {
                 font-size: variables.$lg-txt;
                 margin-bottom: 0.4444444444em;
@@ -173,8 +172,8 @@
             margin-bottom: 0.4705882353em;
             line-height: 1.1764705882em;
         }
-
-        @container item (min-width: 343px) {
+        //new
+        @container item (min-width: 481px) {
             .hd {
                 font-size: variables.$lg-txt;
                 margin-top: 0.6666666667em;

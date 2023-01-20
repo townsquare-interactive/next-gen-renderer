@@ -16,6 +16,7 @@ import { PhotoGrid } from './PhotoGrid'
 import { capitalize } from '../functions'
 import { GlobalModule, ModuleProps, RendererProps } from 'types'
 import Banner from './Banner'
+import { Fragment } from 'react'
 
 const keysToComponentMap: any = {
     Text,
@@ -63,11 +64,14 @@ export const ModuleRenderer = ({ config, themeStyles, cmsUrl = '' }: RendererPro
         <>
             {configWithProps.map((item: GlobalModule, index: number) => {
                 const { component, ...props } = item
-
                 const Comp = keysToComponentMap[component]
 
                 if (Comp) {
-                    return <Comp {...props.attributes} key={index} themeStyles={themeStyles} cmsUrl={cmsUrl} />
+                    return (
+                        <Fragment key={index}>
+                            {props.attributes.disabled != 'disabled' && <Comp {...props.attributes} themeStyles={themeStyles} cmsUrl={cmsUrl} />}
+                        </Fragment>
+                    )
                 }
             })}
         </>

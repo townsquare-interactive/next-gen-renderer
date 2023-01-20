@@ -24,7 +24,7 @@ const Article = (props: ArticleProps) => {
                 className={cn(
                     styles['root'],
                     styles['flex-mod'],
-                    styles['grid'],
+                    styles['item-flex'],
                     styles['root-container'],
                     styles[`col_${columns}`],
                     styles[`${type}`],

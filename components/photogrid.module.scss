@@ -115,8 +115,8 @@
     }
 
     &.grid {
-        @include utils.item-flex;
-        //@include utils.grid;
+        //@include utils.item-flex;
+        @include utils.grid;
     }
 
     &.flexAlt {

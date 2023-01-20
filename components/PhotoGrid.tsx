@@ -20,7 +20,7 @@ export const PhotoGrid = (props: PhotoGridProps) => {
                 styles['flex-mod'],
                 styles['root-container'],
                 styles[`col_${columns}`],
-                styles['grid'],
+                styles['flexAlt'],
                 `col_${columns}`,
                 'photo-grid-mod',
                 {
