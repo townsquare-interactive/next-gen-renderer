@@ -5,8 +5,6 @@ import cn from 'classnames'
 import { ConditionalWrapper } from '../functions'
 import { ReactChild, Fragment } from 'react'
 import Link from 'next/link'
-
-// importing fontAwesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const Button = (props: BtnProps) => {
@@ -23,7 +21,7 @@ export const Button = (props: BtnProps) => {
                 [styles['two-btns']]: buttonList[0].active === true && buttonList[1].active === true,
             })}
         >
-            {well && <style>{linkHoverStyles}</style>}
+            {well && type.includes('article') && <style>{linkHoverStyles}</style>}
             <style>{promoButtonStyles}</style>
 
             <div

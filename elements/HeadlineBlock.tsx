@@ -34,32 +34,33 @@ export const HeadlineBlock = (props: HeadlineBlockProps) => {
                     </div>
                 </div>
             )}
-            {/* <div className={styles.headings}> */}
-            <>
-                {item.headline && (
-                    <Heading
-                        textType="hd"
-                        text={item.headline}
-                        columns={columns}
-                        headerTag={item.headerTag}
-                        well={well}
-                        isBeaconHero={isBeaconHero}
-                        modType={modType}
-                    />
-                )}
+            <div className={styles.headings}>
+                <>
+                    {item.headline && (
+                        <Heading
+                            textType="hd"
+                            text={item.headline}
+                            columns={columns}
+                            headerTag={item.headerTag}
+                            well={well}
+                            isBeaconHero={isBeaconHero}
+                            modType={modType}
+                        />
+                    )}
 
-                {item.subheader && (
-                    <Heading
-                        textType="sh"
-                        text={item.subheader}
-                        columns={columns}
-                        headerTag={item.headerTag}
-                        well={well}
-                        isBeaconHero={isBeaconHero}
-                        modType={modType}
-                    />
-                )}
-            </>
+                    {item.subheader && (
+                        <Heading
+                            textType="sh"
+                            text={item.subheader}
+                            columns={columns}
+                            headerTag={item.headerTag}
+                            well={well}
+                            isBeaconHero={isBeaconHero}
+                            modType={modType}
+                        />
+                    )}
+                </>
+            </div>
         </header>
     )
 }

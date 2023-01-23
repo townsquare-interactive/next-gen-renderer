@@ -6,7 +6,7 @@ import cn from 'classnames'
 import { ImageElement } from '../elements/ImageElement'
 import { ConditionalWrapper, domainImage } from 'functions'
 import Link from 'next/link'
-import { ReactChild } from 'react'
+import { Fragment, ReactChild } from 'react'
 import ModuleTitle from 'elements/ModuleTitle'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
 
@@ -33,24 +33,26 @@ export const PhotoGrid = (props: PhotoGridProps) => {
         >
             {title && <ModuleTitle title={title} />}
             <div className={styles.wrapper}>
-                {items.map((item, index) =>
-                    item.disabled === 'disabled' ? (
-                        <></>
-                    ) : (
-                        <PhotoItem
-                            item={item}
-                            well={well}
-                            modId={modId}
-                            themeStyles={themeStyles}
-                            key={index}
-                            imgsize={imgsize}
-                            type={type}
-                            columns={columns}
-                            itemIndex={index}
-                            cmsUrl={cmsUrl}
-                        />
-                    )
-                )}
+                {items.map((item, index) => (
+                    <Fragment key={index}>
+                        {item.disabled === 'disabled' ? (
+                            <></>
+                        ) : (
+                            <PhotoItem
+                                item={item}
+                                well={well}
+                                modId={modId}
+                                themeStyles={themeStyles}
+                                key={index}
+                                imgsize={imgsize}
+                                type={type}
+                                columns={columns}
+                                itemIndex={index}
+                                cmsUrl={cmsUrl}
+                            />
+                        )}
+                    </Fragment>
+                ))}
             </div>
         </div>
     )
@@ -94,7 +96,7 @@ const PhotoItem = (props: PhotoItemProps) => {
                                     ? {
                                           backgroundImage: `linear-gradient(-45deg, ${item.textureImage?.gradientColors[0]}, ${item.textureImage?.gradientColors[1]})`,
                                       }
-                                    : { background: 'transparent' }
+                                    : {}
                             }
                         >
                             {children}
@@ -109,40 +111,33 @@ const PhotoItem = (props: PhotoItemProps) => {
                                 ? {
                                       backgroundImage: `linear-gradient(-45deg, ${item.textureImage?.gradientColors[0]}, ${item.textureImage?.gradientColors[1]})`,
                                   }
-                                : { background: 'transparent' }
+                                : {}
                         }
                     >
                         {children}
                     </div>
                 )}
             >
-                <>
-                    <div
-                        className={styles.content}
-                        style={
-                            well === '1'
-                                ? {
-                                      backgroundImage: `url(${item.textureImage?.image ? domainImage(item.textureImage.image, false) : ''})`,
-                                  }
-                                : { background: `${item.promoColor}` }
-                        }
-                    >
-                        <ImageElement item={item} well={well} imgsize={imgsize} cmsUrl={cmsUrl} modType="photo_grid" />
-                        {item.hasGridCaption && (
-                            <figcaption
-                                className={cn(styles.caption)}
-                                style={item.image ? { background: themeStyles.captionBackground } : { background: 'transparent' }}
-                            >
-                                <div>
-                                    {(item.headline || item.subheader) && <HeadlineBlock item={item} well={well} columns={columns} modType="photo_grid" />}
-                                    {item.visibleButton && (
-                                        <Button well={well} modId={modId} type={type} columns={columns} themeStyles={themeStyles} {...item} />
-                                    )}
-                                </div>
-                            </figcaption>
-                        )}
-                    </div>
-                </>
+                <div
+                    className={styles.content}
+                    style={
+                        well === '1'
+                            ? {
+                                  backgroundImage: `url(${item.textureImage?.image ? domainImage(item.textureImage.image, false) : ''})`,
+                              }
+                            : { background: `${item.promoColor}` }
+                    }
+                >
+                    <ImageElement item={item} well={well} imgsize={imgsize} cmsUrl={cmsUrl} modType="photo_grid" />
+                    {item.hasGridCaption && (
+                        <figcaption className={cn(styles.caption)} style={item.image ? { background: themeStyles.captionBackground } : {}}>
+                            <div>
+                                {(item.headline || item.subheader) && <HeadlineBlock item={item} well={well} columns={columns} modType="photo_grid" />}
+                                {item.visibleButton && <Button well={well} modId={modId} type={type} columns={columns} themeStyles={themeStyles} {...item} />}
+                            </div>
+                        </figcaption>
+                    )}
+                </div>
             </ConditionalWrapper>
         </article>
     )
