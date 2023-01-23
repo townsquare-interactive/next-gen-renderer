@@ -34,7 +34,8 @@ export const HeadlineBlock = (props: HeadlineBlockProps) => {
                     </div>
                 </div>
             )}
-            <div className={styles.headings}>
+            {/* <div className={styles.headings}> */}
+            <>
                 {item.headline && (
                     <Heading
                         textType="hd"
@@ -58,7 +59,7 @@ export const HeadlineBlock = (props: HeadlineBlockProps) => {
                         modType={modType}
                     />
                 )}
-            </div>
+            </>
         </header>
     )
 }

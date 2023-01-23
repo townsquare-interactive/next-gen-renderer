@@ -292,8 +292,10 @@
 
 .nDsc {
     //Two buttons do not display when there is no description. Not sure if this is intentional
-    .two-btns {
-        display: none;
+    .article {
+        .two-btns {
+            display: none;
+        }
     }
 
     .btn-mod.article_2 .btn {

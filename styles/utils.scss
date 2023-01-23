@@ -129,6 +129,12 @@
 }
 
 @mixin item-flex {
+    .item {
+        width: variables.$full-item-width;
+        margin-left: variables.$item-margins;
+        margin-right: variables.$item-margins;
+    }
+
     @include breakpoints.sm-min {
         &.col_2,
         &.col_3,
@@ -141,44 +147,53 @@
 
         &.col_1 .item,
         &.col_2 .item {
-            width: variables.$ten-12;
-            margin-left: auto;
-            margin-right: auto;
+            width: variables.$full-item-width;
+            //margin-left: auto;
+            //margin-right: auto;
+        }
+        &.article_1,
+        &.article_2,
+        &.article_3 {
+            &.col_1 .nHero.item {
+                width: variables.$ten-12;
+                margin-left: auto;
+                margin-right: auto;
+            }
         }
 
         &.col_3 .item {
             width: variables.$half-item-width;
         }
 
-        &.col_4 .item {
+        &.col_4 .nHero.item {
             width: variables.$half-item-width;
+        }
+
+        &.col_4 .hero.item {
+            width: variables.$full-item-width;
         }
     }
 
     @include breakpoints.md-min {
-        &.col_2 .item,
-        &.col_4 .item {
+        &.col_2 .nHero.item,
+        &.col_4 .nHero.item {
             width: variables.$half-item-width;
         }
 
-        &.col_3 .item {
+        &.col_3 .nHero.item {
             width: variables.$third-item-width;
         }
 
-        &.a1,
-        &.a2,
-        &.a3 {
-            &.col_2 .hero {
-                width: variables.$full-item-width;
-            }
+        &.col_2 .hero {
+            width: variables.$full-item-width;
+        }
 
-            &.col_3 .hero {
-                width: variables.$col3-hero;
-            }
+        &.col_3 .hero {
+            width: variables.$col3-hero;
+        }
 
-            &.col_4 .hero {
-                width: variables.$half-item-width;
-            }
+        &.col_4 .hero.item {
+            width: variables.$full-item-width;
         }
     }
 
@@ -188,9 +203,17 @@
             width: variables.$third-item-width;
         }
 
-        &.col_4 .nHero,
+        &.col_4 .nHero.item,
         &.beacon.col_4 .item {
             width: variables.$quarteritem-width;
+        }
+
+        &.col_3 .hero.item {
+            width: variables.$col3-hero;
+        }
+
+        &.col_4 .hero.item {
+            width: variables.$half-item-width;
         }
     }
 }
@@ -209,8 +232,8 @@
         &.col_1 .item,
         &.col_2 .item {
             width: 100%;
-            margin-left: auto;
-            margin-right: auto;
+            // margin-left: auto;
+            // margin-right: auto;
         }
 
         &.col_3 .item {

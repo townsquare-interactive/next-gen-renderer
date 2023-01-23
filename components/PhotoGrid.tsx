@@ -90,9 +90,11 @@ const PhotoItem = (props: PhotoItemProps) => {
                             className={cn(styles['item-wrap'], 'btn_link')}
                             aria-label={item.headline || 'item-wrap'}
                             style={
-                                item.textureImage && {
-                                    backgroundImage: `linear-gradient(-45deg, ${item.textureImage?.gradientColors[0]}, ${item.textureImage?.gradientColors[1]})`,
-                                }
+                                item.textureImage
+                                    ? {
+                                          backgroundImage: `linear-gradient(-45deg, ${item.textureImage?.gradientColors[0]}, ${item.textureImage?.gradientColors[1]})`,
+                                      }
+                                    : { background: 'transparent' }
                             }
                         >
                             {children}
@@ -103,9 +105,11 @@ const PhotoItem = (props: PhotoItemProps) => {
                     <div
                         className={styles['item-wrap']}
                         style={
-                            item.textureImage && {
-                                backgroundImage: `linear-gradient(-45deg, ${item.textureImage?.gradientColors[0]}, ${item.textureImage?.gradientColors[1]})`,
-                            }
+                            item.textureImage
+                                ? {
+                                      backgroundImage: `linear-gradient(-45deg, ${item.textureImage?.gradientColors[0]}, ${item.textureImage?.gradientColors[1]})`,
+                                  }
+                                : { background: 'transparent' }
                         }
                     >
                         {children}
@@ -113,26 +117,31 @@ const PhotoItem = (props: PhotoItemProps) => {
                 )}
             >
                 <>
-                    <ImageElement item={item} well={well} imgsize={imgsize} cmsUrl={cmsUrl} modType="photo_grid" />
-                    {item.hasGridCaption && (
-                        <figcaption
-                            className={cn(styles.caption)}
-                            style={
-                                item.image
-                                    ? { background: themeStyles.captionBackground }
-                                    : well === '1'
-                                    ? {
-                                          backgroundImage: `url(${item.textureImage?.image ? domainImage(item.textureImage.image, false) : ''})`,
-                                      }
-                                    : { background: `${item.promoColor}` }
-                            }
-                        >
-                            <div>
-                                {(item.headline || item.subheader) && <HeadlineBlock item={item} well={well} columns={columns} modType="photo_grid" />}
-                                {item.visibleButton && <Button well={well} modId={modId} type={type} columns={columns} themeStyles={themeStyles} {...item} />}
-                            </div>
-                        </figcaption>
-                    )}
+                    <div
+                        className={styles.content}
+                        style={
+                            well === '1'
+                                ? {
+                                      backgroundImage: `url(${item.textureImage?.image ? domainImage(item.textureImage.image, false) : ''})`,
+                                  }
+                                : { background: `${item.promoColor}` }
+                        }
+                    >
+                        <ImageElement item={item} well={well} imgsize={imgsize} cmsUrl={cmsUrl} modType="photo_grid" />
+                        {item.hasGridCaption && (
+                            <figcaption
+                                className={cn(styles.caption)}
+                                style={item.image ? { background: themeStyles.captionBackground } : { background: 'transparent' }}
+                            >
+                                <div>
+                                    {(item.headline || item.subheader) && <HeadlineBlock item={item} well={well} columns={columns} modType="photo_grid" />}
+                                    {item.visibleButton && (
+                                        <Button well={well} modId={modId} type={type} columns={columns} themeStyles={themeStyles} {...item} />
+                                    )}
+                                </div>
+                            </figcaption>
+                        )}
+                    </div>
                 </>
             </ConditionalWrapper>
         </article>

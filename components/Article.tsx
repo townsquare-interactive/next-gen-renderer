@@ -14,8 +14,6 @@ import { HeadlineBlock } from 'elements/HeadlineBlock'
 const Article = (props: ArticleProps) => {
     const { columns = 1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl, disabled, customClassName } = props
 
-    console.log(props)
-
     if (disabled === 'disabled') {
         return <></>
     } else {
