@@ -8,6 +8,8 @@ import cn from 'classnames'
 import { Fragment } from 'react'
 import PageHead from './PageHead'
 
+// const ubuntu = Ubuntu({ subsets: ['latin'] })
+
 export const Container = (props: ContainerProps) => {
     const { page, siteData } = props
     //const router = useRouter()

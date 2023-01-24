@@ -8,6 +8,11 @@ const { library } = require('@fortawesome/fontawesome-svg-core')
 
 library.add(fas, fab, far)
 
+/* import { Ubuntu, Anton, Averia_Libre, Arvo, Lato } from '@next/font/google'
+const lato = Lato({ weight: ['400', '700', '900'] })
+const anton = Anton({ weight: ['400'] })
+const ubuntu = Ubuntu({ weight: ['300', '400', '500', '700'] }) */
+
 function MyApp({ Component, pageProps }: AppProps) {
     return (
         <div>

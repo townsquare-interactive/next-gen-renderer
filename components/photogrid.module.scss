@@ -55,8 +55,11 @@
         bottom: 0;
         width: 100%;
         display: flex;
-        overflow: auto;
-        max-height: 100%;
+
+        .cap-cont {
+            max-height: 100%;
+            overflow: auto;
+        }
     }
 
     text-align: left;
@@ -114,7 +117,6 @@
     }
 
     &.grid {
-        //@include utils.item-flex;
         @include utils.grid;
     }
 

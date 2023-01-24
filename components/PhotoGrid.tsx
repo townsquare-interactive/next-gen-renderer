@@ -131,7 +131,7 @@ const PhotoItem = (props: PhotoItemProps) => {
                     <ImageElement item={item} well={well} imgsize={imgsize} cmsUrl={cmsUrl} modType="photo_grid" />
                     {item.hasGridCaption && (
                         <figcaption className={cn(styles.caption)} style={item.image ? { background: themeStyles.captionBackground } : {}}>
-                            <div>
+                            <div className={styles['cap-cont']}>
                                 {(item.headline || item.subheader) && <HeadlineBlock item={item} well={well} columns={columns} modType="photo_grid" />}
                                 {item.visibleButton && <Button well={well} modId={modId} type={type} columns={columns} themeStyles={themeStyles} {...item} />}
                             </div>

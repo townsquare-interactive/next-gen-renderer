@@ -6,11 +6,11 @@ import { ConditionalWrapper, domainImage } from '../functions'
 import { Fragment, ReactChild } from 'react'
 import Link from 'next/link'
 import { Button } from '../elements/Button'
-import ModuleTitle from 'elements/ModuleTitle'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
+import Image from 'next/image'
 
 const Banner = (props: ArticleProps) => {
-    const { columns = 1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl, disabled, customClassName } = props
+    const { columns = 1, type, well, imgsize, modId, items, themeStyles, cmsUrl, disabled, customClassName } = props
 
     if (disabled === 'disabled') {
         return <></>
@@ -24,7 +24,6 @@ const Banner = (props: ArticleProps) => {
                 })}
                 id={`id_${modId}`}
             >
-                {title && <ModuleTitle title={title} />}
                 <div className={styles.wrapper}>
                     {items.map((item, index) => (
                         <Fragment key={index}>
@@ -64,6 +63,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                     [styles.hero]: item.isFeatured === 'active',
                     [styles.nHero]: !item.isFeatured,
                     [styles.yLk]: (item.pagelink || item.weblink || item.pagelink2 || item.weblink2) && !item.twoButtons,
+                    [styles.yImg]: item.image,
                 },
                 styles[`item_${itemIndex + 1}`],
                 `item_${itemIndex + 1}`
@@ -81,20 +81,19 @@ const ModuleItem = (props: ModuleItemProps) => {
                     : { background: `${item.promoColor}` }
             }
         >
-            {/*             {item.textureImage?.image && (
+            {item.image && (
                 <Image
-                    src={domainImage(item.textureImage?.image, false)}
+                    src={domainImage(item.image, true, cmsUrl || '')}
+                    fill
                     alt={item.img_alt_tag || ''}
                     quality="50"
-                    //priority={item.desc ? false : true}
-                    //style={{ width: '100%', height: 'auto' }}
+                    priority={item.imagePriority}
+                    style={{ objectFit: 'cover', objectPosition: 'top' }}
                     sizes="(max-width: 1920px) 100vw,
-                            (max-width: 1200px) 70vw,
-                            100vw"
-                    fill
+                (max-width: 1200px) 50vw,
+                100vw"
                 />
-            )} */}
-
+            )}
             <ConditionalWrapper
                 condition={item.isWrapLink ? true : false}
                 trueOutput={(children: ReactChild) => (
@@ -118,7 +117,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                                     : well === '1'
                                     ? {
                                           backgroundImage: item.textureImage?.image ? `url(${domainImage(item.textureImage.image, false)})` : 'none',
-                                          backgroundPositionY: item.modTwo ? item.modTwo + '%' : 'auto',
+                                          backgroundPositionY: item.modTwo ? item.modTwo + '%' : '0%',
                                           height: item.modOne || 'auto',
                                       }
                                     : { height: item.modOne || 'auto' }
@@ -139,19 +138,11 @@ const ModuleItem = (props: ModuleItemProps) => {
                                 : well === '1'
                                 ? {
                                       backgroundImage: item.textureImage?.image ? `url(${domainImage(item.textureImage.image, false)})` : 'none',
-                                      backgroundPositionY: item.modTwo ? item.modTwo + '%' : 'auto',
+                                      backgroundPositionY: item.modTwo ? item.modTwo + '%' : '0%',
                                       height: item.modOne || 'auto',
                                   }
                                 : {}
                         }
-                        /* style={
-                            well === '1'
-                                ? {
-                                      backgroundImage: `url(data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='13' height='13' viewBox='0 0 4 4'%3E%3Cpath fill='%239C92AC' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E;)`,
-                                      
-                                  }
-                                : { background: 'transparent' }
-                        } */
                     >
                         {children}
                     </div>
@@ -180,22 +171,6 @@ const ItemWrap = (props: ItemWrapProps) => {
 
     return (
         <>
-            {/*  {item.imageIcon && (
-                <>
-                    {(!item.modOne || item.modOne >= 350) && (
-                        <div className={cn(styles['icon-block'])}>
-                            <svg height="100" width="100" className={styles.circle}>
-                                <circle cx="50" cy="50" r="50" fill="#fff" />
-                            </svg>
-
-                            <div className={styles.icon} style={{ color: item.promoColor }}>
-                                <FontAwesomeIcon icon={[item.imageIcon.iconPrefix, item.imageIcon.iconModel]} />
-                            </div>
-                        </div>
-                    )}
-                </>
-            )} */}
-
             {(!item.modOne || item.modOne >= 200) && (
                 <>
                     <>

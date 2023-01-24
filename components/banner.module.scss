@@ -53,12 +53,20 @@
                     }
                 }
             }
+
             @include breakpoints.sm-min {
                 &.left .item-wrap {
                     flex-direction: row;
-                    justify-content: center;
+                    justify-content: space-between;
                     align-items: center;
                     text-align: left;
+                }
+            }
+
+            &.yImg {
+                .item-wrap {
+                    position: relative;
+                    background: var(--caption-background);
                 }
             }
         }
