@@ -105,13 +105,30 @@
     }
 
     &.banner {
+        margin-top: 0;
+
+        .hd {
+            margin-top: 0.4705882353em;
+        }
+
+        font-size: 150%;
+
+        @include breakpoints.sm-min {
+            font-size: 116.67%;
+        }
+
+        @include breakpoints.lg-min {
+            font-size: 100%;
+        }
+
         @container item (min-width: 481px) {
-            margin-top: 0.6666666667em;
+            //margin-top: 0.6666666667em;
             .hd {
                 font-size: variables.$md-txt;
                 // margin-bottom: 0.5em;
                 line-height: 1.1666666667em;
                 letter-spacing: -0.0125rem;
+                margin-top: 0.6666666667em;
             }
 
             .sh {
@@ -122,13 +139,20 @@
             }
         }
 
+        @container item (min-width: 851px) {
+            .hd {
+                margin-top: 0;
+                line-height: 1.1111111111em;
+            }
+        }
+
         @container item (min-width: 1025px) {
-            margin-top: 0.6666666667em;
+            // margin-top: 0.6666666667em;
             .hd {
                 font-size: variables.$lg-txt;
                 // margin-bottom: 0.4444444444em;
-                line-height: 1.1111111111em;
                 letter-spacing: -0.0125rem;
+                margin-top: 0;
             }
 
             .sh {

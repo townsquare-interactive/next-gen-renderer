@@ -74,7 +74,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                     ? {
                           background: `${item.modColor1}`,
                       }
-                    : well === '1'
+                    : well === '1' && !item.image
                     ? {
                           backgroundImage: `linear-gradient(-45deg, ${item.textureImage?.gradientColors[0]}, ${item.textureImage?.gradientColors[1]})`,
                       }

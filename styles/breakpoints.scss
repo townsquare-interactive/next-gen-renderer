@@ -22,6 +22,24 @@ $lg-screen: 1025px;
     }
 }
 
+@mixin sm-to-md {
+    @media print, screen and (min-width: $sm-screen) and (max-width: $md-screen) {
+        @content;
+    }
+}
+
+@mixin sm-to-lg {
+    @media print, screen and (min-width: $sm-screen) and (max-width: $lg-screen) {
+        @content;
+    }
+}
+
+@mixin md-to-lg {
+    @media print, screen and (min-width: $md-screen) and (max-width: $lg-screen) {
+        @content;
+    }
+}
+
 // Extra small screens
 $screen-xs-min: 360px;
 
