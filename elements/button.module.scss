@@ -245,14 +245,20 @@
             width: 100% !important;
         }
     }
+
+    &.article-all.well {
+        &:not(.two-btns) {
+            .btn {
+                border-width: 0;
+                border-radius: 0;
+            }
+        }
+    }
 }
 
 .nDsc {
-    //Two buttons do not display when there is no description. Not sure if this is intentional
-    .article {
-        .two-btns {
-            display: none;
-        }
+    .btn-mod.article_2.two-btns {
+        display: none;
     }
 
     .btn-mod.article_2 .btn {

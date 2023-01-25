@@ -7,7 +7,7 @@ import { Fragment, ReactChild } from 'react'
 import Link from 'next/link'
 import { Button } from '../elements/Button'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
-import Image from 'next/image'
+import BackgroundImage from 'elements/BackgroundImage'
 
 const Banner = (props: ArticleProps) => {
     const { columns = 1, type, well, imgsize, modId, items, themeStyles, cmsUrl, disabled, customClassName } = props
@@ -81,19 +81,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                     : { background: `${item.promoColor}` }
             }
         >
-            {item.image && (
-                <Image
-                    src={domainImage(item.image, true, cmsUrl || '')}
-                    fill
-                    alt={item.img_alt_tag || ''}
-                    quality="50"
-                    priority={item.imagePriority}
-                    style={{ objectFit: 'cover', objectPosition: 'top' }}
-                    sizes="(max-width: 1920px) 100vw,
-                (max-width: 1200px) 50vw,
-                100vw"
-                />
-            )}
+            {item.image && <BackgroundImage image={item.image} alt={item.img_alt_tag} priority={item.imagePriority} cmsUrl={cmsUrl} />}
             <ConditionalWrapper
                 condition={item.isWrapLink ? true : false}
                 trueOutput={(children: ReactChild) => (

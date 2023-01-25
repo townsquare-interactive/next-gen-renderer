@@ -13,6 +13,7 @@ export const ImageElement = (props: ImageElementsProps) => {
     const { item, imgsize = 'landscape_4_3', cmsUrl, modType = 'article' } = props
     const [imageHeight, setHeight] = useState(100)
     const [imageWidth, setWidth] = useState(300)
+    const [hideImage, setHideImage] = useState(false)
 
     const calcImageSize = (loadedMedia: Media) => {
         setWidth(loadedMedia.naturalWidth)
@@ -30,7 +31,8 @@ export const ImageElement = (props: ImageElementsProps) => {
                     [styles['photo-grid']]: modType === 'photo_grid',
                 })}
             >
-                {item.image &&
+                {!hideImage &&
+                    item.image &&
                     (!imageNoSizings.includes(imgsize) ? (
                         <Image
                             src={domainImage(item.image, true, cmsUrl || '')}
@@ -43,6 +45,9 @@ export const ImageElement = (props: ImageElementsProps) => {
                             sizes="(max-width: 1920px) 100vw,
                             (max-width: 1200px) 50vw,
                             100vw"
+                            onError={() => {
+                                setHideImage(true)
+                            }}
                         />
                     ) : (
                         //Setting width and height to image props if nosizing added
@@ -59,6 +64,9 @@ export const ImageElement = (props: ImageElementsProps) => {
                             sizes="(max-width: 1920px) 100vw,
                             (max-width: 1200px) 70vw,
                             100vw"
+                            onError={() => {
+                                setHideImage(true)
+                            }}
                         />
                     ))}
                 {item.imageIcon && (

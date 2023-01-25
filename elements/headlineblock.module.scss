@@ -28,8 +28,6 @@
         margin-bottom: 0.4705882353em;
         line-height: 1.1764705882em;
         font-weight: 700;
-
-        //add
         margin-top: 0;
     }
 
@@ -61,7 +59,6 @@
     }
 
     &.article {
-        //add
         .hd {
             margin-bottom: 0;
         }
@@ -71,7 +68,6 @@
             margin-top: 0.6666666667em;
             .hd {
                 font-size: variables.$md-txt;
-                //margin-bottom: 0.5em;
                 line-height: 1.1666666667em;
                 letter-spacing: -0.0125rem;
             }
@@ -88,7 +84,6 @@
         @container item (min-width: 775px) {
             .hd {
                 font-size: variables.$lg-txt;
-                // margin-bottom: 0.4444444444em;
                 line-height: 1.1111111111em;
                 letter-spacing: -0.0125rem;
                 margin-top: 0.6666666667em;
@@ -122,10 +117,8 @@
         }
 
         @container item (min-width: 481px) {
-            //margin-top: 0.6666666667em;
             .hd {
                 font-size: variables.$md-txt;
-                // margin-bottom: 0.5em;
                 line-height: 1.1666666667em;
                 letter-spacing: -0.0125rem;
                 margin-top: 0.6666666667em;

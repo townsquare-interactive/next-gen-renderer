@@ -8,7 +8,7 @@ import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const Button = (props: BtnProps) => {
-    const { actionlbl, themeStyles, well, actionlbl2, type, buttonList, modId, columns, align, promoColor, itemCount, modColor1 } = props
+    const { actionlbl, themeStyles, well, actionlbl2, type, buttonList, modId, columns, align, promoColor, itemCount, modColor1, twoButtons } = props
 
     const linkHoverStyles = `#id_${modId} .btn_link:hover .btn_1{color: ${themeStyles['promoColor']}; background-color: ${themeStyles['textColorAccent']}} #id_${modId} .btn_link:hover .btn_2{color: ${themeStyles['promoColor']}; border-color: ${themeStyles['promoColor']}} #id_${modId}}`
 
@@ -18,7 +18,8 @@ export const Button = (props: BtnProps) => {
         <div
             className={cn(styles['btn-mod'], styles[`${type}`], styles[`${align}`], 'txt-font', {
                 [styles.well]: well == '1' && type.includes('article'),
-                [styles['two-btns']]: buttonList[0].active === true && buttonList[1].active === true,
+                [styles['article-all']]: type.includes('article'),
+                [styles['two-btns']]: twoButtons,
             })}
         >
             {well && type.includes('article') && <style>{linkHoverStyles}</style>}

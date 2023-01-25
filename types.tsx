@@ -690,6 +690,7 @@ export interface BtnProps {
     promoColor?: string
     itemCount?: number
     modColor1?: string
+    twoButtons?: boolean
 }
 
 /*------------------------------Non CMS types-------------------------*/

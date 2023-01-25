@@ -72,6 +72,7 @@ const PhotoItem = (props: PhotoItemProps) => {
                     [styles.nHero]: !item.isFeatured,
                     [styles.yDsc]: item.desc,
                     [styles.nImg]: !item.image,
+                    ['border-background']: well == '1',
                 },
                 `item_${itemIndex + 1}`,
                 styles[`item_${itemIndex + 1}`]
