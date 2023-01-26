@@ -9,20 +9,24 @@ export const BackgroundImage = (props: any) => {
     const [hideImage, setHideImage] = useState(false)
 
     return (
-        <Image
-            src={domainImage(image, true, cmsUrl || '')}
-            fill
-            alt={alt || ''}
-            quality="50"
-            priority={priority}
-            style={{ objectFit: 'cover', objectPosition: 'top' }}
-            sizes="(max-width: 1920px) 100vw,
+        <>
+            {!hideImage && (
+                <Image
+                    src={domainImage(image, true, cmsUrl || '')}
+                    fill
+                    alt={alt || ''}
+                    quality="50"
+                    priority={priority}
+                    style={{ objectFit: 'cover', objectPosition: 'top' }}
+                    sizes="(max-width: 1920px) 100vw,
                     (max-width: 1200px) 50vw,
                     100vw"
-            onError={() => {
-                setHideImage(true)
-            }}
-        />
+                    onError={() => {
+                        setHideImage(true)
+                    }}
+                />
+            )}
+        </>
     )
 }
 

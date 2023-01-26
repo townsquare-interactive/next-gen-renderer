@@ -37,7 +37,8 @@ const Home = (props: ContainerProps) => {
 
     return (
         <>
-            <Container page={page} siteData={siteData} />
+            {' '}
+            <Container page={page} siteData={siteData} />{' '}
         </>
     )
 }

@@ -108,15 +108,9 @@
 
         font-size: 150%;
 
-        @include breakpoints.sm-min {
-            font-size: 116.67%;
-        }
-
-        @include breakpoints.lg-min {
-            font-size: 100%;
-        }
-
         @container item (min-width: 481px) {
+            font-size: 116.67%;
+
             .hd {
                 font-size: variables.$md-txt;
                 line-height: 1.1666666667em;
@@ -127,31 +121,33 @@
             .sh {
                 font-size: variables.$sm-txt;
                 margin-top: 0.7058823529em;
-                margin-bottom: 0.4705882353em;
+                // margin-bottom: 0.4705882353em;
                 line-height: 1.1764705882em;
+            }
+
+            .left .sh {
+                margin-bottom: 0.5em;
             }
         }
 
         @container item (min-width: 851px) {
             .hd {
-                margin-top: 0;
                 line-height: 1.1111111111em;
             }
         }
 
         @container item (min-width: 1025px) {
-            // margin-top: 0.6666666667em;
+            font-size: 100%;
+
             .hd {
                 font-size: variables.$lg-txt;
                 // margin-bottom: 0.4444444444em;
                 letter-spacing: -0.0125rem;
-                margin-top: 0;
             }
 
             .sh {
                 font-size: variables.$md-txt;
                 margin-top: 0.6666666667em;
-                margin-bottom: 0.5em;
                 line-height: 1.1666666667em;
                 letter-spacing: -0.0125rem;
             }
@@ -165,6 +161,12 @@
 
                 @include breakpoints.md-min {
                     margin-right: 1rem;
+                }
+            }
+
+            @container item (min-width: 851px) {
+                .hd {
+                    margin-top: 0;
                 }
             }
         }
