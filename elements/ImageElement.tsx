@@ -39,15 +39,15 @@ export const ImageElement = (props: ImageElementsProps) => {
                             fill
                             alt={item.img_alt_tag || ''}
                             quality="50"
-                            //priority={item.desc ? false : true}
-                            priority={item.imagePriority}
+                            //priority={item.imagePriority}
+                            priority
                             style={{ objectFit: 'cover', objectPosition: 'top' }}
-                            sizes="(max-width: 1920px) 100vw,
-                            (max-width: 1200px) 50vw,
-                            100vw"
                             onError={() => {
                                 setHideImage(true)
                             }}
+                            /* sizes="(max-width: 1920px) 75vw,
+                            (max-width: 1200px) 70vw,
+                            100vw" */
                         />
                     ) : (
                         //Setting width and height to image props if nosizing added
@@ -58,12 +58,9 @@ export const ImageElement = (props: ImageElementsProps) => {
                             height={imageHeight}
                             alt={item.img_alt_tag || ''}
                             quality="50"
-                            //priority={item.desc ? false : true}
-                            priority={item.imagePriority}
+                            //priority={item.imagePriority}
+                            priority
                             style={{ width: '100%', height: 'auto' }}
-                            sizes="(max-width: 1920px) 100vw,
-                            (max-width: 1200px) 70vw,
-                            100vw"
                             onError={() => {
                                 setHideImage(true)
                             }}
