@@ -39,8 +39,7 @@ export const ImageElement = (props: ImageElementsProps) => {
                             fill
                             alt={item.img_alt_tag || ''}
                             quality="50"
-                            //priority={item.imagePriority}
-                            priority
+                            priority={item.imagePriority}
                             style={{ objectFit: 'cover', objectPosition: 'top' }}
                             onError={() => {
                                 setHideImage(true)
@@ -58,8 +57,7 @@ export const ImageElement = (props: ImageElementsProps) => {
                             height={imageHeight}
                             alt={item.img_alt_tag || ''}
                             quality="50"
-                            //priority={item.imagePriority}
-                            priority
+                            priority={item.imagePriority}
                             style={{ width: '100%', height: 'auto' }}
                             onError={() => {
                                 setHideImage(true)
