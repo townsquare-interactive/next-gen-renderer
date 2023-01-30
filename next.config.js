@@ -21,14 +21,14 @@ module.exports = withBundleAnalyzer({
         ],
     },
 
-    /*     experimental: {
+    experimental: {
         appDir: true,
-    }, */
+    },
 
-    i18n: {
+    /*     i18n: {
         locales: ['en'],
         defaultLocale: 'en',
-    },
+    }, */
 
     /*     future: {
         webpack5: true, // by default, if you customize webpack config, they switch back to version 4.

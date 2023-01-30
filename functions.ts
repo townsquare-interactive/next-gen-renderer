@@ -77,23 +77,20 @@ export const findHomePageSlug = (pageList: any) => {
     return homePageSlug
 }
 
-//Data fetching for /app dir
-/* export async function getLayout() {
-    const resLayout = await fetch(bucketAndSiteUrl + '/layout.json', {
+export async function generateLayout() {
+    const resLayout = await fetch(getDomain(true) + '/layout.json', {
         next: { revalidate: 10 },
     })
 
-    const siteData = await resLayout.json()
+    const CMSLayout = await resLayout.json()
 
-    console.log(siteData)
-
-    return { siteData }
+    return { CMSLayout }
 }
 
 export async function getPageData(params: { slug: string }) {
     let pageSlug
     if (!params) {
-        const resPageList = await fetch(bucketAndSiteUrl + '/pages/page-list.json', {
+        const resPageList = await fetch(getDomain(true) + '/pages/page-list.json', {
             next: { revalidate: 10 },
         })
         const pageList = await resPageList.json()
@@ -103,13 +100,31 @@ export async function getPageData(params: { slug: string }) {
         pageSlug = params.slug
     }
 
-    const resPage = await fetch(bucketAndSiteUrl + '/pages/' + pageSlug + '.json', {
+    const resPage = await fetch(getDomain(true) + '/pages/' + pageSlug + '.json', {
         next: { revalidate: 10 },
     })
     let page = await resPage.json()
 
     return { page }
-} */
+}
+
+export async function getHomePage() {
+    let pageSlug
+
+    const resPageList = await fetch(getDomain(true) + '/pages/page-list.json', {
+        next: { revalidate: 10 },
+    })
+    const pageList = await resPageList.json()
+
+    pageSlug = findHomePageSlug(pageList)
+
+    const resPage = await fetch(getDomain(true) + '/pages/' + pageSlug + '.json', {
+        next: { revalidate: 10 },
+    })
+    let page = await resPage.json()
+
+    return { page }
+}
 
 export function decideHeadTag(columns: number | string, tag: string, headerTag: string) {
     if (headerTag === '1' && tag === 'hd') {
