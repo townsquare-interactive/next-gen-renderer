@@ -7,7 +7,7 @@ function Document() {
     return (
         <Html>
             <Head>
-                <link rel="stylesheet" href={s3ColorStyles} type="text/css"></link>
+                <link rel="stylesheet" href={s3ColorStyles} type="text/css"></link>{' '}
             </Head>
             <body>
                 <Main />
