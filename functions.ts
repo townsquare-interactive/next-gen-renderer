@@ -149,7 +149,6 @@ export function defineContainerVars(page: CMSPage, siteData: GlobalData) {
     const cmsUrl = siteData.cmsUrl
     const themeStyles = siteData.cmsColors
     const columnStyles = page.data.columnStyles
-    //const colorStyles = createInlineStyles(themeStyles)
 
     return { cmsUrl, themeStyles, columnStyles }
 }

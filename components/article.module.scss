@@ -91,19 +91,23 @@
                 margin-top: 2rem;
             }
         }
+
         @include breakpoints.sm-min {
-            .mod_left .image-block,
-            .mod_right .image-block {
-                width: variables.$third-width;
-                display: block;
-            }
-            .mod_left .image-block {
-                float: left;
-                margin-right: 1rem;
-            }
-            .mod_right .image-block {
-                float: right;
-                margin-left: 1rem;
+            &.col_1,
+            &.col_2 {
+                .mod_left .image-block,
+                .mod_right .image-block {
+                    width: variables.$third-width;
+                    display: block;
+                }
+                .mod_left .image-block {
+                    float: left;
+                    margin-right: 1rem;
+                }
+                .mod_right .image-block {
+                    float: right;
+                    margin-left: 1rem;
+                }
             }
         }
     }
@@ -203,9 +207,7 @@
             }
         }
 
-        //new
-        .item-wrap,
-        .btn_link {
+        .item-wrap {
             height: 100%;
         }
     }

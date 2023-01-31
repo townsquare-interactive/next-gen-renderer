@@ -44,15 +44,12 @@
         }
 
         .icon {
-            //
-            height: 6rem;
-            width: 6rem;
+            font-size: 3rem;
+            text-align: center;
             z-index: 2;
             padding: 1.5rem;
 
             @include breakpoints.md-min {
-                height: 7rem;
-                width: 7rem;
                 padding: 2rem;
             }
         }
@@ -64,12 +61,13 @@
         }
 
         //medium screens
-        @container item (min-width: 343px) {
+        @container item (min-width: 400px) {
             margin-top: 0.6666666667em;
             .hd {
                 font-size: variables.$md-txt;
                 line-height: 1.1666666667em;
                 letter-spacing: -0.0125rem;
+                margin-top: 0.7058823529em;
             }
 
             .sh {
@@ -121,7 +119,6 @@
             .sh {
                 font-size: variables.$sm-txt;
                 margin-top: 0.7058823529em;
-                // margin-bottom: 0.4705882353em;
                 line-height: 1.1764705882em;
             }
 
@@ -141,7 +138,6 @@
 
             .hd {
                 font-size: variables.$lg-txt;
-                // margin-bottom: 0.4444444444em;
                 letter-spacing: -0.0125rem;
             }
 
@@ -170,6 +166,12 @@
                 }
             }
         }
+
+        &.isIcon {
+            .hd {
+                margin-top: 0;
+            }
+        }
     }
 
     @include breakpoints.sm-min {
@@ -177,6 +179,10 @@
             display: flex;
             align-items: center;
         }
+    }
+
+    &.article_2 {
+        padding-bottom: 1rem;
     }
 }
 

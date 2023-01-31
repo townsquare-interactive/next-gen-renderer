@@ -5,11 +5,11 @@ import cn from 'classnames'
 import Parser from 'html-react-parser'
 import { ConditionalWrapper } from '../functions'
 import { Fragment, ReactChild } from 'react'
-import Link from 'next/link'
 import { Button } from '../elements/Button'
 import { ImageElement } from '../elements/ImageElement'
 import ModuleTitle from 'elements/ModuleTitle'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
+import LinkWrap from 'elements/LinkWrap'
 
 const Article = (props: ArticleProps) => {
     const { columns = 1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl, disabled, customClassName } = props
@@ -95,52 +95,28 @@ const ModuleItem = (props: ModuleItemProps) => {
             <ConditionalWrapper
                 condition={item.isWrapLink ? true : false}
                 trueOutput={(children: ReactChild) => (
-                    <Link
-                        href={item.pagelink || item.weblink || item.pagelink2 || item.weblink2 || ''}
-                        passHref={item.weblink || item.weblink2 ? true : false}
-                        className={cn('btn_link', styles.btn_link)}
-                        target={item.newwindow == 1 ? '_blank' : item.newwindow2 == 1 ? '_blank' : '_self'}
-                        aria-label={item.headline || 'block-link'}
-                    >
-                        <div
-                            className={cn(styles['item-wrap'], 'btn_link', {
-                                ['hero-background']: item.isFeatured === 'active' && type === 'article',
-                            })}
-                            aria-label={item.headline || 'item-wrap'}
-                        >
-                            {children}
-                        </div>
-                    </Link>
-                )}
-                falseOutput={(children: ReactChild) => (
-                    <div
-                        className={cn(styles['item-wrap'], {
-                            ['hero-background']: item.isFeatured === 'active' && type === 'article',
-                        })}
-                    >
+                    <LinkWrap item={item} modType={'article'}>
                         {children}
-                    </div>
+                    </LinkWrap>
                 )}
+                falseOutput={(children: ReactChild) => <>{children}</>}
             >
-                <ItemWrap
-                    item={item}
-                    imgsize={imgsize}
-                    well={well}
-                    type={type}
-                    themeStyles={themeStyles}
-                    isFeatured={item.isFeatured}
-                    columns={columns}
-                    modId={modId}
-                    cmsUrl={cmsUrl}
-                    align={item.align}
-                />
+                <div
+                    className={cn(styles['item-wrap'], {
+                        ['hero-background']: item.isFeatured === 'active' && type === 'article',
+                        ['btn_link']: item.isWrapLink,
+                    })}
+                    aria-label={item.headline || 'item-wrap'}
+                >
+                    <ItemWrap item={item} imgsize={imgsize} well={well} type={type} themeStyles={themeStyles} columns={columns} modId={modId} cmsUrl={cmsUrl} />
+                </div>
             </ConditionalWrapper>
         </article>
     )
 }
 
 const ItemWrap = (props: ItemWrapProps) => {
-    const { item, imgsize, well, isFeatured, themeStyles, type, modId, cmsUrl, columns, align } = props
+    const { item, imgsize, well, themeStyles, type, modId, cmsUrl, columns } = props
 
     return (
         <>

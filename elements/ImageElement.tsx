@@ -44,9 +44,9 @@ export const ImageElement = (props: ImageElementsProps) => {
                             onError={() => {
                                 setHideImage(true)
                             }}
-                            /* sizes="(max-width: 1920px) 75vw,
+                            sizes="(max-width: 1920px) 75vw,
                             (max-width: 1200px) 70vw,
-                            100vw" */
+                            100vw"
                         />
                     ) : (
                         //Setting width and height to image props if nosizing added
@@ -62,6 +62,9 @@ export const ImageElement = (props: ImageElementsProps) => {
                             onError={() => {
                                 setHideImage(true)
                             }}
+                            sizes="(max-width: 1920px) 75vw,
+                            (max-width: 1200px) 70vw,
+                            100vw"
                         />
                     ))}
                 {item.imageIcon && (

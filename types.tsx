@@ -540,7 +540,13 @@ export interface ItemWrapProps {
     columns: number | string
     modId: string
     cmsUrl?: string
-    align: string
+    align?: string
+}
+
+export interface LinkWrapProps {
+    item: ArticleItems
+    modType: string
+    children: ReactChild
 }
 
 export interface HeadlineBlockProps {

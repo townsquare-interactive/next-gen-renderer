@@ -104,23 +104,23 @@
 
 @mixin text-sizes {
     .font_xs {
-        font-size: 62.5%;
+        font-size: 62.5% !important;
     }
 
     .font_sm {
-        font-size: 75%;
+        font-size: 75% !important;
     }
 
     .font_md {
-        font-size: 87.5%;
+        font-size: 87.5% !important;
     }
 
     .font_lg {
-        font-size: 112.5%;
+        font-size: 112.5% !important;
     }
 
     .font_xl {
-        font-size: 125%;
+        font-size: 125% !important;
     }
 }
 

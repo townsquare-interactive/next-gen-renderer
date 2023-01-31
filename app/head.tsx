@@ -1,7 +1,7 @@
 import PageHead from 'components/PageHead'
 import { generateLayout, getHomePage } from 'functions'
 
-export default async function Head({ params }: { params: { slug: string } }) {
+export default async function Head() {
     const { CMSLayout } = await generateLayout()
     const { page } = await getHomePage()
 

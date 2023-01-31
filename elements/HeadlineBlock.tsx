@@ -14,12 +14,12 @@ export const HeadlineBlock = (props: HeadlineBlockProps) => {
                 styles['hd-block'],
                 styles[`${item.headSize}`],
                 styles[`${modType}`],
-                styles[`${item.headSize}`],
                 styles[`${item.align}`],
 
                 {
                     [styles.article]: modType?.includes('article'),
                     [styles.beacon]: modType === 'article',
+                    [styles['isIcon']]: item.imageIcon,
                 }
             )}
         >

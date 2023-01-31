@@ -1,7 +1,6 @@
 'use client'
 import { domainImage } from '../functions'
 import Image from 'next/image'
-
 import { useState } from 'react'
 
 export const BackgroundImage = (props: any) => {

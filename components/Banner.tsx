@@ -4,10 +4,10 @@ import { ArticleProps, ItemWrapProps, ModuleItemProps } from '../types'
 import cn from 'classnames'
 import { ConditionalWrapper, domainImage } from '../functions'
 import { Fragment, ReactChild } from 'react'
-import Link from 'next/link'
 import { Button } from '../elements/Button'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
 import BackgroundImage from 'elements/BackgroundImage'
+import LinkWrap from 'elements/LinkWrap'
 
 const Banner = (props: ArticleProps) => {
     const { columns = 1, type, well, imgsize, modId, items, themeStyles, cmsUrl, disabled, customClassName } = props
@@ -85,58 +85,31 @@ const ModuleItem = (props: ModuleItemProps) => {
             <ConditionalWrapper
                 condition={item.isWrapLink ? true : false}
                 trueOutput={(children: ReactChild) => (
-                    <Link
-                        href={item.pagelink || item.weblink || item.pagelink2 || item.weblink2 || ''}
-                        passHref={item.weblink || item.weblink2 ? true : false}
-                        className={cn('btn_link')}
-                        target={item.newwindow == 1 ? '_blank' : item.newwindow2 == 1 ? '_blank' : '_self'}
-                        aria-label={item.headline || 'block-link'}
-                    >
-                        <div
-                            className={cn(styles['item-wrap'], 'btn_link', {
-                                ['hero-background']: item.isFeatured === 'active' && type === 'article',
-                            })}
-                            aria-label={item.headline || 'item-wrap'}
-                            style={
-                                item.modColor1
-                                    ? {
-                                          background: `${item.modColor1}`,
-                                      }
-                                    : well === '1'
-                                    ? {
-                                          backgroundImage: item.textureImage?.image ? `url(${domainImage(item.textureImage.image, false)})` : 'none',
-                                          backgroundPositionY: item.modTwo ? item.modTwo + '%' : '0%',
-                                          height: item.modOne || 'auto',
-                                      }
-                                    : { height: item.modOne || 'auto' }
-                            }
-                        >
-                            {children}
-                        </div>
-                    </Link>
-                )}
-                falseOutput={(children: ReactChild) => (
-                    <div
-                        className={cn(styles['item-wrap'], {
-                            ['hero-background']: item.isFeatured === 'active' && type === 'article',
-                        })}
-                        style={
-                            item.modColor1
-                                ? {}
-                                : well === '1'
-                                ? {
-                                      backgroundImage: item.textureImage?.image ? `url(${domainImage(item.textureImage.image, false)})` : 'none',
-                                      backgroundPositionY: item.modTwo ? item.modTwo + '%' : '0%',
-                                      height: item.modOne || 'auto',
-                                  }
-                                : {}
-                        }
-                    >
+                    <LinkWrap item={item} modType={'banner'}>
                         {children}
-                    </div>
+                    </LinkWrap>
                 )}
+                falseOutput={(children: ReactChild) => <>{children}</>}
             >
-                <>
+                <div
+                    className={cn(styles['item-wrap'], {
+                        ['btn_link']: item.isWrapLink,
+                    })}
+                    aria-label={item.headline || 'item-wrap'}
+                    style={
+                        item.modColor1
+                            ? {
+                                  background: `${item.modColor1}`,
+                              }
+                            : well === '1'
+                            ? {
+                                  backgroundImage: item.textureImage?.image ? `url(${domainImage(item.textureImage.image, false)})` : 'none',
+                                  backgroundPositionY: item.modTwo ? item.modTwo + '%' : '0%',
+                                  height: item.modOne || 'auto',
+                              }
+                            : { height: item.modOne || 'auto' }
+                    }
+                >
                     <ItemWrap
                         item={item}
                         imgsize={imgsize}
@@ -148,14 +121,14 @@ const ModuleItem = (props: ModuleItemProps) => {
                         modId={modId}
                         align={item.align}
                     />
-                </>
+                </div>
             </ConditionalWrapper>
         </article>
     )
 }
 
 const ItemWrap = (props: ItemWrapProps) => {
-    const { item, well, themeStyles, type, modId, columns } = props
+    const { item, well, themeStyles, modId, columns } = props
 
     return (
         <>
