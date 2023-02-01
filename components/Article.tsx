@@ -20,13 +20,13 @@ const Article = (props: ArticleProps) => {
         return (
             <div
                 className={cn(
+                    'article-mod',
+                    'root-container',
+                    styles['item-flex'],
                     styles['root'],
                     styles['flex-mod'],
-                    styles['item-flex'],
-                    styles['root-container'],
                     styles[`col_${columns}`],
                     styles[`${type}`],
-                    'article-mod',
                     {
                         [styles.beacon]: type === 'article',
                         [styles.well]: well == '1',

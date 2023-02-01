@@ -21,12 +21,32 @@
                 display: flex;
                 justify-content: center;
                 flex-direction: column;
+
+                .content {
+                    display: flex;
+                    justify-content: center;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    width: 100%;
+
+                    @include breakpoints.lg-min {
+                        width: variables.$full-item-width;
+                        margin-left: variables.$item-margins;
+                        margin-right: variables.$item-margins;
+                    }
+                }
+            }
+
+            &.btn-only {
+                .content {
+                    justify-content: flex-end;
+                }
             }
 
             @include breakpoints.sm-min {
-                &.left .item-wrap {
+                &.left .item-wrap,
+                &.left .content {
                     flex-direction: row;
-                    justify-content: space-between;
                     align-items: center;
                     text-align: left;
                 }
@@ -42,16 +62,6 @@
     }
 
     text-align: center;
-
-    &.root-container {
-        container-type: inline-size;
-        container-name: module;
-
-        .item {
-            container-type: inline-size;
-            container-name: item;
-        }
-    }
 
     &.well {
         .hd-block {

@@ -181,7 +181,10 @@
                     margin-bottom: 0;
                 }
             }
+        }
 
+        &.article_1,
+        &.article_2 {
             &.two-btns {
                 padding: 0 2rem 1.5rem;
             }

@@ -109,7 +109,7 @@
     &.head-social {
         display: none;
         @include breakpoints.md-min {
-            display: block;
+            display: flex;
         }
     }
 }

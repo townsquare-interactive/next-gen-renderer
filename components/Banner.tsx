@@ -17,7 +17,7 @@ const Banner = (props: ArticleProps) => {
     } else {
         return (
             <div
-                className={cn(styles['root'], styles['flex-mod'], styles['root-container'], styles[`${type}`], 'banner-mod', {
+                className={cn('root-container', 'banner-mod', styles['root'], styles['flex-mod'], styles[`${type}`], {
                     [styles.well]: well == '1',
                     [styles.not_well]: !well,
                     [styles[`cst_${customClassName}`]]: customClassName,
@@ -64,6 +64,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                     [styles.nHero]: !item.isFeatured,
                     [styles.yLk]: (item.pagelink || item.weblink || item.pagelink2 || item.weblink2) && !item.twoButtons,
                     [styles.yImg]: item.image,
+                    [styles['btn-only']]: item.visibleButton && !item.headline && !item.subheader,
                 },
                 styles[`item_${itemIndex + 1}`],
                 `item_${itemIndex + 1}`
@@ -91,37 +92,17 @@ const ModuleItem = (props: ModuleItemProps) => {
                 )}
                 falseOutput={(children: ReactChild) => <>{children}</>}
             >
-                <div
-                    className={cn(styles['item-wrap'], {
-                        ['btn_link']: item.isWrapLink,
-                    })}
-                    aria-label={item.headline || 'item-wrap'}
-                    style={
-                        item.modColor1
-                            ? {
-                                  background: `${item.modColor1}`,
-                              }
-                            : well === '1'
-                            ? {
-                                  backgroundImage: item.textureImage?.image ? `url(${domainImage(item.textureImage.image, false)})` : 'none',
-                                  backgroundPositionY: item.modTwo ? item.modTwo + '%' : '0%',
-                                  height: item.modOne || 'auto',
-                              }
-                            : { height: item.modOne || 'auto' }
-                    }
-                >
-                    <ItemWrap
-                        item={item}
-                        imgsize={imgsize}
-                        well={well}
-                        type={type}
-                        themeStyles={themeStyles}
-                        isFeatured={item.isFeatured}
-                        columns={columns}
-                        modId={modId}
-                        align={item.align}
-                    />
-                </div>
+                <ItemWrap
+                    item={item}
+                    imgsize={imgsize}
+                    well={well}
+                    type={type}
+                    themeStyles={themeStyles}
+                    isFeatured={item.isFeatured}
+                    columns={columns}
+                    modId={modId}
+                    align={item.align}
+                />
             </ConditionalWrapper>
         </article>
     )
@@ -131,9 +112,27 @@ const ItemWrap = (props: ItemWrapProps) => {
     const { item, well, themeStyles, modId, columns } = props
 
     return (
-        <>
+        <div
+            className={cn(styles['item-wrap'], {
+                ['btn_link']: item.isWrapLink,
+            })}
+            aria-label={item.headline || 'item-wrap'}
+            style={
+                item.modColor1
+                    ? {
+                          background: `${item.modColor1}`,
+                      }
+                    : well === '1'
+                    ? {
+                          backgroundImage: item.textureImage?.image ? `url(${domainImage(item.textureImage.image, false)})` : 'none',
+                          backgroundPositionY: item.modTwo ? item.modTwo + '%' : '0%',
+                          height: item.modOne || 'auto',
+                      }
+                    : { height: item.modOne || 'auto' }
+            }
+        >
             {(!item.modOne || item.modOne >= 200) && (
-                <>
+                <div className={styles.content}>
                     <>
                         {(item.headline || item.subheader) && (
                             <HeadlineBlock item={item} well={1} columns={columns} isBeaconHero={item.isBeaconHero} modType={'banner'} />
@@ -141,9 +140,9 @@ const ItemWrap = (props: ItemWrapProps) => {
                     </>
 
                     {item.visibleButton && <Button well={well} modId={modId} type="banner" columns={columns} themeStyles={themeStyles} {...item} />}
-                </>
+                </div>
             )}
-        </>
+        </div>
     )
 }
 

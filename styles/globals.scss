@@ -1,3 +1,8 @@
+@use 'sass:math';
+@use './breakpoints.scss';
+@use './utils.scss';
+@use './variables.scss';
+
 body {
     padding: 0;
     margin: 0;
@@ -12,4 +17,22 @@ body {
 a {
     color: inherit;
     text-decoration: none;
+}
+
+.root-container {
+    container-type: inline-size;
+    container-name: module;
+
+    .item {
+        container-type: inline-size;
+        container-name: item;
+    }
+}
+
+.grid-item {
+    @include utils.grid;
+}
+
+.item-flex {
+    @include utils.item-flex;
 }

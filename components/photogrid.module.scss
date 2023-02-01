@@ -75,16 +75,6 @@
         }
     }
 
-    &.root-container {
-        container-type: inline-size;
-        container-name: module;
-
-        .item {
-            container-type: inline-size;
-            container-name: item;
-        }
-    }
-
     //temp: medium screens, need to revise size maybe
     @container item (min-width: variables.$med-container) {
         .item {
@@ -111,12 +101,12 @@
         }
     }
 
-    &.grid {
-        @include utils.grid;
+    &.item-flex {
+        @include utils.item-flex;
     }
 
-    &.flexAlt {
-        @include utils.item-flex;
+    &.grid-item {
+        @include utils.grid;
     }
 
     .hero,

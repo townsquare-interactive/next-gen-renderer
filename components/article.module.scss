@@ -40,7 +40,6 @@
                 display: -moz-flex;
                 display: flex;
                 flex-direction: column;
-                box-flex: 1;
                 flex: 1 1 auto;
             }
         }
@@ -64,24 +63,12 @@
         margin-top: 1.1428571429em;
         margin-bottom: 1.1428571429em;
         line-height: 1.4285714286em;
-    }
 
-    &.root-container {
-        container-type: inline-size;
-        container-name: module;
-
-        .item {
-            container-type: inline-size;
-            container-name: item;
-        }
-    }
-
-    @container item (min-width:0px) {
-        .dsc {
-            font-size: variables.$xs-txt;
-            margin-top: 1.1428571429em;
-            margin-bottom: 1.1428571429em;
-            line-height: 1.4285714286em;
+        @include breakpoints.lg-min {
+            font-size: variables.$sm-txt;
+            margin-top: 0.9411764706em;
+            margin-bottom: 0.9411764706em;
+            line-height: 1.4117647059em;
         }
     }
 
@@ -292,14 +279,12 @@
         }
     }
 
-    &.grid {
-        &:not(.col_1) {
-            @include utils.grid;
-        }
-    }
-
     &.item-flex {
         @include utils.item-flex;
+    }
+
+    &.grid-item {
+        @include utils.grid;
     }
 }
 

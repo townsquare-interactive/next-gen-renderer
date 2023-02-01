@@ -16,11 +16,11 @@ export const PhotoGrid = (props: PhotoGridProps) => {
     return (
         <div
             className={cn(
+                'root-container',
                 styles['root'],
                 styles['flex-mod'],
-                styles['root-container'],
                 styles[`col_${columns}`],
-                styles['flexAlt'],
+                styles['item-flex'],
                 `col_${columns}`,
                 'photo-grid-mod',
                 {

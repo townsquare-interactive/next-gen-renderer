@@ -28,7 +28,6 @@
         margin-bottom: 0.4705882353em;
         line-height: 1.1764705882em;
         font-weight: 700;
-        margin-top: 0;
     }
 
     .icon-block {
@@ -57,12 +56,14 @@
 
     &.article {
         .hd {
-            margin-bottom: 0;
+            // margin-bottom: 0;
+            margin-top: 0.7058823529em;
         }
 
         //medium screens
         @container item (min-width: 400px) {
             margin-top: 0.6666666667em;
+
             .hd {
                 font-size: variables.$md-txt;
                 line-height: 1.1666666667em;
@@ -183,6 +184,12 @@
 
     &.article_2 {
         padding-bottom: 1rem;
+    }
+
+    &.photo_grid {
+        .hd {
+            margin-top: 0 !important;
+        }
     }
 }
 
