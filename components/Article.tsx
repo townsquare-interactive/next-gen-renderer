@@ -128,13 +128,13 @@ const ItemWrap = (props: ItemWrapProps) => {
                         </figure>
                     )}
                     {(item.headline || item.subheader) && (
-                        <HeadlineBlock item={item} well={well} columns={columns} isBeaconHero={item.isBeaconHero} modType={type} />
+                        <HeadlineBlock item={item} well={well} columns={columns} isBeaconHero={item.isBeaconHero} modType={type} noDesc={!item.desc} />
                     )}
                 </>
             ) : (
                 <>
                     {(item.headline || item.subheader) && (
-                        <HeadlineBlock item={item} well={well} columns={columns} isBeaconHero={item.isBeaconHero} modType={type} />
+                        <HeadlineBlock item={item} well={well} columns={columns} isBeaconHero={item.isBeaconHero} modType={type} noDesc={!item.desc} />
                     )}
 
                     {item.image && (

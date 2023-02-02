@@ -8,7 +8,6 @@
 @value nDsc from '../components/article.module.scss';
 @value article_1 from '../components/article.module.scss';
 @value article_2 from '../components/article.module.scss';
-@value nDsc from '../components/article.module.scss';
 @value hero from '../components/photogrid.module.scss';
 @value nImg from '../components/photogrid.module.scss';
 
@@ -56,8 +55,11 @@
 
     &.article {
         .hd {
-            // margin-bottom: 0;
             margin-top: 0.7058823529em;
+        }
+
+        &.hasDsc .hd {
+            margin-bottom: 0;
         }
 
         //medium screens
@@ -217,7 +219,6 @@
                 margin-top: 0.6666666667em;
                 margin-bottom: 0.4444444444em;
                 line-height: 1.1111111111em;
-                letter-spacing: -0.0125rem;
             }
 
             .sh {

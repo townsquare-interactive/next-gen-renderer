@@ -6,7 +6,7 @@ import cn from 'classnames'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const HeadlineBlock = (props: HeadlineBlockProps) => {
-    const { item, columns, well, isBeaconHero, modType } = props
+    const { item, columns, well, isBeaconHero, modType, noDesc = false } = props
 
     return (
         <header
@@ -20,6 +20,7 @@ export const HeadlineBlock = (props: HeadlineBlockProps) => {
                     [styles.article]: modType?.includes('article'),
                     [styles.beacon]: modType === 'article',
                     [styles['isIcon']]: item.imageIcon,
+                    [styles.hasDsc]: !noDesc,
                 }
             )}
         >

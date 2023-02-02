@@ -555,6 +555,7 @@ export interface HeadlineBlockProps {
     well: string | number
     isBeaconHero?: boolean
     modType?: string
+    noDesc?: boolean
 }
 
 export interface ModuleItemProps {
