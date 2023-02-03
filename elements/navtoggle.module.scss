@@ -29,8 +29,10 @@
     }
 
     &.head-toggle {
-        @include breakpoints.lg-min {
-            display: none;
+        &:not(&.desktop-burger) {
+            @include breakpoints.lg-min {
+                display: none;
+            }
         }
     }
 

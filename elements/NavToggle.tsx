@@ -4,7 +4,7 @@ import cn from 'classnames'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const NavToggle = (props: NavToggleProps) => {
-    const { navSwitch, modType = 'header' } = props
+    const { navSwitch, modType = 'header', desktopBurgerNav = false } = props
 
     return (
         <button
@@ -13,6 +13,7 @@ const NavToggle = (props: NavToggleProps) => {
                 [styles['foot-toggle']]: modType === 'footer',
                 ['footer-icon']: modType === 'footer',
                 ['accent-txt']: modType === 'header',
+                [styles['desktop-burger']]: desktopBurgerNav,
             })}
             onClick={navSwitch}
             aria-label="toggle navigation"

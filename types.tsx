@@ -128,8 +128,13 @@ export interface GlobalData {
     favicon?: string
     cmsUrl: string
     s3Folder: string
+    headerOptions?: HeaderOptions
+}
+
+interface HeaderOptions {
     reverseHeaderLayout?: boolean
     reverseSocial?: boolean
+    desktopBurgerNav?: boolean
 }
 
 export interface ContactLinks {
@@ -207,6 +212,7 @@ export interface ContactLinkProps {
 export interface NavToggleProps {
     navSwitch?: () => void
     modType?: 'header' | 'footer'
+    desktopBurgerNav?: boolean
 }
 
 export interface CMSGlobalDesign {
@@ -590,7 +596,7 @@ export interface ContainerHeaderProps {
     navSwitch: () => void
 }
 
-export interface HeaderLogoBlock {
+export interface HeaderLogoBlockProps {
     type: 'mobile' | 'desktop'
     logoSrc: string
     link: string
