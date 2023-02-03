@@ -12,6 +12,7 @@ const SocialLinks = ({ siteData, modType = 'header' }: SocialLinksProps) => {
                 [styles['head-social']]: modType === 'header',
                 [styles['foot-social']]: modType === 'footer',
                 [styles['widget']]: modType === 'widget',
+                [styles['reverse-social']]: siteData.reverseSocial,
             })}
         >
             {siteData.social.map((item: SocialItem, index: number) => (

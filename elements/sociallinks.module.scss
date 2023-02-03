@@ -1,13 +1,14 @@
 @use './styles/breakpoints.scss';
 
 .social-media-links {
-    flex: 1 0 30%;
     padding: 0.25rem 0;
     flex-wrap: wrap;
     -webkit-box-flex: 1;
     font-size: 100%;
     margin: 0;
     list-style-type: none;
+    display: flex;
+    justify-content: center;
 
     li {
         display: inline-block;
@@ -23,11 +24,6 @@
             padding: 0.375em 1em 0.4375em;
             text-transform: initial;
             display: flex;
-
-            //before
-            vertical-align: middle;
-
-            //temp
             font-weight: bold;
         }
 
@@ -89,6 +85,8 @@
     }
 
     &.widget {
+        display: block;
+
         li {
             display: block;
         }
@@ -102,7 +100,6 @@
             list-style-type: none;
             font-family: inherit !important;
             position: relative;
-            //padding-left: 2rem;
         }
     }
 
@@ -111,5 +108,9 @@
         @include breakpoints.md-min {
             display: flex;
         }
+    }
+
+    &.reverse-social {
+        flex-direction: row-reverse;
     }
 }

@@ -129,6 +129,7 @@ export interface GlobalData {
     cmsUrl: string
     s3Folder: string
     reverseHeaderLayout?: boolean
+    reverseSocial?: boolean
 }
 
 export interface ContactLinks {
