@@ -1,6 +1,6 @@
 'use client'
 import styles from './containerheader.module.scss'
-import { ContainerHeaderProps } from '../types'
+import { ContainerHeaderProps, HeaderLogoBlock } from '../types'
 import cn from 'classnames'
 import { domainImage } from '../functions'
 import { useState, useEffect } from 'react'
@@ -32,6 +32,7 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
         <header
             className={cn(styles.root, 'header-background', {
                 [styles.shrink]: ref?.current?.offsetHeight && windowHeight > ref?.current?.offsetHeight,
+                [styles['reverse-head']]: !siteData.reverseHeaderLayout,
             })}
             ref={ref}
         >
@@ -52,7 +53,7 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
 
 export default ContainerHeader
 
-const HeaderLogoBlock = (props: any) => {
+const HeaderLogoBlock = (props: HeaderLogoBlock) => {
     const { type, alignment, logoSrc, link } = props
     return (
         <div className={cn(styles['logo-block'], styles[`${type}`], styles[`${alignment}`])}>

@@ -128,6 +128,7 @@ export interface GlobalData {
     favicon?: string
     cmsUrl: string
     s3Folder: string
+    reverseHeaderLayout?: boolean
 }
 
 export interface ContactLinks {
@@ -586,6 +587,13 @@ export interface ContainerHeaderProps {
     pages?: PagesProps[]
     siteData: GlobalData
     navSwitch: () => void
+}
+
+export interface HeaderLogoBlock {
+    type: 'mobile' | 'desktop'
+    logoSrc: string
+    link: string
+    alignment?: string
 }
 
 export interface SocialItem {

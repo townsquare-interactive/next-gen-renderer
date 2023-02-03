@@ -7,8 +7,9 @@
     width: 100%;
     margin: 0;
     z-index: 1009;
-    display: block;
     position: sticky;
+    display: flex;
+    flex-direction: column;
 
     .wrapper {
         display: flex;
@@ -66,17 +67,16 @@
 
     &.shrink {
         .wrapper {
-            // transition-delay: 0.1s;
             padding: 0.5rem;
-            // transform: scale(0.8);
 
             img {
-                // max-width: 4.5rem !important;
                 max-width: 6rem !important;
-                //transition-delay: 1s;
-                //transform: scale(0.8);
                 width: 100%;
             }
         }
+    }
+
+    &.reverse-head {
+        flex-direction: column-reverse;
     }
 }
