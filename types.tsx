@@ -136,7 +136,7 @@ interface HeaderOptions {
     reverseSocial?: boolean
     desktopBurgerNav?: boolean
     ctaBanner?: CtaBtn
-    ctaBtns?: [CtaBtn]
+    ctaBtns?: CtaBtn[]
 }
 
 interface CtaBtn {

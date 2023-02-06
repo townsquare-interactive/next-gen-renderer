@@ -65,6 +65,30 @@ Default.args = {
             image_src: '/files/2022/07/jremodeling-logo.png',
             image_link: '/',
         },
+        headerOptions: {
+            reverseHeaderLayout: true,
+            desktopBurgerNav: true,
+            reverseSocial: true,
+            ctaBanner: {
+                text: 'Contact Us',
+                type: 'banner',
+                link: '/',
+            },
+            ctaBtns: [
+                {
+                    text: 'Hello There',
+                    type: 'button',
+                    link: '/',
+                    bgColor: 'teal',
+                },
+                {
+                    text: 'btn next',
+                    type: 'button',
+                    link: '/article',
+                    bgColor: 'orange',
+                },
+            ],
+        },
         social: social,
         contact: {
             phone: {
