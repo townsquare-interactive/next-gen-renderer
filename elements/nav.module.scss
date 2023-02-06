@@ -31,8 +31,16 @@
                 cursor: pointer;
             }
         }
+    }
 
-        &.desktop-nav {
+    &.desktop-nav {
+        display: none;
+
+        @include breakpoints.lg-min {
+            display: block;
+        }
+
+        .menu {
             padding: 0 1rem;
 
             li > .sub-menu {
@@ -60,8 +68,6 @@
                 visibility: visible;
             }
 
-            display: none;
-
             ul {
                 padding: 0;
             }
@@ -77,10 +83,6 @@
                 display: block;
             }
 
-            @include breakpoints.lg-min {
-                display: block;
-            }
-
             .arrow:after {
                 content: '▼';
                 font-size: 80%;
@@ -92,22 +94,28 @@
                 text-transform: uppercase;
             }
         }
+    }
 
-        &.desktop-nav,
-        &.mobile-nav {
+    &.desktop-nav,
+    &.mobile-nav {
+        .menu {
             li {
                 font-weight: bold;
             }
         }
+    }
 
-        &.desktop-nav {
+    &.desktop-nav {
+        .menu {
             li > .sub-menu {
                 font-size: 90%;
                 margin: 0;
             }
         }
+    }
 
-        &.footer-nav {
+    &.footer-nav {
+        .menu {
             width: 100%;
 
             ul {
@@ -130,34 +138,34 @@
                 }
             }
         }
+    }
 
-        &.mobile-nav {
-            font-size: variables.$xs-txt;
+    &.mobile-nav {
+        font-size: variables.$xs-txt;
+
+        li {
+            margin: 1rem 0;
+            font-weight: 700;
+            display: block;
+
+            a {
+                border-radius: 2px;
+                display: inline-block;
+                outline: 0;
+                padding: 0.5rem;
+            }
+        }
+
+        .sub-1 {
+            font-size: 90%;
 
             li {
-                margin: 1rem 0;
-                font-weight: 700;
-                display: block;
-
-                a {
-                    border-radius: 2px;
-                    display: inline-block;
-                    outline: 0;
-                    padding: 0.5rem;
-                }
+                margin: 0;
             }
+        }
 
-            .sub-1 {
-                font-size: 90%;
-
-                li {
-                    margin: 0;
-                }
-            }
-
-            ul {
-                padding: 0 0 0 0.5rem;
-            }
+        ul {
+            padding: 0 0 0 0.5rem;
         }
     }
 }

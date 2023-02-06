@@ -1,9 +1,9 @@
 'use client'
 import styles from './containerheader.module.scss'
-import { ContainerHeaderProps, HeaderLogoBlockProps } from '../types'
+import { ContainerHeaderProps, HeaderLogoBlockProps, HeaderCTAProps } from '../types'
 import cn from 'classnames'
 import { ConditionalWrapper, domainImage } from '../functions'
-import { useState, useEffect, ReactChild } from 'react'
+import { useState, useEffect, ReactChild, Fragment } from 'react'
 import Logo from './Logo'
 import NavToggle from 'elements/NavToggle'
 import Nav from '../elements/Nav'
@@ -31,16 +31,24 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
 
     const ctaBanner = {
         text: 'Contact Us',
-        bgColor: 'red',
         type: 'banner',
         link: '/',
     }
 
-    const ctaBtn = {
-        text: 'Hello There',
-        type: 'button',
-        link: '/',
-    }
+    const ctaBtn = [
+        {
+            text: 'Hello There',
+            type: 'button',
+            link: '/',
+            bgColor: 'teal',
+        },
+        {
+            text: 'btn next',
+            type: 'button',
+            link: '/article',
+            bgColor: 'orange',
+        },
+    ]
 
     return (
         <header
@@ -59,7 +67,16 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
                 )}
                 {!siteData.headerOptions?.desktopBurgerNav && <Nav navType={'desktop-nav'} cmsNav={siteData.cmsNav} navSwitch={navSwitch} />}
 
-                {ctaBtn.type === 'button' && <HeaderCTA cta={ctaBtn} />}
+                {/* {ctaBtn.type === 'button' && <HeaderCTA cta={ctaBtn} />} */}
+                {ctaBtn && (
+                    <div className={styles['cta-block']}>
+                        {ctaBtn.map((item, index: number) => (
+                            <Fragment key={index}>
+                                <HeaderCTA cta={item} />
+                            </Fragment>
+                        ))}
+                    </div>
+                )}
                 <NavToggle navSwitch={navSwitch} desktopBurgerNav={siteData.headerOptions?.desktopBurgerNav} />
             </div>
             <SocialBar siteData={siteData} />
@@ -78,21 +95,41 @@ const HeaderLogoBlock = (props: HeaderLogoBlockProps) => {
     )
 }
 
-const HeaderCTA = (props: any) => {
+const HeaderCTA = (props: HeaderCTAProps) => {
     const { cta } = props
     return (
         <div
-            className={cn('accent-txt', styles['cta'], 'cta', {
+            className={cn('accent-txt', styles['cta'], {
                 [styles['btn']]: cta.type === 'button',
                 [styles['banner']]: cta.type === 'banner',
                 //['promo-background']: !cta.bgColor,
             })}
-            style={{ backgroundColor: cta.bgColor }}
         >
             <ConditionalWrapper
                 condition={cta.link ? true : false}
-                trueOutput={(children: ReactChild) => <Link href={cta.link}>{children}</Link>}
-                falseOutput={(children: ReactChild) => <span>{children}</span>}
+                trueOutput={(children: ReactChild) => (
+                    <Link
+                        href={cta.link || ''}
+                        className={cn('accent-txt', 'cta', {
+                            [styles['btn']]: cta.type === 'button',
+                            [styles['banner']]: cta.type === 'banner',
+                        })}
+                        style={{ backgroundColor: cta.bgColor }}
+                    >
+                        {children}
+                    </Link>
+                )}
+                falseOutput={(children: ReactChild) => (
+                    <span
+                        className={cn('accent-txt', 'cta', {
+                            [styles['btn']]: cta.type === 'button',
+                            [styles['banner']]: cta.type === 'banner',
+                        })}
+                        style={{ backgroundColor: cta.bgColor }}
+                    >
+                        {children}
+                    </span>
+                )}
             >
                 {cta.text}
             </ConditionalWrapper>

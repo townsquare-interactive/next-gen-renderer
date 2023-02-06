@@ -11,8 +11,8 @@ const Nav = (props: MyNavProps) => {
     const { navType, cmsNav, navSwitch } = props
 
     return (
-        <nav className={styles.access}>
-            <ul className={cn(styles.menu, styles[`${navType}`])}>
+        <nav className={cn(styles.access, styles[`${navType}`])}>
+            <ul className={cn(styles.menu)}>
                 {cmsNav &&
                     cmsNav.map((item: NavItem, index: number) => (
                         <Fragment key={index}>

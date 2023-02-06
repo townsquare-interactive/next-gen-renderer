@@ -135,8 +135,19 @@ interface HeaderOptions {
     reverseHeaderLayout?: boolean
     reverseSocial?: boolean
     desktopBurgerNav?: boolean
-    ctaBanner?: { text: string; bgColor: string; type: 'banner' | 'button' }
-    ctaBtn?: { text: string; bgColor: string; type: 'banner' | 'button' }
+    ctaBanner?: CtaBtn
+    ctaBtn?: [CtaBtn]
+}
+
+interface CtaBtn {
+    text: string
+    bgColor?: string
+    type: string
+    link?: string
+}
+
+export interface HeaderCTAProps {
+    cta: CtaBtn
 }
 
 export interface ContactLinks {
@@ -147,11 +158,11 @@ export interface ContactLinks {
     active: boolean
 }
 
-interface ContactIcons {
+/* interface ContactIcons {
     phone: IconProp
     email: IconProp
     location: IconProp
-}
+} */
 
 export interface Logo {
     show: number
