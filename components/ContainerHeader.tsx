@@ -29,26 +29,30 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
     //Determine Height of header for margins in layout
     const ref = useRef<HTMLDivElement>(null)
 
-    const ctaBanner = {
-        text: 'Contact Us',
-        type: 'banner',
-        link: '/',
-    }
-
-    const ctaBtn = [
-        {
-            text: 'Hello There',
-            type: 'button',
+    const headerOptions2 = {
+        reverseHeaderLayout: true,
+        desktopBurgerNav: true,
+        reverseSocial: true,
+        ctaBanner: {
+            text: 'Contact Us',
+            type: 'banner',
             link: '/',
-            bgColor: 'teal',
         },
-        {
-            text: 'btn next',
-            type: 'button',
-            link: '/article',
-            bgColor: 'orange',
-        },
-    ]
+        ctaBtns: [
+            {
+                text: 'Hello There',
+                type: 'button',
+                link: '/',
+                bgColor: 'teal',
+            },
+            {
+                text: 'btn next',
+                type: 'button',
+                link: '/article',
+                bgColor: 'orange',
+            },
+        ],
+    }
 
     return (
         <header
@@ -58,7 +62,7 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
             })}
             ref={ref}
         >
-            {ctaBanner.type === 'banner' && <HeaderCTA cta={ctaBanner} />}
+            {headerOptions2.ctaBanner.type === 'banner' && <HeaderCTA cta={headerOptions2.ctaBanner} />}
             <div className={styles.wrapper}>
                 {siteData.logos?.image_src && <HeaderLogoBlock type="desktop" logoSrc={siteData.logos.image_src} link={siteData.logos.image_link} />}
 
@@ -67,10 +71,9 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
                 )}
                 {!siteData.headerOptions?.desktopBurgerNav && <Nav navType={'desktop-nav'} cmsNav={siteData.cmsNav} navSwitch={navSwitch} />}
 
-                {/* {ctaBtn.type === 'button' && <HeaderCTA cta={ctaBtn} />} */}
-                {ctaBtn && (
+                {headerOptions2.ctaBtns && (
                     <div className={styles['cta-block']}>
-                        {ctaBtn.map((item, index: number) => (
+                        {headerOptions2.ctaBtns.map((item, index: number) => (
                             <Fragment key={index}>
                                 <HeaderCTA cta={item} />
                             </Fragment>
