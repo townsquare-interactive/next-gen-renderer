@@ -11,9 +11,9 @@ const NavToggle = (props: NavToggleProps) => {
             className={cn(styles['nav-open'], {
                 [styles['head-toggle']]: modType === 'header',
                 [styles['foot-toggle']]: modType === 'footer',
+                [styles['desktop-burger']]: desktopBurgerNav,
                 ['footer-icon']: modType === 'footer',
                 ['accent-txt']: modType === 'header',
-                [styles['desktop-burger']]: desktopBurgerNav,
             })}
             onClick={navSwitch}
             aria-label="toggle navigation"

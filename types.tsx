@@ -135,6 +135,8 @@ interface HeaderOptions {
     reverseHeaderLayout?: boolean
     reverseSocial?: boolean
     desktopBurgerNav?: boolean
+    ctaBanner?: { text: string; bgColor: string; type: 'banner' | 'button' }
+    ctaBtn?: { text: string; bgColor: string; type: 'banner' | 'button' }
 }
 
 export interface ContactLinks {
