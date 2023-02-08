@@ -30,6 +30,19 @@ const SocialLinks = ({ siteData, modType = 'header' }: SocialLinksProps) => {
                     </a>
                 </li>
             ))}
+            {siteData.headerOptions?.showPrintEmail && (
+                <>
+                    <PrintAndEmailIcons modType={modType} siteName={siteData.siteName} url={siteData.url} />
+                </>
+            )}
+        </ul>
+    )
+}
+
+const PrintAndEmailIcons = (props: { modType: string; siteName: string | undefined; url: string | undefined }) => {
+    const { modType, siteName, url } = props
+    return (
+        <>
             <li>
                 <a
                     aria-label="share-site"
@@ -40,11 +53,12 @@ const SocialLinks = ({ siteData, modType = 'header' }: SocialLinksProps) => {
                         },
                         'email-to-friend'
                     )}
-                    href={`mailto:?subject=Check out ${siteData.siteName}&body=I thought you%27d be interested in this site%3A%0A${siteData.url}%2F`}
+                    href={`mailto:?subject=Check out ${siteName}&body=I thought you%27d be interested in this site%3A%0A${url}%2F`}
                 >
                     <FontAwesomeIcon icon={['fas', 'envelope']} /> {modType === 'widget' && 'Send to a Friend'}
                 </a>
             </li>
+
             {modType != 'slide-header' && (
                 <li>
                     <button
@@ -62,7 +76,7 @@ const SocialLinks = ({ siteData, modType = 'header' }: SocialLinksProps) => {
                     </button>
                 </li>
             )}
-        </ul>
+        </>
     )
 }
 

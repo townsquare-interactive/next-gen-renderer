@@ -8,7 +8,8 @@ import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const Button = (props: BtnProps) => {
-    const { actionlbl, themeStyles, well, actionlbl2, type, buttonList, modId, columns, align, promoColor, itemCount, modColor1, twoButtons } = props
+    const { actionlbl, themeStyles, well, actionlbl2, type, buttonList, modId, columns, align, promoColor, itemCount, modColor1, twoButtons, isWrapLink } =
+        props
 
     const linkHoverStyles = `#id_${modId} .btn_link:hover .btn_1{color: ${themeStyles['promoColor']}; background-color: ${themeStyles['textColorAccent']}} `
 
@@ -35,7 +36,7 @@ export const Button = (props: BtnProps) => {
                     <Fragment key={index}>
                         {bt.active && (
                             <ConditionalWrapper
-                                condition={actionlbl2 && actionlbl ? true : false}
+                                condition={!isWrapLink}
                                 trueOutput={(children: ReactChild) => (
                                     <Link
                                         href={bt.link || ''}

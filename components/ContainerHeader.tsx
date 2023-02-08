@@ -1,15 +1,15 @@
 'use client'
 import styles from './containerheader.module.scss'
-import { ContainerHeaderProps, HeaderLogoBlockProps, HeaderCTAProps } from '../types'
+import { ContainerHeaderProps, HeaderLogoBlockProps } from '../types'
 import cn from 'classnames'
-import { ConditionalWrapper, domainImage } from '../functions'
-import { useState, useEffect, ReactChild, Fragment } from 'react'
+import { domainImage } from '../functions'
+import { useState, useEffect, Fragment } from 'react'
 import Logo from './Logo'
 import NavToggle from 'elements/NavToggle'
 import Nav from '../elements/Nav'
 import { useRef } from 'react'
 import SocialBar from 'elements/SocialBar'
-import Link from 'next/link'
+import HeaderCTA from 'elements/HeaderCta'
 
 const ContainerHeader = (props: ContainerHeaderProps) => {
     const { siteData, navSwitch } = props
@@ -40,7 +40,7 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
         },
         ctaBtns: [
             {
-                text: 'Hello There',
+                text: 'Contact Us Today',
                 type: 'button',
                 link: '/',
                 bgColor: 'teal',
@@ -62,7 +62,7 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
             })}
             ref={ref}
         >
-            {headerOptions2.ctaBanner.type === 'banner' && <HeaderCTA cta={headerOptions2.ctaBanner} />}
+            {headerOptions2.ctaBanner && <HeaderCTA cta={headerOptions2.ctaBanner} />}
             <div className={styles.wrapper}>
                 {siteData.logos?.image_src && <HeaderLogoBlock type="desktop" logoSrc={siteData.logos.image_src} link={siteData.logos.image_link} />}
 
@@ -71,11 +71,11 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
                 )}
                 {!siteData.headerOptions?.desktopBurgerNav && <Nav navType={'desktop-nav'} cmsNav={siteData.cmsNav} navSwitch={navSwitch} />}
 
-                {headerOptions2.ctaBtns && (
+                {headerOptions2?.ctaBtns && (
                     <div className={styles['cta-block']}>
                         {headerOptions2.ctaBtns.map((item, index: number) => (
                             <Fragment key={index}>
-                                <HeaderCTA cta={item} />
+                                <HeaderCTA cta={item} btnCount={index + 1} />
                             </Fragment>
                         ))}
                     </div>
@@ -87,8 +87,6 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
     )
 }
 
-export default ContainerHeader
-
 const HeaderLogoBlock = (props: HeaderLogoBlockProps) => {
     const { type, alignment, logoSrc, link } = props
     return (
@@ -98,44 +96,4 @@ const HeaderLogoBlock = (props: HeaderLogoBlockProps) => {
     )
 }
 
-const HeaderCTA = (props: HeaderCTAProps) => {
-    const { cta } = props
-    return (
-        <div
-            className={cn('accent-txt', styles['cta'], {
-                [styles['btn']]: cta.type === 'button',
-                [styles['banner']]: cta.type === 'banner',
-                //['promo-background']: !cta.bgColor,
-            })}
-        >
-            <ConditionalWrapper
-                condition={cta.link ? true : false}
-                trueOutput={(children: ReactChild) => (
-                    <Link
-                        href={cta.link || ''}
-                        className={cn('accent-txt', 'cta', {
-                            [styles['btn']]: cta.type === 'button',
-                            [styles['banner']]: cta.type === 'banner',
-                        })}
-                        style={{ backgroundColor: cta.bgColor }}
-                    >
-                        {children}
-                    </Link>
-                )}
-                falseOutput={(children: ReactChild) => (
-                    <span
-                        className={cn('accent-txt', 'cta', {
-                            [styles['btn']]: cta.type === 'button',
-                            [styles['banner']]: cta.type === 'banner',
-                        })}
-                        style={{ backgroundColor: cta.bgColor }}
-                    >
-                        {children}
-                    </span>
-                )}
-            >
-                {cta.text}
-            </ConditionalWrapper>
-        </div>
-    )
-}
+export default ContainerHeader

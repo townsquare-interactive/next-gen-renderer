@@ -1,4 +1,5 @@
 import '../styles/globals.scss'
+import '../styles/stories.scss'
 import * as NextImage from 'next/image'
 
 /* const OriginalNextImage = NextImage.default

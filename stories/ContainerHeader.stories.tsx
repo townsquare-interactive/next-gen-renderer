@@ -69,6 +69,7 @@ Default.args = {
             reverseHeaderLayout: true,
             desktopBurgerNav: true,
             reverseSocial: true,
+            showPrintEmail: false,
             ctaBanner: {
                 text: 'Contact Us',
                 type: 'banner',
@@ -79,7 +80,6 @@ Default.args = {
                     text: 'Hello There',
                     type: 'button',
                     link: '/',
-                    bgColor: 'teal',
                 },
                 {
                     text: 'btn next',

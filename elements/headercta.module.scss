@@ -1,0 +1,43 @@
+@use 'sass:math';
+@use './styles/breakpoints.scss';
+
+.cta-btn {
+    text-align: center;
+    text-transform: uppercase;
+    box-shadow: 0 2px 10px rgb(0 0 0 / 25%);
+    font-weight: 700;
+
+    &:hover {
+        box-shadow: 0 3px 13px rgb(0 0 0 / 20%), 0 8px 25px rgb(0 0 0 / 15%);
+    }
+
+    &.btn {
+        display: none;
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 2px;
+        border-color: transparent;
+
+        @include breakpoints.sm-min {
+            display: block;
+        }
+    }
+
+    a,
+    span {
+        padding: 0.5em 1em;
+        width: 100%;
+        display: block;
+
+        &:hover {
+            background-color: var(--promo3) !important;
+        }
+    }
+
+    &.banner {
+        width: 100%;
+        @include breakpoints.lg {
+            font-size: 1.5rem;
+        }
+    }
+}

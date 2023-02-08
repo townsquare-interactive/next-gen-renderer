@@ -24,36 +24,6 @@
         }
     }
 
-    .cta {
-        width: 100%;
-        text-align: center;
-        text-transform: uppercase;
-
-        &.btn {
-            max-width: 10rem;
-            display: none;
-
-            @include breakpoints.sm-min {
-                display: block;
-            }
-        }
-
-        a,
-        span {
-            padding: 0.5rem;
-            width: 100%;
-            display: block;
-        }
-
-        &.banner {
-            box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.15) !important;
-
-            @include breakpoints.lg {
-                font-size: 2rem;
-            }
-        }
-    }
-
     .wrapper {
         display: flex;
         padding: 1rem 0.5rem;

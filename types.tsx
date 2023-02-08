@@ -137,6 +137,7 @@ interface HeaderOptions {
     desktopBurgerNav?: boolean
     ctaBanner?: CtaBtn
     ctaBtns?: CtaBtn[]
+    showPrintEmail?: boolean
 }
 
 interface CtaBtn {
@@ -148,6 +149,7 @@ interface CtaBtn {
 
 export interface HeaderCTAProps {
     cta: CtaBtn
+    btnCount?: number
 }
 
 export interface ContactLinks {
@@ -726,6 +728,7 @@ export interface BtnProps {
     itemCount?: number
     modColor1?: string
     twoButtons?: boolean
+    isWrapLink?: boolean
 }
 
 /*------------------------------Non CMS types-------------------------*/

@@ -1,0 +1,284 @@
+@import url(https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Lato:300,400,700,900,300italic,400italic,700italic,900italic|Abril+Fatface&display=swap);
+body {
+    font-family: Lato;
+}
+
+.hd-font {
+    font-family: Lora;
+}
+
+.txt-font {
+    font-family: Lato;
+}
+
+.feat-font {
+    font-family: Abril Fatface;
+}
+
+:root {
+    --logo: #05cae0;
+    --hd: #454545;
+    --sh: #454545;
+    --txt: #717171;
+    --link: #6afec4;
+    --txt-hover: #009374;
+    --btn-txt: #ffffff;
+    --btn-background: #009374;
+    --txt-accent: #ffffff;
+    --hero-sh: #ffffff;
+    --hero-txt: #ca0202;
+    --hero-btn-txt: #fafaeb;
+    --hero-btn-background: #00c2d8;
+    --hero-link: #dddddd;
+    --hero-link-hover: transparent;
+    --caption-text: rgba(250, 250, 235, 1);
+    --caption-background: rgba(0, 194, 216, 0.5);
+    --nav-txt: rgba(237, 237, 223, 1);
+    --nav-hover: #009374;
+    --nav-current: #d20000;
+    --main-background: rgba(0, 0, 0, 0.2);
+    --content-background: rgba(255, 255, 255, 1);
+    --header-background: rgba(16, 37, 46, 1);
+    --social-background: #12343d;
+    --accent-background: #12343d;
+    --hero-background: #ffc83d;
+    --footer-background: rgba(16, 37, 46, 1);
+    --footer-txt: #dbf8ff;
+    --footer-link: #dbf8ff;
+    --promo-txt: #ffffff;
+    --promo: #3eb183;
+    --promo2: #00a4fc;
+    --promo3: #c037dd;
+    --promo4: #e02aa0;
+    --promo5: #30829b;
+    --promo6: #10252e;
+}
+
+.accent-txt {
+    color: var(--txt-accent);
+}
+
+.txt-color {
+    color: var(--txt);
+}
+
+.txt-color-hd {
+    color: var(--hd);
+}
+
+.navLink:hover {
+    color: var(--nav-hover);
+}
+
+.navLink {
+    color: var(--nav-txt);
+}
+
+.social-icon:hover {
+    background-color: var(--nav-hover);
+}
+
+.social-icon {
+    color: var(--nav-txt);
+}
+
+.footer-icon:hover {
+    background-color: var(--nav-hover);
+}
+
+.current-page {
+    color: var(--nav-current);
+}
+
+.caption-txt {
+    color: var(--caption-txt);
+}
+
+.btn_1 {
+    color: var(--txt-accent);
+    background-color: var(--btn-background);
+}
+
+.btn_1:hover {
+    color: var(--btn-background);
+    background-color: var(--txt-accent);
+}
+
+.btn_2 {
+    color: var(--link);
+    border-color: var(--link);
+}
+
+.btn_2:hover {
+    color: var(--btn-background);
+    border-color: var(--btn-background);
+}
+
+.btn_alt {
+    color: var(--promo);
+    background-color: var(--txt-accent);
+}
+
+.btn_alt:hover {
+    color: var(--txt-accent);
+    background-color: var(--promo);
+}
+
+.close-toggle {
+    color: var(--txt-accent);
+    background-color: var(--promo);
+}
+
+.close-toggle:hover {
+    color: var(--promo);
+    background-color: var(--txt-accent);
+}
+
+.btn_p4.btn_1 {
+    background-color: var(--promo4);
+    color: var(--txt-accent);
+}
+
+.btn_p4.btn_1:hover {
+    color: var(--promo4);
+    background-color: var(--txt-accent);
+}
+
+.btn_p3.btn_1 {
+    background-color: var(--promo3);
+    color: var(--txt-accent);
+}
+
+.btn_p3.btn_1:hover {
+    color: var(--promo3);
+    background-color: var(--txt-accent);
+}
+
+.btn_p2.btn_1 {
+    background-color: var(--promo2);
+    color: var(--txt-accent);
+}
+
+.btn_p2.btn_1:hover {
+    color: var(--promo2);
+    background-color: var(--txt-accent);
+}
+
+.btn_p4.btn_2 {
+    border-color: var(--promo4);
+    color: var(--promo4);
+}
+
+.btn_p3.btn_2 {
+    border-color: var(--promo3);
+    color: var(--promo3);
+}
+
+.btn_p2.btn_2 {
+    border-color: var(--promo2);
+    color: var(--promo2);
+}
+
+.btn_p4.btn_2:hover,
+.btn_p3.btn_2:hover,
+.btn_p2.btn_2:hover {
+    border-color: var(--promo);
+    color: var(--promo);
+}
+
+.border-background {
+    background-color: var(--accent-background);
+}
+
+.hero-background {
+    background-color: var(--promo);
+}
+
+.content-background {
+    background-color: var(--content-background);
+}
+
+.footer {
+    background-color: var(--footer-background);
+    color: var(--footer-txt);
+}
+
+.header-background {
+    background-color: var(--header-background);
+}
+
+.social-bar-background {
+    background-color: var(--social-background);
+}
+
+.promo-background {
+    background-color: var(--promo);
+}
+
+.cta {
+    background-color: var(--promo);
+}
+
+.cta:hover {
+    background-color: var(--promo2);
+}
+
+/*---------------------Custom Code--------------------*/
+#ctah {
+    text-align: right;
+}
+
+#ctah img {
+    display: block !important;
+    width: 100% !important;
+    margin-top: 1rem;
+    float: right;
+    width: 20% !important;
+    display: inline-block;
+    margin-right: 2rem;
+    max-width: 10rem;
+}
+
+/*Link */
+#ctah {
+    text-align: right;
+}
+
+#ctah a {
+    width: 20% !important;
+    display: inline-block;
+    margin-right: 2rem;
+}
+
+#ctah img {
+    display: block !important;
+    width: 100% !important;
+    margin-top: 1rem;
+}
+
+.social-bar-background {
+    background-color: purple !important;
+}
+
+.cst_josh .wrapper {
+    display: flex !important;
+    flex-direction: row !important;
+}
+.cst_josh .wrapper .item {
+    border: 10px solid var(--promo3) !important;
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.25);
+    width: 46% !important;
+    padding: 1rem !important;
+}
+.cst_josh .wrapper .item:hover {
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75) !important;
+    scale: 1.05 !important;
+}
+
+.page-article .article-mod h2 {
+    text-transform: uppercase !important;
+    color: green !important;
+}
+.page-article .article-mod h2 {
+    font-style: italic !important;
+}
