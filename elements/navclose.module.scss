@@ -1,0 +1,53 @@
+@use '../styles/breakpoints.scss';
+@use './styles/variables.scss';
+
+.nav-close {
+    //trigger
+    right: auto;
+
+    top: 1.75rem;
+    //font-size: variables.$sm-txt;
+    border-radius: 2px;
+    line-height: 1.1764705882em;
+    margin: 0;
+    padding: 0.25rem 0.5rem;
+    position: absolute;
+    top: 0.75rem;
+    right: 1rem;
+    text-decoration: none;
+    z-index: 400;
+
+    &.sliding {
+        left: -1rem;
+    }
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    -webkit-font-smoothing: antialiased;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    font-family: inherit;
+    text-decoration: none;
+    text-align: center;
+    user-select: none;
+    white-space: normal;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+
+    //button
+    vertical-align: baseline;
+
+    width: 2rem;
+    height: 1.6rem;
+
+    &:before {
+        content: 'x';
+        font-size: 1.3rem;
+    }
+}

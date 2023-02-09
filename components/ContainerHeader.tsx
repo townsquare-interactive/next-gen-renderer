@@ -12,7 +12,7 @@ import SocialBar from 'elements/SocialBar'
 import HeaderCTA from 'elements/HeaderCta'
 
 const ContainerHeader = (props: ContainerHeaderProps) => {
-    const { siteData, navSwitch } = props
+    const { siteData, navSwitch, setContactModal } = props
     const [windowHeight, setWindowHeight] = useState(0)
 
     //set state for scroll
@@ -42,8 +42,7 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
             {
                 text: 'Contact Us Today',
                 type: 'button',
-                link: '/',
-                bgColor: 'teal',
+                link: '/article',
             },
             {
                 text: 'btn next',
@@ -82,7 +81,7 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
                 )}
                 <NavToggle navSwitch={navSwitch} desktopBurgerNav={siteData.headerOptions?.desktopBurgerNav} />
             </div>
-            <SocialBar siteData={siteData} />
+            <SocialBar siteData={siteData} setContactModal={setContactModal} />
         </header>
     )
 }

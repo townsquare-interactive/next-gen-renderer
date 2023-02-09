@@ -117,7 +117,7 @@ export interface GlobalData {
     siteName?: string
     phoneNumber?: String
     themeStyles: ThemeStyles
-    contact: { email: any; phone: any; hours?: any; address?: any; contactLinks: ContactLinks[] }
+    contact: { email: any; phone: any; hours?: any; address?: any; contactLinks: ContactLinks[]; showContactBox: boolean }
     cmsNav?: [NavItem]
     logos?: Logo
     mobileLogos?: Logo
@@ -217,12 +217,39 @@ export interface NavListItemProps {
     navSwitch: () => void
 }
 
+export interface NavCLoseProps {
+    navSwitch?: () => void
+    type: string
+    setContactModal?: () => void
+}
+
+export interface ContactModalProps {
+    siteData: GlobalData
+    setContactModal: () => void
+    showContactModal: boolean
+}
+
 export interface ContactLinkProps {
     cname: string
     link: string
     icon: IconProp
     content: string
+    setContactModal?: () => void
+    type: string
+    showContactBox: boolean
 }
+
+/* export interface ContactLinkProps {
+    siteData: GlobalData
+    modType?: string
+    showContactModal: () => void
+    type: string
+    showContactBox: boolean
+    cname: string
+    link: string
+    icon: IconProp
+    content: string
+} */
 
 export interface NavToggleProps {
     navSwitch?: () => void
@@ -609,6 +636,7 @@ export interface ContainerHeaderProps {
     pages?: PagesProps[]
     siteData: GlobalData
     navSwitch: () => void
+    setContactModal: () => void
 }
 
 export interface HeaderLogoBlockProps {
@@ -687,6 +715,7 @@ export interface LogoProps {
 export interface SocialBarProps {
     siteData: GlobalData
     modType?: string
+    setContactModal: () => void
 }
 
 export interface SocialLinksProps {

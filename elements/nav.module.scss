@@ -141,7 +141,9 @@
     }
 
     &.mobile-nav {
-        font-size: variables.$xs-txt;
+        ul {
+            font-size: variables.$xs-txt;
+        }
 
         li {
             margin: 1rem 0;

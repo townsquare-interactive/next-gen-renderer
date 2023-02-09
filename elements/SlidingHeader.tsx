@@ -3,6 +3,7 @@ import cn from 'classnames'
 import styles from './slidingheader.module.scss'
 import SocialLinks from './SocialLinks'
 import Nav from './Nav'
+import NavClose from './NavClose'
 
 const SlidingHeader = (props: SlidingHeaderProps) => {
     const { navSwitch, navCheck, themeStyles, siteData } = props
@@ -15,7 +16,7 @@ const SlidingHeader = (props: SlidingHeaderProps) => {
             })}
         >
             <div className={cn(styles['wrapper'], 'header-background')}>
-                <button className={cn(styles['nav-close'], 'close-toggle')} onClick={navSwitch} aria-label="close-mobile-nav"></button>
+                <NavClose navSwitch={navSwitch} type="sliding" />
 
                 <div className={styles['access']}>
                     <div className={styles.social}>

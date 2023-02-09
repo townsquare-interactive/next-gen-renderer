@@ -1,0 +1,38 @@
+.icon {
+    font-size: 100%;
+    margin: 0;
+
+    &.bar {
+        a,
+        button {
+            letter-spacing: 0.1em;
+        }
+    }
+
+    &.box {
+        font-size: 0.875em;
+        line-height: 1.1428571429em;
+        margin: 0;
+
+        &.phone,
+        &.email {
+            margin-left: 0.5rem;
+        }
+
+        &:first-of-type {
+            font-weight: bold;
+        }
+
+        a {
+            border-radius: 2px;
+            display: block;
+            position: relative;
+            padding: 0.5rem;
+
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row-reverse;
+            align-items: center;
+        }
+    }
+}
