@@ -103,6 +103,7 @@ Default.args = {
                 disabled: '',
                 isPrimaryEmail: true,
             },
+            showContactBox: false,
             contactLinks: [
                 {
                     cName: 'phone',

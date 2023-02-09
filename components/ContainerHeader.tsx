@@ -29,30 +29,6 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
     //Determine Height of header for margins in layout
     const ref = useRef<HTMLDivElement>(null)
 
-    const headerOptions2 = {
-        reverseHeaderLayout: true,
-        desktopBurgerNav: true,
-        reverseSocial: true,
-        ctaBanner: {
-            text: 'Contact Us',
-            type: 'banner',
-            link: '/',
-        },
-        ctaBtns: [
-            {
-                text: 'Contact Us Today',
-                type: 'button',
-                link: '/article',
-            },
-            {
-                text: 'btn next',
-                type: 'button',
-                link: '/article',
-                bgColor: 'orange',
-            },
-        ],
-    }
-
     return (
         <header
             className={cn(styles.root, 'header-background', {
@@ -61,7 +37,7 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
             })}
             ref={ref}
         >
-            {headerOptions2.ctaBanner && <HeaderCTA cta={headerOptions2.ctaBanner} />}
+            {siteData.headerOptions?.ctaBanner && <HeaderCTA cta={siteData.headerOptions.ctaBanner} />}
             <div className={styles.wrapper}>
                 {siteData.logos?.image_src && <HeaderLogoBlock type="desktop" logoSrc={siteData.logos.image_src} link={siteData.logos.image_link} />}
 
@@ -70,9 +46,9 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
                 )}
                 {!siteData.headerOptions?.desktopBurgerNav && <Nav navType={'desktop-nav'} cmsNav={siteData.cmsNav} navSwitch={navSwitch} />}
 
-                {headerOptions2?.ctaBtns && (
+                {siteData.headerOptions?.ctaBtns && (
                     <div className={styles['cta-block']}>
-                        {headerOptions2.ctaBtns.map((item, index: number) => (
+                        {siteData.headerOptions.ctaBtns.map((item, index: number) => (
                             <Fragment key={index}>
                                 <HeaderCTA cta={item} btnCount={index + 1} />
                             </Fragment>
