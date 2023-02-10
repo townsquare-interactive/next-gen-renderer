@@ -1,6 +1,4 @@
 import { domainImage, ConditionalWrapper } from 'functions'
-import Head from 'next/head'
-import { ReactChild } from 'react'
 import { PageHeadProps } from 'types'
 
 export default function PageHead(props: PageHeadProps) {
@@ -15,7 +13,7 @@ export default function PageHead(props: PageHeadProps) {
                 falseOutput={(children: ReactChild) => <>{children}</>}
             > */}
             <>
-                <title>{page.seo?.title || 'title'}</title>
+                <title>{page.seo?.title || page.data.slug}</title>
                 {page.seo?.title && <meta property="og:title" content={page.seo.title} key="title" />}
                 {page.seo?.descr ? <meta name="description" content={page.seo.descr} /> : <meta name="description" content="description" />}
                 {page.seo?.imageOverride ||

@@ -443,10 +443,10 @@ export interface ArticleItems {
     weblink: string
     actionlbl: string
     newwindow: number | null | string
-    pagelink2: string
-    weblink2: string
-    actionlbl2: string
-    newwindow2: number | null | string
+    pagelink2?: string
+    weblink2?: string
+    actionlbl2?: string
+    newwindow2?: number | null | string
     align: string
     isFeatured: string
     isPlugin: string
@@ -735,9 +735,9 @@ export interface BtnProps {
     pagelink2?: string
     weblink?: string
     weblink2?: string
-    actionlbl: string
+    actionlbl?: string
     actionlbl2?: string
-    newwindow: number | null | string
+    newwindow?: number | null | string
     newwindow2?: number | null | string
     btn2Styles?: btnColors
     icon?: string
@@ -745,13 +745,13 @@ export interface BtnProps {
     btnType?: string
     btnType2?: string
     themeStyles: ThemeStyles
-    btnSize: string
-    btnSize2: string
+    btnSize?: string
+    btnSize2?: string
     well?: string | number
-    modId: string
+    modId?: string
     type: string
-    align: string
-    columns: number | string
+    align?: string
+    columns?: number | string
     buttonList: any[]
     promoColor?: string
     itemCount?: number

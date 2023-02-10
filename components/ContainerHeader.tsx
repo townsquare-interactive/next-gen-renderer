@@ -10,6 +10,7 @@ import Nav from '../elements/Nav'
 import { useRef } from 'react'
 import SocialBar from 'elements/SocialBar'
 import HeaderCTA from 'elements/HeaderCta'
+import { Button } from 'elements/Button'
 
 const ContainerHeader = (props: ContainerHeaderProps) => {
     const { siteData, navSwitch, setContactModal } = props
@@ -29,33 +30,68 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
     //Determine Height of header for margins in layout
     const ref = useRef<HTMLDivElement>(null)
 
+    const headerOptions2 = {
+        reverseHeaderLayout: false,
+        desktopBurgerNav: false,
+        reverseSocial: true,
+        ctaBanner: {
+            text: 'Contact Us',
+            type: 'banner',
+            link: '/',
+            window: 1,
+        },
+        ctaBtns: [
+            {
+                label: 'Contact Us Today',
+                btnType: 'btn_cta',
+                link: '/article',
+                window: 1,
+                active: true,
+            },
+            {
+                label: 'btn next',
+                btnType: 'btn_cta',
+                link: '/test',
+                bgColor: 'orange',
+                window: 1,
+                active: true,
+            },
+        ],
+    }
+
+    const currentButtons = headerOptions2
+    //const currentButtons = siteData.headerOptions
+
     return (
         <header
             className={cn(styles.root, 'header-background', {
                 [styles.shrink]: ref?.current?.offsetHeight && windowHeight > ref?.current?.offsetHeight,
-                [styles['reverse-head']]: siteData.headerOptions?.reverseHeaderLayout,
+                [styles['reverse-head']]: currentButtons.reverseHeaderLayout,
             })}
             ref={ref}
         >
-            {siteData.headerOptions?.ctaBanner && <HeaderCTA cta={siteData.headerOptions.ctaBanner} />}
+            {currentButtons?.ctaBanner && <HeaderCTA cta={currentButtons.ctaBanner} />}
             <div className={styles.wrapper}>
                 {siteData.logos?.image_src && <HeaderLogoBlock type="desktop" logoSrc={siteData.logos.image_src} link={siteData.logos.image_link} />}
 
                 {siteData.mobileLogos?.image_src && (
                     <HeaderLogoBlock type="mobile" logoSrc={siteData.mobileLogos.image_src} link={siteData.mobileLogos.image_link} />
                 )}
-                {!siteData.headerOptions?.desktopBurgerNav && <Nav navType={'desktop-nav'} cmsNav={siteData.cmsNav} navSwitch={navSwitch} />}
+                {!currentButtons.desktopBurgerNav && <Nav navType={'desktop-nav'} cmsNav={siteData.cmsNav} navSwitch={navSwitch} />}
 
-                {siteData.headerOptions?.ctaBtns && (
+                {currentButtons?.ctaBtns && (
                     <div className={styles['cta-block']}>
-                        {siteData.headerOptions.ctaBtns.map((item, index: number) => (
+                        {/* {currentButtons.ctaBtns.map((item, index: number) => (
                             <Fragment key={index}>
-                                <HeaderCTA cta={item} btnCount={index + 1} />
+                                 <HeaderCTA cta={item} btnCount={index + 1} /> 
+                                <Button buttonList={currentButtons.ctaBtns} type="cta" />
                             </Fragment>
-                        ))}
+                        ))} */}
+
+                        <Button buttonList={currentButtons.ctaBtns} type="cta" isWrapLink={false} />
                     </div>
                 )}
-                <NavToggle navSwitch={navSwitch} desktopBurgerNav={siteData.headerOptions?.desktopBurgerNav} />
+                <NavToggle navSwitch={navSwitch} desktopBurgerNav={currentButtons.desktopBurgerNav} />
             </div>
             <SocialBar siteData={siteData} setContactModal={setContactModal} />
         </header>
