@@ -87,6 +87,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                     [styles.mod_right]: item.align === 'right' && (type === 'article_3' || type === 'article'),
                     [styles.yLk]: (item.pagelink || item.weblink || item.pagelink2 || item.weblink2) && !item.twoButtons,
                     ['border-background']: well == '1',
+                    ['round']: item.borderType === 'round',
                 },
                 styles[`item_${itemIndex + 1}`]
             )}

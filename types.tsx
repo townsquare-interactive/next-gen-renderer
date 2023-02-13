@@ -483,6 +483,7 @@ export interface ArticleItems {
     modOne?: number
     modTwo?: number
     modColor1?: string
+    borderType?: string
 }
 
 export interface ArticleProps {

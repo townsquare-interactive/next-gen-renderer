@@ -73,6 +73,7 @@ const PhotoItem = (props: PhotoItemProps) => {
                     [styles.yDsc]: item.desc,
                     [styles.nImg]: !item.image,
                     ['border-background']: well == '1',
+                    ['round']: item.borderType === 'round',
                 },
                 `item_${itemIndex + 1}`,
                 styles[`item_${itemIndex + 1}`]

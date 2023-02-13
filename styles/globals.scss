@@ -36,3 +36,8 @@ a {
 .item-flex {
     @include utils.item-flex;
 }
+
+.round {
+    border-radius: 15px;
+    overflow: hidden;
+}
