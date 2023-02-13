@@ -69,23 +69,39 @@ Default.args = {
             reverseHeaderLayout: true,
             desktopBurgerNav: true,
             reverseSocial: true,
-            showPrintEmail: false,
-            ctaBanner: {
-                text: 'Contact Us',
-                type: 'banner',
-                link: '/',
-            },
+            ctaBanner: [
+                {
+                    label: 'Contact Us Today',
+                    btnType: 'btn_banner',
+                    link: '/article',
+                    window: 1,
+                    active: true,
+                    btnSize: 'lg',
+                },
+            ],
             ctaBtns: [
                 {
-                    text: 'Hello There',
-                    type: 'button',
-                    link: '/',
+                    label: 'Contact Us Today',
+                    btnType: 'btn_cta',
+                    link: '/article',
+                    window: 1,
+                    active: true,
                 },
                 {
-                    text: 'btn next',
-                    type: 'button',
-                    link: '/article',
+                    label: 'btn next',
+                    btnType: 'btn_cta',
+                    link: '/test',
                     bgColor: 'orange',
+                    window: 1,
+                    active: true,
+                },
+            ],
+            textCta: [
+                {
+                    text: 'Contact Us Today',
+                },
+                {
+                    text: 'Button 2',
                 },
             ],
         },
