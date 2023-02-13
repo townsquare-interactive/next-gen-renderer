@@ -19,7 +19,8 @@ const HeaderCTA = (props: HeaderCTAProps) => {
                 [styles['has-link']]: cta.link,
             })}
         >
-            <ConditionalWrapper
+            <></>
+            {/* <ConditionalWrapper
                 condition={cta.link ? true : false}
                 trueOutput={(children: ReactChild) => (
                     <Link href={cta.link || ''} className={cn(sharedClasses, 'cta')} style={cta.bgColor ? { backgroundColor: cta.bgColor } : {}}>
@@ -29,7 +30,7 @@ const HeaderCTA = (props: HeaderCTAProps) => {
                 falseOutput={(children: ReactChild) => <span className={cn(sharedClasses)}>{children}</span>}
             >
                 {cta.text}
-            </ConditionalWrapper>
+            </ConditionalWrapper> */}
         </div>
     )
 }
