@@ -1,6 +1,6 @@
 'use client'
 import styles from './containerheader.module.scss'
-import { ContainerHeaderProps, HeaderLogoBlockProps } from '../types'
+import { ContainerHeaderProps, HeaderLogoBlockProps, HeaderOptions } from '../types'
 import cn from 'classnames'
 import { domainImage } from '../functions'
 import { useState, useEffect, Fragment } from 'react'
@@ -9,8 +9,8 @@ import NavToggle from 'elements/NavToggle'
 import Nav from '../elements/Nav'
 import { useRef } from 'react'
 import SocialBar from 'elements/SocialBar'
-import HeaderCTA from 'elements/HeaderCta'
 import { Button } from 'elements/Button'
+import TextWidget from 'elements/TextWidget'
 
 const ContainerHeader = (props: ContainerHeaderProps) => {
     const { siteData, navSwitch, setContactModal } = props
@@ -30,16 +30,20 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
     //Determine Height of header for margins in layout
     const ref = useRef<HTMLDivElement>(null)
 
-    const headerOptions2 = {
-        reverseHeaderLayout: false,
-        desktopBurgerNav: false,
+    const headerOptions2: HeaderOptions = {
+        reverseHeaderLayout: true,
+        desktopBurgerNav: true,
         reverseSocial: true,
-        ctaBanner: {
-            text: 'Contact Us',
-            type: 'banner',
-            link: '/',
-            window: 1,
-        },
+        ctaBanner: [
+            {
+                label: 'Contact Us Today',
+                btnType: 'btn_banner',
+                link: '/article',
+                window: 1,
+                active: true,
+                btnSize: 'lg',
+            },
+        ],
         ctaBtns: [
             {
                 label: 'Contact Us Today',
@@ -57,6 +61,14 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
                 active: true,
             },
         ],
+        textCta: [
+            {
+                text: 'Contact Us Today',
+            },
+            {
+                text: 'Button 2',
+            },
+        ],
     }
 
     const currentButtons = headerOptions2
@@ -70,7 +82,7 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
             })}
             ref={ref}
         >
-            {currentButtons?.ctaBanner && <HeaderCTA cta={currentButtons.ctaBanner} />}
+            {currentButtons?.ctaBanner && <Button buttonList={currentButtons.ctaBanner} type="cta_banner" isWrapLink={false} />}
             <div className={styles.wrapper}>
                 {siteData.logos?.image_src && <HeaderLogoBlock type="desktop" logoSrc={siteData.logos.image_src} link={siteData.logos.image_link} />}
 
@@ -79,7 +91,7 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
                 )}
                 {!currentButtons.desktopBurgerNav && <Nav navType={'desktop-nav'} cmsNav={siteData.cmsNav} navSwitch={navSwitch} />}
 
-                {currentButtons?.ctaBtns && (
+                {currentButtons && (
                     <div className={styles['cta-block']}>
                         {/* {currentButtons.ctaBtns.map((item, index: number) => (
                             <Fragment key={index}>
@@ -88,7 +100,13 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
                             </Fragment>
                         ))} */}
 
-                        <Button buttonList={currentButtons.ctaBtns} type="cta" isWrapLink={false} />
+                        {currentButtons.textCta &&
+                            currentButtons.textCta.map((item, index: number) => (
+                                <Fragment key={index}>
+                                    <TextWidget text={item.text} type="header" />
+                                </Fragment>
+                            ))}
+                        {currentButtons?.ctaBtns && <Button buttonList={currentButtons.ctaBtns} type="cta" isWrapLink={false} />}
                     </div>
                 )}
                 <NavToggle navSwitch={navSwitch} desktopBurgerNav={currentButtons.desktopBurgerNav} />

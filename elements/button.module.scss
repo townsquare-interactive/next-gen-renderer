@@ -88,7 +88,7 @@
         &.btn_promo,
         &.btn_override,
         &.btn_cta,
-        &.btn_cta {
+        &.btn_banner {
             box-shadow: 0 2px 10px rgb(0 0 0 / 25%);
             border-color: transparent;
             transition: all 0.2s ease-in-out;
@@ -255,9 +255,9 @@
             display: flex;
             justify-content: flex-end;
 
-            @include breakpoints.lg-min {
+            /*  @include breakpoints.lg-min {
                 flex-basis: 50%;
-            }
+            } */
 
             .btn_cta {
                 text-align: center;
@@ -300,6 +300,21 @@
                     border-color: transparent;
                 }
             }
+        }
+    }
+
+    &.cta_banner {
+        width: 100%;
+        margin: 0;
+
+        div {
+            width: 100%;
+        }
+
+        .btn {
+            /* @include breakpoints.lg {
+                font-size: 1.5rem;
+            } */
         }
     }
 }

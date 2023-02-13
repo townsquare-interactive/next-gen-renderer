@@ -67,19 +67,22 @@ export const Button = (props: BtnProps) => {
                                         [styles.btn_promo]: bt.btnType === 'btn_promo',
                                         [styles.btn_override]: bt.btnType === 'btn_override',
                                         [styles.btn_md]: (bt.btnSize?.includes('md') || !bt.btnSize) && (columns == 1 || columns == 2),
-                                        [styles.btn_lg]: bt.btnSize?.includes('lg') && (columns == 1 || type === 'photo_grid'),
+                                        [styles.btn_lg]: bt.btnSize?.includes('lg') && (columns == 1 || type === 'photo_grid' || type === 'cta_banner'),
+                                        [styles.btn_xl]: bt.btnSize?.includes('xl') && (columns == 1 || type === 'photo_grid' || type === 'cta_banner'),
                                         [styles.btn_sm]: bt.btnSize?.includes('sm') || columns == 3 || columns == 4 || bt.btnType === 'btn_cta',
                                         [styles.btn_xs]: bt.btnSize?.includes('xs'),
                                         [styles['btn-block']]: bt.btnSize?.includes('btn_block') || bt.btnSize?.includes('btn_blk'),
                                         [styles.btn_w]: well === '1' && (type.includes('article') || type.includes('banner')),
                                         [styles['has-link']]: bt.link,
                                         [styles['btn_cta']]: bt.btnType === 'btn_cta',
+                                        [styles['btn_banner']]: bt.btnType === 'btn_banner',
                                         ['btn_p2']: bt.btnType?.includes('btn_p2'),
                                         ['btn_p3']: bt.btnType?.includes('btn_p3'),
                                         ['btn_p4']: bt.btnType?.includes('btn_p4'),
-                                        ['cta']: bt.btnType === 'btn_cta',
-                                        ['accent-txt']: bt.btnType === 'btn_cta',
+                                        ['cta']: bt.btnType === 'btn_cta' || bt.btnType === 'btn_banner',
+                                        ['accent-txt']: bt.btnType === 'btn_cta' || bt.btnType === 'btn_banner',
                                     })}
+                                    style={bt.bgColor && { backgroundColor: bt.bgColor }}
                                 >
                                     {bt.icon && <FontAwesomeIcon icon={[bt.icon.iconPrefix, bt.icon.iconModel]} />}
                                     {` ${bt.label}`}

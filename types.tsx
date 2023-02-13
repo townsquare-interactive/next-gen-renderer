@@ -131,20 +131,31 @@ export interface GlobalData {
     headerOptions?: HeaderOptions
 }
 
-interface HeaderOptions {
+export interface HeaderOptions {
     reverseHeaderLayout?: boolean
     reverseSocial?: boolean
     desktopBurgerNav?: boolean
-    ctaBanner?: CtaBtn
-    ctaBtns?: CtaBtn[]
+    ctaBanner?: ButtonListProps[]
+    ctaBtns?: ButtonListProps[]
     showPrintEmail?: boolean
+    textCta?: { text: string }[]
 }
 
 interface CtaBtn {
-    text: string
+    label: string
     bgColor?: string
     type: string
     link?: string
+}
+
+interface ButtonListProps {
+    label: string
+    btnType?: string
+    link?: string
+    window: number
+    active: boolean
+    bgColor?: string
+    btnSize?: string
 }
 
 export interface HeaderCTAProps {
@@ -744,7 +755,7 @@ export interface BtnProps {
     icon2?: string
     btnType?: string
     btnType2?: string
-    themeStyles: ThemeStyles
+    themeStyles?: ThemeStyles
     btnSize?: string
     btnSize2?: string
     well?: string | number
