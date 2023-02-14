@@ -2,8 +2,8 @@
 import styles from './banner.module.scss'
 import { ArticleProps, ItemWrapProps, ModuleItemProps } from '../types'
 import cn from 'classnames'
-import { ConditionalWrapper, domainImage } from '../functions'
-import { Fragment, ReactChild } from 'react'
+import { domainImage } from '../functions'
+import { Fragment } from 'react'
 import { Button } from '../elements/Button'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
 import BackgroundImage from 'elements/BackgroundImage'
@@ -65,6 +65,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                     [styles.yLk]: (item.pagelink || item.weblink || item.pagelink2 || item.weblink2) && !item.twoButtons,
                     [styles.yImg]: item.image,
                     [styles['btn-only']]: item.visibleButton && !item.headline && !item.subheader,
+                    ['is-wrap-link']: item.isWrapLink,
                 },
                 styles[`item_${itemIndex + 1}`],
                 `item_${itemIndex + 1}`
@@ -83,27 +84,19 @@ const ModuleItem = (props: ModuleItemProps) => {
             }
         >
             {item.image && <BackgroundImage image={item.image} alt={item.img_alt_tag} priority={item.imagePriority} cmsUrl={cmsUrl} />}
-            <ConditionalWrapper
-                condition={item.isWrapLink ? true : false}
-                trueOutput={(children: ReactChild) => (
-                    <LinkWrap item={item} modType={'banner'}>
-                        {children}
-                    </LinkWrap>
-                )}
-                falseOutput={(children: ReactChild) => <>{children}</>}
-            >
-                <ItemWrap
-                    item={item}
-                    imgsize={imgsize}
-                    well={well}
-                    type={type}
-                    themeStyles={themeStyles}
-                    isFeatured={item.isFeatured}
-                    columns={columns}
-                    modId={modId}
-                    align={item.align}
-                />
-            </ConditionalWrapper>
+            {item.isWrapLink && <LinkWrap item={item} modType={'banner'}></LinkWrap>}
+
+            <ItemWrap
+                item={item}
+                imgsize={imgsize}
+                well={well}
+                type={type}
+                themeStyles={themeStyles}
+                isFeatured={item.isFeatured}
+                columns={columns}
+                modId={modId}
+                align={item.align}
+            />
         </article>
     )
 }
@@ -113,9 +106,7 @@ const ItemWrap = (props: ItemWrapProps) => {
 
     return (
         <div
-            className={cn(styles['item-wrap'], {
-                ['btn_link']: item.isWrapLink,
-            })}
+            className={cn(styles['item-wrap'], {})}
             aria-label={item.headline || 'item-wrap'}
             style={
                 item.modColor1

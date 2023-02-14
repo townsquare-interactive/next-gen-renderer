@@ -610,7 +610,7 @@ export interface ItemWrapProps {
 export interface LinkWrapProps {
     item: ArticleItems
     modType: string
-    children: ReactChild
+    //children: ReactChild
 }
 
 export interface HeadlineBlockProps {

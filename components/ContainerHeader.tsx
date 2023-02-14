@@ -32,7 +32,7 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
 
     const headerOptions2: HeaderOptions = {
         reverseHeaderLayout: true,
-        //desktopBurgerNav: true,
+        desktopBurgerNav: true,
         reverseSocial: true,
         ctaBanner: [
             {
@@ -65,7 +65,7 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
         ],
         /* textCta: [
             {
-                text: 'Contact Us Today',
+                text: 'Welcome',
             },
         ], */
     }

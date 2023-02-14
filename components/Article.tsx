@@ -3,8 +3,7 @@ import styles from './article.module.scss'
 import { ArticleProps, ItemWrapProps, ModuleItemProps } from '../types'
 import cn from 'classnames'
 import Parser from 'html-react-parser'
-import { ConditionalWrapper } from '../functions'
-import { Fragment, ReactChild } from 'react'
+import { Fragment } from 'react'
 import { Button } from '../elements/Button'
 import { ImageElement } from '../elements/ImageElement'
 import ModuleTitle from 'elements/ModuleTitle'
@@ -88,30 +87,22 @@ const ModuleItem = (props: ModuleItemProps) => {
                     [styles.yLk]: (item.pagelink || item.weblink || item.pagelink2 || item.weblink2) && !item.twoButtons,
                     ['border-background']: well == '1',
                     ['round']: item.borderType === 'round',
+                    ['is-wrap-link']: item.isWrapLink,
                 },
                 styles[`item_${itemIndex + 1}`]
             )}
             lang="en"
         >
-            <ConditionalWrapper
-                condition={item.isWrapLink ? true : false}
-                trueOutput={(children: ReactChild) => (
-                    <LinkWrap item={item} modType={'article'}>
-                        {children}
-                    </LinkWrap>
-                )}
-                falseOutput={(children: ReactChild) => <>{children}</>}
+            {item.isWrapLink && <LinkWrap item={item} modType={'article'}></LinkWrap>}
+            <div
+                className={cn(styles['item-wrap'], {
+                    ['hero-background']: item.isFeatured === 'active' && type === 'article',
+                    ['btn_link']: item.isWrapLink,
+                })}
+                aria-label={item.headline || 'item-wrap'}
             >
-                <div
-                    className={cn(styles['item-wrap'], {
-                        ['hero-background']: item.isFeatured === 'active' && type === 'article',
-                        ['btn_link']: item.isWrapLink,
-                    })}
-                    aria-label={item.headline || 'item-wrap'}
-                >
-                    <ItemWrap item={item} imgsize={imgsize} well={well} type={type} themeStyles={themeStyles} columns={columns} modId={modId} cmsUrl={cmsUrl} />
-                </div>
-            </ConditionalWrapper>
+                <ItemWrap item={item} imgsize={imgsize} well={well} type={type} themeStyles={themeStyles} columns={columns} modId={modId} cmsUrl={cmsUrl} />
+            </div>
         </article>
     )
 }

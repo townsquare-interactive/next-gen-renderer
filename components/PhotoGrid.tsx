@@ -4,8 +4,8 @@ import { PhotoGridProps, PhotoItemProps } from '../types'
 import { Button } from '../elements/Button'
 import cn from 'classnames'
 import { ImageElement } from '../elements/ImageElement'
-import { ConditionalWrapper, domainImage } from 'functions'
-import { Fragment, ReactChild } from 'react'
+import { domainImage } from 'functions'
+import { Fragment } from 'react'
 import ModuleTitle from 'elements/ModuleTitle'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
 import LinkWrap from 'elements/LinkWrap'
@@ -72,6 +72,7 @@ const PhotoItem = (props: PhotoItemProps) => {
                     [styles.nHero]: !item.isFeatured,
                     [styles.yDsc]: item.desc,
                     [styles.nImg]: !item.image,
+                    [styles['is-wrap-link']]: item.isWrapLink,
                     ['border-background']: well == '1',
                     ['round']: item.borderType === 'round',
                 },
@@ -80,52 +81,42 @@ const PhotoItem = (props: PhotoItemProps) => {
             )}
             lang="en"
         >
-            <ConditionalWrapper
-                condition={item.isWrapLink ? true : false}
-                trueOutput={(children: ReactChild) => (
-                    <LinkWrap item={item} modType={'photo-grid'}>
-                        {children}
-                    </LinkWrap>
-                )}
-                falseOutput={(children: ReactChild) => <>{children}</>}
+            {item.isWrapLink && <LinkWrap item={item} modType={'photo-grid'}></LinkWrap>}
+
+            <div
+                className={cn(styles['item-wrap'], {
+                    ['btn_link']: item.isWrapLink,
+                })}
+                aria-label={item.headline || 'item-wrap'}
+                style={
+                    item.textureImage
+                        ? {
+                              backgroundImage: `linear-gradient(-45deg, ${item.textureImage?.gradientColors[0]}, ${item.textureImage?.gradientColors[1]})`,
+                          }
+                        : {}
+                }
             >
                 <div
-                    className={cn(styles['item-wrap'], {
-                        ['btn_link']: item.isWrapLink,
-                    })}
-                    aria-label={item.headline || 'item-wrap'}
+                    className={styles.content}
                     style={
-                        item.textureImage
+                        well === '1'
                             ? {
-                                  backgroundImage: `linear-gradient(-45deg, ${item.textureImage?.gradientColors[0]}, ${item.textureImage?.gradientColors[1]})`,
+                                  backgroundImage: `url(${item.textureImage?.image ? domainImage(item.textureImage.image, false) : ''})`,
                               }
-                            : {}
+                            : { background: `${item.promoColor}` }
                     }
                 >
-                    <div
-                        className={styles.content}
-                        style={
-                            well === '1'
-                                ? {
-                                      backgroundImage: `url(${item.textureImage?.image ? domainImage(item.textureImage.image, false) : ''})`,
-                                  }
-                                : { background: `${item.promoColor}` }
-                        }
-                    >
-                        <ImageElement item={item} well={well} imgsize={imgsize} cmsUrl={cmsUrl} modType="photo_grid" />
-                        {item.hasGridCaption && (
-                            <figcaption className={cn(styles.caption)} style={item.image ? { background: themeStyles.captionBackground } : {}}>
-                                <div className={styles['cap-cont']}>
-                                    {(item.headline || item.subheader) && <HeadlineBlock item={item} well={well} columns={columns} modType="photo_grid" />}
-                                    {item.visibleButton && (
-                                        <Button well={well} modId={modId} type={type} columns={columns} themeStyles={themeStyles} {...item} />
-                                    )}
-                                </div>
-                            </figcaption>
-                        )}
-                    </div>
+                    <ImageElement item={item} well={well} imgsize={imgsize} cmsUrl={cmsUrl} modType="photo_grid" />
+                    {(item.headline || item.subheader) && (
+                        <figcaption className={cn(styles.caption)} style={item.image ? { background: themeStyles.captionBackground } : {}}>
+                            <div className={styles['cap-cont']}>
+                                {(item.headline || item.subheader) && <HeadlineBlock item={item} well={well} columns={columns} modType="photo_grid" />}
+                                {item.visibleButton && <Button well={well} modId={modId} type={type} columns={columns} themeStyles={themeStyles} {...item} />}
+                            </div>
+                        </figcaption>
+                    )}
                 </div>
-            </ConditionalWrapper>
+            </div>
         </article>
     )
 }

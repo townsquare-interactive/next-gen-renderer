@@ -23,6 +23,12 @@
                     }
                 }
             }
+            /* .link-wrap {
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                z-index: 1;
+            } */
         }
 
         .image-block {
@@ -55,6 +61,12 @@
 
         .center {
             text-align: center;
+        }
+    }
+
+    .dsc-block {
+        a {
+            @include utils.move-before-wraplink;
         }
     }
 

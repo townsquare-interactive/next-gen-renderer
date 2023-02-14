@@ -12,12 +12,14 @@ export const Button = (props: BtnProps) => {
         props
 
     const linkHoverStyles = themeStyles
-        ? `#id_${modId} .btn_link:hover .btn_1{color: ${themeStyles['promoColor']}; background-color: ${themeStyles['textColorAccent']}} `
+        ? `#id_${modId} .is-wrap-link:hover .btn_1{color: ${themeStyles['promoColor']}; background-color: ${themeStyles['textColorAccent']}} `
         : ''
 
     const promoButtonStyles = themeStyles
         ? `#id_${modId} .item_${itemCount} .btn_promo {color: ${promoColor}; background-color: ${themeStyles['textColorAccent']}} #id_${modId} .item_${itemCount} .btn_promo:hover{color: ${themeStyles['textColorAccent']}; background-color: ${promoColor}} .btn_override {color: ${modColor1}; background-color: ${themeStyles['textColorAccent']}} #id_${modId} .item_${itemCount} .btn_override:hover{color: ${themeStyles['textColorAccent']}; background-color: ${modColor1}}`
         : ''
+
+    console.log(linkHoverStyles)
 
     return (
         <div
@@ -27,7 +29,7 @@ export const Button = (props: BtnProps) => {
                 [styles['two-btns']]: twoButtons,
             })}
         >
-            {well && type.includes('article') && <style>{linkHoverStyles}</style>}
+            {well && type != 'photo_grid' && <style>{linkHoverStyles}</style>}
             {type != 'cta' && <style>{promoButtonStyles}</style>}
 
             <div
@@ -48,14 +50,27 @@ export const Button = (props: BtnProps) => {
                                         passHref={bt.linkType === 'ext'}
                                         target={bt.window == 1 ? '_blank' : '_self'}
                                         className={cn('btn_link', {
-                                            [styles['btn-block']]: bt.btnSize?.includes('btn_block') || bt.btnSize?.includes('btn_blk'),
-                                            [styles.btn_w]: well === '1' && type.includes('article'),
+                                            [styles['btn-block-wrap']]: bt.btnSize?.includes('btn_block') || bt.btnSize?.includes('btn_blk'),
+                                            // [styles.btn_w]: well === '1' && type.includes('article'),
                                         })}
                                     >
                                         {children}
                                     </Link>
                                 )}
-                                falseOutput={(children: ReactChild) => <>{children}</>}
+                                falseOutput={(children: ReactChild) => (
+                                    /* <>{children}</> */ <Link
+                                        href={bt.link || ''}
+                                        key={index}
+                                        passHref={bt.linkType === 'ext'}
+                                        target={bt.window == 1 ? '_blank' : '_self'}
+                                        className={cn('btn_link', {
+                                            [styles['btn-block-wrap']]: bt.btnSize?.includes('btn_block') || bt.btnSize?.includes('btn_blk'),
+                                            //[styles.btn_w]: well === '1' && type.includes('article'),
+                                        })}
+                                    >
+                                        {children}
+                                    </Link>
+                                )}
                             >
                                 <div
                                     className={cn(styles['btn'], styles['transition'], `${bt.btnType}`, {

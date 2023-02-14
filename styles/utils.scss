@@ -102,6 +102,11 @@
     }
 }
 
+@mixin move-before-wraplink {
+    z-index: 2;
+    position: relative;
+}
+
 @mixin text-sizes {
     .font_xs {
         font-size: 62.5% !important;

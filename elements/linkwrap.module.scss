@@ -1,20 +1,19 @@
 @value well from '../components/article.module.scss';
 
-.link-wrap {
-    &.photo-grid {
-        height: 100%;
-        box-shadow: 0 0 2px rgb(0 0 0 / 6%), 0 2px 4px rgb(0 0 0 / 12%);
-
-        &:hover {
-            transition: all 0.1s ease-in-out;
-            transform: scale(1.01);
-            box-shadow: 1px 1px 10px rgb(0 0 0 / 25%);
-        }
-    }
+/* .link-wrap {
+    
 }
 
 .well {
     .link-wrap {
         height: 100%;
     }
+}
+ */
+
+.link-wrap {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
 }
