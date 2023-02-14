@@ -156,6 +156,8 @@ interface ButtonListProps {
     active: boolean
     bgColor?: string
     btnSize?: string
+    icon?: any
+    linkType?: string
 }
 
 export interface HeaderCTAProps {
@@ -620,6 +622,16 @@ export interface HeadlineBlockProps {
     noDesc?: boolean
 }
 
+export interface HeadingProps {
+    textType: string
+    text: string
+    columns: string | number
+    headerTag: string
+    well: string | number
+    isBeaconHero?: boolean
+    modType?: string
+}
+
 export interface ModuleItemProps {
     item: ArticleItems
     well: string | number
@@ -764,7 +776,7 @@ export interface BtnProps {
     type: string
     align?: string
     columns?: number | string
-    buttonList: any[]
+    buttonList: ButtonListProps[]
     promoColor?: string
     itemCount?: number
     modColor1?: string

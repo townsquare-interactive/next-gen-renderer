@@ -12,7 +12,7 @@
     &.header {
         display: none;
 
-        @include breakpoints.sm {
+        @include breakpoints.sm-min {
             display: block;
         }
 

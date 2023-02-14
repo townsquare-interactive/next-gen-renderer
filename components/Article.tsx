@@ -150,8 +150,9 @@ const ItemWrap = (props: ItemWrapProps) => {
                 <div className={cn(styles['txt-block'])}>
                     <div
                         className={cn(styles['dsc-block'], styles[`${item.descSize}`], 'txt-font', {
-                            ['accent-txt']: well || item.isBeaconHero,
-                            ['txt-color']: !well && !item.isBeaconHero,
+                            ['txt-color']: !item.isBeaconHero,
+                            //['accent-txt']: well || item.isBeaconHero,
+                            ['accent-txt']: item.isBeaconHero,
                         })}
                     >
                         <p className={cn(styles['dsc'])}>{Parser(item.desc)}</p>

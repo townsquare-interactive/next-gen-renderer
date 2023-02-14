@@ -1,5 +1,5 @@
 import { decideHeadTag } from 'functions'
-import { HeadlineBlockProps } from 'types'
+import { HeadlineBlockProps, HeadingProps } from 'types'
 import Parser from 'html-react-parser'
 import styles from './headlineblock.module.scss'
 import cn from 'classnames'
@@ -66,7 +66,7 @@ export const HeadlineBlock = (props: HeadlineBlockProps) => {
     )
 }
 
-const Heading = (props: any) => {
+const Heading = (props: HeadingProps) => {
     const { textType, text, columns, headerTag, well, isBeaconHero, modType } = props
 
     const HeadTag = decideHeadTag(columns, textType, headerTag)
@@ -74,8 +74,9 @@ const Heading = (props: any) => {
     return (
         <HeadTag
             className={cn(styles[textType], {
-                ['accent-txt']: well || isBeaconHero || modType === 'photo_grid',
-                ['txt-color-hd']: !well && !isBeaconHero && modType != 'photo_grid',
+                //['accent-txt']: well || isBeaconHero || modType === 'photo_grid',
+                ['txt-color-hd']: !isBeaconHero && modType != 'photo_grid' && modType != 'banner',
+                ['accent-txt']: isBeaconHero || modType === 'photo_grid' || modType === 'banner',
                 ['txt-font']: textType === 'sh',
                 ['hd-font']: textType === 'hd',
             })}

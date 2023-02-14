@@ -82,7 +82,7 @@ export const Button = (props: BtnProps) => {
                                         ['cta']: bt.btnType === 'btn_cta' || bt.btnType === 'btn_banner',
                                         ['accent-txt']: bt.btnType === 'btn_cta' || bt.btnType === 'btn_banner',
                                     })}
-                                    style={bt.bgColor && { backgroundColor: bt.bgColor }}
+                                    style={bt.bgColor ? { backgroundColor: bt.bgColor } : {}}
                                 >
                                     {bt.icon && <FontAwesomeIcon icon={[bt.icon.iconPrefix, bt.icon.iconModel]} />}
                                     {` ${bt.label}`}

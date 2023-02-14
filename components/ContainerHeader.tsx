@@ -42,6 +42,7 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
                 window: 1,
                 active: true,
                 btnSize: 'lg',
+                icon: { iconModel: 'list-alt', iconPrefix: 'far' },
             },
         ],
         ctaBtns: [
@@ -51,6 +52,7 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
                 link: '/article',
                 window: 1,
                 active: true,
+                icon: { iconModel: 'list-alt', iconPrefix: 'far' },
             },
             {
                 label: 'btn next',
@@ -64,9 +66,6 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
         textCta: [
             {
                 text: 'Contact Us Today',
-            },
-            {
-                text: 'Button 2',
             },
         ],
     }
