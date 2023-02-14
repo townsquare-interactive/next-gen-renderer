@@ -32,7 +32,7 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
 
     const headerOptions2: HeaderOptions = {
         reverseHeaderLayout: true,
-        desktopBurgerNav: true,
+        //desktopBurgerNav: true,
         reverseSocial: true,
         ctaBanner: [
             {
@@ -58,16 +58,16 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
                 label: 'btn next',
                 btnType: 'btn_cta',
                 link: '/test',
-                bgColor: 'orange',
+                //bgColor: 'orange',
                 window: 1,
                 active: true,
             },
         ],
-        textCta: [
+        /* textCta: [
             {
                 text: 'Contact Us Today',
             },
-        ],
+        ], */
     }
 
     const currentButtons = headerOptions2

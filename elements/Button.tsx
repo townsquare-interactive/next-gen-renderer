@@ -32,7 +32,7 @@ export const Button = (props: BtnProps) => {
 
             <div
                 className={cn({
-                    [styles['btn-wrap']]: (actionlbl2 && actionlbl) || type === 'cta',
+                    [styles['btn-wrap']]: (actionlbl2 && actionlbl) || type === 'cta' || type === 'cta_banner',
                     [styles['one-btn-w']]: well === '1' && !(actionlbl2 && actionlbl),
                 })}
             >
@@ -73,7 +73,7 @@ export const Button = (props: BtnProps) => {
                                         [styles.btn_xs]: bt.btnSize?.includes('xs'),
                                         [styles['btn-block']]: bt.btnSize?.includes('btn_block') || bt.btnSize?.includes('btn_blk'),
                                         [styles.btn_w]: well === '1' && (type.includes('article') || type.includes('banner')),
-                                        [styles['has-link']]: bt.link,
+                                        /* [styles['has-link']]: bt.link, */
                                         [styles['btn_cta']]: bt.btnType === 'btn_cta',
                                         [styles['btn_banner']]: bt.btnType === 'btn_banner',
                                         ['btn_p2']: bt.btnType?.includes('btn_p2'),
