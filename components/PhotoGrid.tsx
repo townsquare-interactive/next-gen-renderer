@@ -1,7 +1,7 @@
 'use client'
 import styles from './photogrid.module.scss'
 import { PhotoGridProps, PhotoItemProps } from '../types'
-import { Button } from '../elements/Button'
+import { ButtonWrap } from '../elements/ButtonWrap'
 import cn from 'classnames'
 import { ImageElement } from '../elements/ImageElement'
 import { domainImage } from 'functions'
@@ -111,7 +111,9 @@ const PhotoItem = (props: PhotoItemProps) => {
                         <figcaption className={cn(styles.caption)} style={item.image ? { background: themeStyles.captionBackground } : {}}>
                             <div className={styles['cap-cont']}>
                                 {(item.headline || item.subheader) && <HeadlineBlock item={item} well={well} columns={columns} modType="photo_grid" />}
-                                {item.visibleButton && <Button well={well} modId={modId} type={type} columns={columns} themeStyles={themeStyles} {...item} />}
+                                {item.visibleButton && (
+                                    <ButtonWrap well={well} modId={modId} type={type} columns={columns} themeStyles={themeStyles} {...item} />
+                                )}
                             </div>
                         </figcaption>
                     )}

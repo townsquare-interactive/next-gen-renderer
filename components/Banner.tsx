@@ -4,7 +4,7 @@ import { ArticleProps, ItemWrapProps, ModuleItemProps } from '../types'
 import cn from 'classnames'
 import { domainImage } from '../functions'
 import { Fragment } from 'react'
-import { Button } from '../elements/Button'
+import { ButtonWrap } from '../elements/ButtonWrap'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
 import BackgroundImage from 'elements/BackgroundImage'
 import LinkWrap from 'elements/LinkWrap'
@@ -130,7 +130,7 @@ const ItemWrap = (props: ItemWrapProps) => {
                         )}
                     </>
 
-                    {item.visibleButton && <Button well={well} modId={modId} type="banner" columns={columns} themeStyles={themeStyles} {...item} />}
+                    {item.visibleButton && <ButtonWrap well={well} modId={modId} type="banner" columns={columns} themeStyles={themeStyles} {...item} />}
                 </div>
             )}
         </div>

@@ -148,6 +148,13 @@ interface CtaBtn {
     link?: string
 }
 
+export interface SingleButtonProps {
+    btn: ButtonListProps
+    well: string | number | undefined
+    index: number
+    type: string
+}
+
 interface ButtonListProps {
     label: string
     btnType?: string
@@ -781,7 +788,6 @@ export interface BtnProps {
     itemCount?: number
     modColor1?: string
     twoButtons?: boolean
-    isWrapLink?: boolean
 }
 
 /*------------------------------Non CMS types-------------------------*/

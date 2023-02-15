@@ -9,7 +9,7 @@ import NavToggle from 'elements/NavToggle'
 import Nav from '../elements/Nav'
 import { useRef } from 'react'
 import SocialBar from 'elements/SocialBar'
-import { Button } from 'elements/Button'
+import { ButtonWrap } from 'elements/ButtonWrap'
 import TextWidget from 'elements/TextWidget'
 
 const ContainerHeader = (props: ContainerHeaderProps) => {
@@ -83,7 +83,7 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
             })}
             ref={ref}
         >
-            {currentButtons?.ctaBanner && <Button buttonList={currentButtons.ctaBanner} type="cta_banner" isWrapLink={false} />}
+            {currentButtons?.ctaBanner && <ButtonWrap buttonList={currentButtons.ctaBanner} type="cta_banner" />}
             <div className={styles.wrapper}>
                 {siteData.logos?.image_src && <HeaderLogoBlock type="desktop" logoSrc={siteData.logos.image_src} link={siteData.logos.image_link} />}
 
@@ -94,20 +94,13 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
 
                 {currentButtons && (
                     <div className={styles['cta-block']}>
-                        {/* {currentButtons.ctaBtns.map((item, index: number) => (
-                            <Fragment key={index}>
-                                 <HeaderCTA cta={item} btnCount={index + 1} /> 
-                                <Button buttonList={currentButtons.ctaBtns} type="cta" />
-                            </Fragment>
-                        ))} */}
-
                         {currentButtons.textCta &&
                             currentButtons.textCta.map((item, index: number) => (
                                 <Fragment key={index}>
                                     <TextWidget text={item.text} type="header" />
                                 </Fragment>
                             ))}
-                        {currentButtons?.ctaBtns && <Button buttonList={currentButtons.ctaBtns} type="cta" isWrapLink={false} />}
+                        {currentButtons?.ctaBtns && <ButtonWrap buttonList={currentButtons.ctaBtns} type="cta" />}
                     </div>
                 )}
                 <NavToggle navSwitch={navSwitch} desktopBurgerNav={currentButtons.desktopBurgerNav} />
