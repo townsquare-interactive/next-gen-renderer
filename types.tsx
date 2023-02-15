@@ -165,6 +165,7 @@ interface ButtonListProps {
     btnSize?: string
     icon?: any
     linkType?: string
+    blockBtn?: boolean
 }
 
 export interface HeaderCTAProps {
@@ -441,6 +442,7 @@ export interface ModuleProps {
     /**Check to see if element is hidden */
     disabled?: string
     cmsUrl?: string
+    contentSpacing?: string
 }
 
 /*-----------------------------TSI Modules ----------------------------------*/
@@ -520,6 +522,7 @@ export interface ArticleProps {
     /**Check to see if element is hidden */
     disabled?: string
     cmsUrl?: string
+    contentSpacing?: string
 }
 export interface PhotoGridProps {
     uid: string
@@ -545,6 +548,7 @@ export interface PhotoGridProps {
     /**Global styles for site*/
     themeStyles: ThemeStyles
     cmsUrl?: string
+    contentSpacing?: string
 }
 
 export interface Colors {

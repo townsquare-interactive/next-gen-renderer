@@ -107,6 +107,10 @@
             padding-top: 3rem;
         }
 
+        &.thin .wrapper {
+            padding-top: 1rem;
+        }
+
         .nHero {
             width: variables.$ten-12;
         }

@@ -23,12 +23,6 @@
                     }
                 }
             }
-            /* .link-wrap {
-                position: absolute;
-                height: 100%;
-                width: 100%;
-                z-index: 1;
-            } */
         }
 
         .image-block {
@@ -82,6 +76,10 @@
             margin-bottom: 0.9411764706em;
             line-height: 1.4117647059em;
         }
+    }
+
+    &.thin .dsc {
+        margin: 0.3em 0;
     }
 
     @container item (min-width:343px) {
@@ -265,6 +263,10 @@
                         margin-bottom: 2rem;
                     }
                 }
+            }
+
+            &.thin .item {
+                margin-bottom: 0.5rem;
             }
         }
     }

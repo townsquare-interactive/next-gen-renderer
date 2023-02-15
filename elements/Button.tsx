@@ -13,15 +13,28 @@ export const Button = (props: SingleButtonProps) => {
             key={index}
             passHref={btn.linkType === 'ext'}
             target={btn.window == 1 ? '_blank' : '_self'}
-            className={cn('btn_link', {
-                [styles['btn-block-wrap']]: btn.btnSize?.includes('btn_block') || btn.btnSize?.includes('btn_blk'),
+            className={cn(styles['btn'], styles['transition'], `${btn.btnType}`, styles[`${btn.btnSize}`], {
+                [styles['btn-block']]: btn.blockBtn,
+                [styles.btn_promo]: btn.btnType === 'btn_promo',
+                [styles.btn_override]: btn.btnType === 'btn_override',
+                [styles.btn_w]: well === '1' && (type.includes('article') || type.includes('banner')),
+                [styles['btn_cta']]: btn.btnType === 'btn_cta',
+                [styles['btn_banner']]: btn.btnType === 'btn_banner',
+                ['btn_1']: btn.btnType?.includes('btn_1') || (!btn.btnType && index === 0),
+                [styles.btn_1]: btn.btnType?.includes('btn_1') || (!btn.btnType && index === 0 && btn.btnType != 'btn_cta'),
+                ['btn_2']: btn.btnType?.includes('btn_2') || (!btn.btnType && index === 1),
+                [styles.btn_2]: btn.btnType?.includes('btn_2') || (!btn.btnType && index === 1),
+                ['btn_p2']: btn.btnType?.includes('btn_p2'),
+                ['btn_p3']: btn.btnType?.includes('btn_p3'),
+                ['btn_p4']: btn.btnType?.includes('btn_p4'),
+                ['cta']: btn.btnType === 'btn_cta' || btn.btnType === 'btn_banner',
+                ['accent-txt']: btn.btnType === 'btn_cta' || btn.btnType === 'btn_banner',
             })}
         >
-            <div
+            {/*             <div
                 className={cn(styles['btn'], styles['transition'], `${btn.btnType}`, styles[`${btn.btnSize}`], {
                     [styles.btn_promo]: btn.btnType === 'btn_promo',
                     [styles.btn_override]: btn.btnType === 'btn_override',
-                    [styles['btn-block']]: btn.btnSize?.includes('btn_block') || btn.btnSize?.includes('btn_blk'),
                     [styles.btn_w]: well === '1' && (type.includes('article') || type.includes('banner')),
                     [styles['btn_cta']]: btn.btnType === 'btn_cta',
                     [styles['btn_banner']]: btn.btnType === 'btn_banner',
@@ -36,10 +49,9 @@ export const Button = (props: SingleButtonProps) => {
                     ['accent-txt']: btn.btnType === 'btn_cta' || btn.btnType === 'btn_banner',
                 })}
                 style={btn.bgColor ? { backgroundColor: btn.bgColor } : {}}
-            >
-                {btn.icon && <FontAwesomeIcon icon={[btn.icon.iconPrefix, btn.icon.iconModel]} />}
-                {` ${btn.label}`}
-            </div>
+            > </div> */}
+            {btn.icon && <FontAwesomeIcon icon={[btn.icon.iconPrefix, btn.icon.iconModel]} />}
+            {` ${btn.label}`}
         </Link>
     )
 }

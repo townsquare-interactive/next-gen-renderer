@@ -11,7 +11,9 @@ import { HeadlineBlock } from 'elements/HeadlineBlock'
 import LinkWrap from 'elements/LinkWrap'
 
 export const PhotoGrid = (props: PhotoGridProps) => {
-    const { columns = 1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl, customClassName } = props
+    const { columns = 1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl, customClassName, contentSpacing } = props
+
+    const currentSpacing = contentSpacing || 'thin'
 
     return (
         <div
@@ -27,6 +29,7 @@ export const PhotoGrid = (props: PhotoGridProps) => {
                     [styles.well]: well == '1',
                     [styles.not_well]: !well,
                     [styles[`cst_${customClassName}`]]: customClassName,
+                    [styles.thin]: contentSpacing === 'thin',
                 }
             )}
             id={`id_${modId}`}
@@ -85,7 +88,7 @@ const PhotoItem = (props: PhotoItemProps) => {
 
             <div
                 className={cn(styles['item-wrap'], {
-                    ['btn_link']: item.isWrapLink,
+                    // ['btn_link']: item.isWrapLink,
                 })}
                 aria-label={item.headline || 'item-wrap'}
                 style={

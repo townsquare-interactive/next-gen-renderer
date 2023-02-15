@@ -9,9 +9,12 @@ import { ImageElement } from '../elements/ImageElement'
 import ModuleTitle from 'elements/ModuleTitle'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
 import LinkWrap from 'elements/LinkWrap'
+import TextWidget from 'elements/TextWidget'
 
 const Article = (props: ArticleProps) => {
-    const { columns = 1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl, disabled, customClassName } = props
+    const { columns = 1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl, disabled, customClassName, contentSpacing } = props
+
+    const currentSpacing = contentSpacing || 'thin'
 
     if (disabled === 'disabled') {
         return <></>
@@ -32,6 +35,7 @@ const Article = (props: ArticleProps) => {
                         [styles.not_well]: !well,
                         [styles[`cst_${customClassName}`]]: customClassName,
                         [`cst_${customClassName}`]: customClassName,
+                        [styles.thin]: contentSpacing === 'thin',
                     }
                 )}
                 id={`id_${modId}`}
@@ -97,7 +101,7 @@ const ModuleItem = (props: ModuleItemProps) => {
             <div
                 className={cn(styles['item-wrap'], {
                     ['hero-background']: item.isFeatured === 'active' && type === 'article',
-                    ['btn_link']: item.isWrapLink,
+                    //['btn_link']: item.isWrapLink,
                 })}
                 aria-label={item.headline || 'item-wrap'}
             >
@@ -146,7 +150,7 @@ const ItemWrap = (props: ItemWrapProps) => {
                             ['accent-txt']: item.isBeaconHero,
                         })}
                     >
-                        <p className={cn(styles['dsc'])}>{Parser(item.desc)}</p>
+                        <p className={cn(styles['dsc'], 'dsc')}>{Parser(item.desc)}</p>
                     </div>
                 </div>
             )}

@@ -21,6 +21,10 @@
     padding-top: 3rem;
     padding-left: variables.$container-margins;
     padding-right: variables.$container-margins;
+
+    &.thin {
+        padding-top: 1rem;
+    }
 }
 
 @mixin grid {
