@@ -41,7 +41,7 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
                 link: '/article',
                 window: 1,
                 active: true,
-                btnSize: 'lg',
+                btnSize: 'btn_lg',
                 icon: { iconModel: 'list-alt', iconPrefix: 'far' },
             },
         ],
@@ -53,6 +53,7 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
                 window: 1,
                 active: true,
                 icon: { iconModel: 'list-alt', iconPrefix: 'far' },
+                btnSize: 'btn_sm',
             },
             {
                 label: 'btn next',
@@ -61,6 +62,7 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
                 //bgColor: 'orange',
                 window: 1,
                 active: true,
+                btnSize: 'btn_sm',
             },
         ],
         /* textCta: [
