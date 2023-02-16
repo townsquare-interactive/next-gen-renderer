@@ -35,7 +35,7 @@ const Article = (props: ArticleProps) => {
                         [styles.not_well]: !well,
                         [styles[`cst_${customClassName}`]]: customClassName,
                         [`cst_${customClassName}`]: customClassName,
-                        [styles.thin]: contentSpacing === 'thin',
+                        [styles.thin]: currentSpacing === 'thin',
                     }
                 )}
                 id={`id_${modId}`}

@@ -32,7 +32,7 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
 
     const headerOptions2: HeaderOptions = {
         reverseHeaderLayout: true,
-        desktopBurgerNav: true,
+        //desktopBurgerNav: true,
         reverseSocial: true,
         ctaBanner: [
             {
@@ -46,7 +46,7 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
             },
         ],
         ctaBtns: [
-            {
+            /* {
                 label: 'Contact Us Today',
                 btnType: 'btn_cta',
                 link: '/article',
@@ -54,7 +54,7 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
                 active: true,
                 icon: { iconModel: 'list-alt', iconPrefix: 'far' },
                 btnSize: 'btn_sm',
-            },
+            }, */
             {
                 label: 'btn next',
                 btnType: 'btn_cta',
@@ -85,11 +85,9 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
         >
             {currentButtons?.ctaBanner && <ButtonWrap buttonList={currentButtons.ctaBanner} type="cta_banner" />}
             <div className={styles.wrapper}>
-                {siteData.logos?.image_src && <HeaderLogoBlock type="desktop" logoSrc={siteData.logos.image_src} link={siteData.logos.image_link} />}
+                {siteData.logos.header.slots && <HeaderLogoBlock type="desktop" logos={siteData.logos.header.slots} />}
 
-                {siteData.mobileLogos?.image_src && (
-                    <HeaderLogoBlock type="mobile" logoSrc={siteData.mobileLogos.image_src} link={siteData.mobileLogos.image_link} />
-                )}
+                {siteData.logos.mobile.slots && <HeaderLogoBlock type="mobile" logos={siteData.logos.mobile.slots} />}
                 {!currentButtons.desktopBurgerNav && <Nav navType={'desktop-nav'} cmsNav={siteData.cmsNav} navSwitch={navSwitch} />}
 
                 {currentButtons && (
@@ -110,11 +108,23 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
     )
 }
 
-const HeaderLogoBlock = (props: HeaderLogoBlockProps) => {
-    const { type, alignment, logoSrc, link } = props
+const HeaderLogoBlock = (props: any) => {
+    const { type, logos } = props
     return (
-        <div className={cn(styles['logo-block'], styles[`${type}`], styles[`${alignment}`])}>
-            <Logo logoUrl={domainImage(logoSrc, true)} link={link} />
+        <div
+            className={cn(styles['logo-block'], styles[`${type}`], {
+                [styles['one-logo']]: logos.length === 1,
+            })}
+        >
+            {logos.map((item: any, index: number) => (
+                <Fragment key={index}>
+                    {item.image_src && (
+                        <div className={cn(styles[`${item.alignment}`], styles['logo-item'])}>
+                            <Logo logoUrl={domainImage(item.image_src, true)} link={item.image_link} />
+                        </div>
+                    )}
+                </Fragment>
+            ))}
         </div>
     )
 }

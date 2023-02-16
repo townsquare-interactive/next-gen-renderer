@@ -119,8 +119,8 @@ export interface GlobalData {
     themeStyles: ThemeStyles
     contact: { email: any; phone: any; hours?: any; address?: any; contactLinks: ContactLinks[]; showContactBox: boolean }
     cmsNav?: [NavItem]
-    logos?: Logo
-    mobileLogos?: Logo
+    logos?: any
+    //mobileLogos?: Logo
     footerLogos?: Logo
     composites?: { footer?: CompositeData; right_rail?: CompositeData }
     theme?: string

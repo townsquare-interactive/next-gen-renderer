@@ -33,30 +33,40 @@
         align-items: center;
 
         .logo-block {
-            position: relative;
-            height: 100%;
             flex: 1 1 auto;
             flex-basis: auto;
+            align-items: center;
 
             @include breakpoints.lg-min {
                 padding: 0 0.5rem;
             }
 
-            img {
-                max-width: 6rem;
-                height: auto;
-                transition: all 0.3s ease-in-out;
+            .logo-item {
+                position: relative;
+                height: 100%;
 
-                @include breakpoints.lg-min {
-                    max-width: 13rem;
+                img {
+                    max-width: 6rem;
+                    height: auto;
+                    transition: all 0.3s ease-in-out;
+
+                    @include breakpoints.lg-min {
+                        //max-width: 13rem;
+                        max-width: 8.75rem;
+                    }
                 }
+            }
+
+            &.one-logo .logo-item img {
+                max-width: 13rem;
             }
 
             &.desktop {
                 display: none;
 
                 @include breakpoints.lg-min {
-                    display: block;
+                    display: flex;
+                    gap: 15px;
                 }
             }
 

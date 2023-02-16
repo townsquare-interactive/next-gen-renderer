@@ -29,7 +29,7 @@ export const PhotoGrid = (props: PhotoGridProps) => {
                     [styles.well]: well == '1',
                     [styles.not_well]: !well,
                     [styles[`cst_${customClassName}`]]: customClassName,
-                    [styles.thin]: contentSpacing === 'thin',
+                    [styles.thin]: currentSpacing === 'thin',
                 }
             )}
             id={`id_${modId}`}
