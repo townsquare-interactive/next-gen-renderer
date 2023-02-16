@@ -54,16 +54,53 @@ Default.args = {
         themeStyles: themeStyles,
         cmsUrl: 'clt.com',
         s3Folder: 'cltsiteforjoshedwards',
-
-        logos: { show: 1, type: 'image', markup: '', hasLinks: false, alignment: 'center', image_src: '/files/2022/09/Yos2.jpg', image_link: '/' },
-        mobileLogos: {
-            show: 1,
-            type: 'image',
-            markup: '',
-            hasLinks: false,
-            alignment: 'left',
-            image_src: '/files/2022/07/jremodeling-logo.png',
-            image_link: '/',
+        logos: {
+            footer: {
+                pct: 100,
+                slots: [
+                    {
+                        show: 1,
+                        type: 'image',
+                        markup: '',
+                        hasLinks: false,
+                        alignment: 'left',
+                        image_src: '/files/2022/07/jremodeling-logo.png',
+                        image_link: '/',
+                    },
+                ],
+                activeSlots: [0],
+            },
+            header: {
+                pct: 33,
+                slots: [
+                    {
+                        show: 1,
+                        type: 'image',
+                        markup: '',
+                        hasLinks: false,
+                        alignment: 'right',
+                        image_src: '/files/2022/10/screen-8.jpg',
+                        image_link: '/',
+                    },
+                ],
+                activeSlots: [0, 1, 2],
+            },
+            mobile: {
+                pct: 100,
+                slots: [
+                    {
+                        show: 1,
+                        type: 'image',
+                        markup: '',
+                        hasLinks: false,
+                        alignment: 'left',
+                        image_src: '/files/2022/07/jremodeling-logo.png',
+                        image_link: '/article/',
+                        image_link_ext: '',
+                    },
+                ],
+                activeSlots: [0],
+            },
         },
         headerOptions: {
             reverseHeaderLayout: true,
