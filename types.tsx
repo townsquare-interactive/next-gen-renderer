@@ -119,7 +119,7 @@ export interface GlobalData {
     themeStyles: ThemeStyles
     contact: { email: any; phone: any; hours?: any; address?: any; contactLinks: ContactLinks[]; showContactBox: boolean }
     cmsNav?: [NavItem]
-    logos?: any
+    logos?: CMSLogo
     //mobileLogos?: Logo
     footerLogos?: Logo
     composites?: { footer?: CompositeData; right_rail?: CompositeData }
@@ -129,6 +129,23 @@ export interface GlobalData {
     cmsUrl: string
     s3Folder: string
     headerOptions?: HeaderOptions
+}
+
+interface CMSLogo {
+    header: { pct: number; slots: LogoSlot[]; activeSlots?: number[] }
+    mobile: { pct: number; slots: LogoSlot[]; activeSlots?: number[] }
+    footer: { pct: number; slots: LogoSlot[]; activeSlots?: number[] }
+}
+
+export interface LogoSlot {
+    show: number
+    type: string
+    markup: string
+    hasLinks: boolean
+    alignment: string
+    image_src: string
+    image_link: string
+    image_link_ext?: string
 }
 
 export interface HeaderOptions {
@@ -676,9 +693,7 @@ export interface ContainerHeaderProps {
 
 export interface HeaderLogoBlockProps {
     type: 'mobile' | 'desktop'
-    logoSrc: string
-    link: string
-    alignment?: string
+    logos: LogoSlot[]
 }
 
 export interface SocialItem {

@@ -9,12 +9,12 @@ import { ImageElement } from '../elements/ImageElement'
 import ModuleTitle from 'elements/ModuleTitle'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
 import LinkWrap from 'elements/LinkWrap'
-import TextWidget from 'elements/TextWidget'
 
 const Article = (props: ArticleProps) => {
     const { columns = 1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl, disabled, customClassName, contentSpacing } = props
 
-    const currentSpacing = contentSpacing || 'thin'
+    /* const currentSpacing = contentSpacing || 'thin' */
+    const currentSpacing = contentSpacing || ''
 
     if (disabled === 'disabled') {
         return <></>
@@ -29,13 +29,13 @@ const Article = (props: ArticleProps) => {
                     styles['flex-mod'],
                     styles[`col_${columns}`],
                     styles[`${type}`],
+                    styles[`${currentSpacing}`],
                     {
                         [styles.beacon]: type === 'article',
                         [styles.well]: well == '1',
                         [styles.not_well]: !well,
                         [styles[`cst_${customClassName}`]]: customClassName,
                         [`cst_${customClassName}`]: customClassName,
-                        [styles.thin]: currentSpacing === 'thin',
                     }
                 )}
                 id={`id_${modId}`}

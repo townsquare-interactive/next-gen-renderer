@@ -1,6 +1,6 @@
 'use client'
 import styles from './containerheader.module.scss'
-import { ContainerHeaderProps, HeaderLogoBlockProps, HeaderOptions } from '../types'
+import { ContainerHeaderProps, HeaderLogoBlockProps, HeaderOptions, LogoSlot } from '../types'
 import cn from 'classnames'
 import { domainImage } from '../functions'
 import { useState, useEffect, Fragment } from 'react'
@@ -72,48 +72,50 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
         ], */
     }
 
-    const currentButtons = headerOptions2
-    //const currentButtons = siteData.headerOptions
+    const currentLayout = siteData.headerOptions || {}
+    //const currentLayout = siteData.headerOptions || headerOptions2
 
     return (
         <header
             className={cn(styles.root, 'header-background', {
                 [styles.shrink]: ref?.current?.offsetHeight && windowHeight > ref?.current?.offsetHeight,
-                [styles['reverse-head']]: currentButtons.reverseHeaderLayout,
+                [styles['reverse-head']]: currentLayout.reverseHeaderLayout,
             })}
             ref={ref}
         >
-            {currentButtons?.ctaBanner && <ButtonWrap buttonList={currentButtons.ctaBanner} type="cta_banner" />}
+            {currentLayout?.ctaBanner && <ButtonWrap buttonList={currentLayout.ctaBanner} type="cta_banner" />}
             <div className={styles.wrapper}>
-                {siteData.logos.header.slots && <HeaderLogoBlock type="desktop" logos={siteData.logos.header.slots} />}
+                {siteData.logos?.header?.slots && <HeaderLogoBlock type="desktop" logos={siteData.logos.header.slots} />}
 
-                {siteData.logos.mobile.slots && <HeaderLogoBlock type="mobile" logos={siteData.logos.mobile.slots} />}
-                {!currentButtons.desktopBurgerNav && <Nav navType={'desktop-nav'} cmsNav={siteData.cmsNav} navSwitch={navSwitch} />}
+                {siteData.logos?.mobile?.slots && <HeaderLogoBlock type="mobile" logos={siteData.logos.mobile.slots} />}
+                {!currentLayout.desktopBurgerNav && <Nav navType={'desktop-nav'} cmsNav={siteData.cmsNav} navSwitch={navSwitch} />}
 
-                {currentButtons && (
+                {currentLayout && (
                     <div className={styles['cta-block']}>
-                        {currentButtons.textCta &&
-                            currentButtons.textCta.map((item, index: number) => (
+                        {currentLayout.textCta &&
+                            currentLayout.textCta.map((item, index: number) => (
                                 <Fragment key={index}>
                                     <TextWidget text={item.text} type="header" />
                                 </Fragment>
                             ))}
-                        {currentButtons?.ctaBtns && <ButtonWrap buttonList={currentButtons.ctaBtns} type="cta" />}
+                        {currentLayout?.ctaBtns && <ButtonWrap buttonList={currentLayout.ctaBtns} type="cta" />}
                     </div>
                 )}
-                <NavToggle navSwitch={navSwitch} desktopBurgerNav={currentButtons.desktopBurgerNav} />
+                <NavToggle navSwitch={navSwitch} desktopBurgerNav={currentLayout.desktopBurgerNav} />
             </div>
             <SocialBar siteData={siteData} setContactModal={setContactModal} />
         </header>
     )
 }
 
-const HeaderLogoBlock = (props: any) => {
+const HeaderLogoBlock = (props: HeaderLogoBlockProps) => {
     const { type, logos } = props
+
     return (
         <div
             className={cn(styles['logo-block'], styles[`${type}`], {
-                [styles['one-logo']]: logos.length === 1,
+                [styles['one-logo']]: logos.filter((element: LogoSlot) => element.image_src).length === 1,
+                [styles['two-logos']]: logos.filter((element: LogoSlot) => element.image_src).length === 2,
             })}
         >
             {logos.map((item: any, index: number) => (

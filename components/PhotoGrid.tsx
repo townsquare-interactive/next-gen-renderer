@@ -13,7 +13,8 @@ import LinkWrap from 'elements/LinkWrap'
 export const PhotoGrid = (props: PhotoGridProps) => {
     const { columns = 1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl, customClassName, contentSpacing } = props
 
-    const currentSpacing = contentSpacing || 'thin'
+    //const currentSpacing = contentSpacing || 'thin'
+    const currentSpacing = contentSpacing || ''
 
     return (
         <div
@@ -25,11 +26,11 @@ export const PhotoGrid = (props: PhotoGridProps) => {
                 styles['item-flex'],
                 `col_${columns}`,
                 'photo-grid-mod',
+                styles[`${currentSpacing}`],
                 {
                     [styles.well]: well == '1',
                     [styles.not_well]: !well,
                     [styles[`cst_${customClassName}`]]: customClassName,
-                    [styles.thin]: currentSpacing === 'thin',
                 }
             )}
             id={`id_${modId}`}
