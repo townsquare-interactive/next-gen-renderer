@@ -11,9 +11,24 @@ import { HeadlineBlock } from 'elements/HeadlineBlock'
 import LinkWrap from 'elements/LinkWrap'
 
 const Article = (props: ArticleProps) => {
-    const { columns = 1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl, disabled, customClassName, contentSpacing } = props
+    const {
+        columns = 1,
+        type,
+        well,
+        imgsize,
+        modId,
+        title,
+        items,
+        themeStyles,
+        cmsUrl,
+        disabled,
+        customClassName,
+        contentSpacing,
+        columnLocation,
+        isSingleColumn,
+    } = props
 
-    /* const currentSpacing = contentSpacing || 'thin' */
+    // const currentSpacing = contentSpacing || 'thin'
     const currentSpacing = contentSpacing || ''
 
     if (disabled === 'disabled') {
@@ -30,12 +45,15 @@ const Article = (props: ArticleProps) => {
                     styles[`col_${columns}`],
                     styles[`${type}`],
                     styles[`${currentSpacing}`],
+
                     {
                         [styles.beacon]: type === 'article',
                         [styles.well]: well == '1',
                         [styles.not_well]: !well,
                         [styles[`cst_${customClassName}`]]: customClassName,
                         [`cst_${customClassName}`]: customClassName,
+                        [styles['feature-column']]: columnLocation === 0,
+                        [styles['single-column']]: isSingleColumn,
                     }
                 )}
                 id={`id_${modId}`}
@@ -101,7 +119,6 @@ const ModuleItem = (props: ModuleItemProps) => {
             <div
                 className={cn(styles['item-wrap'], {
                     ['hero-background']: item.isFeatured === 'active' && type === 'article',
-                    //['btn_link']: item.isWrapLink,
                 })}
                 aria-label={item.headline || 'item-wrap'}
             >
@@ -114,6 +131,8 @@ const ModuleItem = (props: ModuleItemProps) => {
 const ItemWrap = (props: ItemWrapProps) => {
     const { item, imgsize, well, themeStyles, type, modId, cmsUrl, columns } = props
 
+    const useAccentColor = item.useAccentColor || false
+
     return (
         <>
             {props.type != 'article_2' ? (
@@ -124,13 +143,29 @@ const ItemWrap = (props: ItemWrapProps) => {
                         </figure>
                     )}
                     {(item.headline || item.subheader) && (
-                        <HeadlineBlock item={item} well={well} columns={columns} isBeaconHero={item.isBeaconHero} modType={type} noDesc={!item.desc} />
+                        <HeadlineBlock
+                            item={item}
+                            well={well}
+                            columns={columns}
+                            isBeaconHero={item.isBeaconHero}
+                            modType={type}
+                            noDesc={!item.desc}
+                            useAccentColor={useAccentColor || false}
+                        />
                     )}
                 </>
             ) : (
                 <>
                     {(item.headline || item.subheader) && (
-                        <HeadlineBlock item={item} well={well} columns={columns} isBeaconHero={item.isBeaconHero} modType={type} noDesc={!item.desc} />
+                        <HeadlineBlock
+                            item={item}
+                            well={well}
+                            columns={columns}
+                            isBeaconHero={item.isBeaconHero}
+                            modType={type}
+                            noDesc={!item.desc}
+                            useAccentColor={useAccentColor || false}
+                        />
                     )}
 
                     {item.image && (
@@ -145,9 +180,9 @@ const ItemWrap = (props: ItemWrapProps) => {
                 <div className={cn(styles['txt-block'])}>
                     <div
                         className={cn(styles['dsc-block'], styles[`${item.descSize}`], 'txt-font', {
-                            ['txt-color']: !item.isBeaconHero,
+                            ['txt-color']: !item.isBeaconHero && !useAccentColor,
                             //['accent-txt']: well || item.isBeaconHero,
-                            ['accent-txt']: item.isBeaconHero,
+                            ['accent-txt']: item.isBeaconHero || useAccentColor,
                         })}
                     >
                         <p className={cn(styles['dsc'], 'dsc')}>{Parser(item.desc)}</p>

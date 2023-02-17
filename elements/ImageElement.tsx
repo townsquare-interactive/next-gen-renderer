@@ -20,8 +20,7 @@ export const ImageElement = (props: ImageElementsProps) => {
         setHeight(loadedMedia.naturalHeight)
     }
 
-    //non constrained images
-    const imageNoSizings = ['no_sizing', 'no_set_height']
+    const imageFileSizes = '(max-width: 1920px) 75vw, (max-width: 1200px) 70vw,  100vw'
 
     return (
         <>
@@ -33,7 +32,7 @@ export const ImageElement = (props: ImageElementsProps) => {
             >
                 {!hideImage &&
                     item.image &&
-                    (!imageNoSizings.includes(imgsize) ? (
+                    (!['no_sizing', 'no_set_height'].includes(imgsize) ? (
                         <Image
                             src={domainImage(item.image, true, cmsUrl || '')}
                             fill
@@ -44,9 +43,7 @@ export const ImageElement = (props: ImageElementsProps) => {
                             onError={() => {
                                 setHideImage(true)
                             }}
-                            sizes="(max-width: 1920px) 75vw,
-                            (max-width: 1200px) 70vw,
-                            100vw"
+                            sizes={imageFileSizes}
                         />
                     ) : (
                         //Setting width and height to image props if nosizing added
@@ -62,9 +59,7 @@ export const ImageElement = (props: ImageElementsProps) => {
                             onError={() => {
                                 setHideImage(true)
                             }}
-                            sizes="(max-width: 1920px) 75vw,
-                            (max-width: 1200px) 70vw,
-                            100vw"
+                            sizes={imageFileSizes}
                         />
                     ))}
                 {item.imageIcon && (

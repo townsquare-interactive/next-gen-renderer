@@ -1,0 +1,270 @@
+@use 'sass:math';
+@use './styles/breakpoints.scss';
+@use './styles/utils.scss';
+@use './styles/variables.scss';
+
+.root {
+    margin-top: 2rem;
+    &.flex-mod {
+        @include utils.flex-mod;
+    }
+
+    .wrapper {
+        .link-wrap {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            z-index: 1;
+        }
+
+        .item {
+            width: variables.$full-width;
+            margin-left: 0;
+            margin-right: 0;
+            margin-bottom: 0;
+            position: relative;
+
+            .item-wrap {
+                //padding: 1.5rem;
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+
+                .content {
+                    display: flex;
+                    justify-content: center;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    width: 100%;
+
+                    /*  @include breakpoints.lg-min {
+                        width: variables.$full-item-width;
+                        margin-left: variables.$item-margins;
+                        margin-right: variables.$item-margins;
+                    } */
+                }
+
+                .tsi-parallax {
+                    position: relative;
+                    opacity: 1;
+                    background-attachment: fixed;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    min-height: 70vh;
+                    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.5);
+
+                    position: relative;
+                    //height: 200px;
+                    // margin: 50px 10px;
+                    clip-path: inset(0);
+
+                    .imgBlock {
+                        position: fixed !important;
+                        left: 0;
+                        top: 0;
+                        height: 100%;
+                        width: 100%;
+                    }
+
+                    img {
+                        // object-fit: cover;
+                        object-fit: fill;
+                        position: relative;
+                        width: 100%;
+                        height: 100%;
+                    }
+
+                    * {
+                        color: #fff;
+                    }
+
+                    /* img {
+                        position: relative;
+                        opacity: 1;
+                        background-attachment: fixed;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                
+                        min-height: 100vh;
+                
+                        box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.5);
+                    } */
+                }
+
+                .tsi-parallax-caption {
+                    /* position: absolute;
+                    left: 0;
+                    top: 50%;
+                    width: 100%;
+                    text-align: center;
+                    color: #000; */
+                    z-index: 999;
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 100%;
+                    will-change: transform;
+
+                    //background: rgb(0, 0, 0, 0.4);
+                    background: var(--caption-background);
+                }
+            }
+
+            &.btn-only {
+                .content {
+                    justify-content: flex-end;
+                }
+            }
+
+            @include breakpoints.sm-min {
+                &.left .item-wrap,
+                &.left .content {
+                    flex-direction: row;
+                    align-items: center;
+                    text-align: left;
+                }
+            }
+
+            /* &.yImg {
+                .item-wrap {
+                    position: relative;
+                    background: var(--caption-background);
+                } 
+            }*/
+        }
+    }
+
+    text-align: center;
+
+    &.well {
+        .hd-block {
+            max-width: 100%;
+        }
+
+        .item {
+            box-shadow: 0 0 2px rgb(0 0 0 / 6%), 0 2px 4px rgb(0 0 0 / 12%);
+        }
+    }
+}
+
+/* .scene {
+    height: 150vh;
+    padding: 5vh 10vw;
+}
+
+.parallax {
+    background-size: cover;
+    box-sizing: border-box;
+    width: 100%;
+    height: 130vh;
+   //Since the parallax elements still consume space, we set the margin to undo
+      // the height of this parallax element making it essentially consume 0 space.
+   
+    margin-bottom: -130vh;
+}
+
+.header {
+    height: 70vh;
+}
+.parallax.header {
+    margin-bottom: -70vh;
+}
+ */
+
+/*------------------------------------------------------------------------------------------------------*/
+/* .parallax {
+    perspective: 1px;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    * {
+        // color: #fff;
+    }
+}
+.parallax__layer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.parallax__layer--base {
+    transform: translateZ(0);
+}
+.parallax__layer--back {
+    transform: translateZ(-100px);
+    //transform: translateZ(-1px) scale(2);
+} */
+
+///////@at-root
+///
+///
+///
+
+/* Parallax base styles
+  --------------------------------------------- */
+
+/* .parallax {
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-perspective: 1px;
+    perspective: 1px;
+}
+
+.parallax__layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.parallax__layer--base {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+.parallax__layer--back {
+    -webkit-transform: translateZ(-1px);
+    transform: translateZ(-1px);
+} */
+
+/* demo styles
+  --------------------------------------------- 
+
+.parallax {
+    font-size: 200%;
+    overflow: auto;
+}
+
+/ add some padding to force scrollbars 
+.parallax__layer {
+    padding: 100vh 0;
+    //background: rgb(102, 204, 102);
+}
+
+
+.title {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.parallax {
+    perspective-origin-x: 100%;
+}
+.parallax__layer {
+    transform-origin-x: 100%;
+}
+*/

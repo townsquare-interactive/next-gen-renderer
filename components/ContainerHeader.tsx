@@ -72,8 +72,8 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
         ], */
     }
 
-    const currentLayout = siteData.headerOptions || {}
-    //const currentLayout = siteData.headerOptions || headerOptions2
+    //const currentLayout = siteData.headerOptions || {}
+    const currentLayout = siteData.headerOptions || headerOptions2
 
     return (
         <header

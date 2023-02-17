@@ -2,6 +2,7 @@
 @use './styles/utils.scss';
 @use './styles/variables.scss';
 @value columns from '../components/container.module.scss';
+@value wide-column from '../components/container.module.scss';
 
 .root {
     @include utils.module-root;
@@ -86,7 +87,6 @@
         }
     }
 
-    //temp: medium screens, need to revise size maybe
     @container item (min-width: variables.$med-container) {
         .item {
             &.nHero:first-of-type {
@@ -135,4 +135,8 @@
 
 .columns .root {
     @include utils.column-mod;
+}
+
+.wide-column .wrapper {
+    padding: 0 1.5rem 1rem;
 }

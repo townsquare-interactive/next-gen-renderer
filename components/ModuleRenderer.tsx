@@ -11,6 +11,7 @@ import Carousel from './practice/Carousel'
 import Video from './practice/Video'
 import BeaconArticle from './practice/BeaconArticle'
 import CharlotteArticle from './practice/CharlotteArticle'
+import Parallax from './Parallax'
 import Article from './Article'
 import { PhotoGrid } from './PhotoGrid'
 import { capitalize } from '../functions'
@@ -34,6 +35,7 @@ const keysToComponentMap: any = {
     Article,
     PhotoGrid,
     Banner,
+    Parallax,
 }
 
 const mapPropsToConfig = (config: ModuleProps[]) => {

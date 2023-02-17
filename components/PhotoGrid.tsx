@@ -88,9 +88,7 @@ const PhotoItem = (props: PhotoItemProps) => {
             {item.isWrapLink && <LinkWrap item={item} modType={'photo-grid'}></LinkWrap>}
 
             <div
-                className={cn(styles['item-wrap'], {
-                    // ['btn_link']: item.isWrapLink,
-                })}
+                className={cn(styles['item-wrap'])}
                 aria-label={item.headline || 'item-wrap'}
                 style={
                     item.textureImage

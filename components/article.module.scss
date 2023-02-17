@@ -9,6 +9,7 @@
 
     .wrapper {
         @include utils.wrapper-size(0);
+        //padding: 0 1.5rem 1rem;
 
         .item {
             margin-bottom: 2rem;
@@ -270,16 +271,17 @@
             }
         }
     }
-    @container item (min-width:343px) {
-        @include breakpoints.sm-min {
-            &.col_1 .wrapper .item,
-            &.col_2 .wrapper .item {
+
+    /* @include breakpoints.sm-min {
+        &.col_1 .wrapper .item,
+        &.col_2 .wrapper .item {
+            @container item (min-width:443px) {
                 width: variables.$ten-12;
                 margin-left: auto;
                 margin-right: auto;
             }
         }
-    }
+    } */
 
     //font sizes
     @include utils.text-sizes;
@@ -299,6 +301,19 @@
 
     &.grid-item {
         @include utils.grid;
+    }
+
+    &.feature-column,
+    &.single-column {
+        &.article_1,
+        &.article_2,
+        &.article_3 {
+            &.col_1 .nHero.item {
+                width: variables.$ten-12;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
     }
 }
 

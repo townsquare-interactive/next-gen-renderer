@@ -83,7 +83,7 @@ Default.args = {
                         image_link: '/',
                     },
                 ],
-                activeSlots: [0, 1, 2],
+                // activeSlots: [0, 1, 2],
             },
             mobile: {
                 pct: 100,

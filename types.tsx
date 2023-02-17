@@ -512,6 +512,7 @@ export interface ArticleItems {
     modTwo?: number
     modColor1?: string
     borderType?: string
+    useAccentColor?: boolean
 }
 
 export interface ArticleProps {
@@ -540,6 +541,8 @@ export interface ArticleProps {
     disabled?: string
     cmsUrl?: string
     contentSpacing?: string
+    columnLocation: number
+    isSingleColumn: boolean
 }
 export interface PhotoGridProps {
     uid: string
@@ -648,6 +651,7 @@ export interface HeadlineBlockProps {
     isBeaconHero?: boolean
     modType?: string
     noDesc?: boolean
+    useAccentColor?: boolean
 }
 
 export interface HeadingProps {
@@ -658,6 +662,7 @@ export interface HeadingProps {
     well: string | number
     isBeaconHero?: boolean
     modType?: string
+    useAccentColor?: boolean
 }
 
 export interface ModuleItemProps {

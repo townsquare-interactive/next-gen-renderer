@@ -156,15 +156,18 @@
             //margin-left: auto;
             //margin-right: auto;
         }
-        &.article_1,
+
+        /* &.article_1,
         &.article_2,
         &.article_3 {
             &.col_1 .nHero.item {
-                width: variables.$ten-12;
-                margin-left: auto;
-                margin-right: auto;
+                @container module (min-width:443px) {
+                    width: variables.$ten-12;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
             }
-        }
+        } */
 
         &.col_3 .item {
             width: variables.$half-item-width;

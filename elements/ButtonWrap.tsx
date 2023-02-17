@@ -28,7 +28,7 @@ export const ButtonWrap = (props: BtnProps) => {
             {type != 'cta' && <style>{promoButtonStyles}</style>}
 
             <div
-                className={cn({
+                className={cn(styles.wrapper, {
                     [styles['btn-wrap']]: (actionlbl2 && actionlbl) || type === 'cta' || type === 'cta_banner',
                     [styles['one-btn-w']]: well === '1' && !(actionlbl2 && actionlbl),
                 })}

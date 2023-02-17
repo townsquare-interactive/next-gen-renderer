@@ -6,7 +6,7 @@ import cn from 'classnames'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const HeadlineBlock = (props: HeadlineBlockProps) => {
-    const { item, columns, well, isBeaconHero, modType, noDesc = false } = props
+    const { item, columns, well, isBeaconHero, modType, noDesc = false, useAccentColor } = props
 
     return (
         <header
@@ -46,6 +46,7 @@ export const HeadlineBlock = (props: HeadlineBlockProps) => {
                             well={well}
                             isBeaconHero={isBeaconHero}
                             modType={modType}
+                            useAccentColor={useAccentColor}
                         />
                     )}
 
@@ -58,6 +59,7 @@ export const HeadlineBlock = (props: HeadlineBlockProps) => {
                             well={well}
                             isBeaconHero={isBeaconHero}
                             modType={modType}
+                            useAccentColor={useAccentColor}
                         />
                     )}
                 </>
@@ -67,7 +69,7 @@ export const HeadlineBlock = (props: HeadlineBlockProps) => {
 }
 
 const Heading = (props: HeadingProps) => {
-    const { textType, text, columns, headerTag, well, isBeaconHero, modType } = props
+    const { textType, text, columns, headerTag, well, isBeaconHero, modType, useAccentColor } = props
 
     const HeadTag = decideHeadTag(columns, textType, headerTag)
 
@@ -75,8 +77,8 @@ const Heading = (props: HeadingProps) => {
         <HeadTag
             className={cn(styles[textType], {
                 //['accent-txt']: well || isBeaconHero || modType === 'photo_grid',
-                ['txt-color-hd']: !isBeaconHero && modType != 'photo_grid' && modType != 'banner',
-                ['accent-txt']: isBeaconHero || modType === 'photo_grid' || modType === 'banner',
+                ['txt-color-hd']: !isBeaconHero && modType != 'photo_grid' && modType != 'banner' && !useAccentColor,
+                ['accent-txt']: isBeaconHero || modType === 'photo_grid' || modType === 'banner' || useAccentColor,
                 ['txt-font']: textType === 'sh',
                 ['hd-font']: textType === 'hd',
             })}
