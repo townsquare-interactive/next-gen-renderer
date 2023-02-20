@@ -9,6 +9,7 @@ import { ImageElement } from '../elements/ImageElement'
 import ModuleTitle from 'elements/ModuleTitle'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
 import LinkWrap from 'elements/LinkWrap'
+import DescBlock from 'elements/DescBlock'
 
 const Article = (props: ArticleProps) => {
     const {
@@ -178,7 +179,7 @@ const ItemWrap = (props: ItemWrapProps) => {
 
             {item.desc && (
                 <div className={cn(styles['txt-block'])}>
-                    <div
+                    {/*   <div
                         className={cn(styles['dsc-block'], styles[`${item.descSize}`], 'txt-font', {
                             ['txt-color']: !item.isBeaconHero && !useAccentColor,
                             //['accent-txt']: well || item.isBeaconHero,
@@ -186,7 +187,9 @@ const ItemWrap = (props: ItemWrapProps) => {
                         })}
                     >
                         <p className={cn(styles['dsc'], 'dsc')}>{Parser(item.desc)}</p>
-                    </div>
+                    </div> */}
+
+                    <DescBlock desc={item.desc} descSize={item.descSize} type={type} well={well} isBeaconHero={item.isBeaconHero} />
                 </div>
             )}
             {item.visibleButton && <ButtonWrap well={well} modId={modId} type={type} columns={columns} themeStyles={themeStyles} {...item} />}

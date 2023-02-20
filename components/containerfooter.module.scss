@@ -43,14 +43,15 @@
                     }
                 }
 
+                ul {
+                    width: 100%;
+                    columns: 3;
+                }
+
                 @include breakpoints.lg-min {
                     margin-left: 2.1220609456%;
                     margin-right: 2.1220609456%;
                     width: 29.0892114422%;
-
-                    ul {
-                        columns: 1;
-                    }
 
                     div {
                         width: 100%;

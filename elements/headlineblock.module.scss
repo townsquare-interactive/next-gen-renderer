@@ -193,6 +193,30 @@
             margin-top: 0 !important;
         }
     }
+
+    &.parallax {
+        .hd {
+            font-weight: normal;
+        }
+
+        @include breakpoints.lg-min {
+            .hd {
+                font-size: variables.$xl-txt;
+                margin-top: 0.7407407407em;
+                margin-bottom: 0.3703703704em;
+                line-height: 1.1111111111em;
+                letter-spacing: -0.05rem;
+            }
+
+            .sh {
+                font-size: variables.$md-txt;
+                margin-top: 0.6666666667em;
+                margin-bottom: 0.5em;
+                line-height: 1.1666666667em;
+                letter-spacing: -0.0125rem;
+            }
+        }
+    }
 }
 
 .hero,

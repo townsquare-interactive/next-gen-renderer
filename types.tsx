@@ -515,6 +515,16 @@ export interface ArticleItems {
     useAccentColor?: boolean
 }
 
+export interface DescBlockProps {
+    descSize?: string
+    desc: string
+    isBeaconHero?: boolean
+    useAccentColor?: boolean
+    well?: string | number
+    contentSpacing?: string
+    type: string
+}
+
 export interface ArticleProps {
     uid: string
     modId: string

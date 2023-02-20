@@ -11,8 +11,9 @@ import { HeadlineBlock } from 'elements/HeadlineBlock'
 import LinkWrap from 'elements/LinkWrap'
 import BackgroundImage from 'elements/BackgroundImage'
 import { domainImage } from '../functions'
+import DescBlock from 'elements/DescBlock'
 
-const Parallax = (props: any) => {
+const Parallax = (props: ArticleProps) => {
     const {
         columns = 1,
         type,
@@ -38,20 +39,18 @@ const Parallax = (props: any) => {
                     //'root-container',
                     //styles['item-flex'],
                     styles['root'],
-                    styles['flex-mod']
+                    styles['flex-mod'],
                     //styles[`col_${columns}`],
-                    ////styles[`${type}`],
+                    styles[`${type}`],
                     //styles[`${currentSpacing}`],
-
-                    /* {
-                        [styles.beacon]: type === 'article',
+                    {
                         [styles.well]: well == '1',
                         [styles.not_well]: !well,
                         [styles[`cst_${customClassName}`]]: customClassName,
                         [`cst_${customClassName}`]: customClassName,
-                        [styles['feature-column']]: columnLocation === 0,
-                        [styles['single-column']]: isSingleColumn,
-                    } */
+                        //[styles['feature-column']]: columnLocation === 0,
+                        // [styles['single-column']]: isSingleColumn,
+                    }
                 )}
                 id={`id_${modId}`}
             >
@@ -115,8 +114,6 @@ const ModuleItem = (props: ModuleItemProps) => {
                     : { background: `${item.promoColor}` }
             } */
         >
-            {item.isWrapLink && <LinkWrap item={item} modType={'banner'}></LinkWrap>}
-
             <ItemWrap
                 item={item}
                 imgsize={imgsize}
@@ -133,7 +130,7 @@ const ModuleItem = (props: ModuleItemProps) => {
 }
 
 const ItemWrap = (props: ItemWrapProps) => {
-    const { item, well, themeStyles, modId, columns } = props
+    const { item, well, themeStyles, modId, columns, type } = props
 
     return (
         <div
@@ -153,17 +150,6 @@ const ItemWrap = (props: ItemWrapProps) => {
                     : { height: item.modOne || 'auto' }
             } */
         >
-            {/* {(!item.modOne || item.modOne >= 200) && (
-                <div className={styles.content}>
-                    <>
-                        {(item.headline || item.subheader) && (
-                            <HeadlineBlock item={item} well={1} columns={columns} isBeaconHero={item.isBeaconHero} modType={'banner'} />
-                        )}
-                    </>
-
-                    {item.visibleButton && <ButtonWrap well={well} modId={modId} type="banner" columns={columns} themeStyles={themeStyles} {...item} />}
-                </div>
-            )} */}
             <div
                 className={styles['tsi-parallax']}
                 //style={{ backgroundImage: `url(http://clttestsiteforjoshedwards.production.townsquareinteractive.com/files/2022/10/screen-8.jpg)` }}
@@ -171,22 +157,39 @@ const ItemWrap = (props: ItemWrapProps) => {
                 <div className={styles.imgBlock}>
                     <BackgroundImage image={item.image} className={styles['tsi-parallax']} />
                 </div>
-                <div className={styles['tsi-parallax-caption']}>
-                    <div>
-                        {/*                         <h1>I can add content on top of the parallax section</h1>
+            </div>
+
+            <div className={styles['tsi-parallax-caption']}>
+                <div>
+                    {/*                         <h1>I can add content on top of the parallax section</h1>
                         <p>this has min-height 100vh for full cover</p> */}
 
-                        <div className={styles.content}>
-                            <>
-                                {(item.headline || item.subheader) && (
-                                    <HeadlineBlock item={item} well={1} columns={columns} isBeaconHero={item.isBeaconHero} modType={'banner'} />
-                                )}
-                            </>
+                    <div className={styles.content}>
+                        <>
+                            {(item.headline || item.subheader) && (
+                                <HeadlineBlock item={item} well={1} columns={columns} isBeaconHero={item.isBeaconHero} modType={'parallax'} />
+                            )}
 
-                            {item.visibleButton && <ButtonWrap well={well} modId={modId} type="banner" columns={columns} themeStyles={themeStyles} {...item} />}
-                        </div>
+                            {item.desc && (
+                                <div className={cn(styles['txt-block'])}>
+                                    {/*                                  <div
+                                        className={cn(styles['dsc-block'], styles[`${item.descSize}`], 'txt-font', {
+                                            //['txt-color']: !item.isBeaconHero && !useAccentColor,
+                                            //['accent-txt']: well || item.isBeaconHero,
+                                            ['accent-txt']: true,
+                                        })}
+                                    >
+                                        <p className={cn(styles['dsc'], 'dsc')}>{Parser(item.desc)}</p>
+                                    </div> */}
+                                    <DescBlock desc={item.desc} descSize={item.descSize} useAccentColor={true} type={type} />
+                                </div>
+                            )}
+                        </>
+
+                        {item.visibleButton && <ButtonWrap well={well} modId={modId} type="banner" columns={columns} themeStyles={themeStyles} {...item} />}
                     </div>
                 </div>
+                {item.isWrapLink && <LinkWrap item={item} modType={'banner'}></LinkWrap>}
             </div>
         </div>
     )
