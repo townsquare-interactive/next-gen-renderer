@@ -513,6 +513,7 @@ export interface ArticleItems {
     modColor1?: string
     borderType?: string
     useAccentColor?: boolean
+    modSwitch1?: number
 }
 
 export interface DescBlockProps {

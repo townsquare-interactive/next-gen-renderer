@@ -12,6 +12,7 @@ import LinkWrap from 'elements/LinkWrap'
 import BackgroundImage from 'elements/BackgroundImage'
 import { domainImage } from '../functions'
 import DescBlock from 'elements/DescBlock'
+import ReactParallax from 'elements/ReactParallax'
 
 const Parallax = (props: ArticleProps) => {
     const {
@@ -35,19 +36,20 @@ const Parallax = (props: ArticleProps) => {
         <>
             <div
                 className={cn(
-                    //'article-mod',
-                    //'root-container',
-                    //styles['item-flex'],
+                    'parallax-mod',
                     styles['root'],
                     styles['flex-mod'],
+                    //styles[`${type}`],
+                    //'root-container',
+                    //styles['item-flex'],
                     //styles[`col_${columns}`],
-                    styles[`${type}`],
                     //styles[`${currentSpacing}`],
                     {
                         [styles.well]: well == '1',
-                        [styles.not_well]: !well,
+
                         [styles[`cst_${customClassName}`]]: customClassName,
                         [`cst_${customClassName}`]: customClassName,
+                        //[styles.not_well]: !well,
                         //[styles['feature-column']]: columnLocation === 0,
                         // [styles['single-column']]: isSingleColumn,
                     }
@@ -102,17 +104,6 @@ const ModuleItem = (props: ModuleItemProps) => {
                 `item_${itemIndex + 1}`
             )}
             lang="en"
-            /*  style={
-                item.modColor1
-                    ? {
-                          background: `${item.modColor1}`,
-                      }
-                    : well === '1' && !item.image
-                    ? {
-                          backgroundImage: `linear-gradient(-45deg, ${item.textureImage?.gradientColors[0]}, ${item.textureImage?.gradientColors[1]})`,
-                      }
-                    : { background: `${item.promoColor}` }
-            } */
         >
             <ItemWrap
                 item={item}
@@ -124,46 +115,36 @@ const ModuleItem = (props: ModuleItemProps) => {
                 columns={columns}
                 modId={modId}
                 align={item.align}
+                cmsUrl={cmsUrl}
             />
         </article>
     )
 }
 
 const ItemWrap = (props: ItemWrapProps) => {
-    const { item, well, themeStyles, modId, columns, type } = props
+    const { item, well, themeStyles, modId, columns, type, cmsUrl } = props
+
+    const useJsLax = true
 
     return (
-        <div
-            className={cn(styles['item-wrap'], {})}
-            aria-label={item.headline || 'item-wrap'}
-            /*  style={
-                item.modColor1
-                    ? {
-                          background: `${item.modColor1}`,
-                      }
-                    : well === '1'
-                    ? {
-                          backgroundImage: item.textureImage?.image ? `url(${domainImage(item.textureImage.image, false)})` : 'none',
-                          backgroundPositionY: item.modTwo ? item.modTwo + '%' : '0%',
-                          height: item.modOne || 'auto',
-                      }
-                    : { height: item.modOne || 'auto' }
-            } */
-        >
-            <div
-                className={styles['tsi-parallax']}
-                //style={{ backgroundImage: `url(http://clttestsiteforjoshedwards.production.townsquareinteractive.com/files/2022/10/screen-8.jpg)` }}
-            >
-                <div className={styles.imgBlock}>
-                    <BackgroundImage image={item.image} className={styles['tsi-parallax']} />
+        <div className={cn(styles['item-wrap'], {})} aria-label={item.headline || 'item-wrap'}>
+            {!useJsLax && (
+                <div
+                    className={styles['parallax-block']}
+                    //style={{ backgroundImage: `url(http://clttestsiteforjoshedwards.production.townsquareinteractive.com/files/2022/10/screen-8.jpg)` }}
+                >
+                    <div className={styles['img-block']}>
+                        <BackgroundImage image={item.image} cmsUrl={cmsUrl} />
+                    </div>
                 </div>
-            </div>
+            )}
 
-            <div className={styles['tsi-parallax-caption']}>
-                <div>
-                    {/*                         <h1>I can add content on top of the parallax section</h1>
-                        <p>this has min-height 100vh for full cover</p> */}
-
+            <ReactParallax img={item.image} cmsUrl={cmsUrl} useJsLax={useJsLax}>
+                <div
+                    className={cn(styles['caption'], {
+                        [styles['cap-bckg']]: item.modSwitch1 != 1,
+                    })}
+                >
                     <div className={styles.content}>
                         <>
                             {(item.headline || item.subheader) && (
@@ -172,15 +153,6 @@ const ItemWrap = (props: ItemWrapProps) => {
 
                             {item.desc && (
                                 <div className={cn(styles['txt-block'])}>
-                                    {/*                                  <div
-                                        className={cn(styles['dsc-block'], styles[`${item.descSize}`], 'txt-font', {
-                                            //['txt-color']: !item.isBeaconHero && !useAccentColor,
-                                            //['accent-txt']: well || item.isBeaconHero,
-                                            ['accent-txt']: true,
-                                        })}
-                                    >
-                                        <p className={cn(styles['dsc'], 'dsc')}>{Parser(item.desc)}</p>
-                                    </div> */}
                                     <DescBlock desc={item.desc} descSize={item.descSize} useAccentColor={true} type={type} />
                                 </div>
                             )}
@@ -188,28 +160,12 @@ const ItemWrap = (props: ItemWrapProps) => {
 
                         {item.visibleButton && <ButtonWrap well={well} modId={modId} type="banner" columns={columns} themeStyles={themeStyles} {...item} />}
                     </div>
+
+                    {item.isWrapLink && <LinkWrap item={item} modType={'banner'}></LinkWrap>}
                 </div>
-                {item.isWrapLink && <LinkWrap item={item} modType={'banner'}></LinkWrap>}
-            </div>
+            </ReactParallax>
         </div>
     )
-}
-
-{
-    /* <div
-className={styles['tsi-parallax']}
-//style={{ backgroundImage: `url(http://clttestsiteforjoshedwards.production.townsquareinteractive.com/files/2022/10/screen-8.jpg)` }}
->
-<div className={styles.imgBlock}>
-    <BackgroundImage image={'/files/2022/10/screen-8.jpg'} className={styles['tsi-parallax']} />
-</div>
-<div className={styles['tsi-parallax-caption']}>
-    <div>
-        <h1>I can add content on top of the parallax section</h1>
-        <p>this has min-height 100vh for full cover</p>
-    </div>
-</div>
-</div> */
 }
 
 export default Parallax

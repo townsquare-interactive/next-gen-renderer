@@ -14,9 +14,10 @@
     .column-blocks {
         padding-left: 1.5rem;
         padding-right: 1.5rem;
+        @include utils.wrapper-size(0);
 
         .columns {
-            @include utils.wrapper-size(3rem);
+            /* @include utils.wrapper-size(3rem); */
             //gap: variables.$grid-gap;
             //gap: 0.3%;
 

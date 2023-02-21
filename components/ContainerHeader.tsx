@@ -31,9 +31,9 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
     const ref = useRef<HTMLDivElement>(null)
 
     const headerOptions2: HeaderOptions = {
-        reverseHeaderLayout: true,
+        //reverseHeaderLayout: true,
         //desktopBurgerNav: true,
-        reverseSocial: true,
+        //reverseSocial: true,
         ctaBanner: [
             {
                 label: 'Contact Us Today',
