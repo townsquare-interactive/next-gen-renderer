@@ -1,15 +1,15 @@
 'use client'
 import styles from './banner.module.scss'
-import { ArticleProps, ItemWrapProps, ModuleItemProps } from '../types'
+import { ModuleProps, ItemWrapProps, ModuleItemProps } from '../types'
 import cn from 'classnames'
 import { domainImage } from '../functions'
 import { Fragment } from 'react'
 import { ButtonWrap } from '../elements/ButtonWrap'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
-import BackgroundImage from 'elements/BackgroundImage'
 import LinkWrap from 'elements/LinkWrap'
+import { SingleImage } from 'elements/SingleImage'
 
-const Banner = (props: ArticleProps) => {
+const Banner = (props: ModuleProps) => {
     const { columns = 1, type, well, imgsize, modId, items, themeStyles, cmsUrl, disabled, customClassName } = props
 
     if (disabled === 'disabled') {
@@ -83,7 +83,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                     : { background: `${item.promoColor}` }
             }
         >
-            {item.image && <BackgroundImage image={item.image} alt={item.img_alt_tag} priority={item.imagePriority} cmsUrl={cmsUrl} />}
+            {item.image && <SingleImage imgSrc={item.image} imgAlt={item.img_alt_tag} imagePriority imgsize={imgsize} cmsUrl={cmsUrl} modType={'Banner'} />}
             {item.isWrapLink && <LinkWrap item={item} modType={'banner'}></LinkWrap>}
 
             <ItemWrap

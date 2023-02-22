@@ -1,20 +1,20 @@
 'use client'
 import styles from './parallax.module.scss'
-import { ArticleProps, ItemWrapProps, ModuleItemProps } from '../types'
+import { ModuleProps, ItemWrapProps, ModuleItemProps } from '../types'
 import cn from 'classnames'
 import Parser from 'html-react-parser'
-import { Fragment } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { ButtonWrap } from '../elements/ButtonWrap'
-import { ImageElement } from '../elements/ImageElement'
 import ModuleTitle from 'elements/ModuleTitle'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
 import LinkWrap from 'elements/LinkWrap'
-import BackgroundImage from 'elements/BackgroundImage'
-import { domainImage } from '../functions'
 import DescBlock from 'elements/DescBlock'
 import ReactParallax from 'elements/ReactParallax'
+import { SingleImage } from 'elements/SingleImage'
+import Image from 'next/image'
+import { domainImage } from 'functions'
 
-const Parallax = (props: ArticleProps) => {
+const Parallax = (props: ModuleProps) => {
     const {
         columns = 1,
         type,
@@ -30,6 +30,7 @@ const Parallax = (props: ArticleProps) => {
         contentSpacing,
         columnLocation,
         isSingleColumn,
+        modCount,
     } = props
 
     return (
@@ -49,6 +50,7 @@ const Parallax = (props: ArticleProps) => {
 
                         [styles[`cst_${customClassName}`]]: customClassName,
                         [`cst_${customClassName}`]: customClassName,
+                        [styles['first-mod']]: modCount === 1,
                         //[styles.not_well]: !well,
                         //[styles['feature-column']]: columnLocation === 0,
                         // [styles['single-column']]: isSingleColumn,
@@ -122,7 +124,7 @@ const ModuleItem = (props: ModuleItemProps) => {
 }
 
 const ItemWrap = (props: ItemWrapProps) => {
-    const { item, well, themeStyles, modId, columns, type, cmsUrl } = props
+    const { item, well, themeStyles, modId, columns, type, cmsUrl, imgsize } = props
 
     const useJsLax = true
 
@@ -134,7 +136,8 @@ const ItemWrap = (props: ItemWrapProps) => {
                     //style={{ backgroundImage: `url(http://clttestsiteforjoshedwards.production.townsquareinteractive.com/files/2022/10/screen-8.jpg)` }}
                 >
                     <div className={styles['img-block']}>
-                        <BackgroundImage image={item.image} cmsUrl={cmsUrl} />
+                        {/*  <BackgroundImage image={item.image} cmsUrl={cmsUrl} /> */}
+                        <SingleImage imgSrc={item.image} imgAlt={item.img_alt_tag} imagePriority imgsize={imgsize} cmsUrl={cmsUrl} modType={'Banner'} />
                     </div>
                 </div>
             )}
@@ -165,6 +168,47 @@ const ItemWrap = (props: ItemWrapProps) => {
                 </div>
             </ReactParallax>
         </div>
+    )
+}
+
+const Plax2 = (props: any) => {
+    const [offsetY, setOffsetY] = useState(0)
+    const handleScroll = () => setOffsetY(window.pageYOffset)
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll)
+
+        return () => window.removeEventListener('scroll', handleScroll)
+    }, [])
+
+    return (
+        <>
+            <section className={styles.Parallax2}>
+                <div
+                    className={styles.background2}
+                    style={{
+                        transform: `translateY(${offsetY * 0.5}px)`,
+                        // backgroundImage: `url(http://clttestsiteforjoshedwards.production.townsquareinteractive.com/files/2022/10/screen-8.jpg)`,
+                    }}
+                >
+                    {/*   <Image
+                            src={domainImage(props.img, true, props.cmsUrl || '')}
+                            //fill
+                            quality="80"
+                            //style={{ objectFit: 'cover', objectPosition: 'top' }}
+                            sizes="100vw"
+                            // width={imageWidth}
+                            //height={imageHeight}
+                            width={2000}
+                            height={830}
+                            alt=""
+                        /> */}
+                    <img src={domainImage(props.img, true, props.cmsUrl || '')} />
+                </div>
+
+                <div className={styles.content2}> {props.children}</div>
+            </section>
+        </>
     )
 }
 

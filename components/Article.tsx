@@ -1,17 +1,16 @@
 'use client'
 import styles from './article.module.scss'
-import { ArticleProps, ItemWrapProps, ModuleItemProps } from '../types'
+import { ModuleProps, ItemWrapProps, ModuleItemProps } from '../types'
 import cn from 'classnames'
-import Parser from 'html-react-parser'
 import { Fragment } from 'react'
 import { ButtonWrap } from '../elements/ButtonWrap'
-import { ImageElement } from '../elements/ImageElement'
+import { ImageBlock } from '../elements/ImageBlock'
 import ModuleTitle from 'elements/ModuleTitle'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
 import LinkWrap from 'elements/LinkWrap'
 import DescBlock from 'elements/DescBlock'
 
-const Article = (props: ArticleProps) => {
+const Article = (props: ModuleProps) => {
     const {
         columns = 1,
         type,
@@ -140,7 +139,7 @@ const ItemWrap = (props: ItemWrapProps) => {
                 <>
                     {item.image && (
                         <figure className={cn(styles['image-block'])} data-alt="Headline">
-                            <ImageElement item={item} imgsize={imgsize} well={well} cmsUrl={cmsUrl} />
+                            <ImageBlock item={item} imgsize={imgsize} well={well} cmsUrl={cmsUrl} />
                         </figure>
                     )}
                     {(item.headline || item.subheader) && (
@@ -171,7 +170,7 @@ const ItemWrap = (props: ItemWrapProps) => {
 
                     {item.image && (
                         <figure className={cn(styles['image-block'])} data-alt="Headline">
-                            <ImageElement item={item} imgsize={imgsize} well={well} cmsUrl={cmsUrl} />
+                            <ImageBlock item={item} imgsize={imgsize} well={well} cmsUrl={cmsUrl} />
                         </figure>
                     )}
                 </>

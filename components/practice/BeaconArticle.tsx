@@ -1,6 +1,6 @@
 'use client'
 import styles from './beaconarticle.module.scss'
-import { ArticleProps, Media, TheListItemActionProps, TheListItemImageProps } from '../../types'
+import { ModuleProps, Media, TheListItemActionProps, TheListItemImageProps } from '../../types'
 import Image from 'next/image'
 import cn from 'classnames'
 import Parser from 'html-react-parser'
@@ -8,7 +8,7 @@ import { domainImage } from '../../functions'
 import { useState } from 'react'
 import Link from 'next/link'
 
-const BeaconArticle = (props: ArticleProps) => {
+const BeaconArticle = (props: ModuleProps) => {
     const [imageHeight, setHeight] = useState(100)
     const [imageWidth, setWidth] = useState(300)
 

@@ -434,7 +434,7 @@ export interface PageProps {
     sections: [{ wide: string }, { wide: string }, { wide: string }, { wide: string }, { wide: string }]
 }
 
-export interface ModuleProps {
+export interface ModuleProps2 {
     uid: string
     modId: string
     /* type: string */
@@ -504,6 +504,7 @@ export interface ArticleItems {
     isBeaconHero?: boolean
     visibleButton?: boolean
     imagePriority?: boolean
+    imgtype?: string
     hasGridCaption?: boolean
     promoColor?: string
     itemCount?: number
@@ -526,7 +527,7 @@ export interface DescBlockProps {
     type: string
 }
 
-export interface ArticleProps {
+export interface ModuleProps {
     uid: string
     modId: string
     /* type: string */
@@ -554,6 +555,7 @@ export interface ArticleProps {
     contentSpacing?: string
     columnLocation: number
     isSingleColumn: boolean
+    modCount?: number
 }
 export interface PhotoGridProps {
     uid: string
@@ -755,7 +757,7 @@ export interface SlidingHeaderProps {
     siteData: GlobalData
 }
 
-export interface ImageElementsProps {
+export interface ImageBlockProps {
     item: ArticleItems
     calcImageSize?: (loadedMedia: Media) => void
     imageWidth?: number
@@ -764,6 +766,16 @@ export interface ImageElementsProps {
     well: string | number
     cmsUrl?: string
     modType?: string
+}
+
+export interface ImageProps {
+    imgSrc: string
+    imgAlt?: string
+    imagePriority: boolean
+    imgtype?: string
+    imgsize: string
+    cmsUrl?: string
+    modType: string
 }
 
 export interface MyNavProps {

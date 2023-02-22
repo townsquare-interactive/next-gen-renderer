@@ -1,0 +1,82 @@
+@use 'sass:math';
+@use './styles/breakpoints.scss';
+
+.image {
+    position: relative;
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+    line-height: 0;
+
+    .icon-block {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.5);
+
+        .icon {
+            color: #fff;
+            width: 4rem;
+
+            @include breakpoints.sm-min {
+                width: 3rem;
+            }
+        }
+    }
+
+    &.square_1_1 {
+        aspect-ratio: math.div(1, 1);
+    }
+
+    &.landscape_4_3 {
+        aspect-ratio: math.div(4, 3);
+    }
+
+    &.landscape_3_2 {
+        aspect-ratio: math.div(3, 2);
+    }
+
+    &.portrait_3_4 {
+        aspect-ratio: math.div(3, 4);
+    }
+
+    &.portrait_2_3 {
+        aspect-ratio: math.div(2, 3);
+    }
+
+    &.widescreen_16_9 {
+        aspect-ratio: math.div(16, 9);
+    }
+
+    &.widescreen_3_1 {
+        aspect-ratio: math.div(3, 1);
+    }
+
+    &.widescreen_2_4_1 {
+        aspect-ratio: math.div(2000, 830);
+    }
+
+    &.no_sizing {
+        img {
+            position: relative !important;
+        }
+    }
+
+    &.photo-grid {
+        height: 100%;
+    }
+}
+
+.caption {
+    display: block;
+    font-size: 0.75rem;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5);
+}

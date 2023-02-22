@@ -1,6 +1,6 @@
 'use client'
 import styles from './CharlotteArticle.module.scss'
-import { ArticleProps, Media, TheListItemImageProps, TheListItemActionProps, TsiWrp, TheListItemProps } from '../../types'
+import { ModuleProps, Media, TheListItemImageProps, TheListItemActionProps, TsiWrp, TheListItemProps } from '../../types'
 import Image from 'next/image'
 import cn from 'classnames'
 import Parser from 'html-react-parser'
@@ -19,7 +19,7 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core' */
     faArchway,
 }
  */
-const CharlotteArticle = (props: ArticleProps) => {
+const CharlotteArticle = (props: ModuleProps) => {
     const textColorHeading = {
         color: props.themeStyles['headingColor'],
     }

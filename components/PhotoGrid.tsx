@@ -3,7 +3,7 @@ import styles from './photogrid.module.scss'
 import { PhotoGridProps, PhotoItemProps } from '../types'
 import { ButtonWrap } from '../elements/ButtonWrap'
 import cn from 'classnames'
-import { ImageElement } from '../elements/ImageElement'
+import { ImageBlock } from '../elements/ImageBlock'
 import { domainImage } from 'functions'
 import { Fragment } from 'react'
 import ModuleTitle from 'elements/ModuleTitle'
@@ -108,7 +108,7 @@ const PhotoItem = (props: PhotoItemProps) => {
                             : { background: `${item.promoColor}` }
                     }
                 >
-                    <ImageElement item={item} well={well} imgsize={imgsize} cmsUrl={cmsUrl} modType="photo_grid" />
+                    <ImageBlock item={item} well={well} imgsize={imgsize} cmsUrl={cmsUrl} modType="photo_grid" />
                     {(item.headline || item.subheader) && (
                         <figcaption className={cn(styles.caption)} style={item.image ? { background: themeStyles.captionBackground } : {}}>
                             <div className={styles['cap-cont']}>
