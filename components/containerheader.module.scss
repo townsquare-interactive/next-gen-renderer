@@ -56,13 +56,14 @@
                     }
                 }
             }
+            @include breakpoints.lg-min {
+                &.one-logo .logo-item img {
+                    max-width: 13rem;
+                }
 
-            &.one-logo .logo-item img {
-                max-width: 13rem;
-            }
-
-            &.two-logos .logo-item img {
-                max-width: 10rem;
+                &.two-logos .logo-item img {
+                    max-width: 10rem;
+                }
             }
 
             &.desktop {
