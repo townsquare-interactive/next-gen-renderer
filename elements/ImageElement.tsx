@@ -46,7 +46,10 @@ export const ImageElement = (props: ImageProps) => {
                         alt={imgAlt || ''}
                         quality="50"
                         priority={imagePriority}
-                        style={{ objectFit: 'cover', objectPosition: 'top' }}
+                        style={{
+                            objectFit: 'cover',
+                            objectPosition: 'top',
+                        }}
                         onError={() => {
                             setHideImage(true)
                         }}
