@@ -7,7 +7,7 @@ import { Fragment } from 'react'
 import { ButtonWrap } from '../elements/ButtonWrap'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
 import LinkWrap from 'elements/LinkWrap'
-import { SingleImage } from 'elements/SingleImage'
+import { ImageElement } from 'elements/ImageElement'
 
 const Banner = (props: ModuleProps) => {
     const { columns = 1, type, well, imgsize, modId, items, themeStyles, cmsUrl, disabled, customClassName } = props
@@ -83,7 +83,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                     : { background: `${item.promoColor}` }
             }
         >
-            {item.image && <SingleImage imgSrc={item.image} imgAlt={item.img_alt_tag} imagePriority imgsize={imgsize} cmsUrl={cmsUrl} modType={'Banner'} />}
+            {item.image && <ImageElement imgSrc={item.image} imgAlt={item.img_alt_tag} imagePriority imgsize={imgsize} cmsUrl={cmsUrl} modType={'Banner'} />}
             {item.isWrapLink && <LinkWrap item={item} modType={'banner'}></LinkWrap>}
 
             <ItemWrap

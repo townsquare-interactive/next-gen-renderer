@@ -14,8 +14,6 @@ const { library } = require('@fortawesome/fontawesome-svg-core')
 
 library.add(fas, fab, far)
 
-// const ubuntu = Ubuntu({ subsets: ['latin'] })
-
 export const Container = (props: ContainerProps) => {
     const { page, siteData } = props
     //const router = useRouter()
@@ -39,7 +37,7 @@ export const Container = (props: ContainerProps) => {
                                 <div className={cn(styles.columns, styles[`${columnStyles}`])}>
                                     {page.data.modules.map((data: ModuleData[], idx: number) => (
                                         <Fragment key={idx}>
-                                            {data && idx != 0 ? (
+                                            {data.length != 0 && idx != 0 ? (
                                                 <div className={cn(styles['column' + (idx + 1)], styles.column)}>
                                                     <ModuleRenderer config={data} themeStyles={themeStyles} cmsUrl={cmsUrl} />
                                                 </div>

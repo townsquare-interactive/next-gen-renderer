@@ -10,12 +10,9 @@ import { HeadlineBlock } from 'elements/HeadlineBlock'
 import LinkWrap from 'elements/LinkWrap'
 import DescBlock from 'elements/DescBlock'
 import ReactParallax from 'elements/ReactParallax'
-import { SingleImage } from 'elements/SingleImage'
-import Image from 'next/image'
-import { domainImage } from 'functions'
+import { ImageElement } from 'elements/ImageElement'
 import dynamic from 'next/dynamic'
 const Jarallax = dynamic(() => import('elements/Jarallax'), { ssr: false })
-import JarallaxImage from 'elements/JarallaxImage'
 
 const Parallax = (props: ModuleProps) => {
     const {
@@ -136,7 +133,6 @@ const ItemWrap = (props: ItemWrapProps) => {
                 [styles.notjlax]: !useJsLax,
             })}
             aria-label={item.headline || 'item-wrap'}
-            //style={useJsLax && { maxHeight: '70vh' }}
         >
             {!useJsLax && (
                 <div
@@ -145,19 +141,23 @@ const ItemWrap = (props: ItemWrapProps) => {
                 >
                     <div className={styles['img-block']}>
                         {/*  <BackgroundImage image={item.image} cmsUrl={cmsUrl} /> */}
-                        <SingleImage imgSrc={item.image} imgAlt={item.img_alt_tag} imagePriority imgsize={imgsize} cmsUrl={cmsUrl} modType={'Banner'} />
+                        <ImageElement imgSrc={item.image} imgAlt={item.img_alt_tag} imagePriority imgsize={imgsize} cmsUrl={cmsUrl} modType={'Banner'} />
                     </div>
                 </div>
             )}
 
             {/*  <ReactParallax img={item.image} cmsUrl={cmsUrl} useJsLax={useJsLax}>
-                <div
-                    className={cn(styles['caption'], {
-                        [styles['cap-bckg']]: item.modSwitch1 != 1,
-                    })}
-                >
-                    <div className={styles.content}>
-                        <>
+               
+            </ReactParallax> */}
+            <Jarallax speed={0.2}>
+                <>
+                    <ImageElement imgSrc={item.image} imgAlt={item.img_alt_tag} imagePriority imgsize={imgsize} cmsUrl={cmsUrl} modType={'Parallax'} />
+                    <div
+                        className={cn(styles['caption'], {
+                            [styles['cap-bckg']]: item.modSwitch1 != 1,
+                        })}
+                    >
+                        <div className={styles.content}>
                             {(item.headline || item.subheader) && (
                                 <HeadlineBlock item={item} well={1} columns={columns} isBeaconHero={item.isBeaconHero} modType={'parallax'} />
                             )}
@@ -167,64 +167,17 @@ const ItemWrap = (props: ItemWrapProps) => {
                                     <DescBlock desc={item.desc} descSize={item.descSize} useAccentColor={true} type={type} />
                                 </div>
                             )}
-                        </>
 
-                        {item.visibleButton && <ButtonWrap well={well} modId={modId} type="banner" columns={columns} themeStyles={themeStyles} {...item} />}
+                            {item.visibleButton && (
+                                <ButtonWrap well={well} modId={modId} type="parallax" columns={columns} themeStyles={themeStyles} {...item} />
+                            )}
+                        </div>
+
+                        {item.isWrapLink && <LinkWrap item={item} modType={'banner'}></LinkWrap>}
                     </div>
-
-                    {item.isWrapLink && <LinkWrap item={item} modType={'banner'}></LinkWrap>}
-                </div>
-            </ReactParallax> */}
-            <Jarallax speed={0.2}>
-                <JarallaxImage
-                    //src="https://jarallax.nkdev.info/images/image1.jpg"
-                    src={item.image}
-                    alt=""
-                />
+                </>
             </Jarallax>
         </div>
-    )
-}
-
-const Plax2 = (props: any) => {
-    const [offsetY, setOffsetY] = useState(0)
-    const handleScroll = () => setOffsetY(window.pageYOffset)
-
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll)
-
-        return () => window.removeEventListener('scroll', handleScroll)
-    }, [])
-
-    return (
-        <>
-            {/* <section className={styles.Parallax2}>
-                <div
-                    className={styles.background2}
-                    style={{
-                        transform: `translateY(${offsetY * 0.5}px)`,
-                        // backgroundImage: `url(http://clttestsiteforjoshedwards.production.townsquareinteractive.com/files/2022/10/screen-8.jpg)`,
-                    }}
-                >
-                    <Image
-                            src={domainImage(props.img, true, props.cmsUrl || '')}
-                            //fill
-                            quality="80"
-                            //style={{ objectFit: 'cover', objectPosition: 'top' }}
-                            sizes="100vw"
-                            // width={imageWidth}
-                            //height={imageHeight}
-                            width={2000}
-                            height={830}
-                            alt=""
-                        /> 
-
-               
-                </div>
-
-                <div className={styles.content2}> {props.children}</div>
-            </section> */}
-        </>
     )
 }
 

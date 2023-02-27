@@ -124,7 +124,8 @@
     &.article_1,
     &.article_2,
     &.photo_grid,
-    &.banner {
+    &.banner,
+    &.parallax {
         .btn {
             align-self: flex-start;
         }
@@ -203,6 +204,9 @@
                 gap: 0.5rem;
             }
         }
+    }
+    &.parallax .btn-wrap {
+        gap: 1rem;
     }
 
     &.banner {

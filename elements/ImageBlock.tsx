@@ -2,7 +2,7 @@
 import styles from './imageblock.module.scss'
 import { ImageBlockProps } from '../types'
 import cn from 'classnames'
-import { SingleImage } from './SingleImage'
+import { ImageElement } from './ImageElement'
 
 // importing fontAwesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -18,7 +18,7 @@ export const ImageBlock = (props: ImageBlockProps) => {
                     [styles['photo-grid']]: modType === 'photo_grid',
                 })}
             >
-                {item.image && <SingleImage imgSrc={item.image} imgAlt={item.img_alt_tag} imagePriority imgsize={imgsize} cmsUrl={cmsUrl} modType={modType} />}
+                {item.image && <ImageElement imgSrc={item.image} imgAlt={item.img_alt_tag} imagePriority imgsize={imgsize} cmsUrl={cmsUrl} modType={modType} />}
 
                 {item.imageIcon && (
                     <div className={cn(styles['icon-block'])}>

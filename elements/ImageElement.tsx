@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { domainImage } from '../functions'
 import { useState } from 'react'
 
-export const SingleImage = (props: ImageProps) => {
+export const ImageElement = (props: ImageProps) => {
     const { imgSrc, imgAlt, imagePriority, imgsize = 'landscape_4_3', cmsUrl, modType = 'article', imgtype } = props
     const [hideImage, setHideImage] = useState(false)
     const [imageHeight, setHeight] = useState(100)
@@ -16,7 +16,7 @@ export const SingleImage = (props: ImageProps) => {
         setHeight(loadedMedia.naturalHeight)
     }
 
-    const imageFileSizes = '(max-width: 1920px) 75vw, (max-width: 1200px) 70vw,  100vw'
+    const imageFileSizes = modType === 'Parallax' ? '100vw' : '(max-width: 1920px) 75vw, (max-width: 1200px) 70vw,  100vw'
 
     /*  */
 
@@ -51,6 +51,7 @@ export const SingleImage = (props: ImageProps) => {
                             setHideImage(true)
                         }}
                         sizes={imageFileSizes}
+                        className={modType === 'Parallax' ? 'jarallax-img' : ''}
                     />
                 ))}
         </>

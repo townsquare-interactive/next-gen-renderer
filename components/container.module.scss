@@ -12,9 +12,8 @@
         margin: 0 auto;
     }
     .column-blocks {
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
-        @include utils.wrapper-size(0);
+        padding: 3rem 1.5rem 2rem;
+        @include utils.wrapper-size(3rem);
 
         .columns {
             /* @include utils.wrapper-size(3rem); */
@@ -22,8 +21,8 @@
             //gap: 0.3%;
 
             .column {
-                margin-left: 2%;
-                margin-right: 2%;
+                margin-left: variables.$item-margins;
+                margin-right: variables.$item-margins;
             }
 
             @include breakpoints.md-min {
