@@ -13,6 +13,9 @@ import ReactParallax from 'elements/ReactParallax'
 import { SingleImage } from 'elements/SingleImage'
 import Image from 'next/image'
 import { domainImage } from 'functions'
+import dynamic from 'next/dynamic'
+const Jarallax = dynamic(() => import('elements/Jarallax'), { ssr: false })
+import JarallaxImage from 'elements/JarallaxImage'
 
 const Parallax = (props: ModuleProps) => {
     const {
@@ -127,9 +130,14 @@ const ItemWrap = (props: ItemWrapProps) => {
     const { item, well, themeStyles, modId, columns, type, cmsUrl, imgsize } = props
 
     const useJsLax = true
-
     return (
-        <div className={cn(styles['item-wrap'], {})} aria-label={item.headline || 'item-wrap'}>
+        <div
+            className={cn(styles['item-wrap'], {
+                [styles.notjlax]: !useJsLax,
+            })}
+            aria-label={item.headline || 'item-wrap'}
+            //style={useJsLax && { maxHeight: '70vh' }}
+        >
             {!useJsLax && (
                 <div
                     className={styles['parallax-block']}
@@ -142,7 +150,7 @@ const ItemWrap = (props: ItemWrapProps) => {
                 </div>
             )}
 
-            <ReactParallax img={item.image} cmsUrl={cmsUrl} useJsLax={useJsLax}>
+            {/*  <ReactParallax img={item.image} cmsUrl={cmsUrl} useJsLax={useJsLax}>
                 <div
                     className={cn(styles['caption'], {
                         [styles['cap-bckg']]: item.modSwitch1 != 1,
@@ -166,7 +174,14 @@ const ItemWrap = (props: ItemWrapProps) => {
 
                     {item.isWrapLink && <LinkWrap item={item} modType={'banner'}></LinkWrap>}
                 </div>
-            </ReactParallax>
+            </ReactParallax> */}
+            <Jarallax speed={0.2}>
+                <JarallaxImage
+                    //src="https://jarallax.nkdev.info/images/image1.jpg"
+                    src={item.image}
+                    alt=""
+                />
+            </Jarallax>
         </div>
     )
 }
@@ -183,7 +198,7 @@ const Plax2 = (props: any) => {
 
     return (
         <>
-            <section className={styles.Parallax2}>
+            {/* <section className={styles.Parallax2}>
                 <div
                     className={styles.background2}
                     style={{
@@ -191,7 +206,7 @@ const Plax2 = (props: any) => {
                         // backgroundImage: `url(http://clttestsiteforjoshedwards.production.townsquareinteractive.com/files/2022/10/screen-8.jpg)`,
                     }}
                 >
-                    {/*   <Image
+                    <Image
                             src={domainImage(props.img, true, props.cmsUrl || '')}
                             //fill
                             quality="80"
@@ -202,12 +217,13 @@ const Plax2 = (props: any) => {
                             width={2000}
                             height={830}
                             alt=""
-                        /> */}
-                    <img src={domainImage(props.img, true, props.cmsUrl || '')} />
+                        /> 
+
+               
                 </div>
 
                 <div className={styles.content2}> {props.children}</div>
-            </section>
+            </section> */}
         </>
     )
 }

@@ -37,10 +37,27 @@
                 flex-direction: column;
 
                 //add
-                min-height: 70vh;
 
                 //add
                 //z-index: 2;
+
+                .caption {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    min-height: 70vh;
+                    /*                         position: absolute;
+                    width: 100%;
+                    
+                    height: 100%;
+                    //used to fix hiding issue
+                    will-change: transform; */
+
+                    &.cap-bckg {
+                        background: var(--caption-background);
+                    }
+                }
 
                 .content {
                     display: flex;
@@ -125,21 +142,6 @@
                         box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.5);
                     } */
                 }
-
-                .caption {
-                    position: absolute;
-                    width: 100%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    height: 100%;
-                    //used to fix hiding issue
-                    will-change: transform;
-
-                    &.cap-bckg {
-                        background: var(--caption-background);
-                    }
-                }
             }
 
             &.btn-only {
@@ -157,6 +159,27 @@
             &.right {
                 .content {
                     text-align: right;
+                }
+            }
+        }
+    }
+
+    .item-wrap {
+        &.notjlax {
+            min-height: 70vh;
+
+            .caption {
+                position: absolute;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100%;
+                //used to fix hiding issue
+                will-change: transform;
+
+                &.cap-bckg {
+                    background: var(--caption-background);
                 }
             }
         }
