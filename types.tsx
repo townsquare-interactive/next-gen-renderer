@@ -771,9 +771,9 @@ export interface ImageBlockProps {
 export interface ImageProps {
     imgSrc: string
     imgAlt?: string
-    imagePriority: boolean
+    imagePriority?: boolean
     imgtype?: string
-    imgsize: string
+    imgsize?: string
     cmsUrl?: string
     modType: string
 }

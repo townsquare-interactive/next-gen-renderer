@@ -18,7 +18,16 @@ export const ImageBlock = (props: ImageBlockProps) => {
                     [styles['photo-grid']]: modType === 'photo_grid',
                 })}
             >
-                {item.image && <ImageElement imgSrc={item.image} imgAlt={item.img_alt_tag} imagePriority imgsize={imgsize} cmsUrl={cmsUrl} modType={modType} />}
+                {item.image && (
+                    <ImageElement
+                        imgSrc={item.image}
+                        imgAlt={item.img_alt_tag}
+                        imagePriority={item.imagePriority}
+                        imgsize={imgsize}
+                        cmsUrl={cmsUrl}
+                        modType={modType}
+                    />
+                )}
 
                 {item.imageIcon && (
                     <div className={cn(styles['icon-block'])}>

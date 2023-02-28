@@ -83,7 +83,16 @@ const ModuleItem = (props: ModuleItemProps) => {
                     : { background: `${item.promoColor}` }
             }
         >
-            {item.image && <ImageElement imgSrc={item.image} imgAlt={item.img_alt_tag} imagePriority imgsize={imgsize} cmsUrl={cmsUrl} modType={'Banner'} />}
+            {item.image && (
+                <ImageElement
+                    imgSrc={item.image}
+                    imgAlt={item.img_alt_tag}
+                    imagePriority={item.imagePriority}
+                    imgsize={imgsize}
+                    cmsUrl={cmsUrl}
+                    modType={'Banner'}
+                />
+            )}
             {item.isWrapLink && <LinkWrap item={item} modType={'banner'}></LinkWrap>}
 
             <ItemWrap

@@ -2,14 +2,11 @@
 import styles from './parallax.module.scss'
 import { ModuleProps, ItemWrapProps, ModuleItemProps } from '../types'
 import cn from 'classnames'
-import Parser from 'html-react-parser'
-import { Fragment, useEffect, useState } from 'react'
+import { Fragment } from 'react'
 import { ButtonWrap } from '../elements/ButtonWrap'
-import ModuleTitle from 'elements/ModuleTitle'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
 import LinkWrap from 'elements/LinkWrap'
 import DescBlock from 'elements/DescBlock'
-import ReactParallax from 'elements/ReactParallax'
 import { ImageElement } from 'elements/ImageElement'
 import dynamic from 'next/dynamic'
 const Jarallax = dynamic(() => import('elements/Jarallax'), { ssr: false })
@@ -140,8 +137,14 @@ const ItemWrap = (props: ItemWrapProps) => {
                     //style={{ backgroundImage: `url(http://clttestsiteforjoshedwards.production.townsquareinteractive.com/files/2022/10/screen-8.jpg)` }}
                 >
                     <div className={styles['img-block']}>
-                        {/*  <BackgroundImage image={item.image} cmsUrl={cmsUrl} /> */}
-                        <ImageElement imgSrc={item.image} imgAlt={item.img_alt_tag} imagePriority imgsize={imgsize} cmsUrl={cmsUrl} modType={'Banner'} />
+                        <ImageElement
+                            imgSrc={item.image}
+                            imgAlt={item.img_alt_tag}
+                            imagePriority={item.imagePriority}
+                            imgsize={imgsize}
+                            cmsUrl={cmsUrl}
+                            modType={'Banner'}
+                        />
                     </div>
                 </div>
             )}
@@ -151,7 +154,14 @@ const ItemWrap = (props: ItemWrapProps) => {
             </ReactParallax> */}
             <Jarallax speed={0.2}>
                 <>
-                    <ImageElement imgSrc={item.image} imgAlt={item.img_alt_tag} imagePriority imgsize={imgsize} cmsUrl={cmsUrl} modType={'Parallax'} />
+                    <ImageElement
+                        imgSrc={item.image}
+                        imgAlt={item.img_alt_tag}
+                        imagePriority={item.imagePriority}
+                        imgsize={imgsize}
+                        cmsUrl={cmsUrl}
+                        modType={'Parallax'}
+                    />
                     <div
                         className={cn(styles['caption'], {
                             [styles['cap-bckg']]: item.modSwitch1 != 1,

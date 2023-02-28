@@ -6,7 +6,7 @@ import { domainImage } from '../functions'
 import { useState } from 'react'
 
 export const ImageElement = (props: ImageProps) => {
-    const { imgSrc, imgAlt, imagePriority, imgsize = 'landscape_4_3', cmsUrl, modType = 'article', imgtype } = props
+    const { imgSrc, imgAlt, imagePriority, cmsUrl, modType = 'article', imgtype } = props
     const [hideImage, setHideImage] = useState(false)
     const [imageHeight, setHeight] = useState(100)
     const [imageWidth, setWidth] = useState(300)
@@ -17,8 +17,6 @@ export const ImageElement = (props: ImageProps) => {
     }
 
     const imageFileSizes = modType === 'Parallax' ? '100vw' : '(max-width: 1920px) 75vw, (max-width: 1200px) 70vw,  100vw'
-
-    /*  */
 
     return (
         <>
