@@ -515,6 +515,7 @@ export interface ArticleItems {
     borderType?: string
     useAccentColor?: boolean
     modSwitch1?: number
+    modOpacity?: number
 }
 
 export interface DescBlockProps {
@@ -776,6 +777,7 @@ export interface ImageProps {
     imgsize?: string
     cmsUrl?: string
     modType: string
+    opacity?: number
 }
 
 export interface MyNavProps {

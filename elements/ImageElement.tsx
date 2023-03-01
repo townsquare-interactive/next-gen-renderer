@@ -6,7 +6,7 @@ import { domainImage } from '../functions'
 import { useState } from 'react'
 
 export const ImageElement = (props: ImageProps) => {
-    const { imgSrc, imgAlt, imagePriority, cmsUrl, modType = 'article', imgtype } = props
+    const { imgSrc, imgAlt, imagePriority, cmsUrl, modType = 'article', imgtype, opacity } = props
     const [hideImage, setHideImage] = useState(false)
     const [imageHeight, setHeight] = useState(100)
     const [imageWidth, setWidth] = useState(300)
@@ -31,7 +31,7 @@ export const ImageElement = (props: ImageProps) => {
                         alt={imgAlt || ''}
                         quality="50"
                         priority={imagePriority}
-                        style={{ width: '100%', height: 'auto' }}
+                        style={{ width: '100%', height: 'auto', opacity: opacity || 1 }}
                         onError={() => {
                             setHideImage(true)
                         }}
@@ -47,6 +47,7 @@ export const ImageElement = (props: ImageProps) => {
                         style={{
                             objectFit: 'cover',
                             objectPosition: 'top',
+                            opacity: 0.3,
                         }}
                         onError={() => {
                             setHideImage(true)

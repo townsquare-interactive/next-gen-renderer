@@ -12,10 +12,9 @@ export const ButtonWrap = (props: BtnProps) => {
         ? `#id_${modId} .is-wrap-link:hover .btn_1{color: ${themeStyles['promoColor']}; background-color: ${themeStyles['textColorAccent']}} `
         : ''
 
-    const promoButtonStyles =
-        themeStyles && type != 'parallax'
-            ? `#id_${modId} .item_${itemCount} .btn_promo {color: ${promoColor}; background-color: ${themeStyles['textColorAccent']}} #id_${modId} .item_${itemCount} .btn_promo:hover{color: ${themeStyles['textColorAccent']}; background-color: ${promoColor}} .btn_override {color: ${modColor1}; background-color: ${themeStyles['textColorAccent']}} #id_${modId} .item_${itemCount} .btn_override:hover{color: ${themeStyles['textColorAccent']}; background-color: ${modColor1}}`
-            : ''
+    const promoButtonStyles = themeStyles
+        ? `#id_${modId} .item_${itemCount} .btn_promo {color: ${promoColor}; background-color: ${themeStyles['textColorAccent']}} #id_${modId} .item_${itemCount} .btn_promo:hover{color: ${themeStyles['textColorAccent']}; background-color: ${promoColor}} .btn_override {color: ${modColor1}; background-color: ${themeStyles['textColorAccent']}} #id_${modId} .item_${itemCount} .btn_override:hover{color: ${themeStyles['textColorAccent']}; background-color: ${modColor1}}`
+        : ''
 
     return (
         <div

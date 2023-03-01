@@ -2,13 +2,14 @@
 import styles from './parallax.module.scss'
 import { ModuleProps, ItemWrapProps, ModuleItemProps } from '../types'
 import cn from 'classnames'
-import { Fragment } from 'react'
+import { Fragment, ReactChild } from 'react'
 import { ButtonWrap } from '../elements/ButtonWrap'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
 import LinkWrap from 'elements/LinkWrap'
 import DescBlock from 'elements/DescBlock'
 import { ImageElement } from 'elements/ImageElement'
 import dynamic from 'next/dynamic'
+import { ConditionalWrapper, domainImage } from 'functions'
 const Jarallax = dynamic(() => import('elements/Jarallax'), { ssr: false })
 
 const Parallax = (props: ModuleProps) => {
@@ -103,6 +104,19 @@ const ModuleItem = (props: ModuleItemProps) => {
                 `item_${itemIndex + 1}`
             )}
             lang="en"
+            style={
+                item.modColor1
+                    ? {
+                          //background: `${item.modColor1}`,
+                          background: `var(--accent-background)`,
+                      }
+                    : well === '1' && !item.image
+                    ? {
+                          backgroundImage: `linear-gradient(-45deg, ${item.textureImage?.gradientColors[0]}, ${item.textureImage?.gradientColors[1]})`,
+                          // background: `var(--accent-background)`,
+                      }
+                    : { background: `${item.promoColor}` }
+            }
         >
             <ItemWrap
                 item={item}
@@ -130,6 +144,19 @@ const ItemWrap = (props: ItemWrapProps) => {
                 [styles.notjlax]: !useJsLax,
             })}
             aria-label={item.headline || 'item-wrap'}
+            style={
+                well === '1'
+                    ? {
+                          backgroundImage: item.textureImage?.image ? `url(${domainImage(item.textureImage.image, false)})` : 'none',
+                          backgroundPositionY: item.modTwo ? item.modTwo + '%' : '0%',
+                          height: item.modOne || 'auto',
+                      }
+                    : item.modColor1
+                    ? {
+                          //background: `${item.modColor1}`,
+                      }
+                    : { height: item.modOne || 'auto' }
+            }
         >
             {!useJsLax && (
                 <div
@@ -152,7 +179,12 @@ const ItemWrap = (props: ItemWrapProps) => {
             {/*  <ReactParallax img={item.image} cmsUrl={cmsUrl} useJsLax={useJsLax}>
                
             </ReactParallax> */}
-            <Jarallax speed={0.2}>
+
+            <ConditionalWrapper
+                condition={item.image ? true : false}
+                trueOutput={(children: ReactChild) => <Jarallax speed={0.2}>{children}</Jarallax>}
+                falseOutput={(children: ReactChild) => <>{children}</>}
+            >
                 <>
                     <ImageElement
                         imgSrc={item.image}
@@ -161,11 +193,13 @@ const ItemWrap = (props: ItemWrapProps) => {
                         imgsize={imgsize}
                         cmsUrl={cmsUrl}
                         modType={'Parallax'}
+                        opacity={item.modOpacity}
                     />
                     <div
                         className={cn(styles['caption'], {
-                            [styles['cap-bckg']]: item.modSwitch1 != 1,
+                            [styles['cap-bckg']]: item.modSwitch1 != 1 && item.image,
                         })}
+                        style={item.modOne ? { height: item.modOne } : { minHeight: '70vh' }}
                     >
                         <div className={styles.content}>
                             {(item.headline || item.subheader) && (
@@ -186,7 +220,7 @@ const ItemWrap = (props: ItemWrapProps) => {
                         {item.isWrapLink && <LinkWrap item={item} modType={'banner'}></LinkWrap>}
                     </div>
                 </>
-            </Jarallax>
+            </ConditionalWrapper>
         </div>
     )
 }
