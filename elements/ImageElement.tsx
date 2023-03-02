@@ -47,7 +47,7 @@ export const ImageElement = (props: ImageProps) => {
                         style={{
                             objectFit: 'cover',
                             objectPosition: 'top',
-                            opacity: 0.3,
+                            opacity: opacity || 1,
                         }}
                         onError={() => {
                             setHideImage(true)

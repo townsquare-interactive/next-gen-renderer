@@ -2,15 +2,26 @@
 import styles from './parallax.module.scss'
 import { ModuleProps, ItemWrapProps, ModuleItemProps } from '../types'
 import cn from 'classnames'
-import { Fragment, ReactChild } from 'react'
+import { Fragment, ReactChild, useEffect, useRef, useState } from 'react'
 import { ButtonWrap } from '../elements/ButtonWrap'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
 import LinkWrap from 'elements/LinkWrap'
 import DescBlock from 'elements/DescBlock'
 import { ImageElement } from 'elements/ImageElement'
-import dynamic from 'next/dynamic'
 import { ConditionalWrapper, domainImage } from 'functions'
-const Jarallax = dynamic(() => import('elements/Jarallax'), { ssr: false })
+import Image from 'next/image'
+//import SpringParallax from 'elements/SpringParallax'
+
+import ReactScroll from 'elements/ReactScrollParallax'
+//import { ParallaxBanner, ParallaxProvider } from 'react-scroll-parallax'
+import GoogleLax from 'elements/GoogleLax'
+
+import dynamic from 'next/dynamic'
+
+//can be jarallax, custom, scroll
+const choseLax: string = 'none'
+
+const Jarallax = choseLax === 'jarallax' ? dynamic(() => import('elements/Jarallax'), { ssr: false }) : ''
 
 const Parallax = (props: ModuleProps) => {
     const {
@@ -31,57 +42,65 @@ const Parallax = (props: ModuleProps) => {
         modCount,
     } = props
 
-    return (
-        <>
-            <div
-                className={cn(
-                    'parallax-mod',
-                    styles['root'],
-                    styles['flex-mod'],
-                    //styles[`${type}`],
-                    //'root-container',
-                    //styles['item-flex'],
-                    //styles[`col_${columns}`],
-                    //styles[`${currentSpacing}`],
-                    {
-                        [styles.well]: well == '1',
+    if (choseLax === 'custom') {
+        return (
+            <>
+                <GoogleLax />
+            </>
+        )
+    } else {
+        return (
+            <>
+                <div
+                    className={cn(
+                        'parallax-mod',
+                        styles['root'],
+                        styles['flex-mod'],
+                        //styles[`${type}`],
+                        //'root-container',
+                        //styles['item-flex'],
+                        //styles[`col_${columns}`],
+                        //styles[`${currentSpacing}`],
+                        {
+                            [styles.well]: well == '1',
 
-                        [styles[`cst_${customClassName}`]]: customClassName,
-                        [`cst_${customClassName}`]: customClassName,
-                        [styles['first-mod']]: modCount === 1,
-                        //[styles.not_well]: !well,
-                        //[styles['feature-column']]: columnLocation === 0,
-                        // [styles['single-column']]: isSingleColumn,
-                    }
-                )}
-                id={`id_${modId}`}
-            >
-                {/* {title && <ModuleTitle title={title} />}*/}
-                <div className={cn(styles.wrapper, 'wrapper')}>
-                    {items.map((item: any, index: number) => (
-                        <Fragment key={index}>
-                            {item.disabled != 'disabled' ? (
-                                <ModuleItem
-                                    item={item}
-                                    well={well}
-                                    modId={modId}
-                                    themeStyles={themeStyles}
-                                    key={index}
-                                    imgsize={imgsize}
-                                    type={type}
-                                    columns={columns}
-                                    itemIndex={index}
-                                    cmsUrl={cmsUrl}
-                                />
-                            ) : (
-                                <></>
-                            )}
-                        </Fragment>
-                    ))}
+                            [styles[`cst_${customClassName}`]]: customClassName,
+                            [`cst_${customClassName}`]: customClassName,
+                            [styles['first-mod']]: modCount === 1,
+                            //[styles.not_well]: !well,
+                            //[styles['feature-column']]: columnLocation === 0,
+                            // [styles['single-column']]: isSingleColumn,
+                        }
+                    )}
+                    id={`id_${modId}`}
+                >
+                    {/* {title && <ModuleTitle title={title} />}*/}
+                    <div className={cn(styles.wrapper, 'wrapper')}>
+                        {items.map((item: any, index: number) => (
+                            <Fragment key={index}>
+                                {item.disabled != 'disabled' ? (
+                                    <ModuleItem
+                                        item={item}
+                                        well={well}
+                                        modId={modId}
+                                        themeStyles={themeStyles}
+                                        key={index}
+                                        imgsize={imgsize}
+                                        type={type}
+                                        columns={columns}
+                                        itemIndex={index}
+                                        cmsUrl={cmsUrl}
+                                    />
+                                ) : (
+                                    <></>
+                                )}
+                            </Fragment>
+                        ))}
+                    </div>
                 </div>
-            </div>
-        </>
-    )
+            </>
+        )
+    }
 }
 
 const ModuleItem = (props: ModuleItemProps) => {
@@ -137,11 +156,12 @@ const ModuleItem = (props: ModuleItemProps) => {
 const ItemWrap = (props: ItemWrapProps) => {
     const { item, well, themeStyles, modId, columns, type, cmsUrl, imgsize } = props
 
-    const useJsLax = true
+    const useJsLax = false
     return (
         <div
             className={cn(styles['item-wrap'], {
                 [styles.notjlax]: !useJsLax,
+                [styles['react-scroll']]: choseLax === 'scroll',
             })}
             aria-label={item.headline || 'item-wrap'}
             style={
@@ -159,7 +179,7 @@ const ItemWrap = (props: ItemWrapProps) => {
             }
         >
             {!useJsLax && (
-                <div
+                /* <div
                     className={styles['parallax-block']}
                     //style={{ backgroundImage: `url(http://clttestsiteforjoshedwards.production.townsquareinteractive.com/files/2022/10/screen-8.jpg)` }}
                 >
@@ -173,28 +193,20 @@ const ItemWrap = (props: ItemWrapProps) => {
                             modType={'Banner'}
                         />
                     </div>
-                </div>
-            )}
-
-            {/*  <ReactParallax img={item.image} cmsUrl={cmsUrl} useJsLax={useJsLax}>
-               
-            </ReactParallax> */}
-
-            <ConditionalWrapper
-                condition={item.image ? true : false}
-                trueOutput={(children: ReactChild) => <Jarallax speed={0.2}>{children}</Jarallax>}
-                falseOutput={(children: ReactChild) => <>{children}</>}
-            >
+                </div> */
                 <>
-                    <ImageElement
-                        imgSrc={item.image}
-                        imgAlt={item.img_alt_tag}
-                        imagePriority={item.imagePriority}
+                    <TheNew
+                        item={item}
                         imgsize={imgsize}
+                        well={well}
+                        type={type}
+                        themeStyles={themeStyles}
+                        isFeatured={item.isFeatured}
+                        columns={columns}
+                        modId={modId}
+                        align={item.align}
                         cmsUrl={cmsUrl}
-                        modType={'Parallax'}
-                        opacity={item.modOpacity}
-                    />
+                    ></TheNew>
                     <div
                         className={cn(styles['caption'], {
                             [styles['cap-bckg']]: item.modSwitch1 != 1 && item.image,
@@ -220,8 +232,107 @@ const ItemWrap = (props: ItemWrapProps) => {
                         {item.isWrapLink && <LinkWrap item={item} modType={'banner'}></LinkWrap>}
                     </div>
                 </>
-            </ConditionalWrapper>
+            )}
+
+            {/*  <ReactParallax img={item.image} cmsUrl={cmsUrl} useJsLax={useJsLax}>
+               
+            </ReactParallax> */}
+
+            {choseLax === 'jarallax' && Jarallax && (
+                <ConditionalWrapper
+                    condition={item.image ? true : false}
+                    trueOutput={(children: ReactChild) => <Jarallax speed={0.2}>{children}</Jarallax>}
+                    /*  trueOutput={(children: ReactChild) => (
+                    <SpringParallax item={item} imgsize={imgsize} cmsUrl={cmsUrl}>
+                        {children}
+                    </SpringParallax>
+                )} */
+                    falseOutput={(children: ReactChild) => <>{children}</>}
+                >
+                    <>
+                        <ImageElement imgSrc={item.image} imgAlt={item.img_alt_tag} imagePriority imgsize={imgsize} cmsUrl={cmsUrl} modType={'Parallax'} />
+                        <div
+                            className={cn(styles['caption'], {
+                                [styles['cap-bckg']]: item.modSwitch1 != 1 && item.image,
+                            })}
+                            style={item.modOne ? { height: item.modOne } : { minHeight: '70vh' }}
+                        >
+                            <div className={styles.content}>
+                                {(item.headline || item.subheader) && (
+                                    <HeadlineBlock item={item} well={1} columns={columns} isBeaconHero={item.isBeaconHero} modType={'parallax'} />
+                                )}
+
+                                {item.desc && (
+                                    <div className={cn(styles['txt-block'])}>
+                                        <DescBlock desc={item.desc} descSize={item.descSize} useAccentColor={true} type={type} />
+                                    </div>
+                                )}
+
+                                {item.visibleButton && (
+                                    <ButtonWrap well={well} modId={modId} type="parallax" columns={columns} themeStyles={themeStyles} {...item} />
+                                )}
+                            </div>
+
+                            {item.isWrapLink && <LinkWrap item={item} modType={'banner'}></LinkWrap>}
+                        </div>
+                    </>
+                </ConditionalWrapper>
+            )}
+            {choseLax === 'scroll' && (
+                <div style={{ width: '100%', display: 'block', height: '70vh' }} className="hello">
+                    <ReactScroll
+                        item={item}
+                        imgsize={imgsize}
+                        cmsUrl={cmsUrl}
+                        well={well}
+                        modId={modId}
+                        themeStyles={themeStyles}
+                        columns={columns}
+                        type={type}
+                    ></ReactScroll>
+                </div>
+            )}
         </div>
+    )
+}
+
+const TheNew = (props: ItemWrapProps) => {
+    const { item, well, themeStyles, modId, columns, type, cmsUrl, imgsize } = props
+
+    const ref = useRef(null)
+    const [nextImg, setImg] = useState('')
+
+    useEffect(() => {
+        const curr: any = ref.current
+        const regex = /^(.*?)&w=/
+
+        if (curr?.src) {
+            const match = curr?.src.match(regex)
+            curr?.src && console.log(match[0] + '1920&q=60')
+            curr?.src && setImg(match[0])
+        }
+    })
+
+    return (
+        <>
+            <div
+                className={cn('tsi-parallax', 'desky')}
+                style={{
+                    minHeight: '70vh',
+                    //boxShadow: 'inset 0 0 0 2000px rgba(0, 0, 0, 0.5)',
+                    backgroundImage: `url(${nextImg + '1920&q=60'})`,
+                }}
+            ></div>
+            <div
+                className={cn('tsi-parallax', 'mobby')}
+                style={{
+                    minHeight: '70vh',
+                    //boxShadow: 'inset 0 0 0 2000px rgba(0, 0, 0, 0.5)',
+                    backgroundImage: `url(${nextImg + '1200&q=60'})`,
+                }}
+            ></div>
+            <Image src={domainImage(item.image, true, cmsUrl || '')} ref={ref} fill alt="" style={{ opacity: '0' }} />
+        </>
     )
 }
 

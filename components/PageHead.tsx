@@ -1,9 +1,11 @@
-import { domainImage, ConditionalWrapper } from 'functions'
+import { domainImage } from 'functions'
 import { PageHeadProps } from 'types'
 
 export default function PageHead(props: PageHeadProps) {
     const { siteData, page, pageType = 'index' } = props
     const cmsUrl = siteData.cmsUrl
+
+    //console.log(page)
 
     return (
         <>
@@ -27,6 +29,8 @@ export default function PageHead(props: PageHeadProps) {
                     ))}
                 {siteData.favicon && <link rel="shortcut icon" href={domainImage(siteData.favicon, false, siteData.s3Folder, 'favicon')} />}
                 <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+
+                {/* {page.preloadImage && <link rel="preload" href={domainImage(page.preloadImage, true, cmsUrl)} as="image" />} */}
             </>
         </>
     )

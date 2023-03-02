@@ -1466,10 +1466,10 @@
   dependencies:
     "webpack-bundle-analyzer" "4.7.0"
 
-"@next/env@13.1.1":
-  "integrity" "sha512-vFMyXtPjSAiOXOywMojxfKIqE3VWN5RCAx+tT3AS3pcKjMLFTCJFUWsKv8hC+87Z1F4W3r68qTwDFZIFmd5Xkw=="
-  "resolved" "https://registry.npmjs.org/@next/env/-/env-13.1.1.tgz"
-  "version" "13.1.1"
+"@next/env@13.2.3":
+  "integrity" "sha512-FN50r/E+b8wuqyRjmGaqvqNDuWBWYWQiigfZ50KnSFH0f+AMQQyaZl+Zm2+CIpKk0fL9QxhLxOpTVA3xFHgFow=="
+  "resolved" "https://registry.npmjs.org/@next/env/-/env-13.2.3.tgz"
+  "version" "13.2.3"
 
 "@next/eslint-plugin-next@13.1.1":
   "integrity" "sha512-SBrOFS8PC3nQ5aeZmawJkjKkWjwK9RoxvBSv/86nZp0ubdoVQoko8r8htALd9ufp16NhacCdqhu9bzZLDWtALQ=="
@@ -1483,10 +1483,10 @@
   "resolved" "https://registry.npmjs.org/@next/font/-/font-13.0.1.tgz"
   "version" "13.0.1"
 
-"@next/swc-win32-x64-msvc@13.1.1":
-  "integrity" "sha512-mVF0/3/5QAc5EGVnb8ll31nNvf3BWpPY4pBb84tk+BfQglWLqc5AC9q1Ht/YMWiEgs8ALNKEQ3GQnbY0bJF2Gg=="
-  "resolved" "https://registry.npmjs.org/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-13.1.1.tgz"
-  "version" "13.1.1"
+"@next/swc-win32-x64-msvc@13.2.3":
+  "integrity" "sha512-aLG2MaFs4y7IwaMTosz2r4mVbqRyCnMoFqOcmfTi7/mAS+G4IMH0vJp4oLdbshqiVoiVuKrAfqtXj55/m7Qu1Q=="
+  "resolved" "https://registry.npmjs.org/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-13.2.3.tgz"
+  "version" "13.2.3"
 
 "@nodelib/fs.scandir@2.1.5":
   "integrity" "sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g=="
@@ -1561,6 +1561,60 @@
   "integrity" "sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g=="
   "resolved" "https://registry.npmjs.org/@polka/url/-/url-1.0.0-next.21.tgz"
   "version" "1.0.0-next.21"
+
+"@react-spring/animated@~9.7.1":
+  "integrity" "sha512-EX5KAD9y7sD43TnLeTNG1MgUVpuRO1YaSJRPawHNRgUWYfILge3s85anny4S4eTJGpdp5OoFV2kx9fsfeo0qsw=="
+  "resolved" "https://registry.npmjs.org/@react-spring/animated/-/animated-9.7.1.tgz"
+  "version" "9.7.1"
+  dependencies:
+    "@react-spring/shared" "~9.7.1"
+    "@react-spring/types" "~9.7.1"
+
+"@react-spring/core@~9.7.1":
+  "integrity" "sha512-8K9/FaRn5VvMa24mbwYxwkALnAAyMRdmQXrARZLcBW2vxLJ6uw9Cy3d06Z8M12kEqF2bDlccaCSDsn2bSz+Q4A=="
+  "resolved" "https://registry.npmjs.org/@react-spring/core/-/core-9.7.1.tgz"
+  "version" "9.7.1"
+  dependencies:
+    "@react-spring/animated" "~9.7.1"
+    "@react-spring/rafz" "~9.7.1"
+    "@react-spring/shared" "~9.7.1"
+    "@react-spring/types" "~9.7.1"
+
+"@react-spring/parallax@^9.7.1":
+  "integrity" "sha512-1wBgDYaewB8CHdMWa2O3C2Cfvq2mt+neQLZz3+zHTH0CRUlbzC8Hsm78BCDiK8I1QzpLCtgwvv2rYAJchQuZ1A=="
+  "resolved" "https://registry.npmjs.org/@react-spring/parallax/-/parallax-9.7.1.tgz"
+  "version" "9.7.1"
+  dependencies:
+    "@react-spring/shared" "~9.7.1"
+    "@react-spring/web" "~9.7.1"
+
+"@react-spring/rafz@~9.7.1":
+  "integrity" "sha512-JSsrRfbEJvuE3w/uvU3mCTuWwpQcBXkwoW14lBgzK9XJhuxmscGo59AgJUpFkGOiGAVXFBGB+nEXtSinFsopgw=="
+  "resolved" "https://registry.npmjs.org/@react-spring/rafz/-/rafz-9.7.1.tgz"
+  "version" "9.7.1"
+
+"@react-spring/shared@~9.7.1":
+  "integrity" "sha512-R2kZ+VOO6IBeIAYTIA3C1XZ0ZVg/dDP5FKtWaY8k5akMer9iqf5H9BU0jyt3Qtxn0qQY7whQdf6MTcWtKeaawg=="
+  "resolved" "https://registry.npmjs.org/@react-spring/shared/-/shared-9.7.1.tgz"
+  "version" "9.7.1"
+  dependencies:
+    "@react-spring/rafz" "~9.7.1"
+    "@react-spring/types" "~9.7.1"
+
+"@react-spring/types@~9.7.1":
+  "integrity" "sha512-yBcyfKUeZv9wf/ZFrQszvhSPuDx6Py6yMJzpMnS+zxcZmhXPeOCKZSHwqrUz1WxvuRckUhlgb7eNI/x5e1e8CA=="
+  "resolved" "https://registry.npmjs.org/@react-spring/types/-/types-9.7.1.tgz"
+  "version" "9.7.1"
+
+"@react-spring/web@~9.7.1":
+  "integrity" "sha512-6uUE5MyKqdrJnIJqlDN/AXf3i8PjOQzUuT26nkpsYxUGOk7c+vZVPcfrExLSoKzTb9kF0i66DcqzO5fXz/Z1AA=="
+  "resolved" "https://registry.npmjs.org/@react-spring/web/-/web-9.7.1.tgz"
+  "version" "9.7.1"
+  dependencies:
+    "@react-spring/animated" "~9.7.1"
+    "@react-spring/core" "~9.7.1"
+    "@react-spring/shared" "~9.7.1"
+    "@react-spring/types" "~9.7.1"
 
 "@rushstack/eslint-patch@^1.1.3":
   "integrity" "sha512-sXo/qW2/pAcmT43VoRKOJbDOfV3cYpq3szSVfIThQXNt+E4DfKj361vaAt3c88U5tPUxzEswam7GW48PJqtKAg=="
@@ -9063,30 +9117,30 @@
   "resolved" "https://registry.npmjs.org/next-absolute-url/-/next-absolute-url-1.2.2.tgz"
   "version" "1.2.2"
 
-"next@^13.1.1", "next@^8.1.1-canary.54 || ^9.0.0 || ^10.0.0-0 || ^11.0.0 || ^12.0.0", "next@^9.0.0 || ^10.0.0 || ^11.0.0 || ^12.0.0":
-  "integrity" "sha512-R5eBAaIa3X7LJeYvv1bMdGnAVF4fVToEjim7MkflceFPuANY3YyvFxXee/A+acrSYwYPvOvf7f6v/BM/48ea5w=="
-  "resolved" "https://registry.npmjs.org/next/-/next-13.1.1.tgz"
-  "version" "13.1.1"
+"next@^13.2.3", "next@^8.1.1-canary.54 || ^9.0.0 || ^10.0.0-0 || ^11.0.0 || ^12.0.0", "next@^9.0.0 || ^10.0.0 || ^11.0.0 || ^12.0.0":
+  "integrity" "sha512-nKFJC6upCPN7DWRx4+0S/1PIOT7vNlCT157w9AzbXEgKy6zkiPKEt5YyRUsRZkmpEqBVrGgOqNfwecTociyg+w=="
+  "resolved" "https://registry.npmjs.org/next/-/next-13.2.3.tgz"
+  "version" "13.2.3"
   dependencies:
-    "@next/env" "13.1.1"
+    "@next/env" "13.2.3"
     "@swc/helpers" "0.4.14"
     "caniuse-lite" "^1.0.30001406"
     "postcss" "8.4.14"
     "styled-jsx" "5.1.1"
   optionalDependencies:
-    "@next/swc-android-arm-eabi" "13.1.1"
-    "@next/swc-android-arm64" "13.1.1"
-    "@next/swc-darwin-arm64" "13.1.1"
-    "@next/swc-darwin-x64" "13.1.1"
-    "@next/swc-freebsd-x64" "13.1.1"
-    "@next/swc-linux-arm-gnueabihf" "13.1.1"
-    "@next/swc-linux-arm64-gnu" "13.1.1"
-    "@next/swc-linux-arm64-musl" "13.1.1"
-    "@next/swc-linux-x64-gnu" "13.1.1"
-    "@next/swc-linux-x64-musl" "13.1.1"
-    "@next/swc-win32-arm64-msvc" "13.1.1"
-    "@next/swc-win32-ia32-msvc" "13.1.1"
-    "@next/swc-win32-x64-msvc" "13.1.1"
+    "@next/swc-android-arm-eabi" "13.2.3"
+    "@next/swc-android-arm64" "13.2.3"
+    "@next/swc-darwin-arm64" "13.2.3"
+    "@next/swc-darwin-x64" "13.2.3"
+    "@next/swc-freebsd-x64" "13.2.3"
+    "@next/swc-linux-arm-gnueabihf" "13.2.3"
+    "@next/swc-linux-arm64-gnu" "13.2.3"
+    "@next/swc-linux-arm64-musl" "13.2.3"
+    "@next/swc-linux-x64-gnu" "13.2.3"
+    "@next/swc-linux-x64-musl" "13.2.3"
+    "@next/swc-win32-arm64-msvc" "13.2.3"
+    "@next/swc-win32-ia32-msvc" "13.2.3"
+    "@next/swc-win32-x64-msvc" "13.2.3"
 
 "nextjs-cors@^2.1.1":
   "integrity" "sha512-HxE4w4Wng5VdTtnn0DWPphuWKwd1Ty+lpyTZ/sQGgaNnd5demYMchKf+W1LtI8YFYxu2HnRb3MrxERRV0QKLKA=="

@@ -114,3 +114,39 @@ a {
     height: 100%;
     z-index: -1;
   } */
+
+.hello > div:first-of-type {
+    height: 100%;
+}
+
+.parralaxbanner > div:first-of-type {
+    inset: -150px 0px !important;
+}
+
+.parralaxbanner img {
+    will-change: transform;
+}
+
+.tsi-parallax {
+    position: relative;
+    opacity: 1;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    &.mobby {
+        display: block;
+        @media (min-width: 640px) {
+            display: none;
+        }
+    }
+}
+
+.tsi-parallax.desky {
+    display: none;
+
+    @media (min-width: 640px) {
+        display: block;
+    }
+}
