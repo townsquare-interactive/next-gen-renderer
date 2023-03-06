@@ -19,7 +19,7 @@ const ReactScroll = ({ item, imgsize, cmsUrl, children, modId, themeStyles, well
                 layers={[
                     {
                         children: (
-                            <div style={{ position: 'relative' }}>
+                            <div style={{ position: 'relative', height: '100%', willChange: 'transform' }}>
                                 <ImageElement
                                     imgSrc={item.image}
                                     imgAlt={item.img_alt_tag}
@@ -30,8 +30,9 @@ const ReactScroll = ({ item, imgsize, cmsUrl, children, modId, themeStyles, well
                                 />
                             </div>
                         ),
-                        speed: -40,
-                        shouldAlwaysCompleteAnimation: false,
+                        speed: -33,
+
+                        //shouldAlwaysCompleteAnimation: false,
                         //translateY: [0, 50],
                     },
                 ]}

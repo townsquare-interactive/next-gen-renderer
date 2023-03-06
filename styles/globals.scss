@@ -3,6 +3,10 @@
 @use './utils.scss';
 @use './variables.scss';
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     padding: 0;
     margin: 0;
@@ -115,19 +119,24 @@ a {
     z-index: -1;
   } */
 
+.jarallax {
+    height: 70vh;
+}
+
 .hello > div:first-of-type {
     height: 100%;
 }
 
 .parralaxbanner > div:first-of-type {
     inset: -150px 0px !important;
+    //transform: translate3d(0, 0, 0);
 }
 
 .parralaxbanner img {
     will-change: transform;
 }
 
-.tsi-parallax {
+/* .tsi-parallax {
     position: relative;
     opacity: 1;
     background-attachment: fixed;
@@ -148,5 +157,126 @@ a {
 
     @media (min-width: 640px) {
         display: block;
+    }
+}
+
+main {
+    height: 70vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    perspective: 2px;
+    //height: 100%;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+section {
+    transform-style: preserve-3d;
+    position: relative;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.no-parallax {
+    background-color: #111;
+    z-index: 999;
+}
+
+section h1 {
+    text-align: center;
+    font-size: 2rem;
+    font-family: sans-serif;
+}
+
+.parallaxy h1 {
+    width: 60%;
+    font-size: 1rem;
+}
+
+
+
+.bg-img {
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    //transform: translateZ(-2px) scale(2.5);
+    transform: translateZ(-2px) scale(2.5);
+    background-size: 100%;
+    z-index: -1;
+
+    background-size: cover; 
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+@media screen and (min-width: 768px) {
+    section h1 {
+        font-size: 3rem;
+    }
+    .parallaxy h1 {
+        font-size: 2rem;
+    }
+} */
+
+//////////////////////////////////////////////////////////////////
+///
+///
+///
+.new {
+    width: 100%;
+}
+
+.parallax3 {
+    perspective: 100px;
+    height: 70vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 0;
+    bottom: 0;
+    margin-left: -1500px;
+}
+
+.parallax__layer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    img {
+        display: block;
+        position: absolute;
+        bottom: 0;
+    }
+}
+
+.parallax__cover {
+    background: #2d112b;
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 800px;
+    z-index: 2;
+}
+
+$parallax__layers: 2;
+
+@for $i from 0 through $parallax__layers {
+    $x: ($parallax__layers - $i) / 2;
+    .parallax__layer__#{$i} {
+        transform: translateZ(-100px * $x) scale($x + 1);
     }
 }

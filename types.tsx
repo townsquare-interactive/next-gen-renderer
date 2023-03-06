@@ -650,6 +650,8 @@ export interface ItemWrapProps {
     modId: string
     cmsUrl?: string
     align?: string
+    //temp
+    actualLax?:string
 }
 
 export interface LinkWrapProps {

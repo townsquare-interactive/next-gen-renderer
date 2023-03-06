@@ -16,12 +16,12 @@ import ReactScroll from 'elements/ReactScrollParallax'
 //import { ParallaxBanner, ParallaxProvider } from 'react-scroll-parallax'
 import GoogleLax from 'elements/GoogleLax'
 
-import dynamic from 'next/dynamic'
+//import dynamic from 'next/dynamic'
 
 //can be jarallax, custom, scroll
-const choseLax: string = 'none'
+let choseLax: string = 'scroll'
 
-const Jarallax = choseLax === 'jarallax' ? dynamic(() => import('elements/Jarallax'), { ssr: false }) : ''
+//const Jarallax = dynamic(() => import('elements/Jarallax'), { ssr: false })
 
 const Parallax = (props: ModuleProps) => {
     const {
@@ -106,6 +106,14 @@ const Parallax = (props: ModuleProps) => {
 const ModuleItem = (props: ModuleItemProps) => {
     const { item, modId, itemIndex, cmsUrl, themeStyles, type, imgsize, columns, well } = props
 
+    /*  if (item.headline.includes('jarallax')) {
+        choseLax = 'jarallax'
+    }
+    console.log(choseLax) */
+
+    //const actualLax = item.headline.includes('jarallax') ? 'jarallax' : choseLax
+    const actualLax = choseLax
+
     return (
         <article
             className={cn(
@@ -148,20 +156,21 @@ const ModuleItem = (props: ModuleItemProps) => {
                 modId={modId}
                 align={item.align}
                 cmsUrl={cmsUrl}
+                actualLax={actualLax}
             />
         </article>
     )
 }
 
 const ItemWrap = (props: ItemWrapProps) => {
-    const { item, well, themeStyles, modId, columns, type, cmsUrl, imgsize } = props
+    const { item, well, themeStyles, modId, columns, type, cmsUrl, imgsize, actualLax } = props
 
     const useJsLax = false
     return (
         <div
             className={cn(styles['item-wrap'], {
                 [styles.notjlax]: !useJsLax,
-                [styles['react-scroll']]: choseLax === 'scroll',
+                [styles['react-scroll']]: actualLax === 'scroll',
             })}
             aria-label={item.headline || 'item-wrap'}
             style={
@@ -195,7 +204,7 @@ const ItemWrap = (props: ItemWrapProps) => {
                     </div>
                 </div> */
                 <>
-                    <TheNew
+                    {/* <TheNew
                         item={item}
                         imgsize={imgsize}
                         well={well}
@@ -206,8 +215,8 @@ const ItemWrap = (props: ItemWrapProps) => {
                         modId={modId}
                         align={item.align}
                         cmsUrl={cmsUrl}
-                    ></TheNew>
-                    <div
+                    ></TheNew> */}
+                    {/* <div
                         className={cn(styles['caption'], {
                             [styles['cap-bckg']]: item.modSwitch1 != 1 && item.image,
                         })}
@@ -230,7 +239,7 @@ const ItemWrap = (props: ItemWrapProps) => {
                         </div>
 
                         {item.isWrapLink && <LinkWrap item={item} modType={'banner'}></LinkWrap>}
-                    </div>
+                    </div> */}
                 </>
             )}
 
@@ -238,10 +247,11 @@ const ItemWrap = (props: ItemWrapProps) => {
                
             </ReactParallax> */}
 
-            {choseLax === 'jarallax' && Jarallax && (
+            {actualLax === 'jarallax' && (
+                //&& Jarallax
                 <ConditionalWrapper
                     condition={item.image ? true : false}
-                    trueOutput={(children: ReactChild) => <Jarallax speed={0.2}>{children}</Jarallax>}
+                    trueOutput={(children: ReactChild) => /* <Jarallax speed={0.2}>{children}</Jarallax> */ <></>}
                     /*  trueOutput={(children: ReactChild) => (
                     <SpringParallax item={item} imgsize={imgsize} cmsUrl={cmsUrl}>
                         {children}
@@ -278,7 +288,7 @@ const ItemWrap = (props: ItemWrapProps) => {
                     </>
                 </ConditionalWrapper>
             )}
-            {choseLax === 'scroll' && (
+            {actualLax === 'scroll' && (
                 <div style={{ width: '100%', display: 'block', height: '70vh' }} className="hello">
                     <ReactScroll
                         item={item}
@@ -302,7 +312,7 @@ const TheNew = (props: ItemWrapProps) => {
     const ref = useRef(null)
     const [nextImg, setImg] = useState('')
 
-    useEffect(() => {
+    /* useEffect(() => {
         const curr: any = ref.current
         const regex = /^(.*?)&w=/
 
@@ -333,7 +343,36 @@ const TheNew = (props: ItemWrapProps) => {
             ></div>
             <Image src={domainImage(item.image, true, cmsUrl || '')} ref={ref} fill alt="" style={{ opacity: '0' }} />
         </>
-    )
+    ) */
+
+    /* return (
+        <main>
+
+            <section className="parallaxy bg">
+                <div
+                    className="bg-img"
+                    style={{ backgroundImage: 'url(http://clttestsiteforjoshedwards.production.townsquareinteractive.com/files/2022/10/screen-8.jpg)' }}
+                ></div>
+                              <img src="http://clttestsiteforjoshedwards.production.townsquareinteractive.com/files/2022/10/screen-8.jpg" className="bg-img" /> 
+                <h1>The sound that occurs when you snap your fingers is made by your middle finger hitting your palm!</h1>
+            </section>
+        </main>
+    ) */
+    /*  return (
+        <div className="new">
+            <div className="parallax3">
+                <div className="parallax__layer parallax__layer__0">
+                    <div style={{ padding: '4rem', color: '#fff' }}>Hello there</div>
+                </div>
+
+                <div className="parallax__layer parallax__layer__6">
+                 <img src="https://github.com/samdbeckham/blog/blob/master/dev/_assets/images/articles/firewatch/layer_6.png?raw=true" /> 
+                    <img src="http://clttestsiteforjoshedwards.production.townsquareinteractive.com/files/2022/10/screen-8.jpg" />
+                </div>
+                <div className="parallax__cover"></div>
+            </div>
+        </div>
+    ) */
 }
 
 export default Parallax
