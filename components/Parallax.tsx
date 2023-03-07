@@ -23,7 +23,7 @@ import ReactParallax from 'elements/ReactParallax'
 //import dynamic from 'next/dynamic'
 
 //can be jarallax, custom, scroll
-let choseLax: string = 'react-parallax'
+let choseLax: string = 'scroll'
 
 //const Jarallax = dynamic(() => import('elements/Jarallax'), { ssr: false })
 
@@ -46,7 +46,9 @@ const Parallax = (props: ModuleProps) => {
         modCount,
     } = props
 
-    if (choseLax === 'custom') {
+    if (disabled === 'disabled') {
+        return <></>
+    } else if (choseLax === 'custom') {
         return (
             <>
                 {/*  <GoogleLax /> */}
@@ -112,14 +114,6 @@ const Parallax = (props: ModuleProps) => {
 const ModuleItem = (props: ModuleItemProps) => {
     const { item, modId, itemIndex, cmsUrl, themeStyles, type, imgsize, columns, well } = props
 
-    /*  if (item.headline.includes('jarallax')) {
-        choseLax = 'jarallax'
-    }
-    console.log(choseLax) */
-
-    //const actualLax = item.headline.includes('jarallax') ? 'jarallax' : choseLax
-    const actualLax = choseLax
-
     return (
         <article
             className={cn(
@@ -141,16 +135,18 @@ const ModuleItem = (props: ModuleItemProps) => {
                 item.modColor1
                     ? {
                           //background: `${item.modColor1}`,
-                          //background: `var(--accent-background)`,
+                          background: `var(--accent-background)`,
                       }
                     : well === '1' && !item.image
                     ? {
-                          //backgroundImage: `linear-gradient(-45deg, ${item.textureImage?.gradientColors[0]}, ${item.textureImage?.gradientColors[1]})`,
+                          backgroundImage: `linear-gradient(-45deg, ${item.textureImage?.gradientColors[0]}, ${item.textureImage?.gradientColors[1]})`,
                           // background: `var(--accent-background)`,
                       }
-                    : {
-                          //background: `${item.promoColor}`
+                    : !item.image
+                    ? {
+                          background: `${item.promoColor}`,
                       }
+                    : {}
             }
         >
             <ItemWrap
@@ -164,21 +160,22 @@ const ModuleItem = (props: ModuleItemProps) => {
                 modId={modId}
                 align={item.align}
                 cmsUrl={cmsUrl}
-                actualLax={actualLax}
             />
         </article>
     )
 }
 
 const ItemWrap = (props: ItemWrapProps) => {
-    const { item, well, themeStyles, modId, columns, type, cmsUrl, imgsize, actualLax } = props
+    const { item, well, themeStyles, modId, columns, type, cmsUrl, imgsize } = props
+
+    //console.log(item.promoColor)
 
     const useJsLax = true
     return (
         <div
             className={cn(styles['item-wrap'], {
                 [styles.notjlax]: !useJsLax,
-                [styles['react-scroll']]: actualLax === 'scroll',
+                [styles['react-scroll']]: choseLax === 'scroll',
             })}
             aria-label={item.headline || 'item-wrap'}
             style={
@@ -255,7 +252,7 @@ const ItemWrap = (props: ItemWrapProps) => {
                
             </ReactParallax> */}
 
-            {actualLax === 'react-parallax' && (
+            {choseLax === 'react-parallax' && (
                 <ConditionalWrapper
                     condition={item.image ? true : false}
                     trueOutput={(children: ReactChild) => (
@@ -265,7 +262,7 @@ const ItemWrap = (props: ItemWrapProps) => {
                     )}
                     falseOutput={(children: ReactChild) => <>{children}</>}
                 >
-                    <ParallaxChildren item={item} columns={columns} type={type} well={well} modId={modId} themeStyles={themeStyles} actualLax={actualLax} />
+                    <ParallaxChildren item={item} columns={columns} type={type} well={well} modId={modId} themeStyles={themeStyles} actualLax={choseLax} />
                 </ConditionalWrapper>
             )}
             {/*             {actualLax === 'jarallax' && (
@@ -274,28 +271,24 @@ const ItemWrap = (props: ItemWrapProps) => {
                 </Jarallax>
             )} */}
 
-            {actualLax === 'scroll' && (
-                <div style={{ width: '100%', display: 'block', height: '70vh' }} className="hello">
-                    <ReactScroll
-                        item={item}
-                        imgsize={imgsize}
-                        cmsUrl={cmsUrl}
-                        well={well}
-                        modId={modId}
-                        themeStyles={themeStyles}
-                        columns={columns}
-                        type={type}
-                    ></ReactScroll>
-                </div>
-            )}
+            {choseLax === 'scroll' &&
+                (item.image ? (
+                    <div style={{ width: '100%', display: 'block', height: '70vh' }} className="hello">
+                        <ReactScroll item={item} imgsize={imgsize} cmsUrl={cmsUrl}>
+                            <ParallaxChildren item={item} columns={columns} actualLax={choseLax} modId={modId} themeStyles={themeStyles} cmsUrl={cmsUrl} />
+                        </ReactScroll>
+                    </div>
+                ) : (
+                    <ParallaxChildren item={item} columns={columns} actualLax={choseLax} modId={modId} themeStyles={themeStyles} cmsUrl={cmsUrl} />
+                ))}
         </div>
     )
 }
 
-const ParallaxChildren = ({ item, columns, type, well, modId, themeStyles, actualLax, cmsUrl }: any) => {
+const ParallaxChildren = ({ item, columns, type, well, modId, themeStyles, cmsUrl }: any) => {
     return (
         <>
-            {actualLax === 'parallax' && (
+            {choseLax === 'parallax' && (
                 <ImageElement imgSrc={item.image} imgAlt={item.img_alt_tag} imagePriority imgsize={item.imgsize} cmsUrl={cmsUrl} modType={'Parallax'} />
             )}
             <div
