@@ -7,10 +7,12 @@ import { ButtonWrap } from '../elements/ButtonWrap'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
 import LinkWrap from 'elements/LinkWrap'
 import DescBlock from 'elements/DescBlock'
-import { domainImage } from 'functions'
+import { useState } from 'react'
+import { Media } from '../types'
+/* import { domainImage } from 'functions'
 import { useEffect, useRef } from 'react'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState } from 'react' */
 
 const ReactScroll = ({ item, imgsize, cmsUrl, children, modId, themeStyles, well, columns, type }: any) => {
     return (
@@ -36,7 +38,7 @@ const ReactScroll = ({ item, imgsize, cmsUrl, children, modId, themeStyles, well
                         //translateY: [0, 50],
                     },
                 ]}
-                //layers={[{ image: nextImg, speed: -45 }]}
+                //layers={[{ image: nextImg, speed: -35 }]}
                 //style={{ height: '70vh' }}
                 className={'parralaxbanner'}
             >

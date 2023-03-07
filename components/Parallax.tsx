@@ -9,17 +9,21 @@ import LinkWrap from 'elements/LinkWrap'
 import DescBlock from 'elements/DescBlock'
 import { ImageElement } from 'elements/ImageElement'
 import { ConditionalWrapper, domainImage } from 'functions'
-import Image from 'next/image'
+//import Image from 'next/image'
 //import SpringParallax from 'elements/SpringParallax'
-
 import ReactScroll from 'elements/ReactScrollParallax'
 //import { ParallaxBanner, ParallaxProvider } from 'react-scroll-parallax'
-import GoogleLax from 'elements/GoogleLax'
+//import GoogleLax from 'elements/GoogleLax'
+//import next from 'next'
+//import SpringParallax from 'elements/SpringParallax'
+//import SpringParallax2 from 'elements/SpringParallax2'
+import ParallaxCss from 'elements/ParallaxCss'
+import ReactParallax from 'elements/ReactParallax'
 
 //import dynamic from 'next/dynamic'
 
 //can be jarallax, custom, scroll
-let choseLax: string = 'scroll'
+let choseLax: string = 'react-parallax'
 
 //const Jarallax = dynamic(() => import('elements/Jarallax'), { ssr: false })
 
@@ -45,7 +49,9 @@ const Parallax = (props: ModuleProps) => {
     if (choseLax === 'custom') {
         return (
             <>
-                <GoogleLax />
+                {/*  <GoogleLax /> */}
+                <ParallaxCss />
+                {/*  <ReactParallax item={item}/> */}
             </>
         )
     } else {
@@ -135,14 +141,16 @@ const ModuleItem = (props: ModuleItemProps) => {
                 item.modColor1
                     ? {
                           //background: `${item.modColor1}`,
-                          background: `var(--accent-background)`,
+                          //background: `var(--accent-background)`,
                       }
                     : well === '1' && !item.image
                     ? {
-                          backgroundImage: `linear-gradient(-45deg, ${item.textureImage?.gradientColors[0]}, ${item.textureImage?.gradientColors[1]})`,
+                          //backgroundImage: `linear-gradient(-45deg, ${item.textureImage?.gradientColors[0]}, ${item.textureImage?.gradientColors[1]})`,
                           // background: `var(--accent-background)`,
                       }
-                    : { background: `${item.promoColor}` }
+                    : {
+                          //background: `${item.promoColor}`
+                      }
             }
         >
             <ItemWrap
@@ -165,7 +173,7 @@ const ModuleItem = (props: ModuleItemProps) => {
 const ItemWrap = (props: ItemWrapProps) => {
     const { item, well, themeStyles, modId, columns, type, cmsUrl, imgsize, actualLax } = props
 
-    const useJsLax = false
+    const useJsLax = true
     return (
         <div
             className={cn(styles['item-wrap'], {
@@ -247,47 +255,25 @@ const ItemWrap = (props: ItemWrapProps) => {
                
             </ReactParallax> */}
 
-            {actualLax === 'jarallax' && (
-                //&& Jarallax
+            {actualLax === 'react-parallax' && (
                 <ConditionalWrapper
                     condition={item.image ? true : false}
-                    trueOutput={(children: ReactChild) => /* <Jarallax speed={0.2}>{children}</Jarallax> */ <></>}
-                    /*  trueOutput={(children: ReactChild) => (
-                    <SpringParallax item={item} imgsize={imgsize} cmsUrl={cmsUrl}>
-                        {children}
-                    </SpringParallax>
-                )} */
+                    trueOutput={(children: ReactChild) => (
+                        <ReactParallax item={item} useJsLax={useJsLax}>
+                            {children}
+                        </ReactParallax>
+                    )}
                     falseOutput={(children: ReactChild) => <>{children}</>}
                 >
-                    <>
-                        <ImageElement imgSrc={item.image} imgAlt={item.img_alt_tag} imagePriority imgsize={imgsize} cmsUrl={cmsUrl} modType={'Parallax'} />
-                        <div
-                            className={cn(styles['caption'], {
-                                [styles['cap-bckg']]: item.modSwitch1 != 1 && item.image,
-                            })}
-                            style={item.modOne ? { height: item.modOne } : { minHeight: '70vh' }}
-                        >
-                            <div className={styles.content}>
-                                {(item.headline || item.subheader) && (
-                                    <HeadlineBlock item={item} well={1} columns={columns} isBeaconHero={item.isBeaconHero} modType={'parallax'} />
-                                )}
-
-                                {item.desc && (
-                                    <div className={cn(styles['txt-block'])}>
-                                        <DescBlock desc={item.desc} descSize={item.descSize} useAccentColor={true} type={type} />
-                                    </div>
-                                )}
-
-                                {item.visibleButton && (
-                                    <ButtonWrap well={well} modId={modId} type="parallax" columns={columns} themeStyles={themeStyles} {...item} />
-                                )}
-                            </div>
-
-                            {item.isWrapLink && <LinkWrap item={item} modType={'banner'}></LinkWrap>}
-                        </div>
-                    </>
+                    <ParallaxChildren item={item} columns={columns} type={type} well={well} modId={modId} themeStyles={themeStyles} actualLax={actualLax} />
                 </ConditionalWrapper>
             )}
+            {/*             {actualLax === 'jarallax' && (
+                <Jarallax item={item} useJsLax={useJsLax}>
+                    <ParallaxChildren item={item} columns={columns} type={type} well={well} modId={modId} themeStyles={themeStyles} actualLax={actualLax} />
+                </Jarallax>
+            )} */}
+
             {actualLax === 'scroll' && (
                 <div style={{ width: '100%', display: 'block', height: '70vh' }} className="hello">
                     <ReactScroll
@@ -306,13 +292,45 @@ const ItemWrap = (props: ItemWrapProps) => {
     )
 }
 
-const TheNew = (props: ItemWrapProps) => {
+const ParallaxChildren = ({ item, columns, type, well, modId, themeStyles, actualLax, cmsUrl }: any) => {
+    return (
+        <>
+            {actualLax === 'parallax' && (
+                <ImageElement imgSrc={item.image} imgAlt={item.img_alt_tag} imagePriority imgsize={item.imgsize} cmsUrl={cmsUrl} modType={'Parallax'} />
+            )}
+            <div
+                className={cn(styles['caption'], {
+                    [styles['cap-bckg']]: item.modSwitch1 != 1 && item.image,
+                })}
+                style={item.modOne ? { height: item.modOne } : { minHeight: '70vh' }}
+            >
+                <div className={styles.content}>
+                    {(item.headline || item.subheader) && (
+                        <HeadlineBlock item={item} well={1} columns={columns} isBeaconHero={item.isBeaconHero} modType={'parallax'} />
+                    )}
+
+                    {item.desc && (
+                        <div className={cn(styles['txt-block'])}>
+                            <DescBlock desc={item.desc} descSize={item.descSize} useAccentColor={true} type={type} />
+                        </div>
+                    )}
+
+                    {item.visibleButton && <ButtonWrap well={well} modId={modId} type="parallax" columns={columns} themeStyles={themeStyles} {...item} />}
+                </div>
+
+                {item.isWrapLink && <LinkWrap item={item} modType={'banner'}></LinkWrap>}
+            </div>
+        </>
+    )
+}
+
+/* const TheNew = (props: ItemWrapProps) => {
     const { item, well, themeStyles, modId, columns, type, cmsUrl, imgsize } = props
 
     const ref = useRef(null)
     const [nextImg, setImg] = useState('')
 
-    /* useEffect(() => {
+   useEffect(() => {
         const curr: any = ref.current
         const regex = /^(.*?)&w=/
 
@@ -345,7 +363,7 @@ const TheNew = (props: ItemWrapProps) => {
         </>
     ) */
 
-    /* return (
+/* return (
         <main>
 
             <section className="parallaxy bg">
@@ -358,7 +376,7 @@ const TheNew = (props: ItemWrapProps) => {
             </section>
         </main>
     ) */
-    /*  return (
+/*  return (
         <div className="new">
             <div className="parallax3">
                 <div className="parallax__layer parallax__layer__0">
@@ -372,7 +390,7 @@ const TheNew = (props: ItemWrapProps) => {
                 <div className="parallax__cover"></div>
             </div>
         </div>
-    ) */
+    ) 
 }
-
+*/
 export default Parallax

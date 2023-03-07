@@ -1,9 +1,15 @@
 import { useEffect } from 'react'
+import { Parallax, ParallaxLayer } from '@react-spring/parallax'
+import { useRef } from 'react'
+import { ImageElement } from './ImageElement'
 
-/* function initializeParallax(clip) {
-    var parallax = clip.querySelectorAll('*[parallax]')
-    console.log(parallax)
-    var parallaxDetails = []
+//outerHTML
+
+function initializeParallax(clip: any, lax: any, imgRef: any) {
+    //var parallax = clip.querySelectorAll('*[parallax]')
+    var parallax = lax
+    //console.log('plax', parallax)
+    var parallaxDetails: any = []
     var sticky = false
 
     // Edge requires a transform on the document body and a fixed position element
@@ -15,53 +21,78 @@ import { useEffect } from 'react'
     fixedPos.style.top = '0'
     fixedPos.style.width = '1px'
     fixedPos.style.height = '1px'
-    fixedPos.style.zIndex = 1
+    fixedPos.style.zIndex = '1'
+    fixedPos.classList.add('newdiv')
     document.body.insertBefore(fixedPos, document.body.firstChild)
 
-    for (var i = 0; i < parallax.length; i++) {
-        var elem = parallax[i]
-        var container = elem.parentNode
-        console.log('container', container)
-        if (getComputedStyle(container).overflow != 'visible') {
-            console.error('Need non-scrollable container to apply perspective for', elem)
-            continue
-        }
-        if (clip && container.parentNode != clip) {
-            console.warn('Currently we only track a single overflow clip, but elements from multiple clips found.', elem)
-        }
-        var clip = container.parentNode
-        console.log('parent clip', clip)
-        if (getComputedStyle(clip).overflow == 'visible') {
-            console.error('Parent of sticky container should be scrollable element', elem)
-        }
-        // TODO(flackr): optimize to not redo this for the same clip/container.
-        var perspectiveElement
-        if (sticky || getComputedStyle(clip).webkitOverflowScrolling) {
-            sticky = true
-            perspectiveElement = container
-        } else {
-            perspectiveElement = clip
-            container.style.transformStyle = 'preserve-3d'
-        }
+    const parallaxNode = imgRef.current.parentElement
 
-        perspectiveElement.style.perspectiveOrigin = 'bottom right'
-        perspectiveElement.style.perspective = '1px'
-        if (sticky) elem.style.position = '-webkit-sticky'
-        if (sticky) elem.style.top = '0'
-        elem.style.transformOrigin = 'bottom right'
+    //for (var i = 0; i < parallax.length; i++) {
+    //var elem = parallax[i]
+    console.log(parallax)
+    var elem = parallax
+    console.log('e', elem)
 
-        // Find the previous and next elements to parallax between.
-        var previousCover = parallax[i].previousElementSibling
-        while (previousCover && previousCover.hasAttribute('parallax')) previousCover = previousCover.previousElementSibling
-        var nextCover = parallax[i].nextElementSibling
-        while (nextCover && !nextCover.hasAttribute('parallax-cover')) nextCover = nextCover.nextElementSibling
+    var container = elem.current.parentElement
+    // var container = parallax.parentNode
+    console.log('container', container)
 
-        parallaxDetails.push({ node: parallax[i], top: parallax[i].offsetTop, sticky: !!sticky, nextCover: nextCover, previousCover: previousCover })
+    /* if (getComputedStyle(container).overflow != 'visible') {
+        console.error('Need non-scrollable container to apply perspective for', elem)
     }
+    if (clip && container.parentNode != clip) {
+        console.warn('Currently we only track a single overflow clip, but elements from multiple clips found.', elem)
+    } */
+
+    //var clip = container.parentNode
+    // var clip = container.current.parentElement
+    console.log('parent clip', clip)
+    /*     if (getComputedStyle(clip).overflow == 'visible') {
+        console.error('Parent of sticky container should be scrollable element', elem)
+    } */
+    // TODO(flackr): optimize to not redo this for the same clip/container.
+    var perspectiveElement
+    /*     if (sticky || getComputedStyle(clip).webkitOverflowScrolling) {
+        sticky = true
+        perspectiveElement = container
+    } else {
+        perspectiveElement = clip
+        container.style.transformStyle = 'preserve-3d'
+    } */
+    sticky = false
+    perspectiveElement = container
+    container.style.transformStyle = 'preserve-3d'
+
+    perspectiveElement.style.perspectiveOrigin = 'bottom right'
+    perspectiveElement.style.perspective = '1px'
+
+    console.log(elem)
+    if (sticky) elem.current.style.position = '-webkit-sticky'
+    /*  if (sticky) elem.style.top = '0'
+    elem.style.transformOrigin = 'bottom right'  */
+
+    // Find the previous and next elements to parallax between.
+    var previousCover = parallax.current.outerHTML.previousElementSibling
+    //while (previousCover && previousCover.hasAttribute('parallax')) previousCover = previousCover.previousElementSibling
+    //var nextCover = parallax[i].nextElementSibling
+    var nextCover = parallax.current.nextElementSibling
+    // while (nextCover && !nextCover.hasAttribute('parallax-cover')) nextCover = nextCover.nextElementSibling
+
+    parallaxDetails.push({
+        node: parallax.current.outerHTML,
+        top: parallax.current.offsetTop,
+        sticky: !!sticky,
+        nextCover: nextCover,
+        previousCover: previousCover,
+    })
+
+    console.log(parallaxDetails)
+    //}
 
     // Add a scroll listener to hide perspective elements when they should no
     // longer be visible.
-    clip.addEventListener('scroll', function () {
+    //clip.addEventListener('scroll', function () {
+    window.addEventListener('scroll', function () {
         for (var i = 0; i < parallaxDetails.length; i++) {
             var container = parallaxDetails[i].node.parentNode
             var previousCover = parallaxDetails[i].previousCover
@@ -82,9 +113,19 @@ import { useEffect } from 'react'
     for (var i = 0; i < parallax.length; i++) {
         parallax[i].parentNode.insertBefore(parallax[i], parallax[i].parentNode.firstChild)
     }
+
+    /* 
+    window.addEventListener('resize', onResize.bind(null, parallaxDetails))
+    onResize(parallaxDetails) */
+
+    /*     console.group('new', parallaxNode)
+    console.group('where', clip.current.firstChild) */
+
+    //parallax.parentNode.insertBefore(parallax, parallax.parentNode.firstChild)
+    //parallax.current.parentElement.insertBefore(parallaxNode, clip.current.firstChild)
 }
 
-function onResize(details) {
+function onResize(details: any) {
     for (var i = 0; i < details.length; i++) {
         var container = details[i].node.parentNode
 
@@ -117,39 +158,41 @@ function onResize(details) {
 
         details[i].node.style.transform = 'scale(' + (1 - depth) + ') translate3d(' + dx + 'px, ' + dy + 'px, ' + depth + 'px)'
     }
-} */
-
-import { Parallax, ParallaxLayer } from '@react-spring/parallax'
-import { useRef } from 'react'
-import { ImageElement } from './ImageElement'
+}
 
 const GoogleLax = () => {
     const ref = useRef(null)
+    const refLax = useRef(null)
+    const container = useRef(null)
+    const imgRef = useRef(null)
 
     useEffect(() => {
-        // initializeParallax(document.querySelector('.viewport'))
+        //initializeParallax(document.querySelector('.viewport'))
+        initializeParallax(ref, refLax, imgRef)
     }, [])
 
     return (
         <>
-            <div className="viewport">
-                <div>
+            <div className="viewport" ref={ref}>
+                <div className="rent" ref={container}>
                     <div
                         className="parallax header"
                         //parallax="0.3"
+                        ref={refLax}
                     >
                         <img
                             src="http://clttestsiteforjoshedwards.production.townsquareinteractive.com/files/2022/10/screen-8.jpg"
                             //style="min-height: 100vh"
+                            ref={imgRef}
                         />
                     </div>
-                    {/*  <div className="scene header">
+                    <div className="scene header">
                         <h1>Gazing into the stars&nbsp;&nbsp;🐱</h1>
                         <h2>
                             When cats use <code>requestIdleCallback</code>
                         </h2>
                     </div>
-                    <div className="scene solid star">
+                    {/*  <div className="scene solid star">
                         <p>
                             What’s this? This is a parallax scroller. But not just yet another parallax scroller, it’s one that doesn’t rely on JavaScript for
                             the animation, that works on both desktop and mobile and has 60fps while scrolling. This was a lot harder than we originally
