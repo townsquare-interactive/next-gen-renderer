@@ -11,6 +11,20 @@
 @value hero from '../components/photogrid.module.scss';
 @value nImg from '../components/photogrid.module.scss';
 
+@mixin med-text-group {
+    font-size: variables.$md-txt;
+    margin-top: 0.6666666667em;
+    margin-bottom: 0.5em;
+    line-height: 1.1666666667em;
+    letter-spacing: -0.0125rem;
+}
+
+@mixin lg-text-group {
+    font-size: variables.$lg-txt;
+    margin-top: 0.6666666667em;
+    line-height: 1.1111111111em;
+}
+
 .hd-block {
     margin-top: 0.7058823529em;
 
@@ -84,18 +98,12 @@
         //for larger screens (starts at 1025)
         @container item (min-width: 775px) {
             .hd {
-                font-size: variables.$lg-txt;
-                line-height: 1.1111111111em;
+                @include lg-text-group;
                 letter-spacing: -0.0125rem;
-                margin-top: 0.6666666667em;
             }
 
             .sh {
-                font-size: variables.$md-txt;
-                margin-top: 0.6666666667em;
-                margin-bottom: 0.5em;
-                line-height: 1.1666666667em;
-                letter-spacing: -0.0125rem;
+                @include med-text-group;
             }
         }
     }
@@ -145,10 +153,7 @@
             }
 
             .sh {
-                font-size: variables.$md-txt;
-                margin-top: 0.6666666667em;
-                line-height: 1.1666666667em;
-                letter-spacing: -0.0125rem;
+                @include med-text-group;
             }
         }
 
@@ -195,8 +200,27 @@
     }
 
     &.parallax {
+        font-size: 70%;
+
+        @include breakpoints.md-min {
+            font-size: 80%;
+        }
+
+        @include breakpoints.lg-min {
+            font-size: 100%;
+        }
+
         .hd {
             font-weight: normal;
+            font-size: 3em;
+            margin-top: 0.75em;
+            margin-bottom: 0.3333333333em;
+            line-height: 1.0833333333em;
+            letter-spacing: -0.04rem;
+        }
+
+        .sh {
+            @include med-text-group;
         }
 
         @include breakpoints.lg-min {
@@ -207,14 +231,6 @@
                 line-height: 1.1111111111em;
                 letter-spacing: -0.05rem;
             }
-
-            .sh {
-                font-size: variables.$md-txt;
-                margin-top: 0.6666666667em;
-                margin-bottom: 0.5em;
-                line-height: 1.1666666667em;
-                letter-spacing: -0.0125rem;
-            }
         }
     }
 }
@@ -223,11 +239,7 @@
 .nImg {
     .photo_grid {
         .hd {
-            font-size: variables.$md-txt;
-            margin-top: 0.6666666667em;
-            margin-bottom: 0.5em;
-            line-height: 1.1666666667em;
-            letter-spacing: -0.0125rem;
+            @include med-text-group;
         }
 
         .sh {
@@ -236,21 +248,15 @@
             margin-bottom: 0.4705882353em;
             line-height: 1.1764705882em;
         }
-        //new
+
         @container item (min-width: 481px) {
             .hd {
-                font-size: variables.$lg-txt;
-                margin-top: 0.6666666667em;
+                @include lg-text-group;
                 margin-bottom: 0.4444444444em;
-                line-height: 1.1111111111em;
             }
 
             .sh {
-                font-size: variables.$md-txt;
-                margin-top: 0.6666666667em;
-                margin-bottom: 0.5em;
-                line-height: 1.1666666667em;
-                letter-spacing: -0.0125rem;
+                @include med-text-group;
             }
         }
     }
