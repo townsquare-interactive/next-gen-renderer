@@ -59,6 +59,7 @@ const ModuleItem = (props: ModuleItemProps) => {
             className={cn(
                 styles['item'],
                 styles[`${item.align}`],
+                'item',
                 {
                     [styles.hero]: item.isFeatured === 'active',
                     [styles.nHero]: !item.isFeatured,
@@ -118,7 +119,7 @@ const ItemWrap = (props: ItemWrapProps) => {
             className={cn(styles['item-wrap'], {})}
             aria-label={item.headline || 'item-wrap'}
             style={
-                item.modColor1
+                item.modColor1 && !item.image
                     ? {
                           background: `${item.modColor1}`,
                       }
@@ -131,17 +132,15 @@ const ItemWrap = (props: ItemWrapProps) => {
                     : { height: item.modOne || 'auto' }
             }
         >
-            {(!item.modOne || item.modOne >= 200) && (
-                <div className={styles.content}>
-                    <>
-                        {(item.headline || item.subheader) && (
-                            <HeadlineBlock item={item} well={1} columns={columns} isBeaconHero={item.isBeaconHero} modType={'banner'} />
-                        )}
-                    </>
+            <div className={styles.content}>
+                <>
+                    {(item.headline || item.subheader) && (
+                        <HeadlineBlock item={item} well={1} columns={columns} isBeaconHero={item.isBeaconHero} modType={'banner'} />
+                    )}
+                </>
 
-                    {item.visibleButton && <ButtonWrap well={well} modId={modId} type="banner" columns={columns} themeStyles={themeStyles} {...item} />}
-                </div>
-            )}
+                {item.visibleButton && <ButtonWrap well={well} modId={modId} type="banner" columns={columns} themeStyles={themeStyles} {...item} />}
+            </div>
         </div>
     )
 }

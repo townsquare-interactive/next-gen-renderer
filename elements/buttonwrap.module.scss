@@ -21,7 +21,7 @@
                 flex: 0 1 auto;
                 align-self: stretch;
                 justify-content: center;
-                min-width: 6.875rem;
+                //min-width: 6.875rem;
 
                 &.btn_w {
                     margin: 0.25rem 0;
@@ -118,6 +118,10 @@
             &:hover {
                 box-shadow: 0 3px 13px rgb(0 0 0 / 20%), 0 8px 25px rgb(0 0 0 / 15%);
             }
+        }
+
+        &.btn2_override:hover {
+            border-color: transparent;
         }
     }
 

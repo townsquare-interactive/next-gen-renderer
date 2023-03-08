@@ -75,6 +75,8 @@ const Parallax = (props: ModuleProps) => {
                             [styles[`cst_${customClassName}`]]: customClassName,
                             [`cst_${customClassName}`]: customClassName,
                             [styles['first-mod']]: modCount === 1,
+                            [styles['react-scroll']]: choseLax === 'scroll',
+                            [styles['react-parallax']]: choseLax === 'react-parallax',
                             //[styles.not_well]: !well,
                             //[styles['feature-column']]: columnLocation === 0,
                             // [styles['single-column']]: isSingleColumn,
@@ -118,6 +120,7 @@ const ModuleItem = (props: ModuleItemProps) => {
         <article
             className={cn(
                 styles['item'],
+                'item',
                 styles[`${item.align}`],
                 {
                     [styles.hero]: item.isFeatured === 'active',
@@ -132,7 +135,12 @@ const ModuleItem = (props: ModuleItemProps) => {
             )}
             lang="en"
             style={
-                item.modColor1
+                item.modColor1 && well != '1' && !item.image
+                    ? {
+                          background: `${item.modColor1}`,
+                          //background: `var(--accent-background)`,
+                      }
+                    : item.modColor1
                     ? {
                           //background: `${item.modColor1}`,
                           background: `var(--accent-background)`,
