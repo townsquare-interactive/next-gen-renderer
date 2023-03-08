@@ -29,7 +29,6 @@
         position: fixed;
         top: 0;
         height: 100vh;
-        max-height: -webkit-fill-available;
         transition: all 0.2s ease-in-out;
         width: 80%;
 
@@ -65,12 +64,7 @@
             z-index: 400;
 
             //trigger
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            -ms-appearance: none;
-            -o-appearance: none;
             appearance: none;
-            -webkit-font-smoothing: antialiased;
             border: none;
             cursor: pointer;
             display: inline-block;

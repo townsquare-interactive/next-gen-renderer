@@ -8,8 +8,6 @@
     left: 0;
     right: 0;
     visibility: hidden;
-    -webkit-transition: all 0.7s cubic-bezier(1, 0, 0, 1);
-    -moz-transition: all 0.7s cubic-bezier(1, 0, 0, 1);
     transition: all 0.7s cubic-bezier(1, 0, 0, 1);
 
     opacity: 1;
@@ -22,8 +20,6 @@
         margin: 0 auto;
         position: relative;
         max-width: 30rem;
-        -webkit-transition: all 0.7s cubic-bezier(1, 0, 0, 1);
-        -moz-transition: all 0.7s cubic-bezier(1, 0, 0, 1);
         transition: all 0.7s cubic-bezier(1, 0, 0, 1);
 
         .title-block {

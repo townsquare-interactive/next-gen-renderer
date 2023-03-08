@@ -72,23 +72,19 @@
 }
 
 @mixin flex-mod {
-    display: -moz-flex;
     display: flex;
     flex-wrap: wrap;
 
     .wrapper {
-        display: -moz-flex;
         display: flex;
         flex-wrap: wrap;
         width: 100%;
     }
 
     .item {
-        display: -moz-flex;
         display: flex;
         flex: 0 1 auto;
         align-self: stretch;
-        -ms-flex-item-align: stretch;
         flex: 0 1 auto;
         align-self: stretch;
         flex-direction: column;
