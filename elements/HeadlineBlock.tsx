@@ -30,7 +30,7 @@ export const HeadlineBlock = (props: HeadlineBlockProps) => {
                         <circle cx="50" cy="50" r="50" fill="#fff" />
                     </svg>
 
-                    <div className={styles.icon} style={{ color: item.modColor1 || item.promoColor }}>
+                    <div className={cn(styles.icon, 'hd-icon')} style={{ color: item.image ? 'var(--accent-background)' : item.modColor1 || item.promoColor }}>
                         <FontAwesomeIcon icon={[item.imageIcon.iconPrefix, item.imageIcon.iconModel]} />
                     </div>
                 </div>

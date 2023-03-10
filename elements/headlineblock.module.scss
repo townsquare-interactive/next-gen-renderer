@@ -210,10 +210,12 @@
             font-size: 100%;
         }
 
+        margin-top: 0.75em;
+
         .hd {
             font-weight: normal;
             font-size: 3em;
-            margin-top: 0.75em;
+            margin-top: 0;
             margin-bottom: 0.3333333333em;
             line-height: 1.0833333333em;
             letter-spacing: -0.04rem;
@@ -226,7 +228,6 @@
         @include breakpoints.lg-min {
             .hd {
                 font-size: variables.$xl-txt;
-                margin-top: 0.7407407407em;
                 margin-bottom: 0.3703703704em;
                 line-height: 1.1111111111em;
                 letter-spacing: -0.05rem;

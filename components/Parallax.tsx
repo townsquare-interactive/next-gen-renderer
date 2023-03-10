@@ -2,7 +2,7 @@
 import styles from './parallax.module.scss'
 import { ModuleProps, ItemWrapProps, ModuleItemProps } from '../types'
 import cn from 'classnames'
-import { Fragment, ReactChild, useEffect, useRef, useState } from 'react'
+import { Fragment, ReactChild } from 'react'
 import { ButtonWrap } from '../elements/ButtonWrap'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
 import LinkWrap from 'elements/LinkWrap'
@@ -17,7 +17,7 @@ import ReactScroll from 'elements/ReactScrollParallax'
 //import next from 'next'
 //import SpringParallax from 'elements/SpringParallax'
 //import SpringParallax2 from 'elements/SpringParallax2'
-import ParallaxCss from 'elements/ParallaxCss'
+//import ParallaxCss from '../elements/parallax_options/ParallaxCss'
 import ReactParallax from 'elements/ReactParallax'
 
 //import dynamic from 'next/dynamic'
@@ -52,7 +52,7 @@ const Parallax = (props: ModuleProps) => {
         return (
             <>
                 {/*  <GoogleLax /> */}
-                <ParallaxCss />
+                {/*    <ParallaxCss /> */}
                 {/*  <ReactParallax item={item}/> */}
             </>
         )
@@ -312,7 +312,7 @@ const ParallaxChildren = ({ item, columns, type, well, modId, themeStyles, cmsUr
 
                     {item.desc && (
                         <div className={cn(styles['txt-block'])}>
-                            <DescBlock desc={item.desc} descSize={item.descSize} useAccentColor={true} type={type} />
+                            <DescBlock desc={item.desc} descSize={item.descSize} useAccentColor={true} type={'parallax'} />
                         </div>
                     )}
 

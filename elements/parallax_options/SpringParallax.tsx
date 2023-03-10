@@ -1,6 +1,6 @@
 import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 import { useRef } from 'react'
-import { ImageElement } from './ImageElement'
+import { ImageElement } from '../ImageElement'
 
 const SpringParallax = ({ item, imgsize, cmsUrl, children }: any) => {
     const ref = useRef(null)

@@ -39,10 +39,10 @@
         margin: 0.3em 0;
     }
 
-    &.parallax_1 {
+    &.parallax {
         .dsc {
             @include breakpoints.lg-min {
-                font-size: variables.$sm-txt;
+                font-size: 1.25em;
 
                 line-height: 1.4117647059em;
             }
