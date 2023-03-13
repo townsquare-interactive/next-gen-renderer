@@ -1,6 +1,10 @@
 import PageHead from 'components/PageHead'
 import { generateLayout, getHomePage } from 'functions'
 
+//import * as fonts from 'next/font/google'
+
+//import dynamic from 'next/dynamic'
+
 export default async function Head() {
     const { CMSLayout } = await generateLayout()
     const { page } = await getHomePage()
