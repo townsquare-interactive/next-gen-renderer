@@ -1,6 +1,6 @@
 'use client'
 import styles from './parallax.module.scss'
-import { ModuleProps, ItemWrapProps, ModuleItemProps, ArticleItems } from '../types'
+import { ModuleProps, ItemWrapProps, ModuleItemProps } from '../types'
 import cn from 'classnames'
 import { Fragment, ReactChild } from 'react'
 import { ButtonWrap } from '../elements/ButtonWrap'
@@ -9,42 +9,14 @@ import LinkWrap from 'elements/LinkWrap'
 import DescBlock from 'elements/DescBlock'
 import { ImageElement } from 'elements/ImageElement'
 import { ConditionalWrapper, domainImage } from 'functions'
-//import Image from 'next/image'
-//import SpringParallax from 'elements/SpringParallax'
 import ReactScroll from 'elements/ReactScrollParallax'
-//import { ParallaxBanner, ParallaxProvider } from 'react-scroll-parallax'
-//import GoogleLax from 'elements/GoogleLax'
-//import next from 'next'
-//import SpringParallax from 'elements/SpringParallax'
-//import SpringParallax2 from 'elements/SpringParallax2'
-//import ParallaxCss from '../elements/parallax_options/ParallaxCss'
 import ReactParallax from 'elements/ReactParallax'
 
-//import dynamic from 'next/dynamic'
-
 //can be jarallax, custom, scroll
-let choseLax: string = 'scroll'
-
-//const Jarallax = dynamic(() => import('elements/Jarallax'), { ssr: false })
+const choseLax: string = 'scroll'
 
 const Parallax = (props: ModuleProps) => {
-    const {
-        columns = 1,
-        type,
-        well,
-        imgsize,
-        modId,
-        title,
-        items,
-        themeStyles,
-        cmsUrl,
-        disabled,
-        customClassName,
-        contentSpacing,
-        columnLocation,
-        isSingleColumn,
-        modCount,
-    } = props
+    const { columns = 1, type, well, imgsize, modId, items, themeStyles, cmsUrl, disabled, customClassName, modCount } = props
 
     if (disabled === 'disabled') {
         return <></>
@@ -52,31 +24,16 @@ const Parallax = (props: ModuleProps) => {
         return (
             <>
                 <div
-                    className={cn(
-                        'parallax-mod',
-                        styles['root'],
-                        styles['flex-mod'],
-                        //styles[`${type}`],
-                        //'root-container',
-                        //styles['item-flex'],
-                        //styles[`col_${columns}`],
-                        //styles[`${currentSpacing}`],
-                        {
-                            [styles.well]: well == '1',
-
-                            [styles[`cst_${customClassName}`]]: customClassName,
-                            [`cst_${customClassName}`]: customClassName,
-                            [styles['first-mod']]: modCount === 1,
-                            [styles['react-scroll']]: choseLax === 'scroll',
-                            [styles['react-parallax']]: choseLax === 'react-parallax',
-                            //[styles.not_well]: !well,
-                            //[styles['feature-column']]: columnLocation === 0,
-                            // [styles['single-column']]: isSingleColumn,
-                        }
-                    )}
+                    className={cn('parallax-mod', styles['root'], styles['flex-mod'], {
+                        [styles.well]: well == '1',
+                        [styles[`cst_${customClassName}`]]: customClassName,
+                        [`cst_${customClassName}`]: customClassName,
+                        [styles['first-mod']]: modCount === 1,
+                        [styles['react-scroll']]: choseLax === 'scroll',
+                        [styles['react-parallax']]: choseLax === 'react-parallax',
+                    })}
                     id={`id_${modId}`}
                 >
-                    {/* {title && <ModuleTitle title={title} />}*/}
                     <div className={cn(styles.wrapper, 'wrapper')}>
                         {items.map((item, index: number) => (
                             <Fragment key={index}>
@@ -130,17 +87,14 @@ const ModuleItem = (props: ModuleItemProps) => {
                 item.modColor1 && well != '1' && !item.image
                     ? {
                           background: `${item.modColor1}`,
-                          //background: `var(--accent-background)`,
                       }
                     : item.modColor1
                     ? {
-                          //background: `${item.modColor1}`,
                           background: `var(--accent-background)`,
                       }
                     : well === '1' && !item.image
                     ? {
                           backgroundImage: `linear-gradient(-45deg, ${item.textureImage?.gradientColors[0]}, ${item.textureImage?.gradientColors[1]})`,
-                          // background: `var(--accent-background)`,
                       }
                     : !item.image
                     ? {
@@ -171,7 +125,6 @@ const ItemWrap = (props: ItemWrapProps) => {
     return (
         <div
             className={cn(styles['item-wrap'], {
-                //[styles.notjlax]: !useJsLax,
                 [styles['react-scroll']]: choseLax === 'scroll',
             })}
             aria-label={item.headline || 'item-wrap'}
@@ -181,10 +134,6 @@ const ItemWrap = (props: ItemWrapProps) => {
                           backgroundImage: item.textureImage?.image ? `url(${domainImage(item.textureImage.image, false)})` : 'none',
                           backgroundPositionY: item.modTwo ? item.modTwo + '%' : '0%',
                           height: item.modOne || 'auto',
-                      }
-                    : item.modColor1
-                    ? {
-                          //background: `${item.modColor1}`,
                       }
                     : { height: item.modOne || 'auto' }
             }
@@ -205,20 +154,18 @@ const ItemWrap = (props: ItemWrapProps) => {
 
             {choseLax === 'scroll' &&
                 (item.image ? (
-                    <div style={{ width: '100%', display: 'block', height: '70vh' }} className="hello">
-                        <ReactScroll item={item} imgsize={imgsize} cmsUrl={cmsUrl}>
-                            <ParallaxChildren
-                                item={item}
-                                columns={columns}
-                                modId={modId}
-                                themeStyles={themeStyles}
-                                cmsUrl={cmsUrl}
-                                well={well}
-                                imgsize={imgsize}
-                                type={type}
-                            />
-                        </ReactScroll>
-                    </div>
+                    <ReactScroll item={item} imgsize={imgsize} cmsUrl={cmsUrl}>
+                        <ParallaxChildren
+                            item={item}
+                            columns={columns}
+                            modId={modId}
+                            themeStyles={themeStyles}
+                            cmsUrl={cmsUrl}
+                            well={well}
+                            imgsize={imgsize}
+                            type={type}
+                        />
+                    </ReactScroll>
                 ) : (
                     <ParallaxChildren
                         item={item}
@@ -235,7 +182,7 @@ const ItemWrap = (props: ItemWrapProps) => {
     )
 }
 
-const ParallaxChildren = ({ item, columns, type, well, modId, themeStyles, cmsUrl, imgsize }: ItemWrapProps) => {
+const ParallaxChildren = ({ item, columns, well, modId, themeStyles, cmsUrl, imgsize }: ItemWrapProps) => {
     return (
         <>
             {choseLax === 'parallax' && (

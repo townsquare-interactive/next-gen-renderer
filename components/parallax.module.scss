@@ -30,7 +30,6 @@
             position: relative;
 
             .item-wrap {
-                //padding: 1.5rem;
                 display: flex;
                 justify-content: center;
                 flex-direction: column;
@@ -80,21 +79,6 @@
                         margin: 0.3em 0;
                     }
                 }
-
-                /*                 .parallax-block {
-                    position: relative;
-                    opacity: 1;
-                    min-height: 70vh;
-                    clip-path: inset(0);
-
-                    .img-block {
-                        position: fixed;
-                        left: 0;
-                        top: 0;
-                        height: 100%;
-                        width: 100%;
-                    }
-                } */
             }
 
             &.btn-only {
@@ -125,7 +109,6 @@
             align-items: center;
             justify-content: center;
             height: 100%;
-            //used to fix hiding issue
             //will-change: transform;
 
             &.cap-bckg {
@@ -141,12 +124,7 @@
 
             .parralax-banner {
                 & > div:first-of-type {
-                    inset: -100px 0px !important;
-                    //transform: translate3d(0, 0, 0);
-                }
-
-                img {
-                    will-change: transform;
+                    inset: -125px 0px !important;
                 }
             }
         }
