@@ -12,13 +12,19 @@ import { ConditionalWrapper, domainImage } from 'functions'
 import ReactScroll from 'elements/ReactScrollParallax'
 import ReactParallax from 'elements/ReactParallax'
 
+//import SpringParallax2 from 'elements/parallax_options/SpringParallax2'
+import dynamic from 'next/dynamic'
+const Jarallax = dynamic(() => import('../elements/parallax_options/Jarallax'), { ssr: false })
+
 //can be jarallax, custom, scroll
-const choseLax: string = 'scroll'
+const choseLax: string = 'jarallax'
 
 const Parallax = (props: ModuleProps) => {
     const { columns = 1, type, well, imgsize, modId, items, themeStyles, cmsUrl, disabled, customClassName, modCount } = props
 
-    if (disabled === 'disabled') {
+    if (choseLax === 'custom') {
+        return <>{/* <SpringParallax2 /> */}</>
+    } else if (disabled === 'disabled') {
         return <></>
     } else {
         return (
@@ -122,6 +128,8 @@ const ModuleItem = (props: ModuleItemProps) => {
 const ItemWrap = (props: ItemWrapProps) => {
     const { item, well, themeStyles, modId, columns, type, cmsUrl, imgsize } = props
 
+    const laxType = item.headline.includes('scroll') ? 'scroll' : item.headline.includes('jarallax') ? 'jarallax' : choseLax
+
     return (
         <div
             className={cn(styles['item-wrap'], {
@@ -133,26 +141,35 @@ const ItemWrap = (props: ItemWrapProps) => {
                     ? {
                           backgroundImage: item.textureImage?.image ? `url(${domainImage(item.textureImage.image, false)})` : 'none',
                           backgroundPositionY: item.modTwo ? item.modTwo + '%' : '0%',
-                          height: item.modOne || 'auto',
+                          height: item.modOne || '70vh',
                       }
-                    : { height: item.modOne || 'auto' }
+                    : { height: item.modOne || '70vh' }
             }
         >
-            {choseLax === 'react-parallax' && (
+            {laxType === 'react-parallax' && (
                 <ConditionalWrapper
                     condition={item.image ? true : false}
                     trueOutput={(children: ReactChild) => (
-                        <ReactParallax item={item} useJsLax={true}>
+                        <ReactParallax item={item} imgsize={imgsize} cmsUrl={cmsUrl}>
                             {children}
                         </ReactParallax>
                     )}
                     falseOutput={(children: ReactChild) => <>{children}</>}
                 >
-                    <ParallaxChildren item={item} columns={columns} type={type} well={well} modId={modId} themeStyles={themeStyles} imgsize={imgsize} />
+                    <ParallaxChildren
+                        item={item}
+                        columns={columns}
+                        modId={modId}
+                        themeStyles={themeStyles}
+                        cmsUrl={cmsUrl}
+                        well={well}
+                        imgsize={imgsize}
+                        type={type}
+                    />
                 </ConditionalWrapper>
             )}
 
-            {choseLax === 'scroll' &&
+            {laxType === 'scroll' &&
                 (item.image ? (
                     <ReactScroll item={item} imgsize={imgsize} cmsUrl={cmsUrl}>
                         <ParallaxChildren
@@ -164,8 +181,37 @@ const ItemWrap = (props: ItemWrapProps) => {
                             well={well}
                             imgsize={imgsize}
                             type={type}
+                            laxType={laxType}
                         />
                     </ReactScroll>
+                ) : (
+                    <ParallaxChildren
+                        item={item}
+                        columns={columns}
+                        modId={modId}
+                        themeStyles={themeStyles}
+                        cmsUrl={cmsUrl}
+                        well={well}
+                        imgsize={imgsize}
+                        type={type}
+                    />
+                ))}
+
+            {laxType === 'jarallax' &&
+                (item.image ? (
+                    <Jarallax speed={0.3}>
+                        <ParallaxChildren
+                            item={item}
+                            columns={columns}
+                            modId={modId}
+                            themeStyles={themeStyles}
+                            cmsUrl={cmsUrl}
+                            well={well}
+                            imgsize={imgsize}
+                            type={type}
+                            laxType={laxType}
+                        />
+                    </Jarallax>
                 ) : (
                     <ParallaxChildren
                         item={item}
@@ -182,10 +228,10 @@ const ItemWrap = (props: ItemWrapProps) => {
     )
 }
 
-const ParallaxChildren = ({ item, columns, well, modId, themeStyles, cmsUrl, imgsize }: ItemWrapProps) => {
+const ParallaxChildren = ({ item, columns, well, modId, themeStyles, cmsUrl, imgsize, laxType }: ItemWrapProps) => {
     return (
         <>
-            {choseLax === 'parallax' && (
+            {laxType === 'jarallax' && item.image && (
                 <ImageElement imgSrc={item.image} imgAlt={item.img_alt_tag} imagePriority imgsize={imgsize} cmsUrl={cmsUrl} modType={'Parallax'} />
             )}
             <div

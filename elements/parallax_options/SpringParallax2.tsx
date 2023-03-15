@@ -3,6 +3,7 @@ import Image from 'next/image'
 import styles from './newlax.module.scss'
 //import StaticallyImportedImage from "../public/img/pexels-pixabay-45911.jpg";
 import { Parallax, Background } from 'react-parallax'
+import { MouseParallax, ScrollParallax } from 'react-just-parallax'
 
 export default function Parallaxer() {
     /*   const [accelerator, setAccelerator] = useState(0.5)
@@ -116,4 +117,30 @@ export default function Parallaxer() {
             </Parallax>
         </>
     ) */
+    return (
+        <>
+            <div style={{ width: '100%' }} className="bod">
+                {/*                 <ScrollParallax>
+                    <div style={{ padding: '4rem', background: 'blue' }}>Stuff</div>
+                </ScrollParallax>
+
+                <ScrollParallax>
+                    <img src="http://clttestsiteforjoshedwards.production.townsquareinteractive.com/files/2022/08/EiffelWater1.jpg?w=1080&h=810" />
+                </ScrollParallax> */}
+
+                <header className="parallax-container background-layer">
+                    <section aria-labelledby="title" className="parallax-layer midground-layer">
+                        <h1 id="title" className="title text-light">
+                            Bears
+                        </h1>
+                        <p className="text-light">
+                            <strong>
+                                <small>cause why not</small>
+                            </strong>
+                        </p>
+                    </section>
+                </header>
+            </div>
+        </>
+    )
 }

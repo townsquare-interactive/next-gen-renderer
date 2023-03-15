@@ -1,13 +1,10 @@
 //import { ParallaxProvider, useParallax, Parallax } from 'react-scroll-parallax'
+import { useEffect, useRef, useState } from 'react'
 import { Parallax, Background } from 'react-parallax'
-import { useRef } from 'react'
-import { domainImage } from 'functions'
-import BackgroundImage from './BackgroundImage'
-import Image from 'next/image'
-import { useState } from 'react'
-import { Media, ImageBlockProps } from '../types'
 
-const ReactParallax = (props: any) => {
+import { ImageElement } from './ImageElement'
+
+const ReactParallax = ({ item, imgsize, cmsUrl, children }: any) => {
     //const [imageHeight, setHeight] = useState(100)
     // const [imageWidth, setWidth] = useState(300)
     //const [nextImage, setImage] = useState('')
@@ -27,67 +24,102 @@ const ReactParallax = (props: any) => {
         return urlWithQuality
     }
  */
+    /*     const useScrollHandler = (handler: any) => {
+        useEffect(() => {
+            window.addEventListener('scroll', handler)
+            return () => {
+                window.removeEventListener('scroll', handler)
+            }
+        }, [])
+    } */
+
+    /*     const FixedDiv = (props: any) => {
+        const ref = useRef()
+
+        const handler = () => {
+            let currentOffset = window.pageYOffset
+            //const stuff = window.scrollY
+            const stuff = currentOffset * 0.5
+
+            ref.current.style.transform = `translate3d(-50%, ${stuff}px, 0px)`
+        }
+        useScrollHandler(handler)
+        return (
+            <div
+                className="fixer"
+                ref={ref}
+                {...props}
+                style={{ height: '830px', width: '100%', transform: 'will-change', left: '50%', position: 'absolute', marginTop: '-130px' }}
+            />
+        )
+    } */
+
     return (
         <>
-            {props.useJsLax ? (
-                <>
-                    <div>
-                        {/*  <Image
-                            src={domainImage(props.item.image, true, props.cmsUrl || '')}
-                            fill
-                            style={{ objectFit: 'cover', display: 'none' }}
-                            quality="70"
-                            sizes="100vw"
-                            // width={2000}
-                            //height={830}
-                            alt=""
-                            loader={myLoader}
-                            priority={props.item.imagePriority}
-                        /> */}
-                        {/*  <Parallax strength={300} bgImage={nextImage}> */}
-                        <Parallax
-                            strength={300}
-                            //bgImage={nextImage}
-                        >
-                            <Background className="custom-bg">
-                                <>
-                                    <Image
-                                        src={domainImage(props.item.image, true, props.cmsUrl || '')}
-                                        fill
-                                        style={{ objectFit: 'cover' }}
-                                        //quality="80"
-                                        sizes="100vw"
-                                        // width={2000}
-                                        //height={830}
-                                        alt=""
-                                        //                                   unoptimized
-                                        // width={imageWidth}
-                                        //height={imageHeight}
-                                        //onLoadingComplete={calcImageSize}
-                                        //loader={myLoader}
-                                        priority={props.item.imagePriority}
-                                    />
-                                </>
-                            </Background>
+            <div
+                style={{
+                    overflow: 'hidden',
+                    //position: 'relative'
+                }}
+            >
+                <Parallax
+                    strength={400}
+                    //bgImage={nextImage}
+                >
+                    <Background className="custom-bg">
+                        <>
+                            <ImageElement
+                                imgSrc={item.image}
+                                imgAlt={item.img_alt_tag}
+                                imagePriority={item.imagePriority}
+                                imgsize={imgsize}
+                                cmsUrl={cmsUrl}
+                                modType={'Parallax'}
+                                opacity={item.modOpacity}
+                            />
+                        </>
+                    </Background>
 
-                            <div style={{ height: '70vh' }}>
-                                <div
-                                    style={{
-                                        position: 'absolute',
-                                        left: '50%',
-                                        width: '100%',
-                                        transform: 'translate(-50%,-50%)',
-                                    }}
-                                >
-                                    {props.children}
-                                </div>
-                            </div>
-                        </Parallax>
+                    <div style={{ height: item.modOne || '70vh' }}>
+                        <div
+                            style={{
+                                position: 'absolute',
+                                left: '50%',
+                                width: '100%',
+                                transform: 'translate(-50%,-50%)',
+                            }}
+                        >
+                            {children}
+                        </div>
                     </div>
-                </>
-            ) : (
-                props.children
-            )}
+                </Parallax>
+                {/* <FixedDiv>
+                    <div style={{ position: 'relative', height: '100%' }}>
+                        <ImageElement
+                            imgSrc={item.image}
+                            imgAlt={item.img_alt_tag}
+                            imagePriority={item.imagePriority}
+                            imgsize={imgsize}
+                            cmsUrl={cmsUrl}
+                            modType={'Parallax'}
+                            opacity={item.modOpacity}
+                        />
+                    </div>
+                </FixedDiv>
+                <div style={{ height: item.modOne || '70vh' }}>
+                    <div
+                        style={{
+                            position: 'absolute',
+                            left: '50%',
+                            width: '100%',
+                            transform: 'translate(-50%,-50%)',
+                            top: '0',
+                        }}
+                    >
+                        {children}
+                    </div>
+                </div> */}
+            </div>
         </>
     )
 }

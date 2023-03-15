@@ -88,7 +88,7 @@ a {
     }
 
     @media (min-height: 680px) {
-        height: 781px;
+        height: 830px;
     }
 
     @media (min-height: 1300px) {
@@ -103,6 +103,7 @@ a {
 }
 .react-parallax-background-children {
     width: 100%;
+    will-change: transform;
 }
 
 /*.react-parallax-background-children {
@@ -163,3 +164,5 @@ a {
 .hello > div:first-of-type {
     height: 100%;
 }
+
+//////////////////@at-root

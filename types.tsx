@@ -105,6 +105,7 @@ export interface WidgetRendererProps {
 }
 
 export interface GlobalData {
+    fontImport?: string
     logoUrl?: string
     navStyle?: 'layout1' | 'layout2'
     //themeStyles: ThemeStyles
@@ -650,6 +651,7 @@ export interface ItemWrapProps {
     modId: string
     cmsUrl?: string
     align?: string
+    laxType?: string
     //temp
 }
 
