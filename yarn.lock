@@ -13061,6 +13061,11 @@
   "resolved" "https://registry.npmjs.org/signal-exit/-/signal-exit-3.0.7.tgz"
   "version" "3.0.7"
 
+"simple-parallax-js@^5.6.2":
+  "integrity" "sha512-qJPZgg37BstDyvNqONU1YffiJ9P5n4B9IPl5h3kzZ2oEinTRwy1syxfEwTMLXYFHAFCRWXUcWD8yBnVcp8nxdA=="
+  "resolved" "https://registry.npmjs.org/simple-parallax-js/-/simple-parallax-js-5.6.2.tgz"
+  "version" "5.6.2"
+
 "sirv@^1.0.7":
   "integrity" "sha512-JuLThK3TnZG1TAKDwNIqNq6QA2afLOCcm+iE8D1Kj3GA40pSPsxQjjJl0J8X3tsR7T+CP1GavpzLwYkgVLWrZQ=="
   "resolved" "https://registry.npmjs.org/sirv/-/sirv-1.0.19.tgz"

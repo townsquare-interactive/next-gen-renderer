@@ -4,6 +4,9 @@ import { Parallax, Background } from 'react-parallax'
 
 import { ImageElement } from './ImageElement'
 
+import { domainImage } from 'functions'
+import Image from 'next/image'
+
 const ReactParallax = ({ item, imgsize, cmsUrl, children }: any) => {
     //const [imageHeight, setHeight] = useState(100)
     // const [imageWidth, setWidth] = useState(300)
@@ -63,7 +66,8 @@ const ReactParallax = ({ item, imgsize, cmsUrl, children }: any) => {
                 }}
             >
                 <Parallax
-                    strength={400}
+                    strength={280}
+                    blur={10}
                     //bgImage={nextImage}
                 >
                     <Background className="custom-bg">
@@ -93,7 +97,7 @@ const ReactParallax = ({ item, imgsize, cmsUrl, children }: any) => {
                         </div>
                     </div>
                 </Parallax>
-                {/* <FixedDiv>
+                {/*                  <FixedDiv>
                     <div style={{ position: 'relative', height: '100%' }}>
                         <ImageElement
                             imgSrc={item.image}
@@ -122,6 +126,46 @@ const ReactParallax = ({ item, imgsize, cmsUrl, children }: any) => {
             </div>
         </>
     )
+    /*     return (
+        <>
+            <div
+                style={{
+                    overflow: 'hidden',
+                    //position: 'relative'
+                }}
+            >
+                
+                <Image
+                    src={domainImage(item.image, true, cmsUrl || '')}
+                    fill
+                    alt={item.img_alt_tag || ''}
+                    quality="50"
+                    priority={item.imagePriority}
+                    style={{
+                        objectFit: 'cover',
+                        objectPosition: 'top',
+                        opacity: item.modOpacity || 1,
+                    }}
+                    sizes={'100vh'}
+                    //ref={ref}
+                    //className={modType === 'Parallax' ? 'jarallax-img' : ''}
+                />
+
+                <div style={{ height: item.modOne || '70vh' }}>
+                    <div
+                        style={{
+                            position: 'absolute',
+                            left: '50%',
+                            width: '100%',
+                            transform: 'translate(-50%,-50%)',
+                        }}
+                    >
+                        {children}
+                    </div>
+                </div>
+            </div>
+        </>
+    ) */
 }
 
 export default ReactParallax

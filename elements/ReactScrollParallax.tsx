@@ -3,16 +3,83 @@ import { ParallaxBanner, ParallaxProvider } from 'react-scroll-parallax'
 import { ImageElement } from 'elements/ImageElement'
 import styles from '../components/parallax.module.scss'
 import Image from 'next/image'
-
-import { useParallaxController } from 'react-scroll-parallax'
 import { domainImage } from 'functions'
-
-//const Image = () => {
-
-/* return <img src="image.jpg" onLoad={() => parallaxController.update()} />; */
+import { useEffect, useState } from 'react'
 
 const ReactScroll = ({ item, imgsize, cmsUrl, children }: any) => {
-    const TheImg = () => {
+    const [isSSR, setIsSSR] = useState(true)
+
+    let useDelay = item.image ? true : false
+
+    //Setting state to false on load to avoid Hydration Error
+    useEffect(() => {
+        if (useDelay === true) {
+            setIsSSR(false)
+        }
+    }, [])
+
+    if (useDelay === false) {
+        setIsSSR(false)
+    }
+
+    return (
+        <>
+            {isSSR && (
+                <>
+                    <div className={styles['image-block']}>
+                        <Image
+                            src={domainImage(item.image, true, cmsUrl || '')}
+                            fill
+                            alt={item.img_alt_tag || ''}
+                            quality="80"
+                            priority={item.imagePriority}
+                            style={{
+                                objectFit: 'cover',
+                                objectPosition: 'center',
+                                opacity: item.modOpacity || 1,
+                            }}
+                            sizes={'100vh'}
+                        />
+                        {children}
+                    </div>
+                </>
+            )}
+            {!isSSR && (
+                <ParallaxProvider>
+                    <ParallaxBanner
+                        layers={[
+                            {
+                                children: (
+                                    <div className={styles['image-block']}>
+                                        <ImageElement
+                                            imgSrc={item.image}
+                                            imgAlt={item.img_alt_tag}
+                                            imagePriority={item.imagePriority}
+                                            imgsize={imgsize}
+                                            cmsUrl={cmsUrl}
+                                            modType={'Parallax'}
+                                            opacity={item.modOpacity}
+                                        />
+                                    </div>
+                                ),
+                                speed: -33,
+                            },
+                        ]}
+                        style={{ height: '70vh' }}
+                        className={styles['parallax-banner']}
+                    >
+                        {children}
+                    </ParallaxBanner>
+                </ParallaxProvider>
+            )}
+        </>
+    )
+}
+
+export default ReactScroll
+
+//import { useParallaxController } from 'react-scroll-parallax'
+/* const TheImg = () => {
         const parallaxController: any = useParallaxController()
         return (
             <Image
@@ -23,46 +90,11 @@ const ReactScroll = ({ item, imgsize, cmsUrl, children }: any) => {
                 priority={item.imagePriority}
                 style={{
                     objectFit: 'cover',
-                    objectPosition: 'top',
+                    objectPosition: 'bottom',
                     opacity: item.modOpacity || 1,
                 }}
                 sizes={'100vh'}
                 onLoadingComplete={() => parallaxController.update()}
             />
         )
-    }
-
-    return (
-        <ParallaxProvider>
-            <ParallaxBanner
-                layers={[
-                    {
-                        children: (
-                            <div style={{ position: 'relative', height: '100%', willChange: 'transform' }}>
-                                <ImageElement
-                                    imgSrc={item.image}
-                                    imgAlt={item.img_alt_tag}
-                                    imagePriority={item.imagePriority}
-                                    imgsize={imgsize}
-                                    cmsUrl={cmsUrl}
-                                    modType={'Parallax'}
-                                    opacity={item.modOpacity}
-                                />
-                                {/*   <TheImg /> */}
-                            </div>
-                        ),
-                        speed: -33,
-                        //easing: 'easeOutQuad',
-                    },
-                ]}
-                //layers={[{ image: nextImg, speed: -35 }]}
-                style={{ height: '70vh' }}
-                className={styles['parralax-banner']}
-            >
-                {children}
-            </ParallaxBanner>
-        </ParallaxProvider>
-    )
-}
-
-export default ReactScroll
+    } */

@@ -12,12 +12,11 @@ import { ConditionalWrapper, domainImage } from 'functions'
 import ReactScroll from 'elements/ReactScrollParallax'
 import ReactParallax from 'elements/ReactParallax'
 
-//import SpringParallax2 from 'elements/parallax_options/SpringParallax2'
 import dynamic from 'next/dynamic'
 const Jarallax = dynamic(() => import('../elements/parallax_options/Jarallax'), { ssr: false })
 
 //can be jarallax, custom, scroll
-const choseLax: string = 'jarallax'
+const choseLax: string = 'scroll'
 
 const Parallax = (props: ModuleProps) => {
     const { columns = 1, type, well, imgsize, modId, items, themeStyles, cmsUrl, disabled, customClassName, modCount } = props
@@ -128,7 +127,8 @@ const ModuleItem = (props: ModuleItemProps) => {
 const ItemWrap = (props: ItemWrapProps) => {
     const { item, well, themeStyles, modId, columns, type, cmsUrl, imgsize } = props
 
-    const laxType = item.headline.includes('scroll') ? 'scroll' : item.headline.includes('jarallax') ? 'jarallax' : choseLax
+    //const laxType = item.headline.includes('scroll') ? 'scroll' : item.headline.includes('jarallax') ? 'jarallax' : choseLax
+    const laxType = choseLax
 
     return (
         <div
@@ -146,6 +146,29 @@ const ItemWrap = (props: ItemWrapProps) => {
                     : { height: item.modOne || '70vh' }
             }
         >
+            {laxType === 'scroll' && (
+                <ConditionalWrapper
+                    condition={item.image ? true : false}
+                    trueOutput={(children: ReactChild) => (
+                        <ReactScroll item={item} imgsize={imgsize} cmsUrl={cmsUrl}>
+                            {children}
+                        </ReactScroll>
+                    )}
+                    falseOutput={(children: ReactChild) => <>{children}</>}
+                >
+                    <ParallaxChildren
+                        item={item}
+                        columns={columns}
+                        modId={modId}
+                        themeStyles={themeStyles}
+                        cmsUrl={cmsUrl}
+                        well={well}
+                        imgsize={imgsize}
+                        type={type}
+                    />
+                </ConditionalWrapper>
+            )}
+
             {laxType === 'react-parallax' && (
                 <ConditionalWrapper
                     condition={item.image ? true : false}
@@ -168,34 +191,6 @@ const ItemWrap = (props: ItemWrapProps) => {
                     />
                 </ConditionalWrapper>
             )}
-
-            {laxType === 'scroll' &&
-                (item.image ? (
-                    <ReactScroll item={item} imgsize={imgsize} cmsUrl={cmsUrl}>
-                        <ParallaxChildren
-                            item={item}
-                            columns={columns}
-                            modId={modId}
-                            themeStyles={themeStyles}
-                            cmsUrl={cmsUrl}
-                            well={well}
-                            imgsize={imgsize}
-                            type={type}
-                            laxType={laxType}
-                        />
-                    </ReactScroll>
-                ) : (
-                    <ParallaxChildren
-                        item={item}
-                        columns={columns}
-                        modId={modId}
-                        themeStyles={themeStyles}
-                        cmsUrl={cmsUrl}
-                        well={well}
-                        imgsize={imgsize}
-                        type={type}
-                    />
-                ))}
 
             {laxType === 'jarallax' &&
                 (item.image ? (
