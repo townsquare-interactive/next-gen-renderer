@@ -168,57 +168,6 @@ const ItemWrap = (props: ItemWrapProps) => {
                     />
                 </ConditionalWrapper>
             )}
-
-            {laxType === 'react-parallax' && (
-                <ConditionalWrapper
-                    condition={item.image ? true : false}
-                    trueOutput={(children: ReactChild) => (
-                        <ReactParallax item={item} imgsize={imgsize} cmsUrl={cmsUrl}>
-                            {children}
-                        </ReactParallax>
-                    )}
-                    falseOutput={(children: ReactChild) => <>{children}</>}
-                >
-                    <ParallaxChildren
-                        item={item}
-                        columns={columns}
-                        modId={modId}
-                        themeStyles={themeStyles}
-                        cmsUrl={cmsUrl}
-                        well={well}
-                        imgsize={imgsize}
-                        type={type}
-                    />
-                </ConditionalWrapper>
-            )}
-
-            {laxType === 'jarallax' &&
-                (item.image ? (
-                    <Jarallax speed={0.3}>
-                        <ParallaxChildren
-                            item={item}
-                            columns={columns}
-                            modId={modId}
-                            themeStyles={themeStyles}
-                            cmsUrl={cmsUrl}
-                            well={well}
-                            imgsize={imgsize}
-                            type={type}
-                            laxType={laxType}
-                        />
-                    </Jarallax>
-                ) : (
-                    <ParallaxChildren
-                        item={item}
-                        columns={columns}
-                        modId={modId}
-                        themeStyles={themeStyles}
-                        cmsUrl={cmsUrl}
-                        well={well}
-                        imgsize={imgsize}
-                        type={type}
-                    />
-                ))}
         </div>
     )
 }

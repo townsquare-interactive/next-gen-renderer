@@ -12,20 +12,13 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 const { library } = require('@fortawesome/fontawesome-svg-core')
 
-import { getHomePage, generateLayout } from '../functions'
-import { use, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 library.add(fas, fab, far)
 
 export const Container = (props: ContainerProps) => {
     const { page, siteData } = props
-    //const router = useRouter()
     const { cmsUrl, themeStyles, columnStyles } = defineContainerVars(page, siteData)
-
-    /* 
-    if (router.isFallback) {
-        return <div>Loading...</div>
-    } */
 
     return (
         <>

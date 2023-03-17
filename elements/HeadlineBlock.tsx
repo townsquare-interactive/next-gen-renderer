@@ -19,10 +19,14 @@ export const HeadlineBlock = (props: HeadlineBlockProps) => {
                 {
                     [styles.article]: modType?.includes('article'),
                     [styles.beacon]: modType === 'article',
+                    [styles.testimonials]: modType === 'testimonials_1',
                     [styles['isIcon']]: item.imageIcon,
                     [styles.hasDsc]: !noDesc,
+                    [styles.not_well]: !well,
+                    [styles.well]: well,
                 }
             )}
+            style={modType === 'testimonials_1' ? { backgroundColor: '#fff' } : {}}
         >
             {item.imageIcon && (
                 <div className={cn(styles['icon-block'])}>

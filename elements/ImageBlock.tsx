@@ -16,6 +16,7 @@ export const ImageBlock = (props: ImageBlockProps) => {
                 className={cn(styles.image, styles[`${imgsize}`], {
                     [styles.widescreen_2_4_1]: imgsize === 'widescreen_2-4_1',
                     [styles['photo-grid']]: modType === 'photo_grid',
+                    [styles['testimonials']]: modType === 'testimonials_1',
                 })}
             >
                 {item.image && (

@@ -1,8 +1,12 @@
 import '../styles/globals.scss'
 import cn from 'classnames'
-import { getHomePage, generateLayout } from '../functions'
-import { use, useEffect, useState } from 'react'
+//import { getHomePage, generateLayout } from '../functions'
+//import { use, useEffect, useState } from 'react'
 //import { Inter, Lora, Abril_Fatface, Lato } from 'next/font/google'
+
+/* const lato = Lato({ weight: ['300', '400', '700'], style: ['normal', 'italic'], subsets: ['latin'], variable: '--lato' })
+const lora = Lora({ subsets: ['latin'], variable: '--lora' })
+const abril_flatface = Abril_Fatface({ weight: ['400'], style: ['normal'], subsets: ['latin'], variable: '--abril_flatface' }) */
 
 /* import * as fonts from 'next/font/google'
 console.log(fonts.Inter) */
@@ -23,10 +27,6 @@ async function load() {
 }
 
 load() */
-
-/* const lato = Lato({ weight: ['300', '400', '700'], style: ['normal', 'italic'], subsets: ['latin'], variable: '--lato' })
-const lora = Lora({ subsets: ['latin'], variable: '--lora' })
-const abril_flatface = Abril_Fatface({ weight: ['400'], style: ['normal'], subsets: ['latin'], variable: '--abril_flatface' }) */
 
 // If loading a variable font, you don't need to specify the font weight
 //const inter = Inter({ subsets: ['latin'] })
@@ -53,6 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <html lang="en">
             <head>
                 <link rel="stylesheet" href={s3ColorStyles} type="text/css"></link>
+                {/*  <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin={true} /> */}
             </head>
             <body>
                 <div>{children}</div>

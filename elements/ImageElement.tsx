@@ -16,7 +16,8 @@ export const ImageElement = (props: ImageProps) => {
         setHeight(loadedMedia.naturalHeight)
     }
 
-    const imageFileSizes = modType === 'Parallax' ? '100vw' : '(max-width: 1920px) 75vw, (max-width: 1200px) 70vw,  100vw'
+    const imageFileSizes =
+        modType === 'Parallax' ? '100vw' : modType === 'testimonials_1' ? '130px' : '(max-width: 1920px) 75vw, (max-width: 1200px) 70vw,  100vw'
 
     return (
         <>

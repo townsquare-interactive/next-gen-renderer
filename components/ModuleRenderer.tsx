@@ -13,6 +13,7 @@ import BeaconArticle from './practice/BeaconArticle'
 import CharlotteArticle from './practice/CharlotteArticle'
 import Parallax from './Parallax'
 import Article from './Article'
+import Testimonials from './Testimonials'
 import { PhotoGrid } from './PhotoGrid'
 import { capitalize } from '../functions'
 import { GlobalModule, ModuleProps, RendererProps } from 'types'
@@ -36,6 +37,7 @@ const keysToComponentMap: any = {
     PhotoGrid,
     Banner,
     Parallax,
+    Testimonials,
 }
 
 const mapPropsToConfig = (config: ModuleProps[]) => {

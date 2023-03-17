@@ -30,6 +30,10 @@
         }
     }
 
+    &.testimonials {
+        z-index: 1;
+    }
+
     //adding with here and padding-bottom, aspect-ratio not accepted on older phones
     &.square_1_1 {
         //aspect-ratio: math.div(1, 1);
