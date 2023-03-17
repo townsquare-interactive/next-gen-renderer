@@ -481,7 +481,7 @@ export interface ArticleItems {
     desc: string
     pagelink: string
     weblink: string
-    actionlbl: string
+    actionlbl: string | number
     newwindow: number | null | string
     pagelink2?: string
     weblink2?: string
@@ -818,7 +818,7 @@ export interface BtnProps {
     pagelink2?: string
     weblink?: string
     weblink2?: string
-    actionlbl?: string
+    actionlbl?: string | number
     actionlbl2?: string
     newwindow?: number | null | string
     newwindow2?: number | null | string

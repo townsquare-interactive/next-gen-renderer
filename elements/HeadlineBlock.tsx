@@ -85,6 +85,7 @@ const Heading = (props: HeadingProps) => {
             className={cn(styles[textType], {
                 //['accent-txt']: well || isBeaconHero || modType === 'photo_grid',
                 ['txt-color-hd']: !isBeaconHero && modType != 'photo_grid' && modType != 'banner' && !useAccentColor && modType != 'parallax',
+                ['testimonial-txt-color']: modType === 'testimonials_1' && well,
                 ['accent-txt']: isBeaconHero || modType === 'photo_grid' || modType === 'banner' || useAccentColor || modType === 'parallax',
                 ['txt-font']: textType === 'sh',
                 ['hd-font']: textType === 'hd',

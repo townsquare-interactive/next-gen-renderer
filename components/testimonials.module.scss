@@ -24,20 +24,22 @@
                 display: grid;
                 grid-template-rows: 1fr;
 
-                .quotes {
-                    font-size: 3.375em;
-                    margin-top: 0.2222222222em;
-                    margin-bottom: 0.2222222222em;
-                    line-height: 1.4074074074em;
-                    display: inline-block;
-                }
+                .caption {
+                    .quotes {
+                        font-size: 3.375em;
+                        margin-top: 0.2222222222em;
+                        margin-bottom: 0.2222222222em;
+                        line-height: 1.4074074074em;
+                        display: inline-block;
+                    }
 
-                .stars {
-                    font-size: 1.0625em;
-                    margin-top: 0.7058823529em;
-                    line-height: 1.1764705882em;
-                    margin-bottom: 0.5rem;
-                    letter-spacing: 5px;
+                    .stars {
+                        font-size: 1.0625em;
+                        margin-top: 0.7058823529em;
+                        line-height: 1.1764705882em;
+                        margin-bottom: 0.5rem;
+                        letter-spacing: 5px;
+                    }
                 }
             }
         }
@@ -72,6 +74,11 @@
     }
 
     &.well {
+        .caption {
+            padding: 2rem 2rem 3rem;
+        }
+
+        /////////////////////////////////////////////////// Arts
         .hd-block,
         .txt-block {
             max-width: 100%;

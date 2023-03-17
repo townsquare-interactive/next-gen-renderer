@@ -135,17 +135,19 @@ const ItemWrap = (props: ItemWrapProps) => {
 
     return (
         <>
-            <div className={cn('txt-color-hd', styles.stars)}>★★★★★</div>
+            <div className={styles.caption}>
+                {item.actionlbl && <div className={cn('txt-color-hd', styles.stars)}>{'★'.repeat(Number(item.actionlbl))}</div>}
 
-            <span className={cn('txt-color-hd', styles.quotes)}>
-                <FontAwesomeIcon icon={['fas', 'quote-left']} />
-            </span>
+                <span className={cn('txt-color-hd', styles.quotes)}>
+                    <FontAwesomeIcon icon={['fas', 'quote-left']} />
+                </span>
 
-            {item.desc && (
-                <div className={cn(styles['txt-block'])}>
-                    <DescBlock desc={item.desc} descSize={item.descSize} type={type} well={well} isBeaconHero={item.isBeaconHero} />
-                </div>
-            )}
+                {item.desc && (
+                    <div className={cn(styles['txt-block'])}>
+                        <DescBlock desc={item.desc} descSize={item.descSize} type={type} well={well} isBeaconHero={item.isBeaconHero} />
+                    </div>
+                )}
+            </div>
             {item.image && (
                 <figure className={cn(styles['image-block'])} data-alt="Headline">
                     <ImageBlock item={item} imgsize={imgsize} well={well} cmsUrl={cmsUrl} modType={type} />
