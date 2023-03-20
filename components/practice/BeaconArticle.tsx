@@ -152,7 +152,7 @@ const BeaconArticle = (props: ModuleProps) => {
                             {item.pagelink && item.actionlbl && (
                                 <TheListItemAction
                                     pagelink={item.pagelink}
-                                    actionlbl={item.actionlbl}
+                                    actionlbl={String(item.actionlbl)}
                                     newwindow={item.newwindow}
                                     themeStyles={props.themeStyles}
                                     btnSize={item.btnSize}

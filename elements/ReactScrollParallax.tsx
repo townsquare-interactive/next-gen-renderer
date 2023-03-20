@@ -5,6 +5,7 @@ import styles from '../components/parallax.module.scss'
 import Image from 'next/image'
 import { domainImage } from 'functions'
 import { useEffect, useState } from 'react'
+import cn from 'classnames'
 
 const ReactScroll = ({ item, imgsize, cmsUrl, children }: any) => {
     const [isSSR, setIsSSR] = useState(true)
@@ -22,26 +23,30 @@ const ReactScroll = ({ item, imgsize, cmsUrl, children }: any) => {
         setIsSSR(false)
     }
 
+    //const theCount = item.itemCount === 2 ? true : item.itemCount === 3 ? true : false
+
     return (
         <>
             {isSSR && (
                 <>
-                    <div className={styles['image-block']}>
-                        <Image
-                            src={domainImage(item.image, true, cmsUrl || '')}
-                            fill
-                            alt={item.img_alt_tag || ''}
-                            quality="80"
-                            priority={item.imagePriority}
-                            style={{
-                                objectFit: 'cover',
-                                objectPosition: 'center',
-                                opacity: item.modOpacity || 1,
-                            }}
-                            sizes={'100vh'}
-                        />
-                        {children}
+                    <div className={styles.outer}>
+                        <div className={cn(styles['image-block'], styles['image-block2'])}>
+                            <Image
+                                src={domainImage(item.image, true, cmsUrl || '')}
+                                fill
+                                alt={item.img_alt_tag || ''}
+                                quality="80"
+                                priority={item.imagePriority}
+                                style={{
+                                    objectFit: 'cover',
+                                    objectPosition: 'top',
+                                    opacity: item.modOpacity || 1,
+                                }}
+                                sizes={'100vh'}
+                            />
+                        </div>
                     </div>
+                    {children}
                 </>
             )}
             {!isSSR && (

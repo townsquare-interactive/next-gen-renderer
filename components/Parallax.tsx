@@ -10,10 +10,10 @@ import DescBlock from 'elements/DescBlock'
 import { ImageElement } from 'elements/ImageElement'
 import { ConditionalWrapper, domainImage } from 'functions'
 import ReactScroll from 'elements/ReactScrollParallax'
-import ReactParallax from 'elements/ReactParallax'
+//import ReactParallax from 'elements/ReactParallax'
 
-import dynamic from 'next/dynamic'
-const Jarallax = dynamic(() => import('../elements/parallax_options/Jarallax'), { ssr: false })
+//import dynamic from 'next/dynamic'
+//const Jarallax = dynamic(() => import('../elements/parallax_options/Jarallax'), { ssr: false })
 
 //can be jarallax, custom, scroll
 const choseLax: string = 'scroll'
@@ -21,9 +21,7 @@ const choseLax: string = 'scroll'
 const Parallax = (props: ModuleProps) => {
     const { columns = 1, type, well, imgsize, modId, items, themeStyles, cmsUrl, disabled, customClassName, modCount } = props
 
-    if (choseLax === 'custom') {
-        return <>{/* <SpringParallax2 /> */}</>
-    } else if (disabled === 'disabled') {
+    if (disabled === 'disabled') {
         return <></>
     } else {
         return (
