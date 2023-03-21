@@ -24,9 +24,16 @@ export const HeadlineBlock = (props: HeadlineBlockProps) => {
                     [styles.hasDsc]: !noDesc,
                     [styles.not_well]: !well,
                     [styles.well]: well,
+                    [styles.hero]: item.isFeatured === 'active',
                 }
             )}
-            style={modType === 'testimonials_1' ? { backgroundColor: '#fff' } : {}}
+            style={
+                modType === 'testimonials_1' && item.isFeatured === 'active' && well
+                    ? { backgroundColor: 'var(--hero-btn-background)' }
+                    : modType === 'testimonials_1' && well
+                    ? { backgroundColor: '#fff' }
+                    : {}
+            }
         >
             {item.imageIcon && (
                 <div className={cn(styles['icon-block'])}>
@@ -82,7 +89,7 @@ const Heading = (props: HeadingProps) => {
 
     return (
         <HeadTag
-            className={cn(styles[textType], {
+            className={cn(styles[textType], textType, {
                 //['accent-txt']: well || isBeaconHero || modType === 'photo_grid',
                 ['txt-color-hd']: !isBeaconHero && modType != 'photo_grid' && modType != 'banner' && !useAccentColor && modType != 'parallax',
                 ['testimonial-txt-color']: modType === 'testimonials_1' && well,

@@ -244,7 +244,7 @@
         width: 100%;
 
         .hd {
-            font-weight: normal;
+            //font-weight: normal;
         }
 
         &.not_well {
@@ -283,6 +283,12 @@
                 border-width: 0.75rem;
                 margin-left: -0.75rem;
                 border-top-color: var(--accent-background);
+            }
+
+            &.hero {
+                &:before {
+                    border-top-color: var(--hero-background);
+                }
             }
         }
 

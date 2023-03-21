@@ -9,7 +9,7 @@ const DescBlock = (props: DescBlockProps) => {
 
     return (
         <div
-            className={cn(styles.root, styles[`${descSize}`], 'txt-font', styles[`${type}`], styles[`${contentSpacing}`], {
+            className={cn(styles.root, styles[`${descSize}`], 'txt-font', 'desc', styles[`${type}`], styles[`${contentSpacing}`], {
                 ['txt-color']: !isBeaconHero && !useAccentColor,
                 //['accent-txt']: well || isBeaconHero,
                 ['accent-txt']: useAccentColor,

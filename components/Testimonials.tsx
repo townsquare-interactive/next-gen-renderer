@@ -3,7 +3,6 @@ import styles from './testimonials.module.scss'
 import { ModuleProps, ItemWrapProps, ModuleItemProps } from '../types'
 import cn from 'classnames'
 import { Fragment } from 'react'
-import { ButtonWrap } from '../elements/ButtonWrap'
 import { ImageBlock } from '../elements/ImageBlock'
 import ModuleTitle from 'elements/ModuleTitle'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
@@ -38,7 +37,7 @@ const Testimonials = (props: ModuleProps) => {
         return (
             <div
                 className={cn(
-                    'article-mod',
+                    'testimonials-mod',
                     'root-container',
                     styles['item-flex'],
                     styles['root'],
@@ -48,8 +47,8 @@ const Testimonials = (props: ModuleProps) => {
                     styles[`${currentSpacing}`],
 
                     {
-                        [styles.beacon]: type === 'article',
                         [styles.well]: well == '1',
+                        ['well']: well == '1',
                         [styles.not_well]: !well,
                         [styles[`cst_${customClassName}`]]: customClassName,
                         [`cst_${customClassName}`]: customClassName,
@@ -94,10 +93,10 @@ const ModuleItem = (props: ModuleItemProps) => {
         <article
             className={cn(
                 styles['item'],
-
                 'item',
                 {
                     [styles.hero]: item.isFeatured === 'active',
+                    ['hero']: item.isFeatured === 'active',
                     [styles.nHero]: !item.isFeatured,
                     [styles.yDsc]: item.desc,
                     [styles.nDsc]: !item.desc,
@@ -107,7 +106,8 @@ const ModuleItem = (props: ModuleItemProps) => {
                     [styles.nHds]: !item.headline || !item.subheader,
 
                     [styles.yLk]: (item.pagelink || item.weblink || item.pagelink2 || item.weblink2) && !item.twoButtons,
-                    ['border-background']: well == '1',
+                    ['border-background']: well == '1' && item.isFeatured != 'active',
+                    ['hero-background']: well == '1' && item.isFeatured === 'active',
                     ['round']: item.borderType === 'round',
                     ['is-wrap-link']: item.isWrapLink,
                 },
@@ -136,9 +136,9 @@ const ItemWrap = (props: ItemWrapProps) => {
     return (
         <>
             <div className={styles.caption}>
-                {item.actionlbl && <div className={cn('txt-color-hd', styles.stars)}>{'★'.repeat(Number(item.actionlbl))}</div>}
+                {item.actionlbl && <div className={cn('txt-color-hd', styles.stars, 'stars')}>{'★'.repeat(Number(item.actionlbl))}</div>}
 
-                <span className={cn('txt-color-hd', styles.quotes)}>
+                <span className={cn('txt-color-hd', styles.quotes, 'quotes')}>
                     <FontAwesomeIcon icon={['fas', 'quote-left']} />
                 </span>
 
