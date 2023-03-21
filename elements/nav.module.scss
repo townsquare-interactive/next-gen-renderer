@@ -45,20 +45,19 @@
 
             li > .sub-menu {
                 box-shadow: 2px 2px 2px rgb(0 0 0 / 20%);
-                position: absolute;
                 opacity: 0;
                 visibility: hidden;
-                padding-top: 2rem;
+                //padding-top: 2rem;
                 transition: all 0.4s ease-in-out;
                 max-height: 70vh;
                 margin: 0;
                 z-index: 300;
                 min-width: 100%;
                 background: rgba(16, 37, 46, 1);
+            }
 
-                a {
-                    padding: 0.25rem 0.5rem;
-                }
+            .sub-1 {
+                position: absolute;
             }
 
             li:hover .sub-menu {
@@ -68,13 +67,6 @@
 
             ul {
                 padding: 0;
-            }
-            li > .sub-menu {
-                padding: 0 0 0 0.5rem;
-            }
-
-            ul .sub-menu li {
-                padding-left: 1rem;
             }
 
             .sub-menu li {
@@ -90,6 +82,19 @@
 
             li {
                 text-transform: uppercase;
+            }
+
+            .sub-1 {
+                white-space: nowrap;
+
+                & > li a {
+                    padding: 0.25rem 0.5rem;
+                    padding-left: 1.25rem;
+                }
+                & > li > ul li a {
+                    padding: 0.25rem 0.5rem;
+                    padding-left: 2.25rem;
+                }
             }
         }
     }

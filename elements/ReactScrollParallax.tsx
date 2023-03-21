@@ -17,13 +17,11 @@ const ReactScroll = ({ item, imgsize, cmsUrl, children }: any) => {
         if (useDelay === true) {
             setIsSSR(false)
         }
-    }, [])
+    }, [useDelay])
 
     if (useDelay === false) {
         setIsSSR(false)
     }
-
-    //const theCount = item.itemCount === 2 ? true : item.itemCount === 3 ? true : false
 
     return (
         <>
@@ -31,7 +29,7 @@ const ReactScroll = ({ item, imgsize, cmsUrl, children }: any) => {
                 <>
                     <div className={styles.outer}>
                         <div className={cn(styles['image-block'], styles['image-block2'])}>
-                            <Image
+                            {/*                             <Image
                                 src={domainImage(item.image, true, cmsUrl || '')}
                                 fill
                                 alt={item.img_alt_tag || ''}
@@ -43,6 +41,15 @@ const ReactScroll = ({ item, imgsize, cmsUrl, children }: any) => {
                                     opacity: item.modOpacity || 1,
                                 }}
                                 sizes={'100vh'}
+                            /> */}
+                            <ImageElement
+                                imgSrc={item.image}
+                                imgAlt={item.img_alt_tag}
+                                imagePriority={item.imagePriority}
+                                imgsize={imgsize}
+                                cmsUrl={cmsUrl}
+                                modType={'Parallax'}
+                                opacity={item.modOpacity}
                             />
                         </div>
                     </div>
@@ -82,24 +89,3 @@ const ReactScroll = ({ item, imgsize, cmsUrl, children }: any) => {
 }
 
 export default ReactScroll
-
-//import { useParallaxController } from 'react-scroll-parallax'
-/* const TheImg = () => {
-        const parallaxController: any = useParallaxController()
-        return (
-            <Image
-                src={domainImage(item.image, true, cmsUrl || '')}
-                fill
-                alt={item.img_alt_tag || ''}
-                quality="80"
-                priority={item.imagePriority}
-                style={{
-                    objectFit: 'cover',
-                    objectPosition: 'bottom',
-                    opacity: item.modOpacity || 1,
-                }}
-                sizes={'100vh'}
-                onLoadingComplete={() => parallaxController.update()}
-            />
-        )
-    } */
