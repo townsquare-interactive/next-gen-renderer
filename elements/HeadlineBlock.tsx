@@ -11,10 +11,11 @@ export const HeadlineBlock = (props: HeadlineBlockProps) => {
     return (
         <header
             className={cn(
-                styles['hd-block'],
+                styles['root'],
                 styles[`${item.headSize}`],
                 styles[`${modType}`],
                 styles[`${item.align}`],
+                styles[`col_${columns}`],
 
                 {
                     [styles.article]: modType?.includes('article'),
@@ -25,6 +26,7 @@ export const HeadlineBlock = (props: HeadlineBlockProps) => {
                     [styles.not_well]: !well,
                     [styles.well]: well,
                     [styles.hero]: item.isFeatured === 'active',
+                    [styles.yImg]: item.image,
                 }
             )}
             style={

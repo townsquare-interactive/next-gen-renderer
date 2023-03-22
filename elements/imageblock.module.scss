@@ -39,6 +39,12 @@
         //aspect-ratio: math.div(1, 1);
         padding-bottom: 100%;
     }
+    &.round_1_1 {
+        padding-bottom: 100%;
+        border-radius: 999px;
+        overflow: hidden;
+        margin-top: 2rem;
+    }
 
     &.landscape_4_3 {
         padding-bottom: percentage(3/4);

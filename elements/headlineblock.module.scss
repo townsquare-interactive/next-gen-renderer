@@ -25,7 +25,7 @@
     line-height: 1.1111111111em;
 }
 
-.hd-block {
+.root {
     margin-top: 0.7058823529em;
 
     .sh {
@@ -236,15 +236,28 @@
     }
 
     &.testimonials {
-        padding: 1rem 0 1rem;
+        //padding: 1rem 0 1rem;
         position: relative;
         //position: absolute;
         /*         width: 100%;
         bottom: 0; */
         width: 100%;
+        margin-top: 0;
 
+        display: flex;
+        flex-direction: column;
+
+        .headings {
+            padding-top: 1rem;
+        }
+
+        /* &.yImg.not_well {
+            padding-top: 1.75rem;
+        } */
+
+        //with image
         .hd {
-            //font-weight: normal;
+            padding-top: 1rem;
         }
 
         &.not_well {
@@ -260,13 +273,18 @@
                 background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, var(--hd) 50%, rgba(255, 255, 255, 0) 100%);
             }
 
-            margin-top: 0;
+            //margin-top: 0;
 
-            .hd {
-                @include breakpoints.md-min {
-                    padding-top: 2.25rem;
+            /* &.col_1 {
+                .hd {
+                    //padding-top: 1rem;
+
+                    //col_1
+                   @include breakpoints.md-min {
+                        padding-top: 2.25rem;
+                    } 
                 }
-            }
+            }*/
         }
 
         &.well {
@@ -292,19 +310,13 @@
             }
         }
 
-        .headings {
-            //maybe col_1
-            // padding-top: 2.25rem;
-
-            //padding: 1rem 0 1rem;
-        }
-
         .sh {
             text-transform: uppercase;
             font-size: 0.6875em;
             margin-top: 1.0909090909em;
             margin-bottom: 1.0909090909em;
             line-height: 1.0909090909em;
+            padding-bottom: 1rem;
         }
 
         .hd {
@@ -345,24 +357,24 @@
 
 .well {
     &.article_1 {
-        .hd-block {
+        .root {
             padding: 0 2rem 0;
         }
 
         .nDsc {
-            .hd-block {
+            .root {
                 padding-bottom: 1.5rem;
             }
         }
     }
 
     &.article_2 {
-        .hd-block {
+        .root {
             padding: 1rem 2rem;
         }
     }
 
-    .hd-block {
+    .root {
         width: 100%;
     }
 }

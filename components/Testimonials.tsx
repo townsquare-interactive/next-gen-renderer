@@ -136,7 +136,12 @@ const ItemWrap = (props: ItemWrapProps) => {
     return (
         <>
             <div className={styles.caption}>
-                {item.actionlbl && <div className={cn('txt-color-hd', styles.stars, 'stars')}>{'★'.repeat(Number(item.actionlbl))}</div>}
+                {item.actionlbl && (
+                    <div className={cn('txt-color-hd', styles.stars, 'stars')}>
+                        {'★'.repeat(Number(item.actionlbl))}
+                        {'☆'.repeat(5 - Number(item.actionlbl))}
+                    </div>
+                )}
 
                 <span className={cn('txt-color-hd', styles.quotes, 'quotes')}>
                     <FontAwesomeIcon icon={['fas', 'quote-left']} />
@@ -148,23 +153,29 @@ const ItemWrap = (props: ItemWrapProps) => {
                     </div>
                 )}
             </div>
-            {item.image && (
-                <figure className={cn(styles['image-block'])} data-alt="Headline">
-                    <ImageBlock item={item} imgsize={imgsize} well={well} cmsUrl={cmsUrl} modType={type} />
-                </figure>
-            )}
 
-            {(item.headline || item.subheader) && (
-                <HeadlineBlock
-                    item={item}
-                    well={well}
-                    columns={columns}
-                    isBeaconHero={item.isBeaconHero}
-                    modType={type}
-                    noDesc={!item.desc}
-                    useAccentColor={useAccentColor || false}
-                />
-            )}
+            <div
+                className={styles.content}
+                /*  style={item.isFeatured === 'active' && well ? { backgroundColor: 'var(--hero-btn-background)' } : well ? { backgroundColor: '#fff' } : {}} */
+            >
+                {item.image && (
+                    <figure className={cn(styles['image-block'])} data-alt="Headline">
+                        <ImageBlock item={item} imgsize={imgsize} well={well} cmsUrl={cmsUrl} modType={type} />
+                    </figure>
+                )}
+
+                {(item.headline || item.subheader) && (
+                    <HeadlineBlock
+                        item={item}
+                        well={well}
+                        columns={columns}
+                        isBeaconHero={item.isBeaconHero}
+                        modType={type}
+                        noDesc={!item.desc}
+                        useAccentColor={useAccentColor || false}
+                    />
+                )}
+            </div>
         </>
     )
 }
