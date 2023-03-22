@@ -490,9 +490,9 @@ export interface ArticleItems {
     align: string
     isFeatured: string
     isPlugin: string
-    imageSize: any
-    pagelinkId: any
-    pagelink2Id: any
+    imageSize?: any
+    pagelinkId?: any
+    pagelink2Id?: any
     headerTag: string
     plugin: string
     disabled: string
