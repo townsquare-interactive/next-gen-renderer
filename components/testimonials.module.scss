@@ -27,11 +27,37 @@
 
                 .caption {
                     .quotes {
-                        font-size: 3.375em;
                         margin-top: 0.2222222222em;
                         margin-bottom: 0.2222222222em;
-                        line-height: 1.4074074074em;
-                        display: inline-block;
+                        line-height: 1.1074074074em;
+                        //display: inline-block;
+                        font-size: 3.375em;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        blockquote {
+                            width: 100%;
+                            font-family: Georgia, serif;
+                            // font-size: 18px;
+                            font-style: italic;
+
+                            // margin: 0.25em 0;
+                            //padding: 0.35em 40px;
+                            position: relative;
+                            text-align: center;
+                        }
+
+                        blockquote:after {
+                            display: block;
+                            content: '\201C';
+                            font-size: 2.375em;
+                            position: absolute;
+
+                            //color: #7a7a7a;
+                            width: 100%;
+                            margin-left: -0.5rem;
+                        }
                     }
 
                     .stars {

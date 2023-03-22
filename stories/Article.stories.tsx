@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import Article from '../components/Article'
 import { ArticleItems } from '../types'
-import { themeStyles } from 'storydefaults'
+import { themeStyles, buttonList1, buttonList2, buttonListJust2 } from 'storydefaults'
 
 export default {
     title: 'new/Article',
@@ -41,10 +41,78 @@ const Template: ComponentStory<typeof Article> = (args) => (
 
 const Default = Template.bind({})
 const item1: ArticleItems = {
-    id: '6574f9b4_f1d5_4b10_feb6_928e62803df3',
+    id: '1edcc99c_9904_445b_dbac_9029c0d9e456',
+    desc: 'changed',
+    icon: '',
+    align: 'center',
+    icon2: '',
+    icon3: '',
+    image: '/files/2022/10/darkmountains.jpg',
+    plugin: '',
+    btnSize: '',
+    btnType: '',
+    weblink: '',
+    btnSize2: '',
+    btnType2: '',
+    disabled: '',
+    headline: 'changed article',
+    isPlugin: '',
+    pagelink: '/article/',
+    weblink2: '',
+    actionlbl: 'Button1',
+    headerTag: '1',
+    imageSize: {
+        width: 4592,
+        height: 2584,
+        size: '5.09 MB',
+    },
+    newwindow: '',
+    pagelink2: '/banner/',
+    subheader: '',
+    actionlbl2: 'Button2',
+    isFeatured: '',
+    newwindow2: '',
+    pagelinkId: '',
+    bkgrd_color: '',
+    pagelink2Id: '',
+    buttonList: [
+        {
+            name: 'btn1',
+            link: '/article/',
+            window: '',
+            label: 'Button1',
+            active: true,
+            btnType: 'btn_1',
+            btnSize: 'btn_md',
+            linkType: 'local',
+            blockBtn: false,
+        },
+        {
+            name: 'btn2',
+            link: '/banner/',
+            window: '',
+            label: 'Button2',
+            active: true,
+            btnType: 'btn_2',
+            btnSize: 'btn_md',
+            linkType: 'local',
+            blockBtn: false,
+        },
+    ],
+    twoButtons: true,
+    isWrapLink: false,
+    //visibleButton: true,
+    isBeaconHero: false,
+    imagePriority: false,
+    itemCount: 1,
+    imageType: 'crop',
+}
+
+/* id: '6574f9b4_f1d5_4b10_feb6_928e62803df3',
     headline: 'Article Module',
     subheader: 'Subheader',
     image: '/files/2022/08/bellagioFountain1.jpg',
+    cmsUrl: 'clttestsiteforjoshedwards.production.townsquareinteractive.com',
     icon: '',
     icon2: '',
     icon3: '',
@@ -87,7 +155,7 @@ const item1: ArticleItems = {
             linkType: 'local',
         },
     ],
-}
+} */
 const item2 = item1
 const item3 = item1
 
@@ -282,54 +350,23 @@ Button.args = {
     items: [
         {
             ...item1,
-            actionlbl: 'Contact Us',
-            pagelink: '/home',
-            icon: 'faArchway',
-            btnType: 'btn_1',
-            btnSize: 'md',
+            buttonList: buttonList1,
+            twoButtons: false,
+            isWrapLink: true,
+            visibleButton: true,
         },
     ],
 }
 export const TwoButtons = Template.bind({})
 TwoButtons.args = {
-    ...Default.args,
+    ...Button.args,
     items: [
         {
             ...item1,
-            actionlbl: 'Contact Us',
-            weblink: 'https://www.facebook.com/',
-            pagelink: '',
-            actionlbl2: 'Contact 2',
-            weblink2: 'https://www.google.com/',
-            pagelink2: '',
-            align: 'center',
-            icon: 'faArchway',
-            icon2: 'faAnchor',
-            btnType: 'btn_1',
-            btnType2: 'btn_2',
-            btnSize: 'md',
-            btnSize2: 'md',
-            newwindow: 1,
-            newwindow2: 1,
-            buttonList: [
-                {
-                    name: 'btn1',
-                    link: '/',
-                    window: '',
-                    icon: { iconPrefix: 'fas', iconModel: 'rocket' },
-                    label: 'Contact Us Today',
-                    active: true,
-                    linkType: 'local',
-                },
-                {
-                    name: 'btn2',
-                    link: '/columns/',
-                    icon: { iconPrefix: 'fab', iconModel: 'facebook-square' },
-                    label: 'button 2',
-                    active: true,
-                    linkType: 'local',
-                },
-            ],
+            buttonList: buttonList2,
+            twoButtons: true,
+            isWrapLink: false,
+            visibleButton: true,
         },
     ],
 }
@@ -339,12 +376,10 @@ Button2.args = {
     items: [
         {
             ...item1,
-            actionlbl2: 'Contact 2',
-            weblink2: '/home',
-            align: 'center',
-            icon2: 'faAnchor',
-            btnType2: 'btn_2',
-            btnSize2: 'md',
+            buttonList: buttonListJust2,
+            twoButtons: true,
+            isWrapLink: false,
+            visibleButton: true,
         },
     ],
 }
@@ -354,18 +389,22 @@ ButtonSizesBlock.args = {
     items: [
         {
             ...item1,
-            actionlbl: 'Contact Us',
-            pagelink: '/',
-            actionlbl2: 'Contact 2',
-            pagelink2: '/',
-            align: 'center',
-            icon: 'faArchway',
-            icon2: 'faAnchor',
-            btnType: 'btn_2',
-            btnType2: 'btn_1',
-            btnSize: 'lg btn_block',
-            // btnSize:'md btn_block',
-            btnSize2: 'lg btn_block',
+            buttonList: [
+                {
+                    name: 'btn1',
+                    link: '/article/',
+                    window: '',
+                    label: 'Button1',
+                    active: true,
+                    btnType: 'btn_1',
+                    btnSize: 'btn_md',
+                    linkType: 'local',
+                    blockBtn: true,
+                },
+            ],
+            twoButtons: true,
+            isWrapLink: false,
+            visibleButton: true,
         },
     ],
 }
@@ -379,18 +418,7 @@ LinkNoButton.args = {
             weblink: 'https://www.facebook.com/',
             align: 'left',
             newwindow: 1,
-        },
-    ],
-}
-
-export const ButtonNoLink = Template.bind({})
-ButtonNoLink.args = {
-    ...Default.args,
-    items: [
-        {
-            ...item1,
-            actionlbl: 'hello',
-            align: 'left',
+            isWrapLink: true,
         },
     ],
 }
@@ -489,29 +517,7 @@ MBBv3.args = {
     ...MultipleBorderButtons.args,
     type: 'article_3',
 }
-export const MultipleBorderLinked = Template.bind({})
-MultipleBorderLinked.args = {
-    ...ThreeColumns.args,
-    columns: 3,
-    well: '1',
-    items: [
-        {
-            ...item1,
-            pagelink: '/',
-            align: 'center',
-        },
-        {
-            ...item1,
-            pagelink: '/',
-            align: 'center',
-        },
-        {
-            ...item1,
-            pagelink: '/',
-            align: 'center',
-        },
-    ],
-}
+
 export const CustomClass = Template.bind({})
 CustomClass.args = {
     ...AlignLeft.args,

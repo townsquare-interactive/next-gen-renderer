@@ -13,6 +13,8 @@ import LinkWrap from 'elements/LinkWrap'
 export const PhotoGrid = (props: PhotoGridProps) => {
     const { columns = 1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl, customClassName, contentSpacing } = props
 
+    console.log(props)
+
     //const currentSpacing = contentSpacing || 'thin'
     const currentSpacing = contentSpacing || ''
 

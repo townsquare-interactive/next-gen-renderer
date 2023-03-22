@@ -490,6 +490,9 @@ export interface ArticleItems {
     align: string
     isFeatured: string
     isPlugin: string
+    imageSize: any
+    pagelinkId: any
+    pagelink2Id: any
     headerTag: string
     plugin: string
     disabled: string
@@ -506,6 +509,7 @@ export interface ArticleItems {
     visibleButton?: boolean
     imagePriority?: boolean
     imgtype?: string
+    imageType?: string
     hasGridCaption?: boolean
     promoColor?: string
     itemCount?: number
@@ -530,6 +534,10 @@ export interface DescBlockProps {
 }
 
 export interface ModuleProps {
+    id?: string
+    lazy?: string
+    blockField1: string
+    blockField2: string
     uid: string
     modId: string
     /* type: string */

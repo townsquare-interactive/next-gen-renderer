@@ -63,3 +63,67 @@ export const social = [
         icon: ['fas', 'Rocket'],
     },
 ]
+
+export const buttonList1 = [
+    {
+        name: 'btn1',
+        link: '/article/',
+        window: '',
+        label: 'Button1',
+        active: true,
+        btnType: 'btn_1',
+        btnSize: 'btn_md',
+        linkType: 'local',
+        blockBtn: false,
+    },
+    {
+        name: 'btn2',
+        link: '/banner/',
+        window: '',
+        label: 'Button2',
+        active: false,
+        btnType: 'btn_2',
+        btnSize: 'btn_md',
+        linkType: 'local',
+        blockBtn: false,
+    },
+]
+
+export const buttonList2 = [
+    {
+        name: 'btn1',
+        link: '/article/',
+        window: '',
+        label: 'Button1',
+        active: true,
+        btnType: 'btn_1',
+        btnSize: 'btn_md',
+        linkType: 'local',
+        blockBtn: false,
+    },
+    {
+        name: 'btn2',
+        link: '/banner/',
+        window: '',
+        label: 'Button2',
+        active: true,
+        btnType: 'btn_2',
+        btnSize: 'btn_md',
+        linkType: 'local',
+        blockBtn: false,
+    },
+]
+
+export const buttonListJust2 = [
+    {
+        name: 'btn1',
+        link: '/article/',
+        window: '',
+        label: 'Button1',
+        active: true,
+        btnType: 'btn_2',
+        btnSize: 'btn_md',
+        linkType: 'local',
+        blockBtn: false,
+    },
+]

@@ -110,6 +110,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                     ['hero-background']: well == '1' && item.isFeatured === 'active',
                     ['round']: item.borderType === 'round',
                     ['is-wrap-link']: item.isWrapLink,
+                    ['txt-color']: item.isFeatured != 'active',
                 },
                 styles[`item_${itemIndex + 1}`]
             )}
@@ -144,7 +145,8 @@ const ItemWrap = (props: ItemWrapProps) => {
                 )}
 
                 <span className={cn('txt-color-hd', styles.quotes, 'quotes')}>
-                    <FontAwesomeIcon icon={['fas', 'quote-left']} />
+                    {/*  <FontAwesomeIcon icon={['fas', 'quote-left']} /> */}
+                    <blockquote></blockquote>
                 </span>
 
                 {item.desc && (
