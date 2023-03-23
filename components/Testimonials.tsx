@@ -105,7 +105,6 @@ const ModuleItem = (props: ModuleItemProps) => {
                     [styles.yHds]: item.headline || item.subheader,
                     [styles.nHds]: !item.headline || !item.subheader,
 
-                    [styles.yLk]: (item.pagelink || item.weblink || item.pagelink2 || item.weblink2) && !item.twoButtons,
                     ['border-background']: well == '1' && item.isFeatured != 'active',
                     ['hero-background']: well == '1' && item.isFeatured === 'active',
                     ['round']: item.borderType === 'round',

@@ -99,7 +99,7 @@ export interface RendererProps {
 }
 
 export interface WidgetRendererProps {
-    item: { component: string; filter: boolean; text: string; title: string }
+    item: CompositeItem
     siteData: GlobalData
     navSwitch: () => void
 }
@@ -110,16 +110,16 @@ export interface GlobalData {
     navStyle?: 'layout1' | 'layout2'
     //themeStyles: ThemeStyles
     layout?: number
-    modules: GlobalModule[]
+    modules?: GlobalModule[]
     seo?: SeoData
     url?: string
     email?: string
     social: SocialItem[]
     siteName?: string
     phoneNumber?: String
-    themeStyles: ThemeStyles
+    themeStyles?: ThemeStyles
     contact: { email: any; phone: any; hours?: any; address?: any; contactLinks: ContactLinks[]; showContactBox: boolean }
-    cmsNav?: [NavItem]
+    cmsNav?: NavItem[]
     logos?: CMSLogo
     //mobileLogos?: Logo
     footerLogos?: Logo
@@ -136,6 +136,8 @@ interface CMSLogo {
     header: { pct: number; slots: LogoSlot[]; activeSlots?: number[] }
     mobile: { pct: number; slots: LogoSlot[]; activeSlots?: number[] }
     footer: { pct: number; slots: LogoSlot[]; activeSlots?: number[] }
+    fonts?: any[]
+    list?: any
 }
 
 export interface LogoSlot {
@@ -220,14 +222,14 @@ interface CompositeData {
     layout: null | string
     columns: number
     sections: null | string
-    modules: { items: [CompositeItem]; type: string }
+    modules: { items: CompositeItem[]; type: string }
 }
 
 export interface CompositeItem {
-    filter: boolean
+    filter?: boolean
     title: string
     component: string
-    text: string
+    text?: string
 }
 
 export interface NavItem {
@@ -235,8 +237,8 @@ export interface NavItem {
     menu_list_id: number
     title: string
     post_type: string
-    nav_menu_item: string
-    type: null
+    nav_menu_item?: string
+    type: null | string
     menu_item_parent: number
     object_id: number
     object: string
@@ -245,7 +247,7 @@ export interface NavItem {
     menu_order: number
     mi_url: string | null
     url: string
-    submenu: [NavItem]
+    submenu: NavItem[] | []
     slug: string
 }
 

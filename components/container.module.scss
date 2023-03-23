@@ -3,10 +3,6 @@
 @use './styles/variables.scss';
 
 .root {
-    * {
-        box-sizing: border-box;
-    }
-
     .featured {
         width: 100%;
         margin: 0 auto;

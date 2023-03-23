@@ -30,78 +30,33 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
     //Determine Height of header for margins in layout
     const ref = useRef<HTMLDivElement>(null)
 
-    const headerOptions2: HeaderOptions = {
-        //reverseHeaderLayout: true,
-        //desktopBurgerNav: true,
-        //reverseSocial: true,
-        ctaBanner: [
-            {
-                label: 'Contact Us Today',
-                btnType: 'btn_banner',
-                link: '/article',
-                window: 1,
-                active: true,
-                btnSize: 'btn_lg',
-                icon: { iconModel: 'list-alt', iconPrefix: 'far' },
-            },
-        ],
-        ctaBtns: [
-            /* {
-                label: 'Contact Us Today',
-                btnType: 'btn_cta',
-                link: '/article',
-                window: 1,
-                active: true,
-                icon: { iconModel: 'list-alt', iconPrefix: 'far' },
-                btnSize: 'btn_sm',
-            }, */
-            {
-                label: 'btn next',
-                btnType: 'btn_cta',
-                link: '/test',
-                //bgColor: 'orange',
-                window: 1,
-                active: true,
-                btnSize: 'btn_sm',
-            },
-        ],
-        /* textCta: [
-            {
-                text: 'Welcome',
-            },
-        ], */
-    }
-
-    //const currentLayout = siteData.headerOptions || {}
-    const currentLayout = siteData.headerOptions || headerOptions2
-
     return (
         <header
             className={cn(styles.root, 'header-background', {
                 [styles.shrink]: ref?.current?.offsetHeight && windowHeight > ref?.current?.offsetHeight,
-                [styles['reverse-head']]: currentLayout.reverseHeaderLayout,
+                [styles['reverse-head']]: siteData.headerOptions?.reverseHeaderLayout,
             })}
             ref={ref}
         >
-            {currentLayout?.ctaBanner && <ButtonWrap buttonList={currentLayout.ctaBanner} type="cta_banner" />}
+            {siteData.headerOptions?.ctaBanner && <ButtonWrap buttonList={siteData.headerOptions.ctaBanner} type="cta_banner" />}
             <div className={styles.wrapper}>
                 {siteData.logos?.header?.slots && <HeaderLogoBlock type="desktop" logos={siteData.logos.header.slots} />}
 
                 {siteData.logos?.mobile?.slots && <HeaderLogoBlock type="mobile" logos={siteData.logos.mobile.slots} />}
-                {!currentLayout.desktopBurgerNav && <Nav navType={'desktop-nav'} cmsNav={siteData.cmsNav} navSwitch={navSwitch} />}
+                {!siteData.headerOptions?.desktopBurgerNav && <Nav navType={'desktop-nav'} cmsNav={siteData.cmsNav} navSwitch={navSwitch} />}
 
-                {currentLayout && (
+                {siteData.headerOptions && (
                     <div className={styles['cta-block']}>
-                        {currentLayout.textCta &&
-                            currentLayout.textCta.map((item, index: number) => (
+                        {siteData.headerOptions.textCta &&
+                            siteData.headerOptions.textCta.map((item, index: number) => (
                                 <Fragment key={index}>
                                     <TextWidget text={item.text} type="header" />
                                 </Fragment>
                             ))}
-                        {currentLayout?.ctaBtns && <ButtonWrap buttonList={currentLayout.ctaBtns} type="cta" />}
+                        {siteData.headerOptions?.ctaBtns && <ButtonWrap buttonList={siteData.headerOptions.ctaBtns} type="cta" />}
                     </div>
                 )}
-                <NavToggle navSwitch={navSwitch} desktopBurgerNav={currentLayout.desktopBurgerNav} />
+                <NavToggle navSwitch={navSwitch} desktopBurgerNav={siteData.headerOptions?.desktopBurgerNav} />
             </div>
             <SocialBar siteData={siteData} setContactModal={setContactModal} />
         </header>

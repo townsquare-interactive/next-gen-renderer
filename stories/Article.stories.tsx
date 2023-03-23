@@ -485,6 +485,7 @@ MultipleBorderButtons.args = {
             icon: 'faArchway',
             icon2: 'faAnchor',
             btnType: 'btn_1',
+            visibleButton: true,
         },
         {
             ...item1,
@@ -495,6 +496,7 @@ MultipleBorderButtons.args = {
             align: 'center',
             icon: 'faAnchor',
             btnType: 'btn_2',
+            visibleButton: true,
         },
         {
             ...item1,
@@ -508,6 +510,7 @@ MultipleBorderButtons.args = {
             icon: 'faArchway',
             icon2: 'faAnchor',
             btnType: 'btn_1',
+            visibleButton: true,
         },
     ],
 }

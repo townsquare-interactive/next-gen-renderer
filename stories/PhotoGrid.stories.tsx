@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { PhotoGrid } from '../components/PhotoGrid'
-import { themeStyles } from 'storydefaults'
 import { ArticleItems } from '../types'
+import { themeStyles, buttonList1, buttonList2, buttonListJust2 } from 'storydefaults'
 
 export default {
     title: 'new/PhotoGrid',
@@ -113,7 +113,7 @@ const item3 = item1
 
 Default.args = {
     modId: '1',
-    type: 'banner_1',
+    type: 'photo_grid',
     well: '',
     align: 'left',
     imgsize: 'landscape_4_3',
@@ -255,139 +255,32 @@ ImageNoSizing.args = {
     imgsize: 'no_sizing',
 }
 
-export const Button = Template.bind({})
-Button.args = {
-    ...Default.args,
-    items: [
-        {
-            ...item1,
-            actionlbl: 'Contact Us',
-            pagelink: '/home',
-            icon: 'faArchway',
-            btnType: 'btn_1',
-            btnSize: 'md',
-            buttonList: [
-                {
-                    name: 'btn1',
-                    link: '/',
-                    window: '',
-                    icon: { iconPrefix: 'fas', iconModel: 'rocket' },
-                    label: 'Contact Us Today',
-                    active: true,
-                    linkType: 'local',
-                },
-                {
-                    name: 'btn2',
-                    link: '/columns/',
-                    icon: { iconPrefix: 'fab', iconModel: 'facebook-square' },
-                    label: 'button 2',
-                    active: false,
-                    linkType: 'local',
-                },
-            ],
-        },
-    ],
-}
-export const TwoButtons = Template.bind({})
-TwoButtons.args = {
-    ...Default.args,
-    items: [
-        {
-            ...item1,
-            actionlbl: 'Contact Us',
-            weblink: 'https://www.facebook.com/',
-            pagelink: '',
-            actionlbl2: 'Contact 2',
-            weblink2: 'https://www.google.com/',
-            pagelink2: '',
-            align: 'center',
-            icon: 'faArchway',
-            icon2: 'faAnchor',
-            btnType: 'btn_1',
-            btnType2: 'btn_2',
-            btnSize: 'md',
-            btnSize2: 'md',
-            newwindow: 1,
-            newwindow2: 1,
-            buttonList: [
-                {
-                    name: 'btn1',
-                    link: '/',
-                    window: '',
-                    icon: { iconPrefix: 'fas', iconModel: 'rocket' },
-                    label: 'Contact Us Today',
-                    active: true,
-                    linkType: 'local',
-                },
-                {
-                    name: 'btn2',
-                    link: '/columns/',
-                    icon: { iconPrefix: 'fab', iconModel: 'facebook-square' },
-                    label: 'button 2',
-                    active: true,
-                    linkType: 'local',
-                    btnType: 'btn_2',
-                },
-            ],
-        },
-    ],
-}
-export const Button2 = Template.bind({})
-Button2.args = {
-    ...Default.args,
-    items: [
-        {
-            ...item1,
-            actionlbl2: 'Contact 2',
-            weblink2: '/home',
-            align: 'center',
-            icon2: 'faAnchor',
-            btnType2: 'btn_2',
-            btnSize2: 'md',
-            buttonList: [
-                {
-                    name: 'btn1',
-                    link: '/',
-                    window: '',
-                    icon: { iconPrefix: 'fas', iconModel: 'rocket' },
-                    label: 'Contact Us Today',
-                    active: false,
-                    linkType: 'local',
-                },
-                {
-                    name: 'btn2',
-                    link: '/columns/',
-                    icon: { iconPrefix: 'fab', iconModel: 'facebook-square' },
-                    label: 'button 2',
-                    active: true,
-                    linkType: 'local',
-                    btnType: 'btn_2',
-                },
-            ],
-        },
-    ],
-}
 export const ButtonSizesBlock = Template.bind({})
 ButtonSizesBlock.args = {
     ...Default.args,
     items: [
         {
             ...item1,
-            actionlbl: 'Contact Us',
-            pagelink: '/',
-            actionlbl2: 'Contact 2',
-            pagelink2: '/',
-            align: 'center',
-            icon: 'faArchway',
-            icon2: 'faAnchor',
-            btnType: 'btn_2',
-            btnType2: 'btn_1',
-            btnSize: 'lg btn_block',
-            // btnSize:'md btn_block',
-            btnSize2: 'lg btn_block',
+            buttonList: [
+                {
+                    name: 'btn1',
+                    link: '/article/',
+                    window: '',
+                    label: 'Button1',
+                    active: true,
+                    btnType: 'btn_1',
+                    btnSize: 'btn_md',
+                    linkType: 'local',
+                    blockBtn: true,
+                },
+            ],
+            twoButtons: true,
+            isWrapLink: false,
+            visibleButton: true,
         },
     ],
 }
+
 export const LinkNoButton = Template.bind({})
 LinkNoButton.args = {
     ...Default.args,
@@ -399,7 +292,7 @@ LinkNoButton.args = {
             align: 'left',
             newwindow: 1,
             isWrapLink: true,
-            pagelink: '/',
+            visibleButton: false,
         },
     ],
 }
@@ -449,55 +342,7 @@ MultipleBorder.args = {
     ...ThreeColumns.args,
     well: '1',
 }
-export const MultipleBorderButtons = Template.bind({})
-MultipleBorderButtons.args = {
-    ...ThreeColumns.args,
-    columns: 3,
-    well: '1',
-    items: [
-        {
-            ...item1,
-            actionlbl: 'Contact Us',
-            actionlbl2: 'Contact Us',
-            pagelink: '/',
-            // actionlbl2: 'Contact 2',
-            //pagelink2: '/',
-            align: 'center',
-            icon: 'faArchway',
-            icon2: 'faAnchor',
-            btnType: 'btn_1',
-        },
-        {
-            ...item1,
-            actionlbl2: 'Contact Us',
-            pagelink: '/',
-            // actionlbl2: 'Contact 2',
-            //pagelink2: '/',
-            align: 'center',
-            icon: 'faAnchor',
-            btnType: 'btn_2',
-        },
-        {
-            ...item1,
 
-            actionlbl2: 'Contact Us',
-            pagelink2: '/',
-            pagelink: '/',
-            // actionlbl2: 'Contact 2',
-            //pagelink2: '/',
-            align: 'center',
-            icon: 'faArchway',
-            icon2: 'faAnchor',
-            btnType: 'btn_1',
-        },
-    ],
-}
-
-export const MBBv3 = Template.bind({})
-MBBv3.args = {
-    ...MultipleBorderButtons.args,
-    type: 'article_3',
-}
 export const MultipleBorderLinked = Template.bind({})
 MultipleBorderLinked.args = {
     ...ThreeColumns.args,
