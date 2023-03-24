@@ -137,7 +137,16 @@ const ItemWrap = (props: ItemWrapProps) => {
         <>
             <div className={styles.caption}>
                 {item.actionlbl && (
-                    <div className={cn('txt-color-hd', styles.stars, 'stars')}>
+                    <div
+                        className={cn(
+                            {
+                                ['txt-color-hd']: !item.modColor1,
+                            },
+                            styles.stars,
+                            'stars'
+                        )}
+                        style={item.modColor1 ? { color: item.modColor1 } : {}}
+                    >
                         {'★'.repeat(Number(item.actionlbl))}
                         {'☆'.repeat(5 - Number(item.actionlbl))}
                     </div>

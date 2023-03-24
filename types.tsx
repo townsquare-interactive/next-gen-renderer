@@ -230,6 +230,7 @@ export interface CompositeItem {
     title: string
     component: string
     text?: string
+    nav_menu?: number
 }
 
 export interface NavItem {
@@ -523,6 +524,8 @@ export interface ArticleItems {
     useAccentColor?: boolean
     modSwitch1?: number
     modOpacity?: number
+    linkNoBtn?: boolean
+    itemStyle?: any
 }
 
 export interface DescBlockProps {

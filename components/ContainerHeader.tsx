@@ -1,6 +1,6 @@
 'use client'
 import styles from './containerheader.module.scss'
-import { ContainerHeaderProps, HeaderLogoBlockProps, HeaderOptions, LogoSlot } from '../types'
+import { ContainerHeaderProps, HeaderLogoBlockProps, LogoSlot } from '../types'
 import cn from 'classnames'
 import { domainImage } from '../functions'
 import { useState, useEffect, Fragment } from 'react'

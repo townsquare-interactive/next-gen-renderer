@@ -1,4 +1,3 @@
-@use 'sass:math';
 @use './styles/breakpoints.scss';
 @use './styles/utils.scss';
 @use './styles/variables.scss';
@@ -66,6 +65,7 @@
                         line-height: 1.1764705882em;
                         margin-bottom: 0.5rem;
                         letter-spacing: 5px;
+                        font-weight: 400;
                     }
                 }
             }
@@ -113,7 +113,7 @@
     @container item (min-width:343px) {
         .item {
             &.nHero:first-of-type {
-                margin-top: 2rem;
+                //margin-top: 2rem;
             }
         }
     }
@@ -199,7 +199,7 @@
 
     @container module (min-width:481px) {
         &.col_1 .item:first-of-type {
-            margin-top: 2rem;
+            //margin-top: 2rem;
         }
 
         /* &.beacon {
@@ -237,11 +237,12 @@
 
             &.col_1 {
                 .item {
-                    margin-bottom: 4rem;
+                    //margin-bottom: 4rem;
+                    margin-bottom: 2rem;
 
-                    &:last-of-type &.col_1 {
+                    /* &:last-of-type &.col_1 {
                         margin-bottom: 2rem;
-                    }
+                    } */
                 }
             }
 
@@ -258,7 +259,7 @@
         @include utils.item-flex;
     }
 
-    &.feature-column,
+    /* &.feature-column,
     &.single-column {
         &.article_1,
         &.article_2,
@@ -269,7 +270,7 @@
                 margin-right: auto;
             }
         }
-    }
+    } */
 }
 
 .columns .root {

@@ -72,17 +72,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                 `item_${itemIndex + 1}`
             )}
             lang="en"
-            style={
-                item.modColor1
-                    ? {
-                          background: `${item.modColor1}`,
-                      }
-                    : well === '1' && !item.image
-                    ? {
-                          backgroundImage: `linear-gradient(-45deg, ${item.textureImage?.gradientColors[0]}, ${item.textureImage?.gradientColors[1]})`,
-                      }
-                    : { background: `${item.promoColor}` }
-            }
+            style={item.itemStyle}
         >
             {item.image && (
                 <ImageElement
@@ -92,6 +82,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                     imgsize={imgsize}
                     cmsUrl={cmsUrl}
                     modType={'Banner'}
+                    opacity={item.modOpacity || 1}
                 />
             )}
             {item.isWrapLink && <LinkWrap item={item} modType={'banner'}></LinkWrap>}

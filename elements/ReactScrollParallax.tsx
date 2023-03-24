@@ -49,7 +49,7 @@ const ReactScroll = ({ item, imgsize, cmsUrl, children }: any) => {
                                 imgsize={imgsize}
                                 cmsUrl={cmsUrl}
                                 modType={'Parallax'}
-                                opacity={item.modOpacity}
+                                opacity={item.modOpacity || 1}
                             />
                         </div>
                     </div>
@@ -70,7 +70,7 @@ const ReactScroll = ({ item, imgsize, cmsUrl, children }: any) => {
                                             imgsize={imgsize}
                                             cmsUrl={cmsUrl}
                                             modType={'Parallax'}
-                                            opacity={item.modOpacity}
+                                            opacity={item.modOpacity || 1}
                                         />
                                     </div>
                                 ),

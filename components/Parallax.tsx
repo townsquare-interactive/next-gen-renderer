@@ -86,25 +86,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                 `item_${itemIndex + 1}`
             )}
             lang="en"
-            style={
-                item.modColor1 && well != '1' && !item.image
-                    ? {
-                          background: `${item.modColor1}`,
-                      }
-                    : item.modColor1
-                    ? {
-                          background: `var(--accent-background)`,
-                      }
-                    : well === '1' && !item.image
-                    ? {
-                          backgroundImage: `linear-gradient(-45deg, ${item.textureImage?.gradientColors[0]}, ${item.textureImage?.gradientColors[1]})`,
-                      }
-                    : !item.image
-                    ? {
-                          background: `${item.promoColor}`,
-                      }
-                    : {}
-            }
+            style={item.itemStyle}
         >
             <ItemWrap
                 item={item}
@@ -174,7 +156,15 @@ const ParallaxChildren = ({ item, columns, well, modId, themeStyles, cmsUrl, img
     return (
         <>
             {laxType === 'jarallax' && item.image && (
-                <ImageElement imgSrc={item.image} imgAlt={item.img_alt_tag} imagePriority imgsize={imgsize} cmsUrl={cmsUrl} modType={'Parallax'} />
+                <ImageElement
+                    imgSrc={item.image}
+                    imgAlt={item.img_alt_tag}
+                    imagePriority
+                    imgsize={imgsize}
+                    cmsUrl={cmsUrl}
+                    modType={'Parallax'}
+                    opacity={item.modOpacity || 1}
+                />
             )}
             <div
                 className={cn(styles['caption'], {
