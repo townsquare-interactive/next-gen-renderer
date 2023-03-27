@@ -154,7 +154,7 @@ const ItemWrap = (props: ItemWrapProps) => {
 
                 <span className={cn('txt-color-hd', styles.quotes, 'quotes')}>
                     {/*  <FontAwesomeIcon icon={['fas', 'quote-left']} /> */}
-                    <blockquote></blockquote>
+                    {(item.desc || item.headline || item.subheader) && <blockquote></blockquote>}
                 </span>
 
                 {item.desc && (
