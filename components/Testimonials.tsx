@@ -8,7 +8,7 @@ import ModuleTitle from 'elements/ModuleTitle'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
 import LinkWrap from 'elements/LinkWrap'
 import DescBlock from 'elements/DescBlock'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+/* import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' */
 
 const Testimonials = (props: ModuleProps) => {
     const {

@@ -10,7 +10,6 @@ import DescBlock from 'elements/DescBlock'
 import { ImageElement } from 'elements/ImageElement'
 import { ConditionalWrapper, domainImage } from 'functions'
 import ReactScroll from 'elements/ReactScrollParallax'
-//import ReactParallax from 'elements/ReactParallax'
 
 //import dynamic from 'next/dynamic'
 //const Jarallax = dynamic(() => import('../elements/parallax_options/Jarallax'), { ssr: false })

@@ -622,3 +622,13 @@ export const siteDataEx = {
     favicon: 'star.png',
     fontImport: ' body {font-family:Lato}\n    .hd-font{font-family:Lato} \n    .txt-font{font-family:Lato}\n    .feat-font{font-family:Josefin Sans}\n    ',
 }
+
+export const createStoryStyles = (themeStyles: ThemeStyles) => {
+    const textColors = `.accent-txt{color:${themeStyles['textColorAccent']}} .txt-color{color:${themeStyles['textColor']}} .txt-color-hd{color:${themeStyles['headingColor']}}`
+
+    const btnStyles = `.btn_1{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['promoColor']}} .btn_1:hover{color: ${themeStyles['promoColor']}; background-color: ${themeStyles['textColorAccent']}} .btn_2{color: ${themeStyles['promoColor']}; border-color: ${themeStyles['promoColor']}} .btn_2:hover{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['promoColor']}}`
+
+    const colorStyles = textColors + btnStyles
+
+    return colorStyles
+}

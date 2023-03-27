@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import Parallax from '../components/Parallax'
 import { ArticleItems } from '../types'
-import { themeStyles, buttonList1, buttonList2, buttonListJust2 } from 'storydefaults'
+import { themeStyles, buttonList1, buttonList2, buttonListJust2, createStoryStyles } from 'storydefaults'
 
 export default {
     title: 'new/Parallax',
@@ -177,13 +177,8 @@ Default.args = plaxmod
 
 let colorStyles: string
 if (Default.args?.themeStyles) {
-    const textColors = `.accent-txt{color:${Default.args.themeStyles['textColorAccent']}} .txt-color{color:${Default.args.themeStyles['textColor']}} .txt-color-hd{color:${Default.args.themeStyles['headingColor']}}`
-
-    const btnStyles = `.btn_1{color: ${Default.args.themeStyles['textColorAccent']}; background-color: ${Default.args.themeStyles['promoColor']}} .btn_1:hover{color: ${Default.args.themeStyles['promoColor']}; background-color: ${Default.args.themeStyles['textColorAccent']}} .btn_2{color: ${Default.args.themeStyles['promoColor']}; border-color: ${Default.args.themeStyles['promoColor']}} .btn_2:hover{color: ${Default.args.themeStyles['textColorAccent']}; background-color: ${Default.args.themeStyles['promoColor']}}`
-
-    colorStyles = textColors + btnStyles
+    colorStyles = createStoryStyles(Default.args.themeStyles)
 }
-
 export const Plain = Template.bind({})
 Plain.args = {
     ...Default.args,
