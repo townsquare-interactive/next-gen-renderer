@@ -146,6 +146,7 @@ Image.args = {
         },
     ],
 }
+
 export const OnlySub = Template.bind({})
 OnlySub.args = {
     ...Plain.args,
@@ -286,5 +287,41 @@ TextSizes.args = {
         { ...item1, headSize: 'font_xs', descSize: 'font_sm' },
         { ...item1, headSize: 'font_md', descSize: 'font_md' },
         { ...item1, headSize: 'font_xl', descSize: 'font_xl' },
+    ],
+}
+
+export const StarColors = Template.bind({})
+StarColors.args = {
+    ...Default.args,
+    items: [
+        {
+            ...item1,
+            desc: 'Change color of stars using modColor1 to pass in a hex value',
+            modColor1: 'gold',
+        },
+    ],
+}
+
+export const UseAccentColor = Template.bind({})
+UseAccentColor.args = {
+    ...MultipleBorder.args,
+    items: [
+        {
+            ...item1,
+            useAccentColor: true,
+        },
+    ],
+}
+
+export const RoundedBorder = Template.bind({})
+RoundedBorder.args = {
+    ...MultipleBorder.args,
+    columns: 1,
+    items: [
+        {
+            ...item1,
+            useAccentColor: true,
+            borderType: 'round',
+        },
     ],
 }

@@ -7,6 +7,7 @@ import { HeaderOptions } from 'types'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
+import SlidingHeader from 'elements/SlidingHeader'
 const { library } = require('@fortawesome/fontawesome-svg-core')
 
 library.add(fas, fab, far)
@@ -15,7 +16,11 @@ export default {
     component: ContainerHeader,
 } as ComponentMeta<typeof ContainerHeader>
 
-const Template: ComponentStory<typeof ContainerHeader> = (args) => <ContainerHeader {...args} />
+const Template: ComponentStory<typeof ContainerHeader> = (args) => (
+    <>
+        <ContainerHeader {...args} />
+    </>
+)
 
 const Default = Template.bind({})
 Default.args = {
@@ -106,5 +111,14 @@ ReverseLayout.args = {
         headerOptions: {
             reverseHeaderLayout: true,
         },
+    },
+}
+
+export const ShowContactBox = Template.bind({})
+ShowContactBox.args = {
+    ...Default.args,
+    siteData: {
+        ...siteDataEx,
+        contact: { ...siteDataEx.contact, showContactBox: true },
     },
 }

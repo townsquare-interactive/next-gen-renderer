@@ -464,6 +464,7 @@ MultipleBorder.args = {
     ...ThreeColumns.args,
     well: '1',
 }
+
 export const MultipleBorderButtons = Template.bind({})
 MultipleBorderButtons.args = {
     ...ThreeColumns.args,
@@ -651,6 +652,32 @@ BeaconHeroMultiple.args = {
             icon: 'faArchway',
             icon2: 'faAnchor',
             btnType: 'btn_1',
+        },
+    ],
+}
+
+export const UseAccentColor = Template.bind({})
+UseAccentColor.args = {
+    ...MultipleBorder.args,
+    columns: 1,
+    items: [
+        {
+            ...item1,
+            useAccentColor: true,
+            image: '',
+        },
+    ],
+}
+
+export const RoundedBorder = Template.bind({})
+RoundedBorder.args = {
+    ...MultipleBorder.args,
+    columns: 1,
+    items: [
+        {
+            ...item1,
+            useAccentColor: true,
+            borderType: 'round',
         },
     ],
 }

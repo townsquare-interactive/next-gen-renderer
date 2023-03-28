@@ -188,11 +188,11 @@
             width: variables.$third-item-width;
         }
 
-        &.col_2 .hero {
+        &.col_2 .hero.item {
             width: variables.$full-item-width;
         }
 
-        &.col_3 .hero {
+        &.col_3 .hero.item {
             width: variables.$col3-hero;
         }
 
@@ -202,7 +202,7 @@
     }
 
     @container module (min-width:1025px) {
-        &.col_3 .nHero,
+        &.col_3 .nHero.item,
         &.beacon.col_3 .item {
             width: variables.$third-item-width;
         }

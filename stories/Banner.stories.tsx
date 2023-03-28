@@ -1,7 +1,13 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import Banner from '../components/Banner'
 import { ArticleItems } from '../types'
-import { themeStyles, buttonList1, buttonList2, buttonListJust2 } from 'storydefaults'
+import { themeStyles, buttonList1, buttonList2, buttonListJust2, itemStyle } from 'storydefaults'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { far } from '@fortawesome/free-regular-svg-icons'
+const { library } = require('@fortawesome/fontawesome-svg-core')
+
+library.add(fas, fab, far)
 
 export default {
     title: 'new/Banner',
@@ -109,6 +115,7 @@ const item1: ArticleItems = {
     imagePriority: false,
     itemCount: 1,
     imageType: 'crop',
+    itemStyle: itemStyle.noImage,
 }
 
 const plaxmod = {
@@ -318,6 +325,7 @@ Border.args = {
                 image: '/subtle-white-feathers.png',
                 gradientColors: ['#3eb183', '#00a4fc'],
             },
+            itemStyle: itemStyle.borderStyle,
         },
     ],
 }
@@ -399,5 +407,5 @@ export const Icon3 = Template.bind({})
 Icon3.args = {
     ...Plain.args,
 
-    items: [{ ...item1, icon3: 'faAnchor' }],
+    items: [{ ...item1, icon3: 'faAnchor', imageIcon: { iconPrefix: 'far', iconModel: 'address-book' } }],
 }

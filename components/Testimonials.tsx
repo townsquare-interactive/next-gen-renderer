@@ -28,9 +28,6 @@ const Testimonials = (props: ModuleProps) => {
         isSingleColumn,
     } = props
 
-    // const currentSpacing = contentSpacing || 'thin'
-    const currentSpacing = contentSpacing || ''
-
     if (disabled === 'disabled') {
         return <></>
     } else {
@@ -44,7 +41,7 @@ const Testimonials = (props: ModuleProps) => {
                     styles['flex-mod'],
                     styles[`col_${columns}`],
                     styles[`${type}`],
-                    styles[`${currentSpacing}`],
+                    styles[`${contentSpacing}`],
 
                     {
                         [styles.well]: well == '1',
@@ -104,12 +101,12 @@ const ModuleItem = (props: ModuleItemProps) => {
                     [styles.yImg]: item.image,
                     [styles.yHds]: item.headline || item.subheader,
                     [styles.nHds]: !item.headline || !item.subheader,
-
                     ['border-background']: well == '1' && item.isFeatured != 'active',
                     ['hero-background']: well == '1' && item.isFeatured === 'active',
                     ['round']: item.borderType === 'round',
                     ['is-wrap-link']: item.isWrapLink,
-                    ['txt-color']: item.isFeatured != 'active',
+                    ['accent-txt']: item.useAccentColor,
+                    ['txt-color']: item.isFeatured != 'active' && !item.useAccentColor,
                 },
                 styles[`item_${itemIndex + 1}`]
             )}
@@ -140,7 +137,7 @@ const ItemWrap = (props: ItemWrapProps) => {
                     <div
                         className={cn(
                             {
-                                ['txt-color-hd']: !item.modColor1,
+                                ['txt-color-hd']: !item.modColor1 && !item.useAccentColor,
                             },
                             styles.stars,
                             'stars'
@@ -152,14 +149,30 @@ const ItemWrap = (props: ItemWrapProps) => {
                     </div>
                 )}
 
-                <span className={cn('txt-color-hd', styles.quotes, 'quotes')}>
-                    {/*  <FontAwesomeIcon icon={['fas', 'quote-left']} /> */}
-                    {(item.desc || item.headline || item.subheader) && <blockquote></blockquote>}
-                </span>
+                {item.desc && (
+                    <span
+                        className={cn(
+                            {
+                                ['txt-color-hd']: !item.useAccentColor && !item.useAccentColor,
+                            },
+                            styles.quotes,
+                            'quotes'
+                        )}
+                    >
+                        <blockquote></blockquote>
+                    </span>
+                )}
 
                 {item.desc && (
                     <div className={cn(styles['txt-block'])}>
-                        <DescBlock desc={item.desc} descSize={item.descSize} type={type} well={well} isBeaconHero={item.isBeaconHero} />
+                        <DescBlock
+                            desc={item.desc}
+                            descSize={item.descSize}
+                            type={type}
+                            well={well}
+                            isBeaconHero={item.isBeaconHero}
+                            useAccentColor={item.useAccentColor || false}
+                        />
                     </div>
                 )}
             </div>
@@ -174,7 +187,7 @@ const ItemWrap = (props: ItemWrapProps) => {
                     </figure>
                 )}
 
-                {(item.headline || item.subheader) && (
+                {(item.headline || item.subheader || well) && (
                     <HeadlineBlock
                         item={item}
                         well={well}
@@ -182,7 +195,7 @@ const ItemWrap = (props: ItemWrapProps) => {
                         isBeaconHero={item.isBeaconHero}
                         modType={type}
                         noDesc={!item.desc}
-                        useAccentColor={useAccentColor || false}
+                        useAccentColor={item.useAccentColor || false}
                     />
                 )}
             </div>

@@ -372,3 +372,16 @@ Hidden.args = {
     ...Plain.args,
     items: [{ ...item1, disabled: 'disabled' }],
 }
+
+export const RoundedBorder = Template.bind({})
+RoundedBorder.args = {
+    ...MultipleBorder.args,
+    columns: 1,
+    items: [
+        {
+            ...item1,
+            useAccentColor: true,
+            borderType: 'round',
+        },
+    ],
+}

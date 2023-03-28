@@ -28,9 +28,6 @@ const Article = (props: ModuleProps) => {
         isSingleColumn,
     } = props
 
-    // const currentSpacing = contentSpacing || 'thin'
-    const currentSpacing = contentSpacing || ''
-
     if (disabled === 'disabled') {
         return <></>
     } else {
@@ -44,7 +41,7 @@ const Article = (props: ModuleProps) => {
                     styles['flex-mod'],
                     styles[`col_${columns}`],
                     styles[`${type}`],
-                    styles[`${currentSpacing}`],
+                    styles[`${contentSpacing}`],
 
                     {
                         [styles.beacon]: type === 'article',
@@ -131,8 +128,6 @@ const ModuleItem = (props: ModuleItemProps) => {
 const ItemWrap = (props: ItemWrapProps) => {
     const { item, imgsize, well, themeStyles, type, modId, cmsUrl, columns } = props
 
-    const useAccentColor = item.useAccentColor || false
-
     return (
         <>
             {props.type != 'article_2' ? (
@@ -150,7 +145,7 @@ const ItemWrap = (props: ItemWrapProps) => {
                             isBeaconHero={item.isBeaconHero}
                             modType={type}
                             noDesc={!item.desc}
-                            useAccentColor={useAccentColor || false}
+                            useAccentColor={item.useAccentColor || false}
                         />
                     )}
                 </>
@@ -164,7 +159,7 @@ const ItemWrap = (props: ItemWrapProps) => {
                             isBeaconHero={item.isBeaconHero}
                             modType={type}
                             noDesc={!item.desc}
-                            useAccentColor={useAccentColor || false}
+                            useAccentColor={item.useAccentColor || false}
                         />
                     )}
 
@@ -178,17 +173,14 @@ const ItemWrap = (props: ItemWrapProps) => {
 
             {item.desc && (
                 <div className={cn(styles['txt-block'])}>
-                    {/*   <div
-                        className={cn(styles['dsc-block'], styles[`${item.descSize}`], 'txt-font', {
-                            ['txt-color']: !item.isBeaconHero && !useAccentColor,
-                            //['accent-txt']: well || item.isBeaconHero,
-                            ['accent-txt']: item.isBeaconHero || useAccentColor,
-                        })}
-                    >
-                        <p className={cn(styles['dsc'], 'dsc')}>{Parser(item.desc)}</p>
-                    </div> */}
-
-                    <DescBlock desc={item.desc} descSize={item.descSize} type={type} well={well} isBeaconHero={item.isBeaconHero} />
+                    <DescBlock
+                        desc={item.desc}
+                        descSize={item.descSize}
+                        type={type}
+                        well={well}
+                        isBeaconHero={item.isBeaconHero}
+                        useAccentColor={item.useAccentColor || false}
+                    />
                 </div>
             )}
             {item.visibleButton && <ButtonWrap well={well} modId={modId} type={type} columns={columns} themeStyles={themeStyles} {...item} />}

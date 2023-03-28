@@ -623,6 +623,13 @@ export const siteDataEx = {
     fontImport: ' body {font-family:Lato}\n    .hd-font{font-family:Lato} \n    .txt-font{font-family:Lato}\n    .feat-font{font-family:Josefin Sans}\n    ',
 }
 
+export const itemStyle = {
+    borderStyle: { backgroundImage: 'linear-gradient(-45deg, #3eb183, #00a4fc)' },
+    noImage: { background: '#3eb183' },
+}
+
+export const icon = { iconPrefix: 'far', iconModel: 'address-book' }
+
 export const createStoryStyles = (themeStyles: ThemeStyles) => {
     const textColors = `.accent-txt{color:${themeStyles['textColorAccent']}} .txt-color{color:${themeStyles['textColor']}} .txt-color-hd{color:${themeStyles['headingColor']}}`
 

@@ -92,10 +92,19 @@ const Heading = (props: HeadingProps) => {
     return (
         <HeadTag
             className={cn(styles[textType], textType, {
-                //['accent-txt']: well || isBeaconHero || modType === 'photo_grid',
-                ['txt-color-hd']: !isBeaconHero && modType != 'photo_grid' && modType != 'banner' && !useAccentColor && modType != 'parallax',
+                ['txt-color-hd']:
+                    !isBeaconHero &&
+                    modType != 'photo_grid' &&
+                    modType != 'banner' &&
+                    (!useAccentColor || modType === 'testimonials_1') &&
+                    modType != 'parallax',
                 ['testimonial-txt-color']: modType === 'testimonials_1' && well,
-                ['accent-txt']: isBeaconHero || modType === 'photo_grid' || modType === 'banner' || useAccentColor || modType === 'parallax',
+                ['accent-txt']:
+                    isBeaconHero ||
+                    modType === 'photo_grid' ||
+                    modType === 'banner' ||
+                    (useAccentColor && modType != 'testimonials_1') ||
+                    modType === 'parallax',
                 ['txt-font']: textType === 'sh',
                 ['hd-font']: textType === 'hd',
                 ['feat-font']: textType === 'hd' && modType === 'parallax',
