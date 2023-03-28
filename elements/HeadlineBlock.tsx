@@ -16,6 +16,7 @@ export const HeadlineBlock = (props: HeadlineBlockProps) => {
                 styles[`${modType}`],
                 styles[`${item.align}`],
                 styles[`col_${columns}`],
+                'txt-color-hd',
 
                 {
                     [styles.article]: modType?.includes('article'),

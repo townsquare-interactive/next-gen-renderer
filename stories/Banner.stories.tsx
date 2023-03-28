@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import Banner from '../components/Banner'
 import { ArticleItems } from '../types'
-import { themeStyles, buttonList1, buttonList2, buttonListJust2, itemStyle } from 'storydefaults'
+import { themeStyles, buttonList1, buttonList2, buttonListJust2, itemStyle, icon } from 'storydefaults'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
@@ -407,5 +407,5 @@ export const Icon3 = Template.bind({})
 Icon3.args = {
     ...Plain.args,
 
-    items: [{ ...item1, icon3: 'faAnchor', imageIcon: { iconPrefix: 'far', iconModel: 'address-book' } }],
+    items: [{ ...item1, icon3: 'faAnchor', imageIcon: icon }],
 }

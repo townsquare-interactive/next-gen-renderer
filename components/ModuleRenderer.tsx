@@ -19,6 +19,7 @@ import { capitalize } from '../functions'
 import { GlobalModule, ModuleProps, RendererProps } from 'types'
 import Banner from './Banner'
 import { Fragment } from 'react'
+import Card from './Card'
 
 const keysToComponentMap: any = {
     Text,
@@ -38,6 +39,7 @@ const keysToComponentMap: any = {
     Banner,
     Parallax,
     Testimonials,
+    Card,
 }
 
 const mapPropsToConfig = (config: ModuleProps[]) => {

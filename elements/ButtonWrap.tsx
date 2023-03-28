@@ -15,12 +15,13 @@ export const ButtonWrap = (props: BtnProps) => {
     const promoButtonStyles = themeStyles
         ? `#id_${modId} .item_${itemCount} .btn_promo {color: ${promoColor}; background-color: ${themeStyles['textColorAccent']}} #id_${modId} .item_${itemCount} .btn_promo:hover{color: ${themeStyles['textColorAccent']}; background-color: ${promoColor}} #id_${modId} .item_${itemCount} .btn_override {color: ${modColor1}; background-color: ${themeStyles['textColorAccent']}} #id_${modId} .item_${itemCount} .btn_override:hover{color: ${themeStyles['textColorAccent']}; background-color: ${modColor1}}  #id_${modId} .item_${itemCount} .btn2_override {color:${themeStyles['textColorAccent']}; background-color:transparent } #id_${modId} .item_${itemCount} .btn2_override:hover{color: ${modColor1}; background-color: ${themeStyles['textColorAccent']}; `
         : ''
-
+    console.log(type)
     return (
         <div
             className={cn(styles['btn-mod'], styles[`${type}`], styles[`${align}`], 'txt-font', {
                 [styles.well]: well == '1' && type.includes('article'),
                 [styles['article-all']]: type.includes('article'),
+                [styles['card']]: type.includes('card'),
                 [styles['two-btns']]: twoButtons,
             })}
         >

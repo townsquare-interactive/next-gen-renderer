@@ -182,6 +182,17 @@
         }
     }
 
+    &.card_1,
+    &.card_2 {
+        &:after {
+            border-bottom: 3px solid;
+            content: ' ';
+            display: block;
+            margin: 1rem auto;
+            width: 5em;
+        }
+    }
+
     @include breakpoints.sm-min {
         &.banner.left {
             display: flex;

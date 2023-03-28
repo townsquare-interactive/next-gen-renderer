@@ -129,7 +129,8 @@
     &.article_2,
     &.photo_grid,
     &.banner,
-    &.parallax {
+    &.parallax,
+    &.card {
         .btn {
             align-self: flex-start;
         }
@@ -200,7 +201,8 @@
     }
 
     &.article-all,
-    &.photo_grid {
+    &.photo_grid,
+    &.card {
         .btn-wrap {
             gap: 1rem;
 

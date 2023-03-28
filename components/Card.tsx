@@ -1,15 +1,16 @@
 'use client'
-import styles from './testimonials.module.scss'
+import styles from './card.module.scss'
 import { ModuleProps, ItemWrapProps, ModuleItemProps } from '../types'
 import cn from 'classnames'
 import { Fragment } from 'react'
+import { ButtonWrap } from '../elements/ButtonWrap'
 import { ImageBlock } from '../elements/ImageBlock'
 import ModuleTitle from 'elements/ModuleTitle'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
 import LinkWrap from 'elements/LinkWrap'
 import DescBlock from 'elements/DescBlock'
 
-const Testimonials = (props: ModuleProps) => {
+const Card = (props: ModuleProps) => {
     const {
         columns = 1,
         type,
@@ -33,18 +34,16 @@ const Testimonials = (props: ModuleProps) => {
         return (
             <div
                 className={cn(
-                    'testimonials-mod',
+                    'article-mod',
                     'root-container',
                     styles['item-flex'],
                     styles['root'],
                     styles['flex-mod'],
-                    styles[`col_${columns}`],
                     styles[`${type}`],
                     styles[`${contentSpacing}`],
-
                     {
+                        [styles.beacon]: type === 'article',
                         [styles.well]: well == '1',
-                        ['well']: well == '1',
                         [styles.not_well]: !well,
                         [styles[`cst_${customClassName}`]]: customClassName,
                         [`cst_${customClassName}`]: customClassName,
@@ -89,20 +88,27 @@ const ModuleItem = (props: ModuleItemProps) => {
         <article
             className={cn(
                 styles['item'],
+                styles[`${item.align}`],
                 'item',
                 {
                     [styles.hero]: item.isFeatured === 'active',
-                    ['hero']: item.isFeatured === 'active',
                     [styles.nHero]: !item.isFeatured,
-                    ['border-background']: well == '1' && item.isFeatured != 'active',
-                    ['hero-background']: well == '1' && item.isFeatured === 'active',
+                    [styles.yDsc]: item.desc,
+                    [styles.nDsc]: !item.desc,
+                    [styles.nImg]: !item.image,
+                    [styles.yImg]: item.image,
+                    [styles.yHds]: item.headline || item.subheader,
+                    [styles.nHds]: !item.headline || !item.subheader,
+                    //[styles.mod_left]: item.align === 'left' && (type === 'article_3' || type === 'article'),
+                    //[styles.mod_right]: item.align === 'right' && (type === 'article_3' || type === 'article'),
+                    [styles.yLk]: (item.pagelink || item.weblink || item.pagelink2 || item.weblink2) && !item.twoButtons,
+                    ['border-background']: true,
                     ['round']: item.borderType === 'round',
                     ['is-wrap-link']: item.isWrapLink,
-                    ['accent-txt']: item.useAccentColor,
-                    ['txt-color']: item.isFeatured != 'active' && !item.useAccentColor,
                 },
                 styles[`item_${itemIndex + 1}`]
             )}
+            lang="en"
         >
             {item.isWrapLink && <LinkWrap item={item} modType={'article'}></LinkWrap>}
             <div
@@ -118,39 +124,26 @@ const ModuleItem = (props: ModuleItemProps) => {
 }
 
 const ItemWrap = (props: ItemWrapProps) => {
-    const { item, imgsize, well, type, cmsUrl, columns } = props
+    const { item, imgsize, well, themeStyles, type, modId, cmsUrl, columns } = props
 
     return (
         <>
-            <div className={styles.caption}>
-                {item.actionlbl && (
-                    <div
-                        className={cn(
-                            {
-                                ['txt-color-hd']: !item.modColor1 && !item.useAccentColor,
-                            },
-                            styles.stars,
-                            'stars'
-                        )}
-                        style={item.modColor1 ? { color: item.modColor1 } : {}}
-                    >
-                        {'★'.repeat(Number(item.actionlbl))}
-                        {'☆'.repeat(5 - Number(item.actionlbl))}
-                    </div>
-                )}
-
-                {item.desc && (
-                    <span
-                        className={cn(
-                            {
-                                ['txt-color-hd']: !item.useAccentColor && !item.useAccentColor,
-                            },
-                            styles.quotes,
-                            'quotes'
-                        )}
-                    >
-                        <blockquote></blockquote>
-                    </span>
+            {item.image && (
+                <figure className={cn(styles['image-block'])} data-alt="Headline">
+                    <ImageBlock item={item} imgsize={imgsize} well={well} cmsUrl={cmsUrl} />
+                </figure>
+            )}
+            <div className={styles.content}>
+                {(item.headline || item.subheader) && (
+                    <HeadlineBlock
+                        item={item}
+                        well={well}
+                        columns={columns}
+                        isBeaconHero={item.isBeaconHero}
+                        modType={type}
+                        noDesc={!item.desc}
+                        useAccentColor={item.useAccentColor || false}
+                    />
                 )}
 
                 {item.desc && (
@@ -165,29 +158,11 @@ const ItemWrap = (props: ItemWrapProps) => {
                         />
                     </div>
                 )}
-            </div>
 
-            <div className={styles.content}>
-                {item.image && (
-                    <figure className={cn(styles['image-block'])} data-alt="Headline">
-                        <ImageBlock item={item} imgsize={imgsize} well={well} cmsUrl={cmsUrl} modType={type} />
-                    </figure>
-                )}
-
-                {(item.headline || item.subheader || well) && (
-                    <HeadlineBlock
-                        item={item}
-                        well={well}
-                        columns={columns}
-                        isBeaconHero={item.isBeaconHero}
-                        modType={type}
-                        noDesc={!item.desc}
-                        useAccentColor={item.useAccentColor || false}
-                    />
-                )}
+                {item.visibleButton && <ButtonWrap well={well} modId={modId} type={type} columns={columns} themeStyles={themeStyles} {...item} />}
             </div>
         </>
     )
 }
 
-export default Testimonials
+export default Card
