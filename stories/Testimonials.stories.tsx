@@ -8,7 +8,17 @@ export default {
     component: Testimonials,
     argTypes: {
         imgsize: {
-            options: ['landscape_4_3', 'landscape_3_2', 'portrait_3_4', 'portrait_2_3', 'square_1_1', 'widescreen_16_9', 'widescreen_2_4_1', 'widescreen_3_1'],
+            options: [
+                'landscape_4_3',
+                'landscape_3_2',
+                'portrait_3_4',
+                'portrait_2_3',
+                'square_1_1',
+                'widescreen_16_9',
+                'widescreen_2_4_1',
+                'widescreen_3_1',
+                'round_1_1',
+            ],
             control: { type: 'radio' },
         },
         well: {
@@ -189,19 +199,7 @@ OnlyDesc.args = {
         },
     ],
 }
-export const OnlyImage = Template.bind({})
-OnlyImage.args = {
-    ...Plain.args,
-    items: [
-        {
-            ...item1,
-            subheader: '',
-            headline: '',
-            desc: '',
-            align: '',
-        },
-    ],
-}
+
 export const ModuleTitle = Template.bind({})
 ModuleTitle.args = {
     ...Plain.args,
@@ -260,25 +258,6 @@ MultipleBorder.args = {
     well: '1',
 }
 
-export const CustomClass = Template.bind({})
-CustomClass.args = {
-    ...Plain.args,
-    customClassName: 'hello',
-}
-
-export const Caption = Template.bind({})
-Caption.args = {
-    ...Plain.args,
-
-    items: [{ ...item1, caption_tag: 'caption', captionOn: 0 }],
-}
-
-export const Hidden = Template.bind({})
-Hidden.args = {
-    ...Plain.args,
-    items: [{ ...item1, disabled: 'disabled' }],
-}
-
 export const TextSizes = Template.bind({})
 TextSizes.args = {
     ...Plain.args,
@@ -316,7 +295,7 @@ UseAccentColor.args = {
 export const RoundedBorder = Template.bind({})
 RoundedBorder.args = {
     ...MultipleBorder.args,
-    columns: 1,
+    columns: 3,
     items: [
         {
             ...item1,

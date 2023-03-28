@@ -8,7 +8,6 @@ import ModuleTitle from 'elements/ModuleTitle'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
 import LinkWrap from 'elements/LinkWrap'
 import DescBlock from 'elements/DescBlock'
-/* import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' */
 
 const Testimonials = (props: ModuleProps) => {
     const {
@@ -95,12 +94,6 @@ const ModuleItem = (props: ModuleItemProps) => {
                     [styles.hero]: item.isFeatured === 'active',
                     ['hero']: item.isFeatured === 'active',
                     [styles.nHero]: !item.isFeatured,
-                    [styles.yDsc]: item.desc,
-                    [styles.nDsc]: !item.desc,
-                    [styles.nImg]: !item.image,
-                    [styles.yImg]: item.image,
-                    [styles.yHds]: item.headline || item.subheader,
-                    [styles.nHds]: !item.headline || !item.subheader,
                     ['border-background']: well == '1' && item.isFeatured != 'active',
                     ['hero-background']: well == '1' && item.isFeatured === 'active',
                     ['round']: item.borderType === 'round',
@@ -126,9 +119,7 @@ const ModuleItem = (props: ModuleItemProps) => {
 }
 
 const ItemWrap = (props: ItemWrapProps) => {
-    const { item, imgsize, well, themeStyles, type, modId, cmsUrl, columns } = props
-
-    const useAccentColor = item.useAccentColor || false
+    const { item, imgsize, well, type, cmsUrl, columns } = props
 
     return (
         <>
@@ -177,10 +168,7 @@ const ItemWrap = (props: ItemWrapProps) => {
                 )}
             </div>
 
-            <div
-                className={styles.content}
-                /*  style={item.isFeatured === 'active' && well ? { backgroundColor: 'var(--hero-btn-background)' } : well ? { backgroundColor: '#fff' } : {}} */
-            >
+            <div className={styles.content}>
                 {item.image && (
                     <figure className={cn(styles['image-block'])} data-alt="Headline">
                         <ImageBlock item={item} imgsize={imgsize} well={well} cmsUrl={cmsUrl} modType={type} />
