@@ -6,10 +6,9 @@
 
 .root {
     @include utils.module-root;
+    @include utils.wrapper-size(0);
 
     .wrapper {
-        @include utils.wrapper-size(0);
-
         .item {
             margin-bottom: 2rem;
             width: variables.$full-width;

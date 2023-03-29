@@ -6,25 +6,29 @@
 
 .root {
     @include utils.module-root;
+    @include utils.wrapper-size(0);
 
     .wrapper {
-        @include utils.wrapper-size(0);
-
         .item {
             margin-bottom: 2rem;
             width: variables.$full-width;
             margin-left: 0;
             margin-right: 0;
 
-            text-align: left;
+            .content {
+                padding: 1.5rem 2.5rem 1.5rem;
+            }
 
-            &.right {
+            //text-align: left;
+            text-align: center;
+
+            /*  &.right {
                 text-align: right;
             }
 
             &.center {
                 text-align: center;
-            }
+            } */
 
             &.yImg {
                 .item-wrap {
@@ -38,17 +42,19 @@
         }
     }
 
-    &.card_1 {
-        .yImg {
-            .item-wrap {
-                grid-template-columns: 2fr 1fr;
+    @include breakpoints.lg-min {
+        &.card_1 {
+            .yImg {
+                .item-wrap {
+                    grid-template-columns: 2fr 1fr;
+                }
             }
         }
-    }
-    &.card_2 {
-        .yImg {
-            .item-wrap {
-                grid-template-columns: 1fr 1fr;
+        &.card_2 {
+            .yImg {
+                .item-wrap {
+                    grid-template-columns: 1fr 1fr;
+                }
             }
         }
     }

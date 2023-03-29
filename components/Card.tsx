@@ -34,7 +34,7 @@ const Card = (props: ModuleProps) => {
         return (
             <div
                 className={cn(
-                    'article-mod',
+                    'card-mod',
                     'root-container',
                     styles['item-flex'],
                     styles['root'],
@@ -42,7 +42,6 @@ const Card = (props: ModuleProps) => {
                     styles[`${type}`],
                     styles[`${contentSpacing}`],
                     {
-                        [styles.beacon]: type === 'article',
                         [styles.well]: well == '1',
                         [styles.not_well]: !well,
                         [styles[`cst_${customClassName}`]]: customClassName,
@@ -92,6 +91,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                 'item',
                 {
                     [styles.hero]: item.isFeatured === 'active',
+                    ['hero']: item.isFeatured === 'active',
                     [styles.nHero]: !item.isFeatured,
                     [styles.yDsc]: item.desc,
                     [styles.nDsc]: !item.desc,
@@ -102,7 +102,8 @@ const ModuleItem = (props: ModuleItemProps) => {
                     //[styles.mod_left]: item.align === 'left' && (type === 'article_3' || type === 'article'),
                     //[styles.mod_right]: item.align === 'right' && (type === 'article_3' || type === 'article'),
                     [styles.yLk]: (item.pagelink || item.weblink || item.pagelink2 || item.weblink2) && !item.twoButtons,
-                    ['border-background']: true,
+                    ['border-background']: item.isFeatured != 'active',
+                    ['hero-background']: item.isFeatured === 'active',
                     ['round']: item.borderType === 'round',
                     ['is-wrap-link']: item.isWrapLink,
                 },
@@ -128,39 +129,79 @@ const ItemWrap = (props: ItemWrapProps) => {
 
     return (
         <>
-            {item.image && (
-                <figure className={cn(styles['image-block'])} data-alt="Headline">
-                    <ImageBlock item={item} imgsize={imgsize} well={well} cmsUrl={cmsUrl} />
-                </figure>
-            )}
-            <div className={styles.content}>
-                {(item.headline || item.subheader) && (
-                    <HeadlineBlock
-                        item={item}
-                        well={well}
-                        columns={columns}
-                        isBeaconHero={item.isBeaconHero}
-                        modType={type}
-                        noDesc={!item.desc}
-                        useAccentColor={item.useAccentColor || false}
-                    />
-                )}
+            {item.align === 'left' || item.align === 'center' ? (
+                <>
+                    {item.image && (
+                        <figure className={cn(styles['image-block'])} data-alt="Headline">
+                            <ImageBlock item={item} imgsize={imgsize} well={well} cmsUrl={cmsUrl} />
+                        </figure>
+                    )}
+                    <div className={styles.content}>
+                        {(item.headline || item.subheader) && (
+                            <HeadlineBlock
+                                item={item}
+                                well={well}
+                                columns={columns}
+                                isBeaconHero={item.isBeaconHero}
+                                modType={type}
+                                noDesc={!item.desc}
+                                useAccentColor={item.isFeatured === 'active' ? true : item.useAccentColor || false}
+                            />
+                        )}
 
-                {item.desc && (
-                    <div className={cn(styles['txt-block'])}>
-                        <DescBlock
-                            desc={item.desc}
-                            descSize={item.descSize}
-                            type={type}
-                            well={well}
-                            isBeaconHero={item.isBeaconHero}
-                            useAccentColor={item.useAccentColor || false}
-                        />
+                        {item.desc && (
+                            <div className={cn(styles['txt-block'])}>
+                                <DescBlock
+                                    desc={item.desc}
+                                    descSize={item.descSize}
+                                    type={type}
+                                    well={well}
+                                    isBeaconHero={item.isBeaconHero}
+                                    useAccentColor={item.useAccentColor || false}
+                                />
+                            </div>
+                        )}
+
+                        {item.visibleButton && <ButtonWrap well={well} modId={modId} type={type} columns={columns} themeStyles={themeStyles} {...item} />}
                     </div>
-                )}
+                </>
+            ) : (
+                <>
+                    <div className={styles.content}>
+                        {(item.headline || item.subheader) && (
+                            <HeadlineBlock
+                                item={item}
+                                well={well}
+                                columns={columns}
+                                isBeaconHero={item.isBeaconHero}
+                                modType={type}
+                                noDesc={!item.desc}
+                                useAccentColor={item.isFeatured === 'active' ? true : item.useAccentColor || false}
+                            />
+                        )}
 
-                {item.visibleButton && <ButtonWrap well={well} modId={modId} type={type} columns={columns} themeStyles={themeStyles} {...item} />}
-            </div>
+                        {item.desc && (
+                            <div className={cn(styles['txt-block'])}>
+                                <DescBlock
+                                    desc={item.desc}
+                                    descSize={item.descSize}
+                                    type={type}
+                                    well={well}
+                                    isBeaconHero={item.isBeaconHero}
+                                    useAccentColor={item.useAccentColor || false}
+                                />
+                            </div>
+                        )}
+
+                        {item.visibleButton && <ButtonWrap well={well} modId={modId} type={type} columns={columns} themeStyles={themeStyles} {...item} />}
+                    </div>
+                    {item.image && (
+                        <figure className={cn(styles['image-block'])} data-alt="Headline">
+                            <ImageBlock item={item} imgsize={imgsize} well={well} cmsUrl={cmsUrl} />
+                        </figure>
+                    )}
+                </>
+            )}
         </>
     )
 }
