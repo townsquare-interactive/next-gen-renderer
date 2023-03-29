@@ -1,11 +1,11 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import Article from '../components/Article'
+import Card from '../components/Card'
 import { ArticleItems } from '../types'
 import { themeStyles, buttonList1, buttonList2, buttonListJust2, createStoryStyles } from 'storydefaults'
 
 export default {
-    title: 'new/Article',
-    component: Article,
+    title: 'new/Card',
+    component: Card,
     argTypes: {
         imgsize: {
             options: ['landscape_4_3', 'landscape_3_2', 'portrait_3_4', 'portrait_2_3', 'square_1_1', 'widescreen_16_9', 'widescreen_2_4_1', 'widescreen_3_1'],
@@ -30,12 +30,12 @@ export default {
             },
         },
     },
-} as ComponentMeta<typeof Article>
+} as ComponentMeta<typeof Card>
 
-const Template: ComponentStory<typeof Article> = (args) => (
+const Template: ComponentStory<typeof Card> = (args) => (
     <>
         {colorStyles && <style>{colorStyles}</style>}
-        <Article {...args} />
+        <Card {...args} />
     </>
 )
 
@@ -108,62 +108,14 @@ const item1: ArticleItems = {
     imageType: 'crop',
 }
 
-/* id: '6574f9b4_f1d5_4b10_feb6_928e62803df3',
-    headline: 'Article Module',
-    subheader: 'Subheader',
-    image: '/files/2022/08/bellagioFountain1.jpg',
-    cmsUrl: 'clttestsiteforjoshedwards.production.townsquareinteractive.com',
-    icon: '',
-    icon2: '',
-    icon3: '',
-    bkgrd_color: '',
-    btnType: '',
-    btnType2: '',
-    btnSize: '',
-    btnSize2: '',
-    desc: 'This is the desc',
-    pagelink: '',
-    weblink: '',
-    actionlbl: '',
-    newwindow: null,
-    pagelink2: '',
-    weblink2: '',
-    actionlbl2: '',
-    newwindow2: null,
-    align: '',
-    isFeatured: '',
-    isPlugin: '',
-    headerTag: '',
-    plugin: '',
-    disabled: '',
-    buttonList: [
-        {
-            name: 'btn1',
-            link: '/',
-            window: '',
-            icon: { iconPrefix: 'fas', iconModel: 'rocket' },
-            label: 'Contact Us Today',
-            active: false,
-            linkType: 'local',
-        },
-        {
-            name: 'btn2',
-            link: '/columns/',
-            icon: { iconPrefix: 'fab', iconModel: 'facebook-square' },
-            label: 'button 2',
-            active: false,
-            linkType: 'local',
-        },
-    ],
-} */
 const item2 = item1
 const item3 = item1
 
 Default.args = {
     modId: '1',
-    type: 'article_1',
+    type: 'card_1',
     well: '',
-    align: 'left',
+    align: 'center',
     imgsize: 'landscape_4_3',
     title: '',
     export: 1,
@@ -215,7 +167,6 @@ AlignRight.args = {
     items: [
         {
             ...item1,
-
             align: 'right',
         },
     ],
@@ -282,7 +233,6 @@ OnlyImage.args = {
             subheader: '',
             headline: '',
             desc: '',
-            align: '',
         },
     ],
 }
@@ -419,27 +369,6 @@ LinkNoButton.args = {
     ],
 }
 
-export const TwoColumns = Template.bind({})
-TwoColumns.args = {
-    ...Default.args,
-    columns: 2,
-    items: [{ ...item1 }, { ...item2 }, { ...item3 }],
-}
-
-export const ThreeColumns = Template.bind({})
-ThreeColumns.args = {
-    ...Default.args,
-    columns: 3,
-    items: [{ ...item1 }, { ...item2 }, { ...item3 }],
-}
-
-export const FourColumns = Template.bind({})
-FourColumns.args = {
-    ...Default.args,
-    columns: 4,
-    items: [{ ...item1 }, { ...item2 }, { ...item3 }, { ...item1 }],
-}
-
 export const Border = Template.bind({})
 Border.args = {
     ...AlignLeft.args,
@@ -457,71 +386,6 @@ MultiFeatured.args = {
     ...AlignLeft.args,
     columns: 3,
     items: [{ ...item1 }, { ...item1, isFeatured: 'active' }, { ...item1 }],
-}
-
-export const MultipleBorder = Template.bind({})
-MultipleBorder.args = {
-    ...ThreeColumns.args,
-    well: '1',
-}
-
-export const MultipleBorderButtons = Template.bind({})
-MultipleBorderButtons.args = {
-    ...ThreeColumns.args,
-    columns: 3,
-    well: '1',
-    items: [
-        {
-            ...item1,
-            actionlbl: 'Contact Us',
-            actionlbl2: 'Contact Us',
-            pagelink: '/',
-            // actionlbl2: 'Contact 2',
-            //pagelink2: '/',
-            align: 'center',
-            icon: 'faArchway',
-            icon2: 'faAnchor',
-            btnType: 'btn_1',
-            visibleButton: true,
-        },
-        {
-            ...item1,
-            actionlbl2: 'Contact Us',
-            pagelink: '/',
-            // actionlbl2: 'Contact 2',
-            //pagelink2: '/',
-            align: 'center',
-            icon: 'faAnchor',
-            btnType: 'btn_2',
-            visibleButton: true,
-        },
-        {
-            ...item1,
-
-            actionlbl2: 'Contact Us',
-            pagelink2: '/',
-            pagelink: '/',
-            // actionlbl2: 'Contact 2',
-            //pagelink2: '/',
-            align: 'center',
-            icon: 'faArchway',
-            icon2: 'faAnchor',
-            btnType: 'btn_1',
-            visibleButton: true,
-        },
-    ],
-}
-
-export const MBBv3 = Template.bind({})
-MBBv3.args = {
-    ...MultipleBorderButtons.args,
-    type: 'article_3',
-}
-
-export const CustomClass = Template.bind({})
-CustomClass.args = {
-    ...AlignLeft.args,
-    customClassName: 'hello',
 }
 
 export const Caption = Template.bind({})
@@ -586,6 +450,7 @@ V3TextSizes.args = {
 export const Icon3 = Template.bind({})
 Icon3.args = {
     ...Plain.args,
+
     items: [{ ...item1, icon3: 'faAnchor', imageIcon: { iconModel: 'angry', iconPrefix: 'far' } }],
 }
 
@@ -657,8 +522,7 @@ BeaconHeroMultiple.args = {
 
 export const UseAccentColor = Template.bind({})
 UseAccentColor.args = {
-    ...MultipleBorder.args,
-    columns: 1,
+    ...Plain.args,
     items: [
         {
             ...item1,
@@ -670,8 +534,7 @@ UseAccentColor.args = {
 
 export const RoundedBorder = Template.bind({})
 RoundedBorder.args = {
-    ...MultipleBorder.args,
-    columns: 1,
+    ...Plain.args,
     items: [
         {
             ...item1,

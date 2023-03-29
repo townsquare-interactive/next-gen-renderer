@@ -129,8 +129,7 @@
     &.article_2,
     &.photo_grid,
     &.banner,
-    &.parallax,
-    &.card {
+    &.parallax {
         .btn {
             align-self: flex-start;
         }
@@ -208,6 +207,20 @@
 
             @include breakpoints.sm {
                 gap: 0.5rem;
+            }
+        }
+    }
+
+    &.card {
+        .wrapper {
+            justify-content: center;
+
+            .btn-wrap {
+                justify-content: center;
+            }
+
+            .btn {
+                min-width: 6.875rem;
             }
         }
     }

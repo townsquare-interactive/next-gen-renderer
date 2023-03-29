@@ -37,8 +37,8 @@ export const ImageBlock = (props: ImageBlockProps) => {
                         </div>
                     </div>
                 )}
+                {item.caption_tag && <figcaption className={cn(styles.caption, 'accent-txt', 'caption-background')}>{item.caption_tag}</figcaption>}
             </div>
-            {item.caption_tag && <figcaption className={cn(styles.caption, 'accent-txt')}>{item.caption_tag}</figcaption>}
         </>
     )
 }

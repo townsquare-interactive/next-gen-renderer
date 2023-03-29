@@ -38,7 +38,7 @@ export const HeadlineBlock = (props: HeadlineBlockProps) => {
                     : {}
             }
         >
-            {item.imageIcon && (
+            {item.imageIcon && !modType?.includes('card') && !modType?.includes('article') && (
                 <div className={cn(styles['icon-block'])}>
                     <svg height="100" width="100" className={styles.circle}>
                         <circle cx="50" cy="50" r="50" fill="#fff" />

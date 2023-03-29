@@ -4,7 +4,7 @@ body {
 }
 
 .hd-font {
-    font-family: Lora;
+    font-family: Lato;
 }
 
 .txt-font {
@@ -12,7 +12,7 @@ body {
 }
 
 .feat-font {
-    font-family: Abril Fatface;
+    font-family: Josefin Sans;
 }
 
 :root {
@@ -20,13 +20,13 @@ body {
     --hd: #454545;
     --sh: #454545;
     --txt: #717171;
-    --link: #6afec4;
-    --txt-hover: #009374;
+    --link: #45ffd8;
+    --link-hover: #40dcbc;
     --btn-txt: #ffffff;
     --btn-background: #009374;
     --txt-accent: #ffffff;
     --hero-sh: #ffffff;
-    --hero-txt: #ca0202;
+    --hero-txt: #e00f0f;
     --hero-btn-txt: #fafaeb;
     --hero-btn-background: #00c2d8;
     --hero-link: #dddddd;
@@ -52,6 +52,10 @@ body {
     --promo4: #e02aa0;
     --promo5: #30829b;
     --promo6: #10252e;
+}
+
+body .txt-font .dsc a {
+    color: var(--link);
 }
 
 .accent-txt {
@@ -94,6 +98,35 @@ body {
     color: var(--caption-txt);
 }
 
+.box-links {
+    color: var(--link);
+}
+
+.box-links:hover {
+    color: var(--nav-hover);
+}
+
+.testimonial-txt-color {
+    color: var(--btn-background);
+}
+
+.testimonials-mod.well .hero.item,
+.testimonials-mod.well .hero .desc,
+.card-mod .hero.item,
+.card-mod .hero .desc {
+    color: var(--hero-txt);
+}
+.testimonials-mod.well .hero .stars,
+.testimonials-mod.well .hero .quotes,
+.testimonials-mod.well .hero .hd,
+.testimonials-mod.well .hero .sh,
+.card-mod .hero .stars,
+.card-mod .hero .quotes,
+.card-mod .hero .hd,
+.card-mod .hero .sh {
+    color: var(--txt-accent);
+}
+
 .btn_1 {
     color: var(--txt-accent);
     background-color: var(--btn-background);
@@ -110,8 +143,8 @@ body {
 }
 
 .btn_2:hover {
-    color: var(--btn-background);
-    border-color: var(--btn-background);
+    color: var(--link-hover);
+    border-color: var(--link-hover);
 }
 
 .btn_alt {
@@ -126,11 +159,11 @@ body {
 
 .close-toggle {
     color: var(--txt-accent);
-    background-color: var(--promo);
+    background-color: var(--btn-background);
 }
 
 .close-toggle:hover {
-    color: var(--promo);
+    color: var(--btn-background);
     background-color: var(--txt-accent);
 }
 
@@ -182,8 +215,8 @@ body {
 .btn_p4.btn_2:hover,
 .btn_p3.btn_2:hover,
 .btn_p2.btn_2:hover {
-    border-color: var(--promo);
-    color: var(--promo);
+    border-color: var(--link-hover);
+    color: var(--link-hover);
 }
 
 .border-background {
@@ -223,39 +256,16 @@ body {
     background-color: var(--promo2);
 }
 
+.testimonials-mod .hero-background,
+.card-mod .hero-background {
+    background-color: var(--hero-background);
+}
+
+.caption-background {
+    background-color: var(--caption-background);
+}
+
 /*---------------------Custom Code--------------------*/
-#ctah {
-    text-align: right;
-}
-
-#ctah img {
-    display: block !important;
-    width: 100% !important;
-    margin-top: 1rem;
-    float: right;
-    width: 20% !important;
-    display: inline-block;
-    margin-right: 2rem;
-    max-width: 10rem;
-}
-
-/*Link */
-#ctah {
-    text-align: right;
-}
-
-#ctah a {
-    width: 20% !important;
-    display: inline-block;
-    margin-right: 2rem;
-}
-
-#ctah img {
-    display: block !important;
-    width: 100% !important;
-    margin-top: 1rem;
-}
-
 .social-bar-background {
     background-color: purple !important;
 }
@@ -272,7 +282,6 @@ body {
 }
 .cst_josh .wrapper .item:hover {
     box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75) !important;
-    scale: 1.05 !important;
 }
 
 .page-article .article-mod h2 {
