@@ -17,6 +17,7 @@ export const ImageBlock = (props: ImageBlockProps) => {
                     [styles.widescreen_2_4_1]: imgsize === 'widescreen_2-4_1',
                     [styles['photo-grid']]: modType === 'photo_grid',
                     [styles['testimonials']]: modType === 'testimonials_1',
+                    [styles['article']]: modType.includes('article'),
                 })}
             >
                 {item.image && (
@@ -37,7 +38,11 @@ export const ImageBlock = (props: ImageBlockProps) => {
                         </div>
                     </div>
                 )}
-                {item.caption_tag && <figcaption className={cn(styles.caption, 'accent-txt', 'caption-background')}>{item.caption_tag}</figcaption>}
+                {item.caption_tag && (
+                    <figcaption className={cn(styles.caption, 'accent-txt', { ['caption-background']: !modType.includes('article') })}>
+                        {item.caption_tag}
+                    </figcaption>
+                )}
             </div>
         </>
     )

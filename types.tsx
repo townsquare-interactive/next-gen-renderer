@@ -853,6 +853,7 @@ export interface BtnProps {
     itemCount?: number
     modColor1?: string
     twoButtons?: boolean
+    btnStyles?: string
 }
 
 /*------------------------------Non CMS types-------------------------*/

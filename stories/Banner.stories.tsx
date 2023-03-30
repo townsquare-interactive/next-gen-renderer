@@ -333,6 +333,7 @@ Border.args = {
 export const ModColorCustom = Template.bind({})
 ModColorCustom.args = {
     ...NoImage.args,
+    modId: '6446',
     items: [
         {
             ...item1,

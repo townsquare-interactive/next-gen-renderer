@@ -291,3 +291,33 @@ body .txt-font .dsc a {
 .page-article .article-mod h2 {
     font-style: italic !important;
 }
+
+#id_6223 .is-wrap-link:hover .btn_1 {
+    color: var(--promo);
+    background-color: var(--txt-accent);
+}
+
+#id_6446 .item_1 .btn_promo {
+    color: red;
+    background-color: var(--txt-accent);
+}
+#id_6446 .item_1 .btn_promo:hover {
+    color: var(--txt-accent);
+    background-color: red;
+}
+#id_6446 .item_1 .btn_override {
+    color: red;
+    background-color: var(--txt-accent);
+}
+#id_6446 .item_1 .btn_override:hover {
+    color: var(--txt-accent);
+    background-color: red;
+}
+#id_6446 .item_1 .btn2_override {
+    color: var(--txt-accent);
+    background-color: transparent;
+}
+#id_6446 .item_1 .btn2_override:hover {
+    color: red;
+    background-color: var(--txt-accent);
+}

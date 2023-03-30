@@ -445,6 +445,22 @@ Border.args = {
     ...AlignLeft.args,
     well: '1',
 }
+export const BorderLinkWrap = Template.bind({})
+BorderLinkWrap.args = {
+    ...Button.args,
+    well: '1',
+    modId: '6223',
+    items: [
+        {
+            ...item1,
+            buttonList: buttonList1,
+            twoButtons: false,
+            isWrapLink: true,
+            visibleButton: true,
+            actionlbl2: '',
+        },
+    ],
+}
 
 export const Featured = Template.bind({})
 Featured.args = {

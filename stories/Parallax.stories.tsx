@@ -350,11 +350,36 @@ Border.args = {
 export const ModColorCustom = Template.bind({})
 ModColorCustom.args = {
     ...NoImage.args,
+    modId: '6446',
     items: [
         {
             ...item1,
-            image: '',
+            //image: '',
             modColor1: 'rgb(251,13,13)',
+            buttonList: [
+                {
+                    name: 'btn1',
+                    link: '/other/',
+                    window: '',
+                    label: 'Btn1',
+                    active: true,
+                    btnType: 'btn_override',
+                    btnSize: 'btn_md',
+                    linkType: 'local',
+                    blockBtn: false,
+                },
+                {
+                    name: 'btn2',
+                    link: '/newpage/',
+                    window: '',
+                    label: 'Btn2',
+                    active: true,
+                    btnType: 'btn2_override',
+                    btnSize: 'btn_md',
+                    linkType: 'local',
+                    blockBtn: false,
+                },
+            ],
             itemStyle: { background: `rgb(251,13,13)` },
         },
     ],

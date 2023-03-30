@@ -6,15 +6,7 @@ import { Fragment } from 'react'
 import { Button } from './Button'
 
 export const ButtonWrap = (props: BtnProps) => {
-    const { actionlbl, themeStyles, well, actionlbl2, type, buttonList, modId, align, promoColor, itemCount, modColor1, twoButtons } = props
-
-    const linkHoverStyles = themeStyles
-        ? `#id_${modId} .is-wrap-link:hover .btn_1{color: ${themeStyles['promoColor']}; background-color: ${themeStyles['textColorAccent']}} `
-        : ''
-
-    const promoButtonStyles = themeStyles
-        ? `#id_${modId} .item_${itemCount} .btn_promo {color: ${promoColor}; background-color: ${themeStyles['textColorAccent']}} #id_${modId} .item_${itemCount} .btn_promo:hover{color: ${themeStyles['textColorAccent']}; background-color: ${promoColor}} #id_${modId} .item_${itemCount} .btn_override {color: ${modColor1}; background-color: ${themeStyles['textColorAccent']}} #id_${modId} .item_${itemCount} .btn_override:hover{color: ${themeStyles['textColorAccent']}; background-color: ${modColor1}}  #id_${modId} .item_${itemCount} .btn2_override {color:${themeStyles['textColorAccent']}; background-color:transparent } #id_${modId} .item_${itemCount} .btn2_override:hover{color: ${modColor1}; background-color: ${themeStyles['textColorAccent']}; `
-        : ''
+    const { actionlbl, themeStyles, well, actionlbl2, type, buttonList, modId, align, promoColor, itemCount, modColor1, twoButtons, btnStyles } = props
 
     return (
         <div
@@ -25,8 +17,7 @@ export const ButtonWrap = (props: BtnProps) => {
                 [styles['two-btns']]: twoButtons,
             })}
         >
-            {well && type != 'photo_grid' && type != 'parallax' && <style>{linkHoverStyles}</style>}
-            {type != 'cta' && <style>{promoButtonStyles}</style>}
+            {type != 'cta_banner' && <style>{btnStyles}</style>}
 
             <div
                 className={cn(styles.wrapper, {
