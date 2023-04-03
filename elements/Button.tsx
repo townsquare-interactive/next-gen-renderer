@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const Button = (props: SingleButtonProps) => {
-    const { btn, well, type, index } = props
+    const { btn, well, type, index, isFeatureButton } = props
     return (
         <Link
             href={btn.link || ''}
@@ -19,6 +19,7 @@ export const Button = (props: SingleButtonProps) => {
                 [styles.btn_override]: btn.btnType === 'btn_override',
                 [styles.btn2_override]: btn.btnType === 'btn2_override',
                 [styles.btn_w]: well === '1' && (type.includes('article') || type.includes('banner') || type.includes('card')),
+                ['btn_w']: well === '1' && (type.includes('article') || type.includes('banner') || type.includes('card')),
                 [styles['btn_cta']]: btn.btnType === 'btn_cta',
                 [styles['btn_banner']]: btn.btnType === 'btn_banner',
                 ['btn_1']: btn.btnType?.includes('btn_1') || (!btn.btnType && index === 0),
@@ -33,7 +34,7 @@ export const Button = (props: SingleButtonProps) => {
             })}
         >
             {btn.icon && <FontAwesomeIcon icon={[btn.icon.iconPrefix, btn.icon.iconModel]} />}
-            {` ${btn.label}`}
+            {` ${btn.label}`} {isFeatureButton && !type.includes('article') && '>'}
         </Link>
     )
 }

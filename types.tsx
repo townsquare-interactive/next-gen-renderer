@@ -173,6 +173,7 @@ export interface SingleButtonProps {
     well: string | number | undefined
     index: number
     type: string
+    isFeatureButton: boolean
 }
 
 interface ButtonListProps {
@@ -527,6 +528,7 @@ export interface ArticleItems {
     linkNoBtn?: boolean
     itemStyle?: any
     nextImageSizes?: string
+    isFeatureButton?: boolean
 }
 
 export interface ReactScrollProps {
@@ -840,7 +842,7 @@ export interface ConditionalWrapperProps {
     trueOutput: (children: ReactChild) => ReactElement
 }
 
-export interface BtnProps {
+export interface ButtonWrapProps {
     pagelink?: string
     pagelink2?: string
     weblink?: string
@@ -868,6 +870,7 @@ export interface BtnProps {
     modColor1?: string
     twoButtons?: boolean
     btnStyles?: string
+    isFeatureButton?: boolean
 }
 
 /*------------------------------Non CMS types-------------------------*/

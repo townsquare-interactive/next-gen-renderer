@@ -94,6 +94,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                 'item',
                 {
                     [styles.hero]: item.isFeatured === 'active',
+                    hero: item.isFeatured === 'active',
                     [styles.nHero]: !item.isFeatured,
                     [styles.yDsc]: item.desc,
                     [styles.nDsc]: !item.desc,

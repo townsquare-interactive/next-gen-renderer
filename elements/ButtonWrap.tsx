@@ -1,12 +1,27 @@
 'use client'
 import styles from './buttonwrap.module.scss'
-import { BtnProps } from '../types'
+import { ButtonWrapProps } from '../types'
 import cn from 'classnames'
 import { Fragment } from 'react'
 import { Button } from './Button'
 
-export const ButtonWrap = (props: BtnProps) => {
-    const { actionlbl, themeStyles, well, actionlbl2, type, buttonList, modId, align, promoColor, itemCount, modColor1, twoButtons, btnStyles } = props
+export const ButtonWrap = (props: ButtonWrapProps) => {
+    const {
+        actionlbl,
+        themeStyles,
+        well,
+        actionlbl2,
+        type,
+        buttonList,
+        modId,
+        align,
+        promoColor,
+        itemCount,
+        modColor1,
+        twoButtons,
+        btnStyles,
+        isFeatureButton = false,
+    } = props
 
     return (
         <div
@@ -23,10 +38,11 @@ export const ButtonWrap = (props: BtnProps) => {
                 className={cn(styles.wrapper, {
                     [styles['btn-wrap']]: (actionlbl2 && actionlbl) || type === 'cta' || type === 'cta_banner',
                     [styles['one-btn-w']]: well === '1' && !(actionlbl2 && actionlbl),
+                    ['one-btn-w']: (well === '1' || type === 'Card') && !(actionlbl2 && actionlbl),
                 })}
             >
                 {buttonList.map((bt, index) => (
-                    <Fragment key={index}>{bt.active && <Button btn={bt} well={well} index={index} type={type} />}</Fragment>
+                    <Fragment key={index}>{bt.active && <Button btn={bt} well={well} index={index} type={type} isFeatureButton={isFeatureButton} />}</Fragment>
                 ))}
             </div>
         </div>

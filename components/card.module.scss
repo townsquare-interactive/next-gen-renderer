@@ -16,9 +16,7 @@
             margin-right: 0;
 
             .content {
-                .text-wrap {
-                    padding: 1.5rem 2.5rem 1.5rem;
-                }
+                padding: 1.5rem 2.5rem 1.5rem;
             }
 
             //text-align: left;
@@ -126,6 +124,13 @@
     }
 
     &.well {
+        .wrapper .item .content {
+            padding: 0;
+            .text-wrap {
+                padding: 1.5rem 2.5rem 1.5rem;
+            }
+        }
+
         .hd-block,
         .txt-block {
             max-width: 100%;
