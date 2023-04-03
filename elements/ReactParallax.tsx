@@ -80,6 +80,7 @@ const ReactParallax = ({ item, imgsize, cmsUrl, children }: any) => {
                                 cmsUrl={cmsUrl}
                                 modType={'Parallax'}
                                 opacity={item.modOpacity}
+                                columns={item.columns}
                             />
                         </>
                     </Background>
