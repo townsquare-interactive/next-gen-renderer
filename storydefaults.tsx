@@ -639,3 +639,10 @@ export const createStoryStyles = (themeStyles: ThemeStyles) => {
 
     return colorStyles
 }
+
+export const imageSizes = {
+    big: '100vw',
+    testimonial: '130px',
+    columns: '(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw',
+    normal: '(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 1200px',
+}

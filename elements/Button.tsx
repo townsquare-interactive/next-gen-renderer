@@ -18,7 +18,7 @@ export const Button = (props: SingleButtonProps) => {
                 [styles.btn_promo]: btn.btnType === 'btn_promo',
                 [styles.btn_override]: btn.btnType === 'btn_override',
                 [styles.btn2_override]: btn.btnType === 'btn2_override',
-                [styles.btn_w]: well === '1' && (type.includes('article') || type.includes('banner')),
+                [styles.btn_w]: well === '1' && (type.includes('article') || type.includes('banner') || type.includes('card')),
                 [styles['btn_cta']]: btn.btnType === 'btn_cta',
                 [styles['btn_banner']]: btn.btnType === 'btn_banner',
                 ['btn_1']: btn.btnType?.includes('btn_1') || (!btn.btnType && index === 0),

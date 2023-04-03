@@ -129,7 +129,7 @@ const ItemWrap = (props: ItemWrapProps) => {
                 <ConditionalWrapper
                     condition={item.image ? true : false}
                     trueOutput={(children: ReactChild) => (
-                        <ReactScroll item={item} imgsize={imgsize} cmsUrl={cmsUrl}>
+                        <ReactScroll item={item} imgsize={imgsize} cmsUrl={cmsUrl} columns={columns}>
                             {children}
                         </ReactScroll>
                     )}
@@ -163,6 +163,7 @@ const ParallaxChildren = ({ item, columns, well, modId, themeStyles, cmsUrl, img
                     cmsUrl={cmsUrl}
                     modType={'Parallax'}
                     opacity={item.modOpacity || 1}
+                    columns={columns}
                 />
             )}
             <div

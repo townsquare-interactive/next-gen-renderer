@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import Card from '../components/Card'
 import { ArticleItems } from '../types'
-import { themeStyles, buttonList1, buttonList2, buttonListJust2, createStoryStyles } from 'storydefaults'
+import { themeStyles, buttonList1, buttonList2, buttonListJust2, createStoryStyles, imageSizes } from 'storydefaults'
 
 export default {
     title: 'new/Card',
@@ -42,6 +42,7 @@ const Template: ComponentStory<typeof Card> = (args) => (
 const Default = Template.bind({})
 const item1: ArticleItems = {
     id: '1edcc99c_9904_445b_dbac_9029c0d9e456',
+    nextImageSizes: imageSizes.normal,
     desc: 'changed',
     icon: '',
     align: 'center',

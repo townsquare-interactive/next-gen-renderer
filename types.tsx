@@ -526,6 +526,15 @@ export interface ArticleItems {
     modOpacity?: number
     linkNoBtn?: boolean
     itemStyle?: any
+    nextImageSizes?: string
+}
+
+export interface ReactScrollProps {
+    item: ArticleItems
+    imgsize: string
+    cmsUrl?: string
+    children: ReactChild
+    columns: string | number
 }
 
 export interface DescBlockProps {
@@ -783,6 +792,8 @@ export interface ImageBlockProps {
     well: string | number
     cmsUrl?: string
     modType?: string
+    nextImageSizes?: string
+    columns: number | string
 }
 
 export interface ImageProps {
@@ -794,6 +805,9 @@ export interface ImageProps {
     cmsUrl?: string
     modType: string
     opacity?: number
+    nextImageSizes?: string
+    columns: number | string
+    imageType?: string
 }
 
 export interface MyNavProps {

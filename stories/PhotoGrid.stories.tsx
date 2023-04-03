@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { PhotoGrid } from '../components/PhotoGrid'
 import { ArticleItems } from '../types'
-import { themeStyles, buttonList1, buttonList2, buttonListJust2 } from 'storydefaults'
+import { themeStyles, buttonList1, buttonList2, buttonListJust2, imageSizes } from 'storydefaults'
 
 export default {
     title: 'new/PhotoGrid',
@@ -42,7 +42,7 @@ const item1: ArticleItems = {
     headline: 'Photo Grid',
     subheader: 'SUb',
     image: '/files/2022/08/AngelTop.jpg',
-
+    nextImageSizes: imageSizes.normal,
     icon: '',
     icon2: '',
     icon3: '',

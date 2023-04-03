@@ -134,7 +134,7 @@ const ItemWrap = (props: ItemWrapProps) => {
                 <>
                     {item.image && (
                         <figure className={cn(styles['image-block'])} data-alt="Headline">
-                            <ImageBlock item={item} imgsize={imgsize} well={well} cmsUrl={cmsUrl} />
+                            <ImageBlock item={item} imgsize={imgsize} well={well} cmsUrl={cmsUrl} columns={columns} />
                         </figure>
                     )}
                     {(item.headline || item.subheader) && (
@@ -165,7 +165,7 @@ const ItemWrap = (props: ItemWrapProps) => {
 
                     {item.image && (
                         <figure className={cn(styles['image-block'])} data-alt="Headline">
-                            <ImageBlock item={item} imgsize={imgsize} well={well} cmsUrl={cmsUrl} />
+                            <ImageBlock item={item} imgsize={imgsize} well={well} cmsUrl={cmsUrl} columns={columns} />
                         </figure>
                     )}
                 </>

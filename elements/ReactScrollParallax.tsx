@@ -2,12 +2,13 @@
 import { ParallaxBanner, ParallaxProvider } from 'react-scroll-parallax'
 import { ImageElement } from 'elements/ImageElement'
 import styles from '../components/parallax.module.scss'
-import Image from 'next/image'
-import { domainImage } from 'functions'
+/* import Image from 'next/image'
+import { domainImage } from 'functions' */
 import { useEffect, useState } from 'react'
 import cn from 'classnames'
+import { ReactScrollProps } from '../types'
 
-const ReactScroll = ({ item, imgsize, cmsUrl, children }: any) => {
+const ReactScroll = ({ item, imgsize, cmsUrl, children, columns }: ReactScrollProps) => {
     const [isSSR, setIsSSR] = useState(true)
 
     let useDelay = item.image ? true : false
@@ -50,6 +51,8 @@ const ReactScroll = ({ item, imgsize, cmsUrl, children }: any) => {
                                 cmsUrl={cmsUrl}
                                 modType={'Parallax'}
                                 opacity={item.modOpacity || 1}
+                                nextImageSizes={item.nextImageSizes}
+                                columns={columns}
                             />
                         </div>
                     </div>
@@ -71,6 +74,8 @@ const ReactScroll = ({ item, imgsize, cmsUrl, children }: any) => {
                                             cmsUrl={cmsUrl}
                                             modType={'Parallax'}
                                             opacity={item.modOpacity || 1}
+                                            nextImageSizes={item.nextImageSizes}
+                                            columns={columns}
                                         />
                                     </div>
                                 ),

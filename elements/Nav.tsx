@@ -19,16 +19,16 @@ const Nav = (props: MyNavProps) => {
                             {item.menu_item_parent == 0 && (
                                 <li>
                                     <NavListItem item={item} arrow={item.submenu?.length ? true : false} navType={navType} navSwitch={navSwitch} />
-                                    {item.submenu.length != 0 && (
+                                    {item.submenu?.length != 0 && (
                                         <ul className={cn(styles['sub-menu'], styles['sub-1'])}>
-                                            {item.submenu.map((subItem: any, idx: number) => (
+                                            {item.submenu?.map((subItem: any, idx: number) => (
                                                 <Fragment key={idx}>
                                                     <li>
                                                         <NavListItem item={subItem} navType={navType} navSwitch={navSwitch} />
 
-                                                        {subItem.submenu.length != 0 && (
+                                                        {subItem.submenu?.length != 0 && (
                                                             <ul className={cn(styles['sub-menu'])}>
-                                                                {subItem.submenu.map((subItem2: any, subidx: number) => (
+                                                                {subItem.submenu?.map((subItem2: any, subidx: number) => (
                                                                     <li key={subidx}>
                                                                         <NavListItem item={subItem2} navType={navType} navSwitch={navSwitch} />
                                                                     </li>

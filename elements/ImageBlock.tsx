@@ -8,7 +8,7 @@ import { ImageElement } from './ImageElement'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const ImageBlock = (props: ImageBlockProps) => {
-    const { item, imgsize = 'landscape_4_3', cmsUrl, modType = 'article' } = props
+    const { item, imgsize = 'landscape_4_3', cmsUrl, modType = 'article', columns } = props
 
     return (
         <>
@@ -18,6 +18,7 @@ export const ImageBlock = (props: ImageBlockProps) => {
                     [styles['photo-grid']]: modType === 'photo_grid',
                     [styles['testimonials']]: modType === 'testimonials_1',
                     [styles['article']]: modType.includes('article'),
+                    [styles['card']]: modType.includes('card'),
                 })}
             >
                 {item.image && (
@@ -28,6 +29,9 @@ export const ImageBlock = (props: ImageBlockProps) => {
                         imgsize={imgsize}
                         cmsUrl={cmsUrl}
                         modType={modType}
+                        nextImageSizes={item.nextImageSizes}
+                        columns={columns}
+                        imageType={item.imageType}
                     />
                 )}
 

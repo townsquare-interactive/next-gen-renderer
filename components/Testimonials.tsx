@@ -170,7 +170,7 @@ const ItemWrap = (props: ItemWrapProps) => {
             <div className={styles.content}>
                 {item.image && (
                     <figure className={cn(styles['image-block'])} data-alt="Headline">
-                        <ImageBlock item={item} imgsize={imgsize} well={well} cmsUrl={cmsUrl} modType={type} />
+                        <ImageBlock item={item} imgsize={imgsize} well={well} cmsUrl={cmsUrl} modType={type} columns={columns} />
                     </figure>
                 )}
 

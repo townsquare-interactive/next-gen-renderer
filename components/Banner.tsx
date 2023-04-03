@@ -83,6 +83,8 @@ const ModuleItem = (props: ModuleItemProps) => {
                     cmsUrl={cmsUrl}
                     modType={'Banner'}
                     opacity={item.modOpacity || 1}
+                    nextImageSizes={item.nextImageSizes}
+                    columns={columns}
                 />
             )}
             {item.isWrapLink && <LinkWrap item={item} modType={'banner'}></LinkWrap>}

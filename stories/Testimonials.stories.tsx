@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import Testimonials from '../components/Testimonials'
 import { ArticleItems } from '../types'
-import { themeStyles, buttonList1, buttonList2, buttonListJust2, createStoryStyles } from 'storydefaults'
+import { themeStyles, buttonList1, buttonList2, buttonListJust2, createStoryStyles, imageSizes } from 'storydefaults'
 
 export default {
     title: 'new/Testimonials',
@@ -52,6 +52,7 @@ const Template: ComponentStory<typeof Testimonials> = (args) => (
 const Default = Template.bind({})
 const item1: ArticleItems = {
     id: 'e1224268_4fd5_4fb5_ca4f_db4d42e6c889',
+    nextImageSizes: imageSizes.normal,
     headline: 'Review 1',
     subheader: '3/27',
     actionlbl: '3',

@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import Banner from '../components/Banner'
 import { ArticleItems } from '../types'
-import { themeStyles, buttonList1, buttonList2, buttonListJust2, itemStyle, icon } from 'storydefaults'
+import { themeStyles, buttonList1, buttonList2, buttonListJust2, itemStyle, icon, imageSizes } from 'storydefaults'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
@@ -49,6 +49,7 @@ const Default = Template.bind({})
 
 const item1: ArticleItems = {
     id: '6f308c26_64c1_4a1d_af75_bb3f9f3dd9dc',
+    nextImageSizes: imageSizes.normal,
     desc: 'The desc',
     icon: '',
     align: 'center',

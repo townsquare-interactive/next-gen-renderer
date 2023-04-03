@@ -11,7 +11,7 @@ export const ButtonWrap = (props: BtnProps) => {
     return (
         <div
             className={cn(styles['btn-mod'], styles[`${type}`], styles[`${align}`], 'txt-font', {
-                [styles.well]: well == '1' && type.includes('article'),
+                [styles.well]: well == '1' && (type.includes('article') || type.includes('card')),
                 [styles['article-all']]: type.includes('article'),
                 [styles['card']]: type.includes('card'),
                 [styles['two-btns']]: twoButtons,

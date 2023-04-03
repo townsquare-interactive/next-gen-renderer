@@ -23,9 +23,9 @@ const ContainerFooter = (props: ContainerFooterProps) => {
                     ))}
                 </div>
                 <div className={styles.brand}>
-                    {siteData.logos?.footer.slots && (
+                    {siteData.logos?.footer?.slots && (
                         <div className={cn(styles['logo-block'])}>
-                            {siteData.logos?.footer.slots.map((item: any, index: number) => (
+                            {siteData.logos?.footer?.slots.map((item: any, index: number) => (
                                 <Fragment key={index}>{item.image_src && <Logo logoUrl={domainImage(item.image_src, true)} link={item.image_link} />}</Fragment>
                             ))}
                         </div>
@@ -42,7 +42,9 @@ const ContainerFooter = (props: ContainerFooterProps) => {
                             {siteData.contact.address?.state && `${siteData.contact.address.state} ,`}
                             {siteData.contact.address?.zip && `${siteData.contact.address.zip} ,`}
                         </span>
-                        {siteData.contact.phone[0].number && <span className={styles.phone}> {siteData.contact.phone[0].number}</span>}
+                        {/*  {siteData.contact.phone.length != 0 && siteData.contact.phone[0].number && (
+                            <span className={styles.phone}> {siteData.contact.phone[0].number}</span>
+                        )} */}
                     </address>
                 </div>
                 <div className={styles['bottom']}>
