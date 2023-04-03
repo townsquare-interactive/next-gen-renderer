@@ -9,7 +9,7 @@ export default async function Head() {
     const { CMSLayout } = await generateLayout()
     const { page } = await getHomePage()
 
-    const cmsUrl = process.env.CMS_URL || 'clttestsiteforjoshedwards'
+    const cmsUrl = process.env.NEXT_PUBLIC_CMS_URL || 'clttestsiteforjoshedwards'
     const s3ColorStyles = process.env.BUCKET_URL + '/' + cmsUrl + '/' + 'global.css'
 
     return (

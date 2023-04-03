@@ -1,7 +1,7 @@
 import { ConditionalWrapperProps, ThemeStyles, GlobalData, CMSPage } from 'types'
 const bucketUrl = process.env.BUCKET_URL || 'https://townsquareinteractive.s3.amazonaws.com'
 const localUrl = 'elitesports.com/preview'
-const cmsUrl = process.env.CMS_URL || 'kaseypaztest'
+const cmsUrl = process.env.NEXT_PUBLIC_CMS_URL || 'clttestsiteforjoshedwards'
 /* const cmsUrl = 'kaseypaztest' */
 const assetFolder = '/assets/'
 const globalAssets = bucketUrl + '/global-assets'
