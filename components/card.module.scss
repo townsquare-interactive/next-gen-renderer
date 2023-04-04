@@ -115,7 +115,6 @@
         .nDsc .hd-block {
             padding-bottom: 1.5rem;
         }
-        //}
 
         .item-wrap {
             height: 100%;
@@ -132,7 +131,6 @@
             margin-left: auto;
             margin-right: auto;
         }
-        //}
 
         &.flex-mod {
             .item {
@@ -166,7 +164,7 @@
         @include utils.grid;
     }
 
-    &.feature-column,
+    /*  &.feature-column,
     &.single-column {
         &.article_1,
         &.article_2,
@@ -177,7 +175,7 @@
                 margin-right: auto;
             }
         }
-    }
+    } */
 }
 
 .columns .root {
