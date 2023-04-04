@@ -14,32 +14,30 @@
             width: variables.$full-width;
             margin-left: 0;
             margin-right: 0;
-
-            .content {
-                padding: 1.5rem 2.5rem 1.5rem;
-            }
-
-            //text-align: left;
             text-align: center;
+            box-shadow: 0 0 2px rgb(0 0 0 / 6%), 0 2px 4px rgb(0 0 0 / 12%);
 
-            /*  &.right {
-                text-align: right;
+            &.yLk:hover {
+                transition: all 0.1s ease-in-out;
+                transform: scale(1.01);
+                box-shadow: 1px 1px 10px rgb(0 0 0 / 25%);
             }
-
-            &.center {
-                text-align: center;
-            } */
 
             &.yImg {
                 .item-wrap {
                     display: grid;
                 }
             }
-        }
 
-        .image-block {
-            margin: 0;
+            .content {
+                padding: 1.5rem 2.5rem 1.5rem;
+            }
+
+            .image-block {
+                margin: 0;
+            }
         }
+        @include utils.item-normal-width;
     }
 
     @include breakpoints.lg-min {
@@ -84,44 +82,16 @@
                 margin-top: 2rem;
             }
         }
-
-        @include breakpoints.sm-min {
-            /*  &.col_1,
-            &.col_2 { 
-            .mod_left .image-block,
-            .mod_right .image-block {
-                width: variables.$third-width;
-                display: block;
-            }
-            .mod_left .image-block {
-                float: left;
-                margin-right: 1rem;
-            }
-            .mod_right .image-block {
-                float: right;
-                margin-left: 1rem;
-            }
-            */
-        }
     }
 
     //for larger screens (starts at 1025)
-    @container item (min-width:775px) {
-        /* .mod_left .image-block,
-        .mod_right .image-block {
-            width: math.div(5, 12) * 100%;
-        }
-        .mod_left .image-block {
-            margin-right: 2rem;
-        }
-        .mod_right .image-block {
-            margin-left: 2rem;
-        } */
+    /*    @container item (min-width:775px) {
 
-        &.article_2.not_well .yImg .txt-block {
+
+     &.article_2.not_well .yImg .txt-block {
             padding-top: 1.5rem;
-        }
-    }
+        } 
+    }*/
 
     &.well {
         .wrapper .item .content {
@@ -136,16 +106,6 @@
             max-width: 100%;
         }
 
-        .item {
-            box-shadow: 0 0 2px rgb(0 0 0 / 6%), 0 2px 4px rgb(0 0 0 / 12%);
-
-            &.yLk:hover {
-                transition: all 0.1s ease-in-out;
-                transform: scale(1.01);
-                box-shadow: 1px 1px 10px rgb(0 0 0 / 25%);
-            }
-        }
-
         // &.article_1 {
         .hd-block {
             padding: 0 2rem 0;
@@ -157,75 +117,16 @@
         }
         //}
 
-        /* &.article_2 {
-            .hd-block {
-                padding: 1rem 2rem;
-                width: 100%;
-            }
-
-            .nDsc {
-                .image-block {
-                    margin-bottom: 0;
-                    margin-top: auto;
-                }
-            }
-        } */
-
-        /* &.article_3,
-        &.beacon {
-            .item-wrap {
-                padding: 1.5rem;
-            }
-
-            @container item (min-width:637px) {
-                .item-wrap {
-                    padding: 3rem 2rem 2rem;
-                }
-            }
-
-            @container item (min-width:775px) {
-                .item-wrap {
-                    padding: 2rem;
-
-                    @include breakpoints.lg-min {
-                        padding: 4rem 1.5rem;
-                    }
-                }
-            }
-        }
- */
         .item-wrap {
             height: 100%;
         }
     }
 
     @container module (min-width:481px) {
-        // &.col_1
         .item:first-of-type {
             margin-top: 2rem;
         }
 
-        /* &.beacon {
-            .mod_left .image-block,
-            .mod_right .image-block {
-                width: math.div(5, 12) * 100%;
-                display: block;
-            }
-
-            .mod_left .image-block {
-                float: left;
-                margin-right: 1rem;
-            }
-
-            .mod_right .image-block {
-                float: right;
-                margin-left: 1rem;
-            }
-        }
- */
-        /* &.article_1,
-        &.article_2,
-        &.article_3 { */
         .nHero {
             width: variables.$ten-12;
             margin-left: auto;
@@ -256,15 +157,6 @@
 
     //font sizes
     @include utils.text-sizes;
-
-    //custom class test
-    &.cst_hello {
-        background-color: black;
-
-        * {
-            color: red !important;
-        }
-    }
 
     &.item-flex {
         @include utils.item-flex;

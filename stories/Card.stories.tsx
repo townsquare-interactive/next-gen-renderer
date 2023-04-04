@@ -20,7 +20,7 @@ export default {
             control: { type: 'radio' },
         },
         type: {
-            options: ['article_1', 'article_2', 'article_3', 'article'],
+            options: ['card_1', 'card_2'],
             control: { type: 'radio' },
         },
         items: {
@@ -142,6 +142,19 @@ Plain.args = {
         },
     ],
 }
+
+export const CardV2 = Template.bind({})
+CardV2.args = {
+    ...Plain.args,
+    type: 'card_2',
+    items: [
+        {
+            ...item1,
+            align: 'left',
+        },
+    ],
+}
+
 export const NoImage = Template.bind({})
 NoImage.args = {
     ...Default.args,
@@ -152,6 +165,7 @@ NoImage.args = {
         },
     ],
 }
+
 export const AlignLeft = Template.bind({})
 AlignLeft.args = {
     ...Plain.args,
@@ -162,6 +176,7 @@ AlignLeft.args = {
         },
     ],
 }
+
 export const AlignRight = Template.bind({})
 AlignRight.args = {
     ...Plain.args,
@@ -396,52 +411,9 @@ Caption.args = {
     items: [{ ...item1, caption_tag: 'caption', captionOn: 0 }],
 }
 
-export const Hidden = Template.bind({})
-Hidden.args = {
-    ...Plain.args,
-    items: [{ ...item1, disabled: 'disabled' }],
-}
-export const V2 = Template.bind({})
-V2.args = {
-    ...Plain.args,
-    type: 'article_2',
-}
-export const V2Multiple = Template.bind({})
-V2Multiple.args = {
-    ...Plain.args,
-    type: 'article_2',
-    columns: 2,
-    items: [{ ...item1 }, { ...item1 }, { ...item1 }, { ...item1 }],
-}
-export const V3 = Template.bind({})
-V3.args = {
-    ...Plain.args,
-    type: 'article_3',
-    items: [{ ...item1 }],
-}
-export const V3Left = Template.bind({})
-V3Left.args = {
-    ...Plain.args,
-    type: 'article_3',
-    items: [{ ...item1, align: 'left' }],
-}
-export const V3Multiple = Template.bind({})
-V3Multiple.args = {
-    ...Plain.args,
-    type: 'article_3',
-    columns: 2,
-    items: [
-        { ...item1, align: 'right' },
-        { ...item1, align: 'right' },
-        { ...item1, align: 'right' },
-        { ...item1, align: 'right' },
-    ],
-}
 export const V3TextSizes = Template.bind({})
 V3TextSizes.args = {
     ...Plain.args,
-    type: 'article_3',
-    columns: 3,
     items: [
         { ...item1, headSize: 'font_xs', descSize: 'font_sm' },
         { ...item1, headSize: 'font_md', descSize: 'font_md' },
@@ -453,72 +425,6 @@ Icon3.args = {
     ...Plain.args,
 
     items: [{ ...item1, icon3: 'faAnchor', imageIcon: { iconModel: 'angry', iconPrefix: 'far' } }],
-}
-
-export const Beacon = Template.bind({})
-Beacon.args = {
-    ...Plain.args,
-    type: 'article',
-    items: [{ ...item1 }],
-}
-export const BeaconLeft = Template.bind({})
-BeaconLeft.args = {
-    ...Plain.args,
-    type: 'article',
-    items: [{ ...item1, align: 'left' }],
-}
-
-export const BeaconHero = Template.bind({})
-BeaconHero.args = {
-    ...Plain.args,
-    type: 'article',
-    items: [
-        { ...item1, align: 'left', isFeatured: 'active' },
-        /*        { ...item2, align: 'left' }, */
-    ],
-}
-
-export const BeaconHeroMultiple = Template.bind({})
-BeaconHeroMultiple.args = {
-    ...Plain.args,
-    columns: 3,
-    type: 'article',
-    items: [
-        {
-            ...item1,
-            actionlbl: 'Contact Us',
-            pagelink: '/',
-            // actionlbl2: 'Contact 2',
-            //pagelink2: '/',
-            align: 'center',
-            icon: 'faArchway',
-            icon2: 'faAnchor',
-            btnType: 'btn_1',
-        },
-        {
-            ...item1,
-            actionlbl: 'Contact Us',
-            pagelink: '/',
-            // actionlbl2: 'Contact 2',
-            //pagelink2: '/',
-            align: 'center',
-            icon: 'faArchway',
-            icon2: 'faAnchor',
-            btnType: 'btn_1',
-            isFeatured: 'active',
-        },
-        {
-            ...item1,
-            actionlbl: 'Contact Us',
-            pagelink: '/',
-            // actionlbl2: 'Contact 2',
-            //pagelink2: '/',
-            align: 'center',
-            icon: 'faArchway',
-            icon2: 'faAnchor',
-            btnType: 'btn_1',
-        },
-    ],
 }
 
 export const UseAccentColor = Template.bind({})

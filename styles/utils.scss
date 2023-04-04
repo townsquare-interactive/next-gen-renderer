@@ -129,12 +129,16 @@
     }
 }
 
-@mixin item-flex {
+@mixin item-normal-width {
     .item {
         width: variables.$full-item-width;
         margin-left: variables.$item-margins;
         margin-right: variables.$item-margins;
     }
+}
+
+@mixin item-flex {
+    @include item-normal-width;
 
     @include breakpoints.sm-min {
         &.col_2,

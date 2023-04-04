@@ -99,7 +99,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                     [styles.yImg]: item.image,
                     [styles.yHds]: item.headline || item.subheader,
                     [styles.nHds]: !item.headline || !item.subheader,
-                    [styles.yLk]: (item.pagelink || item.weblink || item.pagelink2 || item.weblink2) && !item.twoButtons,
+                    [styles.yLk]: item.isWrapLink,
                     ['border-background']: item.isFeatured != 'active',
                     ['hero-background']: item.isFeatured === 'active',
                     ['round']: item.borderType === 'round',
