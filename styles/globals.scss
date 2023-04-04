@@ -170,3 +170,42 @@ a {
 }
 
 //////////////////@at-root
+///
+///
+
+//photo grid
+.slick-slider {
+    width: 100%;
+    overflow: hidden;
+}
+
+.slick-arrow {
+    padding: 0.75rem;
+    background-color: #009374 !important;
+    color: #ffffff;
+    font-size: 0;
+    text-align: center;
+    margin: -1rem 0 0;
+    position: absolute;
+    top: 50%;
+    border: none;
+    //opacity: 0;
+    //outline: none;
+    z-index: 2;
+    width: auto;
+    height: auto;
+}
+.slick-prev {
+    left: 2rem;
+    //medium container
+    @include breakpoints.md-min {
+        left: 4.5rem !important;
+    }
+}
+
+.slick-next {
+    right: 2rem;
+    @include breakpoints.md-min {
+        right: 4.5rem !important;
+    }
+}

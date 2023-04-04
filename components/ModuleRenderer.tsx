@@ -20,6 +20,7 @@ import { GlobalModule, ModuleProps, RendererProps } from 'types'
 import Banner from './Banner'
 import { Fragment } from 'react'
 import Card from './Card'
+import PhotoGallery from './PhotoGallery'
 
 const keysToComponentMap: any = {
     Text,
@@ -40,6 +41,7 @@ const keysToComponentMap: any = {
     Parallax,
     Testimonials,
     Card,
+    PhotoGallery,
 }
 
 const mapPropsToConfig = (config: ModuleProps[]) => {
