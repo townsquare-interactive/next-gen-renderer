@@ -15,6 +15,7 @@ $quarteritem-width: $quarter-width - ($item-margins * 2);
 //grid sizes
 $col3-hero: (math.div(8, 12) * 100%) - ($item-margins * 2);
 $ten-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
+$eleven-12: (math.div(10, 12) * 100%) - ($item-margins * 2);
 
 //container sizes
 $med-container: 343px;
@@ -75,3 +76,6 @@ $text-size-head-sm: 20px;
 $text-size-head-md: 35px;
 $text-size-head-lg: 50px;
 $text-size-head-xl: 70px;
+
+$md-module: 451px;
+$lg-module: 1025px;

@@ -5,7 +5,7 @@
 
 .root {
     @include utils.module-root;
-    @include utils.wrapper-size(0);
+    @include utils.wrapper-size(3rem);
 
     .wrapper {
         .item {
@@ -58,6 +58,10 @@
                     }
                 }
             }
+
+            /*             &:first-of-type {
+                margin-top: 2rem;
+            } */
         }
 
         .image-block {

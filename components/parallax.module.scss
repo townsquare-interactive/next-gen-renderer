@@ -1,6 +1,7 @@
 @use './styles/breakpoints.scss';
 @use './styles/utils.scss';
 @use './styles/variables.scss';
+@value columns from '../components/container.module.scss';
 
 .root {
     margin-top: 2rem;
@@ -156,4 +157,13 @@
     }
 
     @include utils.text-sizes;
+}
+
+.columns .root {
+    @include utils.column-mod;
+    /*     .nHero.item {
+        margin-left: 3.1830914184%;
+        margin-right: 3.1830914184%;
+        width: 93.6338171632%;
+    } */
 }

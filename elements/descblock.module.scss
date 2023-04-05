@@ -41,13 +41,17 @@
 
     &.parallax {
         .dsc {
-            @include breakpoints.lg-min {
-                font-size: 1.25em;
-
-                line-height: 1.4117647059em;
-            }
-
+            font-size: variables.$xs-txt;
+            margin-top: 0em;
+            margin-bottom: 0em;
+            line-height: 1.4285714286em;
             margin-top: 0;
+        }
+
+        @container module (min-width: 1025px) {
+            .dsc {
+                font-size: 1.25em;
+            }
         }
     }
 }

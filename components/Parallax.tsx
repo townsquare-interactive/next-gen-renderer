@@ -18,7 +18,7 @@ import ReactScroll from 'elements/ReactScrollParallax'
 const choseLax: string = 'scroll'
 
 const Parallax = (props: ModuleProps) => {
-    const { columns = 1, type, well, imgsize, modId, items, themeStyles, cmsUrl, disabled, customClassName, modCount } = props
+    const { columns = 1, type, well, imgsize, modId, items, themeStyles, cmsUrl, disabled, customClassName, modCount, isSingleColumn } = props
 
     if (disabled === 'disabled') {
         return <></>
@@ -26,13 +26,14 @@ const Parallax = (props: ModuleProps) => {
         return (
             <>
                 <div
-                    className={cn('parallax-mod', styles['root'], styles['flex-mod'], {
+                    className={cn('parallax-mod', styles['root'], styles['flex-mod'], 'root-container', {
                         [styles.well]: well == '1',
                         [styles[`cst_${customClassName}`]]: customClassName,
                         [`cst_${customClassName}`]: customClassName,
                         [styles['first-mod']]: modCount === 1,
                         [styles['react-scroll']]: choseLax === 'scroll',
                         [styles['react-parallax']]: choseLax === 'react-parallax',
+                        [styles['single-column']]: isSingleColumn,
                     })}
                     id={`id_${modId}`}
                 >
