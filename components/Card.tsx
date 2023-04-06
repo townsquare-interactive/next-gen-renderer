@@ -33,23 +33,14 @@ const Card = (props: ModuleProps) => {
     } else {
         return (
             <div
-                className={cn(
-                    'card-mod',
-                    'root-container',
-                    styles['item-flex'],
-                    styles['root'],
-                    styles['flex-mod'],
-                    styles[`${type}`],
-                    styles[`${contentSpacing}`],
-                    {
-                        [styles.well]: well == '1',
-                        [styles.not_well]: !well,
-                        [styles[`cst_${customClassName}`]]: customClassName,
-                        [`cst_${customClassName}`]: customClassName,
-                        [styles['feature-column']]: columnLocation === 0,
-                        [styles['single-column']]: isSingleColumn,
-                    }
-                )}
+                className={cn('card-mod', 'root-container', styles['root'], styles['flex-mod'], styles[`${type}`], styles[`${contentSpacing}`], {
+                    [styles.well]: well == '1',
+                    [styles.not_well]: !well,
+                    [styles[`cst_${customClassName}`]]: customClassName,
+                    [`cst_${customClassName}`]: customClassName,
+                    [styles['feature-column']]: columnLocation === 0,
+                    [styles['single-column']]: isSingleColumn,
+                })}
                 id={`id_${modId}`}
             >
                 {title && <ModuleTitle title={title} />}

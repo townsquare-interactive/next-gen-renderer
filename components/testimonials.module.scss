@@ -58,10 +58,6 @@
                     }
                 }
             }
-
-            /*             &:first-of-type {
-                margin-top: 2rem;
-            } */
         }
 
         .image-block {
@@ -97,16 +93,6 @@
     }
 
     @container module (min-width:481px) {
-        &.article_1,
-        &.article_2,
-        &.article_3 {
-            .nHero {
-                width: variables.$ten-12;
-                margin-left: auto;
-                margin-right: auto;
-            }
-        }
-
         &.flex-mod {
             .item {
                 margin-bottom: 2rem;

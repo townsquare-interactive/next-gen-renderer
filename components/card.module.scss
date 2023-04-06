@@ -67,33 +67,7 @@
 
     &.flex-mod {
         @include utils.flex-mod;
-
-        &.article_1,
-        &.article_2 {
-            .item-wrap {
-                display: flex;
-                flex-direction: column;
-                flex: 1 1 auto;
-            }
-        }
     }
-
-    /* @container item (min-width:343px) {
-        .item {
-            &.nHero:first-of-type {
-                margin-top: 2rem;
-            }
-        }
-    } */
-
-    //for larger screens (starts at 1025)
-    /*    @container item (min-width:775px) {
-
-
-     &.article_2.not_well .yImg .txt-block {
-            padding-top: 1.5rem;
-        } 
-    }*/
 
     &.well {
         .wrapper .item .content {
@@ -108,7 +82,6 @@
             max-width: 100%;
         }
 
-        // &.article_1 {
         .hd-block {
             padding: 0 2rem 0;
             width: 100%;
@@ -124,29 +97,9 @@
     }
 
     @container module (min-width:481px) {
-        /* .item:first-of-type {
-            margin-top: 2rem;
-        } */
-
-        .nHero {
-            width: variables.$ten-12;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
         &.flex-mod {
             .item {
                 margin-bottom: 2rem;
-            }
-
-            &.col_1 {
-                .item {
-                    margin-bottom: 4rem;
-
-                    &:last-of-type &.col_1 {
-                        margin-bottom: 2rem;
-                    }
-                }
             }
 
             &.thin .item {
@@ -157,23 +110,6 @@
 
     //font sizes
     @include utils.text-sizes;
-
-    &.item-flex {
-        @include utils.item-flex;
-    }
-
-    &.grid-item {
-        @include utils.grid;
-    }
-
-    /*      &.feature-column, */
-    /* &.single-column {
-        .nHero.item {
-            width: variables.$ten-12;
-            margin-left: auto;
-            margin-right: auto;
-        }
-    } */
 }
 
 .columns .root {

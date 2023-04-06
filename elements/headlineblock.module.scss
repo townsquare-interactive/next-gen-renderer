@@ -230,7 +230,8 @@
         }
     }
 
-    &.parallax {
+    &.parallax,
+    &.photogallery {
         font-size: 100%; //70%
 
         /*         @include breakpoints.md-min {
