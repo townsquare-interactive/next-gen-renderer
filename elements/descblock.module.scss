@@ -39,7 +39,8 @@
         margin: 0.3em 0;
     }
 
-    &.parallax {
+    &.parallax,
+    &.gallery {
         .dsc {
             font-size: variables.$xs-txt;
             margin-top: 0em;
@@ -53,6 +54,9 @@
                 font-size: 1.25em;
             }
         }
+    }
+    &.gallery {
+        margin: 1em 0;
     }
 }
 

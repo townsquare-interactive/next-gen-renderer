@@ -13,7 +13,7 @@ export const Button = (props: SingleButtonProps) => {
             key={index}
             passHref={btn.linkType === 'ext'}
             target={btn.window == 1 ? '_blank' : '_self'}
-            className={cn(styles['btn'], styles['transition'], `${btn.btnType}`, styles[`${btn.btnSize}`], {
+            className={cn(styles['btn'], 'btn', styles['transition'], `${btn.btnType}`, styles[`${btn.btnSize}`], {
                 [styles['btn-block']]: btn.blockBtn,
                 [styles.btn_promo]: btn.btnType === 'btn_promo',
                 [styles.btn_override]: btn.btnType === 'btn_override',

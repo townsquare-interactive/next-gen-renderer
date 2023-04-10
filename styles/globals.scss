@@ -235,3 +235,218 @@ a {
     }
 }
  */
+
+$base-font-size: 16; /* 16px */
+$base-line-height: math.div(4, $base-font-size); /* 4px */
+$small-spacing: math.div(8, $base-font-size) * 1rem; /* 8px */
+$base-spacing: $small-spacing * 2; /* 16px */
+$large-spacing: $base-spacing * 2; /* 32px */
+
+$ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+@mixin transition($properties...) {
+    // Fix for vendor-prefix transform property
+    $needs-prefixes: false;
+    $webkit: ();
+    $moz: ();
+    $spec: ();
+
+    // Create lists for vendor-prefixed transform
+    @each $list in $properties {
+        @if nth($list, 1) == 'transform' {
+            $needs-prefixes: true;
+            $list1: -webkit-transform;
+            $list2: -moz-transform;
+            $list3: ();
+
+            @each $var in $list {
+                $list3: join($list3, $var);
+
+                @if $var != 'transform' {
+                    $list1: join($list1, $var);
+                    $list2: join($list2, $var);
+                }
+            }
+
+            $webkit: append($webkit, $list1);
+            $moz: append($moz, $list2);
+            $spec: append($spec, $list3);
+        } @else {
+            $webkit: append($webkit, $list, comma);
+            $moz: append($moz, $list, comma);
+            $spec: append($spec, $list, comma);
+        }
+    }
+
+    @if $needs-prefixes {
+        -webkit-transition: $webkit;
+        -moz-transition: $moz;
+        transition: $spec;
+    } @else {
+        @if length($properties) >= 1 {
+            @include prefixer(transition, $properties, webkit moz spec);
+        } @else {
+            $properties: all 0.15s ease-out 0s;
+            @include prefixer(transition, $properties, webkit moz spec);
+        }
+    }
+}
+
+/* WATERFALL ANIMATION */
+.waterfall {
+    .item {
+        .hd,
+        .sh,
+        .dsc,
+        .btn {
+            position: relative;
+            @include transition(transform 0.3s $ease-in-out-back, opacity 0.3s $ease-in-out-back);
+            transform: translateY($base-spacing);
+            opacity: 0;
+        }
+        .hd {
+            transition-delay: 180ms;
+        }
+        .sh {
+            transition-delay: 360ms;
+        }
+        .dsc {
+            transition-delay: 540ms;
+        }
+        .btn {
+            transition-delay: 720ms;
+        }
+    }
+
+    .slick-active {
+        // .#{$tsi-mod}I {
+        .item {
+            .hd,
+            .sh,
+            .dsc,
+            .btn {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            // }
+            // .#{$tsi-mod}I_txt {
+            .content {
+                opacity: 1;
+            }
+        }
+        //}
+    }
+}
+
+/* SLIDE-IN ANIMATION */
+.slidein {
+    .item {
+        /* .caption {
+            position: absolute;
+        } */
+        .hd,
+        .sh,
+        .dsc,
+        .btn {
+            position: relative;
+            @include transition(transform 0.3s $ease-in-out-back, opacity 0.3s $ease-in-out-back);
+            transform: translateY(-$base-spacing);
+            opacity: 0;
+        }
+        .hd {
+            transform: translateX(-($large-spacing * 3));
+            transition-delay: 180ms;
+        }
+        .sh {
+            transform: translateX(-($large-spacing * 3));
+            transition-delay: 270ms;
+        }
+        .dsc {
+            transform: translateX($large-spacing * 3);
+            transition-delay: 360ms;
+        }
+        .btn {
+            transform: translateX($large-spacing * 3);
+            transition-delay: 450ms;
+        }
+    }
+
+    .slick-active {
+        .item {
+            .hd,
+            .sh,
+            .dsc,
+            .btn {
+                transform: translateX(0);
+                opacity: 1;
+            }
+
+            .caption {
+                // opacity: 1;
+            }
+        }
+    }
+}
+
+/* BOUNCE ANIMATION */
+@keyframes bounce {
+    from,
+    20%,
+    53%,
+    80%,
+    to {
+        -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+
+    40%,
+    43% {
+        -webkit-animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+        animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+        -webkit-transform: translate3d(0, -30px, 0);
+        transform: translate3d(0, -30px, 0);
+    }
+
+    70% {
+        -webkit-animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+        animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+        -webkit-transform: translate3d(0, -15px, 0);
+        transform: translate3d(0, -15px, 0);
+    }
+
+    90% {
+        -webkit-transform: translate3d(0, -4px, 0);
+        transform: translate3d(0, -4px, 0);
+    }
+}
+
+.bounce {
+    .slick-active {
+        .item {
+            .hd,
+            .sh,
+            .dsc,
+            .btn {
+                animation-name: bounce;
+                transform-origin: center bottom;
+                animation-duration: 1s;
+                animation-fill-mode: both;
+                transform-origin: center bottom;
+            }
+            .hd {
+                animation-delay: 180ms;
+            }
+            .sh {
+                animation-delay: 360ms;
+            }
+            .dsc {
+                animation-delay: 540ms;
+            }
+            .btn {
+                animation-delay: 720ms;
+            }
+        }
+    }
+}

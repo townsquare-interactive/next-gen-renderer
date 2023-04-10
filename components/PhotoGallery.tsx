@@ -12,9 +12,9 @@ import { ConditionalWrapper, domainImage } from 'functions'
 import Carousel from 'elements/Carousel'
 
 //react slider
-import Slider from 'react-slick'
+/* import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
+import 'slick-carousel/slick/slick-theme.css' */
 import { ImageBlock } from 'elements/ImageBlock'
 
 const PhotoGallery = (props: ModuleProps) => {
@@ -86,7 +86,7 @@ const PhotoGallery = (props: ModuleProps) => {
     const settingsImage = {
         dots: true,
         infinite: true,
-        speed: 800,
+        //speed: 800,
         //speed: settings?.restartDelay || 2500,
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -96,7 +96,9 @@ const PhotoGallery = (props: ModuleProps) => {
         prevArrow: <Arrow type="prev" />,
         nextArrow: <Arrow type="next" />,
         autoplay: settings?.autoplay || true,
-        autoplaySpeed: settings?.restartDelay || 2500,
+        //autoplay: false,
+        // autoplaySpeed: settings?.restartDelay || 2500,
+        autoplaySpeed: settings?.interval || 6000,
         pauseOnHover: settings?.pauseOnHover,
     }
 
@@ -128,7 +130,7 @@ const PhotoGallery = (props: ModuleProps) => {
         return (
             <>
                 <div
-                    className={cn('photogallery-mod', styles['root'], styles['flex-mod'], 'root-container', {
+                    className={cn('photogallery-mod', styles['root'], styles['flex-mod'], 'root-container', settings?.animation, {
                         [styles.well]: well == '1',
                         [styles[`cst_${customClassName}`]]: customClassName,
                         [`cst_${customClassName}`]: customClassName,
@@ -233,14 +235,14 @@ const ItemWrap = (props: ItemWrapProps) => {
                 })}
                 style={item.modOne ? { height: item.modOne } : {}}
             >
-                <div className={styles.content}>
+                <div className={cn(styles.content, 'content')}>
                     {(item.headline || item.subheader) && (
                         <HeadlineBlock item={item} well={1} columns={columns} isBeaconHero={item.isBeaconHero} modType={'parallax'} />
                     )}
 
                     {item.desc && (
                         <div className={cn(styles['txt-block'])}>
-                            <DescBlock desc={item.desc} descSize={item.descSize} useAccentColor={true} type={'parallax'} />
+                            <DescBlock desc={item.desc} descSize={item.descSize} useAccentColor={true} type={'gallery'} />
                         </div>
                     )}
 
