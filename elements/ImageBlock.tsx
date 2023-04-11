@@ -19,6 +19,7 @@ export const ImageBlock = (props: ImageBlockProps) => {
                     [styles['testimonials']]: modType === 'testimonials_1',
                     [styles['article']]: modType.includes('article'),
                     [styles['card']]: modType === 'Card',
+                    [styles['photo-gallery']]: modType === 'PhotoGallery',
                 })}
             >
                 {item.image && (
@@ -35,7 +36,7 @@ export const ImageBlock = (props: ImageBlockProps) => {
                     />
                 )}
 
-                {item.imageIcon && (
+                {item.imageIcon && modType != 'PhotoGallery' && (
                     <div className={cn(styles['icon-block'])}>
                         <div className={styles.icon}>
                             <FontAwesomeIcon icon={[item.imageIcon.iconPrefix, item.imageIcon.iconModel]} />

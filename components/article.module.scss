@@ -6,7 +6,8 @@
 
 .root {
     @include utils.module-root;
-    @include utils.wrapper-size(0);
+    @include utils.wrapper-size(3rem);
+    //padding-top: 3rem;
 
     .wrapper {
         .item {

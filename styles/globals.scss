@@ -305,16 +305,16 @@ $ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
             opacity: 0;
         }
         .hd {
-            transition-delay: 180ms;
+            transition-delay: 180ms !important;
         }
         .sh {
-            transition-delay: 360ms;
+            transition-delay: 360ms !important;
         }
         .dsc {
-            transition-delay: 540ms;
+            transition-delay: 540ms !important;
         }
         .btn {
-            transition-delay: 720ms;
+            transition-delay: 720ms !important;
         }
     }
 

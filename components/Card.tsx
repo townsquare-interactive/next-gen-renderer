@@ -157,6 +157,7 @@ const ItemWrap = (props: ItemWrapProps) => {
             </figure>
         )
     }
+
     return (
         <>
             {item.align === 'right' ? (

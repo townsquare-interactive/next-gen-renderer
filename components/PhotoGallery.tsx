@@ -95,11 +95,12 @@ const PhotoGallery = (props: ModuleProps) => {
         // prevArrow: <PrevArrowImage />,
         prevArrow: <Arrow type="prev" />,
         nextArrow: <Arrow type="next" />,
-        autoplay: settings?.autoplay || true,
+        autoplay: settings?.autoplay,
         //autoplay: false,
         // autoplaySpeed: settings?.restartDelay || 2500,
         autoplaySpeed: settings?.interval || 6000,
         pauseOnHover: settings?.pauseOnHover,
+        restartDelay: settings?.restartDelay || 2500,
     }
 
     const settingsText = {
@@ -132,9 +133,12 @@ const PhotoGallery = (props: ModuleProps) => {
                 <div
                     className={cn('photogallery-mod', styles['root'], styles['flex-mod'], 'root-container', settings?.animation, {
                         [styles.well]: well == '1',
+                        ['well']: well == '1',
                         [styles[`cst_${customClassName}`]]: customClassName,
                         [`cst_${customClassName}`]: customClassName,
                         [styles['first-mod']]: modCount === 1,
+                        [styles['half-gallery']]: settings?.halfSize,
+                        [styles['mob-resize']]: settings?.mobileResize,
                     })}
                     id={`id_${modId}`}
                 >
@@ -183,6 +187,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                 styles[`${item.align}`],
                 {
                     [styles.hero]: item.isFeatured === 'active',
+                    ['hero']: item.isFeatured === 'active',
                     [styles.nHero]: !item.isFeatured,
                     [styles.yLk]: (item.pagelink || item.weblink || item.pagelink2 || item.weblink2) && !item.twoButtons,
                     [styles.yImg]: item.image,
@@ -214,6 +219,8 @@ const ModuleItem = (props: ModuleItemProps) => {
 const ItemWrap = (props: ItemWrapProps) => {
     const { item, well, themeStyles, modId, columns, type, cmsUrl, imgsize } = props
 
+    const forceAccentColor = item.isFeatured === 'active' ? well == '1' && false : true
+
     return (
         <div
             className={cn(styles['item-wrap'], {})}
@@ -227,11 +234,13 @@ const ItemWrap = (props: ItemWrapProps) => {
                     : {}
             }
         >
-            <ImageBlock item={item} imgsize={imgsize} well={well} cmsUrl={cmsUrl} modType={'Card'} columns={columns} />
+            <div style={{ height: '100%' }}>
+                <ImageBlock item={item} imgsize={imgsize} well={well} cmsUrl={cmsUrl} modType={'PhotoGallery'} columns={columns} />
+            </div>
 
             <div
                 className={cn(styles['caption'], {
-                    [styles['cap-bckg']]: item.modSwitch1 != 1 && item.image,
+                    [styles['cap-bckg']]: item.modSwitch1 != 1 && item.image && (item.desc || item.headline || item.visibleButton),
                 })}
                 style={item.modOne ? { height: item.modOne } : {}}
             >
@@ -242,7 +251,12 @@ const ItemWrap = (props: ItemWrapProps) => {
 
                     {item.desc && (
                         <div className={cn(styles['txt-block'])}>
-                            <DescBlock desc={item.desc} descSize={item.descSize} useAccentColor={true} type={'gallery'} />
+                            <DescBlock
+                                desc={item.desc}
+                                descSize={item.descSize}
+                                useAccentColor={!forceAccentColor ? item.useAccentColor || false : true}
+                                type={'gallery'}
+                            />
                         </div>
                     )}
 

@@ -15,10 +15,6 @@ export default {
             options: ['', '1'],
             control: { type: 'radio' },
         },
-        columns: {
-            options: [1, 2, 3, 4],
-            control: { type: 'radio' },
-        },
         type: {
             options: ['card_1', 'card_2'],
             control: { type: 'radio' },
@@ -374,6 +370,7 @@ export const LinkNoButton = Template.bind({})
 LinkNoButton.args = {
     ...Default.args,
     well: '1',
+    modId: '6223',
     items: [
         {
             ...item1,
@@ -397,11 +394,33 @@ Featured.args = {
     items: [{ ...item1, isFeatured: 'active', align: 'left' }],
 }
 
-export const MultiFeatured = Template.bind({})
-MultiFeatured.args = {
-    ...AlignLeft.args,
-    columns: 3,
-    items: [{ ...item1 }, { ...item1, isFeatured: 'active' }, { ...item1 }],
+export const Featured2 = Template.bind({})
+Featured2.args = {
+    ...LinkNoButton.args,
+    items: [
+        {
+            ...item1,
+            isFeatured: 'active',
+            align: 'left',
+            image: '',
+            buttonList: [
+                {
+                    name: 'btn1',
+                    link: '/article/',
+                    window: '',
+                    label: 'Button1',
+                    active: true,
+                    btnType: 'btn_1',
+                    btnSize: 'btn_md',
+                    linkType: 'local',
+                    blockBtn: true,
+                },
+            ],
+            twoButtons: false,
+            isWrapLink: true,
+            visibleButton: true,
+        },
+    ],
 }
 
 export const Caption = Template.bind({})
@@ -411,8 +430,8 @@ Caption.args = {
     items: [{ ...item1, caption_tag: 'caption', captionOn: 0 }],
 }
 
-export const V3TextSizes = Template.bind({})
-V3TextSizes.args = {
+export const TextSizes = Template.bind({})
+TextSizes.args = {
     ...Plain.args,
     items: [
         { ...item1, headSize: 'font_xs', descSize: 'font_sm' },

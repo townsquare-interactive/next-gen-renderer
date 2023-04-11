@@ -582,7 +582,16 @@ export interface ModuleProps {
     columnLocation: number
     isSingleColumn: boolean
     modCount?: number
-    settings?: { autoplay: boolean; pauseOnHover: boolean; effect: string; animation: string; interval: number; restartDelay: number }
+    settings?: {
+        autoplay: boolean
+        pauseOnHover: boolean
+        effect: string
+        animation: string
+        interval: number
+        restartDelay: number
+        halfSize: boolean
+        mobileResize: boolean
+    }
 }
 export interface PhotoGridProps {
     uid: string
