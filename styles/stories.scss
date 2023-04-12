@@ -1,4 +1,3 @@
-@import url(https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Lato:300,400,700,900,300italic,400italic,700italic,900italic|Abril+Fatface&display=swap);
 body {
     font-family: Lato;
 }
@@ -113,7 +112,9 @@ body .txt-font .dsc a {
 .testimonials-mod.well .hero.item,
 .testimonials-mod.well .hero .desc,
 .card-mod .hero.item,
-.card-mod .hero .desc {
+.card-mod .hero .desc,
+.photogallery-mod.well .hero.item,
+.photogallery-mod.well .hero .desc {
     color: var(--hero-txt);
 }
 .testimonials-mod.well .hero .stars,
@@ -123,7 +124,11 @@ body .txt-font .dsc a {
 .card-mod .hero .stars,
 .card-mod .hero .quotes,
 .card-mod .hero .hd,
-.card-mod .hero .sh {
+.card-mod .hero .sh,
+.photogallery-mod.well .hero .stars,
+.photogallery-mod.well .hero .quotes,
+.photogallery-mod.well .hero .hd,
+.photogallery-mod.well .hero .sh {
     color: var(--txt-accent);
 }
 
@@ -219,6 +224,11 @@ body .txt-font .dsc a {
     color: var(--link-hover);
 }
 
+.hero .one-btn-w .btn_1.btn_w {
+    color: var(--txt-accent);
+    background-color: var(--hero-btn-background);
+}
+
 .border-background {
     background-color: var(--accent-background);
 }
@@ -292,6 +302,7 @@ body .txt-font .dsc a {
     font-style: italic !important;
 }
 
+/* ---------------------------Added for stories ----------------------------*/
 #id_6223 .is-wrap-link:hover .btn_1 {
     color: var(--promo);
     background-color: var(--txt-accent);

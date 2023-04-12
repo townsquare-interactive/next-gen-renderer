@@ -246,7 +246,7 @@ const ItemWrap = (props: ItemWrapProps) => {
             >
                 <div className={cn(styles.content, 'content')}>
                     {(item.headline || item.subheader) && (
-                        <HeadlineBlock item={item} well={1} columns={columns} isBeaconHero={item.isBeaconHero} modType={'parallax'} />
+                        <HeadlineBlock item={item} well={1} columns={columns} isBeaconHero={item.isBeaconHero} modType={'photogallery'} />
                     )}
 
                     {item.desc && (

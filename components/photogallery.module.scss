@@ -221,6 +221,18 @@
                 height: 100%;
             }
         }
+        @media (max-width: 1024px) {
+            .item {
+                height: 50vh;
+            }
+        }
+
+        //this wends up being about the same height as 50vh?
+        /*  @media print, screen and (min-width: 851px) and (max-width: 1024px) {
+            .section_content .tsT_gallery.g1.widescreen_2-4_1 .tsI {
+                height: 32.5rem;
+            }
+        } */
     }
 
     &.half-gallery {

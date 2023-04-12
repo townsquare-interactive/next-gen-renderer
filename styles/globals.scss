@@ -292,6 +292,46 @@ $ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
 }
 
+/*------------------------------------- Photo Gallery Animations ----------------------------------------- */
+
+/* .slick-slide {
+    .content {
+        display: none;
+    }
+}
+.slick-active {
+    .content {
+        display: flex;
+    }
+} */
+
+/* text focus in animation */
+.text-focus-in {
+    .slick-active {
+        .item {
+            .hd,
+            .sh,
+            .dsc,
+            .btn {
+                //-webkit-animation: text-focus-in 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+                // animation: text-focus-in 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+            }
+            .hd {
+                animation-delay: 180ms;
+            }
+            .sh {
+                animation-delay: 360ms;
+            }
+            .dsc {
+                animation-delay: 540ms;
+            }
+            .btn {
+                animation-delay: 720ms;
+            }
+        }
+    }
+}
+
 /* WATERFALL ANIMATION */
 .waterfall {
     .item {

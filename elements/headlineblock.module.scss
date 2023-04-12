@@ -230,8 +230,7 @@
         }
     }
 
-    &.parallax,
-    &.photogallery {
+    &.parallax {
         font-size: 100%; //70%
 
         /*         @include breakpoints.md-min {
@@ -272,6 +271,58 @@
                 line-height: 1.0833333333em;
                 letter-spacing: -0.04rem;
             }
+        }
+
+        @container module (min-width:852px) {
+            font-size: 80%;
+        }
+
+        @container item (min-width: 1025px) {
+            font-size: 100%;
+
+            .hd {
+                font-size: variables.$xl-txt;
+                margin-bottom: 0.3703703704em;
+                line-height: 1.1111111111em;
+                letter-spacing: -0.05rem;
+            }
+        }
+    }
+
+    &.photogallery {
+        font-size: 70%; //70%
+
+        /*         @include breakpoints.md-min {
+            font-size: 80%;
+        }
+
+        @include breakpoints.lg-min {
+        } */
+
+        margin-top: 0.75em;
+
+        .hd {
+            font-size: 3em;
+            margin-top: 0.75em;
+            margin-bottom: 0.3333333333em;
+            line-height: 1.0833333333em;
+            letter-spacing: -0.04rem;
+        }
+
+        .sh {
+            @include med-text-group;
+        }
+
+        @container module (min-width: 451px) {
+            font-size: 80%;
+
+            /* .hd {
+                font-size: 3em;
+                margin-top: 0;
+                margin-bottom: 0.3333333333em;
+                line-height: 1.0833333333em;
+                letter-spacing: -0.04rem;
+            } */
         }
 
         @container module (min-width:852px) {

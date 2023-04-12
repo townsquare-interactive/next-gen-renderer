@@ -589,7 +589,7 @@ export interface ModuleProps {
         animation: string
         interval: number
         restartDelay: number
-        halfSize: boolean
+        halfSize?: boolean
         mobileResize: boolean
     }
 }

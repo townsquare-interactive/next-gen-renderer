@@ -98,17 +98,19 @@ const Heading = (props: HeadingProps) => {
                     modType != 'photo_grid' &&
                     modType != 'banner' &&
                     (!useAccentColor || modType === 'testimonials_1') &&
-                    modType != 'parallax',
+                    modType != 'parallax' &&
+                    modType != 'photogallery',
                 ['testimonial-txt-color']: modType === 'testimonials_1' && well,
                 ['accent-txt']:
                     isBeaconHero ||
                     modType === 'photo_grid' ||
                     modType === 'banner' ||
                     (useAccentColor && modType != 'testimonials_1') ||
-                    modType === 'parallax',
+                    modType === 'parallax' ||
+                    modType === 'photogallery',
                 ['txt-font']: textType === 'sh',
                 ['hd-font']: textType === 'hd',
-                ['feat-font']: textType === 'hd' && modType === 'parallax',
+                ['feat-font']: textType === 'hd' && (modType === 'parallax' || modType === 'photogallery'),
             })}
         >
             {Parser(text)}
