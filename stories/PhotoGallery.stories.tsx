@@ -116,7 +116,7 @@ const item1: ArticleItems = {
     imagePriority: false,
     itemCount: 1,
     imageType: 'crop',
-    itemStyle: itemStyle.noImage,
+    //itemStyle: itemStyle.noImage,
 }
 
 const item2 = { ...item1, image: '/files/2022/09/Yos2.jpg' }
@@ -349,8 +349,14 @@ Border.args = {
 
 export const Featured = Template.bind({})
 Featured.args = {
-    ...AlignLeft.args,
-    items: [{ ...item1, isFeatured: 'active', align: 'left' }],
+    ...Plain.args,
+    well: 1,
+    items: [
+        {
+            ...item1,
+            isFeatured: 'active',
+        },
+    ],
 }
 
 export const Icon = Template.bind({})

@@ -214,7 +214,7 @@
     &.mob-resize {
         @media (max-width: 480px) {
             .item {
-                height: 70vh;
+                min-height: 70vh;
             }
             .image-block,
             .item-wrap {
@@ -223,7 +223,7 @@
         }
         @media (max-width: 1024px) {
             .item {
-                height: 50vh;
+                min-height: 50vh;
             }
         }
 
