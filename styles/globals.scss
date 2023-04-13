@@ -294,16 +294,12 @@ $ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
 /*------------------------------------- Photo Gallery Animations ----------------------------------------- */
 
-/* .slick-slide {
-    .content {
-        display: none;
-    }
+.slick-slide {
+    z-index: 1;
 }
 .slick-active {
-    .content {
-        display: flex;
-    }
-} */
+    z-index: 2;
+}
 
 /* text focus in animation */
 .text-focus-in {
