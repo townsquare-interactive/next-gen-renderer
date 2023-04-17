@@ -46,6 +46,13 @@
                     &.cap-bckg {
                         background: var(--caption-background);
                     }
+
+                    position: absolute;
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 100%;
                 }
 
                 .content {
@@ -55,7 +62,12 @@
                     justify-content: space-between;
                     width: 100%;
                     @include utils.wrapper-size(0);
-                    padding: 0 1.5rem;
+                    //padding: 0 1.5rem;
+
+                    padding: 2rem 2rem 1.5rem;
+                    @include breakpoints.sm-min {
+                        padding: 1rem 6rem 2rem;
+                    }
 
                     .dsc-block {
                         a {
@@ -81,6 +93,10 @@
                         margin: 0.3em 0;
                     }
                 }
+
+                .image-block {
+                    height: 100%;
+                }
             }
 
             &.btn-only {
@@ -104,6 +120,11 @@
     }
 
     .slick-arrow {
+        display: none;
+        @include breakpoints.sm-min {
+            display: block;
+        }
+
         padding: 0.75rem;
         background-color: #009374 !important;
         color: #ffffff;
@@ -159,61 +180,9 @@
         }
     }
 
-    .item-wrap {
-        .caption {
-            position: absolute;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-
-            &.cap-bckg {
-                background: var(--caption-background);
-            }
-        }
-
-        &.react-scroll {
-            .caption {
-                z-index: 2;
-                position: relative;
-            }
-
-            .parallax-banner {
-                & > div:first-of-type {
-                    inset: -125px 0px !important;
-                }
-            }
-        }
-
-        .outer {
-            overflow: hidden;
-            width: 100%;
-            position: absolute;
-        }
-
-        .image-block {
-            position: relative;
-            height: 100%;
-            will-change: transform;
-
-            &.image-block2 {
-                position: absolute;
-                will-change: transform;
-                transform: translateY(-74.3272px);
-                inset: -125px 0px !important;
-                height: auto;
-            }
-        }
-
-        img {
-            will-change: transform;
-        }
-    }
-
     &.mob-resize {
         @media (max-width: 480px) {
-            .item {
+            .image-block > div {
                 min-height: 70vh;
             }
             .image-block,
@@ -222,9 +191,41 @@
             }
         }
         @media (max-width: 1024px) {
-            .item {
+            .image-block > div {
                 min-height: 50vh;
             }
+        }
+
+        @media print, screen and (min-width: 851px) and (max-width: 1024px) {
+            &.widescreen_2_4_1 .image-block > div {
+                height: 32.5rem;
+            }
+
+            /* &.square_1_1 .image-block > div {
+                aspect-ratio: math.div(1, 1);
+            }
+        
+            &.landscape_4_3 .image-block > div {
+                aspect-ratio: math.div(4, 3);
+            }
+            &.landscape_3_2 .image-block > div {
+                aspect-ratio: math.div(3, 2);
+            }
+            &.portrait_3_4 .image-block > div {
+                aspect-ratio: math.div(3, 4);
+            }
+            &.portrait_2_3 .image-block > div {
+                aspect-ratio: math.div(2, 3);
+            }
+            &.widescreen_16_9 .image-block > div {
+                aspect-ratio: math.div(16, 9);
+            }
+            &.widescreen_3_1 .image-block > div {
+                aspect-ratio: math.div(3, 1);
+            }
+            &.widescreen_2_4_1 .image-block > div {
+                aspect-ratio: math.div(2000, 830);
+            } */
         }
 
         //this wends up being about the same height as 50vh?
@@ -233,6 +234,14 @@
                 height: 32.5rem;
             }
         } */
+    }
+
+    @include breakpoints.md-min {
+        @container module (min-width:481px) {
+            .wrapper .item .item-wrap .content {
+                padding: 1rem 9rem 2rem;
+            }
+        }
     }
 
     &.half-gallery {

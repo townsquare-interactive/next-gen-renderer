@@ -9,6 +9,11 @@ import { HeadlineBlock } from 'elements/HeadlineBlock'
 import LinkWrap from 'elements/LinkWrap'
 import DescBlock from 'elements/DescBlock'
 
+import Carousel from 'elements/Carousel'
+
+//carousel option, may keep in this module
+const useCarousel = true
+
 const Testimonials = (props: ModuleProps) => {
     const {
         columns = 1,
@@ -25,7 +30,27 @@ const Testimonials = (props: ModuleProps) => {
         contentSpacing,
         columnLocation,
         isSingleColumn,
+        settings,
     } = props
+
+    const carouselSettings = {
+        dots: true,
+        infinite: true,
+        //speed: 800,
+        //speed: settings?.restartDelay || 2500,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        //fade: settings?.effect === 'fade' ? true : false,
+        // nextArrow: <NextArrowImage />,
+        // prevArrow: <PrevArrowImage />,
+        //prevArrow: <Arrow type="prev" />,
+        //nextArrow: <Arrow type="next" />,
+        autoplay: settings?.autoplay,
+        autoplaySpeed: settings?.interval || 6000,
+        pauseOnHover: settings?.pauseOnHover,
+        restartDelay: settings?.restartDelay || 2500,
+        //dotsClass: 'slick-dots',
+    }
 
     if (disabled === 'disabled') {
         return <></>
@@ -38,7 +63,7 @@ const Testimonials = (props: ModuleProps) => {
                     styles['item-flex'],
                     styles['root'],
                     styles['flex-mod'],
-                    styles[`col_${columns}`],
+                    styles[`col_${useCarousel ? 1 : columns}`],
                     styles[`${type}`],
                     styles[`${contentSpacing}`],
 
@@ -56,26 +81,53 @@ const Testimonials = (props: ModuleProps) => {
             >
                 {title && <ModuleTitle title={title} />}
                 <div className={cn(styles.wrapper, 'wrapper')}>
-                    {items.map((item, index) => (
-                        <Fragment key={index}>
-                            {item.disabled != 'disabled' ? (
-                                <ModuleItem
-                                    item={item}
-                                    well={well}
-                                    modId={modId}
-                                    themeStyles={themeStyles}
-                                    key={index}
-                                    imgsize={imgsize}
-                                    type={type}
-                                    columns={columns}
-                                    itemIndex={index}
-                                    cmsUrl={cmsUrl}
-                                />
-                            ) : (
-                                <></>
-                            )}
-                        </Fragment>
-                    ))}
+                    {!useCarousel ? (
+                        items.map((item, index) => (
+                            <Fragment key={index}>
+                                {item.disabled != 'disabled' ? (
+                                    <ModuleItem
+                                        item={item}
+                                        well={well}
+                                        modId={modId}
+                                        themeStyles={themeStyles}
+                                        key={index}
+                                        imgsize={imgsize}
+                                        type={type}
+                                        columns={columns}
+                                        itemIndex={index}
+                                        cmsUrl={cmsUrl}
+                                    />
+                                ) : (
+                                    <></>
+                                )}
+                            </Fragment>
+                        ))
+                    ) : (
+                        <div className={cn(styles.wrapper, 'wrapper')}>
+                            <Carousel settings={carouselSettings}>
+                                {items.map((item, index: number) => (
+                                    <Fragment key={index}>
+                                        {item.disabled != 'disabled' ? (
+                                            <ModuleItem
+                                                item={item}
+                                                well={well}
+                                                modId={modId}
+                                                themeStyles={themeStyles}
+                                                key={index}
+                                                imgsize={imgsize}
+                                                type={type}
+                                                columns={columns}
+                                                itemIndex={index}
+                                                cmsUrl={cmsUrl}
+                                            />
+                                        ) : (
+                                            <></>
+                                        )}
+                                    </Fragment>
+                                ))}
+                            </Carousel>
+                        </div>
+                    )}
                 </div>
             </div>
         )

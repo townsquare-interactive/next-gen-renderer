@@ -70,6 +70,8 @@ const PhotoGallery = (props: ModuleProps) => {
 
     //animation is for text, css
 
+    const useThumb = true
+
     const Arrow = (props: { type: string; onClick?: any }) => {
         const { type, onClick } = props
         return (
@@ -83,7 +85,33 @@ const PhotoGallery = (props: ModuleProps) => {
         )
     }
 
-    const settingsImage = {
+    const Dots = (props: any) => {
+        return (
+            <ul
+                className="slick-dots"
+                //style="display: block;"
+                role="tablist"
+            >
+                <li className="slick-active" aria-hidden="false" role="presentation" aria-controls="navigation00" id="slick-slide00">
+                    <button type="button" data-role="none" role="button">
+                        1
+                    </button>
+                </li>
+                <li aria-hidden="true" role="presentation" aria-controls="navigation01" id="slick-slide01" className="">
+                    <button type="button" data-role="none" role="button">
+                        2
+                    </button>
+                </li>
+            </ul>
+        )
+    }
+
+    let allImgs: any = []
+    for (let x in items) {
+        items[x].image && allImgs.push(items[x].image)
+    }
+
+    const carouselSettings = {
         dots: true,
         infinite: true,
         //speed: 800,
@@ -101,6 +129,22 @@ const PhotoGallery = (props: ModuleProps) => {
         autoplaySpeed: settings?.interval || 6000,
         pauseOnHover: settings?.pauseOnHover,
         restartDelay: settings?.restartDelay || 2500,
+        dotsClass: 'slick-dots',
+
+        //used for thumbnails
+        /* customPaging: function (i: number) {
+            return (
+                <a>
+                    <img
+                        src={`http://clttestsiteforjoshedwards.production.townsquareinteractive.com/${allImgs[i]}`}
+                        style={{ width: '5rem', margin: '1rem' }}
+                    />
+                </a>
+            )
+        }, */
+        customPaging: function (i: number) {
+            return <button type="button" data-role="none" role="button"></button>
+        },
     }
 
     const settingsText = {
@@ -113,7 +157,7 @@ const PhotoGallery = (props: ModuleProps) => {
         /* prevArrow: <PrevArrow themeStyles={themeStyles} />, */
     }
 
-    /*     <Slider {...settingsImage}>
+    /*     <Slider {...carouselSettings}>
     {items.map((item, index) => (
         <div className={styles.item} key={index}>
             {item.imageUrl && (
@@ -139,11 +183,12 @@ const PhotoGallery = (props: ModuleProps) => {
                         [styles['first-mod']]: modCount === 1,
                         [styles['half-gallery']]: settings?.halfSize,
                         [styles['mob-resize']]: settings?.mobileResize,
+                        [styles.widescreen_2_4_1]: imgsize === 'widescreen_2-4_1',
                     })}
                     id={`id_${modId}`}
                 >
                     <div className={cn(styles.wrapper, 'wrapper')}>
-                        <Carousel settings={settingsImage}>
+                        <Carousel settings={carouselSettings}>
                             {items.map((item, index: number) => (
                                 <Fragment key={index}>
                                     {item.disabled != 'disabled' ? (
@@ -234,7 +279,7 @@ const ItemWrap = (props: ItemWrapProps) => {
                     : {}
             }
         >
-            <div style={{ height: '100%' }}>
+            <div className={styles['image-block']}>
                 <ImageBlock item={item} imgsize={imgsize} well={well} cmsUrl={cmsUrl} modType={'PhotoGallery'} columns={columns} />
             </div>
 
