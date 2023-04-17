@@ -12,7 +12,7 @@ import DescBlock from 'elements/DescBlock'
 import Carousel from 'elements/Carousel'
 
 //carousel option, may keep in this module
-const useCarousel = true
+const useCarousel = false
 
 const Testimonials = (props: ModuleProps) => {
     const {
