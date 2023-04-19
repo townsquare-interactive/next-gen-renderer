@@ -42,17 +42,16 @@
                     justify-content: center;
                     overflow-y: auto;
                     overflow-x: hidden;
-
-                    &.cap-bckg {
-                        background: var(--caption-background);
-                    }
-
                     position: absolute;
                     width: 100%;
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     height: 100%;
+
+                    &.cap-bckg {
+                        background: var(--caption-background);
+                    }
                 }
 
                 .content {
@@ -61,6 +60,7 @@
                     flex-direction: column;
                     justify-content: space-between;
                     width: 100%;
+
                     @include utils.wrapper-size(0);
                     //padding: 0 1.5rem;
 
@@ -200,40 +200,7 @@
             &.widescreen_2_4_1 .image-block > div {
                 height: 32.5rem;
             }
-
-            /* &.square_1_1 .image-block > div {
-                aspect-ratio: math.div(1, 1);
-            }
-        
-            &.landscape_4_3 .image-block > div {
-                aspect-ratio: math.div(4, 3);
-            }
-            &.landscape_3_2 .image-block > div {
-                aspect-ratio: math.div(3, 2);
-            }
-            &.portrait_3_4 .image-block > div {
-                aspect-ratio: math.div(3, 4);
-            }
-            &.portrait_2_3 .image-block > div {
-                aspect-ratio: math.div(2, 3);
-            }
-            &.widescreen_16_9 .image-block > div {
-                aspect-ratio: math.div(16, 9);
-            }
-            &.widescreen_3_1 .image-block > div {
-                aspect-ratio: math.div(3, 1);
-            }
-            &.widescreen_2_4_1 .image-block > div {
-                aspect-ratio: math.div(2000, 830);
-            } */
         }
-
-        //this wends up being about the same height as 50vh?
-        /*  @media print, screen and (min-width: 851px) and (max-width: 1024px) {
-            .section_content .tsT_gallery.g1.widescreen_2-4_1 .tsI {
-                height: 32.5rem;
-            }
-        } */
     }
 
     @include breakpoints.md-min {
@@ -255,4 +222,69 @@
 
 .columns .root {
     @include utils.column-mod;
+
+    /* .slick-prev {
+        left: 2rem;
+        //medium container
+        @include breakpoints.md-min {
+            left: 4.5rem !important;
+        }
+
+        &:before {
+            content: '<';
+        }
+    } */
+
+    .item {
+        width: 100%;
+        margin: 0 auto;
+    }
+    @container module (max-width:481px) {
+        .caption {
+            overflow: hidden;
+        }
+        .content {
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 3rem;
+            position: absolute;
+            overflow-y: auto;
+            overflow-x: hidden;
+            height: 100%;
+            /* &::-webkit-scrollbar {
+            z-index: 999999 !important;
+        }  */
+        }
+
+        .slick-arrow {
+            border-radius: 0;
+            margin: 0;
+            padding: 0.25rem 1rem;
+            bottom: 0;
+            top: auto;
+            width: 50%;
+
+            &:before {
+                width: 100%;
+                display: block;
+                text-align: left;
+                font-size: 1.75rem;
+                line-height: 0.7;
+            }
+        }
+
+        .slick-next {
+            right: 0 !important;
+            &:before {
+                text-align: right;
+            }
+        }
+        .slick-prev {
+            left: 0 !important;
+            &:before {
+                text-align: left;
+            }
+        }
+    }
 }

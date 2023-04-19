@@ -31,7 +31,7 @@ export const Container = (props: ContainerProps) => {
                         </div>
                         {page.data.modules[1].length != 0 && (
                             <div className={styles['column-blocks']}>
-                                <div className={cn(styles.columns, styles[`${columnStyles}`])}>
+                                <div className={cn(styles.columns, styles[`${columnStyles}`], 'columns')}>
                                     {page.data.modules.map((data: ModuleData[], idx: number) => (
                                         <Fragment key={idx}>
                                             {data.length != 0 && idx != 0 ? (

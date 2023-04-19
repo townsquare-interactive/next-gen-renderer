@@ -25,7 +25,7 @@ export const ButtonWrap = (props: ButtonWrapProps) => {
 
     return (
         <div
-            className={cn(styles['btn-mod'], styles[`${type}`], styles[`${align}`], 'txt-font', {
+            className={cn(styles['btn-mod'], 'btn-mod', styles[`${type}`], styles[`${align}`], 'txt-font', {
                 [styles.well]: well == '1' && (type.includes('article') || type.includes('card')),
                 [styles['article-all']]: type.includes('article'),
                 [styles['card']]: type.includes('card'),

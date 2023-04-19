@@ -296,11 +296,17 @@ $ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
 .slick-slide {
     z-index: 1;
+
+    &.slick-current {
+        z-index: 2;
+    }
 }
 
 .slick-dots {
     display: none !important;
-    @include breakpoints.sm-min {
+    //@include breakpoints.sm-min {
+
+    @container module (min-width:481px) {
         display: block !important;
     }
 
@@ -366,7 +372,7 @@ $ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
         background-color: var(--btn-background) !important;
         transition: all 0.1s ease-in-out;
         transform-origin: center center;
-        padding: 0.5rem 0.5rem 0.125rem;
+        //padding: 0.5rem 0.5rem 0.125rem;
         position: relative;
         z-index: 1;
         max-width: 16px !important;
@@ -377,14 +383,15 @@ $ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
 
     .slick-active {
-        z-index: 2;
+        z-index: 2 !important;
     }
 }
 
 .slick-dots li:hover,
-.slick-active {
+.slick-dots .slick-active {
     button {
-        padding: 0.25rem 0.25rem 0.125rem;
+        //padding: 0.25rem 0.25rem 0.125rem;
+        padding: 0.5rem 0.5rem 0.125rem;
 
         /* @include breakpoints.lg-min {
             padding: 5px;
@@ -415,81 +422,18 @@ $ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
     padding: 0.5rem 0;
 }
 
-/* Dots */
-
-/* .slick-dots {
-    //bottom: -40px;
-    // bottom: -4rem;
-    height: 40px;
-    position: absolute;
-    list-style: none;
-    display: inline-block;
-    text-align: center;
-    padding: 0;
-    height: 4rem;
-    width: 100%;
-    vertical-align: middle;
+//columns
+.columns {
+    .slick-next {
+        border-radius: 0;
+        margin: 0;
+        padding: 0.25rem 1rem;
+        bottom: 0;
+        top: auto;
+        width: 50%;
+        right: 0 !important;
+    }
 }
-.slick-dots li {
-    line-height: 40px;
-    line-height: 4rem;
-    position: relative;
-    display: inline-block;
-    margin: 0;
-    padding: 0;
-    cursor: pointer;
-}
-.slick-dots li button {
-    border: 0;
-    //display: inline-block;
-    outline: none;
-    cursor: pointer;
-    text-align: center;
-    background-color: black;
-    border-radius: 0;
-    content: ' ' !important;
-    font-size: 0;
-    color: transparent;
-    //height: 4px;
-    // width: 4px;
-    margin: 0 5px;
-    //height: 0.4rem;
-    //width: 0.4rem;
-    margin: 0 0.5rem;
-    padding: 0;
-    //opacity: 0.25;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    vertical-align: middle;
-}
-.slick-dots li button:hover,
-.slick-dots li button:focus {
-    outline: none;
-}
-.slick-dots li button:hover:before,
-.slick-dots li button:focus:before {
-    opacity: 1;
-}
-.slick-dots li.slick-active button {
-    color: black;
-    opacity: 0.75;
-}
-
-.slick-dots li.slick-active button:before,
-.slick-dots li:hover button:before {
-    content: ' ' !important;
-    display: block;
-    border: solid transparent;
-    border-color: rgba(255, 255, 255, 0);
-    border-width: 0.5rem;
-    position: absolute;
-    left: 0;
-    top: -1rem;
-    opacity: 1;
-    -webkit-transition: all 0.1s ease-in-out;
-    -moz-transition: all 0.1s ease-in-out;
-    transition: all 0.1s ease-in-out;
-} */
 
 /* text focus in animation */
 .text-focus-in {

@@ -2,75 +2,17 @@
 import styles from './photogallery.module.scss'
 import { ModuleProps, ItemWrapProps, ModuleItemProps } from '../types'
 import cn from 'classnames'
-import { Fragment, ReactChild } from 'react'
+import { Fragment } from 'react'
 import { ButtonWrap } from '../elements/ButtonWrap'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
 import LinkWrap from 'elements/LinkWrap'
 import DescBlock from 'elements/DescBlock'
-import { ImageElement } from 'elements/ImageElement'
-import { ConditionalWrapper, domainImage } from 'functions'
+import { domainImage } from 'functions'
 import Carousel from 'elements/Carousel'
-
-//react slider
-/* import Slider from 'react-slick'
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css' */
 import { ImageBlock } from 'elements/ImageBlock'
 
 const PhotoGallery = (props: ModuleProps) => {
     const { columns = 1, type, well, imgsize, modId, items, themeStyles, cmsUrl, disabled, customClassName, modCount, settings } = props
-
-    //Sets slide count to 1 if there are more slides than items to show, or if text shows (if you are showing more than 1 at once)
-    /*     function setSlide() {
-        if (modLayout === 'images' && items.length >= slideCount) {
-            return slideCount
-        } else {
-            return 1
-        } */
-
-    //let autoPlay = false
-
-    /*     const autoplay = settings?.autoplay === 0 ? false : true
-    const pauseonhover = settings?.pauseonhover === 0 ? false : true
-    const animation = settings?.animation || 'slidein'
-    const effect = settings?.effect || 'slide'
-    const interval = settings?.interval || '5'
-    const restartdelay = settings?.restartdelay <= 0 ? 2500 : settings?.restartdelay ? parseFloat(settings?.restartdelay) * 1000 : 2500
-    console.log(settings, effect) */
-
-    /*    const interval = parseFloat(settings?.interval || '5')
-    const restartdelay = parseFloat(settings?.restartdelay || '2.5') */
-
-    /*     const settings2 = {
-        autoplay: settings?.autoplay === 0 ? false : true,
-        pauseOnHover: settings?.pauseonhover === 0 ? false : true,
-        animation: settings?.animation || 'slidein',
-        effect: settings?.effect || 'slide',
-        interval: interval <= 0 ? 5000 : interval ? interval * 1000 : 5000,
-        restartDelay: restartdelay <= 0 ? 2500 : restartdelay ? restartdelay * 1000 : 2500,
-    } */
-
-    /*     found in cms 
-    var gallerySettings = {
-        //lazyLoad: 'progressive',
-          infinite: true,
-          dots: true,
-          prevArrow: "<a class='slick-prev'></a>",
-          nextArrow: "<a class='slick-next'></a>",
-          arrows: true,
-          adaptiveHeight: false,
-          useCSS:false,
-
-          //new properties added
-          autoplay: dataSettings.autoplay === "undefined" ? false : (dataSettings.autoplay > 0 ? true : false),
-          fade: dataSettings.effect === 'fade',
-          pauseOnHover: dataSettings.pauseonhover == '1',
-          autoplaySpeed: dataSettings.interval !== '' ? parseInt(dataSettings.interval) * 1000 : 6000 //default is 3000 as per slick js docs
-      }; */
-
-    //animation is for text, css
-
-    const useThumb = true
 
     const Arrow = (props: { type: string; onClick?: any }) => {
         const { type, onClick } = props
@@ -85,27 +27,6 @@ const PhotoGallery = (props: ModuleProps) => {
         )
     }
 
-    const Dots = (props: any) => {
-        return (
-            <ul
-                className="slick-dots"
-                //style="display: block;"
-                role="tablist"
-            >
-                <li className="slick-active" aria-hidden="false" role="presentation" aria-controls="navigation00" id="slick-slide00">
-                    <button type="button" data-role="none" role="button">
-                        1
-                    </button>
-                </li>
-                <li aria-hidden="true" role="presentation" aria-controls="navigation01" id="slick-slide01" className="">
-                    <button type="button" data-role="none" role="button">
-                        2
-                    </button>
-                </li>
-            </ul>
-        )
-    }
-
     let allImgs: any = []
     for (let x in items) {
         items[x].image && allImgs.push(items[x].image)
@@ -114,13 +35,11 @@ const PhotoGallery = (props: ModuleProps) => {
     const carouselSettings = {
         dots: true,
         infinite: true,
-        //speed: 800,
+        speed: 800,
         //speed: settings?.restartDelay || 2500,
         slidesToShow: 1,
         slidesToScroll: 1,
         fade: settings?.effect === 'fade' ? true : false,
-        // nextArrow: <NextArrowImage />,
-        // prevArrow: <PrevArrowImage />,
         prevArrow: <Arrow type="prev" />,
         nextArrow: <Arrow type="next" />,
         autoplay: settings?.autoplay,
@@ -130,6 +49,7 @@ const PhotoGallery = (props: ModuleProps) => {
         pauseOnHover: settings?.pauseOnHover,
         restartDelay: settings?.restartDelay || 2500,
         dotsClass: 'slick-dots',
+        draggable: true,
 
         //used for thumbnails
         /* customPaging: function (i: number) {
@@ -146,28 +66,6 @@ const PhotoGallery = (props: ModuleProps) => {
             return <button type="button" data-role="none" role="button"></button>
         },
     }
-
-    const settingsText = {
-        dots: false,
-        infinite: true,
-        speed: 800,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        //nextArrow: <NextArrow themeStyles={themeStyles} />,
-        /* prevArrow: <PrevArrow themeStyles={themeStyles} />, */
-    }
-
-    /*     <Slider {...carouselSettings}>
-    {items.map((item, index) => (
-        <div className={styles.item} key={index}>
-            {item.imageUrl && (
-                <div className={styles.imageTile}>
-                    <Image src={domainImage(item.imageUrl)} layout="fill" objectFit="cover" alt={item.altText || ''} quality="50" />
-                </div>
-            )}
-        </div>
-    ))}
-</Slider> */
 
     if (disabled === 'disabled') {
         return <></>
@@ -219,10 +117,6 @@ const PhotoGallery = (props: ModuleProps) => {
 
 const ModuleItem = (props: ModuleItemProps) => {
     const { item, modId, itemIndex, cmsUrl, themeStyles, type, imgsize, columns, well } = props
-
-    /*     console.log('itemstyle', item.itemStyle)
-    console.log('promo color', item.promoColor)
-    console.log('txt img', item.textureImage) */
 
     return (
         <article
@@ -307,7 +201,6 @@ const ItemWrap = (props: ItemWrapProps) => {
 
                     {item.visibleButton && <ButtonWrap well={well} modId={modId} type="parallax" columns={columns} themeStyles={themeStyles} {...item} />}
                 </div>
-
                 {item.isWrapLink && <LinkWrap item={item} modType={'banner'}></LinkWrap>}
             </div>
         </div>
