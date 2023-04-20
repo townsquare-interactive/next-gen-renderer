@@ -6,7 +6,7 @@ import { domainImage } from '../functions'
 import { useState } from 'react'
 
 export const ImageElement = (props: ImageProps) => {
-    const { imgSrc, imgAlt, imagePriority, cmsUrl, modType = 'article', imageType, opacity, nextImageSizes, columns = 1 } = props
+    const { imgSrc, imgAlt, imagePriority, cmsUrl, modType = 'article', imageType, opacity, nextImageSizes } = props
     const [hideImage, setHideImage] = useState(false)
     const [imageHeight, setHeight] = useState(100)
     const [imageWidth, setWidth] = useState(300)
@@ -79,7 +79,6 @@ export const ImageElement = (props: ImageProps) => {
                             setHideImage(true)
                         }}
                         sizes={nextImageSizes || '100vw'}
-                        className={modType === 'Parallax' ? 'jarallax-img' : ''}
                     />
                 ))}
         </>

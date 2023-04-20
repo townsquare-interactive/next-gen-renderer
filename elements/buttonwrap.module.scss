@@ -129,7 +129,8 @@
     &.article_2,
     &.photo_grid,
     &.banner,
-    &.parallax {
+    &.parallax,
+    &.gallery {
         .btn {
             align-self: flex-start;
         }
@@ -228,7 +229,8 @@
             }
         }
     }
-    &.parallax .btn-wrap {
+    &.parallax .btn-wrap,
+    &.gallery .btn-wrap {
         gap: 1rem;
     }
 

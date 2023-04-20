@@ -8,11 +8,10 @@ import ModuleTitle from 'elements/ModuleTitle'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
 import LinkWrap from 'elements/LinkWrap'
 import DescBlock from 'elements/DescBlock'
-
 import Carousel from 'elements/Carousel'
 
 //carousel option, may keep in this module
-const useCarousel = true
+const useCarousel = false
 
 const Testimonials = (props: ModuleProps) => {
     const {

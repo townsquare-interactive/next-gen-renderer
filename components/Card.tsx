@@ -99,13 +99,8 @@ const ModuleItem = (props: ModuleItemProps) => {
                 styles[`item_${itemIndex + 1}`]
             )}
         >
-            {item.isWrapLink && <LinkWrap item={item} modType={'article'}></LinkWrap>}
-            <div
-                className={cn(styles['item-wrap'], {
-                    ['hero-background']: item.isFeatured === 'active' && type === 'article',
-                })}
-                aria-label={item.headline || 'item-wrap'}
-            >
+            {item.isWrapLink && <LinkWrap item={item}></LinkWrap>}
+            <div className={cn(styles['item-wrap'])} aria-label={item.headline || 'item-wrap'}>
                 <ItemWrap item={item} imgsize={imgsize} well={well} type={type} themeStyles={themeStyles} columns={columns} modId={modId} cmsUrl={cmsUrl} />
             </div>
         </article>

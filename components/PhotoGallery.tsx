@@ -2,7 +2,7 @@
 import styles from './photogallery.module.scss'
 import { ModuleProps, ItemWrapProps, ModuleItemProps } from '../types'
 import cn from 'classnames'
-import { Fragment } from 'react'
+import { Fragment, MouseEventHandler } from 'react'
 import { ButtonWrap } from '../elements/ButtonWrap'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
 import LinkWrap from 'elements/LinkWrap'
@@ -14,7 +14,7 @@ import { ImageBlock } from 'elements/ImageBlock'
 const PhotoGallery = (props: ModuleProps) => {
     const { columns = 1, type, well, imgsize, modId, items, themeStyles, cmsUrl, disabled, customClassName, modCount, settings } = props
 
-    const Arrow = (props: { type: string; onClick?: any }) => {
+    const Arrow = (props: { type: string; onClick?: MouseEventHandler<HTMLAnchorElement> }) => {
         const { type, onClick } = props
         return (
             <a
@@ -27,7 +27,8 @@ const PhotoGallery = (props: ModuleProps) => {
         )
     }
 
-    let allImgs: any = []
+    //create array of all images used  (may need to change to per item)
+    let allImgs: [string?] = []
     for (let x in items) {
         items[x].image && allImgs.push(items[x].image)
     }
@@ -35,7 +36,7 @@ const PhotoGallery = (props: ModuleProps) => {
     const carouselSettings = {
         dots: true,
         infinite: true,
-        speed: 800,
+        // speed: 800,
         //speed: settings?.restartDelay || 2500,
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -136,7 +137,6 @@ const ModuleItem = (props: ModuleItemProps) => {
                 styles[`item_${itemIndex + 1}`],
                 `item_${itemIndex + 1}`
             )}
-            lang="en"
             style={item.itemStyle}
         >
             <ItemWrap
@@ -156,7 +156,7 @@ const ModuleItem = (props: ModuleItemProps) => {
 }
 
 const ItemWrap = (props: ItemWrapProps) => {
-    const { item, well, themeStyles, modId, columns, type, cmsUrl, imgsize } = props
+    const { item, well, themeStyles, modId, columns, cmsUrl, imgsize } = props
 
     const forceAccentColor = item.isFeatured === 'active' ? well == '1' && false : true
 
@@ -185,7 +185,7 @@ const ItemWrap = (props: ItemWrapProps) => {
             >
                 <div className={cn(styles.content, 'content')}>
                     {(item.headline || item.subheader) && (
-                        <HeadlineBlock item={item} well={1} columns={columns} isBeaconHero={item.isBeaconHero} modType={'photogallery'} />
+                        <HeadlineBlock item={item} well={well} columns={columns} isBeaconHero={item.isBeaconHero} modType={'gallery'} />
                     )}
 
                     {item.desc && (
@@ -199,9 +199,9 @@ const ItemWrap = (props: ItemWrapProps) => {
                         </div>
                     )}
 
-                    {item.visibleButton && <ButtonWrap well={well} modId={modId} type="parallax" columns={columns} themeStyles={themeStyles} {...item} />}
+                    {item.visibleButton && <ButtonWrap well={well} modId={modId} type="gallery" columns={columns} themeStyles={themeStyles} {...item} />}
                 </div>
-                {item.isWrapLink && <LinkWrap item={item} modType={'banner'}></LinkWrap>}
+                {item.isWrapLink && <LinkWrap item={item}></LinkWrap>}
             </div>
         </div>
     )

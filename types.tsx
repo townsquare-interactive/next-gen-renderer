@@ -582,16 +582,18 @@ export interface ModuleProps {
     columnLocation: number
     isSingleColumn: boolean
     modCount?: number
-    settings?: {
-        autoplay: boolean
-        pauseOnHover: boolean
-        effect: string
-        animation: string
-        interval: number
-        restartDelay: number
-        halfSize?: boolean
-        mobileResize: boolean
-    }
+    settings?: CarouselSettings
+}
+
+export interface CarouselSettings {
+    autoplay: boolean
+    pauseOnHover: boolean
+    effect: string
+    animation: string
+    interval: number
+    restartDelay: number
+    halfSize?: boolean
+    mobileResize: boolean
 }
 export interface PhotoGridProps {
     uid: string
@@ -691,7 +693,7 @@ export interface ItemWrapProps {
 
 export interface LinkWrapProps {
     item: ArticleItems
-    modType: string
+    modType?: string
     //children: ReactChild
 }
 
