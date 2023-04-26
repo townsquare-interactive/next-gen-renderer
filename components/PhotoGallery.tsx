@@ -11,6 +11,8 @@ import { domainImage } from 'functions'
 import Carousel from 'elements/Carousel'
 import { ImageBlock } from 'elements/ImageBlock'
 
+//comp tests
+
 const PhotoGallery = (props: ModuleProps) => {
     const { columns = 1, type, well, imgsize, modId, items, themeStyles, cmsUrl, disabled, customClassName, modCount, settings } = props
 
