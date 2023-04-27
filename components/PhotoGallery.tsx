@@ -28,6 +28,7 @@ const PhotoGallery = (props: ModuleProps) => {
             ></a>
         )
     }
+    const useThumbnail = true
 
     //create array of all images used  (may need to change to per item)
     let allImgs: [string?] = []
@@ -55,15 +56,8 @@ const PhotoGallery = (props: ModuleProps) => {
         draggable: true,
 
         //used for thumbnails
-        /* customPaging: function (i: number) {
-            return (
-                <a>
-                    <img
-                        src={`http://clttestsiteforjoshedwards.production.townsquareinteractive.com/${allImgs[i]}`}
-                        style={{ width: '5rem', margin: '1rem' }}
-                    />
-                </a>
-            )
+        /*  customPaging: function (i: number) {
+            return useThumbnail ? <Thumbnail i={i} onClick={onclick} /> : <button type="button" data-role="none" role="button"></button>
         }, */
         customPaging: function (i: number) {
             return <button type="button" data-role="none" role="button"></button>
@@ -85,11 +79,13 @@ const PhotoGallery = (props: ModuleProps) => {
                         [styles['half-gallery']]: settings?.halfSize,
                         [styles['mob-resize']]: settings?.mobileResize,
                         [styles.widescreen_2_4_1]: imgsize === 'widescreen_2-4_1',
+                        ['thumbnail']: useThumbnail,
+                        ['arrows']: !useThumbnail,
                     })}
                     id={`id_${modId}`}
                 >
                     <div className={cn(styles.wrapper, 'wrapper')}>
-                        <Carousel settings={carouselSettings}>
+                        <Carousel settings={carouselSettings} modItems={items} cmsUrl={cmsUrl} useThumbnail={useThumbnail}>
                             {items.map((item, index: number) => (
                                 <Fragment key={index}>
                                     {item.disabled != 'disabled' ? (

@@ -320,108 +320,114 @@ $ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
 }
 
-.slick-dots li button {
-    //width: 16px;
-    //height: auto;
-    height: auto !important;
-    //height: 8px !important;
-    // width: 8px !important;
-    width: 16px !important;
-
-    @include breakpoints.lg-min {
-        width: 16px !important;
-    }
-
-    padding: 0.125rem 0.25rem;
-    //width: 0.625rem;
-    @include breakpoints.lg-min {
-        padding: 0.125rem 0.5rem;
-    }
-}
-
-@mixin active-btn {
-    button {
-        padding: 0.25rem 0.25rem 0.125rem;
-
-        /*  @include breakpoints.lg-min {
-            padding: 5px;
-        } */
-    }
-
-    button:before {
-        content: ' ' !important;
-        display: block;
-        border: solid transparent;
-        border-color: rgba(255, 255, 255, 0);
-        border-width: 0.5rem;
-        position: absolute;
-        left: 0;
-        top: -1rem !important;
-        opacity: 1 !important;
-        -webkit-transition: all 0.1s ease-in-out;
-        -moz-transition: all 0.1s ease-in-out;
-        transition: all 0.1s ease-in-out;
-        border-bottom-color: var(--btn-background);
-        width: auto !important;
+.arrows {
+    .slick-dots li button {
+        //width: 16px;
+        //height: auto;
         height: auto !important;
-    }
-}
+        //height: 8px !important;
+        // width: 8px !important;
+        width: 16px !important;
 
-.slick-dots {
-    button {
-        background-color: var(--btn-background) !important;
-        transition: all 0.1s ease-in-out;
-        transform-origin: center center;
-        //padding: 0.5rem 0.5rem 0.125rem;
-        position: relative;
-        z-index: 1;
-        max-width: 16px !important;
+        @include breakpoints.lg-min {
+            width: 16px !important;
+        }
 
-        &:before {
-            display: none;
+        padding: 0.125rem 0.25rem;
+        //width: 0.625rem;
+        @include breakpoints.lg-min {
+            padding: 0.125rem 0.5rem;
         }
     }
 
-    .slick-active {
-        z-index: 2 !important;
-    }
-}
+    @mixin active-btn {
+        button {
+            padding: 0.25rem 0.25rem 0.125rem;
 
-.slick-dots li:hover,
-.slick-dots .slick-active {
-    button {
-        //padding: 0.25rem 0.25rem 0.125rem;
-        padding: 0.5rem 0.5rem 0.125rem;
-
-        /* @include breakpoints.lg-min {
+            /*  @include breakpoints.lg-min {
             padding: 5px;
         } */
+        }
+
+        button:before {
+            content: ' ' !important;
+            display: block;
+            border: solid transparent;
+            border-color: rgba(255, 255, 255, 0);
+            border-width: 0.5rem;
+            position: absolute;
+            left: 0;
+            top: -1rem !important;
+            opacity: 1 !important;
+            -webkit-transition: all 0.1s ease-in-out;
+            -moz-transition: all 0.1s ease-in-out;
+            transition: all 0.1s ease-in-out;
+            border-bottom-color: var(--btn-background);
+            width: auto !important;
+            height: auto !important;
+        }
     }
 
-    button:before {
-        content: ' ' !important;
-        display: block;
-        border: solid transparent;
-        border-color: rgba(255, 255, 255, 0);
-        border-width: 0.5rem;
-        position: absolute;
-        left: 0;
-        top: -1rem !important;
-        opacity: 1 !important;
-        -webkit-transition: all 0.1s ease-in-out;
-        -moz-transition: all 0.1s ease-in-out;
-        transition: all 0.1s ease-in-out;
-        border-bottom-color: var(--btn-background);
-        width: auto !important;
-        height: auto !important;
+    .slick-dots {
+        button {
+            background-color: var(--btn-background) !important;
+            transition: all 0.1s ease-in-out;
+            transform-origin: center center;
+            //padding: 0.5rem 0.5rem 0.125rem;
+            position: relative;
+            z-index: 1;
+            max-width: 16px !important;
+
+            &:before {
+                display: none;
+            }
+        }
+
+        .slick-active {
+            z-index: 2 !important;
+        }
+    }
+
+    .slick-dots li:hover,
+    .slick-dots .slick-active {
+        button {
+            //padding: 0.25rem 0.25rem 0.125rem;
+            padding: 0.5rem 0.5rem 0.125rem;
+
+            /* @include breakpoints.lg-min {
+            padding: 5px;
+        } */
+        }
+
+        button:before {
+            content: ' ' !important;
+            display: block;
+            border: solid transparent;
+            border-color: rgba(255, 255, 255, 0);
+            border-width: 0.5rem;
+            position: absolute;
+            left: 0;
+            top: -1rem !important;
+            opacity: 1 !important;
+            -webkit-transition: all 0.1s ease-in-out;
+            -moz-transition: all 0.1s ease-in-out;
+            transition: all 0.1s ease-in-out;
+            border-bottom-color: var(--btn-background);
+            width: auto !important;
+            height: auto !important;
+        }
+    }
+
+    .slick-dots {
+        bottom: 0 !important;
+        padding: 0.5rem 0;
     }
 }
 
-.slick-dots {
-    bottom: 0 !important;
-    padding: 0.5rem 0;
+.thumbnail .slick-dots li {
+    width: auto !important;
+    height: auto !important;
 }
-
 //columns
 .columns {
     .slick-next {
@@ -618,5 +624,35 @@ $ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
                 animation-delay: 720ms;
             }
         }
+    }
+}
+
+.slick-list {
+    /*     .slick-track {
+        width: 40rem !important;
+    } */
+}
+
+.thumb-slider {
+    background: none;
+    padding: 1rem 0;
+    position: relative;
+    margin-top: 0;
+    z-index: 100;
+
+    .slick-track {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .slick-slide {
+        width: 138px !important;
+    }
+
+    .slick-current {
+        transform: scale(1.1, 1.1);
+        transform-origin: center center;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     }
 }
