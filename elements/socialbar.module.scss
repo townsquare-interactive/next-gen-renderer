@@ -27,6 +27,10 @@
             li {
                 display: inline-block;
 
+                button {
+                    background: none;
+                }
+
                 a,
                 button {
                     font-size: 0.6875em;
@@ -40,7 +44,6 @@
                     vertical-align: middle;
                     display: flex;
                     border: none;
-                    background: none;
                     text-transform: uppercase;
 
                     &:hover {
