@@ -1,0 +1,25 @@
+.thumb-nav {
+    position: relative;
+
+    .caption {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow-y: auto;
+        overflow-x: hidden;
+        position: absolute;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+
+        &.cap-bckg {
+            background: var(--caption-background);
+        }
+
+        //add
+        top: 0;
+        color: #fff;
+    }
+}

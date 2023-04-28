@@ -28,7 +28,7 @@ const PhotoGallery = (props: ModuleProps) => {
             ></a>
         )
     }
-    const useThumbnail = true
+    const useThumbnail = false
 
     //create array of all images used  (may need to change to per item)
     let allImgs: [string?] = []
@@ -39,8 +39,9 @@ const PhotoGallery = (props: ModuleProps) => {
     const carouselSettings = {
         dots: true,
         infinite: true,
-        // speed: 800,
+        speed: 800,
         //speed: settings?.restartDelay || 2500,
+
         slidesToShow: 1,
         slidesToScroll: 1,
         fade: settings?.effect === 'fade' ? true : false,

@@ -234,6 +234,12 @@
         gap: 1rem;
     }
 
+    &.gallery {
+        .btn-wrap .btn {
+            min-width: 6.875rem;
+        }
+    }
+
     &.banner {
         &.left {
             justify-content: center;

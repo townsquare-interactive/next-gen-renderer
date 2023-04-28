@@ -4,6 +4,8 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import { useEffect, useState, useRef } from 'react'
 import { ImageBlock } from './ImageBlock'
+import styles from './carousel.module.scss'
+import cn from 'classnames'
 
 const Carousel = (props: any) => {
     const { settings, children, modItems, cmsUrl, imgsize = 'landscape_4_3', useThumbnail } = props
@@ -37,8 +39,21 @@ const Carousel = (props: any) => {
                         className={'thumb-slider'}
                     >
                         {modItems.map((item: any, index: number) => (
-                            <div className={'thumb-nav'} key={index} style={{ width: '138px' }}>
+                            <div
+                                className={cn('thumb-nav', styles['thumb-nav'])}
+                                key={index}
+                                //style={{ width: '138px' }}
+                            >
                                 <ImageBlock item={item} imgsize={imgsize} well={0} cmsUrl={cmsUrl} modType={'PhotoGallery'} columns={1} />
+
+                                <div
+                                    className={cn(styles['caption'], {
+                                        [styles['cap-bckg']]: item.modSwitch1 != 1 && item.image && (item.desc || item.headline || item.visibleButton),
+                                    })}
+                                    style={item.modOne ? { height: item.modOne } : {}}
+                                >
+                                    {item.headline}
+                                </div>
                             </div>
                         ))}
                     </Slider>

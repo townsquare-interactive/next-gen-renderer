@@ -303,7 +303,7 @@ $ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .slick-dots {
-    display: none !important;
+    //display: none !important;
     //@include breakpoints.sm-min {
 
     @container module (min-width:481px) {
@@ -481,16 +481,16 @@ $ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
             opacity: 0;
         }
         .hd {
-            transition-delay: 180ms !important;
+            transition-delay: 180ms;
         }
         .sh {
-            transition-delay: 360ms !important;
+            transition-delay: 360ms;
         }
         .dsc {
-            transition-delay: 540ms !important;
+            transition-delay: 540ms;
         }
         .btn {
-            transition-delay: 720ms !important;
+            transition-delay: 720ms;
         }
     }
 
@@ -622,6 +622,45 @@ $ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
             }
             .btn {
                 animation-delay: 720ms;
+            }
+        }
+    }
+}
+
+//focus animation
+@keyframes text-focus-in {
+    0% {
+        -webkit-filter: blur(12px);
+        filter: blur(12px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-filter: blur(0px);
+        filter: blur(0px);
+        opacity: 1;
+    }
+}
+
+.text-focus-in {
+    .slick-active {
+        .item {
+            .hd,
+            .sh,
+            .dsc,
+            .btn-mod {
+                animation: text-focus-in 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+            }
+            .hd {
+                transition-delay: 180ms;
+            }
+            .sh {
+                transition-delay: 360ms;
+            }
+            .dsc {
+                transition-delay: 540ms;
+            }
+            .btn-mod {
+                transition-delay: 720ms;
             }
         }
     }
