@@ -343,16 +343,16 @@ $ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
                 // animation: text-focus-in 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
             }
             .hd {
-                animation-delay: 180ms;
+                animation-delay: 180ms !important;
             }
             .sh {
-                animation-delay: 360ms;
+                animation-delay: 360ms !important;
             }
             .dsc {
-                animation-delay: 540ms;
+                animation-delay: 540ms !important;
             }
             .btn {
-                animation-delay: 720ms;
+                animation-delay: 720ms !important;
             }
         }
     }
@@ -371,16 +371,16 @@ $ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
             opacity: 0;
         }
         .hd {
-            transition-delay: 180ms;
+            transition-delay: 180ms !important;
         }
         .sh {
-            transition-delay: 360ms;
+            transition-delay: 360ms !important;
         }
         .dsc {
-            transition-delay: 540ms;
+            transition-delay: 540ms !important;
         }
         .btn {
-            transition-delay: 720ms;
+            transition-delay: 720ms !important;
         }
     }
 
