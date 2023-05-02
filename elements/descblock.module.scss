@@ -55,8 +55,20 @@
             }
         }
     }
+
     &.gallery {
         margin: 1em 0;
+    }
+
+    &.carousel {
+        .dsc {
+            font-size: 0.6875em;
+            margin-top: 0em;
+            margin-bottom: 0em;
+            line-height: 1.0909090909em;
+            font-weight: 700;
+            margin-top: 0;
+        }
     }
 }
 

@@ -2,7 +2,7 @@
 import styles from './photogallery.module.scss'
 import { ModuleProps, ItemWrapProps, ModuleItemProps } from '../types'
 import cn from 'classnames'
-import { Fragment, MouseEventHandler } from 'react'
+import { Fragment, MouseEventHandler, useState } from 'react'
 import { ButtonWrap } from '../elements/ButtonWrap'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
 import LinkWrap from 'elements/LinkWrap'
@@ -10,6 +10,7 @@ import DescBlock from 'elements/DescBlock'
 import { domainImage } from 'functions'
 import Carousel from 'elements/Carousel'
 import { ImageBlock } from 'elements/ImageBlock'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const PhotoGallery = (props: ModuleProps) => {
     const { columns = 1, type, well, imgsize, modId, items, themeStyles, cmsUrl, disabled, customClassName, modCount, settings } = props
@@ -67,6 +68,7 @@ const PhotoGallery = (props: ModuleProps) => {
                         [styles['mob-resize']]: settings?.mobileResize,
                         [styles.widescreen_2_4_1]: imgsize === 'widescreen_2-4_1',
                         ['thumbnail']: useThumbnail,
+                        [styles.thumbnail]: useThumbnail,
                         ['arrows']: !useThumbnail,
                     })}
                     id={`id_${modId}`}
@@ -87,6 +89,7 @@ const PhotoGallery = (props: ModuleProps) => {
                                             columns={columns}
                                             itemIndex={index}
                                             cmsUrl={cmsUrl}
+                                            useThumbnail={useThumbnail}
                                         />
                                     ) : (
                                         <></>
@@ -102,7 +105,7 @@ const PhotoGallery = (props: ModuleProps) => {
 }
 
 const ModuleItem = (props: ModuleItemProps) => {
-    const { item, modId, itemIndex, cmsUrl, themeStyles, type, imgsize, columns, well } = props
+    const { item, modId, itemIndex, cmsUrl, themeStyles, type, imgsize, columns, well, useThumbnail } = props
 
     return (
         <article
@@ -135,15 +138,21 @@ const ModuleItem = (props: ModuleItemProps) => {
                 modId={modId}
                 align={item.align}
                 cmsUrl={cmsUrl}
+                useThumbnail={useThumbnail}
             />
         </article>
     )
 }
 
 const ItemWrap = (props: ItemWrapProps) => {
-    const { item, well, themeStyles, modId, columns, cmsUrl, imgsize } = props
+    const { item, well, themeStyles, modId, columns, cmsUrl, imgsize, useThumbnail } = props
+    const [isCaptionVisible, toggleCaption] = useState(useThumbnail ? false : true)
 
     const forceAccentColor = item.isFeatured === 'active' ? well == '1' && false : true
+
+    const changeCap = () => {
+        toggleCaption(!isCaptionVisible)
+    }
 
     return (
         <div
@@ -165,12 +174,19 @@ const ItemWrap = (props: ItemWrapProps) => {
             <div
                 className={cn(styles['caption'], {
                     [styles['cap-bckg']]: item.modSwitch1 != 1 && item.image && (item.desc || item.headline || item.visibleButton),
+                    [styles['hidden']]: !isCaptionVisible,
                 })}
                 style={item.modOne ? { height: item.modOne } : {}}
             >
                 <div className={cn(styles.content, 'content')}>
                     {(item.headline || item.subheader) && (
-                        <HeadlineBlock item={item} well={well} columns={columns} isBeaconHero={item.isBeaconHero} modType={'gallery'} />
+                        <HeadlineBlock
+                            item={item}
+                            well={well}
+                            columns={columns}
+                            isBeaconHero={item.isBeaconHero}
+                            modType={useThumbnail ? 'thumbnail' : 'gallery'}
+                        />
                     )}
 
                     {item.desc && (
@@ -179,7 +195,7 @@ const ItemWrap = (props: ItemWrapProps) => {
                                 desc={item.desc}
                                 descSize={item.descSize}
                                 useAccentColor={!forceAccentColor ? item.useAccentColor || false : true}
-                                type={'gallery'}
+                                type={useThumbnail ? 'thumbnail' : 'gallery'}
                             />
                         </div>
                     )}
@@ -188,6 +204,11 @@ const ItemWrap = (props: ItemWrapProps) => {
                 </div>
                 {item.isWrapLink && <LinkWrap item={item}></LinkWrap>}
             </div>
+
+            <button type="button" className={styles['carousel-btn']} onClick={changeCap}>
+                <FontAwesomeIcon icon={!isCaptionVisible ? ['fas', 'message'] : ['fas', 'xmark']} />
+                {/*  <FontAwesomeIcon icon={['fas', 'message-plus']} /> */}
+            </button>
         </div>
     )
 }

@@ -4,15 +4,16 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import { useEffect, useState, useRef } from 'react'
 import { ImageBlock } from './ImageBlock'
+import { ArticleItems } from 'types'
 import styles from './carousel.module.scss'
 import cn from 'classnames'
+import DescBlock from './DescBlock'
 
 const Carousel = (props: any) => {
     const { settings, children, modItems, cmsUrl, imgsize = 'landscape_4_3', useThumbnail } = props
 
-    const slider1 = useRef<any>(null)
+    const slider1 = useRef(null)
     const slider2 = useRef(null)
-
     const [nav1, setNav1] = useState<any>(null)
     const [nav2, setNav2] = useState<any>(null)
 
@@ -22,42 +23,41 @@ const Carousel = (props: any) => {
 
     return (
         <>
-            {!useThumbnail ? (
-                <Slider {...settings}>{children}</Slider>
-            ) : (
+            {useThumbnail ? (
                 <>
                     <Slider {...settings} ref={(slider) => setNav1(slider)} asNavFor={nav2}>
                         {children}
                     </Slider>
-
-                    <Slider
-                        asNavFor={nav1}
-                        slidesToShow={modItems.length}
-                        swipeToSlide={true}
-                        focusOnSelect={true}
-                        ref={(slider) => setNav2(slider)}
-                        className={'thumb-slider'}
-                    >
-                        {modItems.map((item: any, index: number) => (
-                            <div
-                                className={cn('thumb-nav', styles['thumb-nav'])}
-                                key={index}
-                                //style={{ width: '138px' }}
+                    <div style={{ padding: '0px 50px' }}>
+                        <div style={{ width: `${1400 / modItems.length}px`, height: '100%' }}>
+                            <Slider
+                                asNavFor={nav1}
+                                slidesToShow={modItems.length}
+                                swipeToSlide={true}
+                                focusOnSelect={true}
+                                ref={(slider) => setNav2(slider)}
+                                className={'thumb-slider'}
                             >
-                                <ImageBlock item={item} imgsize={imgsize} well={0} cmsUrl={cmsUrl} modType={'PhotoGallery'} columns={1} />
+                                {modItems.map((item: ArticleItems, index: number) => (
+                                    <div className={cn('thumb-nav', styles['thumb-nav'])} key={index}>
+                                        <ImageBlock item={item} imgsize={imgsize} well={0} cmsUrl={cmsUrl} modType={'PhotoGallery'} columns={1} />
 
-                                <div
-                                    className={cn(styles['caption'], {
-                                        [styles['cap-bckg']]: item.modSwitch1 != 1 && item.image && (item.desc || item.headline || item.visibleButton),
-                                    })}
-                                    style={item.modOne ? { height: item.modOne } : {}}
-                                >
-                                    {item.headline}
-                                </div>
-                            </div>
-                        ))}
-                    </Slider>
+                                        <div
+                                            className={cn(styles['caption'], {
+                                                [styles['cap-bckg']]: item.modSwitch1 != 1 && item.image && (item.desc || item.headline || item.visibleButton),
+                                            })}
+                                            style={item.modOne ? { height: item.modOne } : {}}
+                                        >
+                                            <DescBlock desc={item.headline} type="carousel" descSize="sm" />
+                                        </div>
+                                    </div>
+                                ))}
+                            </Slider>
+                        </div>
+                    </div>
                 </>
+            ) : (
+                <Slider {...settings}>{children}</Slider>
             )}
         </>
     )

@@ -52,6 +52,10 @@
                     &.cap-bckg {
                         background: var(--caption-background);
                     }
+
+                    &.hidden {
+                        display: none;
+                    }
                 }
 
                 .content {
@@ -96,6 +100,30 @@
 
                 .image-block {
                     height: 100%;
+                }
+
+                .carousel-btn {
+                    color: #ffffff;
+                    position: absolute;
+                    bottom: 10px;
+                    right: 0;
+                    left: 0;
+                    background-color: transparent;
+                    border: none;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+
+                    svg,
+                    span {
+                        font-size: 1em;
+                        line-height: 1em;
+                        background: var(--btn-background);
+                        padding: 0.8rem;
+
+                        border-radius: 50%;
+                    }
                 }
             }
 
@@ -215,6 +243,17 @@
         max-width: 50em;
         margin-left: auto;
         margin-right: auto;
+    }
+
+    &.thumbnail {
+        .wrapper .item .item-wrap .caption {
+            max-width: 54.375em;
+            height: auto;
+            right: 0;
+            left: 0;
+            width: 100%;
+            margin: 0 auto;
+        }
     }
 
     @include utils.text-sizes;

@@ -688,6 +688,7 @@ export interface ItemWrapProps {
     cmsUrl?: string
     align?: string
     laxType?: string
+    useThumbnail?: boolean
     //temp
 }
 
@@ -728,6 +729,7 @@ export interface ModuleItemProps {
     columns: number | string
     modId: string
     cmsUrl?: string
+    useThumbnail?: boolean
 }
 
 export interface PhotoItemProps {
