@@ -28,18 +28,11 @@ const PhotoGallery = (props: ModuleProps) => {
     }
     const useThumbnail = type === 'photo_gallery_2'
 
-    //create array of all images used  (may need to change to per item)
-    let allImgs: [string?] = []
-    for (let x in items) {
-        items[x].image && allImgs.push(items[x].image)
-    }
-
     const carouselSettings = {
         dots: true,
         infinite: true,
-        speed: 800,
+        //speed: 800,
         //speed: settings?.restartDelay || 2500,
-
         slidesToShow: 1,
         slidesToScroll: 1,
         fade: settings?.effect === 'fade' ? true : false,
@@ -53,11 +46,6 @@ const PhotoGallery = (props: ModuleProps) => {
         restartDelay: settings?.restartDelay || 2500,
         dotsClass: 'slick-dots',
         draggable: true,
-
-        //used for thumbnails
-        /*  customPaging: function (i: number) {
-            return useThumbnail ? <Thumbnail i={i} onClick={onclick} /> : <button type="button" data-role="none" role="button"></button>
-        }, */
         customPaging: function (i: number) {
             return <button type="button" data-role="none" role="button"></button>
         },
