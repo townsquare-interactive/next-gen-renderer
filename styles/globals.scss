@@ -110,57 +110,6 @@ a {
     will-change: transform;
 }
 
-/*.react-parallax-background-children {
-    position: relative !important;
-}
-
-.react-parallax-content {
-    width: 100%;
-    height: 100%;
-    position: absolute !important;
-    top: 0;
-} 
-
-.react-parallax-background-children {
-    // height: 70vh;
-    will-change: transform;
-
-    img {
-        will-change: transform;
-        // width: 100%;
-        //height: auto !important;
-        
-    }
-}*/
-
-/*.react-parallax-background {
-    img {
-        will-change: transform;
-        width: 100%;
-        //height: auto !important;
-        //position: static !important;
-        width: auto !important;
-    }
-}
- .react-parallax-background-children {
-    //width: 100%;
-} */
-
-//this is what is being used in the jarallax css file
-/* .jarallax {
-    position: relative;
-    z-index: 0;
-  }
-  .jarallax > .jarallax-img {
-    position: absolute;
-    object-fit: cover;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-  } */
-
 .jarallax {
     height: 70vh;
 }
@@ -178,63 +127,6 @@ a {
     width: 100%;
     overflow: hidden;
 }
-
-/* .slick-arrow {
-    padding: 0.75rem;
-    background-color: var(--btn-background) !important;
-    color: #ffffff;
-    font-size: 0;
-    text-align: center;
-    margin: -1rem 0 0;
-    position: absolute;
-    top: 50%;
-    border: none;
-    opacity: 0;
-    //outline: none;
-    z-index: 2;
-    width: auto;
-    height: auto;
-    transition: all 0.1s linear;
-
-    &:before {
-        font-size: 1.75rem;
-        line-height: 1.25;
-
-        font-weight: bold;
-    }
-}
-
-.wrapper:hover .slick-arrow {
-    opacity: 0.4;
-}
-
-.slick-arrow:hover {
-    opacity: 1 !important;
-}
-
-.slick-prev {
-    left: 2rem;
-    //medium container
-    @include breakpoints.md-min {
-        left: 4.5rem !important;
-    }
-
-    &:before {
-        content: '<';
-    }
-}
-
-.slick-next {
-    right: 2rem;
-    @include breakpoints.md-min {
-        right: 4.5rem !important;
-    }
-
-    &:before {
-        content: '>';
-    }
-}
- */
 
 $base-font-size: 16; /* 16px */
 $base-line-height: math.div(4, $base-font-size); /* 4px */
@@ -391,12 +283,7 @@ $ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
     .slick-dots li:hover,
     .slick-dots .slick-active {
         button {
-            //padding: 0.25rem 0.25rem 0.125rem;
             padding: 0.5rem 0.5rem 0.125rem;
-
-            /* @include breakpoints.lg-min {
-            padding: 5px;
-        } */
         }
 
         button:before {
@@ -438,6 +325,9 @@ $ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
         top: auto;
         width: 50%;
         right: 0 !important;
+    }
+    .slick-dots {
+        display: none !important;
     }
 }
 
@@ -666,12 +556,13 @@ $ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
 }
 
-.slick-list {
-    /*     .slick-track {
+/* .slick-list {
+        .slick-track {
         width: 40rem !important;
-    } */
-}
+    } 
+}*/
 
+//thumbnail gallery
 .thumb-slider {
     background: none;
     padding: 1rem 0;
