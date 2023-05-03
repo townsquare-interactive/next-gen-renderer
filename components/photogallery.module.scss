@@ -73,6 +73,10 @@
                         padding: 1rem 6rem 2rem;
                     }
 
+                    &.cap-bckg {
+                        background: var(--caption-background);
+                    }
+
                     .dsc-block {
                         a {
                             @include utils.move-before-wraplink;
@@ -189,7 +193,7 @@
         left: 2rem;
         //medium container
         @include breakpoints.md-min {
-            left: 4.5rem !important;
+            left: 2rem !important;
         }
 
         &:before {
@@ -200,7 +204,7 @@
     .slick-next {
         right: 2rem;
         @include breakpoints.md-min {
-            right: 4.5rem !important;
+            right: 2rem !important;
         }
 
         &:before {
@@ -253,6 +257,16 @@
             left: 0;
             width: 100%;
             margin: 0 auto;
+
+            padding: 3rem 2rem;
+        }
+
+        .slick-arrow {
+            display: none;
+
+            @include breakpoints.md-min {
+                display: block;
+            }
         }
     }
 
@@ -261,18 +275,6 @@
 
 .columns .root {
     @include utils.column-mod;
-
-    /* .slick-prev {
-        left: 2rem;
-        //medium container
-        @include breakpoints.md-min {
-            left: 4.5rem !important;
-        }
-
-        &:before {
-            content: '<';
-        }
-    } */
 
     .item {
         width: 100%;
@@ -291,9 +293,6 @@
             overflow-y: auto;
             overflow-x: hidden;
             height: 100%;
-            /* &::-webkit-scrollbar {
-            z-index: 999999 !important;
-        }  */
         }
 
         .slick-arrow {

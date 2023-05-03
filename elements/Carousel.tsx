@@ -28,8 +28,8 @@ const Carousel = (props: any) => {
                     <Slider {...settings} ref={(slider) => setNav1(slider)} asNavFor={nav2}>
                         {children}
                     </Slider>
-                    <div style={{ padding: '0px 50px' }}>
-                        <div style={{ width: `${1400 / modItems.length}px`, height: '100%' }}>
+                    <div className={styles.root}>
+                        <div style={{ maxWidth: `${1400 / modItems.length}px` }} className={styles.wrapper}>
                             <Slider
                                 asNavFor={nav1}
                                 slidesToShow={modItems.length}

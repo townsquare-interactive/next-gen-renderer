@@ -65,7 +65,7 @@ const PhotoGallery = (props: ModuleProps) => {
                         [`cst_${customClassName}`]: customClassName,
                         [styles['first-mod']]: modCount === 1,
                         [styles['half-gallery']]: settings?.halfSize,
-                        [styles['mob-resize']]: settings?.mobileResize,
+                        [styles['mob-resize']]: useThumbnail || settings?.mobileResize,
                         [styles.widescreen_2_4_1]: imgsize === 'widescreen_2-4_1',
                         ['thumbnail']: useThumbnail,
                         [styles.thumbnail]: useThumbnail,
@@ -173,12 +173,16 @@ const ItemWrap = (props: ItemWrapProps) => {
 
             <div
                 className={cn(styles['caption'], {
-                    [styles['cap-bckg']]: item.modSwitch1 != 1 && item.image && (item.desc || item.headline || item.visibleButton),
+                    [styles['cap-bckg']]: !useThumbnail && item.modSwitch1 != 1 && item.image && (item.desc || item.headline || item.visibleButton),
                     [styles['hidden']]: !isCaptionVisible,
                 })}
                 style={item.modOne ? { height: item.modOne } : {}}
             >
-                <div className={cn(styles.content, 'content')}>
+                <div
+                    className={cn(styles.content, 'content', {
+                        [styles['cap-bckg']]: useThumbnail && item.modSwitch1 != 1 && item.image && (item.desc || item.headline || item.visibleButton),
+                    })}
+                >
                     {(item.headline || item.subheader) && (
                         <HeadlineBlock
                             item={item}
@@ -206,7 +210,7 @@ const ItemWrap = (props: ItemWrapProps) => {
             </div>
 
             <button type="button" className={styles['carousel-btn']} onClick={changeCap}>
-                <FontAwesomeIcon icon={!isCaptionVisible ? ['fas', 'message'] : ['fas', 'xmark']} />
+                {useThumbnail && <FontAwesomeIcon icon={!isCaptionVisible ? ['fas', 'message'] : ['fas', 'x']} />}
                 {/*  <FontAwesomeIcon icon={['fas', 'message-plus']} /> */}
             </button>
         </div>
