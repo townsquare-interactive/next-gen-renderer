@@ -595,6 +595,16 @@ export interface CarouselSettings {
     halfSize?: boolean
     mobileResize: boolean
 }
+
+export interface CarouselProps {
+    settings: any
+    children: any
+    imgsize?: string
+    modItems?: ArticleItems[]
+    cmsUrl?: string
+    useThumbnail?: boolean
+}
+
 export interface PhotoGridProps {
     uid: string
     modId: string
@@ -1074,7 +1084,7 @@ export interface SlideData {
     byline?: string
 }
 
-export interface CarouselProps {
+export interface PracticeCarouselProps {
     /**Style layout of component*/
     modLayout: 'images' | 'text'
     /**Determines how many slides to show at once*/

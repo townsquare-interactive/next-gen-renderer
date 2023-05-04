@@ -5,10 +5,10 @@ import Image from 'next/image'
 import cn from 'classnames'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import { CarouselProps } from '../../types'
+import { PracticeCarouselProps } from '../../types'
 import { domainImage } from '../../functions'
 
-function Carousel(props: CarouselProps) {
+function PracticeCarousel(props: PracticeCarouselProps) {
     const { items, modLayout, slideCount, autoPlay, themeStyles } = props
     const themeStylesObj = {
         color: `${themeStyles['textColor']}`,
@@ -133,4 +133,4 @@ function PrevArrowImage(props: any) {
     return <div className={cn(className, styles.imageBtns, styles.prevImageBtn, 'arrowNext')} style={{ ...style }} onClick={onClick}></div>
 }
 
-export default Carousel
+export default PracticeCarousel

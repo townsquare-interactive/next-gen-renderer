@@ -69,7 +69,7 @@ const PhotoGallery = (props: ModuleProps) => {
                         [styles.widescreen_2_4_1]: imgsize === 'widescreen_2-4_1',
                         ['thumbnail']: useThumbnail,
                         [styles.thumbnail]: useThumbnail,
-                        ['arrows']: !useThumbnail,
+                        ['normal-carousel']: !useThumbnail,
                     })}
                     id={`id_${modId}`}
                 >
@@ -150,10 +150,6 @@ const ItemWrap = (props: ItemWrapProps) => {
 
     const forceAccentColor = item.isFeatured === 'active' ? well == '1' && false : true
 
-    const changeCap = () => {
-        toggleCaption(!isCaptionVisible)
-    }
-
     return (
         <div
             className={cn(styles['item-wrap'], {})}
@@ -168,7 +164,7 @@ const ItemWrap = (props: ItemWrapProps) => {
             }
         >
             <div className={styles['image-block']}>
-                <ImageBlock item={item} imgsize={imgsize} well={well} cmsUrl={cmsUrl} modType={'PhotoGallery'} columns={columns} />
+                <ImageBlock item={item} imgsize={imgsize} well={well} cmsUrl={cmsUrl} modType={'gallery'} columns={columns} />
             </div>
 
             <div
@@ -209,10 +205,11 @@ const ItemWrap = (props: ItemWrapProps) => {
                 {item.isWrapLink && <LinkWrap item={item}></LinkWrap>}
             </div>
 
-            <button type="button" className={styles['carousel-btn']} onClick={changeCap}>
-                {useThumbnail && <FontAwesomeIcon icon={!isCaptionVisible ? ['fas', 'message'] : ['fas', 'x']} />}
-                {/*  <FontAwesomeIcon icon={['fas', 'message-plus']} /> */}
-            </button>
+            {useThumbnail && (
+                <button type="button" className={styles['carousel-btn']} onClick={() => toggleCaption(!isCaptionVisible)}>
+                    <FontAwesomeIcon icon={!isCaptionVisible ? ['fas', 'message'] : ['fas', 'x']} />
+                </button>
+            )}
         </div>
     )
 }

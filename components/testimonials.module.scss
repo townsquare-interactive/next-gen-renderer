@@ -110,6 +110,14 @@
     &.item-flex {
         @include utils.item-flex;
     }
+
+    &.carousel .item {
+        //min-height: 450px;
+
+        .image-block {
+            height: 100%;
+        }
+    }
 }
 
 .columns .root {

@@ -2,14 +2,14 @@
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState, useRef, ReactElement } from 'react'
 import { ImageBlock } from './ImageBlock'
-import { ArticleItems } from 'types'
+import { CarouselProps } from 'types'
 import styles from './carousel.module.scss'
 import cn from 'classnames'
 import DescBlock from './DescBlock'
 
-const Carousel = (props: any) => {
+const Carousel = (props: CarouselProps) => {
     const { settings, children, modItems, cmsUrl, imgsize = 'landscape_4_3', useThumbnail } = props
 
     const slider1 = useRef(null)
@@ -23,12 +23,12 @@ const Carousel = (props: any) => {
 
     return (
         <>
-            {useThumbnail ? (
+            {useThumbnail && modItems ? (
                 <>
                     <Slider {...settings} ref={(slider) => setNav1(slider)} asNavFor={nav2}>
                         {children}
                     </Slider>
-                    <div className={styles.root}>
+                    <div className={styles['thumb-gallery']}>
                         <div style={{ maxWidth: `${1400 / modItems.length}px` }} className={styles.wrapper}>
                             <Slider
                                 asNavFor={nav1}
@@ -38,7 +38,7 @@ const Carousel = (props: any) => {
                                 ref={(slider) => setNav2(slider)}
                                 className={'thumb-slider'}
                             >
-                                {modItems.map((item: ArticleItems, index: number) => (
+                                {modItems.map((item, index: number) => (
                                     <div className={cn('thumb-nav', styles['thumb-nav'])} key={index}>
                                         <ImageBlock item={item} imgsize={imgsize} well={0} cmsUrl={cmsUrl} modType={'PhotoGallery'} columns={1} />
 

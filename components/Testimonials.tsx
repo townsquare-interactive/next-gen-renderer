@@ -10,9 +10,6 @@ import LinkWrap from 'elements/LinkWrap'
 import DescBlock from 'elements/DescBlock'
 import Carousel from 'elements/Carousel'
 
-//carousel option, may keep in this module
-const useCarousel = false
-
 const Testimonials = (props: ModuleProps) => {
     const {
         columns = 1,
@@ -32,23 +29,43 @@ const Testimonials = (props: ModuleProps) => {
         settings,
     } = props
 
+    //carousel option, may keep in this module
+    const useCarousel = type === 'testimonials_2'
+    console.log(useCarousel)
+
     const carouselSettings = {
         dots: true,
         infinite: true,
         //speed: 800,
         //speed: settings?.restartDelay || 2500,
-        slidesToShow: 3,
-        slidesToScroll: 1,
+        //slidesToShow: 3,
+        slidesToScroll: 3,
         //fade: settings?.effect === 'fade' ? true : false,
-        // nextArrow: <NextArrowImage />,
-        // prevArrow: <PrevArrowImage />,
-        //prevArrow: <Arrow type="prev" />,
-        //nextArrow: <Arrow type="next" />,
         autoplay: settings?.autoplay,
         autoplaySpeed: settings?.interval || 6000,
         pauseOnHover: settings?.pauseOnHover,
         restartDelay: settings?.restartDelay || 2500,
-        //dotsClass: 'slick-dots',
+        //adaptiveHeight: true,
+        responsive: [
+            {
+                breakpoint: 99999,
+                settings: {
+                    slidesToShow: 3,
+                },
+            },
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 2,
+                },
+            },
+            {
+                breakpoint: 851,
+                settings: {
+                    slidesToShow: 1,
+                },
+            },
+        ],
     }
 
     if (disabled === 'disabled') {
@@ -74,6 +91,8 @@ const Testimonials = (props: ModuleProps) => {
                         [`cst_${customClassName}`]: customClassName,
                         [styles['feature-column']]: columnLocation === 0,
                         [styles['single-column']]: isSingleColumn,
+                        ['normal-carousel']: useCarousel,
+                        [styles.carousel]: useCarousel,
                     }
                 )}
                 id={`id_${modId}`}

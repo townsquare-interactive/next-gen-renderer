@@ -212,7 +212,7 @@ $ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
 }
 
-.arrows {
+.normal-carousel {
     .slick-dots li button {
         //width: 16px;
         //height: auto;
@@ -328,6 +328,13 @@ $ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
     .slick-dots {
         display: none !important;
+    }
+}
+
+.testimonials-mod {
+    .slick-dots {
+        position: relative !important;
+        margin-top: 2rem;
     }
 }
 
