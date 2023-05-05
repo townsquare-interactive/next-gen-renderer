@@ -1,0 +1,63 @@
+@use './styles/breakpoints.scss';
+@use './styles/utils.scss';
+@use './styles/variables.scss';
+
+.slick-arrow {
+    display: none;
+    @include breakpoints.sm-min {
+        display: block;
+    }
+
+    padding: 0.75rem;
+    background-color: var(--btn-background) !important;
+    color: #ffffff;
+    font-size: 0;
+    text-align: center;
+    margin: -1rem 0 0;
+    position: absolute;
+    top: 50%;
+    border: none;
+    z-index: 2;
+    width: auto;
+    height: auto;
+    transition: all 0.1s linear;
+    opacity: 0;
+
+    &:before {
+        font-size: 1.75rem;
+        line-height: 1.25;
+        font-weight: bold;
+    }
+}
+
+//photo gal
+.wrapper:hover .slick-arrow {
+    opacity: 0.4;
+}
+
+.slick-arrow:hover {
+    opacity: 1 !important;
+}
+
+.slick-prev {
+    left: 2rem;
+    //medium container
+    @include breakpoints.md-min {
+        left: 2rem !important;
+    }
+
+    &:before {
+        content: '<';
+    }
+}
+
+.slick-next {
+    right: 2rem;
+    @include breakpoints.md-min {
+        right: 2rem !important;
+    }
+
+    &:before {
+        content: '>';
+    }
+}

@@ -43,7 +43,7 @@ const Carousel = (props: CarouselProps) => {
                                         <ImageBlock item={item} imgsize={imgsize} well={0} cmsUrl={cmsUrl} modType={'PhotoGallery'} columns={1} />
 
                                         <div
-                                            className={cn(styles['caption'], {
+                                            className={cn(styles['caption'], 'caption', {
                                                 [styles['cap-bckg']]: item.modSwitch1 != 1 && item.image && (item.desc || item.headline || item.visibleButton),
                                             })}
                                             style={item.modOne ? { height: item.modOne } : {}}

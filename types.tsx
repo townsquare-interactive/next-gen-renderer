@@ -699,6 +699,7 @@ export interface ItemWrapProps {
     align?: string
     laxType?: string
     useThumbnail?: boolean
+    useCarousel?: boolean
     //temp
 }
 
@@ -740,6 +741,7 @@ export interface ModuleItemProps {
     modId: string
     cmsUrl?: string
     useThumbnail?: boolean
+    useCarousel?: boolean
 }
 
 export interface PhotoItemProps {

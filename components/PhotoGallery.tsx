@@ -11,22 +11,11 @@ import { domainImage } from 'functions'
 import Carousel from 'elements/Carousel'
 import { ImageBlock } from 'elements/ImageBlock'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import CarouselArrow from 'elements/CarouselArrow'
 
 const PhotoGallery = (props: ModuleProps) => {
     const { columns = 1, type, well, imgsize, modId, items, themeStyles, cmsUrl, disabled, customClassName, modCount, settings } = props
 
-    const Arrow = (props: { type: string; onClick?: MouseEventHandler<HTMLAnchorElement> }) => {
-        const { type, onClick } = props
-        return (
-            <a
-                onClick={onClick}
-                className={cn(styles['slick-arrow'], {
-                    [styles['slick-next']]: type === 'next',
-                    [styles['slick-prev']]: type === 'prev',
-                })}
-            ></a>
-        )
-    }
     const useThumbnail = type === 'photo_gallery_2'
 
     const carouselSettings = {
@@ -37,8 +26,8 @@ const PhotoGallery = (props: ModuleProps) => {
         slidesToShow: 1,
         slidesToScroll: 1,
         fade: settings?.effect === 'fade' ? true : false,
-        prevArrow: <Arrow type="prev" />,
-        nextArrow: <Arrow type="next" />,
+        prevArrow: <CarouselArrow type="prev" />,
+        nextArrow: <CarouselArrow type="next" />,
         autoplay: settings?.autoplay,
         //autoplay: false,
         // autoplaySpeed: settings?.restartDelay || 2500,
