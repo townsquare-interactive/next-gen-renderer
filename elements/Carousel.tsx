@@ -29,7 +29,13 @@ const Carousel = (props: CarouselProps) => {
                         {children}
                     </Slider>
                     <div className={styles['thumb-gallery']}>
-                        <div style={{ maxWidth: `${1400 / modItems.length}px` }} className={styles.wrapper}>
+                        <div
+                            style={{
+                                //maxWidth: `${1400 / modItems.length}px`
+                                width: `${(100 * modItems.length) / 7}%`,
+                            }}
+                            className={styles.wrapper}
+                        >
                             <Slider
                                 asNavFor={nav1}
                                 slidesToShow={modItems.length}
@@ -46,7 +52,8 @@ const Carousel = (props: CarouselProps) => {
                                             className={cn(styles['caption'], 'caption', {
                                                 [styles['cap-bckg']]: item.modSwitch1 != 1 && item.image && (item.desc || item.headline || item.visibleButton),
                                             })}
-                                            style={item.modOne ? { height: item.modOne } : {}}
+                                            //style={item.modOne ? { height: item.modOne } : {}}
+                                            style={!item.image ? item.itemStyle : {}}
                                         >
                                             <DescBlock desc={item.headline} type="carousel" descSize="sm" />
                                         </div>

@@ -56,13 +56,13 @@ const Testimonials = (props: ModuleProps) => {
                 },
             },
             {
-                breakpoint: 1024,
+                breakpoint: 1207,
                 settings: {
                     slidesToShow: 2,
                 },
             },
             {
-                breakpoint: 851,
+                breakpoint: 850,
                 settings: {
                     slidesToShow: 1,
                 },

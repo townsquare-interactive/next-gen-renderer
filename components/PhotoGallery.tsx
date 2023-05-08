@@ -2,7 +2,7 @@
 import styles from './photogallery.module.scss'
 import { ModuleProps, ItemWrapProps, ModuleItemProps } from '../types'
 import cn from 'classnames'
-import { Fragment, MouseEventHandler, useState } from 'react'
+import { Fragment, useState } from 'react'
 import { ButtonWrap } from '../elements/ButtonWrap'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
 import LinkWrap from 'elements/LinkWrap'
@@ -36,9 +36,18 @@ const PhotoGallery = (props: ModuleProps) => {
         restartDelay: settings?.restartDelay || 2500,
         dotsClass: 'slick-dots',
         draggable: true,
+        centerPadding: '50px',
         customPaging: function (i: number) {
             return <button type="button" data-role="none" role="button"></button>
         },
+    }
+
+    //remove hidden items for Carousel
+    let newItems = []
+    for (let x in items) {
+        if (items[x].disabled != 'disabled') {
+            newItems.push(items[x])
+        }
     }
 
     if (disabled === 'disabled') {
@@ -64,9 +73,9 @@ const PhotoGallery = (props: ModuleProps) => {
                 >
                     <div className={cn(styles.wrapper, 'wrapper')}>
                         <Carousel settings={carouselSettings} modItems={items} cmsUrl={cmsUrl} useThumbnail={useThumbnail}>
-                            {items.map((item, index: number) => (
+                            {newItems.map((item, index: number) => (
                                 <Fragment key={index}>
-                                    {item.disabled != 'disabled' ? (
+                                    {item.disabled != 'disabled' && (
                                         <ModuleItem
                                             item={item}
                                             well={well}
@@ -80,8 +89,6 @@ const PhotoGallery = (props: ModuleProps) => {
                                             cmsUrl={cmsUrl}
                                             useThumbnail={useThumbnail}
                                         />
-                                    ) : (
-                                        <></>
                                     )}
                                 </Fragment>
                             ))}

@@ -151,15 +151,15 @@
         }
     }
 
-    .slick-arrow {
+    /* .slick-arrow {
         display: none;
         @include breakpoints.sm-min {
             display: block;
         }
 
         padding: 0.75rem;
-        background-color: #009374 !important;
-        color: #ffffff;
+        background-color: var(--btn-background) !important;
+        //color: #ffffff;
         font-size: 0;
         text-align: center;
         margin: -1rem 0 0;
@@ -172,11 +172,11 @@
         width: auto;
         height: auto;
         transition: all 0.1s linear;
+        color: var(--btn-text);
 
         &:before {
             font-size: 1.75rem;
             line-height: 1.25;
-
             font-weight: bold;
         }
     }
@@ -187,7 +187,7 @@
 
     .slick-arrow:hover {
         opacity: 1 !important;
-    }
+    } */
 
     .slick-prev {
         left: 2rem;
@@ -325,4 +325,8 @@
             }
         }
     }
+}
+
+.columns .root {
+    @include utils.column-mod;
 }

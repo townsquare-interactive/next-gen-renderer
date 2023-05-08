@@ -6,6 +6,10 @@
         height: 100%;
         width: 100%;
 
+        @media (max-width: 751px) {
+            min-width: 100%;
+        }
+
         .thumb-nav {
             position: relative;
 
