@@ -69,7 +69,7 @@ const PhotoGallery = (props: ModuleProps) => {
                     id={`id_${modId}`}
                 >
                     <div className={cn(styles.wrapper, 'wrapper')}>
-                        <Carousel settings={carouselSettings} modItems={items} cmsUrl={cmsUrl} useThumbnail={useThumbnail}>
+                        <Carousel settings={carouselSettings} modItems={items} cmsUrl={cmsUrl} useThumbnail={useThumbnail} modType={type}>
                             {newItems.map((item, index: number) => (
                                 <Fragment key={index}>
                                     {item.disabled != 'disabled' && (

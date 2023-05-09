@@ -128,7 +128,7 @@ const Testimonials = (props: ModuleProps) => {
                         ))
                     ) : (
                         <div className={cn(styles.wrapper, 'wrapper')}>
-                            <Carousel settings={carouselSettings}>
+                            <Carousel settings={carouselSettings} modType={type}>
                                 {items.map((item, index: number) => (
                                     <Fragment key={index}>
                                         {item.disabled != 'disabled' ? (

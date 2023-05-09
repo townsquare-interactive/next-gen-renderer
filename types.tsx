@@ -603,6 +603,7 @@ export interface CarouselProps {
     modItems?: ArticleItems[]
     cmsUrl?: string
     useThumbnail?: boolean
+    modType: string
 }
 
 export interface PhotoGridProps {

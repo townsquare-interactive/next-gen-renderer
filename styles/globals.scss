@@ -227,14 +227,31 @@ $ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
     }
 
-    /*  @media (min-width: 1209px) {
-        .slick-current + div {
-            .item {
-                transform: scale(1.2);
-                z-index: 10;
-            }
+    .slick-track {
+        padding: 0.5rem 0 2rem;
+    }
+
+    @media (min-width: 1209px) {
+        .slick-slide {
+            opacity: 0.75;
+            margin-top: 2.5rem;
+            margin-bottom: 2.5rem;
         }
-    } */
+
+        .slick-center {
+            //transform: scale(1.2);
+            position: relative;
+            z-index: 10;
+            opacity: 1;
+        }
+
+        &.well {
+            .slick-center {
+                transform: scale(1.2);
+            }
+            // .slick-current + div {
+        }
+    }
 }
 
 .normal-carousel {
@@ -358,8 +375,10 @@ $ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
 .testimonials-mod {
     .slick-dots {
-        position: relative !important;
-        margin-top: 2rem;
+        //position: relative !important;
+        //margin-top: 2rem;
+        left: 0;
+        right: 0;
     }
     @media (max-width: 1207px) {
         .slick-arrow {

@@ -14,7 +14,6 @@
             width: variables.$full-width;
             margin-left: 0;
             margin-right: 0;
-
             .item-wrap {
                 text-align: center;
                 display: grid;
@@ -142,9 +141,17 @@
 
         &.well {
             .item {
-                height: 450px;
+                max-height: 450px;
                 overflow: auto;
                 box-shadow: 0 0 2px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0, 0, 0, 0.12);
+
+                .item-wrap {
+                    overflow: auto;
+                }
+
+                @media (min-width: 1209px) {
+                    font-size: 80%;
+                }
             }
         }
     }

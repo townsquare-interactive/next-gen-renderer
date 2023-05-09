@@ -10,7 +10,7 @@ import cn from 'classnames'
 import DescBlock from './DescBlock'
 
 const Carousel = (props: CarouselProps) => {
-    const { settings, children, modItems, cmsUrl, imgsize = 'landscape_4_3', useThumbnail } = props
+    const { settings, children, modItems, cmsUrl, imgsize = 'landscape_4_3', useThumbnail, modType } = props
 
     const slider1 = useRef(null)
     const slider2 = useRef(null)
@@ -31,7 +31,6 @@ const Carousel = (props: CarouselProps) => {
                     <div className={styles['thumb-gallery']}>
                         <div
                             style={{
-                                //maxWidth: `${1400 / modItems.length}px`
                                 width: `${(100 * modItems.length) / 7}%`,
                             }}
                             className={styles.wrapper}
@@ -41,6 +40,7 @@ const Carousel = (props: CarouselProps) => {
                                 slidesToShow={modItems.length}
                                 swipeToSlide={true}
                                 focusOnSelect={true}
+                                //className= "center"
                                 ref={(slider) => setNav2(slider)}
                                 className={'thumb-slider'}
                             >
@@ -52,7 +52,6 @@ const Carousel = (props: CarouselProps) => {
                                             className={cn(styles['caption'], 'caption', {
                                                 [styles['cap-bckg']]: item.modSwitch1 != 1 && item.image && (item.desc || item.headline || item.visibleButton),
                                             })}
-                                            //style={item.modOne ? { height: item.modOne } : {}}
                                             style={!item.image ? item.itemStyle : {}}
                                         >
                                             <DescBlock desc={item.headline} type="carousel" descSize="sm" />
@@ -63,6 +62,16 @@ const Carousel = (props: CarouselProps) => {
                         </div>
                     </div>
                 </>
+            ) : modType === 'testimonials_2' ? (
+                <Slider
+                    {...settings}
+                    //className="center"
+                    centerMode={true}
+                    centerPadding="0"
+                    //adaptiveHeight={true}
+                >
+                    {children}
+                </Slider>
             ) : (
                 <Slider {...settings}>{children}</Slider>
             )}
