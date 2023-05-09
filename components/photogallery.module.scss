@@ -4,7 +4,6 @@
 @value columns from '../components/container.module.scss';
 
 .root {
-    //margin-top: 2rem;
     text-align: center;
 
     &.first-mod {
@@ -64,10 +63,7 @@
                     flex-direction: column;
                     justify-content: space-between;
                     width: 100%;
-
                     @include utils.wrapper-size(0);
-                    //padding: 0 1.5rem;
-
                     padding: 2rem 2rem 1.5rem;
                     @include breakpoints.sm-min {
                         padding: 1rem 6rem 2rem;
@@ -151,47 +147,9 @@
         }
     }
 
-    /* .slick-arrow {
-        display: none;
-        @include breakpoints.sm-min {
-            display: block;
-        }
-
-        padding: 0.75rem;
-        background-color: var(--btn-background) !important;
-        //color: #ffffff;
-        font-size: 0;
-        text-align: center;
-        margin: -1rem 0 0;
-        position: absolute;
-        top: 50%;
-        border: none;
-        opacity: 0;
-        //outline: none;
-        z-index: 2;
-        width: auto;
-        height: auto;
-        transition: all 0.1s linear;
-        color: var(--btn-text);
-
-        &:before {
-            font-size: 1.75rem;
-            line-height: 1.25;
-            font-weight: bold;
-        }
-    }
-
-    .wrapper:hover .slick-arrow {
-        opacity: 0.4;
-    }
-
-    .slick-arrow:hover {
-        opacity: 1 !important;
-    } */
-
     .slick-prev {
         left: 2rem;
-        //medium container
+
         @include breakpoints.md-min {
             left: 2rem !important;
         }

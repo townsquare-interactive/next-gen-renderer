@@ -2,7 +2,7 @@
 import styles from './testimonials.module.scss'
 import { ModuleProps, ItemWrapProps, ModuleItemProps } from '../types'
 import cn from 'classnames'
-import { Fragment } from 'react'
+import { Fragment, ReactChild, ReactElement } from 'react'
 import { ImageBlock } from '../elements/ImageBlock'
 import ModuleTitle from 'elements/ModuleTitle'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
@@ -10,6 +10,7 @@ import LinkWrap from 'elements/LinkWrap'
 import DescBlock from 'elements/DescBlock'
 import Carousel from 'elements/Carousel'
 import CarouselArrow from 'elements/CarouselArrow'
+import { ConditionalWrapper } from 'functions'
 
 const Testimonials = (props: ModuleProps) => {
     const {
@@ -94,12 +95,14 @@ const Testimonials = (props: ModuleProps) => {
                         [styles['feature-column']]: columnLocation === 0,
                         [styles['single-column']]: isSingleColumn,
                         ['normal-carousel']: useCarousel,
+                        ['rev-carousel']: useCarousel,
                         [styles.carousel]: useCarousel,
                     }
                 )}
                 id={`id_${modId}`}
             >
                 {title && <ModuleTitle title={title} />}
+
                 <div className={cn(styles.wrapper, 'wrapper')}>
                     {!useCarousel ? (
                         items.map((item, index) => (
@@ -168,7 +171,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                     [styles.hero]: item.isFeatured === 'active',
                     ['hero']: item.isFeatured === 'active',
                     [styles.nHero]: !item.isFeatured,
-                    ['border-background']: well == '1' && item.isFeatured != 'active',
+                    ['border-background']: well == '1' && item.isFeatured != 'active' && useCarousel,
                     ['hero-background']: well == '1' && item.isFeatured === 'active',
                     ['round']: item.borderType === 'round',
                     ['is-wrap-link']: item.isWrapLink,
@@ -203,7 +206,6 @@ const ModuleItem = (props: ModuleItemProps) => {
 
 const ItemWrap = (props: ItemWrapProps) => {
     const { item, imgsize, well, type, cmsUrl, columns, useCarousel } = props
-    console.log(useCarousel)
 
     return (
         <>

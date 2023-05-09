@@ -212,6 +212,31 @@ $ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
 }
 
+.rev-carousel {
+    .slick-list {
+        max-width: 75.5em;
+        margin: 0 auto;
+        // padding: 3rem 6rem;
+    }
+
+    .slick-slider {
+        padding: 3rem 2rem;
+
+        @include breakpoints.lg-min {
+            padding: 3rem 6rem;
+        }
+    }
+
+    /*  @media (min-width: 1209px) {
+        .slick-current + div {
+            .item {
+                transform: scale(1.2);
+                z-index: 10;
+            }
+        }
+    } */
+}
+
 .normal-carousel {
     .slick-dots li button {
         //width: 16px;

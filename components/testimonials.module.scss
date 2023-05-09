@@ -6,6 +6,7 @@
 .root {
     @include utils.module-root;
     @include utils.wrapper-size(3rem);
+    margin-bottom: 3rem;
 
     .wrapper {
         .item {
@@ -111,11 +112,40 @@
         @include utils.item-flex;
     }
 
-    &.carousel .item {
-        //min-height: 450px;
+    &.carousel {
+        max-width: 100%;
 
-        .image-block {
-            height: 100%;
+        .item {
+            //min-height: 450px;
+
+            .item-wrap {
+                padding: 1.5rem 2.5rem 2rem;
+                display: block;
+            }
+
+            .caption {
+                padding: 0;
+            }
+
+            .content {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .image-block {
+                height: 100%;
+            }
+        }
+
+        &.well {
+            .item {
+                height: 450px;
+                overflow: auto;
+                box-shadow: 0 0 2px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0, 0, 0, 0.12);
+            }
         }
     }
 }

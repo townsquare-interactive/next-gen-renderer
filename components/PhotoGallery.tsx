@@ -29,14 +29,11 @@ const PhotoGallery = (props: ModuleProps) => {
         prevArrow: <CarouselArrow type="prev" />,
         nextArrow: <CarouselArrow type="next" />,
         autoplay: settings?.autoplay,
-        //autoplay: false,
-        // autoplaySpeed: settings?.restartDelay || 2500,
         autoplaySpeed: settings?.interval || 6000,
         pauseOnHover: settings?.pauseOnHover,
         restartDelay: settings?.restartDelay || 2500,
         dotsClass: 'slick-dots',
         draggable: true,
-        centerPadding: '50px',
         customPaging: function (i: number) {
             return <button type="button" data-role="none" role="button"></button>
         },

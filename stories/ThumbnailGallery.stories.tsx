@@ -10,7 +10,7 @@ const { library } = require('@fortawesome/fontawesome-svg-core')
 library.add(fas, fab, far)
 
 export default {
-    title: 'new/PhotoGallery',
+    title: 'new/ThumbnailGallery',
     component: PhotoGallery,
     argTypes: {
         imgsize: {
@@ -124,7 +124,7 @@ const item2 = { ...item1, image: '/files/2022/09/Yos2.jpg' }
 const plaxmod = {
     uid: '9e319b47_9448_4e73_ed16_88b019618745',
     lazy: '',
-    type: 'photo_gallery_1',
+    type: 'photo_gallery_2',
     well: '',
     align: '',
     class: '',
