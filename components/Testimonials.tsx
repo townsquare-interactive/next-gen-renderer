@@ -2,7 +2,7 @@
 import styles from './testimonials.module.scss'
 import { ModuleProps, ItemWrapProps, TestimonialItemProps } from '../types'
 import cn from 'classnames'
-import { Fragment, ReactChild, ReactElement, useEffect, useRef, useState } from 'react'
+import { Fragment, useEffect, useRef, useState } from 'react'
 import { ImageBlock } from '../elements/ImageBlock'
 import ModuleTitle from 'elements/ModuleTitle'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
@@ -10,8 +10,6 @@ import LinkWrap from 'elements/LinkWrap'
 import DescBlock from 'elements/DescBlock'
 import Carousel from 'elements/Carousel'
 import CarouselArrow from 'elements/CarouselArrow'
-import { ConditionalWrapper } from 'functions'
-import ReactDOM from 'react-dom'
 
 const Testimonials = (props: ModuleProps) => {
     const {
