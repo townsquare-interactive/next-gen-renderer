@@ -745,6 +745,11 @@ export interface ModuleItemProps {
     useCarousel?: boolean
 }
 
+export interface TestimonialItemProps extends ModuleItemProps {
+    maxHeight: number
+    setHeight: () => void
+}
+
 export interface PhotoItemProps {
     item: ArticleItems
     well: string | number

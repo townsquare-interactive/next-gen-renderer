@@ -1,8 +1,8 @@
 'use client'
 import styles from './testimonials.module.scss'
-import { ModuleProps, ItemWrapProps, ModuleItemProps } from '../types'
+import { ModuleProps, ItemWrapProps, TestimonialItemProps } from '../types'
 import cn from 'classnames'
-import { Fragment, ReactChild, ReactElement } from 'react'
+import { Fragment, ReactChild, ReactElement, useEffect, useRef, useState } from 'react'
 import { ImageBlock } from '../elements/ImageBlock'
 import ModuleTitle from 'elements/ModuleTitle'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
@@ -11,6 +11,7 @@ import DescBlock from 'elements/DescBlock'
 import Carousel from 'elements/Carousel'
 import CarouselArrow from 'elements/CarouselArrow'
 import { ConditionalWrapper } from 'functions'
+import ReactDOM from 'react-dom'
 
 const Testimonials = (props: ModuleProps) => {
     const {
@@ -30,6 +31,31 @@ const Testimonials = (props: ModuleProps) => {
         isSingleColumn,
         settings,
     } = props
+
+    const [maxHeight, setHeights] = useState(0)
+
+    /* const targetRef = useRef(null)
+    const [dimensions, setDimensions] = useState([])
+
+    useEffect(() => {
+        if (targetRef.current) {
+           
+
+            let allItems = []
+            let theCount = 0
+            for (let x in targetRef.current.children) {
+                allItems.push(targetRef.current.children[x].offsetHeight)
+                theCount += 1
+                console.log(theCount)
+                const theChild = targetRef.current.children[x]
+                console.log(theChild.children[0].children[1])
+            }
+            //console.log(allItems)
+
+          
+            setDimensions(allItems)
+        }
+    }, []) */
 
     //carousel option, may keep in this module
     const useCarousel = type === 'testimonials_2'
@@ -144,6 +170,8 @@ const Testimonials = (props: ModuleProps) => {
                                                 itemIndex={index}
                                                 cmsUrl={cmsUrl}
                                                 useCarousel={useCarousel}
+                                                maxHeight={maxHeight}
+                                                setHeights={setHeights}
                                             />
                                         ) : (
                                             <></>
@@ -159,8 +187,18 @@ const Testimonials = (props: ModuleProps) => {
     }
 }
 
-const ModuleItem = (props: ModuleItemProps) => {
-    const { item, modId, itemIndex, cmsUrl, themeStyles, type, imgsize, columns, well, useCarousel } = props
+const ModuleItem = (props: TestimonialItemProps) => {
+    const { item, modId, itemIndex, cmsUrl, themeStyles, type, imgsize, columns, well, useCarousel, maxHeight, setHeights } = props
+
+    //find largest item height in module for styling
+    const targetRef = useRef<any>(null)
+    useEffect(() => {
+        if (targetRef.current && type === 'testimonials_2') {
+            if (maxHeight && maxHeight < targetRef.current.offsetHeight) {
+                setHeights(targetRef.current.offsetHeight)
+            }
+        }
+    }, [targetRef.current?.offsetHeight])
 
     return (
         <article
@@ -180,6 +218,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                 },
                 styles[`item_${itemIndex + 1}`]
             )}
+            style={maxHeight ? { minHeight: maxHeight } : {}}
         >
             {item.isWrapLink && <LinkWrap item={item} modType={'article'}></LinkWrap>}
             <div
@@ -187,6 +226,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                     ['hero-background']: item.isFeatured === 'active' && type === 'article',
                 })}
                 aria-label={item.headline || 'item-wrap'}
+                ref={targetRef}
             >
                 <ItemWrap
                     item={item}
