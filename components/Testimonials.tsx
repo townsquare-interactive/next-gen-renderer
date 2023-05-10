@@ -144,6 +144,7 @@ const Testimonials = (props: ModuleProps) => {
                                         itemIndex={index}
                                         cmsUrl={cmsUrl}
                                         useCarousel={useCarousel}
+                                        maxHeight={maxHeight}
                                     />
                                 ) : (
                                     <></>
@@ -192,7 +193,7 @@ const ModuleItem = (props: TestimonialItemProps) => {
     const targetRef = useRef<any>(null)
     useEffect(() => {
         if (targetRef.current && type === 'testimonials_2') {
-            if (maxHeight && maxHeight < targetRef.current.offsetHeight) {
+            if (maxHeight < targetRef.current.offsetHeight) {
                 setHeights(targetRef.current.offsetHeight)
             }
         }

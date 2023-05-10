@@ -747,7 +747,7 @@ export interface ModuleItemProps {
 
 //module items
 export interface TestimonialItemProps extends ModuleItemProps {
-    maxHeight?: number
+    maxHeight: number
     setHeights?: any
 }
 
