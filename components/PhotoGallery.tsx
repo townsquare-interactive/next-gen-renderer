@@ -151,7 +151,6 @@ const ItemWrap = (props: ItemWrapProps) => {
                 well === '1'
                     ? {
                           backgroundImage: item.textureImage?.image ? `url(${domainImage(item.textureImage.image, false)})` : 'none',
-                          backgroundPositionY: item.modTwo ? item.modTwo + '%' : '0%',
                       }
                     : {}
             }
