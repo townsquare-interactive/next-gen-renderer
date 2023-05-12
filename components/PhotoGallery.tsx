@@ -16,7 +16,7 @@ import CarouselArrow from 'elements/CarouselArrow'
 const PhotoGallery = (props: ModuleProps) => {
     const { columns = 1, type, well, imgsize, modId, items, themeStyles, cmsUrl, disabled, customClassName, modCount, settings } = props
 
-    const useThumbnail = type === 'photo_gallery_2'
+    const useThumbnail = type === 'thumbnail_gallery'
 
     const carouselSettings = {
         dots: true,

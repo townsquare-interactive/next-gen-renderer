@@ -20,6 +20,7 @@ export const ImageBlock = (props: ImageBlockProps) => {
                     [styles['article']]: modType.includes('article'),
                     [styles['card']]: modType === 'Card',
                     [styles['photo-gallery']]: modType === 'gallery',
+                    [styles['thumbnail']]: modType === 'thumbnail',
                 })}
             >
                 {item.image && (

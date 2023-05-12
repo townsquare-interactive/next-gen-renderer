@@ -124,7 +124,7 @@ const item2 = { ...item1, image: '/files/2022/09/Yos2.jpg' }
 const plaxmod = {
     uid: '9e319b47_9448_4e73_ed16_88b019618745',
     lazy: '',
-    type: 'photo_gallery_2',
+    type: 'thumbnail_gallery',
     well: '',
     align: '',
     class: '',

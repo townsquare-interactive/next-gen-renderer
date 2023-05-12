@@ -749,6 +749,8 @@ export interface ModuleItemProps {
 export interface TestimonialItemProps extends ModuleItemProps {
     maxHeight: number
     setHeights?: any
+    blockField1?: string
+    blockField2?: string
 }
 
 export interface PhotoItemProps {

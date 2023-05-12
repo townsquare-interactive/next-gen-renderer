@@ -28,12 +28,14 @@ const Testimonials = (props: ModuleProps) => {
         columnLocation,
         isSingleColumn,
         settings,
+        blockField1,
+        blockField2,
     } = props
 
     const [maxHeight, setHeights] = useState(0)
 
     //carousel option, may keep in this module
-    const useCarousel = type === 'testimonials_2'
+    const useCarousel = type === 'review_carousel'
 
     const carouselSettings = {
         dots: true,
@@ -100,6 +102,8 @@ const Testimonials = (props: ModuleProps) => {
                         ['normal-carousel']: useCarousel,
                         ['rev-carousel']: useCarousel,
                         [styles.carousel]: useCarousel,
+                        ['custom-height-1']: blockField1,
+                        ['custom-height-2']: blockField2,
                     }
                 )}
                 id={`id_${modId}`}
@@ -124,6 +128,8 @@ const Testimonials = (props: ModuleProps) => {
                                         cmsUrl={cmsUrl}
                                         useCarousel={useCarousel}
                                         maxHeight={maxHeight}
+                                        blockField1={blockField1}
+                                        blockField2={blockField2}
                                     />
                                 ) : (
                                     <></>
@@ -150,6 +156,8 @@ const Testimonials = (props: ModuleProps) => {
                                                 useCarousel={useCarousel}
                                                 maxHeight={maxHeight}
                                                 setHeights={setHeights}
+                                                blockField1={blockField1}
+                                                blockField2={blockField2}
                                             />
                                         ) : (
                                             <></>
@@ -166,15 +174,23 @@ const Testimonials = (props: ModuleProps) => {
 }
 
 const ModuleItem = (props: TestimonialItemProps) => {
-    const { item, modId, itemIndex, cmsUrl, themeStyles, type, imgsize, columns, well, useCarousel, maxHeight, setHeights } = props
+    const { item, modId, itemIndex, cmsUrl, themeStyles, type, imgsize, columns, well, useCarousel, maxHeight, setHeights, blockField1, blockField2 } = props
+
+    const itemRef = useRef<HTMLInputElement>(null)
 
     //find largest item height in module for styling
     const targetRef = useRef<HTMLInputElement>(null)
     useEffect(() => {
-        if (targetRef.current && type === 'testimonials_2' && maxHeight < targetRef.current.offsetHeight) {
+        if (targetRef.current && type === 'review_carousel' && maxHeight < targetRef.current.offsetHeight) {
             setHeights(targetRef.current.offsetHeight)
+        }
 
-            //targetRef.current.style.setProperty('--item-max-height', `${targetRef.current.offsetHeight}`)
+        if (blockField1 && itemRef.current && type === 'review_carousel') {
+            itemRef.current.style.setProperty('--block-height-1', `${blockField1}px`)
+        }
+
+        if (blockField2 && itemRef.current && type === 'review_carousel') {
+            itemRef.current.style.setProperty('--block-height-2', `${blockField2}px`)
         }
     })
 
@@ -187,7 +203,7 @@ const ModuleItem = (props: TestimonialItemProps) => {
                     [styles.hero]: item.isFeatured === 'active',
                     ['hero']: item.isFeatured === 'active',
                     [styles.nHero]: !item.isFeatured,
-                    ['border-background']: well == '1' && item.isFeatured != 'active' && useCarousel,
+                    ['border-background']: well == '1' && item.isFeatured != 'active',
                     ['hero-background']: well == '1' && item.isFeatured === 'active',
                     ['round']: item.borderType === 'round',
                     ['is-wrap-link']: item.isWrapLink,
@@ -197,6 +213,7 @@ const ModuleItem = (props: TestimonialItemProps) => {
                 styles[`item_${itemIndex + 1}`]
             )}
             style={maxHeight && well == '1' ? { minHeight: maxHeight } : {}}
+            ref={itemRef}
         >
             {item.isWrapLink && <LinkWrap item={item} modType={'article'}></LinkWrap>}
             <div
