@@ -258,10 +258,10 @@ $ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
         padding: 0.5rem 0 2rem;
     }
 
-    &.well .item {
+    /* &.well .item {
         height: auto;
     }
-
+ */
     @media (min-width: 1209px) {
         .slick-slide {
             opacity: 0.75;

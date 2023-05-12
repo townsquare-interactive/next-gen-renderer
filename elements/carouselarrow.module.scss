@@ -4,8 +4,17 @@
 
 .slick-arrow {
     display: none;
-    @include breakpoints.sm-min {
-        display: block;
+
+    &.no-thumb {
+        @include breakpoints.sm-min {
+            display: block;
+        }
+    }
+
+    &.thumbnail {
+        @include breakpoints.md-min {
+            display: block;
+        }
     }
 
     padding: 0.75rem;

@@ -208,6 +208,14 @@
     }
 
     &.thumbnail {
+        .item {
+            font-size: 80%;
+
+            @include breakpoints.lg-min {
+                font-size: 100%;
+            }
+        }
+
         .wrapper .item .item-wrap .caption {
             max-width: 54.375em;
             height: auto;

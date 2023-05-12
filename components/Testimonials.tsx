@@ -45,7 +45,8 @@ const Testimonials = (props: ModuleProps) => {
         //slidesToShow: 3,
         slidesToScroll: 1,
         //fade: settings?.effect === 'fade' ? true : false,
-        autoplay: settings?.autoplay,
+        // autoplay: settings?.autoplay,
+        autoplay: false,
         autoplaySpeed: settings?.interval || 6000,
         pauseOnHover: settings?.pauseOnHover,
         restartDelay: settings?.restartDelay || 2500,
@@ -208,11 +209,11 @@ const ModuleItem = (props: TestimonialItemProps) => {
                     ['round']: item.borderType === 'round',
                     ['is-wrap-link']: item.isWrapLink,
                     ['accent-txt']: item.useAccentColor,
-                    ['txt-color']: item.isFeatured != 'active' && !item.useAccentColor,
+                    ['txt-color']: !item.useAccentColor,
                 },
                 styles[`item_${itemIndex + 1}`]
             )}
-            style={maxHeight && well == '1' ? { minHeight: maxHeight } : {}}
+            style={maxHeight && well == '1' && !blockField1 && !blockField2 ? { minHeight: maxHeight } : {}}
             ref={itemRef}
         >
             {item.isWrapLink && <LinkWrap item={item} modType={'article'}></LinkWrap>}

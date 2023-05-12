@@ -60,6 +60,16 @@
         margin: 1em 0;
     }
 
+    &.thumbnail {
+        //yimg
+        .dsc {
+            font-size: 0.875em;
+            margin-top: 1.1428571429em;
+            margin-bottom: 1.1428571429em;
+            line-height: 1.4285714286em;
+        }
+    }
+
     &.carousel {
         width: 100%;
         padding: 0.5rem;
