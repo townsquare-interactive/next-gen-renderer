@@ -10,7 +10,7 @@ const { library } = require('@fortawesome/fontawesome-svg-core')
 library.add(fas, fab, far)
 
 export default {
-    title: 'new/Banner',
+    title: 'new-renderBanner',
     component: Banner,
     argTypes: {
         imgsize: {

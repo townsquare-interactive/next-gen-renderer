@@ -4,7 +4,7 @@ import { ArticleItems } from '../types'
 import { themeStyles, buttonList1, buttonList2, buttonListJust2, createStoryStyles, imageSizes } from 'storydefaults'
 
 export default {
-    title: 'new/Article',
+    title: 'new-renderArticle',
     component: Article,
     argTypes: {
         imgsize: {

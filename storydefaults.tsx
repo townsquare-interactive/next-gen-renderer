@@ -501,7 +501,7 @@ export const siteDataEx = {
                     classes: null,
                     menu_order: 11,
                     mi_url: null,
-                    url: 'clttestsiteforjoshedwards.production.townsquareinteractive.com/new/',
+                    url: 'clttestsiteforjoshedwards.production.townsquareinteractive.com/new',
                     submenu: [],
                     slug: 'new',
                 },

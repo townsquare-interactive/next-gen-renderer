@@ -9,7 +9,7 @@ import { siteDataEx } from 'storydefaults'
 
 library.add(fas, fab, far)
 export default {
-    title: 'New/ContainerFooter',
+    title: 'new-renderContainerFooter',
     component: ContainerFooter,
 } as ComponentMeta<typeof ContainerFooter>
 

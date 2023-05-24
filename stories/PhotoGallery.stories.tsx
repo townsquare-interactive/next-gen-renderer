@@ -10,7 +10,7 @@ const { library } = require('@fortawesome/fontawesome-svg-core')
 library.add(fas, fab, far)
 
 export default {
-    title: 'new/PhotoGallery',
+    title: 'new-renderPhotoGallery',
     component: PhotoGallery,
     argTypes: {
         imgsize: {

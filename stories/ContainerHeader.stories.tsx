@@ -12,7 +12,7 @@ const { library } = require('@fortawesome/fontawesome-svg-core')
 
 library.add(fas, fab, far)
 export default {
-    title: 'New/ContainerHeader',
+    title: 'new-renderContainerHeader',
     component: ContainerHeader,
 } as ComponentMeta<typeof ContainerHeader>
 

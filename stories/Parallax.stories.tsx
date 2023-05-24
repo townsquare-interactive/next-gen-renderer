@@ -10,7 +10,7 @@ const { library } = require('@fortawesome/fontawesome-svg-core')
 library.add(fas, fab, far)
 
 export default {
-    title: 'new/Parallax',
+    title: 'new-renderParallax',
     component: Parallax,
     argTypes: {
         imgsize: {

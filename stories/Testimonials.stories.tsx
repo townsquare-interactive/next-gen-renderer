@@ -4,7 +4,7 @@ import { ArticleItems } from '../types'
 import { themeStyles, buttonList1, buttonList2, buttonListJust2, createStoryStyles, imageSizes } from 'storydefaults'
 
 export default {
-    title: 'new/Testimonials',
+    title: 'new-renderTestimonials',
     component: Testimonials,
     argTypes: {
         imgsize: {
@@ -30,7 +30,7 @@ export default {
             control: { type: 'radio' },
         },
         type: {
-            options: ['article_1', 'article_2', 'article_3', 'article'],
+            options: ['testimonials_1', 'review_carousel'],
             control: { type: 'radio' },
         },
         items: {
@@ -304,4 +304,19 @@ RoundedBorder.args = {
             borderType: 'round',
         },
     ],
+}
+
+export const Carousel = Template.bind({})
+Carousel.args = {
+    ...Plain.args,
+    columns: 4,
+    items: [{ ...item1 }, { ...item2, image: '/files/2022/08/AngelTop2.jpg' }, { ...item3 }, { ...item1 }],
+    type: 'review_carousel',
+}
+
+export const BorderCarousel = Template.bind({})
+BorderCarousel.args = {
+    ...Carousel.args,
+    type: 'review_carousel',
+    well: 1,
 }
