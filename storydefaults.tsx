@@ -628,6 +628,11 @@ export const itemStyle = {
     noImage: { background: '#3eb183' },
 }
 
+export const itemStyle2 = {
+    borderStyle: { backgroundImage: 'linear-gradient(-45deg, #00A4FC, #cc00f9)' },
+    noImage: { background: '#00A4FC' },
+}
+
 export const icon = { iconPrefix: 'far', iconModel: 'address-book' }
 
 export const createStoryStyles = (themeStyles: ThemeStyles) => {

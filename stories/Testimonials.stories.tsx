@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import Testimonials from '../components/Testimonials'
 import { ArticleItems } from '../types'
-import { themeStyles, buttonList1, buttonList2, buttonListJust2, createStoryStyles, imageSizes } from 'storydefaults'
+import { themeStyles, buttonList1, buttonList2, buttonListJust2, createStoryStyles, imageSizes, itemStyle } from 'storydefaults'
 
 export default {
     title: 'new-render/Testimonials',
@@ -111,6 +111,7 @@ const item1: ArticleItems = {
     isBeaconHero: false,
     imagePriority: false,
     itemCount: 1,
+    itemStyle: itemStyle.noImage,
 }
 
 const item2 = item1
@@ -158,34 +159,6 @@ Image.args = {
     ],
 }
 
-export const OnlySub = Template.bind({})
-OnlySub.args = {
-    ...Plain.args,
-    items: [
-        {
-            ...item1,
-            subheader: 'Only Subheadline',
-            headline: '',
-            desc: '',
-            image: '',
-            align: '',
-        },
-    ],
-}
-export const OnlyHeadline = Template.bind({})
-OnlyHeadline.args = {
-    ...Plain.args,
-    items: [
-        {
-            ...item1,
-            subheader: '',
-            headline: 'Only Headline',
-            desc: '',
-            image: '',
-            align: '',
-        },
-    ],
-}
 export const OnlyDesc = Template.bind({})
 OnlyDesc.args = {
     ...Plain.args,

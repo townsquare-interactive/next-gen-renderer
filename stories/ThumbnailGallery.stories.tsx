@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import PhotoGallery from '../components/PhotoGallery'
 import { ArticleItems } from '../types'
-import { themeStyles, buttonList1, buttonList2, buttonListJust2, itemStyle, icon, imageSizes } from 'storydefaults'
+import { themeStyles, buttonList1, buttonList2, buttonListJust2, itemStyle, itemStyle2, icon, imageSizes } from 'storydefaults'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
@@ -116,7 +116,7 @@ const item1: ArticleItems = {
     imagePriority: false,
     itemCount: 1,
     imageType: 'crop',
-    //itemStyle: itemStyle.noImage,
+    itemStyle: itemStyle.noImage,
 }
 
 const item2 = { ...item1, image: '/files/2022/09/Yos2.jpg' }
@@ -210,9 +210,28 @@ NoImage.args = {
         {
             ...item2,
             image: '',
+            itemStyle: itemStyle2.noImage,
         },
     ],
 }
+
+export const NoImageBorder = Template.bind({})
+NoImageBorder.args = {
+    ...Default.args,
+    items: [
+        {
+            ...item1,
+            image: '',
+            itemStyle: itemStyle.borderStyle,
+        },
+        {
+            ...item2,
+            image: '',
+            itemStyle: itemStyle2.borderStyle,
+        },
+    ],
+}
+
 export const AlignLeft = Template.bind({})
 AlignLeft.args = {
     ...Plain.args,
