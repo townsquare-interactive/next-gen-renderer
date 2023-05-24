@@ -4,7 +4,7 @@ import { ArticleItems } from '../types'
 import { themeStyles, buttonList1, buttonList2, buttonListJust2, imageSizes } from 'storydefaults'
 
 export default {
-    title: 'new-renderPhotoGrid',
+    title: 'new-render/PhotoGrid',
     component: PhotoGrid,
     argTypes: {
         imgsize: {
