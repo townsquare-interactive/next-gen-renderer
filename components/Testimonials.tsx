@@ -34,7 +34,7 @@ const Testimonials = (props: ModuleProps) => {
 
     const [maxHeight, setHeights] = useState(0)
 
-    //carousel option, may keep in this module
+    //testimonial carousel option
     const useCarousel = type === 'review_carousel'
 
     const carouselSettings = {
@@ -178,18 +178,20 @@ const ModuleItem = (props: TestimonialItemProps) => {
     const { item, modId, itemIndex, cmsUrl, themeStyles, type, imgsize, columns, well, useCarousel, maxHeight, setHeights, blockField1, blockField2 } = props
 
     const itemRef = useRef<HTMLInputElement>(null)
+    const itemWrapRef = useRef<HTMLInputElement>(null)
 
-    //find largest item height in module for styling
-    const targetRef = useRef<HTMLInputElement>(null)
     useEffect(() => {
-        if (targetRef.current && type === 'review_carousel' && maxHeight < targetRef.current.offsetHeight) {
-            setHeights(targetRef.current.offsetHeight)
+        //set items to be same height as largest item
+        if (itemWrapRef.current && type === 'review_carousel' && maxHeight < itemWrapRef.current.offsetHeight) {
+            setHeights(itemWrapRef.current.offsetHeight)
         }
 
+        //set item desktop height
         if (blockField1 && itemRef.current && type === 'review_carousel') {
             itemRef.current.style.setProperty('--block-height-1', `${blockField1}px`)
         }
 
+        //set item mobile height
         if (blockField2 && itemRef.current && type === 'review_carousel') {
             itemRef.current.style.setProperty('--block-height-2', `${blockField2}px`)
         }
@@ -222,7 +224,7 @@ const ModuleItem = (props: TestimonialItemProps) => {
                     ['hero-background']: item.isFeatured === 'active' && type === 'article',
                 })}
                 aria-label={item.headline || 'item-wrap'}
-                ref={targetRef}
+                ref={itemWrapRef}
             >
                 <ItemWrap
                     item={item}
