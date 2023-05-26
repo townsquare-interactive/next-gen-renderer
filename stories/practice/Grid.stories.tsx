@@ -1,9 +1,9 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import Grid from '../components/practice/Grid'
+import Grid from '../../components/practice/Grid'
 import { themeStyles } from 'storydefaults'
 
 export default {
-    title: 'Modules/Grid',
+    title: 'Practice/Grid',
     component: Grid,
     argTypes: {},
 } as ComponentMeta<typeof Grid>

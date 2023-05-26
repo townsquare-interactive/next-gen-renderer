@@ -1,11 +1,11 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import List from '../components/practice/List'
+import List from '../../components/practice/List'
 import { themeStyles } from 'storydefaults'
 export default {
     /**
      * The is the list component.
      */
-    title: 'Modules/List',
+    title: 'Practice/List',
     component: List,
     argTypes: {
         textSize: {

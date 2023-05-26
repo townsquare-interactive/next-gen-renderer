@@ -1,9 +1,9 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import Header from '../components/practice/Header'
+import Header from '../../components/practice/Header'
 import { themeStyles } from 'storydefaults'
 
 export default {
-    title: 'Modules/Header',
+    title: 'Practice/Header',
     component: Header,
 } as ComponentMeta<typeof Header>
 

@@ -3,7 +3,7 @@ import Button from '../../components/practice/ProtoButton'
 import { themeStyles } from 'storydefaults'
 
 export default {
-    title: 'Elements/Button',
+    title: 'PracticeElements/Button',
     component: Button,
     argTypes: {
         btnType: {

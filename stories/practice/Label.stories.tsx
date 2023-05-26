@@ -1,10 +1,9 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import Text from '../components/practice/Text'
+import Label from '../../components/practice/Label'
 import { themeStyles } from 'storydefaults'
-
 export default {
-    title: 'Modules/Text',
-    component: Text,
+    title: 'Practice/Label',
+    component: Label,
     argTypes: {
         textSize: {
             options: ['sm', 'md', 'lg'],
@@ -15,13 +14,13 @@ export default {
             control: { type: 'radio' },
         },
     },
-} as ComponentMeta<typeof Text>
+} as ComponentMeta<typeof Label>
 
-const Template: ComponentStory<typeof Text> = (args) => <Text {...args} />
+const Template: ComponentStory<typeof Label> = (args) => <Label {...args} />
 
 export const Plain = Template.bind({})
 Plain.args = {
-    text: 'hello',
+    text: 'text goes here',
     themeStyles: themeStyles,
     textSize: 'md',
 }
@@ -32,20 +31,15 @@ Large.args = {
     textSize: 'lg',
 }
 
-export const Right = Template.bind({})
-Right.args = {
-    ...Large.args,
-    align: 'right',
-}
-
-export const Center = Template.bind({})
-Center.args = {
-    ...Large.args,
-    align: 'center',
-}
-
 export const Border = Template.bind({})
 Border.args = {
-    ...Center.args,
+    ...Large.args,
     border: true,
+}
+
+export const BorderGap = Template.bind({})
+BorderGap.args = {
+    ...Border.args,
+    align: 'center',
+    gap: true,
 }

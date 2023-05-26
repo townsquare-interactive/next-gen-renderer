@@ -1,9 +1,9 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import Images from '../components/practice/Images'
+import Images from '../../components/practice/Images'
 import { themeStyles } from 'storydefaults'
 
 export default {
-    title: 'Modules/Images',
+    title: 'Practice/Images',
     component: Images,
     argTypes: {
         modLayout: {

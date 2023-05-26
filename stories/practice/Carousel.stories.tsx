@@ -1,9 +1,9 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import Carousel from '../components/practice/Carousel'
+import Carousel from '../../components/practice/Carousel'
 import { themeStyles } from 'storydefaults'
 
 export default {
-    title: 'Modules/Carousel',
+    title: 'Practice/Carousel',
     component: Carousel,
     argTypes: {
         slideCount: {

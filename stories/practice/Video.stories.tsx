@@ -1,8 +1,8 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import Video from '../components/practice/Video'
+import Video from '../../components/practice/Video'
 
 export default {
-    title: 'Modules/Video',
+    title: 'Practice/Video',
     component: Video,
 } as ComponentMeta<typeof Video>
 

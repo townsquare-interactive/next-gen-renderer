@@ -1,9 +1,9 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import Footer from '../components/practice/Footer'
+import Footer from '../../components/practice/Footer'
 import { themeStyles } from 'storydefaults'
 
 export default {
-    title: 'Modules/Footer',
+    title: 'Practice/Footer',
     component: Footer,
 } as ComponentMeta<typeof Footer>
 

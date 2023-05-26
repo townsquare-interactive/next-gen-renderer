@@ -4,7 +4,7 @@ import { ArticleItems } from '../types'
 import { themeStyles } from 'storydefaults'
 
 export default {
-    title: 'CMS/CLTArticle',
+    title: 'OldCms/CLTArticle',
     component: CharlotteArticle,
     argTypes: {
         imgsize: {
