@@ -1,8 +1,12 @@
 import '../styles/globals.scss'
-import cn from 'classnames'
 //import { getHomePage, generateLayout } from '../functions'
 //import { use, useEffect, useState } from 'react'
 //import { Inter, Lora, Abril_Fatface, Lato } from 'next/font/google'
+
+//prevent large loading of fontawesome icons flashing
+import '@fortawesome/fontawesome-svg-core/styles.css'
+import { config } from '@fortawesome/fontawesome-svg-core'
+config.autoAddCss = false /* eslint-disable import/first */
 
 const cmsUrl = process.env.NEXT_PUBLIC_CMS_URL || 'clttestsiteforjoshedwards'
 
