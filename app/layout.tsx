@@ -9,7 +9,6 @@ import { config } from '@fortawesome/fontawesome-svg-core'
 config.autoAddCss = false /* eslint-disable import/first */
 
 const cmsUrl = process.env.NEXT_PUBLIC_CMS_URL || 'clttestsiteforjoshedwards'
-
 const s3ColorStyles = process.env.BUCKET_URL + '/' + cmsUrl + '/' + 'global.css'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

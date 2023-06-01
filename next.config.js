@@ -21,9 +21,10 @@ module.exports = withBundleAnalyzer({
         ],
     },
 
-    /*     experimental: {
-        appDir: true,
-    }, */
+    experimental: {
+        //appDir: true,
+        //serverActions: true,
+    },
 
     /*     i18n: {
         locales: ['en'],

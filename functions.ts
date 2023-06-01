@@ -165,3 +165,5 @@ export function defineContainerVars(page: CMSPage, siteData: GlobalData) {
 //Used to have conditional tag wraps around code without repeating inside code
 export const ConditionalWrapper = ({ condition, falseOutput, trueOutput, children }: ConditionalWrapperProps) =>
     condition ? trueOutput(children) : falseOutput(children)
+
+const API_KEY = process.env.MAILCHIMP_API_KEY

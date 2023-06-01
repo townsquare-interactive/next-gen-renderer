@@ -1,0 +1,52 @@
+.root {
+    // padding: 10rem;
+    max-width: 75.5em;
+    margin: 0 auto;
+    padding: 2rem 0;
+
+    .field {
+        padding: 0 0.5rem 1rem;
+        margin-bottom: 0.5rem;
+        display: flex;
+        flex-direction: column;
+
+        input {
+            height: 2.5rem;
+            font-size: 0.8125em;
+            margin-top: 0em;
+            margin-bottom: 0em;
+            line-height: 1.2307692308em;
+            margin-bottom: 0.25rem;
+
+            border-radius: 2px;
+            box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.1);
+            border-color: rgba(0, 0, 0, 0.15);
+        }
+
+        textarea {
+            height: 7rem;
+        }
+
+        .req {
+            padding-left: 1px;
+            color: #b94a48;
+            display: inline;
+        }
+
+        label {
+            display: inline-block;
+            padding-bottom: 0.5rem;
+            font-size: 0.875em;
+            margin-top: 0em;
+            margin-bottom: 0em;
+            line-height: 1.4285714286em;
+            font-weight: 600;
+        }
+    }
+
+    .submit {
+        line-height: 1.4285714286em;
+        margin-left: auto;
+        padding: 0.5625em 2em 0.6875em;
+    }
+}

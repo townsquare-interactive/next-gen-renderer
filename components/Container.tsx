@@ -1,4 +1,3 @@
-'use client'
 import styles from './container.module.scss'
 import { ContainerProps, ModuleData } from '../types'
 import ContainerLayout from './ContainerLayout'
@@ -11,8 +10,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 const { library } = require('@fortawesome/fontawesome-svg-core')
-
-import { useEffect, useState } from 'react'
+import FontLoad from './FontLoad'
 
 library.add(fas, fab, far)
 
@@ -52,14 +50,4 @@ export const Container = (props: ContainerProps) => {
             <FontLoad fonts={siteData.fontImport} />
         </>
     )
-}
-
-const FontLoad = (props: any) => {
-    const [isSSR, setIsSSR] = useState(true)
-
-    //Setting state to false on load to avoid Hydration Error
-    useEffect(() => {
-        setIsSSR(false)
-    }, [])
-    return <>{!isSSR && <style>{props.fonts}</style>}</>
 }
