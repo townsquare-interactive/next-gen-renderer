@@ -1,3 +1,4 @@
+'use client'
 import styles from './container.module.scss'
 import { ContainerProps, ModuleData } from '../types'
 import ContainerLayout from './ContainerLayout'
