@@ -1,19 +1,13 @@
 //react slider
 'use client'
-import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import { useEffect, useState, useRef, ReactElement } from 'react'
-import { CarouselProps } from 'types'
+import { useRef } from 'react'
 import styles from './contactform.module.scss'
-import cn from 'classnames'
-import { HeadlineBlock } from 'elements/HeadlineBlock'
 import MailchimpSubscribe from 'react-mailchimp-subscribe'
-import axios from 'axios'
-//import {createPost} from 'functions'
 
 const MonkeyForm = (props: any) => {
-    const url = 'https://townsquaredigital.us21.list-manage.com/subscribe/post?u=fa78ea8aea738cf2c98bcf7c4&amp;id=d0b2dd1631&amp;f_id=003a55e1f0'
+    const url = process.env.NEXT_PUPUBLIC_MAILCHIMP_SUBSCRIBE_URL || ''
     return (
         <div>
             <MailchimpSubscribe
@@ -32,6 +26,10 @@ const ContactForm = ({ status, message, onValidated }: any) => {
     let lName: any
     let phone: any
     let messagebox: any
+    let street: any
+    let zip: any
+    let city: any
+    let state: any
 
     const submit = () =>
         email &&
@@ -39,6 +37,10 @@ const ContactForm = ({ status, message, onValidated }: any) => {
         lName &&
         phone &&
         messagebox &&
+        street &&
+        zip &&
+        city &&
+        state &&
         email.value.indexOf('@') > -1 &&
         onValidated({
             EMAIL: email.value,
@@ -46,6 +48,10 @@ const ContactForm = ({ status, message, onValidated }: any) => {
             LNAME: lName.value,
             MESSAGE: messagebox.value,
             PHONE: phone.value,
+            STREET: street.value,
+            ZIP: zip.value,
+            CITY: city.value,
+            STATE: state.value,
             /*  merge_fields: {
                 FNAME: fName.value,
                 PHONE: phone.value,
@@ -97,21 +103,22 @@ const ContactForm = ({ status, message, onValidated }: any) => {
 
     const formFields = [
         {
-            name: 'name',
+            name: 'fName',
             placeholder: 'Enter Name',
             type: 'text',
-            label: 'Name',
+            label: 'First Name',
             isReq: true,
             fieldType: 'input',
         },
         {
-            name: 'company',
-            // placeholder:'Enter Company Name',
+            name: 'lName',
+            placeholder: 'Enter Name',
             type: 'text',
-            label: 'Company Name',
+            label: 'Last Name',
             isReq: true,
             fieldType: 'input',
         },
+
         {
             name: 'email',
             // placeholder:'Enter Name',
@@ -125,7 +132,7 @@ const ContactForm = ({ status, message, onValidated }: any) => {
             // placeholder:'Enter Name',
             type: 'phone',
             label: 'Phone',
-            isReq: true,
+            isReq: false,
             fieldType: 'input',
         },
         {
@@ -170,12 +177,53 @@ const ContactForm = ({ status, message, onValidated }: any) => {
                     {status === 'sending' && <div style={{ color: 'blue' }}>sending...</div>}
                     {status === 'error' && <div style={{ color: 'red' }} dangerouslySetInnerHTML={{ __html: message }} />}
                     {status === 'success' && <div style={{ color: 'green' }} dangerouslySetInnerHTML={{ __html: message }} />}
-                    <input style={{ fontSize: '2em', padding: 5 }} ref={(node) => (fName = node)} type="text" placeholder="First name" />
-                    <input style={{ fontSize: '2em', padding: 5 }} ref={(node) => (lName = node)} type="text" placeholder="Last name" />
-                    <br />
-                    <input style={{ fontSize: '2em', padding: 5 }} ref={(node) => (email = node)} type="email" placeholder="Your email" />
-                    <input style={{ fontSize: '2em', padding: 5 }} ref={(node) => (phone = node)} type="phone" placeholder="Your phone" />
-                    <input style={{ fontSize: '2em', padding: 5 }} ref={(node) => (messagebox = node)} type="textarea" placeholder="Message" />
+                    <div className={styles.field}>
+                        <label>
+                            {formFields[0].label} {formFields[0].isReq && <span className={styles.req}>*</span>}
+                        </label>
+                        <input ref={(node) => (fName = node)} type="text" placeholder="First name" />
+                    </div>
+                    <div className={styles.field}>
+                        <label>
+                            {formFields[1].label} {formFields[1].isReq && <span className={styles.req}>*</span>}
+                        </label>
+                        <input ref={(node) => (lName = node)} type="text" placeholder="Last name" />
+                    </div>
+                    <div className={styles.field}>
+                        <label>
+                            {formFields[2].label} {formFields[2].isReq && <span className={styles.req}>*</span>}
+                        </label>
+                        <input ref={(node) => (email = node)} type="email" placeholder="Your email" />
+                    </div>
+                    <div className={styles.field}>
+                        <label>
+                            {formFields[3].label} {formFields[3].isReq && <span className={styles.req}>*</span>}
+                        </label>
+                        <input ref={(node) => (phone = node)} type="phone" placeholder="Your phone" />
+                    </div>
+                    <div className={styles.field}>
+                        <label>Address {formFields[4].isReq && <span className={styles.req}>*</span>}</label>
+                        <input ref={(node) => (street = node)} type="textarea" />
+                        <span>Street Address</span>
+                    </div>
+                    <div className={styles.field}>
+                        <input ref={(node) => (zip = node)} type="textarea" />
+                        <span>Zip Code</span>
+                    </div>
+                    <div className={styles.field}>
+                        <input ref={(node) => (city = node)} type="textarea" />
+                        <span>City</span>
+                    </div>
+                    <div className={styles.field}>
+                        <input ref={(node) => (state = node)} type="textarea" />
+                        <span>State</span>
+                    </div>
+                    <div className={styles.field}>
+                        <label>
+                            {formFields[4].label} {formFields[4].isReq && <span className={styles.req}>*</span>}
+                        </label>
+                        <input ref={(node) => (messagebox = node)} type="textarea" placeholder="Message" />
+                    </div>
 
                     <button type="submit" className={styles.submit} onClick={submit}>
                         Send
