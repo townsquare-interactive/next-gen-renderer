@@ -7,7 +7,7 @@ import styles from './contactform.module.scss'
 import MailchimpSubscribe from 'react-mailchimp-subscribe'
 
 const MonkeyForm = (props: any) => {
-    const url = process.env.NEXT_PUPUBLIC_MAILCHIMP_SUBSCRIBE_URL || ''
+    const url = process.env.NEXT_PUBLIC_MAILCHIMP_SUBSCRIBE_URL || ''
     return (
         <div>
             <MailchimpSubscribe
