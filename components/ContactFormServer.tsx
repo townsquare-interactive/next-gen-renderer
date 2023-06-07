@@ -67,7 +67,7 @@ import { createPost } from './createPost'
     }
 } */
 
-const ContactForm = () => {
+const ContactFormServer = () => {
     const formFields = [
         {
             name: 'name',
@@ -166,4 +166,4 @@ const ContactField = (props: any) => {
     )
 }
 
-export default ContactForm
+export default ContactFormServer

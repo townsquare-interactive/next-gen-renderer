@@ -111,6 +111,13 @@ export async function subscribeMailChimp(url: string, headers: any, minData: any
     })
 }
 
+export async function postContactFormRoute(url: string, data: any) {
+    await fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(data),
+    })
+}
+
 export function capitalize(str: string) {
     if (!str) {
         return ''

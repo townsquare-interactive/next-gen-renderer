@@ -2,8 +2,9 @@ import { PageListProps } from '../../types'
 import { getDomain, getPageData, generateLayout, getStrapiPages, getSanityPages, getSanitySiteData } from '../../functions'
 import { use } from 'react'
 import { Container } from 'components/Container'
-import ContactForm from '../../components/ContactForm'
-import ContactForm2 from '../../components/ContactForm2'
+//mport ContactForm from '../../components/ContactForm'
+//import ContactFormServer from '../../components/ContactFormServer'
+import ContactFormRoutes from '../../components/ContactFormRoutes'
 
 export async function generateStaticParams() {
     const res = await fetch(getDomain(true) + '/pages/page-list.json')
@@ -43,7 +44,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
     return (
         <>
             <Container page={page} siteData={CMSLayout} />
-            <ContactForm2 />
+            <ContactFormRoutes />
         </>
     )
 }

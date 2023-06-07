@@ -1,53 +1,11 @@
 import { revalidatePath } from 'next/cache'
-
-//https://stackoverflow.com/questions/57609135/post-request-to-mailchimp
-
-/* const todos: string[] = ['Learn React']
-
-export default function Home() {
-    async function addTodo(data: FormData) {
-        'use server'
-        const todo = data.get('todo') as string
-        todos.push(todo)
-        revalidatePath('/')
-    }
-
-    return (
-        <main className="p-5">
-            <h1 className="text-4xl font-bold">Todos</h1>
-            <ul>
-                {todos.map((todo, index) => (
-                    <li key={index}>{todo}</li>
-                ))}
-            </ul>
-            <form action={addTodo}>
-                <input
-                    type="text"
-                    name="todo"
-                    className="border border-gray-300 rounded-lg py-4 px-4 text-base font-normal text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-                />
-                <button
-                    type="submit"
-                    className="bg-blue-600 disabled:bg-gray-500 inline-flex items-center justify-center rounded-full py-4 px-10 text-center text-base font-normal text-white hover:bg-opacity-90 lg:px-8 xl:px-10"
-                >
-                    Add Todo
-                </button>
-            </form>
-        </main>
-    )
-}
- */
 //react slider
 //'use client'
-import Slider from 'react-slick'
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
 //import { useEffect, useState, useRef, ReactElement } from 'react'
 import { CarouselProps } from 'types'
 import styles from '../../components/contactform.module.scss'
 import cn from 'classnames'
-import { HeadlineBlock } from 'elements/HeadlineBlock'
-import MailchimpSubscribe from 'react-mailchimp-subscribe'
+
 import axios from 'axios'
 //import {createPost} from 'functions'
 

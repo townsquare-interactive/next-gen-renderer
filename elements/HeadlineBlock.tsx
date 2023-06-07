@@ -102,6 +102,10 @@ const Heading = (props: HeadingProps) => {
                     modType != 'gallery' &&
                     modType != 'thumbnail',
                 ['testimonial-txt-color']: modType === 'testimonials_1' && well,
+
+                ['txt-font']: textType === 'sh',
+                ['hd-font']: textType === 'hd',
+                ['feat-font']: textType === 'hd' && (modType === 'parallax' || modType === 'gallery'),
                 ['caption-txt']:
                     isBeaconHero ||
                     modType === 'photo_grid' ||
@@ -110,9 +114,6 @@ const Heading = (props: HeadingProps) => {
                     modType === 'parallax' ||
                     modType === 'gallery' ||
                     modType === 'thumbnail',
-                ['txt-font']: textType === 'sh',
-                ['hd-font']: textType === 'hd',
-                ['feat-font']: textType === 'hd' && (modType === 'parallax' || modType === 'gallery'),
             })}
         >
             {Parser(text)}
