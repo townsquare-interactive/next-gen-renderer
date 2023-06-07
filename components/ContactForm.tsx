@@ -87,7 +87,7 @@ const ContactForm = ({ status, message, onValidated }: any) => {
             setEmail(value)
         } else if (name === 'messagebox') {
             setMessageBox(value)
-        } /* else if (name === 'street') {
+        } else if (name === 'street') {
             setStreet(value)
         } else if (name === 'zip') {
             setZip(value)
@@ -95,7 +95,7 @@ const ContactForm = ({ status, message, onValidated }: any) => {
             setCity(value)
         } else if (name === 'state') {
             setState(value)
-        }  */
+        }
     }
 
     const submit = () =>
@@ -130,6 +130,7 @@ const ContactForm = ({ status, message, onValidated }: any) => {
             label: 'First Name',
             isReq: true,
             fieldType: 'input',
+            isVisible: true,
         },
         {
             name: 'lName',
@@ -138,6 +139,7 @@ const ContactForm = ({ status, message, onValidated }: any) => {
             label: 'Last Name',
             isReq: true,
             fieldType: 'input',
+            isVisible: true,
         },
 
         {
@@ -147,6 +149,7 @@ const ContactForm = ({ status, message, onValidated }: any) => {
             label: 'Email',
             isReq: true,
             fieldType: 'input',
+            isVisible: true,
         },
         {
             name: 'phone',
@@ -155,38 +158,44 @@ const ContactForm = ({ status, message, onValidated }: any) => {
             label: 'Phone',
             isReq: false,
             fieldType: 'input',
+            isVisible: true,
         },
         {
             label: 'Message',
             name: 'message',
             isReq: true,
             fieldType: 'textarea',
+            isVisible: true,
         },
-        /* {
+        {
             label: 'Address',
             subLabel: 'Street Address',
             name: 'street',
             isReq: false,
             fieldType: 'input',
+            isVisible: false,
         },
         {
             label: 'Zip Code',
             name: 'zip',
             isReq: false,
             fieldType: 'input',
+            isVisible: false,
         },
         {
             label: 'City',
             name: 'city',
             isReq: false,
             fieldType: 'input',
+            isVisible: false,
         },
         {
             label: 'State',
             name: 'state',
             isReq: false,
             fieldType: 'input',
-        }, */
+            isVisible: false,
+        },
     ]
 
     const formFieldsObj = {
@@ -365,6 +374,7 @@ const ContactForm = ({ status, message, onValidated }: any) => {
                         key={index}
                         determineState={determineState}
                         label={field.label}
+                        isVisible={field.isVisible}
                     />
                 ))}
 
@@ -377,30 +387,34 @@ const ContactForm = ({ status, message, onValidated }: any) => {
 }
 
 const ContactField = (props: any) => {
-    const { type, label, placeholder, name, isReq, fieldType, inputRef, determineState } = props
+    const { type, label, placeholder, name, isReq, fieldType, inputRef, determineState, isVisible } = props
     return (
-        <div className={styles.field}>
-            <label>
-                {label} {isReq && <span className={styles.req}>*</span>}
-            </label>
-            {fieldType === 'input' && (
-                <input
-                    type={type}
-                    name={name}
-                    placeholder={placeholder}
-                    required={isReq || false}
-                    onChange={(event) => determineState(name, event.target.value ?? '')}
-                ></input>
+        <>
+            {isVisible && (
+                <div className={styles.field}>
+                    <label>
+                        {label} {isReq && <span className={styles.req}>*</span>}
+                    </label>
+                    {fieldType === 'input' && (
+                        <input
+                            type={type}
+                            name={name}
+                            placeholder={placeholder}
+                            required={isReq || false}
+                            onChange={(event) => determineState(name, event.target.value ?? '')}
+                        ></input>
+                    )}
+                    {fieldType === 'textarea' && (
+                        <textarea
+                            name={name}
+                            placeholder={placeholder || ''}
+                            required={isReq || false}
+                            onChange={(event) => determineState(name, event.target.value ?? '')}
+                        ></textarea>
+                    )}
+                </div>
             )}
-            {fieldType === 'textarea' && (
-                <textarea
-                    name={name}
-                    placeholder={placeholder || ''}
-                    required={isReq || false}
-                    onChange={(event) => determineState(name, event.target.value ?? '')}
-                ></textarea>
-            )}
-        </div>
+        </>
     )
 }
 
