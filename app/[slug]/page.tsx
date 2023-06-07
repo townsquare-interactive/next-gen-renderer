@@ -18,15 +18,15 @@ const Page = ({ params }: { params: { slug: string } }) => {
     const { page } = use(getPageData(params))
 
     /*------------ Strapi CMS access ----------------*/
-    const { strapiPages } = use(getStrapiPages())
+    //const { strapiPages } = use(getStrapiPages())
 
     // const firstPageModList = strapiPages.data[0].attributes.Body
 
-    for (let x = 0; x < strapiPages.data.length; x++) {
+    /*     for (let x = 0; x < strapiPages.data.length; x++) {
         console.log('page:', strapiPages.data[x])
         console.log('mods:', strapiPages.data[x].attributes.Body)
     }
-
+ */
     /*     for (let x = 0; x < modList.length; x++) {
         console.log('mod id:', modList[x].id)
         console.log('items:', modList[x].items)
