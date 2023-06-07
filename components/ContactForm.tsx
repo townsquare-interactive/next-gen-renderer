@@ -2,7 +2,7 @@
 'use client'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import styles from './contactform.module.scss'
 import MailchimpSubscribe from 'react-mailchimp-subscribe'
 
@@ -30,21 +30,6 @@ const ContactForm = ({ status, message, onValidated }: any) => {
     const [zip, setZip] = useState('')
     const [city, setCity] = useState('')
     const [state, setState] = useState('')
-
-    //let email: any
-    //let fName: any
-    //let lName: any
-    //let phone: any
-    //let messagebox: any
-
-    //let street: any
-    // let zip: any
-    // let city: any
-    //let state: any
-
-    /*     var arr = [
-        email, fName, lName, phone, messagebox, street, zip, city, state
-    ] */
 
     const determineState = (name: string, value: any) => {
         /*  switch (name) {
@@ -99,16 +84,6 @@ const ContactForm = ({ status, message, onValidated }: any) => {
     }
 
     const submit = () =>
-        /*  email &&
-        fName &&
-        lName &&
-        phone &&
-        messagebox && */
-        /*  street &&
-        zip &&
-        city &&
-        state && */
-        // email.value.indexOf('@') > -1 &&
         // email.indexOf('@') > -1 &&
         onValidated({
             EMAIL: email ? email : '',
@@ -198,77 +173,6 @@ const ContactForm = ({ status, message, onValidated }: any) => {
         },
     ]
 
-    const formFieldsObj = {
-        firstName: {
-            isVisible: true,
-            label: 'First Name',
-            isReq: true,
-            classname: '',
-            type: 'text',
-            placeholder: 'first name',
-        },
-        lastName: {
-            isVisible: true,
-            label: 'Last Name',
-            isReq: true,
-            classname: '',
-            type: 'text',
-            placeholder: 'last name',
-        },
-        email: {
-            isVisible: true,
-            label: 'Email',
-            isReq: true,
-            classname: '',
-            type: 'email',
-            placeholder: '',
-        },
-        phone: {
-            isVisible: true,
-            label: 'Phone',
-            isReq: false,
-            classname: '',
-            type: 'phone',
-        },
-        message: {
-            isVisible: true,
-            label: 'Message',
-            isReq: true,
-            classname: '',
-            type: 'textarea',
-        },
-        streetAddress: {
-            isVisible: true,
-            label: 'Street Address',
-            isReq: false,
-            classname: '',
-            type: 'text',
-        },
-        zipCode: {
-            isVisible: true,
-            label: 'Zip Code',
-            isReq: false,
-            classname: '',
-            type: 'number',
-        },
-        city: {
-            isVisible: true,
-            label: 'City',
-            isReq: false,
-            classname: '',
-            type: 'text',
-        },
-        state: {
-            isVisible: true,
-            label: 'State',
-            isReq: true,
-            classname: '',
-            type: 'text',
-        },
-    }
-
-    console.log(status === 'error' ? message : 'no error')
-
     return (
         <>
             <div className={styles.root}>
@@ -279,104 +183,19 @@ const ContactForm = ({ status, message, onValidated }: any) => {
                     {status === 'error' && <div style={{ color: 'red' }} dangerouslySetInnerHTML={{ __html: message }} />}
                     {status === 'success' && <div style={{ color: 'green' }} dangerouslySetInnerHTML={{ __html: message }} />}
                 </div>
-                {/* 
-                <div className={styles.field}>
-                    <label>
-                        {formFieldsObj.firstName.label} {formFieldsObj.firstName.isReq && <span className={styles.req}>*</span>}
-                    </label>
-                    <input
-                        //ref={(node) => (fName = node)}
-                        //onChange={(event) => setFirstName(event.target.value ?? '')}
-                        onChange={(event) => determineState(formFieldsObj.firstName.label, event.target.value ?? '')}
-                        type="text"
-                        placeholder="First name"
-                    />
-                </div>
-                <div className={styles.field}>
-                    <label>
-                        {formFieldsObj.lastName.label} {formFieldsObj.lastName.isReq && <span className={styles.req}>*</span>}
-                    </label>
-                    <input
-                        //ref={(node) => (lName = node)}
-                        onChange={(event) => setLastName(event.target.value ?? '')}
-                        type="text"
-                        placeholder="Last name"
-                    />
-                </div>
-                <div className={styles.field}>
-                    <label>
-                        {formFieldsObj.email.label} {formFieldsObj.email.isReq && <span className={styles.req}>*</span>}
-                    </label>
-                    <input
-                        //ref={(node) => (email = node)}
-                        onChange={(event) => setEmail(event.target.value ?? '')}
-                        type="email"
-                        placeholder="Your email"
-                    />
-                </div>
-                <div className={styles.field}>
-                    <label>
-                        {formFieldsObj.phone.label} {formFieldsObj.phone.isReq && <span className={styles.req}>*</span>}
-                    </label>
-                    <input
-                        //ref={(node) => (phone = node)}
-                        onChange={(event) => setPhone(event.target.value ?? '')}
-                        type="phone"
-                        placeholder="Your phone"
-                    />
-                </div>
-                <div className={styles.field}>
-                    <label>Address {formFieldsObj.streetAddress.isReq && <span className={styles.req}>*</span>}</label>
-                    <input
-                        //ref={(node) => (street = node)} type="textarea"
-                        onChange={(event) => setStreet(event.target.value ?? '')}
-                    />
-                    <span>Street Address</span>
-                </div>
-                <div className={styles.field}>
-                    <input
-                        //ref={(node) => (zip = node)} type="textarea"
-                        onChange={(event) => setZip(event.target.value ?? '')}
-                    />
-                    <span>{formFieldsObj.zipCode.label}</span>
-                </div>
-                <div className={styles.field}>
-                    <input
-                        //ref={(node) => (city = node)} type="textarea"
-                        onChange={(event) => setCity(event.target.value ?? '')}
-                    />
-                    <span>{formFieldsObj.city.label}</span>
-                </div>
-                <div className={styles.field}>
-                    <input
-                        //ref={(node) => (state = node)} type="textarea"
-                        onChange={(event) => setState(event.target.value ?? '')}
-                    />
-                    <span>{formFieldsObj.state.label}</span>
-                </div>
-                <div className={styles.field}>
-                    <label>
-                        {formFieldsObj.message.label} {formFieldsObj.message.isReq && <span className={styles.req}>*</span>}
-                    </label>
-                    <input
-                        //ref={(node) => (messagebox = node)}
-                        onChange={(event) => setMessageBox(event.target.value ?? '')}
-                        type="textarea"
-                        placeholder="Message"
-                    />
-                </div> */}
 
-                {formFields.map((field, index) => (
-                    <ContactField
-                        fieldType={field.fieldType}
-                        name={field.name}
-                        isReq={field.isReq}
-                        key={index}
-                        determineState={determineState}
-                        label={field.label}
-                        isVisible={field.isVisible}
-                    />
-                ))}
+                {status != 'success' &&
+                    formFields.map((field, index) => (
+                        <ContactField
+                            fieldType={field.fieldType}
+                            name={field.name}
+                            isReq={field.isReq}
+                            key={index}
+                            determineState={determineState}
+                            label={field.label}
+                            isVisible={field.isVisible}
+                        />
+                    ))}
 
                 <button type="submit" className={styles.submit} onClick={submit}>
                     Send
@@ -419,7 +238,3 @@ const ContactField = (props: any) => {
 }
 
 export default MailChimpForm
-
-/* function onValidated(arg0: { EMAIL: any; NAME: any }) {
-    throw new Error('Function not implemented.')
-} */

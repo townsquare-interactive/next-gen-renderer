@@ -19,11 +19,18 @@ module.exports = withBundleAnalyzer({
             'joshedwards.production.townsquareinteractive.com',
             'kaseypaztest.production.townsquareinteractive.com',
         ],
+        remotePatterns: [
+            {
+                protocol: 'http',
+                hostname: '**.production.townsquareinteractive.com',
+            },
+        ],
     },
+    //joshedwardsclttestsite.production.townsquareinteractive.com
 
     experimental: {
         //appDir: true,
-        //serverActions: true,
+        serverActions: true,
     },
 
     /*     i18n: {

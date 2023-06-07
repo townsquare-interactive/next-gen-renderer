@@ -15,21 +15,22 @@ const SocialLinks = ({ siteData, modType = 'header' }: SocialLinksProps) => {
                 [styles['reverse-social']]: siteData.headerOptions?.reverseSocial,
             })}
         >
-            {siteData.social.map((item: SocialItem, index: number) => (
-                <li key={index}>
-                    <a
-                        target="blank"
-                        aria-label={item.name}
-                        className={cn({
-                            ['social-icon']: modType === 'slide-header' || modType === 'header',
-                            ['footer-icon']: modType === 'footer' || modType === 'widget',
-                        })}
-                        href={item.url}
-                    >
-                        <FontAwesomeIcon icon={item.icon} /> {modType === 'widget' && item.label}
-                    </a>
-                </li>
-            ))}
+            {siteData.social &&
+                siteData.social.map((item: SocialItem, index: number) => (
+                    <li key={index}>
+                        <a
+                            target="blank"
+                            aria-label={item.name}
+                            className={cn({
+                                ['social-icon']: modType === 'slide-header' || modType === 'header',
+                                ['footer-icon']: modType === 'footer' || modType === 'widget',
+                            })}
+                            href={item.url}
+                        >
+                            <FontAwesomeIcon icon={item.icon} /> {modType === 'widget' && item.label}
+                        </a>
+                    </li>
+                ))}
             {siteData.headerOptions?.showPrintEmail && (
                 <>
                     <PrintAndEmailIcons modType={modType} siteName={siteData.siteName} url={siteData.url} />

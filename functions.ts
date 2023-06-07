@@ -2,7 +2,7 @@ import { ConditionalWrapperProps, ThemeStyles, GlobalData, CMSPage } from 'types
 const bucketUrl = process.env.BUCKET_URL || 'https://townsquareinteractive.s3.amazonaws.com'
 const localUrl = 'elitesports.com/preview'
 const cmsUrl = process.env.NEXT_PUBLIC_CMS_URL || 'clttestsiteforjoshedwards'
-/* const cmsUrl = 'kaseypaztest' */
+//const cmsUrl = 'joshedwardsclttestsite'
 const assetFolder = '/assets/'
 const globalAssets = bucketUrl + '/global-assets'
 const env = process.env.NEXT_PUBLIC_URL_ENV
@@ -102,6 +102,14 @@ export async function getStrapiPages() {
 }
 
 /*----------------------------- End of CMS --------------------------------*/
+export async function subscribeMailChimp(url: string, headers: any, minData: any) {
+    await fetch(url, {
+        headers: headers,
+        method: 'POST',
+        //body: JSON.stringify({ email_address: email }),
+        body: JSON.stringify(minData),
+    })
+}
 
 export function capitalize(str: string) {
     if (!str) {

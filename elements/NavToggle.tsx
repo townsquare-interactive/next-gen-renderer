@@ -13,7 +13,7 @@ const NavToggle = (props: NavToggleProps) => {
                 [styles['foot-toggle']]: modType === 'footer',
                 [styles['desktop-burger']]: desktopBurgerNav,
                 ['footer-icon']: modType === 'footer',
-                ['accent-txt']: modType === 'header',
+                ['navLink']: modType === 'header',
             })}
             onClick={navSwitch}
             aria-label="toggle navigation"

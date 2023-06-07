@@ -134,6 +134,9 @@
 
 .columns .root {
     @include utils.column-mod;
+    .item {
+        width: 100% !important;
+    }
 }
 
 .wide-column .wrapper {

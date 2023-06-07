@@ -8,7 +8,7 @@ import '@fortawesome/fontawesome-svg-core/styles.css'
 import { config } from '@fortawesome/fontawesome-svg-core'
 config.autoAddCss = false /* eslint-disable import/first */
 
-const cmsUrl = process.env.NEXT_PUBLIC_CMS_URL || 'clttestsiteforjoshedwards'
+const cmsUrl = process.env.NEXT_PUBLIC_CMS_URL || 'joshedwardsclttestsite'
 const bucketUrl = process.env.BUCKET_URL || 'https://townsquareinteractive.s3.amazonaws.com'
 const s3ColorStyles = bucketUrl + '/' + cmsUrl + '/' + 'global.css'
 

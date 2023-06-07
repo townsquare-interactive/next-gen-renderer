@@ -102,7 +102,7 @@ const Heading = (props: HeadingProps) => {
                     modType != 'gallery' &&
                     modType != 'thumbnail',
                 ['testimonial-txt-color']: modType === 'testimonials_1' && well,
-                ['accent-txt']:
+                ['caption-txt']:
                     isBeaconHero ||
                     modType === 'photo_grid' ||
                     modType === 'banner' ||

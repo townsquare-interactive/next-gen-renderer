@@ -3,6 +3,7 @@ import { getDomain, getPageData, generateLayout, getStrapiPages, getSanityPages,
 import { use } from 'react'
 import { Container } from 'components/Container'
 import ContactForm from '../../components/ContactForm'
+import ContactForm2 from '../../components/ContactForm2'
 
 export async function generateStaticParams() {
     const res = await fetch(getDomain(true) + '/pages/page-list.json')
@@ -42,7 +43,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
     return (
         <>
             <Container page={page} siteData={CMSLayout} />
-            <ContactForm />
+            <ContactForm2 />
         </>
     )
 }
