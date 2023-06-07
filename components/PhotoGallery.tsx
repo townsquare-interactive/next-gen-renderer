@@ -21,8 +21,6 @@ const PhotoGallery = (props: ModuleProps) => {
     const carouselSettings = {
         dots: true,
         infinite: true,
-        //speed: 800,
-        //speed: settings?.restartDelay || 2500,
         slidesToShow: 1,
         slidesToScroll: 1,
         fade: settings?.effect === 'fade' ? true : false,

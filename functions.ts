@@ -7,6 +7,7 @@ const assetFolder = '/assets/'
 const globalAssets = bucketUrl + '/global-assets'
 const env = process.env.NEXT_PUBLIC_URL_ENV
 const domain = process.env.NEXT_PUBLIC_BASE_URL
+import { createClient } from 'next-sanity'
 
 export const bucketAndSiteUrl = getDomain(true)
 //determines environment (preview/live) and creates url for it
@@ -64,6 +65,44 @@ export function domainImage(url: string, cms = false, cmsSiteUrl = '', type = ''
     return colorStyles
 }
  */
+
+/*------------------------- CMS ----------------------------*/
+//Sanity CMS
+const client = createClient({
+    projectId: '5q931z68',
+    dataset: 'production',
+    apiVersion: '2023-05-26',
+    useCdn: false,
+})
+
+export async function getSanityPages() {
+    const sanityPages = await client.fetch(`*[_type == "pages"]`)
+    return sanityPages
+}
+
+export async function getSanitySiteData() {
+    const sanitySiteData = await client.fetch(`*[_type == "sitedata"]`)
+    return sanitySiteData
+}
+
+// Strapi CMS
+export async function getStrapiPages() {
+    const token = process.env.STRAPI_TOKEN
+    try {
+        //need populate=deep to get all records, plugin for strapi
+        const resStrapiPages = await fetch('http://127.0.0.1:1337/api/pages?populate=deep', {
+            next: { revalidate: 10 },
+        })
+        const strapiPages = await resStrapiPages.json()
+        return { strapiPages }
+    } catch (error) {
+        console.log(error)
+        return { error: 'Strapi fetch error' }
+    }
+}
+
+/*----------------------------- End of CMS --------------------------------*/
+
 export function capitalize(str: string) {
     if (!str) {
         return ''
@@ -165,5 +204,3 @@ export function defineContainerVars(page: CMSPage, siteData: GlobalData) {
 //Used to have conditional tag wraps around code without repeating inside code
 export const ConditionalWrapper = ({ condition, falseOutput, trueOutput, children }: ConditionalWrapperProps) =>
     condition ? trueOutput(children) : falseOutput(children)
-
-const API_KEY = process.env.MAILCHIMP_API_KEY

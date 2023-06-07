@@ -2,7 +2,7 @@
 'use client'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-//import { useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import styles from './contactform.module.scss'
 import MailchimpSubscribe from 'react-mailchimp-subscribe'
 
@@ -21,40 +21,108 @@ const MailChimpForm = (props: any) => {
 }
 
 const ContactForm = ({ status, message, onValidated }: any) => {
-    let email: any
-    let fName: any
-    let lName: any
-    let phone: any
-    let messagebox: any
-    let street: any
-    let zip: any
-    let city: any
-    let state: any
+    const [email, setEmail] = useState('')
+    const [fName, setFirstName] = useState('')
+    const [lName, setLastName] = useState('')
+    const [phone, setPhone] = useState('')
+    const [messagebox, setMessageBox] = useState('')
+    const [street, setStreet] = useState('')
+    const [zip, setZip] = useState('')
+    const [city, setCity] = useState('')
+    const [state, setState] = useState('')
+
+    //let email: any
+    //let fName: any
+    //let lName: any
+    //let phone: any
+    //let messagebox: any
+
+    //let street: any
+    // let zip: any
+    // let city: any
+    //let state: any
+
+    /*     var arr = [
+        email, fName, lName, phone, messagebox, street, zip, city, state
+    ] */
+
+    const determineState = (name: string, value: any) => {
+        /*  switch (name) {
+            case 'fName':
+                setFirstName(value)
+                console.log(fName)
+                break
+            case 'lName':
+                setLastName(value)
+                break
+            case 'phone':
+                setPhone(value)
+                break
+            case 'email':
+                setEmail(value)
+                break
+            case 'messagebox':
+                setMessageBox(value)
+                break
+            case 'street':
+                setStreet(value)
+                break
+            case 'zip':
+                setZip(value)
+                break
+            case 'city':
+                setCity(value)
+                break
+            case 'state':
+                setState(value)
+                break
+        } */
+        if (name === 'fName') {
+            setFirstName(value)
+        } else if (name === 'lName') {
+            setLastName(value)
+        } else if (name === 'phone') {
+            setPhone(value)
+        } else if (name === 'email') {
+            setEmail(value)
+        } else if (name === 'messagebox') {
+            setMessageBox(value)
+        } /* else if (name === 'street') {
+            setStreet(value)
+        } else if (name === 'zip') {
+            setZip(value)
+        } else if (name === 'city') {
+            setCity(value)
+        } else if (name === 'state') {
+            setState(value)
+        }  */
+    }
 
     const submit = () =>
-        email &&
+        /*  email &&
         fName &&
         lName &&
         phone &&
-        messagebox &&
-        street &&
+        messagebox && */
+        /*  street &&
         zip &&
         city &&
-        state &&
-        email.value.indexOf('@') > -1 &&
+        state && */
+        // email.value.indexOf('@') > -1 &&
+        // email.indexOf('@') > -1 &&
         onValidated({
-            EMAIL: email.value || '',
-            FNAME: fName.value || '',
-            LNAME: lName.value || '',
-            MESSAGE: messagebox.value || '',
-            PHONE: phone.value || '',
-            STREET: street.value || '',
-            ZIP: zip.value || '',
-            CITY: city.value || '',
-            STATE: state.value || '',
+            EMAIL: email ? email : '',
+            FNAME: fName ? fName : '',
+            LNAME: lName ? lName : '',
+            MESSAGE: messagebox ? messagebox : '',
+            PHONE: phone ? phone : '',
+            STREET: street ? street : '',
+            ZIP: zip ? zip : '',
+            CITY: city ? city : '',
+            STATE: state ? state : '',
         })
 
-    /*   const formFields = [
+    const formFields = [
         {
             name: 'fName',
             placeholder: 'Enter Name',
@@ -94,7 +162,32 @@ const ContactForm = ({ status, message, onValidated }: any) => {
             isReq: true,
             fieldType: 'textarea',
         },
-    ] */
+        /* {
+            label: 'Address',
+            subLabel: 'Street Address',
+            name: 'street',
+            isReq: false,
+            fieldType: 'input',
+        },
+        {
+            label: 'Zip Code',
+            name: 'zip',
+            isReq: false,
+            fieldType: 'input',
+        },
+        {
+            label: 'City',
+            name: 'city',
+            isReq: false,
+            fieldType: 'input',
+        },
+        {
+            label: 'State',
+            name: 'state',
+            isReq: false,
+            fieldType: 'input',
+        }, */
+    ]
 
     const formFieldsObj = {
         firstName: {
@@ -165,6 +258,8 @@ const ContactForm = ({ status, message, onValidated }: any) => {
         },
     }
 
+    console.log(status === 'error' ? message : 'no error')
+
     return (
         <>
             <div className={styles.root}>
@@ -175,54 +270,103 @@ const ContactForm = ({ status, message, onValidated }: any) => {
                     {status === 'error' && <div style={{ color: 'red' }} dangerouslySetInnerHTML={{ __html: message }} />}
                     {status === 'success' && <div style={{ color: 'green' }} dangerouslySetInnerHTML={{ __html: message }} />}
                 </div>
-
+                {/* 
                 <div className={styles.field}>
                     <label>
                         {formFieldsObj.firstName.label} {formFieldsObj.firstName.isReq && <span className={styles.req}>*</span>}
                     </label>
-                    <input ref={(node) => (fName = node)} type="text" placeholder="First name" />
+                    <input
+                        //ref={(node) => (fName = node)}
+                        //onChange={(event) => setFirstName(event.target.value ?? '')}
+                        onChange={(event) => determineState(formFieldsObj.firstName.label, event.target.value ?? '')}
+                        type="text"
+                        placeholder="First name"
+                    />
                 </div>
                 <div className={styles.field}>
                     <label>
                         {formFieldsObj.lastName.label} {formFieldsObj.lastName.isReq && <span className={styles.req}>*</span>}
                     </label>
-                    <input ref={(node) => (lName = node)} type="text" placeholder="Last name" />
+                    <input
+                        //ref={(node) => (lName = node)}
+                        onChange={(event) => setLastName(event.target.value ?? '')}
+                        type="text"
+                        placeholder="Last name"
+                    />
                 </div>
                 <div className={styles.field}>
                     <label>
                         {formFieldsObj.email.label} {formFieldsObj.email.isReq && <span className={styles.req}>*</span>}
                     </label>
-                    <input ref={(node) => (email = node)} type="email" placeholder="Your email" />
+                    <input
+                        //ref={(node) => (email = node)}
+                        onChange={(event) => setEmail(event.target.value ?? '')}
+                        type="email"
+                        placeholder="Your email"
+                    />
                 </div>
                 <div className={styles.field}>
                     <label>
                         {formFieldsObj.phone.label} {formFieldsObj.phone.isReq && <span className={styles.req}>*</span>}
                     </label>
-                    <input ref={(node) => (phone = node)} type="phone" placeholder="Your phone" />
+                    <input
+                        //ref={(node) => (phone = node)}
+                        onChange={(event) => setPhone(event.target.value ?? '')}
+                        type="phone"
+                        placeholder="Your phone"
+                    />
                 </div>
                 <div className={styles.field}>
                     <label>Address {formFieldsObj.streetAddress.isReq && <span className={styles.req}>*</span>}</label>
-                    <input ref={(node) => (street = node)} type="textarea" />
+                    <input
+                        //ref={(node) => (street = node)} type="textarea"
+                        onChange={(event) => setStreet(event.target.value ?? '')}
+                    />
                     <span>Street Address</span>
                 </div>
                 <div className={styles.field}>
-                    <input ref={(node) => (zip = node)} type="textarea" />
+                    <input
+                        //ref={(node) => (zip = node)} type="textarea"
+                        onChange={(event) => setZip(event.target.value ?? '')}
+                    />
                     <span>{formFieldsObj.zipCode.label}</span>
                 </div>
                 <div className={styles.field}>
-                    <input ref={(node) => (city = node)} type="textarea" />
+                    <input
+                        //ref={(node) => (city = node)} type="textarea"
+                        onChange={(event) => setCity(event.target.value ?? '')}
+                    />
                     <span>{formFieldsObj.city.label}</span>
                 </div>
                 <div className={styles.field}>
-                    <input ref={(node) => (state = node)} type="textarea" />
+                    <input
+                        //ref={(node) => (state = node)} type="textarea"
+                        onChange={(event) => setState(event.target.value ?? '')}
+                    />
                     <span>{formFieldsObj.state.label}</span>
                 </div>
                 <div className={styles.field}>
                     <label>
                         {formFieldsObj.message.label} {formFieldsObj.message.isReq && <span className={styles.req}>*</span>}
                     </label>
-                    <input ref={(node) => (messagebox = node)} type="textarea" placeholder="Message" />
-                </div>
+                    <input
+                        //ref={(node) => (messagebox = node)}
+                        onChange={(event) => setMessageBox(event.target.value ?? '')}
+                        type="textarea"
+                        placeholder="Message"
+                    />
+                </div> */}
+
+                {formFields.map((field, index) => (
+                    <ContactField
+                        fieldType={field.fieldType}
+                        name={field.name}
+                        isReq={field.isReq}
+                        key={index}
+                        determineState={determineState}
+                        label={field.label}
+                    />
+                ))}
 
                 <button type="submit" className={styles.submit} onClick={submit}>
                     Send
@@ -232,18 +376,33 @@ const ContactForm = ({ status, message, onValidated }: any) => {
     )
 }
 
-/* const ContactField = (props: any) => {
-    const { type, label, placeholder, name, isReq, fieldType, inputRef } = props
+const ContactField = (props: any) => {
+    const { type, label, placeholder, name, isReq, fieldType, inputRef, determineState } = props
     return (
         <div className={styles.field}>
             <label>
                 {label} {isReq && <span className={styles.req}>*</span>}
             </label>
-            {fieldType === 'input' && <input type={type} name={name} placeholder={placeholder} required={isReq || false} ref={inputRef}></input>}
-            {fieldType === 'textarea' && <textarea name={name} placeholder={placeholder || ''} required={isReq || false} ref={inputRef}></textarea>}
+            {fieldType === 'input' && (
+                <input
+                    type={type}
+                    name={name}
+                    placeholder={placeholder}
+                    required={isReq || false}
+                    onChange={(event) => determineState(name, event.target.value ?? '')}
+                ></input>
+            )}
+            {fieldType === 'textarea' && (
+                <textarea
+                    name={name}
+                    placeholder={placeholder || ''}
+                    required={isReq || false}
+                    onChange={(event) => determineState(name, event.target.value ?? '')}
+                ></textarea>
+            )}
         </div>
     )
-} */
+}
 
 export default MailChimpForm
 
