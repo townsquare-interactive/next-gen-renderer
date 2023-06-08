@@ -41,10 +41,89 @@ const Page = ({ params }: { params: { slug: string } }) => {
     const sanitySiteData = use(getSanitySiteData())
     console.log('Site Data ----', sanitySiteData) */
 
+    const contactFormData = {
+        formTitle: 'Contact Us',
+        formFields: [
+            {
+                name: 'fName',
+                placeholder: 'Enter Name',
+                type: 'text',
+                label: 'First Name',
+                isReq: true,
+                fieldType: 'input',
+                isVisible: true,
+            },
+            {
+                name: 'lName',
+                placeholder: 'Enter Name',
+                type: 'text',
+                label: 'Last Name',
+                isReq: true,
+                fieldType: 'input',
+                isVisible: true,
+            },
+
+            {
+                name: 'email',
+                // placeholder:'Enter Name',
+                type: 'email',
+                label: 'Email',
+                isReq: true,
+                fieldType: 'input',
+                isVisible: true,
+            },
+            {
+                name: 'phone',
+                // placeholder:'Enter Name',
+                type: 'phone',
+                label: 'Phone',
+                isReq: false,
+                fieldType: 'input',
+                isVisible: true,
+            },
+            {
+                label: 'Message',
+                name: 'messagebox',
+                isReq: true,
+                fieldType: 'textarea',
+                isVisible: true,
+            },
+            {
+                label: 'Address',
+                subLabel: 'Street Address',
+                name: 'street',
+                isReq: false,
+                fieldType: 'input',
+                isVisible: false,
+            },
+            {
+                label: 'Zip Code',
+                name: 'zip',
+                isReq: false,
+                fieldType: 'input',
+                isVisible: false,
+            },
+            {
+                label: 'City',
+                name: 'city',
+                isReq: false,
+                fieldType: 'input',
+                isVisible: false,
+            },
+            {
+                label: 'State',
+                name: 'state',
+                isReq: false,
+                fieldType: 'input',
+                isVisible: false,
+            },
+        ],
+    }
+
     return (
         <>
             <Container page={page} siteData={CMSLayout} />
-            <ContactFormRoutes />
+            <ContactFormRoutes contactFormData={contactFormData} />
         </>
     )
 }

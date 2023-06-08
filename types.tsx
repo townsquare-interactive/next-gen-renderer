@@ -908,6 +908,21 @@ export interface ButtonWrapProps {
     isFeatureButton?: boolean
 }
 
+/*--------- Forms ----------------*/
+
+export interface FormFields {
+    type?: string
+    label: string
+    placeholder?: string
+    name: string
+    isReq: boolean
+    isVisible: boolean
+    fieldType: string
+}
+export interface ContactFieldProps extends FormFields {
+    determineState: (name: string, event: string) => void
+}
+
 /*------------------------------Non CMS types-------------------------*/
 
 export interface NavBarProps {

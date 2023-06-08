@@ -2,8 +2,11 @@
 import { useState } from 'react'
 import styles from './contactform.module.scss'
 import { postContactFormRoute } from 'functions'
+import { ContactFieldProps, FormFields } from 'types'
 
-const ContactFormRoutes = () => {
+const ContactFormRoutes = (props: { contactFormData: { formFields: FormFields[]; formTitle: string } }) => {
+    const { contactFormData } = props
+
     const [email, setEmail] = useState('')
     const [fName, setFirstName] = useState('')
     const [lName, setLastName] = useState('')
@@ -13,32 +16,9 @@ const ContactFormRoutes = () => {
     const [zip, setZip] = useState('')
     const [city, setCity] = useState('')
     const [state, setState] = useState('')
+    //const [formMessage, setFormMessage] = useState('')
 
-    /* //make requests to api route
-
-        
-    {
-        "email_address": "edailll@YAHOO.COM",
-        "status": "subscribed",
-        "merge_fields": {
-          "FNAME": "title",
-          "LNAME": "",
-          "ADDRESS": {
-            "addr1": "",
-            "addr2": "",
-            "city": "",
-            "state": "",
-            "zip": "",
-            "country": "US"
-          },
-          "PHONE": "4445554544",
-          "BIRTHDAY": "",
-          "MESSAGE": "message"
-        }
-      }
-    */
-
-    const determineState = (name: string, value: any) => {
+    const determineState = (name: string, value: string) => {
         if (name === 'fName') {
             setFirstName(value)
         } else if (name === 'lName') {
@@ -60,9 +40,10 @@ const ContactFormRoutes = () => {
         }
     }
 
-    const submit = () => {
-        // email.indexOf('@') > -1 &&
-        const data = {
+    // email.indexOf('@') > -1 &&
+
+    const submit = async () => {
+        const contactData = {
             email_address: email,
             status: 'subscribed',
             merge_fields: {
@@ -82,92 +63,16 @@ const ContactFormRoutes = () => {
             },
         }
 
-        postContactFormRoute(`${process.env.NEXT_PUBLIC_HOSTNAME}/api/contacts`, data)
+        await postContactFormRoute(`${process.env.NEXT_PUBLIC_HOSTNAME}/api/contacts`, contactData)
     }
-
-    const formFields = [
-        {
-            name: 'fName',
-            placeholder: 'Enter Name',
-            type: 'text',
-            label: 'First Name',
-            isReq: true,
-            fieldType: 'input',
-            isVisible: true,
-        },
-        {
-            name: 'lName',
-            placeholder: 'Enter Name',
-            type: 'text',
-            label: 'Last Name',
-            isReq: true,
-            fieldType: 'input',
-            isVisible: true,
-        },
-
-        {
-            name: 'email',
-            // placeholder:'Enter Name',
-            type: 'email',
-            label: 'Email',
-            isReq: true,
-            fieldType: 'input',
-            isVisible: true,
-        },
-        {
-            name: 'phone',
-            // placeholder:'Enter Name',
-            type: 'phone',
-            label: 'Phone',
-            isReq: false,
-            fieldType: 'input',
-            isVisible: true,
-        },
-        {
-            label: 'Message',
-            name: 'messagebox',
-            isReq: true,
-            fieldType: 'textarea',
-            isVisible: true,
-        },
-        {
-            label: 'Address',
-            subLabel: 'Street Address',
-            name: 'street',
-            isReq: false,
-            fieldType: 'input',
-            isVisible: false,
-        },
-        {
-            label: 'Zip Code',
-            name: 'zip',
-            isReq: false,
-            fieldType: 'input',
-            isVisible: false,
-        },
-        {
-            label: 'City',
-            name: 'city',
-            isReq: false,
-            fieldType: 'input',
-            isVisible: false,
-        },
-        {
-            label: 'State',
-            name: 'state',
-            isReq: false,
-            fieldType: 'input',
-            isVisible: false,
-        },
-    ]
 
     return (
         <>
             <div className={styles.root}>
-                <h3>Form Title</h3>
+                {contactFormData.formTitle && <h3>{contactFormData.formTitle}</h3>}
                 <>
                     <form>
-                        {formFields.map((field, index) => (
+                        {contactFormData.formFields.map((field, index) => (
                             <ContactField
                                 fieldType={field.fieldType}
                                 name={field.name}
@@ -176,6 +81,8 @@ const ContactFormRoutes = () => {
                                 determineState={determineState}
                                 label={field.label}
                                 isVisible={field.isVisible}
+                                placeholder={field.placeholder}
+                                type={field.type}
                             />
                         ))}
                     </form>
@@ -188,8 +95,8 @@ const ContactFormRoutes = () => {
     )
 }
 
-const ContactField = (props: any) => {
-    const { type, label, placeholder, name, isReq, fieldType, inputRef, determineState, isVisible } = props
+const ContactField = (props: ContactFieldProps) => {
+    const { type, label, placeholder, name, isReq, fieldType, determineState, isVisible } = props
     return (
         <>
             {isVisible && (
