@@ -30,7 +30,7 @@ module.exports = withBundleAnalyzer({
 
     experimental: {
         //appDir: true,
-        serverActions: true,
+        //serverActions: true,
     },
 
     /*     i18n: {
