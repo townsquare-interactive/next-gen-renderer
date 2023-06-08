@@ -41,7 +41,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
     const sanitySiteData = use(getSanitySiteData())
     console.log('Site Data ----', sanitySiteData) */
 
-    const contactFormData = {
+    /* const contactFormData = {
         formTitle: 'Contact Us',
         formFields: [
             {
@@ -119,11 +119,11 @@ const Page = ({ params }: { params: { slug: string } }) => {
             },
         ],
     }
-
+ */
     return (
         <>
             <Container page={page} siteData={CMSLayout} />
-            <ContactFormRoutes contactFormData={contactFormData} />
+            {/*  <ContactFormRoutes contactFormData={contactFormData} /> */}
         </>
     )
 }

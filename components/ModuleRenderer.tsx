@@ -21,6 +21,7 @@ import Banner from './Banner'
 import { Fragment } from 'react'
 import Card from './Card'
 import PhotoGallery from './PhotoGallery'
+import ContactFormRoutes from './ContactFormRoutes'
 
 const keysToComponentMap: any = {
     Text,
@@ -42,6 +43,7 @@ const keysToComponentMap: any = {
     Testimonials,
     Card,
     PhotoGallery,
+    ContactFormRoutes,
 }
 
 const mapPropsToConfig = (config: ModuleProps[]) => {
@@ -68,6 +70,8 @@ export const ModuleRenderer = ({ config, themeStyles, cmsUrl = '' }: RendererPro
 
     const configWithProps = mapPropsToConfig(config)
 
+    console.log(config)
+
     return (
         <>
             {configWithProps.map((item: GlobalModule, index: number) => {
@@ -77,7 +81,15 @@ export const ModuleRenderer = ({ config, themeStyles, cmsUrl = '' }: RendererPro
                 if (Comp) {
                     return (
                         <Fragment key={index}>
-                            {props.attributes.disabled != 'disabled' && <Comp {...props.attributes} themeStyles={themeStyles} cmsUrl={cmsUrl} />}
+                            {config.type != 'ContactFormRoutes' && props.attributes.disabled != 'disabled' ? (
+                                <>
+                                    <Comp {...props.attributes} themeStyles={themeStyles} cmsUrl={cmsUrl} />
+                                </>
+                            ) : (
+                                <>
+                                    <Comp />
+                                </>
+                            )}
                         </Fragment>
                     )
                 }
