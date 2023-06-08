@@ -84,7 +84,7 @@ const ContactFormRoutes = (props: { contactFormData: { formFields: FormFields[];
 
         try {
             setFormMessage('Sending....')
-            await postContactFormRoute(`${process.env.NEXT_PUBLIC_HOSTNAME}/api/contacts`, contactData)
+            await postContactFormRoute(`/api/contacts`, contactData)
             setFormMessage('Thank you for contacting us')
             setFormSent(true)
             console.log(formMessage)
