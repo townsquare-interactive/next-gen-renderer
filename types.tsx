@@ -923,6 +923,15 @@ export interface ContactFieldProps extends FormFields {
     determineState: (name: string, event: string) => void
 }
 
+export interface ContactFormData {
+    fName: string
+    lName: string
+    phone: string
+    email: string
+    message: string
+    address: { street: string; zip: string; state: string; city: string }
+}
+
 /*------------------------------Non CMS types-------------------------*/
 
 export interface NavBarProps {

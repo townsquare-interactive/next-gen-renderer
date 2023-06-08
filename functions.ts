@@ -1,4 +1,4 @@
-import { ConditionalWrapperProps, ThemeStyles, GlobalData, CMSPage } from 'types'
+import { ConditionalWrapperProps, ThemeStyles, GlobalData, CMSPage, ContactFormData } from 'types'
 const bucketUrl = process.env.BUCKET_URL || 'https://townsquareinteractive.s3.amazonaws.com'
 const localUrl = 'elitesports.com/preview'
 const cmsUrl = process.env.NEXT_PUBLIC_CMS_URL || 'clttestsiteforjoshedwards'
@@ -102,6 +102,31 @@ export async function getStrapiPages() {
 }
 
 /*----------------------------- End of CMS --------------------------------*/
+
+export const convertDataToMailchimp = (formData: ContactFormData) => {
+    const contactData = {
+        email_address: formData.email,
+        status: 'subscribed',
+        merge_fields: {
+            FNAME: formData.fName,
+            LNAME: formData.lName,
+            ADDRESS: {
+                addr1: formData.address.street,
+                addr2: '',
+                city: formData.address.city,
+                state: formData.address.state,
+                zip: formData.address.zip,
+                country: 'US',
+            },
+            PHONE: formData.phone,
+            BIRTHDAY: '',
+            MESSAGE: formData.message,
+        },
+    }
+
+    return contactData
+}
+
 export async function subscribeMailChimp(url: string, headers: any, minData: any) {
     await fetch(url, {
         headers: headers,
