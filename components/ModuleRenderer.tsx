@@ -81,13 +81,14 @@ export const ModuleRenderer = ({ config, themeStyles, cmsUrl = '' }: RendererPro
                 if (Comp) {
                     return (
                         <Fragment key={index}>
-                            {config.type != 'ContactFormRoutes' && props.attributes.disabled != 'disabled' ? (
+                            {/* {config.type != 'ContactFormRoutes' && props.attributes.disabled != 'disabled' ? (
                                 <>
                                     <Comp {...props.attributes} themeStyles={themeStyles} cmsUrl={cmsUrl} />
                                 </>
-                            ) : (
+                            ) : ( */}
+                            {props.attributes.disabled != 'disabled' && (
                                 <>
-                                    <Comp />
+                                    <Comp {...props.attributes} themeStyles={themeStyles} cmsUrl={cmsUrl} />
                                 </>
                             )}
                         </Fragment>
