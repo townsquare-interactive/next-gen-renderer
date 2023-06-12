@@ -9,16 +9,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 module.exports = withBundleAnalyzer({
     images: {
-        domains: [
-            'via.placeholder.com',
-            'unsplash.com',
-            'images.pexels.com',
-            'townsquareinteractive.s3.amazonaws.com',
-            'jedwards4044.github.io',
-            'clttestsiteforjoshedwards.production.townsquareinteractive.com',
-            'joshedwards.production.townsquareinteractive.com',
-            'kaseypaztest.production.townsquareinteractive.com',
-        ],
+        domains: ['via.placeholder.com', 'unsplash.com', 'images.pexels.com', 'townsquareinteractive.s3.amazonaws.com', 'jedwards4044.github.io'],
         remotePatterns: [
             {
                 protocol: 'http',
@@ -26,22 +17,12 @@ module.exports = withBundleAnalyzer({
             },
         ],
     },
-    //joshedwardsclttestsite.production.townsquareinteractive.com
 
     experimental: {
         //appDir: true,
         //serverActions: true,
     },
 
-    /*     i18n: {
-        locales: ['en'],
-        defaultLocale: 'en',
-    }, */
-
-    /*     future: {
-        webpack5: true, // by default, if you customize webpack config, they switch back to version 4.
-        // Looks like backward compatibility approach.
-    }, */
     webpack(config) {
         config.resolve.fallback = {
             ...config.resolve.fallback, // if you miss it, all the other options in fallback, specified
@@ -68,12 +49,4 @@ module.exports = withBundleAnalyzer({
             },
         ]
     },
-    /*  async rewrites() {
-        return [
-            {
-                source: '/api/:path*',
-                destination: 'https://townsquareinteractive.s3.amazonaws.com',
-            },
-        ]
-    }, */
 })

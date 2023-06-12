@@ -1,25 +1,31 @@
 import { NextResponse } from 'next/server'
+import { ContactFormData, ContactFormSubmitFn } from 'types'
+import { submit as mailchimpSubmit } from '../../../services/contact-us-form/mailchimp'
+import { submit as consoleSubmit } from '../../../services/contact-us-form/console-log'
 
 export async function POST(request: any) {
-    const AUDIENCE_ID = process.env.MAILCHIMP_AUDIENCE_ID
-    const API_KEY = process.env.MAILCHIMP_API_KEY
-    const DATACENTER = process.env.MAILCHIMP_API_SERVER
-    const mailchimpUrl = `https://${DATACENTER}.api.mailchimp.com/3.0/lists/${AUDIENCE_ID}/members`
+    const formData = await request.json()
 
-    const headers = {
-        'Content-Type': 'application/json',
-        Authorization: `apikey ${API_KEY}`,
-    }
+    const contactUsService = 'mailchimp'
+    //
+    let submit: ContactFormSubmitFn
+    /*switch (contactUsService) {
+        case 'console-log':
+            submit = consoleSubmit
+            break
+        case 'mailchimp':
+            submit = mailchimpSubmit
+            break
 
-    let body = await request.json()
+        default:
+            submit = mailchimpSubmit
+            break
+    } */
+
+    submit = mailchimpSubmit
 
     try {
-        await fetch(mailchimpUrl, {
-            headers: headers,
-            method: 'POST',
-            body: JSON.stringify(body),
-        })
-
+        await submit(formData)
         return NextResponse.json('Form submitted succesfully')
     } catch (error) {
         console.log(error)

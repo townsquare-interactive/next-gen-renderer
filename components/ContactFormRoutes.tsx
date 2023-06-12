@@ -1,93 +1,12 @@
 'use client'
 import { useState } from 'react'
 import styles from './contactform.module.scss'
-import { postContactFormRoute, convertDataToMailchimp } from 'functions'
-import { ContactFieldProps, FormFields } from 'types'
+import { postContactFormRoute } from 'functions'
+import { ContactFieldProps, ContactFormRoutesProps } from 'types'
 import cn from 'classnames'
 
-const contactFormData = {
-    formTitle: 'Contact Us',
-    formFields: [
-        {
-            name: 'fName',
-            placeholder: 'Enter Name',
-            type: 'text',
-            label: 'First Name',
-            isReq: true,
-            fieldType: 'input',
-            isVisible: true,
-        },
-        {
-            name: 'lName',
-            placeholder: 'Enter Name',
-            type: 'text',
-            label: 'Last Name',
-            isReq: true,
-            fieldType: 'input',
-            isVisible: true,
-        },
-
-        {
-            name: 'email',
-            // placeholder:'Enter Name',
-            type: 'email',
-            label: 'Email',
-            isReq: true,
-            fieldType: 'input',
-            isVisible: true,
-        },
-        {
-            name: 'phone',
-            // placeholder:'Enter Name',
-            type: 'phone',
-            label: 'Phone',
-            isReq: false,
-            fieldType: 'input',
-            isVisible: true,
-        },
-        {
-            label: 'Message',
-            name: 'messagebox',
-            isReq: true,
-            fieldType: 'textarea',
-            isVisible: true,
-        },
-        {
-            label: 'Address',
-            subLabel: 'Street Address',
-            name: 'street',
-            isReq: false,
-            fieldType: 'input',
-            isVisible: true,
-        },
-        {
-            label: 'Zip Code',
-            name: 'zip',
-            isReq: false,
-            fieldType: 'input',
-            isVisible: true,
-        },
-        {
-            label: 'City',
-            name: 'city',
-            isReq: false,
-            fieldType: 'input',
-            isVisible: true,
-        },
-        {
-            label: 'State',
-            name: 'state',
-            isReq: false,
-            fieldType: 'input',
-            isVisible: true,
-        },
-    ],
-}
-
-//props: { contactFormData: { formFields: FormFields[]; formTitle: string } }
-
-const ContactFormRoutes = () => {
-    //const { contactFormData } = props
+const ContactFormRoutes = (props: ContactFormRoutesProps) => {
+    const { contactFormData } = props
 
     const [email, setEmail] = useState('')
     const [fName, setFirstName] = useState('')
@@ -123,9 +42,7 @@ const ContactFormRoutes = () => {
         }
     }
 
-    // email.indexOf('@') > -1 &&
-
-    const submit = async () => {
+    const submitForm = async () => {
         if (email.indexOf('@') <= -1) {
             setFormMessage('Email not entered correctly')
         } else {
@@ -144,12 +61,12 @@ const ContactFormRoutes = () => {
             }
 
             //convert data to mailchimp schema
-            const contactData = convertDataToMailchimp(formData)
+            //const contactData = convertDataToMailchimp(formData)
 
             //post data to contacts api route handler
             try {
                 setFormMessage('Sending....')
-                await postContactFormRoute(`/api/contacts`, contactData)
+                await postContactFormRoute(`/api/contacts`, formData)
                 setFormMessage('Thank you for contacting us')
                 setFormSent(true)
                 console.log(formMessage)
@@ -180,7 +97,7 @@ const ContactFormRoutes = () => {
                 {!formSent && (
                     <>
                         <form>
-                            {contactFormData.formFields.map((field, index) => (
+                            {contactFormData.formFields.map((field, index: number) => (
                                 <ContactField
                                     fieldType={field.fieldType}
                                     name={field.name}
@@ -194,8 +111,8 @@ const ContactFormRoutes = () => {
                                 />
                             ))}
                         </form>
-                        <button type="submit" className={styles.submit} onClick={submit}>
-                            Send
+                        <button type="submit" className={styles.submit} onClick={submitForm}>
+                            Submit
                         </button>
                     </>
                 )}

@@ -70,8 +70,6 @@ export const ModuleRenderer = ({ config, themeStyles, cmsUrl = '' }: RendererPro
 
     const configWithProps = mapPropsToConfig(config)
 
-    console.log(config)
-
     return (
         <>
             {configWithProps.map((item: GlobalModule, index: number) => {
@@ -81,11 +79,6 @@ export const ModuleRenderer = ({ config, themeStyles, cmsUrl = '' }: RendererPro
                 if (Comp) {
                     return (
                         <Fragment key={index}>
-                            {/* {config.type != 'ContactFormRoutes' && props.attributes.disabled != 'disabled' ? (
-                                <>
-                                    <Comp {...props.attributes} themeStyles={themeStyles} cmsUrl={cmsUrl} />
-                                </>
-                            ) : ( */}
                             {props.attributes.disabled != 'disabled' && (
                                 <>
                                     <Comp {...props.attributes} themeStyles={themeStyles} cmsUrl={cmsUrl} />

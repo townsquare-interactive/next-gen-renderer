@@ -923,6 +923,13 @@ export interface ContactFieldProps extends FormFields {
     determineState: (name: string, event: string) => void
 }
 
+/**
+ *  Function responsible for submitting a contact-us form.
+ */
+export interface ContactFormSubmitFn {
+    (formData: ContactFormData): Promise<void>
+}
+
 export interface ContactFormData {
     fName: string
     lName: string
@@ -930,6 +937,12 @@ export interface ContactFormData {
     email: string
     message: string
     address: { street: string; zip: string; state: string; city: string }
+}
+
+export interface ContactFormRoutesProps {
+    cmsUrl: string
+    themeStyles: ThemeStyles
+    contactFormData: { formFields: FormFields[]; formTitle: string }
 }
 
 /*------------------------------Non CMS types-------------------------*/
