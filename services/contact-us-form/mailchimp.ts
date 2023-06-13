@@ -1,9 +1,15 @@
+import { generateLayout } from 'functions'
+import { use } from 'react'
 import { ContactFormData } from 'types'
 
 export async function submit(formData: ContactFormData) {
-    const AUDIENCE_ID = process.env.MAILCHIMP_AUDIENCE_ID
-    const API_KEY = process.env.MAILCHIMP_API_KEY
-    const DATACENTER = process.env.MAILCHIMP_API_SERVER
+    const { CMSLayout } = await generateLayout()
+
+    console.log(CMSLayout.config)
+
+    const AUDIENCE_ID = CMSLayout.config.mailChimp.audId
+    const API_KEY = CMSLayout.config.mailChimp.auth
+    const DATACENTER = CMSLayout.config.mailChimp.datacenter
     const mailchimpUrl = `https://${DATACENTER}.api.mailchimp.com/3.0/lists/${AUDIENCE_ID}/members`
 
     const headers = {

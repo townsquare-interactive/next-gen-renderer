@@ -28,6 +28,7 @@
         "cors": "^2.8.5",
         "date-fns": "^2.28.0",
         "env-cmd": "^10.1.0",
+        "formik": "^2.4.1",
         "gray-matter": "^4.0.3",
         "html-react-parser": "^1.4.14",
         "image-size": "^1.0.1",

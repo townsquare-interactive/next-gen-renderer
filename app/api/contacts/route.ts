@@ -5,6 +5,7 @@ import { submit as consoleSubmit } from '../../../services/contact-us-form/conso
 
 export async function POST(request: any) {
     const formData = await request.json()
+    console.log(formData)
 
     const contactUsService = 'mailchimp'
     let submit: ContactFormSubmitFn

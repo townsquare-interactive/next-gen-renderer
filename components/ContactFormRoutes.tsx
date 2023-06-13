@@ -4,6 +4,7 @@ import styles from './contactform.module.scss'
 import { postContactFormRoute } from 'functions'
 import { ContactFieldProps, ContactFormRoutesProps } from 'types'
 import cn from 'classnames'
+import { Formik, Field, Form, FormikHelpers } from 'formik'
 
 const ContactFormRoutes = (props: ContactFormRoutesProps) => {
     const { contactFormData } = props
@@ -111,6 +112,75 @@ const ContactFormRoutes = (props: ContactFormRoutesProps) => {
                             Submit
                         </button>
                     </>
+                    /* <>
+                        <Formik
+                            initialValues={{
+                                fName: '',
+                                lName: '',
+                                email: '',
+                                phone: '',
+                                messagebox:'',
+                                street:'',
+                                zip:'',
+                                state:'',
+                                city:''
+                            }}
+                            validate={(values) => {
+                                const errors = {}
+                                if (!values.email) {
+                                    errors.email = 'Required'
+                                } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+                                    errors.email = 'Invalid email address'
+                                }
+                                return errors
+                            }}
+                            onSubmit={(values: Values, { setSubmitting }: FormikHelpers<Values>) => {
+                                const formData = {
+                                    fName: values.fName,
+                                    lName: values.lName,
+                                    phone: values.phone,
+                                    email: values.email,
+                                    message: values.messagebox,
+                                    address: {
+                                        street: values.street,
+                                        zip: values.zip,
+                                        state: values.state,
+                                        city: values.city,
+                                    },
+                                }
+
+                                setTimeout(async () => {
+                                    alert(JSON.stringify(values, null, 2))
+                                    setFormMessage('Sending....')
+                                    await postContactFormRoute(`/api/contacts`, formData)
+                                    setFormMessage('Thank you for contacting us')
+                                    setFormSent(true)
+
+                                    setSubmitting(false)
+                                }, 500)
+                            }}
+                        >
+                            <form>
+                                {contactFormData.formFields.map((field, index: number) => (
+                                    <ContactField
+                                        fieldType={field.fieldType}
+                                        name={field.name}
+                                        isReq={field.isReq}
+                                        key={index}
+                                        determineState={determineState}
+                                        label={field.label}
+                                        isVisible={field.isVisible}
+                                        placeholder={field.placeholder}
+                                        type={field.type}
+                                    />
+                                ))}
+
+                                <button type="submit" className={styles.submit} onClick={submitForm}>
+                                    Submit
+                                </button>
+                            </form>
+                        </Formik>
+                    </> */
                 )}
             </div>
         </>
