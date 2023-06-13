@@ -103,6 +103,8 @@ export async function getStrapiPages() {
 
 /*----------------------------- End of CMS --------------------------------*/
 
+/*----------------------------- Forms --------------------------------*/
+
 export async function subscribeMailChimp(url: string, headers: any, minData: any) {
     await fetch(url, {
         headers: headers,

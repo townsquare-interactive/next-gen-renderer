@@ -7,20 +7,16 @@ export async function POST(request: any) {
     const formData = await request.json()
 
     const contactUsService = 'mailchimp'
-    //
     let submit: ContactFormSubmitFn
-    /*switch (contactUsService) {
-        case 'console-log':
-            submit = consoleSubmit
-            break
+    switch (contactUsService) {
         case 'mailchimp':
             submit = mailchimpSubmit
             break
 
         default:
-            submit = mailchimpSubmit
+            submit = consoleSubmit
             break
-    } */
+    }
 
     submit = mailchimpSubmit
 

@@ -24,8 +24,8 @@ export async function submit(formData: ContactFormData) {
     }
 }
 
-/*----------------------------- Forms --------------------------------*/
-export const convertDataToMailchimp = (formData: ContactFormData) => {
+//convert data to mailchimp schema
+const convertDataToMailchimp = (formData: ContactFormData) => {
     const contactData = {
         email_address: formData.email,
         status: 'subscribed',

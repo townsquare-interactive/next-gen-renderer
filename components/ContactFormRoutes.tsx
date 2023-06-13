@@ -60,10 +60,6 @@ const ContactFormRoutes = (props: ContactFormRoutesProps) => {
                 },
             }
 
-            //convert data to mailchimp schema
-            //const contactData = convertDataToMailchimp(formData)
-
-            //post data to contacts api route handler
             try {
                 setFormMessage('Sending....')
                 await postContactFormRoute(`/api/contacts`, formData)
