@@ -2,12 +2,12 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import ContainerHeader from '../components/ContainerHeader'
 import { themeStyles, siteDataEx } from 'storydefaults'
-import { social } from 'storydefaults'
+//import { social } from 'storydefaults'
 import { HeaderOptions } from 'types'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
-import SlidingHeader from 'elements/SlidingHeader'
+//import SlidingHeader from 'elements/SlidingHeader'
 const { library } = require('@fortawesome/fontawesome-svg-core')
 
 library.add(fas, fab, far)

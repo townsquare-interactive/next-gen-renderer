@@ -130,7 +130,7 @@ export interface GlobalData {
     cmsUrl: string
     s3Folder: string
     headerOptions?: HeaderOptions
-    mailChimp: { audId: string; datacenter: string; auth: string }
+    config?: { mailChimp: { audId: string; datacenter: string; auth: string } }
 }
 
 interface CMSLogo {
