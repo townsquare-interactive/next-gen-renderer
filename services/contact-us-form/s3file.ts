@@ -1,5 +1,4 @@
 import { ContactFormData } from 'types'
-import fs from 'fs'
 
 const AWS = require('aws-sdk')
 
