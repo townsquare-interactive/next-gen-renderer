@@ -936,7 +936,7 @@ export interface ContactFormData {
     lName: string
     phone: string
     email: string
-    message: string
+    messagebox: string
     address: { street: string; zip: string; state: string; city: string }
 }
 

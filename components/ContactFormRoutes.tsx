@@ -8,6 +8,7 @@ import { Formik, Field, Form, FormikHelpers, ErrorMessage } from 'formik'
 import { z } from 'zod'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
 import * as Yup from 'yup'
+import { convertDataToMailchimp } from 'services/contact-us-form/mailchimp'
 
 const Schema = z.object({
     fName: z.string(),
@@ -18,7 +19,7 @@ const Schema = z.object({
     street: z.string().optional(),
     city: z.string().optional(),
     state: z.string().optional(),
-    zip: z.number().optional(),
+    zip: z.string().optional(),
 })
 
 /* const SignupSchema = Yup.object().shape({
@@ -35,7 +36,6 @@ const Schema = z.object({
 
 interface Values {
     fName: string
-    //lName: string
     messagebox: string
     email: string
     lName: string
@@ -109,8 +109,8 @@ const ContactFormRoutes = (props: ContactFormRoutesProps) => {
                                 }
 
                                 setTimeout(async () => {
-                                    alert(JSON.stringify(values, null, 2))
                                     setFormMessage('Sending....')
+                                    console.log(convertDataToMailchimp(formData))
                                     await postContactFormRoute(`/api/contacts`, formData)
                                     setFormMessage('Thank you for contacting us')
                                     setFormSent(true)
