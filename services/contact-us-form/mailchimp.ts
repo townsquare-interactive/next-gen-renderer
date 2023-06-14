@@ -5,28 +5,28 @@ import { ContactFormData } from 'types'
 export async function submit(formData: ContactFormData) {
     const { CMSLayout } = await generateLayout()
 
-    console.log(CMSLayout.config)
+    if (CMSLayout.config.mailChimp) {
+        const AUDIENCE_ID = CMSLayout.config.mailChimp.audId
+        const API_KEY = CMSLayout.config.mailChimp.auth
+        const DATACENTER = CMSLayout.config.mailChimp.datacenter
+        const mailchimpUrl = `https://${DATACENTER}.api.mailchimp.com/3.0/lists/${AUDIENCE_ID}/members`
 
-    const AUDIENCE_ID = CMSLayout.config.mailChimp.audId
-    const API_KEY = CMSLayout.config.mailChimp.auth
-    const DATACENTER = CMSLayout.config.mailChimp.datacenter
-    const mailchimpUrl = `https://${DATACENTER}.api.mailchimp.com/3.0/lists/${AUDIENCE_ID}/members`
+        const headers = {
+            'Content-Type': 'application/json',
+            Authorization: `apikey ${API_KEY}`,
+        }
 
-    const headers = {
-        'Content-Type': 'application/json',
-        Authorization: `apikey ${API_KEY}`,
-    }
+        let body = convertDataToMailchimp(formData)
 
-    let body = convertDataToMailchimp(formData)
-
-    try {
-        await fetch(mailchimpUrl, {
-            headers: headers,
-            method: 'POST',
-            body: JSON.stringify(body),
-        })
-    } catch (error) {
-        throw error
+        try {
+            await fetch(mailchimpUrl, {
+                headers: headers,
+                method: 'POST',
+                body: JSON.stringify(body),
+            })
+        } catch (error) {
+            throw error
+        }
     }
 }
 
