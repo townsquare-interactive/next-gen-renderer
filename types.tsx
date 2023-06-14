@@ -921,7 +921,7 @@ export interface FormFields {
     fieldType: string
 }
 export interface ContactFieldProps extends FormFields {
-    determineState: (name: string, event: string) => void
+    determineState?: (name: string, event: string) => void
 }
 
 /**

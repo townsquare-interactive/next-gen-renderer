@@ -4,75 +4,52 @@ import styles from './contactform.module.scss'
 import { postContactFormRoute } from 'functions'
 import { ContactFieldProps, ContactFormRoutesProps } from 'types'
 import cn from 'classnames'
-import { Formik, Field, Form, FormikHelpers } from 'formik'
+import { Formik, Field, Form, FormikHelpers, ErrorMessage } from 'formik'
+import { z } from 'zod'
+import { toFormikValidationSchema } from 'zod-formik-adapter'
+import * as Yup from 'yup'
+
+const Schema = z.object({
+    fName: z.string(),
+    lName: z.string(),
+    email: z.string().includes('@'),
+    phone: z.string().optional(),
+    messagebox: z.string().min(2, 'Too Short!').max(50, 'Too Long!'),
+    street: z.string().optional(),
+    city: z.string().optional(),
+    state: z.string().optional(),
+    zip: z.number().optional(),
+})
+
+/* const SignupSchema = Yup.object().shape({
+    fName: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Required'),
+    lName: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Required'),
+    email: Yup.string().email('Invalid email').required('Required'),
+    phone: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!'),
+    messagebox: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!'),
+    zip: Yup.number(),
+    street: Yup.number(),
+    city: Yup.number(),
+    state: Yup.number(),
+}) */
+
+interface Values {
+    fName: string
+    //lName: string
+    messagebox: string
+    email: string
+    lName: string
+    phone: string
+    street: string
+    zip: string
+    city: string
+    state: string
+}
 
 const ContactFormRoutes = (props: ContactFormRoutesProps) => {
     const { contactFormData } = props
-
-    const [email, setEmail] = useState('')
-    const [fName, setFirstName] = useState('')
-    const [lName, setLastName] = useState('')
-    const [phone, setPhone] = useState('')
-    const [messagebox, setMessageBox] = useState('')
-    const [street, setStreet] = useState('')
-    const [zip, setZip] = useState('')
-    const [city, setCity] = useState('')
-    const [state, setState] = useState('')
     const [formMessage, setFormMessage] = useState('')
     const [formSent, setFormSent] = useState(false)
-
-    const determineState = (name: string, value: string) => {
-        if (name === 'fName') {
-            setFirstName(value)
-        } else if (name === 'lName') {
-            setLastName(value)
-        } else if (name === 'phone') {
-            setPhone(value)
-        } else if (name === 'email') {
-            setEmail(value)
-        } else if (name === 'messagebox') {
-            setMessageBox(value)
-        } else if (name === 'street') {
-            setStreet(value)
-        } else if (name === 'zip') {
-            setZip(value)
-        } else if (name === 'city') {
-            setCity(value)
-        } else if (name === 'state') {
-            setState(value)
-        }
-    }
-
-    const submitForm = async () => {
-        if (email.indexOf('@') <= -1) {
-            setFormMessage('Email not entered correctly')
-        } else {
-            const formData = {
-                fName: fName,
-                lName: lName,
-                phone: phone,
-                email: email,
-                message: messagebox,
-                address: {
-                    street: street,
-                    zip: zip,
-                    state: state,
-                    city: city,
-                },
-            }
-
-            try {
-                setFormMessage('Sending....')
-                await postContactFormRoute(`/api/contacts`, formData)
-                setFormMessage('Thank you for contacting us')
-                setFormSent(true)
-                console.log(formMessage)
-            } catch (error) {
-                console.log(error)
-                setFormMessage('Form error')
-            }
-        }
-    }
 
     return (
         <>
@@ -93,40 +70,20 @@ const ContactFormRoutes = (props: ContactFormRoutesProps) => {
                 </div>
                 {!formSent && (
                     <>
-                        <form>
-                            {contactFormData.formFields.map((field, index: number) => (
-                                <ContactField
-                                    fieldType={field.fieldType}
-                                    name={field.name}
-                                    isReq={field.isReq}
-                                    key={index}
-                                    determineState={determineState}
-                                    label={field.label}
-                                    isVisible={field.isVisible}
-                                    placeholder={field.placeholder}
-                                    type={field.type}
-                                />
-                            ))}
-                        </form>
-                        <button type="submit" className={styles.submit} onClick={submitForm}>
-                            Submit
-                        </button>
-                    </>
-                    /* <>
                         <Formik
                             initialValues={{
                                 fName: '',
                                 lName: '',
                                 email: '',
                                 phone: '',
-                                messagebox:'',
-                                street:'',
-                                zip:'',
-                                state:'',
-                                city:''
+                                messagebox: '',
+                                street: '',
+                                zip: '',
+                                state: '',
+                                city: '',
                             }}
                             validate={(values) => {
-                                const errors = {}
+                                const errors: any = {}
                                 if (!values.email) {
                                     errors.email = 'Required'
                                 } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
@@ -134,13 +91,15 @@ const ContactFormRoutes = (props: ContactFormRoutesProps) => {
                                 }
                                 return errors
                             }}
-                            onSubmit={(values: Values, { setSubmitting }: FormikHelpers<Values>) => {
+                            validationSchema={toFormikValidationSchema(Schema)}
+                            //validationSchema={SignupSchema}
+                            onSubmit={async (values: Values, { setSubmitting }: FormikHelpers<Values>) => {
                                 const formData = {
                                     fName: values.fName,
                                     lName: values.lName,
                                     phone: values.phone,
                                     email: values.email,
-                                    message: values.messagebox,
+                                    messagebox: values.messagebox,
                                     address: {
                                         street: values.street,
                                         zip: values.zip,
@@ -160,27 +119,29 @@ const ContactFormRoutes = (props: ContactFormRoutesProps) => {
                                 }, 500)
                             }}
                         >
-                            <form>
-                                {contactFormData.formFields.map((field, index: number) => (
-                                    <ContactField
-                                        fieldType={field.fieldType}
-                                        name={field.name}
-                                        isReq={field.isReq}
-                                        key={index}
-                                        determineState={determineState}
-                                        label={field.label}
-                                        isVisible={field.isVisible}
-                                        placeholder={field.placeholder}
-                                        type={field.type}
-                                    />
-                                ))}
+                            {({ errors, touched }) => (
+                                <Form>
+                                    {contactFormData.formFields.map((field, index: number) => (
+                                        <ContactField
+                                            fieldType={field.fieldType}
+                                            name={field.name}
+                                            isReq={field.isReq}
+                                            key={index}
+                                            // determineState={determineState}
+                                            label={field.label}
+                                            isVisible={field.isVisible}
+                                            placeholder={field.placeholder}
+                                            type={field.type}
+                                        />
+                                    ))}
 
-                                <button type="submit" className={styles.submit} onClick={submitForm}>
-                                    Submit
-                                </button>
-                            </form>
+                                    <button type="submit" className={styles.submit}>
+                                        Submit
+                                    </button>
+                                </Form>
+                            )}
                         </Formik>
-                    </> */
+                    </>
                 )}
             </div>
         </>
@@ -193,26 +154,12 @@ const ContactField = (props: ContactFieldProps) => {
         <>
             {isVisible && (
                 <div className={styles.field}>
-                    <label>
+                    <label htmlFor={name}>
                         {label} {isReq && <span className={styles.req}>*</span>}
                     </label>
-                    {fieldType === 'input' && (
-                        <input
-                            type={type}
-                            name={name}
-                            placeholder={placeholder}
-                            required={isReq || false}
-                            onChange={(event) => determineState(name, event.target.value ?? '')}
-                        ></input>
-                    )}
-                    {fieldType === 'textarea' && (
-                        <textarea
-                            name={name}
-                            placeholder={placeholder || ''}
-                            required={isReq || false}
-                            onChange={(event) => determineState(name, event.target.value ?? '')}
-                        ></textarea>
-                    )}
+                    <ErrorMessage name={name} />
+
+                    <Field id={name} name={name} type={fieldType} required={isReq} />
                 </div>
             )}
         </>

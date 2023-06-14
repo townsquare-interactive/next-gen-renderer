@@ -20,7 +20,8 @@ const Page = ({ params }: { params: { slug: string } }) => {
     const { page } = use(getPageData(params))
 
     /*------------ Strapi CMS access ----------------*/
-    //const { strapiPages } = use(getStrapiPages())
+    const { strapiPages } = use(getStrapiPages())
+    console.log(strapiPages.data[0].attributes.Body[0].items)
 
     // const firstPageModList = strapiPages.data[0].attributes.Body
 
