@@ -7,10 +7,14 @@ export async function submit(formData: ContactFormData) {
     if (CMSLayout.config.zapierUrl) {
         let body = formData
 
-        //const zapUrl = process.env.ZAPIER_URL || ''
+        const useZap = false
+        const zapUrl = CMSLayout.config.zapierUrl
+        const makeUrl = CMSLayout.config.makeUrl
+
+        const webhookUrl = useZap ? zapUrl : makeUrl
 
         try {
-            await fetch(CMSLayout.config.zapierUrl, {
+            await fetch(webhookUrl, {
                 method: 'POST',
                 body: JSON.stringify(body),
             })
