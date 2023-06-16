@@ -919,9 +919,10 @@ export interface FormFields {
     isReq: boolean
     isVisible: boolean
     fieldType: string
+    size?: string
 }
 export interface ContactFieldProps extends FormFields {
-    determineState?: (name: string, event: string) => void
+    //determineState?: (name: string, event: string) => void
 }
 
 /**
