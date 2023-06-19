@@ -48,6 +48,7 @@ export const Container = (props: ContainerProps) => {
                     </div>
                 )}
             </ContainerLayout>
+
             <FontLoad fonts={siteData.fontImport} />
         </>
     )
