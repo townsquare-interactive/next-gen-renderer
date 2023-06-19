@@ -35,9 +35,11 @@ interface Values {
 }
 
 const ContactFormRoutes = (props: ContactFormRoutesProps) => {
-    const { contactFormData } = props
-    const [formMessage, setFormMessage] = useState('')
+    const { contactFormData, items } = props
+    const [formMessage, setFormMessage] = useState('Thanks for forming with me')
     const [formSent, setFormSent] = useState(false)
+
+    console.log(props)
 
     return (
         <>
@@ -47,85 +49,93 @@ const ContactFormRoutes = (props: ContactFormRoutesProps) => {
                         ['txt-color']: true,
                     })}
                 >
-                    {contactFormData.formTitle && <h3 className={styles.title}>{contactFormData.formTitle}</h3>}
-                    <div className={styles['message-block']}>
-                        {formMessage && (
-                            <div
-                                className={cn(styles.message, {
-                                    [styles.blue]: formMessage === 'Sending....',
-                                    [styles.red]: formMessage === 'Form error' || formMessage === 'Email not entered correctly',
-                                    [styles.green]: formSent,
-                                })}
-                            >
-                                {formMessage}
-                            </div>
-                        )}
-                    </div>
-                    {!formSent && (
+                    {items.map((item, ind: number) => (
                         <>
-                            <Formik
-                                initialValues={{
-                                    fName: '',
-                                    lName: '',
-                                    email: '',
-                                    phone: '',
-                                    messagebox: '',
-                                    street: '',
-                                    zip: '',
-                                    state: '',
-                                    city: '',
-                                }}
-                                validate={(values) => {
-                                    const errors: any = {}
-                                    if (!values.email) {
-                                        errors.email = 'Required'
-                                    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-                                        errors.email = 'Invalid email address'
-                                    }
-                                    return errors
-                                }}
-                                validationSchema={toFormikValidationSchema(Schema)}
-                                //validationSchema={SignupSchema}
-                                onSubmit={async (values: Values, { setSubmitting }: FormikHelpers<Values>) => {
-                                    const formData = {
-                                        fName: values.fName,
-                                        lName: values.lName,
-                                        phone: values.phone,
-                                        email: values.email,
-                                        messagebox: values.messagebox,
-                                        address: {
-                                            street: values.street,
-                                            zip: values.zip,
-                                            state: values.state,
-                                            city: values.city,
-                                        },
-                                    }
+                            {item.plugin === '[gravity]' && (
+                                <div className={styles.item} key={ind}>
+                                    {contactFormData.formTitle && <h3 className={styles.title}>{contactFormData.formTitle}</h3>}
+                                    <div className={styles['message-block']}>
+                                        {formMessage && (
+                                            <div
+                                                className={cn(styles.message, {
+                                                    [styles.blue]: formMessage === 'Sending....',
+                                                    [styles.red]: formMessage === 'Form error' || formMessage === 'Email not entered correctly',
+                                                    [styles.green]: formSent,
+                                                })}
+                                            >
+                                                {formMessage}
+                                            </div>
+                                        )}
+                                    </div>
+                                    {!formSent && (
+                                        <>
+                                            <Formik
+                                                initialValues={{
+                                                    fName: '',
+                                                    lName: '',
+                                                    email: '',
+                                                    phone: '',
+                                                    messagebox: '',
+                                                    street: '',
+                                                    zip: '',
+                                                    state: '',
+                                                    city: '',
+                                                }}
+                                                validate={(values) => {
+                                                    const errors: any = {}
+                                                    if (!values.email) {
+                                                        errors.email = 'Required'
+                                                    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+                                                        errors.email = 'Invalid email address'
+                                                    }
+                                                    return errors
+                                                }}
+                                                validationSchema={toFormikValidationSchema(Schema)}
+                                                //validationSchema={SignupSchema}
+                                                onSubmit={async (values: Values, { setSubmitting }: FormikHelpers<Values>) => {
+                                                    const formData = {
+                                                        fName: values.fName,
+                                                        lName: values.lName,
+                                                        phone: values.phone,
+                                                        email: values.email,
+                                                        messagebox: values.messagebox,
+                                                        address: {
+                                                            street: values.street,
+                                                            zip: values.zip,
+                                                            state: values.state,
+                                                            city: values.city,
+                                                        },
+                                                    }
 
-                                    setTimeout(async () => {
-                                        setFormMessage('Sending....')
-                                        await postContactFormRoute(`/api/contacts`, formData)
-                                        setFormMessage('Thank you for contacting us')
-                                        setFormSent(true)
+                                                    setTimeout(async () => {
+                                                        setFormMessage('Sending....')
+                                                        await postContactFormRoute(`/api/contacts`, formData)
+                                                        setFormMessage('Thank you for contacting us')
+                                                        setFormSent(true)
 
-                                        setSubmitting(false)
-                                    }, 500)
-                                }}
-                            >
-                                {({ errors, touched }) => (
-                                    <Form>
-                                        {contactFormData.formFields.map((field, index: number) => (
-                                            <ContactField {...field} key={index} />
-                                        ))}
-                                        <div className={styles['btn-block']}>
-                                            <button type="submit" className={styles.submit}>
-                                                Submit
-                                            </button>
-                                        </div>
-                                    </Form>
-                                )}
-                            </Formik>
+                                                        setSubmitting(false)
+                                                    }, 500)
+                                                }}
+                                            >
+                                                {({ errors, touched }) => (
+                                                    <Form>
+                                                        {contactFormData.formFields.map((field, index: number) => (
+                                                            <ContactField {...field} key={index} />
+                                                        ))}
+                                                        <div className={styles['btn-block']}>
+                                                            <button type="submit" className={styles.submit}>
+                                                                Submit
+                                                            </button>
+                                                        </div>
+                                                    </Form>
+                                                )}
+                                            </Formik>
+                                        </>
+                                    )}
+                                </div>
+                            )}
                         </>
-                    )}
+                    ))}
                 </div>
             </div>
         </>
@@ -148,7 +158,7 @@ const ContactField = (props: ContactFieldProps) => {
                         {label} {isReq && <span className={styles.req}>*</span>}
                     </label>
 
-                    <span style={{ color: 'red' }}>
+                    <span style={{ color: 'red' }} className={styles['field-err']}>
                         <ErrorMessage name={name} />
                     </span>
 

@@ -945,6 +945,7 @@ export interface ContactFormRoutesProps {
     cmsUrl: string
     themeStyles: ThemeStyles
     contactFormData: { formFields: FormFields[]; formTitle: string }
+    items: ArticleItems[]
 }
 
 /*------------------------------Non CMS types-------------------------*/
