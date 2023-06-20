@@ -1,10 +1,11 @@
 'use client'
 import 'leaflet/dist/leaflet.css'
-
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import { LatLngTuple } from 'leaflet'
 import Link from 'next/link'
 import L from 'leaflet'
+import dynamic from 'next/dynamic'
+
 const marker = 'https://townsquareinteractive.s3.amazonaws.com/global-assets/placeholder.png'
 const myIcon = new L.Icon({
     iconUrl: marker,
@@ -16,6 +17,14 @@ const myIcon = new L.Icon({
 //['fab', 'google']
 
 const position: LatLngTuple = [35.248434104850894, -80.80578988974007]
+
+/* export const MapWithNoSSR = dynamic(() => <Map />, {
+    ssr: false,
+})
+ */
+/* export const MapLoad = (props: any) => {
+    return <MapWithNoSSR />
+} */
 
 export const Map = (props: any) => {
     //const { page, siteData } = props
