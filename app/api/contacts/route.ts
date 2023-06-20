@@ -1,27 +1,30 @@
 import { NextResponse } from 'next/server'
-import { ContactFormData, ContactFormSubmitFn } from 'types'
-/* import { submit as mailchimpSubmit } from '../../../services/contact-us-form/mailchimp'
-import { submit as consoleSubmit } from '../../../services/contact-us-form/console-log'
-import { submit as s3FilePost } from '../../../services/contact-us-form/s3file' */
+import { ContactFormSubmitFn } from 'types'
+import { submit as mailchimpSubmit } from '../../../services/contact-us-form/mailchimp'
+import { submit as s3FilePost } from '../../../services/contact-us-form/s3file'
 import { submit as webhookSubmit } from '../../../services/contact-us-form/webhook'
 
 export async function POST(request: any) {
     const formData = await request.json()
-    console.log(formData)
 
-    const contactUsService = 'mailchimp'
     let submit: ContactFormSubmitFn
-    /*  switch (contactUsService) {
+    switch (formData.formService) {
         case 'mailchimp':
-            submit = zapierSubmit
+            submit = mailchimpSubmit
+            break
+
+        case 's3':
+            submit = s3FilePost
+            break
+
+        case 'webhook':
+            submit = webhookSubmit
             break
 
         default:
-            submit = mailchimpSubmit
+            submit = webhookSubmit
             break
-    } */
-
-    submit = webhookSubmit
+    }
 
     try {
         await submit(formData)

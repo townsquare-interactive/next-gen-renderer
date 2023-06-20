@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 import styles from './contactform.module.scss'
 import { postContactFormRoute } from 'functions'
 import { ContactFieldProps, ContactFormRoutesProps } from 'types'
@@ -7,15 +7,14 @@ import cn from 'classnames'
 import { Formik, Field, Form, FormikHelpers, ErrorMessage } from 'formik'
 import { z } from 'zod'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
-/* import * as Yup from 'yup'
-import { convertDataToMailchimp } from 'services/contact-us-form/mailchimp' */
+import ModuleTitle from 'elements/ModuleTitle'
 
 const Schema = z.object({
     fName: z.string(),
     lName: z.string(),
     email: z.string().includes('@'),
     phone: z.string().optional(),
-    messagebox: z.string().min(2, 'Too Short!').max(50, 'Too Long!'),
+    messagebox: z.string().min(2, 'Too Short!'),
     street: z.string().optional(),
     city: z.string().optional(),
     state: z.string().optional(),
@@ -35,24 +34,19 @@ interface Values {
 }
 
 const ContactFormRoutes = (props: ContactFormRoutesProps) => {
-    const { contactFormData, items } = props
-    const [formMessage, setFormMessage] = useState('Thanks for forming with me')
+    const { contactFormData, items, title } = props
+    const [formMessage, setFormMessage] = useState('')
     const [formSent, setFormSent] = useState(false)
-
-    console.log(props)
 
     return (
         <>
             <div className={styles.root}>
-                <div
-                    className={cn(styles.wrapper, {
-                        ['txt-color']: true,
-                    })}
-                >
+                <div className={cn(styles.wrapper, 'txt-color')}>
+                    {title && <ModuleTitle title={title} />}
                     {items.map((item, ind: number) => (
-                        <>
+                        <Fragment key={ind}>
                             {item.plugin === '[gravity]' && (
-                                <div className={styles.item} key={ind}>
+                                <div className={styles.item}>
                                     {contactFormData.formTitle && <h3 className={styles.title}>{contactFormData.formTitle}</h3>}
                                     <div className={styles['message-block']}>
                                         {formMessage && (
@@ -83,11 +77,11 @@ const ContactFormRoutes = (props: ContactFormRoutesProps) => {
                                                 }}
                                                 validate={(values) => {
                                                     const errors: any = {}
-                                                    if (!values.email) {
+                                                    /*                                                   if (!values.email) {
                                                         errors.email = 'Required'
                                                     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
                                                         errors.email = 'Invalid email address'
-                                                    }
+                                                    } */
                                                     return errors
                                                 }}
                                                 validationSchema={toFormikValidationSchema(Schema)}
@@ -117,24 +111,22 @@ const ContactFormRoutes = (props: ContactFormRoutesProps) => {
                                                     }, 500)
                                                 }}
                                             >
-                                                {({ errors, touched }) => (
-                                                    <Form>
-                                                        {contactFormData.formFields.map((field, index: number) => (
-                                                            <ContactField {...field} key={index} />
-                                                        ))}
-                                                        <div className={styles['btn-block']}>
-                                                            <button type="submit" className={styles.submit}>
-                                                                Submit
-                                                            </button>
-                                                        </div>
-                                                    </Form>
-                                                )}
+                                                <Form>
+                                                    {contactFormData.formFields.map((field, index: number) => (
+                                                        <ContactField {...field} key={index} />
+                                                    ))}
+                                                    <div className={styles['btn-block']}>
+                                                        <button type="submit" className={styles.submit}>
+                                                            Submit
+                                                        </button>
+                                                    </div>
+                                                </Form>
                                             </Formik>
                                         </>
                                     )}
                                 </div>
                             )}
-                        </>
+                        </Fragment>
                     ))}
                 </div>
             </div>
@@ -148,12 +140,7 @@ const ContactField = (props: ContactFieldProps) => {
     return (
         <>
             {isVisible && (
-                <div
-                    className={cn(styles.field, styles[`${size}`], {
-                        // [styles.medium]: name != 'fName' && name != 'lName',
-                        //[styles.small]: name === 'fName' || name === 'lName',
-                    })}
-                >
+                <div className={cn(styles.field, styles[`${size}`], {})}>
                     <label htmlFor={name}>
                         {label} {isReq && <span className={styles.req}>*</span>}
                     </label>
@@ -162,7 +149,7 @@ const ContactField = (props: ContactFieldProps) => {
                         <ErrorMessage name={name} />
                     </span>
 
-                    <Field id={name} name={name} required={isReq} as={fieldType ?? 'input'} placeHolder={placeholder} type={type} />
+                    <Field id={name} name={name} required={true} as={fieldType ?? 'input'} placeholder={placeholder} type={type} />
                 </div>
             )}
         </>

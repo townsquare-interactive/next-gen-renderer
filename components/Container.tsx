@@ -12,6 +12,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 const { library } = require('@fortawesome/fontawesome-svg-core')
 import FontLoad from './FontLoad'
+import { Map } from './map'
 
 library.add(fas, fab, far)
 
@@ -48,7 +49,7 @@ export const Container = (props: ContainerProps) => {
                     </div>
                 )}
             </ContainerLayout>
-
+            <Map />
             <FontLoad fonts={siteData.fontImport} />
         </>
     )
