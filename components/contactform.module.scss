@@ -3,8 +3,6 @@
 @use './styles/variables.scss';
 
 .root {
-    // padding: 10rem;
-
     .wrapper {
         max-width: 75.5em;
         margin: 0 auto;
@@ -51,6 +49,7 @@
 
             .field-err {
                 padding-bottom: 0.5rem;
+                color: red;
             }
 
             input {

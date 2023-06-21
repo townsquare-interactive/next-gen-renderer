@@ -147,7 +147,7 @@ export async function getCssFileFromS3() {
 
 export async function generateLayout() {
     const resLayout = await fetch(getDomain(true) + '/layout.json', {
-        next: { revalidate: 10 },
+        next: { revalidate: 5 },
     })
 
     const CMSLayout = await resLayout.json()
@@ -169,7 +169,7 @@ export async function getPageData(params: { slug: string }) {
     }
 
     const resPage = await fetch(getDomain(true) + '/pages/' + pageSlug + '.json', {
-        next: { revalidate: 10 },
+        next: { revalidate: 5 },
     })
     let page = await resPage.json()
 
@@ -187,7 +187,7 @@ export async function getHomePage() {
     pageSlug = findHomePageSlug(pageList)
 
     const resPage = await fetch(getDomain(true) + '/pages/' + pageSlug + '.json', {
-        next: { revalidate: 10 },
+        next: { revalidate: 5 },
     })
     let page = await resPage.json()
 

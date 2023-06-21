@@ -85,7 +85,6 @@ const ContactFormRoutes = (props: ContactFormRoutesProps) => {
                                                     return errors
                                                 }}
                                                 validationSchema={toFormikValidationSchema(Schema)}
-                                                //validationSchema={SignupSchema}
                                                 onSubmit={async (values: Values, { setSubmitting }: FormikHelpers<Values>) => {
                                                     const formData = {
                                                         fName: values.fName,
@@ -145,7 +144,7 @@ const ContactField = (props: ContactFieldProps) => {
                         {label} {isReq && <span className={styles.req}>*</span>}
                     </label>
 
-                    <span style={{ color: 'red' }} className={styles['field-err']}>
+                    <span className={styles['field-err']}>
                         <ErrorMessage name={name} />
                     </span>
 

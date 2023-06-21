@@ -12,7 +12,7 @@ const DescBlock = (props: DescBlockProps) => {
             className={cn(styles.root, styles[`${descSize}`], 'txt-font', 'desc', styles[`${type}`], styles[`${contentSpacing}`], {
                 ['txt-color']: !isBeaconHero && !useAccentColor && type != 'carousel' && type != 'thumbnail',
                 //['accent-txt']: well || isBeaconHero,
-                ['accent-txt']: type === 'carousel' || type === 'thumbnail' || useAccentColor,
+                ['caption-txt']: type === 'carousel' || type === 'thumbnail' || useAccentColor,
                 [styles.well]: well === '1',
             })}
         >

@@ -7,12 +7,8 @@ import { ButtonWrap } from '../elements/ButtonWrap'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
 import LinkWrap from 'elements/LinkWrap'
 import DescBlock from 'elements/DescBlock'
-import { ImageElement } from 'elements/ImageElement'
 import { ConditionalWrapper, domainImage } from 'functions'
 import ReactScroll from 'elements/ReactScrollParallax'
-
-//import dynamic from 'next/dynamic'
-//const Jarallax = dynamic(() => import('../elements/parallax_options/Jarallax'), { ssr: false })
 
 //can be jarallax, custom, scroll
 const choseLax: string = 'scroll'
@@ -107,7 +103,6 @@ const ModuleItem = (props: ModuleItemProps) => {
 const ItemWrap = (props: ItemWrapProps) => {
     const { item, well, themeStyles, modId, columns, type, cmsUrl, imgsize } = props
 
-    //const laxType = item.headline.includes('scroll') ? 'scroll' : item.headline.includes('jarallax') ? 'jarallax' : choseLax
     const laxType = choseLax
 
     return (
@@ -136,37 +131,16 @@ const ItemWrap = (props: ItemWrapProps) => {
                     )}
                     falseOutput={(children: ReactChild) => <>{children}</>}
                 >
-                    <ParallaxChildren
-                        item={item}
-                        columns={columns}
-                        modId={modId}
-                        themeStyles={themeStyles}
-                        cmsUrl={cmsUrl}
-                        well={well}
-                        imgsize={imgsize}
-                        type={type}
-                    />
+                    <ParallaxChildren item={item} columns={columns} modId={modId} themeStyles={themeStyles} well={well} imgsize={imgsize} type={type} />
                 </ConditionalWrapper>
             )}
         </div>
     )
 }
 
-const ParallaxChildren = ({ item, columns, well, modId, themeStyles, cmsUrl, imgsize, laxType }: ItemWrapProps) => {
+const ParallaxChildren = ({ item, columns, well, modId, themeStyles }: ItemWrapProps) => {
     return (
         <>
-            {laxType === 'jarallax' && item.image && (
-                <ImageElement
-                    imgSrc={item.image}
-                    imgAlt={item.img_alt_tag}
-                    imagePriority
-                    imgsize={imgsize}
-                    cmsUrl={cmsUrl}
-                    modType={'Parallax'}
-                    opacity={item.modOpacity || 1}
-                    columns={columns}
-                />
-            )}
             <div
                 className={cn(styles['caption'], {
                     [styles['cap-bckg']]: item.modSwitch1 != 1 && item.image,
@@ -179,7 +153,7 @@ const ParallaxChildren = ({ item, columns, well, modId, themeStyles, cmsUrl, img
                     )}
 
                     {item.desc && (
-                        <div className={cn(styles['txt-block'])}>
+                        <div className={cn(styles['dsc-block'])}>
                             <DescBlock desc={item.desc} descSize={item.descSize} useAccentColor={true} type={'parallax'} />
                         </div>
                     )}
