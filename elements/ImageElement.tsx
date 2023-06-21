@@ -1,5 +1,4 @@
 'use client'
-//import styles from './ImageBlock.module.scss'
 import { Media, ImageProps } from '../types'
 import Image from 'next/image'
 import { domainImage } from '../functions'
@@ -15,26 +14,6 @@ export const ImageElement = (props: ImageProps) => {
         setWidth(loadedMedia.naturalWidth)
         setHeight(loadedMedia.naturalHeight)
     }
-
-    /*     const imageSizes = {
-        large: '100vw',
-        testimonial: '130px',
-        columns: `(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw`,
-        normal: `(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 1200px`,
-    }
-
-    const theSizes =
-        modType === 'Parallax'
-            ? '100vw'
-            : modType === 'Banner'
-            ? '100vw'
-            : modType.includes('testimonial')
-            ? '130px'
-            : columns === 3
-            ? '(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw'
-            : columns === 4
-            ? '(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw'
-            : '(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 1200px' */
 
     return (
         <>
