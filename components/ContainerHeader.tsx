@@ -30,6 +30,8 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
     //Determine Height of header for margins in layout
     const ref = useRef<HTMLDivElement>(null)
 
+    console.log(siteData)
+
     return (
         <header
             className={cn(styles.root, 'header-background', {

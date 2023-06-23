@@ -231,14 +231,7 @@
     }
 
     &.parallax {
-        font-size: 100%; //70%
-
-        /*         @include breakpoints.md-min {
-            font-size: 80%;
-        }
-
-        @include breakpoints.lg-min {
-        } */
+        font-size: 100%;
 
         margin-top: 0.75em;
 
@@ -247,7 +240,6 @@
             margin-top: 0.7058823529em;
             margin-bottom: 0.4705882353em;
             line-height: 1.1764705882em;
-            font-weight: normal;
         }
 
         .sh {

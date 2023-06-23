@@ -37,6 +37,10 @@
             flex-basis: auto;
             align-items: center;
 
+            * {
+                transition: all 0.2s cubic-bezier(0.77, 0, 0.175, 1);
+            }
+
             @include breakpoints.lg-min {
                 padding: 0 0.5rem;
             }
@@ -46,25 +50,16 @@
                 height: 100%;
 
                 img {
-                    max-width: 6rem;
+                    max-height: 6rem;
                     height: auto;
-                    transition: all 0.3s ease-in-out;
+                    transition: all 0.2s linear;
+                    width: auto;
 
                     @include breakpoints.lg-min {
-                        //max-width: 13rem;
-                        max-width: 8.75rem;
+                        max-height: 8.75rem;
                     }
                 }
             }
-            /*             @include breakpoints.lg-min {
-                &.one-logo .logo-item img {
-                    max-width: 13rem;
-                }
-
-                &.two-logos .logo-item img {
-                    max-width: 10rem;
-                }
-            } */
 
             &.desktop {
                 display: none;
@@ -98,7 +93,7 @@
             padding: 0.5rem;
 
             img {
-                max-width: 6rem !important;
+                max-height: 3.75rem !important;
                 width: 100%;
             }
         }
