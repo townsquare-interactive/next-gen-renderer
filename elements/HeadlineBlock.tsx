@@ -100,7 +100,17 @@ const Heading = (props: HeadingProps) => {
                     (!useAccentColor || modType === 'testimonials_1') &&
                     modType != 'parallax' &&
                     modType != 'gallery' &&
-                    modType != 'thumbnail',
+                    modType != 'thumbnail' &&
+                    textType === 'hd',
+                ['txt-color-sh']:
+                    !isBeaconHero &&
+                    modType != 'photo_grid' &&
+                    modType != 'banner' &&
+                    (!useAccentColor || modType === 'testimonials_1') &&
+                    modType != 'parallax' &&
+                    modType != 'gallery' &&
+                    modType != 'thumbnail' &&
+                    textType === 'sh',
                 ['testimonial-txt-color']: modType === 'testimonials_1' && well,
 
                 ['txt-font']: textType === 'sh',

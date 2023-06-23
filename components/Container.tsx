@@ -25,7 +25,7 @@ export const Container = (props: ContainerProps) => {
             <PageHead page={page} siteData={siteData} />
             <ContainerLayout siteData={siteData} themeStyles={themeStyles} cName={page.data.slug}>
                 {page.data && (
-                    <div className={cn(styles.root, 'content-background', 'container')}>
+                    <div className={cn(styles.root, 'container')}>
                         <div className={styles.featured}>
                             <ModuleRenderer config={page.data.modules[0]} themeStyles={themeStyles} cmsUrl={cmsUrl} />
                         </div>

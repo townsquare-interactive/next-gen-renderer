@@ -22,12 +22,20 @@ const ContactLink = ({ cname, link, icon, content, setContactModal, type, showCo
         return (
             <>
                 {type === 'bar' && cname === 'email'}
-                <li className={cn(styles[`${cname}`], styles.icon, styles[`${type}`])}>
-                    <a href={link} aria-label={cname} className={cn(!showContactBox ? 'social-icon' : 'box-links')} target="_blank" rel="noopener noreferrer">
-                        <FontAwesomeIcon icon={icon} />
-                        {content}
-                    </a>
-                </li>
+                {link && (
+                    <li className={cn(styles[`${cname}`], styles.icon, styles[`${type}`])}>
+                        <a
+                            href={link}
+                            aria-label={cname}
+                            className={cn(!showContactBox ? 'social-icon' : 'box-links')}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <FontAwesomeIcon icon={icon} />
+                            {content}
+                        </a>
+                    </li>
+                )}
             </>
         )
     }

@@ -12,6 +12,8 @@ import { Fragment } from 'react'
 const ContainerFooter = (props: ContainerFooterProps) => {
     const { siteData, navSwitch } = props
 
+    console.log(siteData.cmsNav)
+
     return (
         <footer className={cn(styles.root, 'footer')}>
             <div className={styles.wrapper}>
@@ -42,18 +44,17 @@ const ContainerFooter = (props: ContainerFooterProps) => {
                             {siteData.contact.address?.state && `${siteData.contact.address.state} ,`}
                             {siteData.contact.address?.zip && `${siteData.contact.address.zip} ,`}
                         </span>
-                        {/*  {siteData.contact.phone.length != 0 && siteData.contact.phone[0].number && (
-                            <span className={styles.phone}> {siteData.contact.phone[0].number}</span>
-                        )} */}
                     </address>
                 </div>
                 <div className={styles['bottom']}>
                     <div className={styles['social-block']}>
                         <SocialLinks siteData={siteData} modType="footer" />
                     </div>
-                    <div className={styles['nav-block']}>
-                        <NavToggle navSwitch={navSwitch} modType="footer" />
-                    </div>
+                    {siteData.cmsNav && siteData.cmsNav.length != 0 && (
+                        <div className={styles['nav-block']}>
+                            <NavToggle navSwitch={navSwitch} modType="footer" />
+                        </div>
+                    )}
                 </div>
             </div>
         </footer>

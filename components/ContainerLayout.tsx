@@ -30,7 +30,7 @@ export default function Layout(props: LayoutProps) {
                 {twoPhones && <ContactModal siteData={siteData} showContactModal={showContactModal} setContactModal={setContactModal} />}
                 <ContainerHeader siteData={siteData} navSwitch={navSwitch} setContactModal={setContactModal} />
 
-                <main>{children}</main>
+                <main className={'content-background'}>{children}</main>
 
                 <ContainerFooter siteData={siteData} navSwitch={navSwitch} />
             </div>

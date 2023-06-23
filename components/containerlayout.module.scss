@@ -5,6 +5,9 @@
 
 .root {
     font-size: 16px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 
     * {
         box-sizing: border-box;
@@ -12,5 +15,10 @@
 
     a {
         cursor: pointer;
+    }
+
+    main {
+        flex: 1 0 auto;
+        position: relative;
     }
 }
