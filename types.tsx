@@ -4,51 +4,35 @@ import { ReactChild, ReactElement, ReactNode } from 'react'
 
 export interface ThemeStyles {
     logoColor: string
-
     headingColor: string
     subHeadingColor: string
     textColor: string
     linkColor: string
     linkHover: string
-
-    //ad
     btnText: string
-
     btnBackground: string
     textColorAccent: string
-
-    //addd
     heroSubheadline: string
     heroText: string
     heroBtnText: string
     heroBtnBackground: string
     heroLink: string
     heroLinkHover: string
-
     captionText: string
     captionBackground: string
     NavText: string
     navHover: string
     navCurrent: string
-    //add
     backgroundMain: string
-
     bckdContent: string
-    // headerBackground: cmsColors.color_23.value,
     headerBackground: string
-
     BckdHeaderSocial: string
     accentBackgroundColor: string
-    //add
     backgroundHero: string
     footerBackground: string
     footerText: string
-    //add
     footerLink: string
     promoText: string
-
-    //accentColor2: cmsColors.color_32.value,
-
     promoColor: string
     promoColor2: string
     promoColor3: string
@@ -67,23 +51,6 @@ export interface PageHeadProps {
     page: CMSPage
     pageType?: 'slug' | 'index'
 }
-
-//temp maybe not needed
-/* export interface CMSGlobal {
-    vars: any
-    forms2: any
-    design: any
-    logos: any
-    pages: any
-    forms: any
-    navigation: any
-    seo: any
-    images: any
-    config: any
-    blogging: any
-    composites: any
-}
- */
 
 export interface LayoutProps {
     children: ReactNode
@@ -111,7 +78,7 @@ export interface GlobalData {
     //themeStyles: ThemeStyles
     layout?: number
     modules?: GlobalModule[]
-    seo?: SeoData
+    seo?: GlobalSEO
     url?: string
     email?: string
     social: SocialItem[]
@@ -202,12 +169,6 @@ export interface ContactLinks {
     content: string
     active: boolean
 }
-
-/* interface ContactIcons {
-    phone: IconProp
-    email: IconProp
-    location: IconProp
-} */
 
 export interface Logo {
     show: number
@@ -366,7 +327,7 @@ export interface CMSPageData {
     modules: ModuleData[][]
     type?: string
     layout?: number
-    columns?: number | string
+    columns?: number
     JS?: string | null
     head_script: string | null
     hideTitle: number
@@ -418,7 +379,7 @@ export interface ModuleData {
     themeStyles: ThemeStyles
     type?: string
     layout?: number
-    columns?: number | string
+    columns?: number
     JS?: string | null
     head_script: string | null
     hideTitle: number
@@ -433,7 +394,7 @@ export interface PageProps {
     themeStyles?: ThemeStyles
     type?: string
     layout?: number
-    columns?: number | string
+    columns?: number
     JS?: string | null
     head_script: string | null
     hideTitle: number
@@ -456,7 +417,7 @@ export interface ModuleProps2 {
     title: string
     hideTitle?: number
     export: number
-    columns: number | string
+    columns: number
     lightbox: string
     blockSwitch1: number
     scale_to_fit: string
@@ -537,7 +498,7 @@ export interface ReactScrollProps {
     imgsize: string
     cmsUrl?: string
     children: ReactChild
-    columns: string | number
+    columns: number
 }
 
 export interface DescBlockProps {
@@ -570,7 +531,7 @@ export interface ModuleProps {
     title: string
     hideTitle?: number
     export: number
-    columns: number | string
+    columns: number
     lightbox: string
     blockSwitch1: number
     scale_to_fit: string
@@ -624,7 +585,7 @@ export interface PhotoGridProps {
     title: string
     hideTitle?: number
     export: number
-    columns: number | string
+    columns: number
     lightbox: string
     blockSwitch1: number
     scale_to_fit: string
@@ -670,7 +631,7 @@ export interface TheListItemProps {
     textColorHeading: { color: string }
     imgsize: string
     type: string
-    columns: number | string
+    columns: number
     index: number
 }
 
@@ -695,7 +656,7 @@ export interface ItemWrapProps {
     themeStyles: ThemeStyles
     isFeatured?: string
     type: string
-    columns: number | string
+    columns: number
     modId: string
     cmsUrl?: string
     align?: string
@@ -713,7 +674,7 @@ export interface LinkWrapProps {
 
 export interface HeadlineBlockProps {
     item: ArticleItems
-    columns: number | string
+    columns: number
     well: string | number
     isBeaconHero?: boolean
     modType?: string
@@ -739,7 +700,7 @@ export interface ModuleItemProps {
     themeStyles: ThemeStyles
     imgsize: string
     type: string
-    columns: number | string
+    columns: number
     modId: string
     cmsUrl?: string
     useThumbnail?: boolean
@@ -761,7 +722,7 @@ export interface PhotoItemProps {
     themeStyles: ThemeStyles
     imgsize: string
     type: string
-    columns: number | string
+    columns: number
     modId: string
     cmsUrl?: string
 }
@@ -831,7 +792,7 @@ export interface ImageBlockProps {
     cmsUrl?: string
     modType?: string
     nextImageSizes?: string
-    columns: number | string
+    columns: number
 }
 
 export interface ImageProps {
@@ -844,7 +805,7 @@ export interface ImageProps {
     modType: string
     opacity?: number
     nextImageSizes?: string
-    columns: number | string
+    columns: number
     imageType?: string
 }
 
@@ -899,7 +860,7 @@ export interface ButtonWrapProps {
     modId?: string
     type: string
     align?: string
-    columns?: number | string
+    columns?: number
     buttonList: ButtonListProps[]
     promoColor?: string
     itemCount?: number
@@ -1263,6 +1224,16 @@ export interface SeoData {
     descr?: string
     imageOverride?: any
     selectedImage?: string
+}
+
+export interface GlobalSEO {
+    global: {
+        aiosp_page_title_format: string
+        aiosp_description_format: string
+        aiosp_404_title_format: string
+        aiosp_home_title: string
+        aiosp_home_description: string
+    }
 }
 
 export interface TheListItemImageProps {

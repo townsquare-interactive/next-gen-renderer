@@ -42,8 +42,8 @@ const Testimonials = (props: ModuleProps) => {
         infinite: true,
         speed: 1200,
         //speed: settings?.restartDelay || 2500,
-        //slidesToShow: 3,
-        slidesToScroll: 1,
+        slidesToShow: columns,
+        // slidesToScroll: 1,
         //fade: settings?.effect === 'fade' ? true : false,
         // autoplay: settings?.autoplay,
         autoplay: false,
@@ -53,28 +53,56 @@ const Testimonials = (props: ModuleProps) => {
         prevArrow: <CarouselArrow type="prev" />,
         nextArrow: <CarouselArrow type="next" />,
 
-        responsive: [
-            {
-                breakpoint: 99999,
-                settings: {
-                    slidesToShow: 3,
-                },
-            },
-            {
-                breakpoint: 1207,
-                settings: {
-                    slidesToShow: 2,
-                },
-            },
-            {
-                breakpoint: 850,
-                settings: {
-                    slidesToShow: 1,
-                    //dots move based on item height
-                    adaptiveHeight: true,
-                },
-            },
-        ],
+        responsive:
+            columns >= 3
+                ? [
+                      {
+                          breakpoint: 99999,
+                          settings: {
+                              slidesToShow: 3,
+                          },
+                      },
+                      {
+                          breakpoint: 1207,
+                          settings: {
+                              slidesToShow: 2,
+                          },
+                      },
+                      {
+                          breakpoint: 850,
+                          settings: {
+                              slidesToShow: 1,
+                              //dots move based on item height
+                              adaptiveHeight: true,
+                          },
+                      },
+                  ]
+                : columns === 2
+                ? [
+                      {
+                          breakpoint: 99999,
+                          settings: {
+                              slidesToShow: 2,
+                          },
+                      },
+
+                      {
+                          breakpoint: 850,
+                          settings: {
+                              slidesToShow: 1,
+                              //dots move based on item height
+                              adaptiveHeight: true,
+                          },
+                      },
+                  ]
+                : [
+                      {
+                          breakpoint: 99999,
+                          settings: {
+                              slidesToShow: 1,
+                          },
+                      },
+                  ],
     }
 
     if (disabled === 'disabled') {
