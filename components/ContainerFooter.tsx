@@ -12,8 +12,6 @@ import { Fragment } from 'react'
 const ContainerFooter = (props: ContainerFooterProps) => {
     const { siteData, navSwitch } = props
 
-    console.log(siteData.cmsNav)
-
     return (
         <footer className={cn(styles.root, 'footer')}>
             <div className={styles.wrapper}>
