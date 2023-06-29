@@ -9,6 +9,8 @@
     @include utils.wrapper-size(0);
 
     .wrapper {
+        padding-top: 3rem;
+
         .item {
             margin-bottom: 2rem;
             width: variables.$full-width;
@@ -102,14 +104,6 @@
     }
 
     @container module (min-width:481px) {
-        .wrapper {
-            padding-top: 3rem;
-        }
-
-        &.thin .wrapper {
-            padding-top: 1rem;
-        }
-
         .nHero {
             width: variables.$ten-12;
         }
@@ -130,12 +124,22 @@
             align-items: center;
         }
     }
+
+    &.thin .wrapper {
+        padding-top: 1rem;
+    }
 }
 
 .columns .root {
     @include utils.column-mod;
     .item {
         width: 100% !important;
+    }
+
+    @media (max-width: breakpoints.$sm-screen) {
+        .wrapper {
+            padding-top: 0;
+        }
     }
 }
 

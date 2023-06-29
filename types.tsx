@@ -349,7 +349,7 @@ export interface LayoutComponentAttributes {
     addressData?: AddressData
     siteName?: string
     phoneNumber?: string
-    disabled?: string
+    disabled?: string | boolean
 
     navSwitch?: () => void
     /**Boolean that determines if navbar being shown or hidden*/
@@ -424,7 +424,7 @@ export interface ModuleProps2 {
     /**Global styles for site*/
     themeStyles: ThemeStyles
     /**Check to see if element is hidden */
-    disabled?: string
+    disabled?: string | boolean
     cmsUrl?: string
     contentSpacing?: string
 }
@@ -454,14 +454,14 @@ export interface ArticleItems {
     actionlbl2?: string
     newwindow2?: number | null | string
     align: string
-    isFeatured: string
+    isFeatured: string | boolean
     isPlugin: string
     imageSize?: any
     pagelinkId?: any
     pagelink2Id?: any
     headerTag: string
     plugin: string
-    disabled: string
+    disabled: string | boolean
     img_alt_tag?: string
     caption_tag?: string
     headSize?: string
@@ -538,7 +538,7 @@ export interface ModuleProps {
     /**Global styles for site*/
     themeStyles: ThemeStyles
     /**Check to see if element is hidden */
-    disabled?: string
+    disabled?: string | boolean
     cmsUrl?: string
     contentSpacing?: string
     columnLocation: number
@@ -654,7 +654,7 @@ export interface ItemWrapProps {
     well: string | number
     item: ArticleItems
     themeStyles: ThemeStyles
-    isFeatured?: string
+    isFeatured?: string | boolean
     type: string
     columns: number
     modId: string

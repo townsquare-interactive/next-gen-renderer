@@ -105,7 +105,7 @@ const Testimonials = (props: ModuleProps) => {
                   ],
     }
 
-    if (disabled === 'disabled') {
+    if (disabled === 'disabled' || disabled === true) {
         return <></>
     } else {
         return (
@@ -143,7 +143,7 @@ const Testimonials = (props: ModuleProps) => {
                     {!useCarousel ? (
                         items.map((item, index) => (
                             <Fragment key={index}>
-                                {item.disabled != 'disabled' ? (
+                                {item.disabled != true ? (
                                     <ModuleItem
                                         item={item}
                                         well={well}
@@ -170,7 +170,7 @@ const Testimonials = (props: ModuleProps) => {
                             <Carousel settings={carouselSettings} modType={type}>
                                 {items.map((item, index: number) => (
                                     <Fragment key={index}>
-                                        {item.disabled != 'disabled' ? (
+                                        {item.disabled != true ? (
                                             <ModuleItem
                                                 item={item}
                                                 well={well}
@@ -231,11 +231,11 @@ const ModuleItem = (props: TestimonialItemProps) => {
                 styles['item'],
                 'item',
                 {
-                    [styles.hero]: item.isFeatured === 'active',
-                    ['hero']: item.isFeatured === 'active',
+                    [styles.hero]: item.isFeatured === 'active' || item.isFeatured === true,
+                    ['hero']: item.isFeatured === 'active' || item.isFeatured === true,
                     [styles.nHero]: !item.isFeatured,
                     ['border-background']: well == '1' && item.isFeatured != 'active',
-                    ['hero-background']: well == '1' && item.isFeatured === 'active',
+                    ['hero-background']: well == '1' && (item.isFeatured === 'active' || item.isFeatured === true),
                     ['round']: item.borderType === 'round',
                     ['is-wrap-link']: item.isWrapLink,
                     ['accent-txt']: item.useAccentColor,
@@ -249,7 +249,7 @@ const ModuleItem = (props: TestimonialItemProps) => {
             {item.isWrapLink && <LinkWrap item={item} modType={'article'}></LinkWrap>}
             <div
                 className={cn(styles['item-wrap'], {
-                    ['hero-background']: item.isFeatured === 'active' && type === 'article',
+                    ['hero-background']: (item.isFeatured === 'active' || item.isFeatured === true) && type === 'article',
                 })}
                 aria-label={item.headline || 'item-wrap'}
                 ref={itemWrapRef}

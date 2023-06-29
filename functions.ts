@@ -37,9 +37,15 @@ export function getDomain(cms = false) {
 
 //Determines url for grabbing images
 export function domainImage(url: string, cms = false, cmsSiteUrl = '', type = '') {
+    const useStrapi = process.env.NEXT_PUBLIC_CMS_CLIENT === 'strapi' ? true : false
     if (cms == true) {
-        let imageUrl = 'http://' + (cmsSiteUrl || cmsUrl + '.production.townsquareinteractive.com') + url
-        return encodeURI(imageUrl)
+        if (useStrapi === true) {
+            let imageUrl = 'http://127.0.0.1:1337' + url
+            return imageUrl
+        } else {
+            let imageUrl = 'http://' + (cmsSiteUrl || cmsUrl + '.production.townsquareinteractive.com') + url
+            return encodeURI(imageUrl)
+        }
     } /* else {
         const assetsApi = process.env.NEXT_PUBLIC_API_URL_ASSETS || bucketUrl
         let imageUrl = process.env.NEXT_PUBLIC_URL_ENV ? envCheck(assetsApi) + '/assets' + url : assetsApi + '/' + localUrl + '/assets' + url
@@ -195,7 +201,7 @@ export async function getHomePage() {
 }
 
 export function decideHeadTag(columns: number | string, tag: string, headerTag: string) {
-    if (headerTag === '1' && tag === 'hd') {
+    if ((headerTag === '1' || headerTag === 'h1') && tag === 'hd') {
         return 'h1'
     } else if (columns === 4) {
         return 'h5'

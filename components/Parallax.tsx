@@ -16,7 +16,7 @@ const choseLax: string = 'scroll'
 const Parallax = (props: ModuleProps) => {
     const { columns = 1, type, well, imgsize, modId, items, themeStyles, cmsUrl, disabled, customClassName, modCount, isSingleColumn } = props
 
-    if (disabled === 'disabled') {
+    if (disabled === 'disabled' || disabled === true) {
         return <></>
     } else {
         return (
@@ -36,7 +36,7 @@ const Parallax = (props: ModuleProps) => {
                     <div className={cn(styles.wrapper, 'wrapper')}>
                         {items.map((item, index: number) => (
                             <Fragment key={index}>
-                                {item.disabled != 'disabled' ? (
+                                {item.disabled != true ? (
                                     <ModuleItem
                                         item={item}
                                         well={well}
@@ -71,7 +71,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                 'item',
                 styles[`${item.align}`],
                 {
-                    [styles.hero]: item.isFeatured === 'active',
+                    [styles.hero]: item.isFeatured === 'active' || item.isFeatured === true,
                     [styles.nHero]: !item.isFeatured,
                     [styles.yLk]: (item.pagelink || item.weblink || item.pagelink2 || item.weblink2) && !item.twoButtons,
                     [styles.yImg]: item.image,

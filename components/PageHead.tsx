@@ -5,8 +5,13 @@ export default function PageHead(props: PageHeadProps) {
     const { siteData, page, pageType } = props
     const cmsUrl = siteData.cmsUrl
 
-    const pageTitle = pageType === 'index' ? siteData.seo?.global?.aiosp_home_title : page.seo?.title || page.data.slug
-    const pageDesc = pageType === 'index' ? siteData.seo?.global?.aiosp_home_description : page.seo?.descr || ''
+    let pageTitle = pageType === 'index' ? siteData.seo?.global?.aiosp_home_title : page.seo?.title || page.data.slug
+    let pageDesc = pageType === 'index' ? siteData.seo?.global?.aiosp_home_description : page.seo?.descr || ''
+
+    if (process.env.NEXT_PUBLIC_CMS_CLIENT === 'strapi') {
+        pageTitle = page.seo?.title || page.data.slug
+        pageDesc = page.seo?.descr || ''
+    }
 
     return (
         <>

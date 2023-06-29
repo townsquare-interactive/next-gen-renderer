@@ -39,7 +39,7 @@ export const PhotoGrid = (props: PhotoGridProps) => {
             <div className={styles.wrapper}>
                 {items.map((item, index) => (
                     <Fragment key={index}>
-                        {item.disabled === 'disabled' ? (
+                        {item.disabled ? (
                             <></>
                         ) : (
                             <PhotoItem
@@ -72,7 +72,7 @@ const PhotoItem = (props: PhotoItemProps) => {
                 styles[`${item.align}`],
                 'item',
                 {
-                    [styles.hero]: item.isFeatured === 'active',
+                    [styles.hero]: item.isFeatured === 'active' || item.isFeatured === true,
                     [styles.nHero]: !item.isFeatured,
                     [styles.yDsc]: item.desc,
                     [styles.nImg]: !item.image,

@@ -26,12 +26,12 @@ export const HeadlineBlock = (props: HeadlineBlockProps) => {
                     [styles.hasDsc]: !noDesc,
                     [styles.not_well]: !well,
                     [styles.well]: well,
-                    [styles.hero]: item.isFeatured === 'active',
+                    [styles.hero]: item.isFeatured === 'active' || item.isFeatured === true,
                     [styles.yImg]: item.image,
                 }
             )}
             style={
-                modType === 'testimonials_1' && item.isFeatured === 'active' && well
+                modType === 'testimonials_1' && (item.isFeatured === 'active' || item.isFeatured === true) && well
                     ? { backgroundColor: 'var(--hero-btn-background)' }
                     : modType === 'testimonials_1' && well
                     ? { backgroundColor: '#fff' }

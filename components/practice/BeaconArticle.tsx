@@ -83,14 +83,14 @@ const BeaconArticle = (props: ModuleProps) => {
                 </h2>
             )}
             {props.items.map((item, index) =>
-                item.disabled != 'disabled' ? (
+                item.disabled != true ? (
                     <div
                         className={cn(
                             styles['the_list_item'],
                             {
                                 [styles.the_list_item_right]: item.align === 'right',
                                 [styles.the_list_item_left]: item.align === 'left',
-                                [styles.hero]: item.isFeatured === 'active',
+                                [styles.hero]: item.isFeatured === 'active' || item.isFeatured === true,
                                 [styles.not_hero]: !item.isFeatured,
                                 [styles.yes_desc]: item.desc,
                                 [styles.no_desc]: !item.desc,

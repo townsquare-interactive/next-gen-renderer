@@ -28,7 +28,7 @@ const Card = (props: ModuleProps) => {
         isSingleColumn,
     } = props
 
-    if (disabled === 'disabled') {
+    if (disabled === 'disabled' || disabled === true) {
         return <></>
     } else {
         return (
@@ -47,7 +47,7 @@ const Card = (props: ModuleProps) => {
                 <div className={cn(styles.wrapper, 'wrapper')}>
                     {items.map((item, index) => (
                         <Fragment key={index}>
-                            {item.disabled != 'disabled' ? (
+                            {item.disabled != true ? (
                                 <ModuleItem
                                     item={item}
                                     well={well}
@@ -81,8 +81,8 @@ const ModuleItem = (props: ModuleItemProps) => {
                 styles[`${item.align}`],
                 'item',
                 {
-                    [styles.hero]: item.isFeatured === 'active',
-                    ['hero']: item.isFeatured === 'active',
+                    [styles.hero]: item.isFeatured === 'active' || item.isFeatured === true,
+                    ['hero']: item.isFeatured === 'active' || item.isFeatured === true,
                     [styles.nHero]: !item.isFeatured,
                     [styles.yDsc]: item.desc,
                     [styles.nDsc]: !item.desc,
@@ -92,7 +92,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                     [styles.nHds]: !item.headline || !item.subheader,
                     [styles.yLk]: item.isWrapLink,
                     ['border-background']: item.isFeatured != 'active',
-                    ['hero-background']: item.isFeatured === 'active',
+                    ['hero-background']: item.isFeatured === 'active' || item.isFeatured === true,
                     ['round']: item.borderType === 'round',
                     ['is-wrap-link']: item.isWrapLink,
                 },
@@ -122,7 +122,7 @@ const ItemWrap = (props: ItemWrapProps) => {
                             isBeaconHero={item.isBeaconHero}
                             modType={type}
                             noDesc={!item.desc}
-                            useAccentColor={item.isFeatured === 'active' ? true : item.useAccentColor || false}
+                            useAccentColor={item.isFeatured === 'active' || item.isFeatured === true ? true : item.useAccentColor || false}
                         />
                     )}
 

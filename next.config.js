@@ -19,6 +19,10 @@ module.exports = withBundleAnalyzer({
                 protocol: 'http',
                 hostname: '**.townsquareinteractive.com',
             },
+            {
+                protocol: 'http',
+                hostname: '*',
+            },
         ],
     },
 

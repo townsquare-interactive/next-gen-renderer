@@ -12,7 +12,7 @@ import { ImageElement } from 'elements/ImageElement'
 const Banner = (props: ModuleProps) => {
     const { columns = 1, type, well, imgsize, modId, items, themeStyles, cmsUrl, disabled, customClassName } = props
 
-    if (disabled === 'disabled') {
+    if (disabled === 'disabled' || disabled === true) {
         return <></>
     } else {
         return (
@@ -27,7 +27,7 @@ const Banner = (props: ModuleProps) => {
                 <div className={styles.wrapper}>
                     {items.map((item, index) => (
                         <Fragment key={index}>
-                            {item.disabled != 'disabled' ? (
+                            {item.disabled != true ? (
                                 <ModuleItem
                                     item={item}
                                     well={well}
@@ -54,6 +54,8 @@ const Banner = (props: ModuleProps) => {
 const ModuleItem = (props: ModuleItemProps) => {
     const { item, modId, itemIndex, cmsUrl, themeStyles, type, imgsize, columns, well } = props
 
+    console.log(item.itemStyle)
+
     return (
         <article
             className={cn(
@@ -61,7 +63,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                 styles[`${item.align}`],
                 'item',
                 {
-                    [styles.hero]: item.isFeatured === 'active',
+                    [styles.hero]: item.isFeatured === 'active' || item.isFeatured === true,
                     [styles.nHero]: !item.isFeatured,
                     [styles.yLk]: (item.pagelink || item.weblink || item.pagelink2 || item.weblink2) && !item.twoButtons,
                     [styles.yImg]: item.image,

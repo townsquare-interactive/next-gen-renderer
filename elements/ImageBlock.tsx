@@ -45,7 +45,7 @@ export const ImageBlock = (props: ImageBlockProps) => {
                     </div>
                 )}
                 {item.caption_tag && (
-                    <figcaption className={cn(styles.caption, 'accent-txt', { ['caption-background']: !modType.includes('article') })}>
+                    <figcaption className={cn(styles.caption, 'caption-txt {', { ['caption-background']: !modType.includes('article') })}>
                         {item.caption_tag}
                     </figcaption>
                 )}

@@ -67,7 +67,7 @@ const CharlotteArticle = (props: ModuleProps) => {
                     </h2>
                 )}
                 {props.items.map((item, index) =>
-                    item.disabled != 'disabled' ? (
+                    item.disabled != true ? (
                         <TheListItem
                             item={item}
                             well={props.well}
@@ -158,7 +158,7 @@ const TheListItem = (props: TheListItemProps) => {
                 {
                     [styles.right]: item.align === 'right',
                     [styles.left]: item.align === 'left',
-                    [styles.yHero]: item.isFeatured === 'active',
+                    [styles.yHero]: item.isFeatured === 'active' || item.isFeatured === true,
                     [styles.nHero]: !item.isFeatured,
                     [styles.yDsc]: item.desc,
                     [styles.nDsc]: !item.desc,

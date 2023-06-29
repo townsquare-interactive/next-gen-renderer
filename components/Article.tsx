@@ -28,7 +28,7 @@ const Article = (props: ModuleProps) => {
         isSingleColumn,
     } = props
 
-    if (disabled === 'disabled') {
+    if (disabled === 'disabled' || disabled === true) {
         return <></>
     } else {
         return (
@@ -59,7 +59,7 @@ const Article = (props: ModuleProps) => {
                 <div className={cn(styles.wrapper, 'wrapper')}>
                     {items.map((item, index) => (
                         <Fragment key={index}>
-                            {item.disabled != 'disabled' ? (
+                            {item.disabled != true ? (
                                 <ModuleItem
                                     item={item}
                                     well={well}
@@ -93,8 +93,8 @@ const ModuleItem = (props: ModuleItemProps) => {
                 styles[`${item.align}`],
                 'item',
                 {
-                    [styles.hero]: item.isFeatured === 'active',
-                    hero: item.isFeatured === 'active',
+                    [styles.hero]: item.isFeatured === 'active' || item.isFeatured === true,
+                    hero: item.isFeatured === 'active' || item.isFeatured === true,
                     [styles.nHero]: !item.isFeatured,
                     [styles.yDsc]: item.desc,
                     [styles.nDsc]: !item.desc,
@@ -116,7 +116,7 @@ const ModuleItem = (props: ModuleItemProps) => {
             {item.isWrapLink && <LinkWrap item={item} modType={'article'}></LinkWrap>}
             <div
                 className={cn(styles['item-wrap'], {
-                    ['hero-background']: item.isFeatured === 'active' && type === 'article',
+                    ['hero-background']: (item.isFeatured === 'active' || item.isFeatured === true) && type === 'article',
                 })}
                 aria-label={item.headline || 'item-wrap'}
             >

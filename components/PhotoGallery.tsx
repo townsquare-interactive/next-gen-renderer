@@ -45,7 +45,7 @@ const PhotoGallery = (props: ModuleProps) => {
         }
     }
 
-    if (disabled === 'disabled') {
+    if (disabled === 'disabled' || disabled === true) {
         return <></>
     } else {
         return (
@@ -70,7 +70,7 @@ const PhotoGallery = (props: ModuleProps) => {
                         <Carousel settings={carouselSettings} modItems={items} cmsUrl={cmsUrl} useThumbnail={useThumbnail} modType={type}>
                             {newItems.map((item, index: number) => (
                                 <Fragment key={index}>
-                                    {item.disabled != 'disabled' && (
+                                    {item.disabled != true && (
                                         <ModuleItem
                                             item={item}
                                             well={well}
@@ -105,8 +105,8 @@ const ModuleItem = (props: ModuleItemProps) => {
                 'item',
                 styles[`${item.align}`],
                 {
-                    [styles.hero]: item.isFeatured === 'active',
-                    ['hero']: item.isFeatured === 'active',
+                    [styles.hero]: item.isFeatured === 'active' || item.isFeatured === true,
+                    ['hero']: item.isFeatured === 'active' || item.isFeatured === true,
                     [styles.nHero]: !item.isFeatured,
                     [styles.yLk]: (item.pagelink || item.weblink || item.pagelink2 || item.weblink2) && !item.twoButtons,
                     [styles.yImg]: item.image,
@@ -139,7 +139,7 @@ const ItemWrap = (props: ItemWrapProps) => {
     const { item, well, themeStyles, modId, columns, cmsUrl, imgsize, useThumbnail } = props
     const [isCaptionVisible, toggleCaption] = useState(useThumbnail ? false : true)
 
-    const forceAccentColor = item.isFeatured === 'active' ? well == '1' && false : true
+    const forceAccentColor = item.isFeatured === 'active' || item.isFeatured === true ? well == '1' && false : true
 
     return (
         <div
