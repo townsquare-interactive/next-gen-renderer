@@ -16,8 +16,8 @@ const Page = ({ params }: { params: { slug: string } }) => {
     const { CMSLayout } = use(generateLayout())
     const { page } = use(getPageData(params))
 
-    const { strapiPages } = use(getStrapiPages())
-    console.log('strapi time', strapiPages.data[0].attributes)
+    /*  const { strapiPages } = use(getStrapiPages())
+    console.log('strapi time', strapiPages.data[0].attributes) */
 
     /*     for (let x = 0; x < strapiPages.data.length; x++) {
         console.log('page:', strapiPages.data[x])
