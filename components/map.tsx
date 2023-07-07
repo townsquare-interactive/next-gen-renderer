@@ -4,7 +4,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import { LatLngTuple } from 'leaflet'
 import Link from 'next/link'
 import L from 'leaflet'
-import dynamic from 'next/dynamic'
+//import dynamic from 'next/dynamic'
 
 const marker = 'https://townsquareinteractive.s3.amazonaws.com/global-assets/placeholder.png'
 const myIcon = new L.Icon({

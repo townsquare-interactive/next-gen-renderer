@@ -491,6 +491,7 @@ export interface ArticleItems {
     itemStyle?: any
     nextImageSizes?: string
     isFeatureButton?: boolean
+    captionStyle?: { background: string }
 }
 
 export interface ReactScrollProps {

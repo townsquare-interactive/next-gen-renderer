@@ -140,6 +140,7 @@ const ItemWrap = (props: ItemWrapProps) => {
     const [isCaptionVisible, toggleCaption] = useState(useThumbnail ? false : true)
 
     const forceAccentColor = item.isFeatured === 'active' || item.isFeatured === true ? well == '1' && false : true
+    console.log('cappy stylesss', item.captionStyle)
 
     return (
         <div
@@ -162,7 +163,7 @@ const ItemWrap = (props: ItemWrapProps) => {
                     [styles['cap-bckg']]: !useThumbnail && item.modSwitch1 != 1 && item.image && (item.desc || item.headline || item.visibleButton),
                     [styles['hidden']]: !isCaptionVisible,
                 })}
-                style={item.modOne ? { height: item.modOne } : {}}
+                style={item.captionStyle ? item.captionStyle : item.modOne ? { height: item.modOne } : {}}
             >
                 <div
                     className={cn(styles.content, 'content', {

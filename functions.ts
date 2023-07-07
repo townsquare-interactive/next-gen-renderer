@@ -40,7 +40,9 @@ export function domainImage(url: string, cms = false, cmsSiteUrl = '', type = ''
     const useStrapi = process.env.NEXT_PUBLIC_CMS_CLIENT === 'strapi' ? true : false
     if (cms == true) {
         if (useStrapi === true) {
-            let imageUrl = 'http://127.0.0.1:1337' + url
+            //http://127.0.0.1:1337'
+            //let imageUrl = process.env.NEXT_PUBLIC_STRAPI_IMAGE_URL + url
+            let imageUrl = url
             return imageUrl
         } else {
             let imageUrl = 'http://' + (cmsSiteUrl || cmsUrl + '.production.townsquareinteractive.com') + url
