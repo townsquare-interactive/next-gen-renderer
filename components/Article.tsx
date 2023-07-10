@@ -86,6 +86,8 @@ const Article = (props: ModuleProps) => {
 const ModuleItem = (props: ModuleItemProps) => {
     const { item, modId, itemIndex, cmsUrl, themeStyles, type, imgsize, columns, well } = props
 
+    console.log(item)
+
     return (
         <article
             className={cn(

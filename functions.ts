@@ -53,8 +53,16 @@ export function domainImage(url: string, cms = false, cmsSiteUrl = '', type = ''
         let imageUrl = process.env.NEXT_PUBLIC_URL_ENV ? envCheck(assetsApi) + '/assets' + url : assetsApi + '/' + localUrl + '/assets' + url
         return encodeURI(imageUrl)
     } */ else if (type === 'favicon') {
-        let imageUrl = bucketUrl + '/' + cmsSiteUrl + assetFolder + url
-        return encodeURI(imageUrl)
+        if (useStrapi === true) {
+            //http://127.0.0.1:1337'
+            //let imageUrl = process.env.NEXT_PUBLIC_STRAPI_IMAGE_URL + url
+            let imageUrl = url
+            return imageUrl
+        } else {
+            let imageUrl = bucketUrl + '/' + cmsSiteUrl + assetFolder + url
+
+            return encodeURI(imageUrl)
+        }
     } else {
         let imageUrl = globalAssets + url
         return encodeURI(imageUrl)

@@ -48,6 +48,18 @@
         }
     }
 
+    &.article_3 .nImg {
+        text-align: left;
+
+        &.right {
+            text-align: right;
+        }
+
+        &.center {
+            text-align: center;
+        }
+    }
+
     @container item (min-width:343px) {
         .item {
             &.nHero:first-of-type {
