@@ -148,6 +148,7 @@ export function capitalize(str: string) {
 }
 
 export const findHomePageSlug = (pageList: any) => {
+    console.log('plist', pageList)
     const homePage = pageList?.pages?.filter((e: any) => e.page_type === 'homepage')
     const homePageSlug = homePage.length != 0 ? homePage[0].slug : pageList.pages[0].slug
     return homePageSlug

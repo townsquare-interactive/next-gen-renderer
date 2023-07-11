@@ -56,7 +56,9 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
                         {siteData.headerOptions?.ctaBtns && <ButtonWrap buttonList={siteData.headerOptions.ctaBtns} type="cta" />}
                     </div>
                 )}
-                <NavToggle navSwitch={navSwitch} desktopBurgerNav={siteData.headerOptions?.desktopBurgerNav} />
+                {siteData.cmsNav && siteData.cmsNav.length != 0 && (
+                    <NavToggle navSwitch={navSwitch} desktopBurgerNav={siteData.headerOptions?.desktopBurgerNav} />
+                )}
             </div>
             <SocialBar siteData={siteData} setContactModal={setContactModal} />
         </header>

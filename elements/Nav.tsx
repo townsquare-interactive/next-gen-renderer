@@ -12,9 +12,9 @@ const Nav = (props: MyNavProps) => {
 
     return (
         <nav className={cn(styles.access, styles[`${navType}`])}>
-            <ul className={cn(styles.menu)}>
-                {cmsNav &&
-                    cmsNav.map((item: NavItem, index: number) => (
+            {cmsNav && (
+                <ul className={cn(styles.menu)}>
+                    {cmsNav.map((item: NavItem, index: number) => (
                         <Fragment key={index}>
                             {item.menu_item_parent == 0 && (
                                 <li>
@@ -44,7 +44,8 @@ const Nav = (props: MyNavProps) => {
                             )}
                         </Fragment>
                     ))}
-            </ul>
+                </ul>
+            )}
         </nav>
     )
 }

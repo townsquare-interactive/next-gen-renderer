@@ -15,13 +15,15 @@ const ContainerFooter = (props: ContainerFooterProps) => {
     return (
         <footer className={cn(styles.root, 'footer')}>
             <div className={styles.wrapper}>
-                <div className={styles.content}>
-                    {siteData.composites?.footer?.modules.items.map((item: CompositeItem, index: number) => (
-                        <div key={index} className={styles.item}>
-                            <WidgetRenderer item={item} siteData={siteData} navSwitch={navSwitch} />
-                        </div>
-                    ))}
-                </div>
+                {process.env.NEXT_PUBLIC_CMS_CLIENT != 'strapi' && (
+                    <div className={styles.content}>
+                        {siteData.composites?.footer?.modules.items.map((item: CompositeItem, index: number) => (
+                            <div key={index} className={styles.item}>
+                                <WidgetRenderer item={item} siteData={siteData} navSwitch={navSwitch} />
+                            </div>
+                        ))}
+                    </div>
+                )}
                 <div className={styles.brand}>
                     {siteData.logos?.footer?.slots && (
                         <div className={cn(styles['logo-block'])}>
