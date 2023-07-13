@@ -54,8 +54,6 @@ const Banner = (props: ModuleProps) => {
 const ModuleItem = (props: ModuleItemProps) => {
     const { item, modId, itemIndex, cmsUrl, themeStyles, type, imgsize, columns, well } = props
 
-    console.log(item.itemStyle)
-
     return (
         <article
             className={cn(

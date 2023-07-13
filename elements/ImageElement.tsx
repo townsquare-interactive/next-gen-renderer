@@ -15,8 +15,6 @@ export const ImageElement = (props: ImageProps) => {
         setHeight(loadedMedia.naturalHeight)
     }
 
-    console.log(imgSrc)
-
     return (
         <>
             {!hideImage &&

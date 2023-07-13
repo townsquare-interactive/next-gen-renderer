@@ -1,0 +1,34 @@
+.root {
+    padding: 0.3rem 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+
+    .anchor {
+        list-style-type: none;
+        text-align: center;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-weight: bold;
+
+        &:last-child {
+            border: none;
+        }
+
+        a {
+            padding: 1rem 1.5rem;
+            border-radius: 2px;
+            background-color: var(--btn-background);
+            color: var(--btn-txt);
+
+            &:focus,
+            &:hover {
+                cursor: pointer;
+                background-color: var(--btn-txt);
+                color: var(--btn-background);
+            }
+        }
+    }
+}

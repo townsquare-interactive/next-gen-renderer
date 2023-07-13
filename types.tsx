@@ -334,6 +334,7 @@ export interface CMSPageData {
     sections: [{ wide: string }, { wide: string }, { wide: string }, { wide: string }, { wide: string }]
     columnStyles: string
     slug: string
+    anchorTags?: any[]
 }
 
 export interface GlobalModule {
@@ -869,6 +870,7 @@ export interface ButtonWrapProps {
     twoButtons?: boolean
     btnStyles?: string
     isFeatureButton?: boolean
+    image?: string
 }
 
 /*--------- Forms ----------------*/

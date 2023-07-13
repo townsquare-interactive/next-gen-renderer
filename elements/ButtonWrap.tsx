@@ -20,6 +20,7 @@ export const ButtonWrap = (props: ButtonWrapProps) => {
         modColor1,
         twoButtons,
         btnStyles,
+        image = '',
         isFeatureButton = false,
     } = props
 
@@ -30,6 +31,7 @@ export const ButtonWrap = (props: ButtonWrapProps) => {
                 [styles['article-all']]: type.includes('article'),
                 [styles['card']]: type.includes('card'),
                 [styles['two-btns']]: twoButtons,
+                [styles['nImg']]: !image,
             })}
         >
             {type != 'cta_banner' && <style>{btnStyles}</style>}

@@ -37,7 +37,6 @@ const ContactFormRoutes = (props: ContactFormRoutesProps) => {
     const { contactFormData, items, title } = props
     const [formMessage, setFormMessage] = useState('')
     const [formSent, setFormSent] = useState(false)
-    console.log(props)
 
     return (
         <>

@@ -12,6 +12,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 const { library } = require('@fortawesome/fontawesome-svg-core')
 import FontLoad from './FontLoad'
+import { Anchors } from 'elements/Anchors'
 
 library.add(fas, fab, far)
 
@@ -23,6 +24,8 @@ export const Container = (props: ContainerProps) => {
         <>
             <PageHead page={page} siteData={siteData} pageType={page.data.slug === 'home' ? 'index' : 'slug'} />
             <ContainerLayout siteData={siteData} themeStyles={themeStyles} cName={page.data.slug}>
+                {page.data.anchorTags && page.data.anchorTags?.length != 0 && <Anchors anchorTags={page.data.anchorTags} />}
+
                 {page.data && (
                     <div className={cn(styles.root, 'container')}>
                         <div className={styles.featured}>
