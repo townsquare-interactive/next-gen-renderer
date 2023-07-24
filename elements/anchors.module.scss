@@ -1,7 +1,18 @@
+@use './styles/breakpoints.scss';
+@use './styles/utils.scss';
+@use './styles/variables.scss';
+
 .root {
-    padding: 0.3rem 1rem;
+    //padding: 0.3rem 1rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+    background-color: var(--btn-background);
+    margin: 2rem 1.5rem;
+    padding: 0.25rem;
+
+    @include breakpoints.sm-min {
+        grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    }
 
     .anchor {
         list-style-type: none;
@@ -20,14 +31,25 @@
         a {
             padding: 1rem 1.5rem;
             border-radius: 2px;
-            background-color: var(--btn-background);
+            //background-color: var(--btn-background);
             color: var(--btn-txt);
+            font-size: variables.$xss-txt;
+
+            @include breakpoints.sm-min {
+                font-size: variables.$sm-txt;
+            }
 
             &:focus,
             &:hover {
                 cursor: pointer;
                 background-color: var(--btn-txt);
                 color: var(--btn-background);
+            }
+
+            &:hover {
+                cursor: pointer;
+                background-color: var(--promo);
+                color: var(--caption-txt);
             }
         }
     }

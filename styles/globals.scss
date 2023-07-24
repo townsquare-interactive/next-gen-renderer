@@ -4,7 +4,7 @@
 @use './variables.scss';
 
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: smooth !important;
 }
 
 body {

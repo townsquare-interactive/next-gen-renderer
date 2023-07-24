@@ -13,12 +13,15 @@ import { far } from '@fortawesome/free-regular-svg-icons'
 const { library } = require('@fortawesome/fontawesome-svg-core')
 import FontLoad from './FontLoad'
 import { Anchors } from 'elements/Anchors'
+import { Map } from './Map'
 
 library.add(fas, fab, far)
 
 export const Container = (props: ContainerProps) => {
     const { page, siteData } = props
     const { cmsUrl, themeStyles, columnStyles } = defineContainerVars(page, siteData)
+
+    console.log(siteData.contact)
 
     return (
         <>
@@ -50,6 +53,8 @@ export const Container = (props: ContainerProps) => {
                         )}
                     </div>
                 )}
+
+                {siteData.contact.address.coordinates.length != 0 && <Map address={siteData.contact.address} />}
             </ContainerLayout>
             <FontLoad fonts={siteData.fontImport} />
         </>

@@ -154,14 +154,6 @@ export const findHomePageSlug = (pageList: any) => {
     return homePageSlug
 }
 
-export async function getCssFileFromS3() {
-    const resStyles = await fetch(getDomain(true) + '/global.css')
-
-    const s3Styles = await resStyles.text()
-
-    return { s3Styles }
-}
-
 export async function generateLayout() {
     const resLayout = await fetch(getDomain(true) + '/layout.json', {
         next: { revalidate: 5 },
