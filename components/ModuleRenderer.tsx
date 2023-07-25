@@ -22,6 +22,10 @@ import { Fragment } from 'react'
 import Card from './Card'
 import PhotoGallery from './PhotoGallery'
 import ContactFormRoutes from './ContactFormRoutes'
+import dynamic from 'next/dynamic'
+const Map = dynamic(() => import('./Map'), {
+    ssr: false,
+})
 
 const keysToComponentMap: any = {
     Text,
@@ -44,10 +48,12 @@ const keysToComponentMap: any = {
     Card,
     PhotoGallery,
     ContactFormRoutes,
+    Map,
 }
 
 const mapPropsToConfig = (config: ModuleProps[]) => {
     const configWithProps: any = []
+    console.log('renderer', config)
 
     config.forEach((item: any) => {
         if (item.componentType) {

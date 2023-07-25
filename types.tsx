@@ -1,6 +1,7 @@
 /* Components */
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { ReactChild, ReactElement, ReactNode } from 'react'
+import { LatLngTuple } from 'leaflet'
 
 export interface ThemeStyles {
     logoColor: string
@@ -911,6 +912,17 @@ export interface ContactFormRoutesProps {
     contactFormData: { formFields: FormFields[]; formTitle: string }
     items: ArticleItems[]
     title?: string
+}
+
+export interface MapAddress {
+    zip: string
+    city: string
+    name?: string
+    state: string
+    street: string
+    street2?: string
+    coordinates: LatLngTuple
+    url?: string
 }
 
 /*------------------------------Non CMS types-------------------------*/
