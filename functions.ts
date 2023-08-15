@@ -148,7 +148,6 @@ export function capitalize(str: string) {
 }
 
 export const findHomePageSlug = (pageList: any) => {
-    console.log('plist', pageList)
     const homePage = pageList?.pages?.filter((e: any) => e.page_type === 'homepage')
     const homePageSlug = homePage.length != 0 ? homePage[0].slug : pageList.pages[0].slug
     return homePageSlug
@@ -201,6 +200,28 @@ export async function getHomePage() {
     let page = await resPage.json()
 
     return { page }
+}
+
+export async function getHomePage2() {
+    let pageSlug
+
+    try {
+        const resPageList = await fetch(getDomain(true) + '/pages/page-list.json', {
+            next: { revalidate: 10 },
+        })
+        const pageList = await resPageList.json()
+
+        pageSlug = findHomePageSlug(pageList)
+
+        const resPage = await fetch(getDomain(true) + '/pages/' + pageSlug + '.json', {
+            next: { revalidate: 5 },
+        })
+        let page = await resPage.json()
+
+        return { page }
+    } catch (err) {
+        console.log(err)
+    }
 }
 
 export function decideHeadTag(columns: number | string, tag: string, headerTag: string) {
