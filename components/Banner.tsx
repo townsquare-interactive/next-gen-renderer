@@ -10,7 +10,7 @@ import LinkWrap from 'elements/LinkWrap'
 import { ImageElement } from 'elements/ImageElement'
 
 const Banner = (props: ModuleProps) => {
-    const { columns = 1, type, well, imgsize, modId, items, themeStyles, cmsUrl, disabled, customClassName } = props
+    const { columns = 1, type, well, imgsize, modId, items, themeStyles, cmsUrl, disabled, customClassName, anchorLink } = props
 
     if (disabled === 'disabled' || disabled === true) {
         return <></>
@@ -22,7 +22,7 @@ const Banner = (props: ModuleProps) => {
                     [styles.not_well]: !well,
                     [styles[`cst_${customClassName}`]]: customClassName,
                 })}
-                id={`id_${modId}`}
+                id={anchorLink ? anchorLink : `id_${modId}`}
             >
                 <div className={styles.wrapper}>
                     {items.map((item, index) => (

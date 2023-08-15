@@ -30,6 +30,7 @@ const Testimonials = (props: ModuleProps) => {
         settings,
         blockField1,
         blockField2,
+        anchorLink,
     } = props
 
     const [maxHeight, setHeights] = useState(0)
@@ -131,7 +132,7 @@ const Testimonials = (props: ModuleProps) => {
                         ['custom-height-2']: blockField2,
                     }
                 )}
-                id={`id_${modId}`}
+                id={anchorLink ? anchorLink : `id_${modId}`}
             >
                 {title && <ModuleTitle title={title} />}
 

@@ -26,6 +26,7 @@ const Article = (props: ModuleProps) => {
         contentSpacing,
         columnLocation,
         isSingleColumn,
+        anchorLink,
     } = props
 
     if (disabled === 'disabled' || disabled === true) {
@@ -53,7 +54,7 @@ const Article = (props: ModuleProps) => {
                         [styles['single-column']]: isSingleColumn,
                     }
                 )}
-                id={`id_${modId}`}
+                id={anchorLink ? anchorLink : `id_${modId}`}
             >
                 {title && <ModuleTitle title={title} />}
                 <div className={cn(styles.wrapper, 'wrapper')}>

@@ -14,7 +14,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import CarouselArrow from 'elements/CarouselArrow'
 
 const PhotoGallery = (props: ModuleProps) => {
-    const { columns = 1, type, well, imgsize, modId, items, themeStyles, cmsUrl, disabled, customClassName, modCount, settings } = props
+    const { columns = 1, type, well, imgsize, modId, items, themeStyles, cmsUrl, disabled, customClassName, modCount, settings, anchorLink } = props
 
     const useThumbnail = type === 'thumbnail_gallery'
 
@@ -64,7 +64,7 @@ const PhotoGallery = (props: ModuleProps) => {
                         [styles.thumbnail]: useThumbnail,
                         ['normal-carousel']: !useThumbnail,
                     })}
-                    id={`id_${modId}`}
+                    id={anchorLink ? anchorLink : `id_${modId}`}
                 >
                     <div className={cn(styles.wrapper, 'wrapper')}>
                         <Carousel settings={carouselSettings} modItems={items} cmsUrl={cmsUrl} useThumbnail={useThumbnail} modType={type}>

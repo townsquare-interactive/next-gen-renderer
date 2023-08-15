@@ -548,6 +548,7 @@ export interface ModuleProps {
     isSingleColumn: boolean
     modCount?: number
     settings?: CarouselSettings
+    anchorLink?: string
 }
 
 export interface CarouselSettings {
@@ -596,6 +597,7 @@ export interface PhotoGridProps {
     themeStyles: ThemeStyles
     cmsUrl?: string
     contentSpacing?: string
+    anchorLink?: string
 }
 
 export interface Colors {

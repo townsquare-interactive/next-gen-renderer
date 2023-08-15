@@ -53,7 +53,6 @@ const keysToComponentMap: any = {
 
 const mapPropsToConfig = (config: ModuleProps[]) => {
     const configWithProps: any = []
-    console.log('renderer', config)
 
     config.forEach((item: any) => {
         if (item.componentType) {

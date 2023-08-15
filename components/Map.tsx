@@ -5,6 +5,7 @@ import { LatLngTuple } from 'leaflet'
 import Link from 'next/link'
 import L from 'leaflet'
 import { MapAddress } from '../types'
+import styles from './map.module.scss'
 
 const Map = (props: { address: MapAddress; mapTitle: string }) => {
     const { address, mapTitle } = props
@@ -20,7 +21,7 @@ const Map = (props: { address: MapAddress; mapTitle: string }) => {
     const position: LatLngTuple = address.coordinates
 
     return (
-        <div>
+        <div className={styles.root}>
             <MapContainer center={position} zoom={14} scrollWheelZoom={false}>
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

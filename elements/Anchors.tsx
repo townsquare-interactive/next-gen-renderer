@@ -9,8 +9,8 @@ export const Anchors = (props: any) => {
         <ul className={styles.root}>
             {anchorTags.map((anchorItem: any, idx: number) => (
                 <li key={idx} className={cn(styles.anchor)}>
-                    <Link href={anchorItem.link || ''} scroll={false}>
-                        {anchorItem.name}
+                    <Link href={anchorItem.url || ''} scroll={false}>
+                        {anchorItem.title}
                     </Link>
                 </li>
             ))}

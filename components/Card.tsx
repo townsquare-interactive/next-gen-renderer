@@ -26,6 +26,7 @@ const Card = (props: ModuleProps) => {
         contentSpacing,
         columnLocation,
         isSingleColumn,
+        anchorLink,
     } = props
 
     if (disabled === 'disabled' || disabled === true) {
@@ -41,7 +42,7 @@ const Card = (props: ModuleProps) => {
                     [styles['feature-column']]: columnLocation === 0,
                     [styles['single-column']]: isSingleColumn,
                 })}
-                id={`id_${modId}`}
+                id={anchorLink ? anchorLink : `id_${modId}`}
             >
                 {title && <ModuleTitle title={title} />}
                 <div className={cn(styles.wrapper, 'wrapper')}>

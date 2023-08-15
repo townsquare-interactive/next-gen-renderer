@@ -20,14 +20,12 @@ export const Container = (props: ContainerProps) => {
     const { page, siteData } = props
     const { cmsUrl, themeStyles, columnStyles } = defineContainerVars(page, siteData)
 
-    console.log(siteData.contact)
-
     return (
         <>
             <PageHead page={page} siteData={siteData} pageType={page.data.slug === 'home' ? 'index' : 'slug'} />
             <ContainerLayout siteData={siteData} themeStyles={themeStyles} cName={page.data.slug}>
-                {page.data.anchorTags && page.data.anchorTags?.length != 0 && <Anchors anchorTags={page.data.anchorTags} />}
-
+                {/*  {page.data.anchorTags && page.data.anchorTags?.length != 0 && <Anchors anchorTags={page.data.anchorTags} />}
+                 */}
                 {page.data && (
                     <div className={cn(styles.root, 'container')}>
                         <div className={styles.featured}>

@@ -11,10 +11,7 @@ import { HeadlineBlock } from 'elements/HeadlineBlock'
 import LinkWrap from 'elements/LinkWrap'
 
 export const PhotoGrid = (props: PhotoGridProps) => {
-    const { columns = 1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl, customClassName, contentSpacing } = props
-
-    //const currentSpacing = contentSpacing || 'thin'
-    const currentSpacing = contentSpacing || ''
+    const { columns = 1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl, customClassName, contentSpacing, anchorLink } = props
 
     return (
         <div
@@ -26,14 +23,14 @@ export const PhotoGrid = (props: PhotoGridProps) => {
                 styles['item-flex'],
                 `col_${columns}`,
                 'photo-grid-mod',
-                styles[`${currentSpacing}`],
+                styles[`${contentSpacing}`],
                 {
                     [styles.well]: well == '1',
                     [styles.not_well]: !well,
                     [styles[`cst_${customClassName}`]]: customClassName,
                 }
             )}
-            id={`id_${modId}`}
+            id={anchorLink ? anchorLink : `id_${modId}`}
         >
             {title && <ModuleTitle title={title} />}
             <div className={styles.wrapper}>
