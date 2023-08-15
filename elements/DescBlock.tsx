@@ -7,7 +7,6 @@ import { useState } from 'react'
 
 const DescBlock = (props: DescBlockProps) => {
     const { descSize, desc, isBeaconHero = false, useAccentColor, well, contentSpacing, type } = props
-    const [newDesc, setNewDesc] = useState('')
 
     return (
         <div
@@ -18,8 +17,7 @@ const DescBlock = (props: DescBlockProps) => {
                 [styles.well]: well === '1',
             })}
         >
-            <p className={cn(styles['dsc'], 'dsc')}>{Parser(newDesc ? newDesc : desc)}</p>
-            <input type="text" className="form-control" name="title" onChange={(e) => setNewDesc(e.target.value)} />
+            <p className={cn(styles['dsc'], 'dsc')}>{Parser(desc)}</p>
         </div>
     )
 }
