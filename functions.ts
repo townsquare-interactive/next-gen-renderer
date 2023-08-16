@@ -1,19 +1,21 @@
 import { ConditionalWrapperProps, ThemeStyles, GlobalData, CMSPage, ContactFormData } from 'types'
 const bucketUrl = process.env.BUCKET_URL || 'https://townsquareinteractive.s3.amazonaws.com'
-const localUrl = 'elitesports.com/preview'
+const localUrl = 'wanderlustadventures'
 const cmsUrl = process.env.NEXT_PUBLIC_CMS_URL || 'clttestsiteforjoshedwards'
 //const cmsUrl = 'joshedwardsclttestsite'
 const assetFolder = '/assets/'
 const globalAssets = bucketUrl + '/global-assets'
 const env = process.env.NEXT_PUBLIC_URL_ENV
-const domain = process.env.NEXT_PUBLIC_BASE_URL
+const domain = process.env.NEXT_PUBLIC_CMS_URL
 import { createClient } from 'next-sanity'
 
 export const bucketAndSiteUrl = getDomain(true)
 //determines environment (preview/live) and creates url for it
 function envCheck(api: string) {
+    console.log('running env check')
     if (env === '1') {
-        let liveUrl = encodeURI(api + '/' + domain + '/live')
+        //let liveUrl = encodeURI(api + '/' + domain + '/live')
+        let liveUrl = encodeURI(api + '/' + domain)
         return liveUrl
     } else if (env === '0') {
         let previewUrl = encodeURI(api + '/' + domain + '/preview')
@@ -25,9 +27,11 @@ function envCheck(api: string) {
 //Grabs domain using env variables for json page fetching
 export function getDomain(cms = false) {
     //checking if using cms url
-    if (cms === false) {
-        const apiUrl = process.env.API_URL_DATA || bucketUrl
+    console.log('gettttting domain')
+    if (cms === false || process.env.NEXT_PUBLIC_CMS_CLIENT === 'strapi') {
+        const apiUrl = bucketUrl
         let domainUrl = process.env.NEXT_PUBLIC_URL_ENV ? envCheck(apiUrl) : apiUrl + '/' + localUrl
+        console.log('ul', domainUrl)
         return domainUrl
     } else {
         let domainUrl = bucketUrl + '/' + cmsUrl

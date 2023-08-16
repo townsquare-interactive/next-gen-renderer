@@ -102,7 +102,6 @@ const ModuleItem = (props: ModuleItemProps) => {
 
 const ItemWrap = (props: ItemWrapProps) => {
     const { item, well, themeStyles, modId, columns, type, cmsUrl, imgsize } = props
-
     const laxType = choseLax
 
     return (

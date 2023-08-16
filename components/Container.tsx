@@ -32,45 +32,59 @@ export const Container = (props: ContainerProps) => {
 
     const theUrl = `https://townsquareinteractive.s3.amazonaws.com/wanderlustadventures/pages/${page.data.slug}.json`
 
-    const fetcher = getHomePage2
+    /*     const fetcher = getHomePage2
 
-    const { data, error } = useSWR(mounted ? theUrl : '', fetcher, { refreshInterval: 10 })
+    const { data, error, isValidating } = useSWR(mounted ? theUrl : '', fetcher, { refreshInterval: 10, revalidateOnMount: true, revalidateIfStale: true }) */
+
     //console.log(data?.page?.data ? data.page.data : 'not here')
 
-    const trueData = data?.page && page.data.slug === 'home' ? data.page : page
+    //let trueData = data ? data.page : page
+    let trueData = page
 
+    /*     if (isValidating) {
+        trueData = page
+    } else if (data) {
+        trueData = data.page
+    }
+ */
+    /*     if (error) return <div>failed to load</div>
+    if (isValidating) return <div>loading...</div> */
     return (
         <>
-            <PageHead page={page} siteData={siteData} pageType={trueData.data.slug === 'home' ? 'index' : 'slug'} />
-            <ContainerLayout siteData={siteData} themeStyles={themeStyles} cName={trueData.data.slug}>
-                {/*  {trueData.data.anchorTags && trueData.data.anchorTags?.length != 0 && <Anchors anchorTags={trueData.data.anchorTags} />}
-                 */}
-                {trueData.data && (
-                    <div className={cn(styles.root, 'container')}>
-                        <div className={styles.featured}>
-                            <ModuleRenderer config={trueData.data.modules[0]} themeStyles={themeStyles} cmsUrl={cmsUrl} />
-                        </div>
-                        {trueData.data.modules[1].length != 0 && (
-                            <div className={styles['column-blocks']}>
-                                <div className={cn(styles.columns, styles[`${columnStyles}`], 'columns')}>
-                                    {trueData.data.modules.map((data: ModuleData[], idx: number) => (
-                                        <Fragment key={idx}>
-                                            {data.length != 0 && idx != 0 ? (
-                                                <div className={cn(styles['column' + (idx + 1)], styles.column)}>
-                                                    <ModuleRenderer config={data} themeStyles={themeStyles} cmsUrl={cmsUrl} />
-                                                </div>
-                                            ) : (
-                                                <></>
-                                            )}
-                                        </Fragment>
-                                    ))}
+            {page && (
+                <>
+                    <PageHead page={page} siteData={siteData} pageType={trueData.data.slug === 'home' ? 'index' : 'slug'} />
+                    <ContainerLayout siteData={siteData} themeStyles={themeStyles} cName={trueData.data.slug}>
+                        {/*  {trueData.data.anchorTags && trueData.data.anchorTags?.length != 0 && <Anchors anchorTags={trueData.data.anchorTags} />}
+                         */}
+                        {trueData.data && (
+                            <div className={cn(styles.root, 'container')}>
+                                <div className={styles.featured}>
+                                    <ModuleRenderer config={trueData.data.modules[0]} themeStyles={themeStyles} cmsUrl={cmsUrl} />
                                 </div>
+                                {trueData.data.modules[1].length != 0 && (
+                                    <div className={styles['column-blocks']}>
+                                        <div className={cn(styles.columns, styles[`${columnStyles}`], 'columns')}>
+                                            {trueData.data.modules.map((data: ModuleData[], idx: number) => (
+                                                <Fragment key={idx}>
+                                                    {data.length != 0 && idx != 0 ? (
+                                                        <div className={cn(styles['column' + (idx + 1)], styles.column)}>
+                                                            <ModuleRenderer config={data} themeStyles={themeStyles} cmsUrl={cmsUrl} />
+                                                        </div>
+                                                    ) : (
+                                                        <></>
+                                                    )}
+                                                </Fragment>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
                             </div>
                         )}
-                    </div>
-                )}
-            </ContainerLayout>
-            <FontLoad fonts={siteData.fontImport} />
+                    </ContainerLayout>
+                    <FontLoad fonts={siteData.fontImport} />
+                </>
+            )}
         </>
     )
 }

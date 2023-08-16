@@ -535,6 +535,7 @@ export interface ModuleProps {
     hideTitle?: number
     export: number
     columns: number
+    imagePriority?: boolean
     lightbox: string
     blockSwitch1: number
     scale_to_fit: string
