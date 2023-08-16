@@ -119,7 +119,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                 className={cn(styles['item-wrap'], {
                     ['hero-background']: (item.isFeatured === 'active' || item.isFeatured === true) && type === 'article',
                 })}
-                aria-label={item.headline || 'item-wrap'}
+                //aria-label={item.headline || 'item-wrap'}
             >
                 <ItemWrap item={item} imgsize={imgsize} well={well} type={type} themeStyles={themeStyles} columns={columns} modId={modId} cmsUrl={cmsUrl} />
             </div>
