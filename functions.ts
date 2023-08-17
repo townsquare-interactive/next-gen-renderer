@@ -12,9 +12,7 @@ import { createClient } from 'next-sanity'
 export const bucketAndSiteUrl = getDomain(true)
 //determines environment (preview/live) and creates url for it
 function envCheck(api: string) {
-    console.log('running env check')
     if (env === '1') {
-        //let liveUrl = encodeURI(api + '/' + domain + '/live')
         let liveUrl = encodeURI(api + '/' + domain)
         return liveUrl
     } else if (env === '0') {
@@ -27,7 +25,6 @@ function envCheck(api: string) {
 //Grabs domain using env variables for json page fetching
 export function getDomain(cms = false) {
     //checking if using cms url
-    console.log('gettttting domain')
     if (cms === false || process.env.NEXT_PUBLIC_CMS_CLIENT === 'strapi') {
         const apiUrl = bucketUrl
         let domainUrl = process.env.NEXT_PUBLIC_URL_ENV ? envCheck(apiUrl) : apiUrl + '/' + localUrl
