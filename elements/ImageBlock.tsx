@@ -3,8 +3,6 @@ import styles from './imageblock.module.scss'
 import { ImageBlockProps } from '../types'
 import cn from 'classnames'
 import { ImageElement } from './ImageElement'
-
-// importing fontAwesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const ImageBlock = (props: ImageBlockProps) => {

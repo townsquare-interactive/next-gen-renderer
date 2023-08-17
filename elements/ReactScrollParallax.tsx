@@ -24,25 +24,14 @@ const ReactScroll = ({ item, imgsize, cmsUrl, children, columns }: ReactScrollPr
         setIsSSR(false)
     }
 
+    console.log(item, item.modColor1)
+
     return (
         <>
             {isSSR && (
                 <>
                     <div className={styles.outer}>
-                        <div className={cn(styles['image-block'], styles['image-block2'])}>
-                            {/*                             <Image
-                                src={domainImage(item.image, true, cmsUrl || '')}
-                                fill
-                                alt={item.img_alt_tag || ''}
-                                quality="80"
-                                priority={item.imagePriority}
-                                style={{
-                                    objectFit: 'cover',
-                                    objectPosition: 'top',
-                                    opacity: item.modOpacity || 1,
-                                }}
-                                sizes={'100vh'}
-                            /> */}
+                        <div className={cn(styles['image-block'], styles['image-block2'])} style={item.modColor1 ? { background: item.modColor1 } : {}}>
                             <ImageElement
                                 imgSrc={item.image}
                                 imgAlt={item.img_alt_tag}
@@ -65,7 +54,7 @@ const ReactScroll = ({ item, imgsize, cmsUrl, children, columns }: ReactScrollPr
                         layers={[
                             {
                                 children: (
-                                    <div className={styles['image-block']}>
+                                    <div className={styles['image-block']} style={item.modColor1 ? { background: item.modColor1 } : {}}>
                                         <ImageElement
                                             imgSrc={item.image}
                                             imgAlt={item.img_alt_tag}

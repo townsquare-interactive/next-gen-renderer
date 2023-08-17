@@ -28,7 +28,6 @@ export function getDomain(cms = false) {
     if (cms === false || process.env.NEXT_PUBLIC_CMS_CLIENT === 'strapi') {
         const apiUrl = bucketUrl
         let domainUrl = process.env.NEXT_PUBLIC_URL_ENV ? envCheck(apiUrl) : apiUrl + '/' + localUrl
-        console.log('ul', domainUrl)
         return domainUrl
     } else {
         let domainUrl = bucketUrl + '/' + cmsUrl
