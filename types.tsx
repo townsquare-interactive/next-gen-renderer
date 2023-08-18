@@ -99,6 +99,7 @@ export interface GlobalData {
     s3Folder: string
     headerOptions?: HeaderOptions
     config?: { mailChimp: { audId: string; datacenter: string; auth: string } }
+    navAlign?: 'left' | 'right' | 'center'
 }
 
 interface CMSLogo {
@@ -819,6 +820,7 @@ export interface MyNavProps {
     navType?: string
     cmsNav: any
     currentPage?: string
+    navAlign?: 'left' | 'right' | 'center'
     navSwitch: () => void
 }
 

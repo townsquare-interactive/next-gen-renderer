@@ -11,7 +11,7 @@ const Nav = (props: MyNavProps) => {
     const { navType, cmsNav, navSwitch, navAlign } = props
 
     return (
-        <nav className={cn(styles.access, styles[`${navType}`])} style={{ textAlign: navAlign ? navAlign : 'left' }}>
+        <nav className={cn(styles.access, styles[`${navType}`])} style={{ textAlign: navAlign || 'left' }}>
             {cmsNav && (
                 <ul className={cn(styles.menu)}>
                     {cmsNav.map((item: NavItem, index: number) => (

@@ -24,8 +24,6 @@ export const Container = (props: ContainerProps) => {
     const { cmsUrl, themeStyles, columnStyles } = defineContainerVars(page, siteData)
     //const [isLoaded, hasLoaded] = useState(false)
 
-    console.log(page.data)
-
     /* const [mounted, setMounted] = useState(false)
 
     useEffect(() => {

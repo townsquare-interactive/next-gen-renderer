@@ -24,8 +24,6 @@ const ReactScroll = ({ item, imgsize, cmsUrl, children, columns }: ReactScrollPr
         setIsSSR(false)
     }
 
-    console.log(item, item.modColor1)
-
     return (
         <>
             {isSSR && (
