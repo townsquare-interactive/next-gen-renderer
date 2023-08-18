@@ -2,7 +2,6 @@ import { ConditionalWrapperProps, ThemeStyles, GlobalData, CMSPage, ContactFormD
 const bucketUrl = process.env.BUCKET_URL || 'https://townsquareinteractive.s3.amazonaws.com'
 const localUrl = 'wanderlustadventures'
 const cmsUrl = process.env.NEXT_PUBLIC_CMS_URL || 'clttestsiteforjoshedwards'
-//const cmsUrl = 'joshedwardsclttestsite'
 const assetFolder = '/assets/'
 const globalAssets = bucketUrl + '/global-assets'
 const env = process.env.NEXT_PUBLIC_URL_ENV
