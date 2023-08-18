@@ -24,13 +24,15 @@ export const Container = (props: ContainerProps) => {
     const { cmsUrl, themeStyles, columnStyles } = defineContainerVars(page, siteData)
     //const [isLoaded, hasLoaded] = useState(false)
 
-    const [mounted, setMounted] = useState(false)
+    console.log(page.data)
+
+    /* const [mounted, setMounted] = useState(false)
 
     useEffect(() => {
         setMounted(true)
     }, [])
 
-    const theUrl = `https://townsquareinteractive.s3.amazonaws.com/wanderlustadventures/pages/${page.data.slug}.json`
+    const theUrl = `https://townsquareinteractive.s3.amazonaws.com/wanderlustadventures/pages/${page.data.slug}.json` */
 
     /*     const fetcher = getHomePage2
 
@@ -39,12 +41,12 @@ export const Container = (props: ContainerProps) => {
     //console.log(data?.page?.data ? data.page.data : 'not here')
 
     //let trueData = data ? data.page : page
-    let trueData = page
+    //let trueData = page
 
     /*     if (isValidating) {
-        trueData = page
+        page = page
     } else if (data) {
-        trueData = data.page
+        page = data.page
     }
  */
     /*     if (error) return <div>failed to load</div>
@@ -53,19 +55,19 @@ export const Container = (props: ContainerProps) => {
         <>
             {page && (
                 <>
-                    <PageHead page={page} siteData={siteData} pageType={trueData.data.slug === 'home' ? 'index' : 'slug'} />
-                    <ContainerLayout siteData={siteData} themeStyles={themeStyles} cName={trueData.data.slug}>
-                        {/*  {trueData.data.anchorTags && trueData.data.anchorTags?.length != 0 && <Anchors anchorTags={trueData.data.anchorTags} />}
+                    <PageHead page={page} siteData={siteData} pageType={page.data.slug === 'home' ? 'index' : 'slug'} />
+                    <ContainerLayout siteData={siteData} themeStyles={themeStyles} cName={page.data.slug}>
+                        {/*  {page.data.anchorTags && page.data.anchorTags?.length != 0 && <Anchors anchorTags={trueData.data.anchorTags} />}
                          */}
-                        {trueData.data && (
+                        {page.data && (
                             <div className={cn(styles.root, 'container')}>
                                 <div className={styles.featured}>
-                                    <ModuleRenderer config={trueData.data.modules[0]} themeStyles={themeStyles} cmsUrl={cmsUrl} />
+                                    <ModuleRenderer config={page.data.modules[0]} themeStyles={themeStyles} cmsUrl={cmsUrl} />
                                 </div>
-                                {trueData.data.modules[1].length != 0 && (
+                                {page.data.modules[1].length != 0 && (
                                     <div className={styles['column-blocks']}>
                                         <div className={cn(styles.columns, styles[`${columnStyles}`], 'columns')}>
-                                            {trueData.data.modules.map((data: ModuleData[], idx: number) => (
+                                            {page.data.modules.map((data: ModuleData[], idx: number) => (
                                                 <Fragment key={idx}>
                                                     {data.length != 0 && idx != 0 ? (
                                                         <div className={cn(styles['column' + (idx + 1)], styles.column)}>

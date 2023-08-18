@@ -8,10 +8,10 @@ import { useState } from 'react'
 import { usePathname } from 'next/navigation'
 
 const Nav = (props: MyNavProps) => {
-    const { navType, cmsNav, navSwitch } = props
+    const { navType, cmsNav, navSwitch, navAlign } = props
 
     return (
-        <nav className={cn(styles.access, styles[`${navType}`])}>
+        <nav className={cn(styles.access, styles[`${navType}`])} style={{ textAlign: navAlign ? navAlign : 'left' }}>
             {cmsNav && (
                 <ul className={cn(styles.menu)}>
                     {cmsNav.map((item: NavItem, index: number) => (

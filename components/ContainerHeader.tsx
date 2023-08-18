@@ -30,6 +30,8 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
     //Determine Height of header for margins in layout
     const ref = useRef<HTMLDivElement>(null)
 
+    console.log(siteData)
+
     return (
         <header
             className={cn(styles.root, 'header-background', {
@@ -43,7 +45,9 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
                 {siteData.logos?.header?.slots && <HeaderLogoBlock type="desktop" logos={siteData.logos.header.slots} />}
 
                 {siteData.logos?.mobile?.slots && <HeaderLogoBlock type="mobile" logos={siteData.logos.mobile.slots} />}
-                {!siteData.headerOptions?.desktopBurgerNav && <Nav navType={'desktop-nav'} cmsNav={siteData.cmsNav} navSwitch={navSwitch} />}
+                {!siteData.headerOptions?.desktopBurgerNav && (
+                    <Nav navType={'desktop-nav'} cmsNav={siteData.cmsNav} navSwitch={navSwitch} navAlign={siteData.navAlign} />
+                )}
 
                 {siteData.headerOptions && (
                     <div className={styles['cta-block']}>
