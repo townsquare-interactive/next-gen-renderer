@@ -7,7 +7,7 @@ const assetFolder = '/assets/'
 const globalAssets = bucketUrl + '/global-assets'
 const env = process.env.NEXT_PUBLIC_URL_ENV
 const domain = process.env.NEXT_PUBLIC_CMS_URL
-import { createClient } from 'next-sanity'
+//import { createClient } from 'next-sanity'
 
 export const bucketAndSiteUrl = getDomain(true)
 //determines environment (preview/live) and creates url for it
@@ -83,7 +83,7 @@ export function domainImage(url: string, cms = false, cmsSiteUrl = '', type = ''
  */
 
 /*------------------------- CMS ----------------------------*/
-//Sanity CMS
+/* //Sanity CMS
 const client = createClient({
     projectId: '5q931z68',
     dataset: 'production',
@@ -99,7 +99,7 @@ export async function getSanityPages() {
 export async function getSanitySiteData() {
     const sanitySiteData = await client.fetch(`*[_type == "sitedata"]`)
     return sanitySiteData
-}
+} */
 
 // Strapi CMS
 export async function getStrapiPages() {
