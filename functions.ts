@@ -163,7 +163,7 @@ export async function generateLayout() {
     return { CMSLayout }
 }
 
-/* export async function getPageData(params: { slug: string }) {
+export async function getPageData(params: { slug: string }) {
     let pageSlug
     if (!params) {
         const resPageList = await fetch(getDomain(true) + '/pages/page-list.json', {
@@ -178,15 +178,13 @@ export async function generateLayout() {
         pageSlug = params.slug
     }
 
-    const resPage = await fetch(getDomain(true) + '/pages/' + pageSlug + '.json', {
-        next: { revalidate: 5 },
-    })
+    const resPage = await fetch(getDomain(true) + '/pages/' + pageSlug + '.json', { cache: 'no-store' })
     let page = await resPage.json()
 
     return { page }
-} */
+}
 
-/* export async function getHomePage() {
+export async function getHomePage() {
     let pageSlug
 
     const resPageList = await fetch(getDomain(true) + '/pages/page-list.json', {
@@ -196,13 +194,11 @@ export async function generateLayout() {
 
     pageSlug = findHomePageSlug(pageList)
 
-    const resPage = await fetch(getDomain(true) + '/pages/' + pageSlug + '.json', {
-        next: { revalidate: 5 },
-    })
+    const resPage = await fetch(getDomain(true) + '/pages/' + pageSlug + '.json', { cache: 'no-store' })
     let page = await resPage.json()
 
     return { page }
-} */
+}
 
 /* export async function getHomePage2() {
     let pageSlug

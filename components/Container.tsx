@@ -25,12 +25,12 @@ export const Container = (props: ContainerProps) => {
     const { cmsUrl, themeStyles, columnStyles } = defineContainerVars(page, siteData)
     //const [isLoaded, hasLoaded] = useState(false)
 
-    const [mounted, setMounted] = useState(false)
+    /*     const [mounted, setMounted] = useState(false)
 
     useEffect(() => {
         setMounted(true)
     }, [])
-
+ */
     const theUrl = `https://townsquareinteractive.s3.amazonaws.com/wanderlustadventures/pages/${page.data.slug}.json`
 
     //const fetcher = getHomePage2

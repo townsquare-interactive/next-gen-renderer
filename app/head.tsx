@@ -1,5 +1,5 @@
 import PageHead from 'components/PageHead'
-import { generateLayout, getHomePage } from 'serverFunctions'
+import { generateLayout, getHomePage } from 'functions'
 
 export default async function Head() {
     const { CMSLayout } = await generateLayout()

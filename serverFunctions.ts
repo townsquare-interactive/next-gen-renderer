@@ -1,4 +1,4 @@
-'use server'
+//'use server'
 //import { revalidatePath, revalidateTag } from 'next/cache'
 const bucketUrl = process.env.BUCKET_URL || 'https://townsquareinteractive.s3.amazonaws.com'
 import { getDomain, findHomePageSlug } from 'functions'
