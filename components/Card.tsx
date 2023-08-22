@@ -75,6 +75,10 @@ const Card = (props: ModuleProps) => {
 const ModuleItem = (props: ModuleItemProps) => {
     const { item, modId, itemIndex, cmsUrl, themeStyles, type, imgsize, columns, well } = props
 
+    if (item.disabled === 'disabled' || item.disabled === true) {
+        return <></>
+    }
+
     return (
         <article
             className={cn(

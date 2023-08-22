@@ -87,7 +87,9 @@ const Article = (props: ModuleProps) => {
 const ModuleItem = (props: ModuleItemProps) => {
     const { item, modId, itemIndex, cmsUrl, themeStyles, type, imgsize, columns, well } = props
 
-    return (
+    return item.disabled ? (
+        <></>
+    ) : (
         <article
             className={cn(
                 styles['item'],

@@ -1,4 +1,5 @@
 import { ConditionalWrapperProps, ThemeStyles, GlobalData, CMSPage, ContactFormData } from 'types'
+import { revalidateTag } from 'next/cache'
 const bucketUrl = process.env.BUCKET_URL || 'https://townsquareinteractive.s3.amazonaws.com'
 const localUrl = 'wanderlustadventures'
 const cmsUrl = process.env.NEXT_PUBLIC_CMS_URL || 'clttestsiteforjoshedwards'
@@ -162,12 +163,14 @@ export async function generateLayout() {
     return { CMSLayout }
 }
 
-export async function getPageData(params: { slug: string }) {
+/* export async function getPageData(params: { slug: string }) {
     let pageSlug
     if (!params) {
         const resPageList = await fetch(getDomain(true) + '/pages/page-list.json', {
-            next: { revalidate: 10 },
+            //next: { revalidate: 10 },
+            next: { tags: ['pageData'] },
         })
+        revalidateTag('pageData')
         const pageList = await resPageList.json()
 
         pageSlug = findHomePageSlug(pageList)
@@ -181,9 +184,9 @@ export async function getPageData(params: { slug: string }) {
     let page = await resPage.json()
 
     return { page }
-}
+} */
 
-export async function getHomePage() {
+/* export async function getHomePage() {
     let pageSlug
 
     const resPageList = await fetch(getDomain(true) + '/pages/page-list.json', {
@@ -199,9 +202,9 @@ export async function getHomePage() {
     let page = await resPage.json()
 
     return { page }
-}
+} */
 
-export async function getHomePage2() {
+/* export async function getHomePage2() {
     let pageSlug
 
     try {
@@ -221,7 +224,7 @@ export async function getHomePage2() {
     } catch (err) {
         console.log(err)
     }
-}
+} */
 
 export function decideHeadTag(columns: number | string, tag: string, headerTag: string) {
     if ((headerTag === '1' || headerTag === 'h1') && tag === 'hd') {

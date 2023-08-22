@@ -600,6 +600,7 @@ export interface PhotoGridProps {
     cmsUrl?: string
     contentSpacing?: string
     anchorLink?: string
+    disabled?: string | boolean
 }
 
 export interface Colors {

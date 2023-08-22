@@ -11,7 +11,11 @@ import { HeadlineBlock } from 'elements/HeadlineBlock'
 import LinkWrap from 'elements/LinkWrap'
 
 export const PhotoGrid = (props: PhotoGridProps) => {
-    const { columns = 1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl, customClassName, contentSpacing, anchorLink } = props
+    const { columns = 1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl, customClassName, contentSpacing, anchorLink, disabled } = props
+
+    if (disabled === 'disabled' || disabled === true) {
+        return <></>
+    }
 
     return (
         <div
