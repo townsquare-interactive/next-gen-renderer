@@ -1,5 +1,5 @@
 import PageHead from 'components/PageHead'
-import { generateLayout, getPageData, domainImage } from 'functions'
+import { generateLayout, getPageData } from 'serverFunctions'
 
 export default async function Head({ params }: { params: { slug: string } }) {
     const { CMSLayout } = await generateLayout()
