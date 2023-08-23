@@ -69,19 +69,6 @@ export function domainImage(url: string, cms = false, cmsSiteUrl = '', type = ''
     }
 }
 
-/* export function createInlineStyles(themeStyles: ThemeStyles) {
-    const textColors = `.accent-txt{color:${themeStyles['textColorAccent']}} .txt-color{color:${themeStyles['textColor']}} .txt-color-hd{color:${themeStyles['headingColor']}} .navLink:hover{color: ${themeStyles['navHover']}} .navLink{color:${themeStyles['NavText']}} .social-icon:hover{background-color: ${themeStyles['navHover']}} .social-icon{color:${themeStyles['NavText']}} .currentNav{color:${themeStyles['navCurrent']}} .caption-txt{color:${themeStyles.captionText}}`
-
-    const btnStyles = `.btn_1{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['btnBackground']}} .btn_1:hover{color: ${themeStyles['btnBackground']}; background-color: ${themeStyles['textColorAccent']}} .btn_2{color: ${themeStyles['linkColor']}; border-color: ${themeStyles['linkColor']}} .btn_2:hover{color: ${themeStyles['btnBackground']}; border-color: ${themeStyles['btnBackground']}} .btn_alt{color: ${themeStyles['promoColor']}; background-color: ${themeStyles['textColorAccent']}} .btn_alt:hover{color: ${themeStyles['textColorAccent']}; background-color: ${themeStyles['promoColor']}}`
-
-    const backgroundStyles = `.border-background{background-color:${themeStyles['accentBackgroundColor']}} .hero-background{background-color:${themeStyles['promoColor']}} .content-background{background-color:${themeStyles['bckdContent']}} .footer{background-color:${themeStyles['footerBackground']}; color: ${themeStyles['footerText']}} .header-background{background-color:${themeStyles['headerBackground']}}`
-
-    const colorStyles = textColors + btnStyles + backgroundStyles
-
-    return colorStyles
-}
- */
-
 /*------------------------- CMS ----------------------------*/
 /* //Sanity CMS
 const client = createClient({

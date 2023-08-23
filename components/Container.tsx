@@ -5,44 +5,19 @@ import ContainerLayout from './ContainerLayout'
 import { ModuleRenderer } from './ModuleRenderer'
 import { defineContainerVars } from '../functions'
 import cn from 'classnames'
-import { Fragment, useEffect, useState } from 'react'
+import { Fragment } from 'react'
 import PageHead from './PageHead'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 const { library } = require('@fortawesome/fontawesome-svg-core')
 import FontLoad from './FontLoad'
-import { useRouter } from 'next/router'
-import useSWR from 'swr'
-import { revalidateTag } from 'next/cache'
-
 library.add(fas, fab, far)
-
-//const fetcher = (url) => fetch(url).then((res) => res.json())
 
 export const Container = (props: ContainerProps) => {
     const { page, siteData } = props
     const { cmsUrl, themeStyles, columnStyles } = defineContainerVars(page, siteData)
-    //const [isLoaded, hasLoaded] = useState(false)
 
-    /*     const [mounted, setMounted] = useState(false)
-
-    useEffect(() => {
-        setMounted(true)
-    }, [])
- */
-    const theUrl = `https://townsquareinteractive.s3.amazonaws.com/wanderlustadventures/pages/${page.data.slug}.json`
-
-    //const fetcher = getHomePage2
-
-    /*   const { data, error, isValidating } = useSWR(mounted ? theUrl : '', fetcher, { refreshInterval: 10, revalidateOnMount: true, revalidateIfStale: true }) */
-
-    //console.log(data?.page?.data ? data.page.data : 'not here')
-
-    //let trueData = data ? data.page : page
-
-    /*     if (error) return <div>failed to load</div>
-    if (isValidating) return <div>loading...</div> */
     return (
         <>
             {page && (
