@@ -8,6 +8,7 @@ import { Formik, Field, Form, FormikHelpers, ErrorMessage } from 'formik'
 import { z } from 'zod'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
 import ModuleTitle from 'elements/ModuleTitle'
+import { Button } from 'elements/Button'
 
 const Schema = z.object({
     fName: z.string(),
@@ -118,6 +119,7 @@ const ContactFormRoutes = (props: ContactFormRoutesProps) => {
                                                         <button type="submit" className={styles.submit}>
                                                             Submit
                                                         </button>
+                                                        {/*                                             <Button type="form" btn={{ label: 'submit', active: true, window: 0, btnType: 'btn_1' }} /> */}
                                                     </div>
                                                 </Form>
                                             </Formik>

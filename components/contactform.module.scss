@@ -92,6 +92,17 @@
             .submit {
                 line-height: 1.4285714286em;
                 padding: 0.5625em 2em 0.6875em;
+
+                //from btn-wrap
+                @include utils.basic-button;
+
+                //btn_1
+                @include utils.button-shadow;
+
+                &:hover {
+                    color: var(--btn-background);
+                    background-color: var(--btn-txt);
+                }
             }
         }
 

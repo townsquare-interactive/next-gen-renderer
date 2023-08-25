@@ -140,10 +140,10 @@ interface CtaBtn {
 
 export interface SingleButtonProps {
     btn: ButtonListProps
-    well: string | number | undefined
-    index: number
+    well?: string | number | undefined
+    index?: number
     type: string
-    isFeatureButton: boolean
+    isFeatureButton?: boolean
 }
 
 interface ButtonListProps {
