@@ -72,9 +72,12 @@
         .brand {
             .logo-block {
                 img {
-                    max-width: 6rem !important;
+                    //max-width: 6rem !important;
                     transition: all 0.3s ease-in-out;
                     height: auto;
+                    max-height: 5rem;
+                    width: auto;
+                    max-width: 100%;
                 }
 
                 @include breakpoints.sm-min {

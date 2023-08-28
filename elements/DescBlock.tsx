@@ -3,10 +3,11 @@ import styles from './descblock.module.scss'
 import { DescBlockProps } from '../types'
 import cn from 'classnames'
 import Parser from 'html-react-parser'
-import { useState } from 'react'
 
 const DescBlock = (props: DescBlockProps) => {
     const { descSize, desc, isBeaconHero = false, useAccentColor, well, contentSpacing, type } = props
+
+    console.log(desc)
 
     return (
         <div
