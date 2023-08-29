@@ -143,9 +143,10 @@ export const findHomePageSlug = (pageList: any) => {
 export async function generateLayout() {
     const resLayout = await fetch(
         getDomain(true) + '/layout.json',
-        { cache: 'no-store' } /* {
-        next: { revalidate: 5 },
-    } */
+        //{ cache: 'no-store' }
+        {
+            next: { revalidate: 0 },
+        }
     )
 
     const CMSLayout = await resLayout.json()
@@ -160,7 +161,7 @@ export async function getPageData(params: { slug: string }) {
             //next: { revalidate: 10 },
             next: { tags: ['pageData'] },
         })
-        revalidateTag('pageData')
+        //revalidateTag('pageData')
         const pageList = await resPageList.json()
 
         pageSlug = findHomePageSlug(pageList)
