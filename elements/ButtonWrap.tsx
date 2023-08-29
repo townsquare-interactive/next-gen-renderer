@@ -6,23 +6,7 @@ import { Fragment } from 'react'
 import { Button } from './Button'
 
 export const ButtonWrap = (props: ButtonWrapProps) => {
-    const {
-        actionlbl,
-        themeStyles,
-        well,
-        actionlbl2,
-        type,
-        buttonList,
-        modId,
-        align,
-        promoColor,
-        itemCount,
-        modColor1,
-        twoButtons,
-        btnStyles,
-        image = '',
-        isFeatureButton = false,
-    } = props
+    const { actionlbl, well, actionlbl2, type, buttonList, modId, align, twoButtons, btnStyles, image = '', isFeatureButton = false } = props
 
     return (
         <div
