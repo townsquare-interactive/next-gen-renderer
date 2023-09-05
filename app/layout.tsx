@@ -11,6 +11,7 @@ config.autoAddCss = false /* eslint-disable import/first */
 const cmsUrl = process.env.NEXT_PUBLIC_CMS_URL || 'joshedwardsclttestsite'
 const bucketUrl = process.env.BUCKET_URL || 'https://townsquareinteractive.s3.amazonaws.com'
 const s3ColorStyles = bucketUrl + '/' + cmsUrl + '/' + 'global.css'
+const sassFile = bucketUrl + '/' + cmsUrl + '/' + 'globalScss.scss'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (

@@ -7,7 +7,7 @@ import Parser from 'html-react-parser'
 const DescBlock = (props: DescBlockProps) => {
     const { descSize, desc, isBeaconHero = false, useAccentColor, well, contentSpacing, type } = props
 
-    console.log(desc)
+    //console.log(desc)
 
     return (
         <div
@@ -18,7 +18,7 @@ const DescBlock = (props: DescBlockProps) => {
                 [styles.well]: well === '1',
             })}
         >
-            <p className={cn(styles['dsc'], 'dsc')}>{Parser(desc)}</p>
+            <div className={cn(styles['dsc'], 'dsc')}>{Parser(desc)}</div>
         </div>
     )
 }
