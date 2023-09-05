@@ -1,5 +1,4 @@
 import { generateLayout, getHomePage } from '../functions'
-//import { getHomePage } from 'functions'
 import { use } from 'react'
 import { Container } from 'components/Container'
 

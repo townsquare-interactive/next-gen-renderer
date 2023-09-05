@@ -1,7 +1,5 @@
 import { PageListProps } from '../../types'
-//import { getDomain, getPageData, generateLayout, getStrapiPages } from '../../functions'
 import { getDomain, getPageData, generateLayout } from '../../functions'
-//import { getPageData, generateLayout } from '../../serverFunctions'
 import { use } from 'react'
 import { Container } from 'components/Container'
 

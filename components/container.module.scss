@@ -12,10 +12,6 @@
         @include utils.wrapper-size(3rem);
 
         .columns {
-            /* @include utils.wrapper-size(3rem); */
-            //gap: variables.$grid-gap;
-            //gap: 0.3%;
-
             .column {
                 margin-left: variables.$item-margins;
                 margin-right: variables.$item-margins;

@@ -219,17 +219,11 @@ $ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
     --item-max-height: 0;
 } */
 :root {
-    --block-height-1: 0;
+    --ç: 0;
     --block-height-1: 2;
 }
 
 .rev-carousel {
-    .slick-list {
-        // max-width: 75.5em;
-        // margin: 0 auto;
-        // padding: 3rem 6rem;
-    }
-
     &.custom-height-1 {
         .item {
             height: var(--block-height-1);
