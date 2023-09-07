@@ -36,7 +36,7 @@ const Page = ({ params }: { params: { slug: string; domain: string } }) => {
         console.log('not the correct domain', params.domain)
         return <div>Weird domain</div>
     } else {
-        const { CMSLayout } = use(generateLayout())
+        const { CMSLayout } = use(generateLayout(params))
         //const { page } = use(getPageData(params))
         const { page } = use(getAnyPageData(params))
 

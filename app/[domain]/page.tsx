@@ -25,7 +25,7 @@ const Home = (params: any) => {
         console.log('not the correct domain', params.domain)
         return <div>Weird domain</div>
     } else {
-        const { CMSLayout } = use(generateLayout())
+        const { CMSLayout } = use(generateLayout(params.params))
         //const { page } = use(getHomePage())
         //const { page } = use(getHomePage2(newDomain))
         const { page } = use(getAnyPageData(params.params))

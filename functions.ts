@@ -140,7 +140,21 @@ export const findHomePageSlug = (pageList: any) => {
     return homePageSlug
 }
 
-export async function generateLayout(siteIDUrl = '') {
+export async function generateLayout(params?: { slug: string; domain: string }) {
+    let pageSlug
+    let pageType = ''
+    let siteIDUrl = params?.domain
+    let fetchingDomain
+
+    if (params?.domain && !siteIDUrl?.includes('jremod') && siteIDUrl?.includes('vercel')) {
+        console.log('using siteIDUrl')
+        fetchingDomain = siteIDUrl.replace('.vercel.app', '')
+        fetchingDomain = fetchingDomain.replace('-preview', '')
+        fetchingDomain = bucketUrl + '/' + fetchingDomain
+    } else {
+        console.log('using local domain')
+        fetchingDomain = bucketUrl + '/' + cmsUrl
+    }
     //let fetchingDomain = getDomain(true)
 
     //if multi tenant domain is included check it exists and that it contains a vercel url
@@ -152,12 +166,8 @@ export async function generateLayout(siteIDUrl = '') {
     } */
 
     //let fetchingDomain = getDomain(true)
-    if (siteIDUrl && !siteIDUrl.includes('jremod') && siteIDUrl.includes('vercel')) {
-        let fetchingDomain = siteIDUrl
 
-        console.log('lets see what it is: layout', fetchingDomain)
-
-        /*     if (siteIDUrl && siteIDUrl.includes('vercel')) {
+    /*     if (siteIDUrl && siteIDUrl.includes('vercel')) {
         //fetchingDomain = bucketUrl + '/' + (await convertDomainToSiteIdentifier(siteIDUrl))
         fetchingDomain = siteIDUrl.replace('.vercel.app', '')
         fetchingDomain = fetchingDomain.replace('-preview', '')
@@ -165,42 +175,27 @@ export async function generateLayout(siteIDUrl = '') {
 
         console.log('new fetched domain: layout', fetchingDomain)
     } */
-        try {
-            const resLayout = await fetch(fetchingDomain + '/layout.json', {
-                next: { revalidate: 0 },
-            })
-
-            const CMSLayout = await resLayout.json()
-
-            return { CMSLayout }
-        } catch (err) {
-            console.log('layout fetch error', err)
-
-            const resLayout = await fetch(getDomain(true) + '/layout.json', {
-                next: { revalidate: 0 },
-            })
-
-            const CMSLayout = await resLayout.json()
-
-            return { CMSLayout }
-        }
-    } else {
-        const resLayout = await fetch(getDomain(true) + '/layout.json', {
+    try {
+        const resLayout = await fetch(fetchingDomain + '/layout.json', {
             next: { revalidate: 0 },
         })
 
         const CMSLayout = await resLayout.json()
 
         return { CMSLayout }
-    }
+    } catch (err) {
+        console.log('layout fetch error', err)
 
-    /* const resLayout = await fetch(fetchingDomain + '/layout.json', {
+        return { CMSLayout: 'error on fetch' }
+    }
+}
+
+/* const resLayout = await fetch(fetchingDomain + '/layout.json', {
         next: { revalidate:10 },
     })x
     const CMSLayout = await resLayout.json()
 
     return { CMSLayout } */
-}
 
 async function assignCorrectDomain(siteIDUrl = '') {
     let fetchingDomain = getDomain(true)
