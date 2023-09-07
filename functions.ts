@@ -141,8 +141,6 @@ export const findHomePageSlug = (pageList: any) => {
 }
 
 export async function generateLayout(params?: { slug: string; domain: string }) {
-    let pageSlug
-    let pageType = ''
     let siteIDUrl = params?.domain
     let fetchingDomain
 
@@ -155,26 +153,6 @@ export async function generateLayout(params?: { slug: string; domain: string }) 
         console.log('using local domain')
         fetchingDomain = bucketUrl + '/' + cmsUrl
     }
-    //let fetchingDomain = getDomain(true)
-
-    //if multi tenant domain is included check it exists and that it contains a vercel url
-    /*     if (siteIDUrl && siteIDUrl.includes('vercel')) {
-        //fetchingDomain = assignCorrectDomain(siteIDUrl)
-        fetchingDomain = bucketUrl + '/' + (await convertDomainToSiteIdentifier(siteIDUrl))
-    } else {
-        fetchingDomain = getDomain(true)
-    } */
-
-    //let fetchingDomain = getDomain(true)
-
-    /*     if (siteIDUrl && siteIDUrl.includes('vercel')) {
-        //fetchingDomain = bucketUrl + '/' + (await convertDomainToSiteIdentifier(siteIDUrl))
-        fetchingDomain = siteIDUrl.replace('.vercel.app', '')
-        fetchingDomain = fetchingDomain.replace('-preview', '')
-        fetchingDomain = bucketUrl + '/' + fetchingDomain
-
-        console.log('new fetched domain: layout', fetchingDomain)
-    } */
     try {
         const resLayout = await fetch(fetchingDomain + '/layout.json', {
             next: { revalidate: 0 },
@@ -190,21 +168,14 @@ export async function generateLayout(params?: { slug: string; domain: string }) 
     }
 }
 
-/* const resLayout = await fetch(fetchingDomain + '/layout.json', {
-        next: { revalidate:10 },
-    })x
-    const CMSLayout = await resLayout.json()
-
-    return { CMSLayout } */
-
-async function assignCorrectDomain(siteIDUrl = '') {
+/* async function assignCorrectDomain(siteIDUrl = '') {
     let fetchingDomain = getDomain(true)
     console.log('correct domain funct', siteIDUrl)
 
     fetchingDomain = bucketUrl + '/' + (await convertDomainToSiteIdentifier(siteIDUrl))
     console.log('fetching domain', fetchingDomain)
     return fetchingDomain
-}
+} */
 
 export async function getPageData(params: { slug: string }, siteIDUrl = '') {
     console.log('page params', params)
@@ -337,11 +308,7 @@ export async function getHomePage2(siteIDUrl: string) {
     //let fetchingDomain = getDomain(true)
     console.log('new site id: home', siteIDUrl)
     //let fetchingDomain = getDomain(true)
-    /* if (siteIDUrl && siteIDUrl.includes('vercel')) {
-        fetchingDomain = siteIDUrl.replace('.vercel.app', '')
-        fetchingDomain = fetchingDomain.replace('-preview', '')
-        fetchingDomain = bucketUrl + '/' + fetchingDomain
-    } */
+
     if (siteIDUrl && !siteIDUrl.includes('jremod') && siteIDUrl.includes('vercel')) {
         let fetchingDomain
         console.log('using siteIDUrl')

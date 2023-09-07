@@ -58,6 +58,7 @@ export interface LayoutProps {
     siteData: GlobalData
     themeStyles: ThemeStyles
     cName?: string
+    cmsUrl?: string
     //page: CMSPage
 }
 export interface RendererProps {
@@ -740,11 +741,13 @@ export interface ContainerHeaderProps {
     siteData: GlobalData
     navSwitch: () => void
     setContactModal: () => void
+    cmsUrl?: string
 }
 
 export interface HeaderLogoBlockProps {
     type: 'mobile' | 'desktop'
     logos: LogoSlot[]
+    cmsUrl?: string
 }
 
 export interface SocialItem {
@@ -763,6 +766,7 @@ export interface ContainerFooterProps {
     pages?: PagesProps[]
     siteData: GlobalData
     navSwitch: () => void
+    cmsUrl?: string
 }
 
 export interface Params {
@@ -828,6 +832,7 @@ export interface MyNavProps {
 export interface LogoProps {
     logoUrl?: string
     link?: string
+    cmsUrl?: string
 }
 
 export interface SocialBarProps {

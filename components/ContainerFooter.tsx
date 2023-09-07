@@ -10,7 +10,7 @@ import { WidgetRenderer } from 'elements/WidgetRenderer'
 import { Fragment } from 'react'
 
 const ContainerFooter = (props: ContainerFooterProps) => {
-    const { siteData, navSwitch } = props
+    const { siteData, navSwitch, cmsUrl } = props
 
     return (
         <footer className={cn(styles.root, 'footer')}>
@@ -28,7 +28,9 @@ const ContainerFooter = (props: ContainerFooterProps) => {
                     {siteData.logos?.footer?.slots && (
                         <div className={cn(styles['logo-block'])}>
                             {siteData.logos?.footer?.slots.map((item: any, index: number) => (
-                                <Fragment key={index}>{item.image_src && <Logo logoUrl={domainImage(item.image_src, true)} link={item.image_link} />}</Fragment>
+                                <Fragment key={index}>
+                                    {item.image_src && <Logo logoUrl={domainImage(item.image_src, true, cmsUrl)} link={item.image_link} />}
+                                </Fragment>
                             ))}
                         </div>
                     )}

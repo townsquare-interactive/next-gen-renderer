@@ -25,7 +25,7 @@ export const Container = (props: ContainerProps) => {
             {page && (
                 <>
                     <PageHead page={page} siteData={siteData} pageType={page.data.slug === 'home' ? 'index' : 'slug'} />
-                    <ContainerLayout siteData={siteData} themeStyles={themeStyles} cName={page.data.slug}>
+                    <ContainerLayout siteData={siteData} themeStyles={themeStyles} cName={page.data.slug} cmsUrl={cmsUrl}>
                         {/*  {page.data.anchorTags && page.data.anchorTags?.length != 0 && <Anchors anchorTags={page.data.anchorTags} />}
                          */}
                         {page.data && (

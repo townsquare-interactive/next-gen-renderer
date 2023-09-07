@@ -9,7 +9,7 @@ import SlidingHeader from 'elements/SlidingHeader'
 import ContactModal from './ContactModal'
 
 export default function Layout(props: LayoutProps) {
-    const { children, siteData, themeStyles, cName } = props
+    const { children, siteData, themeStyles, cName, cmsUrl } = props
     const [navCheck, setNav] = useState<boolean>(false)
     const [showContactModal, setModal] = useState<boolean>(false)
 
@@ -28,11 +28,11 @@ export default function Layout(props: LayoutProps) {
             <div className={cn(styles.root, `page-${cName}`)}>
                 <SlidingHeader navSwitch={navSwitch} navCheck={navCheck} themeStyles={themeStyles} siteData={siteData} />
                 {twoPhones && <ContactModal siteData={siteData} showContactModal={showContactModal} setContactModal={setContactModal} />}
-                <ContainerHeader siteData={siteData} navSwitch={navSwitch} setContactModal={setContactModal} />
+                <ContainerHeader siteData={siteData} navSwitch={navSwitch} setContactModal={setContactModal} cmsUrl={cmsUrl} />
 
                 <main className={'content-background'}>{children}</main>
 
-                <ContainerFooter siteData={siteData} navSwitch={navSwitch} />
+                <ContainerFooter siteData={siteData} navSwitch={navSwitch} cmsUrl={cmsUrl} />
             </div>
         </>
     )
