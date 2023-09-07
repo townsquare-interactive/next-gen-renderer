@@ -18,6 +18,8 @@ export const Container = (props: ContainerProps) => {
     const { page, siteData } = props
     const { cmsUrl, themeStyles, columnStyles } = defineContainerVars(page, siteData)
 
+    console.log(!page.data ? page : 'there is a page here')
+
     return (
         <>
             {page && (

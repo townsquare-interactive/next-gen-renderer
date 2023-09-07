@@ -1,9 +1,9 @@
 import { PageListProps } from '../../../types'
-import { getDomain, getPageData, generateLayout, convertDomainToSiteIdentifier } from '../../../functions'
+import { getDomain, getPageData, generateLayout, convertDomainToSiteIdentifier, getAnyPageData } from '../../../functions'
 import { use } from 'react'
 import { Container } from 'components/Container'
 
-export async function generateMetadata({ params }: { params: { domain: string; slug: string } }) {
+/* export async function generateMetadata({ params }: { params: { domain: string; slug: string } }) {
     const { domain, slug } = params
 
     const res = await fetch(getDomain(true) + '/pages/page-list.json')
@@ -12,10 +12,10 @@ export async function generateMetadata({ params }: { params: { domain: string; s
     return data.pages.map((page: PageListProps) => ({
         slug: slug,
     }))
-}
+} */
 
-/* export async function generateStaticParams(params: any) {
-    console.log('slug params', params)
+/* export async function generateStaticParams() {
+    // console.log('slug params', params)
     const res = await fetch(getDomain(true) + '/pages/page-list.json')
     const data = await res.json()
 
@@ -24,22 +24,37 @@ export async function generateMetadata({ params }: { params: { domain: string; s
     }))
 } */
 
-const Page = ({ params }: { params: { slug: string; domain?: string } }) => {
+const Page = ({ params }: { params: { slug: string; domain: string } }) => {
     console.log('slug params', params)
     let newDomain = ''
-    if (params?.domain) {
+    if (params?.domain && params?.domain.includes('vercel')) {
         //newDomain = convertDomainToSiteIdentifier(params?.domain)
         newDomain = params?.domain
     }
-    console.log('new dommain', newDomain)
-    const { CMSLayout } = use(generateLayout(newDomain))
-    const { page } = use(getPageData(params, newDomain))
+
+    if (params?.domain?.includes('jremod') || params?.domain?.includes('fav')) {
+        console.log('not the correct domain', params.domain)
+        return <div>Weird domain</div>
+    } else {
+        const { CMSLayout } = use(generateLayout())
+        //const { page } = use(getPageData(params))
+        const { page } = use(getAnyPageData(params))
+
+        return (
+            <>
+                <Container page={page} siteData={CMSLayout} />
+            </>
+        )
+    }
+    /* const { CMSLayout } = use(generateLayout())
+    const { page } = use(getPageData(params))
+    //const { page } = use(getAnyPageData(params))
 
     return (
         <>
             <Container page={page} siteData={CMSLayout} />
         </>
-    )
+    ) */
 }
 
 export default Page

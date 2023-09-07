@@ -1,4 +1,4 @@
-import { convertDomainToSiteIdentifier, generateLayout, getHomePage, getHomePage2 } from '../../functions'
+import { convertDomainToSiteIdentifier, generateLayout, getAnyPageData, getHomePage, getHomePage2 } from '../../functions'
 import { use } from 'react'
 import { Container } from 'components/Container'
 
@@ -11,22 +11,41 @@ import { Container } from 'components/Container'
     }
 } */
 
+//const Home = (params: any) => {
 const Home = (params: any) => {
-    console.log('initial params', params.params.domain)
+    console.log('initial params', params.params)
     let newDomain = ''
-    if (params?.params?.domain) {
+    let newParams = ''
+    if (params?.params?.domain && params?.params?.domain.includes('vercel')) {
         newDomain = params.params.domain
+        newParams = params.params
     }
 
-    const { CMSLayout } = use(generateLayout(newDomain))
-    //const { page } = use(getHomePage())
-    const { page } = use(getHomePage2(newDomain))
+    if (params?.params?.domain.includes('jremod') || params?.params?.domain.includes('fav')) {
+        console.log('not the correct domain', params.domain)
+        return <div>Weird domain</div>
+    } else {
+        const { CMSLayout } = use(generateLayout())
+        //const { page } = use(getHomePage())
+        //const { page } = use(getHomePage2(newDomain))
+        const { page } = use(getAnyPageData(params.params))
+
+        return (
+            <>
+                <Container page={page} siteData={CMSLayout} />
+            </>
+        )
+    }
+    /* const { CMSLayout } = use(generateLayout())
+    const { page } = use(getHomePage())
+    //const { page } = use(getHomePage2(newDomain))
+    //const { page } = use(getAnyPageData(params.params))
 
     return (
         <>
             <Container page={page} siteData={CMSLayout} />
         </>
-    )
+    ) */
 }
 
 export default Home
