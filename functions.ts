@@ -140,11 +140,10 @@ export const findHomePageSlug = (pageList: any) => {
     return homePageSlug
 }
 
-export async function generateLayout(params?: { slug: string; domain: string }) {
-    let siteIDUrl = params?.domain
+export const transformFetchingDomain = (params?: { slug?: string; domain: string }) => {
     let fetchingDomain
-
-    if (params?.domain && !siteIDUrl?.includes('jremod') && siteIDUrl?.includes('vercel')) {
+    let siteIDUrl = params?.domain
+    if (params?.domain && siteIDUrl?.includes('vercel')) {
         console.log('using siteIDUrl')
         fetchingDomain = siteIDUrl.replace('.vercel.app', '')
         fetchingDomain = fetchingDomain.replace('-preview', '')
@@ -153,6 +152,12 @@ export async function generateLayout(params?: { slug: string; domain: string }) 
         console.log('using local domain')
         fetchingDomain = bucketUrl + '/' + cmsUrl
     }
+    return fetchingDomain
+}
+
+export async function generateLayout(params?: { slug: string; domain: string }) {
+    let fetchingDomain = transformFetchingDomain(params)
+
     try {
         const resLayout = await fetch(fetchingDomain + '/layout.json', {
             next: { revalidate: 0 },
@@ -256,24 +261,10 @@ export async function getHomePage() {
 
 export async function getAnyPageData(params: { domain: string; slug?: string }) {
     let pageSlug
-    let pageType = ''
-    let siteIDUrl = params.domain
-    let fetchingDomain
-
-    if (siteIDUrl && !siteIDUrl.includes('jremod') && siteIDUrl.includes('vercel')) {
-        console.log('using siteIDUrl')
-        fetchingDomain = siteIDUrl.replace('.vercel.app', '')
-        fetchingDomain = fetchingDomain.replace('-preview', '')
-        fetchingDomain = bucketUrl + '/' + fetchingDomain
-    } else {
-        console.log('using local domain')
-        fetchingDomain = bucketUrl + '/' + cmsUrl
-    }
+    let fetchingDomain = transformFetchingDomain(params)
 
     //determining the page slug
     if (!params.slug) {
-        pageType = 'home'
-
         try {
             const resPageList = await fetch(fetchingDomain + '/pages/page-list.json', {
                 next: { revalidate: 10 },

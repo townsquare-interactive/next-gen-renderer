@@ -26,35 +26,20 @@ import { Container } from 'components/Container'
 
 const Page = ({ params }: { params: { slug: string; domain: string } }) => {
     console.log('slug params', params)
-    let newDomain = ''
-    if (params?.domain && params?.domain.includes('vercel')) {
-        //newDomain = convertDomainToSiteIdentifier(params?.domain)
-        newDomain = params?.domain
-    }
 
-    if (params?.domain?.includes('jremod') || params?.domain?.includes('fav')) {
+    /*     if (params?.domain?.includes('fav')) {
         console.log('not the correct domain', params.domain)
         return <div>Weird domain</div>
-    } else {
-        const { CMSLayout } = use(generateLayout(params))
-        //const { page } = use(getPageData(params))
-        const { page } = use(getAnyPageData(params))
-
-        return (
-            <>
-                <Container page={page} siteData={CMSLayout} />
-            </>
-        )
-    }
-    /* const { CMSLayout } = use(generateLayout())
-    const { page } = use(getPageData(params))
-    //const { page } = use(getAnyPageData(params))
+    } else { */
+    const { CMSLayout } = use(generateLayout(params))
+    const { page } = use(getAnyPageData(params))
 
     return (
         <>
             <Container page={page} siteData={CMSLayout} />
         </>
-    ) */
+    )
+    //}
 }
 
 export default Page
