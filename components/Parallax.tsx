@@ -102,7 +102,6 @@ const ModuleItem = (props: ModuleItemProps) => {
 
 const ItemWrap = (props: ItemWrapProps) => {
     const { item, well, themeStyles, modId, columns, type, cmsUrl, imgsize } = props
-    const laxType = choseLax
 
     return (
         <div
@@ -120,19 +119,17 @@ const ItemWrap = (props: ItemWrapProps) => {
                     : { height: item.modOne || '70vh' }
             }
         >
-            {laxType === 'scroll' && (
-                <ConditionalWrapper
-                    condition={item.image ? true : false}
-                    trueOutput={(children: ReactChild) => (
-                        <ReactScroll item={item} imgsize={imgsize} cmsUrl={cmsUrl} columns={columns}>
-                            {children}
-                        </ReactScroll>
-                    )}
-                    falseOutput={(children: ReactChild) => <>{children}</>}
-                >
-                    <ParallaxChildren item={item} columns={columns} modId={modId} themeStyles={themeStyles} well={well} imgsize={imgsize} type={type} />
-                </ConditionalWrapper>
-            )}
+            <ConditionalWrapper
+                condition={item.image ? true : false}
+                trueOutput={(children: ReactChild) => (
+                    <ReactScroll item={item} imgsize={imgsize} cmsUrl={cmsUrl} columns={columns}>
+                        {children}
+                    </ReactScroll>
+                )}
+                falseOutput={(children: ReactChild) => <>{children}</>}
+            >
+                <ParallaxChildren item={item} columns={columns} modId={modId} themeStyles={themeStyles} well={well} imgsize={imgsize} type={type} />
+            </ConditionalWrapper>
         </div>
     )
 }

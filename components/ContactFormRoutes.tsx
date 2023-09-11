@@ -119,7 +119,6 @@ const ContactFormRoutes = (props: ContactFormRoutesProps) => {
                                                         <button type="submit" className={styles.submit}>
                                                             Submit
                                                         </button>
-                                                        {/*                                             <Button type="form" btn={{ label: 'submit', active: true, window: 0, btnType: 'btn_1' }} /> */}
                                                     </div>
                                                 </Form>
                                             </Formik>

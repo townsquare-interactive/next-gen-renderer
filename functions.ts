@@ -1,5 +1,4 @@
-import { ConditionalWrapperProps, ThemeStyles, GlobalData, CMSPage, ContactFormData } from 'types'
-import { revalidateTag } from 'next/cache'
+import { ConditionalWrapperProps, GlobalData, CMSPage } from 'types'
 const bucketUrl = process.env.BUCKET_URL || 'https://townsquareinteractive.s3.amazonaws.com'
 const localUrl = 'wanderlustadventures'
 const cmsUrl = process.env.NEXT_PUBLIC_CMS_URL || 'clttestsiteforjoshedwards'
@@ -142,10 +141,10 @@ export const findHomePageSlug = (pageList: any) => {
 
 export const transformFetchingDomain = (params?: { slug?: string; domain: string }) => {
     let fetchingDomain
-    let siteIDUrl = params?.domain
-    if (params?.domain && siteIDUrl?.includes('vercel')) {
-        console.log('using siteIDUrl')
-        fetchingDomain = siteIDUrl.replace('.vercel.app', '')
+    let vercelDomain = params?.domain
+    if (params?.domain && vercelDomain?.includes('vercel')) {
+        console.log('using vercelDomain')
+        fetchingDomain = vercelDomain.replace('.vercel.app', '')
         fetchingDomain = fetchingDomain.replace('-preview', '')
         fetchingDomain = bucketUrl + '/' + fetchingDomain
     } else {
@@ -173,90 +172,10 @@ export async function generateLayout(params?: { slug: string; domain: string }) 
     }
 }
 
-/* async function assignCorrectDomain(siteIDUrl = '') {
-    let fetchingDomain = getDomain(true)
-    console.log('correct domain funct', siteIDUrl)
-
-    fetchingDomain = bucketUrl + '/' + (await convertDomainToSiteIdentifier(siteIDUrl))
-    console.log('fetching domain', fetchingDomain)
-    return fetchingDomain
-} */
-
-export async function getPageData(params: { slug: string }, siteIDUrl = '') {
-    console.log('page params', params)
-    let pageSlug = params.slug
-    //let fetchingDomain = getDomain(true)
-    if (siteIDUrl && !siteIDUrl.includes('jremod') && siteIDUrl.includes('vercel')) {
-        let fetchingDomain
-        console.log('using siteIDUrl')
-        fetchingDomain = siteIDUrl.replace('.vercel.app', '')
-        fetchingDomain = fetchingDomain.replace('-preview', '')
-        fetchingDomain = bucketUrl + '/' + fetchingDomain
-
-        console.log('lets see what home url is', fetchingDomain)
-
-        try {
-            const resPage = await fetch(fetchingDomain + '/pages/' + pageSlug + '.json', {
-                next: { revalidate: 10 },
-            })
-            let page = await resPage.json()
-
-            return { page }
-        } catch (err) {
-            console.log('sub page error', err)
-            return { page: '{ page }' }
-        }
-    } else {
-        try {
-            const resPage = await fetch(getDomain(true) + '/pages/' + pageSlug + '.json', {
-                next: { revalidate: 10 },
-            })
-            let page = await resPage.json()
-
-            return { page }
-        } catch (err) {
-            console.log('sub page error', err)
-            return { page: '{ page }' }
-        }
-    }
-    /*     if (siteIDUrl && siteIDUrl.includes('vercel')) {
-        fetchingDomain = siteIDUrl.replace('.vercel.app', '')
-        fetchingDomain = fetchingDomain.replace('-preview', '')
-        fetchingDomain = bucketUrl + '/' + fetchingDomain
-    } */
-
-    //if multi tenant domain is included check it exists and that it contains a vercel url
-    /*  if (siteIDUrl && siteIDUrl.includes('vercel')) {
-        //fetchingDomain = siteIDUrl
-        console.log('using other domain', siteIDUrl)
-
-        fetchingDomain = 'https://townsquareinteractive.s3.amazonaws.com/' + convertDomainToSiteIdentifier(siteIDUrl)
-        console.log('fetching domain', fetchingDomain)
-    } */
-}
-
 export function removeAfterFirstSlash(inputString: string) {
     const parts = inputString.split('/')
     const result = parts[0]
     return result
-}
-
-export async function getHomePage() {
-    let pageSlug
-
-    const resPageList = await fetch(getDomain(true) + '/pages/page-list.json', {
-        next: { revalidate: 10 },
-    })
-    const pageList = await resPageList.json()
-
-    pageSlug = findHomePageSlug(pageList)
-
-    const resPage = await fetch(getDomain(true) + '/pages/' + pageSlug + '.json', {
-        next: { revalidate: 0 },
-    })
-    let page = await resPage.json()
-
-    return { page }
 }
 
 export async function getAnyPageData(params: { domain: string; slug?: string }) {
@@ -284,7 +203,7 @@ export async function getAnyPageData(params: { domain: string; slug?: string }) 
             next: { revalidate: 0 },
         })
         let page = await resPage.json()
-        console.log('fetch worked for anypage I think?')
+        console.log('fetch worked for anypage')
 
         return { page }
     } catch (err) {
@@ -292,88 +211,6 @@ export async function getAnyPageData(params: { domain: string; slug?: string }) 
         return { page: 'error on fetch' }
     }
 }
-
-export async function getHomePage2(siteIDUrl: string) {
-    let pageSlug
-
-    //let fetchingDomain = getDomain(true)
-    console.log('new site id: home', siteIDUrl)
-    //let fetchingDomain = getDomain(true)
-
-    if (siteIDUrl && !siteIDUrl.includes('jremod') && siteIDUrl.includes('vercel')) {
-        let fetchingDomain
-        console.log('using siteIDUrl')
-        fetchingDomain = siteIDUrl.replace('.vercel.app', '')
-        fetchingDomain = fetchingDomain.replace('-preview', '')
-        fetchingDomain = bucketUrl + '/' + fetchingDomain
-
-        console.log('lets see what home url is', fetchingDomain)
-        try {
-            const resPageList = await fetch(fetchingDomain + '/pages/page-list.json', {
-                next: { revalidate: 10 },
-            })
-            const pageList = await resPageList.json()
-
-            pageSlug = findHomePageSlug(pageList)
-
-            const resPage = await fetch(fetchingDomain + '/pages/' + pageSlug + '.json', {
-                next: { revalidate: 0 },
-            })
-            let page = await resPage.json()
-            console.log('fetch worked for homepage I think?')
-
-            return { page }
-        } catch (err) {
-            console.log(err)
-            return { page: 'error on fetch' }
-        }
-    } else {
-        console.log('reverting to OG homepage function')
-        let pageSlug
-
-        const resPageList = await fetch(getDomain(true) + '/pages/page-list.json', {
-            next: { revalidate: 10 },
-        })
-        const pageList = await resPageList.json()
-
-        pageSlug = findHomePageSlug(pageList)
-
-        const resPage = await fetch(getDomain(true) + '/pages/' + pageSlug + '.json', {
-            next: { revalidate: 0 },
-        })
-        let page = await resPage.json()
-
-        return { page }
-    }
-}
-
-export const convertDomainToSiteIdentifier = async (domain: string) => {
-    let newDomain = domain.replace('.vercel.app', '')
-    newDomain = newDomain.replace('-preview', '')
-    return newDomain
-}
-
-/* export async function getHomePage2() {
-    let pageSlug
-
-    try {
-        const resPageList = await fetch(getDomain(true) + '/pages/page-list.json', {
-            next: { revalidate: 10 },
-        })
-        const pageList = await resPageList.json()
-
-        pageSlug = findHomePageSlug(pageList)
-
-        const resPage = await fetch(getDomain(true) + '/pages/' + pageSlug + '.json', {
-            next: { revalidate: 5 },
-        })
-        let page = await resPage.json()
-
-        return { page }
-    } catch (err) {
-        console.log(err)
-    }
-} */
 
 export function decideHeadTag(columns: number | string, tag: string, headerTag: string) {
     if ((headerTag === '1' || headerTag === 'h1') && tag === 'hd') {

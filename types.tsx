@@ -769,6 +769,11 @@ export interface ContainerFooterProps {
     cmsUrl?: string
 }
 
+export interface MultiTenantProps {
+    slug: string
+    domain: string
+}
+
 export interface Params {
     slug: 'string'
 }
