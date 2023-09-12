@@ -19,16 +19,15 @@ export default async function middleware(req: NextRequest) {
     const url = req.nextUrl
 
     // Get hostname of request (e.g. demo.vercel.pub, demo.localhost:3000)
-    //const hostname = req.headers.get('host')!.replace('.localhost:3000', `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`)
-    const hostname = req.headers.get('host')
-    const afterLastDotReg = /(\.[^.]*$)/g
-    const siteID = hostname?.replace(afterLastDotReg, '')
+    const hostname = req.headers.get('host')!.replace('.localhost:3000', `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`)
+    //const afterLastDotReg = /(\.[^.]*$)/g
+    //const siteID = hostname?.replace(afterLastDotReg, '')
 
     // Get the pathname of the request (e.g. /, /about, /blog/first-post)
     const path = url.pathname
 
     // rewrites for app pages
-    if (siteID == `app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`) {
+    if (hostname == `app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`) {
         const session = await getToken({ req })
         if (!session && path !== '/login') {
             return NextResponse.redirect(new URL('/login', req.url))
@@ -39,17 +38,17 @@ export default async function middleware(req: NextRequest) {
     }
 
     // special case for `vercel.pub` domain
-    if (siteID === 'vercel.pub') {
+    if (hostname === 'vercel.pub') {
         return NextResponse.redirect('https://vercel.com/blog/platforms-starter-kit')
     }
 
     // rewrite root application to `/home` folder
-    if (siteID === 'localhost:3000' || siteID === process.env.NEXT_PUBLIC_ROOT_DOMAIN) {
+    if (hostname === 'localhost:3000' || hostname === process.env.NEXT_PUBLIC_ROOT_DOMAIN) {
         console.log('this is the path', path)
         return NextResponse.rewrite(new URL(`/localhost${path}`, req.url))
     }
 
     // rewrite everything else to `/[domain]/[path] dynamic route
-    return NextResponse.rewrite(new URL(`/${siteID}${path}`, req.url))
+    return NextResponse.rewrite(new URL(`/${hostname}${path}`, req.url))
     //return NextResponse.rewrite(new URL(newDomain, req.url))
 }

@@ -125,7 +125,7 @@ export const findHomePageSlug = (pageList: any) => {
 export const transformFetchingDomain = (params?: { slug?: string; domain: string }) => {
     let fetchingDomain
     let vercelDomain = params?.domain
-    if (vercelDomain && vercelDomain != 'localhost') {
+    if (vercelDomain && vercelDomain != 'localhost' && vercelDomain.includes('vercel')) {
         console.log('using vercelDomain')
         fetchingDomain = vercelDomain.replace('.vercel.app', '')
         fetchingDomain = fetchingDomain.replace('-preview', '')
