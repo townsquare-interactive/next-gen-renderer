@@ -7,13 +7,10 @@ import Parser from 'html-react-parser'
 const DescBlock = (props: DescBlockProps) => {
     const { descSize, desc, isBeaconHero = false, useAccentColor, well, contentSpacing, type } = props
 
-    //console.log(desc)
-
     return (
         <div
             className={cn(styles.root, styles[`${descSize}`], 'txt-font', 'desc', styles[`${type}`], styles[`${contentSpacing}`], {
                 ['txt-color']: !isBeaconHero && !useAccentColor && type != 'carousel' && type != 'thumbnail',
-                //['accent-txt']: well || isBeaconHero,
                 ['caption-txt']: type === 'carousel' || type === 'thumbnail' || useAccentColor,
                 [styles.well]: well === '1',
             })}
