@@ -69,9 +69,26 @@ export function domainImage(url: string, cms = false, cmsSiteUrl = '', type = ''
 }
 
 /*------------------------- CMS ----------------------------*/
+/* //Sanity CMS
+const client = createClient({
+    projectId: '5q931z68',
+    dataset: 'production',
+    apiVersion: '2023-05-26',
+    useCdn: false,
+})
+
+export async function getSanityPages() {
+    const sanityPages = await client.fetch(`*[_type == "pages"]`)
+    return sanityPages
+}
+
+export async function getSanitySiteData() {
+    const sanitySiteData = await client.fetch(`*[_type == "sitedata"]`)
+    return sanitySiteData
+} */
 
 // Strapi CMS
-/* export async function getStrapiPages() {
+export async function getStrapiPages() {
     const token = process.env.STRAPI_TOKEN
     try {
         //need populate=deep to get all records, plugin for strapi
@@ -84,7 +101,7 @@ export function domainImage(url: string, cms = false, cmsSiteUrl = '', type = ''
         console.log(error)
         return { error: 'Strapi fetch error' }
     }
-} */
+}
 
 /*----------------------------- End of CMS --------------------------------*/
 
@@ -125,7 +142,7 @@ export const findHomePageSlug = (pageList: any) => {
 export const transformFetchingDomain = (params?: { slug?: string; domain: string }) => {
     let fetchingDomain
     let vercelDomain = params?.domain
-    if (vercelDomain && vercelDomain != 'localhost' && vercelDomain.includes('vercel')) {
+    if (params?.domain && vercelDomain?.includes('vercel')) {
         console.log('using vercelDomain')
         fetchingDomain = vercelDomain.replace('.vercel.app', '')
         fetchingDomain = fetchingDomain.replace('-preview', '')
