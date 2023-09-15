@@ -7,6 +7,8 @@ const globalAssets = bucketUrl + '/global-assets'
 const env = process.env.NEXT_PUBLIC_URL_ENV
 const domain = process.env.NEXT_PUBLIC_CMS_URL
 //import { createClient } from 'next-sanity'
+import { z } from 'zod'
+import { SiteDataSchema, CMSPageSchema, PageListSchema } from './zod-objects'
 
 export const bucketAndSiteUrl = getDomain(true)
 //determines environment (preview/live) and creates url for it
@@ -88,7 +90,7 @@ export async function getSanitySiteData() {
 } */
 
 // Strapi CMS
-export async function getStrapiPages() {
+/* export async function getStrapiPages() {
     const token = process.env.STRAPI_TOKEN
     try {
         //need populate=deep to get all records, plugin for strapi
@@ -102,7 +104,7 @@ export async function getStrapiPages() {
         return { error: 'Strapi fetch error' }
     }
 }
-
+ */
 /*----------------------------- End of CMS --------------------------------*/
 
 /*----------------------------- Forms --------------------------------*/
@@ -142,9 +144,10 @@ export const findHomePageSlug = (pageList: any) => {
 export const transformFetchingDomain = (params?: { slug?: string; domain: string }) => {
     let fetchingDomain
     let vercelDomain = params?.domain
-    if (params?.domain && vercelDomain?.includes('vercel')) {
+    if (params?.domain && (vercelDomain?.includes('vercel') || vercelDomain?.includes('.com'))) {
         console.log('using vercelDomain')
-        fetchingDomain = vercelDomain.replace('.vercel.app', '')
+        const removeAfterPeriod = /\..*/
+        fetchingDomain = vercelDomain?.replace(removeAfterPeriod, '')
         fetchingDomain = fetchingDomain.replace('-preview', '')
         fetchingDomain = bucketUrl + '/' + fetchingDomain
     } else {
@@ -153,6 +156,18 @@ export const transformFetchingDomain = (params?: { slug?: string; domain: string
     }
     return fetchingDomain
 }
+
+/* const LayoutSchema = z.object({
+    fName: z.string(),
+    lName: z.string(),
+    email: z.string().includes('@'),
+    phone: z.string().optional(),
+    messagebox: z.string().min(2, 'Too Short!'),
+    street: z.string().optional(),
+    city: z.string().optional(),
+    state: z.string().optional(),
+    zip: z.string().optional(),
+}) */
 
 export async function generateLayout(params?: { slug: string; domain: string }) {
     let fetchingDomain = transformFetchingDomain(params)
@@ -163,6 +178,9 @@ export async function generateLayout(params?: { slug: string; domain: string }) 
         })
 
         const CMSLayout = await resLayout.json()
+
+        // Attempt to validate the incoming data against the schema
+        zodDataCheck(CMSLayout, SiteDataSchema, 'Layout File')
 
         return { CMSLayout }
     } catch (err) {
@@ -190,6 +208,8 @@ export async function getAnyPageData(params: { domain: string; slug?: string }) 
             })
             const pageList = await resPageList.json()
 
+            zodDataCheck(pageList, PageListSchema, 'Page List')
+
             pageSlug = findHomePageSlug(pageList)
         } catch (err) {
             console.log('pagelist error', err)
@@ -205,10 +225,21 @@ export async function getAnyPageData(params: { domain: string; slug?: string }) 
         let page = await resPage.json()
         console.log('fetch worked for anypage')
 
+        zodDataCheck(page, CMSPageSchema, 'Page')
+
         return { page }
     } catch (err) {
         console.log('anypage fetch error', err)
         return { page: 'error on fetch' }
+    }
+}
+
+//check data based off Zod schema
+const zodDataCheck = (data: any, schema: any, type: string) => {
+    const validatedPageData = schema.safeParse(data)
+
+    if (validatedPageData.success === false) {
+        return console.log(`${type} zod error:`, JSON.stringify(validatedPageData))
     }
 }
 

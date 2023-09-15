@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getToken } from 'next-auth/jwt'
+import { transformFetchingDomain } from 'functions'
 
 export const config = {
     matcher: [
@@ -16,9 +17,13 @@ export const config = {
 
 export default async function middleware(req: NextRequest) {
     const url = req.nextUrl
+    let vercelDomain = false
 
     // Get hostname of request (e.g. demo.vercel.pub, demo.localhost:3000)
-    const hostname = req.headers.get('host')!.replace('.localhost:3000', `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`)
+    let hostname = req.headers.get('host')!.replace('.localhost:3000', `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`)
+    //hostname = transformFetchingDomain({ domain: hostname })
+    //const removeAfterPeriod = /\..*/
+    //let siteID = hostname?.replace(removeAfterPeriod, '')
 
     // Get the pathname of the request (e.g. /, /about, /blog/first-post)
     const path = url.pathname
@@ -42,8 +47,10 @@ export default async function middleware(req: NextRequest) {
     // rewrite root application to `/home` folder
     if (hostname === 'localhost:3000' || hostname === process.env.NEXT_PUBLIC_ROOT_DOMAIN) {
         return NextResponse.rewrite(new URL(`/home${path}`, req.url))
+    } else if (hostname.includes('vercel')) {
+        vercelDomain = true
     }
 
     // rewrite everything else to `/[domain]/[path] dynamic route
-    return NextResponse.rewrite(new URL(`/${hostname}${path}`, req.url))
+    return NextResponse.rewrite(new URL(`/${hostname}${path}`))
 }
