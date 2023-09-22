@@ -7,7 +7,7 @@ const globalAssets = bucketUrl + '/global-assets'
 const env = process.env.NEXT_PUBLIC_URL_ENV
 const domain = process.env.NEXT_PUBLIC_CMS_URL
 //import { createClient } from 'next-sanity'
-import { z } from 'zod'
+//import { z } from 'zod'
 import { SiteDataSchema, CMSPageSchema, PageListSchema } from './zod-objects'
 
 export const bucketAndSiteUrl = getDomain(true)
@@ -70,7 +70,7 @@ export function domainImage(url: string, cms = false, cmsSiteUrl = '', type = ''
     }
 }
 
-/*------------------------- CMS ----------------------------*/
+/*------------------------- Alternate CMS ----------------------------*/
 /* //Sanity CMS
 const client = createClient({
     projectId: '5q931z68',
@@ -89,23 +89,7 @@ export async function getSanitySiteData() {
     return sanitySiteData
 } */
 
-// Strapi CMS
-/* export async function getStrapiPages() {
-    const token = process.env.STRAPI_TOKEN
-    try {
-        //need populate=deep to get all records, plugin for strapi
-        const resStrapiPages = await fetch('http://127.0.0.1:1337/api/pages?populate=deep', {
-            next: { revalidate: 10 },
-        })
-        const strapiPages = await resStrapiPages.json()
-        return { strapiPages }
-    } catch (error) {
-        console.log(error)
-        return { error: 'Strapi fetch error' }
-    }
-}
- */
-/*----------------------------- End of CMS --------------------------------*/
+/*----------------------------- End of Alt CMS --------------------------------*/
 
 /*----------------------------- Forms --------------------------------*/
 
@@ -157,18 +141,6 @@ export const transformFetchingDomain = (params?: { slug?: string; domain: string
     return fetchingDomain
 }
 
-/* const LayoutSchema = z.object({
-    fName: z.string(),
-    lName: z.string(),
-    email: z.string().includes('@'),
-    phone: z.string().optional(),
-    messagebox: z.string().min(2, 'Too Short!'),
-    street: z.string().optional(),
-    city: z.string().optional(),
-    state: z.string().optional(),
-    zip: z.string().optional(),
-}) */
-
 export async function generateLayout(params?: { slug: string; domain: string }) {
     let fetchingDomain = transformFetchingDomain(params)
 
@@ -180,7 +152,7 @@ export async function generateLayout(params?: { slug: string; domain: string }) 
         const CMSLayout = await resLayout.json()
 
         // Attempt to validate the incoming data against the schema
-        zodDataCheck(CMSLayout, SiteDataSchema, 'Layout File')
+        //zodDataCheck(CMSLayout, SiteDataSchema, 'Layout File')
 
         return { CMSLayout }
     } catch (err) {
@@ -208,7 +180,7 @@ export async function getAnyPageData(params: { domain: string; slug?: string }) 
             })
             const pageList = await resPageList.json()
 
-            zodDataCheck(pageList, PageListSchema, 'Page List')
+            //zodDataCheck(pageList, PageListSchema, 'Page List')
 
             pageSlug = findHomePageSlug(pageList)
         } catch (err) {
@@ -225,7 +197,7 @@ export async function getAnyPageData(params: { domain: string; slug?: string }) 
         let page = await resPage.json()
         console.log('fetch worked for anypage')
 
-        zodDataCheck(page, CMSPageSchema, 'Page')
+        //zodDataCheck(page, CMSPageSchema, 'Page')
 
         return { page }
     } catch (err) {

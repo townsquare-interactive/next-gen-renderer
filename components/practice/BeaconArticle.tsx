@@ -149,9 +149,9 @@ const BeaconArticle = (props: ModuleProps) => {
                             >
                                 <p>{Parser(item.desc)}</p>
                             </div>
-                            {item.pagelink && item.actionlbl && (
+                            {item.links.pagelink && item.actionlbl && (
                                 <TheListItemAction
-                                    pagelink={item.pagelink}
+                                    pagelink={item.links.pagelink}
                                     actionlbl={String(item.actionlbl)}
                                     newwindow={item.newwindow}
                                     themeStyles={props.themeStyles}
@@ -207,8 +207,8 @@ const TheListItemImage = (props: TheListItemImageProps) => {
             })}
         >
             <div className={styles.image}>
-                {item.pagelink ? (
-                    <Link href={item.pagelink} target={item.newwindow === 1 ? '_blank' : '_self'} className="accent_color_bg accent_txt_color">
+                {item.links.pagelink ? (
+                    <Link href={item.links.pagelink} target={item.newwindow === 1 ? '_blank' : '_self'} className="accent_color_bg accent_txt_color">
                         {!imageNoSizings.includes(imgsize) ? (
                             <Image
                                 className={cn(styles['item_image'], 'item_image', 'beacon-lazy-load')}

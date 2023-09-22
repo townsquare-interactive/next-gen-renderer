@@ -496,6 +496,12 @@ export interface ArticleItems {
     nextImageSizes?: string
     isFeatureButton?: boolean
     captionStyle?: { background: string }
+    links: {
+        pagelink: string
+        weblink: string
+        pagelink2?: string
+        weblink2?: string
+    }
 }
 
 export interface ReactScrollProps {

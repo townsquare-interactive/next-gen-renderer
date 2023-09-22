@@ -108,7 +108,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                     [styles.hero]: item.isFeatured === 'active' || item.isFeatured === true,
                     ['hero']: item.isFeatured === 'active' || item.isFeatured === true,
                     [styles.nHero]: !item.isFeatured,
-                    [styles.yLk]: (item.pagelink || item.weblink || item.pagelink2 || item.weblink2) && !item.twoButtons,
+                    [styles.yLk]: (item.links.pagelink || item.links.weblink || item.links.pagelink2 || item.links.weblink2) && !item.twoButtons,
                     [styles.yImg]: item.image,
                     [styles['btn-only']]: item.visibleButton && !item.headline && !item.subheader,
                     ['is-wrap-link']: item.isWrapLink,

@@ -133,7 +133,7 @@ const TheListItem = (props: TheListItemProps) => {
         }
     }
     function isLink() {
-        if (item.pagelink || item.pagelink2 || item.weblink || item.weblink2) {
+        if (item.links.pagelink || item.links.pagelink2 || item.links.weblink || item.links.weblink2) {
             return true
         } else {
             return false
@@ -142,14 +142,17 @@ const TheListItem = (props: TheListItemProps) => {
 
     const oneButton = (item.actionlbl && !item.actionlbl2) || (!item.actionlbl && item.actionlbl2)
 
-    const twoButtons = item.actionlbl && item.actionlbl2 && (item.pagelink || item.weblink) && (item.pagelink2 || item.weblink2)
+    const twoButtons = item.actionlbl && item.actionlbl2 && (item.links.pagelink || item.links.weblink) && (item.links.pagelink2 || item.links.weblink2)
 
     const linkNoBtn = isButton() === false && isLink() === true
 
     const wrapLink = oneButton || linkNoBtn
 
     const linkAndBtn =
-        (item.actionlbl && item.pagelink) || (item.actionlbl && item.weblink) || (item.actionlbl2 && item.pagelink2) || (item.actionlbl2 && item.weblink2)
+        (item.actionlbl && item.links.pagelink) ||
+        (item.actionlbl && item.links.weblink) ||
+        (item.actionlbl2 && item.links.pagelink2) ||
+        (item.actionlbl2 && item.links.weblink2)
 
     return (
         <article
@@ -170,7 +173,7 @@ const TheListItem = (props: TheListItemProps) => {
                     [styles.mod_left]: item.align === 'left' && props.type === 'article_3',
                     [styles.mod_right]: item.align === 'right' && props.type === 'article_3',
                     [styles.mod_center]: item.align === 'center' && props.type === 'article_3',
-                    [styles.yLk]: (item.pagelink || item.weblink || item.pagelink2 || item.weblink2) && !twoButtons,
+                    [styles.yLk]: (item.links.pagelink || item.links.weblink || item.links.pagelink2 || item.links.weblink2) && !twoButtons,
                     [styles.yLks]: twoButtons,
                 },
                 styles[`item_${props.index + 1}`]
@@ -230,7 +233,7 @@ const TheListItem = (props: TheListItemProps) => {
                 </div>
             ) : (
                 <Link
-                    href={item.pagelink || item.weblink || item.pagelink2 || item.weblink2 || ''}
+                    href={item.links.pagelink || item.links.weblink || item.links.pagelink2 || item.links.weblink2 || ''}
                     className={cn('btn_link', styles['tsI_wrp'])}
                     target={item.newwindow === 1 ? '_blank' : item.newwindow2 === 1 ? '_blank' : '_self'}
                 >
@@ -289,7 +292,10 @@ const TheListWrapV1 = (props: TsiWrp) => {
     const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgsize, well, textColorHeading } = props
 
     const linkAndBtn =
-        (item.actionlbl && item.pagelink) || (item.actionlbl && item.weblink) || (item.actionlbl2 && item.pagelink2) || (item.actionlbl2 && item.weblink2)
+        (item.actionlbl && item.links.pagelink) ||
+        (item.actionlbl && item.links.weblink) ||
+        (item.actionlbl2 && item.links.pagelink2) ||
+        (item.actionlbl2 && item.links.weblink2)
 
     return (
         <>
@@ -358,13 +364,13 @@ const TheListWrapV1 = (props: TsiWrp) => {
             </div>
             {linkAndBtn && (
                 <TheListItemAction
-                    pagelink={item.pagelink}
+                    pagelink={item.links.pagelink}
                     actionlbl={item.actionlbl}
                     newwindow={item.newwindow}
                     newwindow2={item.newwindow2}
                     actionlbl2={item.actionlbl2}
-                    pagelink2={item.pagelink2}
-                    weblink2={item.weblink2}
+                    pagelink2={item.links.pagelink2}
+                    weblink2={item.links.weblink2}
                     icon={item.icon}
                     icon2={item.icon2}
                     btnType={item.btnType}
@@ -383,7 +389,10 @@ const TheListWrapV2 = (props: TsiWrp) => {
     const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgsize, well, textColorHeading } = props
 
     const linkAndBtn =
-        (item.actionlbl && item.pagelink) || (item.actionlbl && item.weblink) || (item.actionlbl2 && item.pagelink2) || (item.actionlbl2 && item.weblink2)
+        (item.actionlbl && item.links.pagelink) ||
+        (item.actionlbl && item.links.weblink) ||
+        (item.actionlbl2 && item.links.pagelink2) ||
+        (item.actionlbl2 && item.links.weblink2)
 
     return (
         <>
@@ -452,13 +461,13 @@ const TheListWrapV2 = (props: TsiWrp) => {
 
             {linkAndBtn && (
                 <TheListItemAction
-                    pagelink={item.pagelink}
+                    pagelink={item.links.pagelink}
                     actionlbl={item.actionlbl}
                     newwindow={item.newwindow}
                     newwindow2={item.newwindow2}
                     actionlbl2={item.actionlbl2}
-                    pagelink2={item.pagelink2}
-                    weblink2={item.weblink2}
+                    pagelink2={item.links.pagelink2}
+                    weblink2={item.links.weblink2}
                     icon={item.icon}
                     icon2={item.icon2}
                     btnType={item.btnType}
@@ -477,7 +486,10 @@ const TheListWrapV3 = (props: TsiWrp) => {
     const { item, imageNoSizings, calcImageSize, imageWidth, imageHeight, textColorAccent, textColor, imgsize, well, textColorHeading } = props
 
     const linkAndBtn =
-        (item.actionlbl && item.pagelink) || (item.actionlbl && item.weblink) || (item.actionlbl2 && item.pagelink2) || (item.actionlbl2 && item.weblink2)
+        (item.actionlbl && item.links.pagelink) ||
+        (item.actionlbl && item.links.weblink) ||
+        (item.actionlbl2 && item.links.pagelink2) ||
+        (item.actionlbl2 && item.links.weblink2)
 
     return (
         <>
@@ -547,13 +559,13 @@ const TheListWrapV3 = (props: TsiWrp) => {
 
                 {linkAndBtn && (
                     <TheListItemAction
-                        pagelink={item.pagelink}
+                        pagelink={item.links.pagelink}
                         actionlbl={item.actionlbl}
                         newwindow={item.newwindow}
                         newwindow2={item.newwindow2}
                         actionlbl2={item.actionlbl2}
-                        pagelink2={item.pagelink2}
-                        weblink2={item.weblink2}
+                        pagelink2={item.links.pagelink2}
+                        weblink2={item.links.weblink2}
                         icon={item.icon}
                         icon2={item.icon2}
                         btnType={item.btnType}
