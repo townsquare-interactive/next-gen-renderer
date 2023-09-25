@@ -133,6 +133,8 @@ export const transformFetchingDomain = (params?: { slug?: string; domain: string
         const removeAfterPeriod = /\..*/
         fetchingDomain = vercelDomain?.replace(removeAfterPeriod, '')
         fetchingDomain = fetchingDomain.replace('-preview', '')
+        fetchingDomain = fetchingDomain.replace('-prev', '')
+        fetchingDomain = fetchingDomain.replace('-main', '')
         fetchingDomain = bucketUrl + '/' + fetchingDomain
     } else {
         console.log('using local domain')
