@@ -6,7 +6,7 @@ import { LinkWrapProps } from 'types'
 const LinkWrap = (props: LinkWrapProps) => {
     const { item, modType } = props
 
-    const currentLink = item.links.pagelink || item.links.weblink || item.links.pagelink2 || item.links.weblink2 || ''
+    const currentLink = item.links?.pagelink || item.links?.weblink || item.links?.pagelink2 || item.links?.weblink2 || ''
 
     return (
         <Link

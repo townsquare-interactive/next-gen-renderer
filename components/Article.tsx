@@ -107,7 +107,7 @@ const ModuleItem = (props: ModuleItemProps) => {
                     [styles.nHds]: !item.headline || !item.subheader,
                     [styles.mod_left]: item.align === 'left' && (type === 'article_3' || type === 'article'),
                     [styles.mod_right]: item.align === 'right' && (type === 'article_3' || type === 'article'),
-                    [styles.yLk]: (item.links.pagelink || item.links.weblink || item.links.pagelink2 || item.links.weblink2) && !item.twoButtons,
+                    [styles.yLk]: (item.links?.pagelink || item.links?.weblink || item.links?.pagelink2 || item.links?.weblink2) && !item.twoButtons,
                     ['border-background']: well == '1',
                     ['round']: item.borderType === 'round',
                     ['is-wrap-link']: item.isWrapLink,

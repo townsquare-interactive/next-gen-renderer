@@ -496,7 +496,7 @@ export interface ArticleItems {
     nextImageSizes?: string
     isFeatureButton?: boolean
     captionStyle?: { background: string }
-    links: {
+    links?: {
         pagelink: string
         weblink: string
         pagelink2?: string

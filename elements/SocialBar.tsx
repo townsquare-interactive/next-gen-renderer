@@ -12,7 +12,7 @@ const SocialBar = ({ siteData, setContactModal }: SocialBarProps) => {
             <SocialLinks siteData={siteData} />
             <aside className={styles.contact}>
                 <ul>
-                    {siteData.contact.contactLinks?.map((item, index) => (
+                    {siteData.contact.contactLinks.map((item, index) => (
                         <Fragment key={index}>
                             {item.active && (
                                 <ContactLink
