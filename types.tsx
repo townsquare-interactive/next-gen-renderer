@@ -473,7 +473,7 @@ export interface ArticleItems {
     cmsUrl?: string
     buttonList: any
     imageIcon?: { iconPrefix: any; iconModel: any }
-    twoButtons?: boolean
+    btnCount?: number
     isWrapLink?: boolean
     isBeaconHero?: boolean
     visibleButton?: boolean
@@ -890,7 +890,7 @@ export interface ButtonWrapProps {
     promoColor?: string
     itemCount?: number
     modColor1?: string
-    twoButtons?: boolean
+    btnCount?: number
     btnStyles?: string
     isFeatureButton?: boolean
     image?: string

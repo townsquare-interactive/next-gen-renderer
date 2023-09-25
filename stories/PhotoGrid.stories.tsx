@@ -99,7 +99,7 @@ const item1: ArticleItems = {
         },
     ],
 
-    twoButtons: true,
+    btnCount: 2,
     isWrapLink: false,
     visibleButton: true,
     isBeaconHero: false,
@@ -274,7 +274,7 @@ ButtonSizesBlock.args = {
                     blockBtn: true,
                 },
             ],
-            twoButtons: true,
+            btnCount: 2,
             isWrapLink: false,
             visibleButton: true,
         },

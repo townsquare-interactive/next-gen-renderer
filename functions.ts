@@ -132,6 +132,7 @@ export const transformFetchingDomain = (params?: { slug?: string; domain: string
         console.log('using vercelDomain')
         const removeAfterPeriod = /\..*/
         fetchingDomain = vercelDomain?.replace(removeAfterPeriod, '')
+        //remove vercel url prefixes (prev/preview indicate using the preview branch)
         fetchingDomain = fetchingDomain.replace('-preview', '')
         fetchingDomain = fetchingDomain.replace('-prev', '')
         fetchingDomain = fetchingDomain.replace('-main', '')

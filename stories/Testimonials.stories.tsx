@@ -105,7 +105,7 @@ const item1: ArticleItems = {
         },
     ],
     linkNoBtn: false,
-    twoButtons: false,
+    btnCount: 1,
     isWrapLink: false,
     visibleButton: false,
     isBeaconHero: false,

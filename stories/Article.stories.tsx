@@ -100,7 +100,7 @@ const item1: ArticleItems = {
             blockBtn: false,
         },
     ],
-    twoButtons: true,
+    btnCount: 2,
     isWrapLink: false,
     //visibleButton: true,
     isBeaconHero: false,
@@ -348,7 +348,7 @@ Button.args = {
         {
             ...item1,
             buttonList: buttonList1,
-            twoButtons: false,
+            btnCount: 0,
             isWrapLink: true,
             visibleButton: true,
         },
@@ -361,7 +361,7 @@ TwoButtons.args = {
         {
             ...item1,
             buttonList: buttonList2,
-            twoButtons: true,
+            btnCount: 2,
             isWrapLink: false,
             visibleButton: true,
         },
@@ -374,7 +374,7 @@ Button2.args = {
         {
             ...item1,
             buttonList: buttonListJust2,
-            twoButtons: true,
+            btnCount: 2,
             isWrapLink: false,
             visibleButton: true,
         },
@@ -399,7 +399,7 @@ ButtonSizesBlock.args = {
                     blockBtn: true,
                 },
             ],
-            twoButtons: true,
+            btnCount: 2,
             isWrapLink: false,
             visibleButton: true,
         },
@@ -455,7 +455,7 @@ BorderLinkWrap.args = {
         {
             ...item1,
             buttonList: buttonList1,
-            twoButtons: false,
+            btnCount: 0,
             isWrapLink: true,
             visibleButton: true,
             actionlbl2: '',

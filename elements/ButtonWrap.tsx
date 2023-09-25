@@ -6,7 +6,7 @@ import { Fragment } from 'react'
 import { Button } from './Button'
 
 export const ButtonWrap = (props: ButtonWrapProps) => {
-    const { actionlbl, well, actionlbl2, type, buttonList, modId, align, twoButtons, btnStyles, image = '', isFeatureButton = false } = props
+    const { actionlbl, well, actionlbl2, type, buttonList, modId, align, btnCount, btnStyles, image = '', isFeatureButton = false } = props
 
     return (
         <div
@@ -14,7 +14,7 @@ export const ButtonWrap = (props: ButtonWrapProps) => {
                 [styles.well]: well == '1' && (type.includes('article') || type.includes('card')),
                 [styles['article-all']]: type.includes('article'),
                 [styles['card']]: type.includes('card'),
-                [styles['two-btns']]: twoButtons,
+                [styles['two-btns']]: btnCount === 2,
                 [styles['nImg']]: !image,
             })}
         >
