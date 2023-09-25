@@ -21,9 +21,6 @@ export default async function middleware(req: NextRequest) {
 
     // Get hostname of request (e.g. demo.vercel.pub, demo.localhost:3000)
     let hostname = req.headers.get('host')!.replace('.localhost:3000', `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`)
-    //hostname = transformFetchingDomain({ domain: hostname })
-    //const removeAfterPeriod = /\..*/
-    //let siteID = hostname?.replace(removeAfterPeriod, '')
 
     // Get the pathname of the request (e.g. /, /about, /blog/first-post)
     const path = url.pathname
@@ -52,5 +49,6 @@ export default async function middleware(req: NextRequest) {
     }
 
     // rewrite everything else to `/[domain]/[path] dynamic route
-    return NextResponse.rewrite(new URL(`/${hostname}${path}`))
+    //return NextResponse.rewrite(new URL(`/${hostname}${path}`))
+    return NextResponse.rewrite(new URL(`/${hostname}${path}`, req.url))
 }
