@@ -131,6 +131,7 @@ Default.args = {
     scale_to_fit: '',
     items: [item1],
     themeStyles: themeStyles,
+    cmsUrl: 'clttestsiteforjoshedwards.production.townsquareinteractive.com',
 }
 
 let colorStyles: string
