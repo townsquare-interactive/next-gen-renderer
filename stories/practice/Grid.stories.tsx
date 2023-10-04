@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import Grid from '../../components/practice/Grid'
-import { themeStyles } from 'storydefaults'
+import { themeStyles } from '../../storydefaults'
 
 export default {
     title: 'Practice/Grid',
