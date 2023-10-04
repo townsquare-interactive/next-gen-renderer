@@ -2,7 +2,6 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { ReactChild, ReactElement, ReactNode } from 'react'
 import { LatLngTuple } from 'leaflet'
-//test
 
 export interface ThemeStyles {
     logoColor: string
