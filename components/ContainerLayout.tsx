@@ -7,11 +7,13 @@ import ContainerFooter from './ContainerFooter'
 import { useState } from 'react'
 import SlidingHeader from 'elements/SlidingHeader'
 import ContactModal from './ContactModal'
+import Modal from './Modal'
 
 export default function Layout(props: LayoutProps) {
     const { children, siteData, themeStyles, cName, cmsUrl } = props
     const [navCheck, setNav] = useState<boolean>(false)
-    const [showContactModal, setModal] = useState<boolean>(false)
+    const [showContactModal, setContactModal] = useState<boolean>(false)
+    const [showSiteModal, setSiteModal] = useState<boolean>(true)
 
     const twoPhones = true
 
@@ -19,16 +21,23 @@ export default function Layout(props: LayoutProps) {
         setNav(!navCheck)
     }
 
-    function setContactModal() {
-        setModal(!showContactModal)
+    function triggerContactModal() {
+        setContactModal(!showContactModal)
+    }
+
+    //siteData.modalData
+    function triggerSiteModal() {
+        setSiteModal(!showSiteModal)
     }
 
     return (
         <>
             <div className={cn(styles.root, `page-${cName}`)}>
                 <SlidingHeader navSwitch={navSwitch} navCheck={navCheck} themeStyles={themeStyles} siteData={siteData} />
-                {twoPhones && <ContactModal siteData={siteData} showContactModal={showContactModal} setContactModal={setContactModal} />}
-                <ContainerHeader siteData={siteData} navSwitch={navSwitch} setContactModal={setContactModal} cmsUrl={cmsUrl} />
+                {twoPhones && <ContactModal siteData={siteData} showContactModal={showContactModal} setContactModal={triggerContactModal} />}
+
+                {/*   {siteData.modalData && <Modal siteData={siteData} showContactModal={showSiteModal} setContactModal={triggerSiteModal} />} */}
+                <ContainerHeader siteData={siteData} navSwitch={navSwitch} setContactModal={triggerContactModal} cmsUrl={cmsUrl} />
 
                 <main className={'content-background'}>{children}</main>
 

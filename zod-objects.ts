@@ -5,28 +5,22 @@ const Slot = z.object({
     // Define the properties for Slot here.
 })
 
+const LogoSlot = z.object({
+    pct: z.nullable(z.number()),
+    slots: z.array(Slot),
+    activeSlots: z.array(z.number()),
+})
+
 const Logo = z.object({
-    fonts: z.array(z.unknown()), // Adjust the type accordingly.
-    footer: z.object({
-        pct: z.nullable(z.number()),
-        slots: z.array(Slot),
-        activeSlots: z.array(z.number()),
-    }),
-    header: z.object({
-        pct: z.nullable(z.number()),
-        slots: z.array(Slot),
-        activeSlots: z.array(z.number()),
-    }),
-    mobile: z.object({
-        pct: z.nullable(z.number()),
-        slots: z.array(Slot),
-        activeSlots: z.array(z.number()),
-    }),
+    fonts: z.array(z.unknown()),
+    footer: LogoSlot,
+    header: LogoSlot,
+    mobile: LogoSlot,
     list: z.record(z.string()), // Define the type for the list property.
 })
 
 const Contact = z.object({
-    email: z.unknown(), // Adjust the type accordingly.
+    email: z.unknown(),
     hours: z.object({
         friday: z.string(),
         monday: z.string(),
@@ -40,60 +34,60 @@ const Contact = z.object({
         z.object({
             name: z.string(),
             number: z.string(),
-            disabled: z.string(), // Adjust the type accordingly.
+            disabled: z.string(),
             isPrimaryPhone: z.boolean(),
         })
     ),
     address: z.object({
         zip: z.string(),
         city: z.string(),
-        name: z.optional(z.string()), // Adjust the type accordingly.
+        name: z.optional(z.string()),
         state: z.string(),
         street: z.string(),
-        street2: z.optional(z.string()), // Adjust the type accordingly.
-        coordinates: z.optional(z.array(z.string())), // Adjust the type accordingly.
-        url: z.optional(z.string()), // Adjust the type accordingly.
+        street2: z.optional(z.string()),
+        coordinates: z.optional(z.array(z.string())),
+        url: z.optional(z.string()),
     }),
-    hideZip: z.optional(z.boolean()), // Adjust the type accordingly.
+    hideZip: z.optional(z.boolean()),
     advanced: z.optional(
         z.object({
             lat: z.string(),
             long: z.string(),
         })
     ),
-    disabled: z.optional(z.union([z.boolean(), z.string()])), // Adjust the type accordingly.
-    hideCity: z.optional(z.boolean()), // Adjust the type accordingly.
-    hideState: z.optional(z.boolean()), // Adjust the type accordingly.
-    isPrimary: z.optional(z.boolean()), // Adjust the type accordingly.
-    hideAddress: z.optional(z.boolean()), // Adjust the type accordingly.
-    displayInMap: z.optional(z.boolean()), // Adjust the type accordingly.
-    hideAddress2: z.optional(z.boolean()), // Adjust the type accordingly.
-    displayInFooter: z.optional(z.boolean()), // Adjust the type accordingly.
+    disabled: z.optional(z.union([z.boolean(), z.string()])),
+    hideCity: z.optional(z.boolean()),
+    hideState: z.optional(z.boolean()),
+    isPrimary: z.optional(z.boolean()),
+    hideAddress: z.optional(z.boolean()),
+    displayInMap: z.optional(z.boolean()),
+    hideAddress2: z.optional(z.boolean()),
+    displayInFooter: z.optional(z.boolean()),
     contactLinks: z.optional(
         z.array(
             z.object({
                 cName: z.string(),
                 link: z.string(),
-                icon: z.array(z.string()), // Adjust the type accordingly.
+                icon: z.array(z.string()),
                 content: z.string(),
                 active: z.boolean(),
             })
         )
     ),
-    showContactBox: z.optional(z.boolean()), // Adjust the type accordingly.
+    showContactBox: z.optional(z.boolean()),
 })
 
 const Composite = z.object({
     type: z.string(),
-    layout: z.nullable(z.unknown()), // Adjust the type accordingly.
+    layout: z.nullable(z.unknown()),
     columns: z.number(),
     modules: z.array(
         z.object({
             type: z.string(),
-            items: z.array(z.unknown()), // Adjust the type accordingly.
+            items: z.array(z.unknown()),
         })
     ),
-    sections: z.nullable(z.unknown()), // Adjust the type accordingly.
+    sections: z.nullable(z.unknown()),
 })
 
 const ThemeStyles = z.object({
@@ -112,32 +106,32 @@ const Config = z.object({
 const Address = z.object({
     zip: z.string(),
     city: z.string(),
-    name: z.optional(z.string()), // Adjust the type accordingly.
+    name: z.optional(z.string()),
     state: z.string(),
     street: z.string(),
-    street2: z.optional(z.string()), // Adjust the type accordingly.
-    coordinates: z.optional(z.array(z.string())), // Adjust the type accordingly.
-    url: z.optional(z.string()), // Adjust the type accordingly.
+    street2: z.optional(z.string()),
+    coordinates: z.optional(z.array(z.string())),
+    url: z.optional(z.string()),
 })
 
 const Phone = z.object({
     name: z.string(),
     number: z.string(),
-    disabled: z.string(), // Adjust the type accordingly.
+    disabled: z.string(),
     isPrimaryPhone: z.boolean(),
 })
 
 const ContactLink = z.object({
     cName: z.string(),
     link: z.string(),
-    icon: z.array(z.string()), // Adjust the type accordingly.
+    icon: z.array(z.string()),
     content: z.string(),
     active: z.boolean(),
 })
 
 export const SiteDataSchema = z.object({
     logos: Logo,
-    social: z.array(z.unknown()), // Adjust the type accordingly.
+    social: z.array(z.unknown()),
     contact: Contact,
     siteName: z.string(),
     url: z.string(),

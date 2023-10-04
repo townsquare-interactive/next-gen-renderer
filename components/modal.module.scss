@@ -1,3 +1,7 @@
+@use './styles/breakpoints.scss';
+@use './styles/utils.scss';
+@use './styles/variables.scss';
+
 .root {
     background: rgba(0, 0, 0, 0.5);
     opacity: 0;
@@ -9,7 +13,6 @@
     right: 0;
     visibility: hidden;
     transition: all 0.7s cubic-bezier(1, 0, 0, 1);
-
     opacity: 1;
     z-index: 1011;
 
@@ -49,10 +52,34 @@
         }
     }
 
+    &.site-modal {
+        .wrapper {
+            padding: 2rem 6rem;
+            background-color: #fff;
+            max-width: 48.3333333333em;
+        }
+    }
+
     &.show {
         visibility: visible;
-        .wrapper {
-            top: 10%;
+
+        &.contact {
+            .wrapper {
+                top: 10%;
+            }
+        }
+
+        &.site-modal {
+            padding: 0;
+            @include breakpoints.md-min {
+                padding: 2rem;
+            }
+            .wrapper {
+                top: 0;
+                @include breakpoints.md-min {
+                    top: 10%;
+                }
+            }
         }
     }
 }

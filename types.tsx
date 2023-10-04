@@ -101,6 +101,17 @@ export interface GlobalData {
     headerOptions?: HeaderOptions
     config?: { mailChimp: { audId: string; datacenter: string; auth: string } }
     navAlign?: 'left' | 'right' | 'center'
+    modalData?: modalData
+}
+
+interface modalData {
+    headline?: string
+    component: string
+    nav_menu: null | any // Change 'any' to the actual type if needed
+    name: string
+    subheader?: string
+    text: string
+    autoopen: boolean
 }
 
 interface CMSLogo {
@@ -193,7 +204,8 @@ interface CompositeData {
 
 export interface CompositeItem {
     filter?: boolean
-    title: string
+    title?: string
+    headline?: string
     component: string
     text?: string
     nav_menu?: number
@@ -436,23 +448,23 @@ export interface ModuleProps2 {
 /*-----------------------------TSI Modules ----------------------------------*/
 export interface ArticleItems {
     id: string
-    headline: string
-    subheader: string
-    image: string
+    headline?: string
+    subheader?: string
+    image?: string
     captionOn?: 0 | 1
-    icon: string
-    icon2: string
-    icon3: string
+    icon?: string
+    icon2?: string
+    icon3?: string
     bkgrd_color: string
-    btnType: string
-    btnType2: string
-    btnSize: string
-    btnSize2: string
-    desc: string
-    pagelink: string
-    weblink: string
-    actionlbl: string | number
-    newwindow: number | null | string
+    btnType?: string
+    btnType2?: string
+    btnSize?: string
+    btnSize2?: string
+    desc?: string
+    pagelink?: string
+    weblink?: string
+    actionlbl?: string | number
+    newwindow?: number | null | string
     pagelink2?: string
     weblink2?: string
     actionlbl2?: string
@@ -688,7 +700,7 @@ export interface LinkWrapProps {
 }
 
 export interface HeadlineBlockProps {
-    item: ArticleItems
+    item: ArticleItems | any
     columns: number
     well: string | number
     isBeaconHero?: boolean

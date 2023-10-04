@@ -1,5 +1,5 @@
 'use client'
-import styles from './contactmodal.module.scss'
+import styles from './modal.module.scss'
 import cn from 'classnames'
 import { Fragment } from 'react'
 import NavClose from 'elements/NavClose'
@@ -9,7 +9,7 @@ import { ContactModalProps } from '../types'
 const ContactModal = ({ siteData, setContactModal, showContactModal }: ContactModalProps) => {
     return (
         <div
-            className={cn(styles.root, {
+            className={cn(styles.root, styles.contact, {
                 [styles.box]: true,
                 [styles.show]: showContactModal,
             })}
