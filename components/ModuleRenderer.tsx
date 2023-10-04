@@ -10,7 +10,6 @@ import Footer from './practice/Footer'
 import Carousel from './practice/Carousel'
 import Video from './practice/Video'
 import BeaconArticle from './practice/BeaconArticle'
-import CharlotteArticle from './practice/CharlotteArticle'
 import Parallax from './Parallax'
 import Article from './Article'
 import Testimonials from './Testimonials'
@@ -39,7 +38,6 @@ const keysToComponentMap: any = {
     Video,
     Navigation,
     BeaconArticle,
-    CharlotteArticle,
     Article,
     PhotoGrid,
     Banner,

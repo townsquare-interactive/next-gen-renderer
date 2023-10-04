@@ -147,16 +147,16 @@ const BeaconArticle = (props: ModuleProps) => {
                                 className={cn(styles['the_list_item_desc'], styles['txt_color'])}
                                 style={props.well || item.isFeatured ? textColorAccent : textColor}
                             >
-                                <p>{Parser(item.desc)}</p>
+                                <p>{Parser(item.desc || '')}</p>
                             </div>
                             {item.links?.pagelink && item.actionlbl && (
                                 <TheListItemAction
                                     pagelink={item.links?.pagelink}
                                     actionlbl={String(item.actionlbl)}
-                                    newwindow={item.newwindow}
+                                    newwindow={item.newwindow || ''}
                                     themeStyles={props.themeStyles}
-                                    btnSize={item.btnSize}
-                                    btnSize2={item.btnSize}
+                                    btnSize={item.btnSize || ''}
+                                    btnSize2={item.btnSize || ''}
                                 />
                             )}
                         </div>
@@ -212,7 +212,7 @@ const TheListItemImage = (props: TheListItemImageProps) => {
                         {!imageNoSizings.includes(imgsize) ? (
                             <Image
                                 className={cn(styles['item_image'], 'item_image', 'beacon-lazy-load')}
-                                src={domainImage(item.image)}
+                                src={domainImage(item.image || '')}
                                 layout="fill"
                                 objectFit="cover"
                                 alt={item.img_alt_tag || ''}
@@ -221,7 +221,7 @@ const TheListItemImage = (props: TheListItemImageProps) => {
                         ) : (
                             //Setting width and height to image props if nosizing added
                             <Image
-                                src={domainImage(item.image)}
+                                src={domainImage(item.image || '')}
                                 onLoadingComplete={calcImageSize}
                                 width={imageWidth}
                                 height={imageHeight}
@@ -237,7 +237,7 @@ const TheListItemImage = (props: TheListItemImageProps) => {
                         {!imageNoSizings.includes(props.imgsize) ? (
                             <Image
                                 className={cn(styles['item_image'], 'item_image', 'beacon-lazy-load')}
-                                src={domainImage(item.image)}
+                                src={domainImage(item.image || '')}
                                 layout="fill"
                                 alt={item.img_alt_tag || ''}
                                 objectFit="cover"
@@ -247,7 +247,7 @@ const TheListItemImage = (props: TheListItemImageProps) => {
                             //Setting width and height to image props if nosizing added
                             <Image
                                 className={cn(styles['item_image'], 'item_image', 'beacon-lazy-load')}
-                                src={domainImage(item.image)}
+                                src={domainImage(item.image || '')}
                                 alt={item.img_alt_tag || ''}
                                 onLoadingComplete={calcImageSize}
                                 width={imageWidth}

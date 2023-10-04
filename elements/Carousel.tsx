@@ -54,7 +54,7 @@ const Carousel = (props: CarouselProps) => {
                                             })}
                                             style={!item.image ? item.itemStyle : {}}
                                         >
-                                            <DescBlock desc={item.headline} type="carousel" descSize="sm" />
+                                            <DescBlock desc={item.headline || ''} type="carousel" descSize="sm" />
                                         </div>
                                     </div>
                                 ))}

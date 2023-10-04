@@ -31,7 +31,7 @@ const ReactScroll = ({ item, imgsize, cmsUrl, children, columns }: ReactScrollPr
                     <div className={styles.outer}>
                         <div className={cn(styles['image-block'], styles['image-block2'])} style={item.modColor1 ? { background: item.modColor1 } : {}}>
                             <ImageElement
-                                imgSrc={item.image}
+                                imgSrc={item.image || ''}
                                 imgAlt={item.img_alt_tag}
                                 imagePriority={item.imagePriority}
                                 imgsize={imgsize}
@@ -54,7 +54,7 @@ const ReactScroll = ({ item, imgsize, cmsUrl, children, columns }: ReactScrollPr
                                 children: (
                                     <div className={styles['image-block']} style={item.modColor1 ? { background: item.modColor1 } : {}}>
                                         <ImageElement
-                                            imgSrc={item.image}
+                                            imgSrc={item.image || ''}
                                             imgAlt={item.img_alt_tag}
                                             imagePriority={item.imagePriority}
                                             imgsize={imgsize}
