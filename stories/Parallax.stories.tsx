@@ -1,7 +1,7 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 import Parallax from '../components/Parallax'
 import { ArticleItems } from '../types'
-import { themeStyles, buttonList1, buttonList2, buttonListJust2, createStoryStyles, icon, itemStyle, imageSizes } from 'storydefaults'
+import { themeStyles, buttonList1, buttonList2, buttonListJust2, createStoryStyles, icon, itemStyle, imageSizes, img2 } from 'storydefaults'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
@@ -33,9 +33,9 @@ export default {
             },
         },
     },
-} as ComponentMeta<typeof Parallax>
+} as Meta<typeof Parallax>
 
-const Template: ComponentStory<typeof Parallax> = (args) => (
+const Template: StoryFn<typeof Parallax> = (args) => (
     <>
         <div style={{ minHeight: '1500px' }}>
             {colorStyles && <style>{colorStyles}</style>}
@@ -54,7 +54,7 @@ const item1: ArticleItems = {
     align: 'center',
     icon2: '',
     icon3: '',
-    image: '/files/2022/08/AngelTop.jpg',
+    image: img2,
     plugin: '',
     btnSize: '',
     btnType: '',

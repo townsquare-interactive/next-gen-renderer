@@ -1,7 +1,7 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 import Testimonials from '../components/Testimonials'
 import { ArticleItems } from '../types'
-import { themeStyles, buttonList1, buttonList2, buttonListJust2, createStoryStyles, imageSizes, itemStyle } from 'storydefaults'
+import { themeStyles, buttonList1, buttonList2, buttonListJust2, createStoryStyles, imageSizes, itemStyle, img1 } from 'storydefaults'
 
 export default {
     title: 'new-render/Testimonials',
@@ -40,9 +40,9 @@ export default {
             },
         },
     },
-} as ComponentMeta<typeof Testimonials>
+} as Meta<typeof Testimonials>
 
-const Template: ComponentStory<typeof Testimonials> = (args) => (
+const Template: StoryFn<typeof Testimonials> = (args) => (
     <>
         {colorStyles && <style>{colorStyles}</style>}
         <Testimonials {...args} />
@@ -155,7 +155,7 @@ Image.args = {
     items: [
         {
             ...item1,
-            image: '/files/2022/08/AngelTop2.jpg',
+            image: img1,
         },
     ],
 }
@@ -198,7 +198,7 @@ export const ThreeColumns = Template.bind({})
 ThreeColumns.args = {
     ...Plain.args,
     columns: 3,
-    items: [{ ...item1 }, { ...item2, image: '/files/2022/08/AngelTop2.jpg' }, { ...item3 }],
+    items: [{ ...item1 }, { ...item2, image: img1 }, { ...item3 }],
 }
 
 export const FourColumns = Template.bind({})
@@ -284,7 +284,7 @@ export const Carousel = Template.bind({})
 Carousel.args = {
     ...Plain.args,
     columns: 4,
-    items: [{ ...item1 }, { ...item2, image: '/files/2022/08/AngelTop2.jpg' }, { ...item3 }, { ...item1 }],
+    items: [{ ...item1 }, { ...item2, image: img1 }, { ...item3 }, { ...item1 }],
     type: 'review_carousel',
 }
 

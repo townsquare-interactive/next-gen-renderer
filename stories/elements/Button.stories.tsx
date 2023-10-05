@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 import Button from '../../components/practice/ProtoButton'
 import { themeStyles } from 'storydefaults'
 
@@ -15,9 +15,9 @@ export default {
             control: { type: 'radio' },
         },
     },
-} as ComponentMeta<typeof Button>
+} as Meta<typeof Button>
 
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />
+const Template: StoryFn<typeof Button> = (args) => <Button {...args} />
 
 export const Plain = Template.bind({})
 Plain.args = {

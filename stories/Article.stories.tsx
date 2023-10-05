@@ -1,7 +1,7 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 import Article from '../components/Article'
 import { ArticleItems } from '../types'
-import { themeStyles, buttonList1, buttonList2, buttonListJust2, createStoryStyles, imageSizes } from 'storydefaults'
+import { themeStyles, buttonList1, buttonList2, buttonListJust2, createStoryStyles, imageSizes, img1 } from 'storydefaults'
 
 export default {
     title: 'new-render/Article',
@@ -30,9 +30,9 @@ export default {
             },
         },
     },
-} as ComponentMeta<typeof Article>
+} as Meta<typeof Article>
 
-const Template: ComponentStory<typeof Article> = (args) => (
+const Template: StoryFn<typeof Article> = (args) => (
     <>
         {colorStyles && <style>{colorStyles}</style>}
         <Article {...args} />
@@ -48,7 +48,7 @@ const item1: ArticleItems = {
     align: 'center',
     icon2: '',
     icon3: '',
-    image: '/files/2022/10/darkmountains.jpg',
+    image: img1,
     plugin: '',
     btnSize: '',
     btnType: '',

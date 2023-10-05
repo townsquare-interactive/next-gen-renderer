@@ -1,5 +1,5 @@
 'use client'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 import ContainerHeader from '../components/ContainerHeader'
 import { themeStyles, siteDataEx } from 'storydefaults'
 //import { social } from 'storydefaults'
@@ -14,9 +14,9 @@ library.add(fas, fab, far)
 export default {
     title: 'new-render/ContainerHeader',
     component: ContainerHeader,
-} as ComponentMeta<typeof ContainerHeader>
+} as Meta<typeof ContainerHeader>
 
-const Template: ComponentStory<typeof ContainerHeader> = (args) => (
+const Template: StoryFn<typeof ContainerHeader> = (args) => (
     <>
         <ContainerHeader {...args} />
     </>

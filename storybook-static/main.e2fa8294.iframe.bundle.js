@@ -3319,15 +3319,15 @@
                 throw new Error('Docs-only story')
             }
             __page.parameters = { docsOnly: !0 }
-            var componentMeta = { title: 'Example/Introduction', includeStories: ['__page'] },
+            var Meta = { title: 'Example/Introduction', includeStories: ['__page'] },
                 mdxStoryNameToKey = {}
-            ;(componentMeta.parameters = componentMeta.parameters || {}),
-                (componentMeta.parameters.docs = Object.assign({}, componentMeta.parameters.docs || {}, {
+            ;(Meta.parameters = Meta.parameters || {}),
+                (Meta.parameters.docs = Object.assign({}, Meta.parameters.docs || {}, {
                     page: function page() {
-                        return (0, esm.kt)(dist_esm.aT, { mdxStoryNameToKey, mdxComponentAnnotations: componentMeta }, (0, esm.kt)(MDXContent, null))
+                        return (0, esm.kt)(dist_esm.aT, { mdxStoryNameToKey, mdxComponentAnnotations: Meta }, (0, esm.kt)(MDXContent, null))
                     },
                 }))
-            const Introduction_stories = componentMeta
+            const Introduction_stories = Meta
             var __namedExportsOrder = ['__page']
         },
         './node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[10].use[1]!./node_modules/postcss-loader/dist/cjs.js!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[10].use[4]!./components/carousel.module.scss':

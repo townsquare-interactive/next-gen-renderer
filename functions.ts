@@ -46,8 +46,9 @@ export function domainImage(url: string, cms = false, cmsSiteUrl = '', type = ''
             let imageUrl = url
             return imageUrl
         } else {
-            let imageUrl = 'http://' + (cmsSiteUrl || cmsUrl + '.production.townsquareinteractive.com') + url
-            return encodeURI(imageUrl)
+            //let imageUrl = 'http://' + (cmsSiteUrl || cmsUrl + '.production.townsquareinteractive.com') + url
+            //return encodeURI(imageUrl)
+            return url
         }
     } /* else {
         const assetsApi = process.env.NEXT_PUBLIC_API_URL_ASSETS || bucketUrl

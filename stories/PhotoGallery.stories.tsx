@@ -1,7 +1,7 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 import PhotoGallery from '../components/PhotoGallery'
 import { ArticleItems } from '../types'
-import { themeStyles, buttonList1, buttonList2, buttonListJust2, itemStyle, icon, imageSizes } from 'storydefaults'
+import { themeStyles, buttonList1, buttonList2, buttonListJust2, itemStyle, icon, imageSizes, img2, img1 } from 'storydefaults'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
@@ -33,9 +33,9 @@ export default {
             },
         },
     },
-} as ComponentMeta<typeof PhotoGallery>
+} as Meta<typeof PhotoGallery>
 
-const Template: ComponentStory<typeof PhotoGallery> = (args) => (
+const Template: StoryFn<typeof PhotoGallery> = (args) => (
     <>
         {colorStyles && <style>{colorStyles}</style>}
         <PhotoGallery {...args} />
@@ -52,7 +52,7 @@ const item1: ArticleItems = {
     align: 'center',
     icon2: '',
     icon3: '',
-    image: '/files/2022/08/AngelTop.jpg',
+    image: img2,
     plugin: '',
     btnSize: '',
     btnType: '',
@@ -116,7 +116,7 @@ const item1: ArticleItems = {
     //itemStyle: itemStyle.noImage,
 }
 
-const item2 = { ...item1, image: '/files/2022/09/Yos2.jpg' }
+const item2 = { ...item1, image: img1 }
 
 const plaxmod = {
     uid: '9e319b47_9448_4e73_ed16_88b019618745',

@@ -1,7 +1,7 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 import Article from '../components/practice/BeaconArticle'
 import { ArticleItems } from '../types'
-import { themeStyles } from 'storydefaults'
+import { themeStyles, img2 } from 'storydefaults'
 
 export default {
     title: 'OldCms/Article',
@@ -18,16 +18,16 @@ export default {
             },
         },
     },
-} as ComponentMeta<typeof Article>
+} as Meta<typeof Article>
 
-const Template: ComponentStory<typeof Article> = (args) => <Article {...args} />
+const Template: StoryFn<typeof Article> = (args) => <Article {...args} />
 
 const Default = Template.bind({})
 const item1: ArticleItems = {
     id: '6574f9b4_f1d5_4b10_feb6_928e62803df3',
     headline: 'Article Module',
     subheader: 'Subheader',
-    image: '/football-2.jpg',
+    image: img2,
     icon: '',
     icon2: '',
     icon3: '',

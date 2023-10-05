@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 import Article from '../components/Article'
 import { ArticleItems } from '../types'
 import { themeStyles, buttonList1, buttonList2, buttonListJust2, createStoryStyles, imageSizes } from 'storydefaults'
@@ -6,9 +6,9 @@ import { themeStyles, buttonList1, buttonList2, buttonListJust2, createStoryStyl
 export default {
     title: 'Intro',
     component: Article,
-} as ComponentMeta<typeof Article>
+} as Meta<typeof Article>
 
-const Template: ComponentStory<typeof Article> = (args) => (
+const Template: StoryFn<typeof Article> = (args) => (
     <>
         {colorStyles && <style>{colorStyles}</style>}
         <Article {...args} />

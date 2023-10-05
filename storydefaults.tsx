@@ -128,6 +128,9 @@ export const buttonListJust2 = [
     },
 ]
 
+export const img1 = 'https://townsquareinteractive.s3.amazonaws.com/global-assets/images/bellagioFountain1.jpg'
+export const img2 = 'https://townsquareinteractive.s3.amazonaws.com/global-assets/images/birdlake.jpg'
+
 export const siteDataEx = {
     logos: {
         fonts: [],
@@ -140,7 +143,7 @@ export const siteDataEx = {
                     markup: '',
                     hasLinks: false,
                     alignment: 'left',
-                    image_src: '/files/2022/07/jremodeling-logo.png',
+                    image_src: 'img1',
                     image_link: '/',
                 },
             ],
@@ -155,7 +158,7 @@ export const siteDataEx = {
                     markup: '',
                     hasLinks: false,
                     alignment: 'right',
-                    image_src: '/files/2022/10/screen-8.jpg',
+                    image_src: 'img2',
                     image_link: '/',
                 },
                 {
@@ -188,7 +191,7 @@ export const siteDataEx = {
                     markup: '',
                     hasLinks: false,
                     alignment: 'left',
-                    image_src: '/files/2022/07/jremodeling-logo.png',
+                    image_src: 'img1',
                     image_link: '/article/',
                     image_link_ext: '',
                 },
@@ -207,7 +210,7 @@ export const siteDataEx = {
         markup: '',
         hasLinks: false,
         alignment: 'left',
-        image_src: '/files/2022/07/jremodeling-logo.png',
+        image_src: 'img1',
         image_link: '/',
     },
     social: [

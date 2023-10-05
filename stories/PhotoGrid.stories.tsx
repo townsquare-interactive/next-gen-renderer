@@ -1,7 +1,7 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 import { PhotoGrid } from '../components/PhotoGrid'
 import { ArticleItems } from '../types'
-import { themeStyles, buttonList1, buttonList2, buttonListJust2, imageSizes } from 'storydefaults'
+import { themeStyles, buttonList1, buttonList2, buttonListJust2, imageSizes, img1, img2 } from 'storydefaults'
 
 export default {
     title: 'new-render/PhotoGrid',
@@ -27,9 +27,9 @@ export default {
             },
         },
     },
-} as ComponentMeta<typeof PhotoGrid>
+} as Meta<typeof PhotoGrid>
 
-const Template: ComponentStory<typeof PhotoGrid> = (args) => (
+const Template: StoryFn<typeof PhotoGrid> = (args) => (
     <>
         {colorStyles && <style>{colorStyles}</style>}
         <PhotoGrid {...args} />
@@ -41,7 +41,7 @@ const item1: ArticleItems = {
     id: '6f308c26_64c1_4a1d_af75_bb3f9f3dd9dc',
     headline: 'Photo Grid',
     subheader: 'SUb',
-    image: '/files/2022/08/AngelTop.jpg',
+    image: img1,
     nextImageSizes: imageSizes.normal,
     icon: '',
     icon2: '',

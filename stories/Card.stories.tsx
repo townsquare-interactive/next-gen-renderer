@@ -1,7 +1,7 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 import Card from '../components/Card'
 import { ArticleItems } from '../types'
-import { themeStyles, buttonList1, buttonList2, buttonListJust2, createStoryStyles, imageSizes } from 'storydefaults'
+import { themeStyles, buttonList1, buttonList2, buttonListJust2, createStoryStyles, imageSizes, img2 } from 'storydefaults'
 
 export default {
     title: 'new-render/Card',
@@ -26,9 +26,9 @@ export default {
             },
         },
     },
-} as ComponentMeta<typeof Card>
+} as Meta<typeof Card>
 
-const Template: ComponentStory<typeof Card> = (args) => (
+const Template: StoryFn<typeof Card> = (args) => (
     <>
         {colorStyles && <style>{colorStyles}</style>}
         <Card {...args} />
@@ -44,7 +44,7 @@ const item1: ArticleItems = {
     align: 'center',
     icon2: '',
     icon3: '',
-    image: '/files/2022/10/darkmountains.jpg',
+    image: img2,
     plugin: '',
     btnSize: '',
     btnType: '',

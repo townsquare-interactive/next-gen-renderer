@@ -1,5 +1,5 @@
 'use client'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 import ContainerFooter from '../components/ContainerFooter'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
@@ -11,9 +11,9 @@ library.add(fas, fab, far)
 export default {
     title: 'new-render/ContainerFooter',
     component: ContainerFooter,
-} as ComponentMeta<typeof ContainerFooter>
+} as Meta<typeof ContainerFooter>
 
-const Template: ComponentStory<typeof ContainerFooter> = (args) => <ContainerFooter {...args} />
+const Template: StoryFn<typeof ContainerFooter> = (args) => <ContainerFooter {...args} />
 
 const Default = Template.bind({})
 Default.args = {
