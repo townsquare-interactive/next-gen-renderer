@@ -1,4 +1,4 @@
-/* Components */
+/* Components */ //
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { ReactChild, ReactElement, ReactNode } from 'react'
 import { LatLngTuple } from 'leaflet'
