@@ -1,7 +1,7 @@
 import { StoryFn, Meta } from '@storybook/react'
 import Parallax from '../components/Parallax'
 import { ArticleItems } from '../types'
-import { themeStyles, buttonList1, buttonList2, buttonListJust2, createStoryStyles, icon, itemStyle, imageSizes, img2 } from 'storydefaults'
+import { buttonList1, buttonList2, buttonListJust2, createStoryStyles, icon, itemStyle, imageSizes, img2 } from 'storydefaults'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'

@@ -6,8 +6,6 @@ const assetFolder = '/assets/'
 const globalAssets = bucketUrl + '/global-assets'
 const env = process.env.NEXT_PUBLIC_URL_ENV
 const domain = process.env.NEXT_PUBLIC_CMS_URL
-//import { createClient } from 'next-sanity'
-//import { z } from 'zod'
 //import { SiteDataSchema, CMSPageSchema, PageListSchema } from './zod-objects'
 
 export const bucketAndSiteUrl = getDomain(true)

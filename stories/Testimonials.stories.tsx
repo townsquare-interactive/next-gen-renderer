@@ -1,7 +1,7 @@
 import { StoryFn, Meta } from '@storybook/react'
 import Testimonials from '../components/Testimonials'
 import { ArticleItems } from '../types'
-import { themeStyles, buttonList1, buttonList2, buttonListJust2, createStoryStyles, imageSizes, itemStyle, img1 } from 'storydefaults'
+import { themeStyles, createStoryStyles, imageSizes, itemStyle, img1 } from 'storydefaults'
 
 export default {
     title: 'new-render/Testimonials',

@@ -1,7 +1,7 @@
 import { StoryFn, Meta } from '@storybook/react'
 import { PhotoGrid } from '../components/PhotoGrid'
 import { ArticleItems } from '../types'
-import { themeStyles, buttonList1, buttonList2, buttonListJust2, imageSizes, img1, img2 } from 'storydefaults'
+import { themeStyles, imageSizes, img1, img2 } from 'storydefaults'
 
 export default {
     title: 'new-render/PhotoGrid',

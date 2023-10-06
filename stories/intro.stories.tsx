@@ -1,7 +1,7 @@
 import { StoryFn, Meta } from '@storybook/react'
 import Article from '../components/Article'
 import { ArticleItems } from '../types'
-import { themeStyles, buttonList1, buttonList2, buttonListJust2, createStoryStyles, imageSizes } from 'storydefaults'
+import { themeStyles, createStoryStyles, imageSizes } from 'storydefaults'
 
 export default {
     title: 'Intro',

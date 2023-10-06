@@ -1,7 +1,7 @@
 import { StoryFn, Meta } from '@storybook/react'
 import PhotoGallery from '../components/PhotoGallery'
 import { ArticleItems } from '../types'
-import { themeStyles, buttonList1, buttonList2, buttonListJust2, itemStyle, icon, imageSizes, img2, img1 } from 'storydefaults'
+import { buttonList1, buttonList2, buttonListJust2, itemStyle, icon, imageSizes, img2, img1 } from 'storydefaults'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
