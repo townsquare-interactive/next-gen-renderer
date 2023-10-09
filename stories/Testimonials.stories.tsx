@@ -139,158 +139,212 @@ if (Default.args?.themeStyles) {
     colorStyles = createStoryStyles(Default.args.themeStyles)
 }
 
-export const Plain = Template.bind({})
-Plain.args = {
-    ...Default.args,
-    items: [
-        {
-            ...item1,
-        },
-    ],
+export const Plain = {
+    render: Template,
+
+    args: {
+        ...Default.args,
+        items: [
+            {
+                ...item1,
+            },
+        ],
+    },
 }
 
-export const Image = Template.bind({})
-Image.args = {
-    ...Plain.args,
-    items: [
-        {
-            ...item1,
-            image: img1,
-        },
-    ],
+export const Image = {
+    render: Template,
+
+    args: {
+        ...Plain.args,
+        items: [
+            {
+                ...item1,
+                image: img1,
+            },
+        ],
+    },
 }
 
-export const OnlyDesc = Template.bind({})
-OnlyDesc.args = {
-    ...Plain.args,
-    items: [
-        {
-            ...item1,
-            subheader: '',
-            headline: '',
-            desc: 'Only Desc',
-            image: '',
-            align: '',
-        },
-    ],
+export const OnlyDesc = {
+    render: Template,
+
+    args: {
+        ...Plain.args,
+        items: [
+            {
+                ...item1,
+                subheader: '',
+                headline: '',
+                desc: 'Only Desc',
+                image: '',
+                align: '',
+            },
+        ],
+    },
 }
 
-export const ModuleTitle = Template.bind({})
-ModuleTitle.args = {
-    ...Plain.args,
-    title: 'Module Title',
+export const ModuleTitle = {
+    render: Template,
+
+    args: {
+        ...Plain.args,
+        title: 'Module Title',
+    },
 }
 
-export const ImageRound = Template.bind({})
-ImageRound.args = {
-    ...Image.args,
-    imgsize: 'round_1_1',
+export const ImageRound = {
+    render: Template,
+
+    args: {
+        ...Image.args,
+        imgsize: 'round_1_1',
+    },
 }
 
-export const TwoColumns = Template.bind({})
-TwoColumns.args = {
-    ...Plain.args,
-    columns: 2,
-    items: [{ ...item1 }, { ...item2 }, { ...item3 }],
+export const TwoColumns = {
+    render: Template,
+
+    args: {
+        ...Plain.args,
+        columns: 2,
+        items: [{ ...item1 }, { ...item2 }, { ...item3 }],
+    },
 }
 
-export const ThreeColumns = Template.bind({})
-ThreeColumns.args = {
-    ...Plain.args,
-    columns: 3,
-    items: [{ ...item1 }, { ...item2, image: img1 }, { ...item3 }],
+export const ThreeColumns = {
+    render: Template,
+
+    args: {
+        ...Plain.args,
+        columns: 3,
+        items: [{ ...item1 }, { ...item2, image: img1 }, { ...item3 }],
+    },
 }
 
-export const FourColumns = Template.bind({})
-FourColumns.args = {
-    ...Plain.args,
-    columns: 4,
-    items: [{ ...item1 }, { ...item2 }, { ...item3 }, { ...item1 }],
+export const FourColumns = {
+    render: Template,
+
+    args: {
+        ...Plain.args,
+        columns: 4,
+        items: [{ ...item1 }, { ...item2 }, { ...item3 }, { ...item1 }],
+    },
 }
 
-export const Border = Template.bind({})
-Border.args = {
-    ...Plain.args,
-    well: '1',
+export const Border = {
+    render: Template,
+
+    args: {
+        ...Plain.args,
+        well: '1',
+    },
 }
 
-export const Featured = Template.bind({})
-Featured.args = {
-    ...Plain.args,
-    items: [{ ...item1, isFeatured: 'active', align: 'left' }],
+export const Featured = {
+    render: Template,
+
+    args: {
+        ...Plain.args,
+        items: [{ ...item1, isFeatured: 'active', align: 'left' }],
+    },
 }
 
-export const MultiFeatured = Template.bind({})
-MultiFeatured.args = {
-    ...Plain.args,
-    columns: 3,
-    items: [{ ...item1 }, { ...item1, isFeatured: 'active' }, { ...item1 }],
+export const MultiFeatured = {
+    render: Template,
+
+    args: {
+        ...Plain.args,
+        columns: 3,
+        items: [{ ...item1 }, { ...item1, isFeatured: 'active' }, { ...item1 }],
+    },
 }
 
-export const MultipleBorder = Template.bind({})
-MultipleBorder.args = {
-    ...ThreeColumns.args,
-    well: '1',
+export const MultipleBorder = {
+    render: Template,
+
+    args: {
+        ...ThreeColumns.args,
+        well: '1',
+    },
 }
 
-export const TextSizes = Template.bind({})
-TextSizes.args = {
-    ...Plain.args,
-    columns: 3,
-    items: [
-        { ...item1, headSize: 'font_xs', descSize: 'font_sm' },
-        { ...item1, headSize: 'font_md', descSize: 'font_md' },
-        { ...item1, headSize: 'font_xl', descSize: 'font_xl' },
-    ],
+export const TextSizes = {
+    render: Template,
+
+    args: {
+        ...Plain.args,
+        columns: 3,
+        items: [
+            { ...item1, headSize: 'font_xs', descSize: 'font_sm' },
+            { ...item1, headSize: 'font_md', descSize: 'font_md' },
+            { ...item1, headSize: 'font_xl', descSize: 'font_xl' },
+        ],
+    },
 }
 
-export const StarColors = Template.bind({})
-StarColors.args = {
-    ...Default.args,
-    items: [
-        {
-            ...item1,
-            desc: 'Change color of stars using modColor1 to pass in a hex value',
-            modColor1: 'gold',
-        },
-    ],
+export const StarColors = {
+    render: Template,
+
+    args: {
+        ...Default.args,
+        items: [
+            {
+                ...item1,
+                desc: 'Change color of stars using modColor1 to pass in a hex value',
+                modColor1: 'gold',
+            },
+        ],
+    },
 }
 
-export const UseAccentColor = Template.bind({})
-UseAccentColor.args = {
-    ...MultipleBorder.args,
-    items: [
-        {
-            ...item1,
-            useAccentColor: true,
-        },
-    ],
+export const UseAccentColor = {
+    render: Template,
+
+    args: {
+        ...MultipleBorder.args,
+        items: [
+            {
+                ...item1,
+                useAccentColor: true,
+            },
+        ],
+    },
 }
 
-export const RoundedBorder = Template.bind({})
-RoundedBorder.args = {
-    ...MultipleBorder.args,
-    columns: 3,
-    items: [
-        {
-            ...item1,
-            useAccentColor: true,
-            borderType: 'round',
-        },
-    ],
+export const RoundedBorder = {
+    render: Template,
+
+    args: {
+        ...MultipleBorder.args,
+        columns: 3,
+        items: [
+            {
+                ...item1,
+                useAccentColor: true,
+                borderType: 'round',
+            },
+        ],
+    },
 }
 
-export const Carousel = Template.bind({})
-Carousel.args = {
-    ...Plain.args,
-    columns: 4,
-    items: [{ ...item1 }, { ...item2, image: img1 }, { ...item3 }, { ...item1 }],
-    type: 'review_carousel',
+export const Carousel = {
+    render: Template,
+
+    args: {
+        ...Plain.args,
+        columns: 4,
+        items: [{ ...item1 }, { ...item2, image: img1 }, { ...item3 }, { ...item1 }],
+        type: 'review_carousel',
+    },
 }
 
-export const BorderCarousel = Template.bind({})
-BorderCarousel.args = {
-    ...Carousel.args,
-    type: 'review_carousel',
-    well: 1,
+export const BorderCarousel = {
+    render: Template,
+
+    args: {
+        ...Carousel.args,
+        type: 'review_carousel',
+        well: 1,
+    },
 }

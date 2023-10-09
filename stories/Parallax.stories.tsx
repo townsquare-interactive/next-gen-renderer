@@ -186,243 +186,306 @@ let colorStyles: string
 if (Default.args?.themeStyles) {
     colorStyles = createStoryStyles(Default.args.themeStyles)
 }
-export const Plain = Template.bind({})
-Plain.args = {
-    ...Default.args,
+
+export const Plain = {
+    render: Template,
+
+    args: {
+        ...Default.args,
+    },
 }
 
-export const NoImage = Template.bind({})
-NoImage.args = {
-    ...Default.args,
-    items: [
-        {
-            ...item1,
-            image: '',
-        },
-    ],
-}
-export const AlignLeft = Template.bind({})
-AlignLeft.args = {
-    ...Plain.args,
-    items: [
-        {
-            ...item1,
-            align: 'left',
-        },
-    ],
-}
-export const AlignRight = Template.bind({})
-AlignRight.args = {
-    ...Plain.args,
-    items: [
-        {
-            ...item1,
+export const NoImage = {
+    render: Template,
 
-            align: 'right',
-        },
-    ],
-}
-export const H1 = Template.bind({})
-H1.args = {
-    ...Plain.args,
-    items: [
-        {
-            ...item1,
-            headerTag: '1',
-            align: 'left',
-        },
-    ],
-}
-
-export const OnlyImage = Template.bind({})
-OnlyImage.args = {
-    ...Plain.args,
-    items: [
-        {
-            ...item1,
-            subheader: '',
-            headline: '',
-            desc: '',
-            align: '',
-            visibleButton: false,
-        },
-    ],
-}
-
-export const Button = Template.bind({})
-Button.args = {
-    ...Default.args,
-    items: [
-        {
-            ...item1,
-            buttonList: buttonList1,
-            btnCount: 1,
-            isWrapLink: true,
-            visibleButton: true,
-        },
-    ],
-}
-export const TwoButtons = Template.bind({})
-TwoButtons.args = {
-    ...Button.args,
-    items: [
-        {
-            ...item1,
-            buttonList: buttonList2,
-            btnCount: 2,
-            isWrapLink: false,
-            visibleButton: true,
-        },
-    ],
-}
-export const Button2 = Template.bind({})
-Button2.args = {
-    ...Default.args,
-    items: [
-        {
-            ...item1,
-            buttonList: buttonListJust2,
-            btnCount: 2,
-            isWrapLink: false,
-            visibleButton: true,
-        },
-    ],
-}
-export const ButtonSizesBlock = Template.bind({})
-ButtonSizesBlock.args = {
-    ...Default.args,
-    items: [
-        {
-            ...item1,
-            buttonList: [
-                {
-                    name: 'btn1',
-                    link: '/article/',
-                    window: '',
-                    label: 'Button1',
-                    active: true,
-                    btnType: 'btn_1',
-                    btnSize: 'btn_md',
-                    linkType: 'local',
-                    blockBtn: true,
-                },
-            ],
-            btnCount: 2,
-            isWrapLink: false,
-            visibleButton: true,
-        },
-    ],
-}
-export const LinkNoButton = Template.bind({})
-LinkNoButton.args = {
-    ...Default.args,
-    well: '1',
-    items: [
-        {
-            ...item1,
-            weblink: 'https://www.facebook.com/',
-            align: 'left',
-            newwindow: 1,
-            isWrapLink: true,
-            visibleButton: false,
-        },
-    ],
-}
-
-export const Border = Template.bind({})
-Border.args = {
-    ...NoImage.args,
-    well: '1',
-    items: [
-        {
-            ...item1,
-            image: '',
-            promoColor: '#3eb183',
-            textureImage: {
-                image: '/subtle-white-feathers.png',
-                gradientColors: ['#3eb183', '#00a4fc'],
+    args: {
+        ...Default.args,
+        items: [
+            {
+                ...item1,
+                image: '',
             },
-            itemStyle: itemStyle.borderStyle,
-        },
-    ],
+        ],
+    },
 }
 
-export const ModColorCustom = Template.bind({})
-ModColorCustom.args = {
-    ...NoImage.args,
-    modId: '6446',
-    items: [
-        {
-            ...item1,
-            //image: '',
-            modColor1: 'rgb(251,13,13)',
-            buttonList: [
-                {
-                    name: 'btn1',
-                    link: '/other/',
-                    window: '',
-                    label: 'Btn1',
-                    active: true,
-                    btnType: 'btn_override',
-                    btnSize: 'btn_md',
-                    linkType: 'local',
-                    blockBtn: false,
+export const AlignLeft = {
+    render: Template,
+
+    args: {
+        ...Plain.args,
+        items: [
+            {
+                ...item1,
+                align: 'left',
+            },
+        ],
+    },
+}
+
+export const AlignRight = {
+    render: Template,
+
+    args: {
+        ...Plain.args,
+        items: [
+            {
+                ...item1,
+
+                align: 'right',
+            },
+        ],
+    },
+}
+
+export const H1 = {
+    render: Template,
+
+    args: {
+        ...Plain.args,
+        items: [
+            {
+                ...item1,
+                headerTag: '1',
+                align: 'left',
+            },
+        ],
+    },
+}
+
+export const OnlyImage = {
+    render: Template,
+
+    args: {
+        ...Plain.args,
+        items: [
+            {
+                ...item1,
+                subheader: '',
+                headline: '',
+                desc: '',
+                align: '',
+                visibleButton: false,
+            },
+        ],
+    },
+}
+
+export const Button = {
+    render: Template,
+
+    args: {
+        ...Default.args,
+        items: [
+            {
+                ...item1,
+                buttonList: buttonList1,
+                btnCount: 1,
+                isWrapLink: true,
+                visibleButton: true,
+            },
+        ],
+    },
+}
+
+export const TwoButtons = {
+    render: Template,
+
+    args: {
+        ...Button.args,
+        items: [
+            {
+                ...item1,
+                buttonList: buttonList2,
+                btnCount: 2,
+                isWrapLink: false,
+                visibleButton: true,
+            },
+        ],
+    },
+}
+
+export const Button2 = {
+    render: Template,
+
+    args: {
+        ...Default.args,
+        items: [
+            {
+                ...item1,
+                buttonList: buttonListJust2,
+                btnCount: 2,
+                isWrapLink: false,
+                visibleButton: true,
+            },
+        ],
+    },
+}
+
+export const ButtonSizesBlock = {
+    render: Template,
+
+    args: {
+        ...Default.args,
+        items: [
+            {
+                ...item1,
+                buttonList: [
+                    {
+                        name: 'btn1',
+                        link: '/article/',
+                        window: '',
+                        label: 'Button1',
+                        active: true,
+                        btnType: 'btn_1',
+                        btnSize: 'btn_md',
+                        linkType: 'local',
+                        blockBtn: true,
+                    },
+                ],
+                btnCount: 2,
+                isWrapLink: false,
+                visibleButton: true,
+            },
+        ],
+    },
+}
+
+export const LinkNoButton = {
+    render: Template,
+
+    args: {
+        ...Default.args,
+        well: '1',
+        items: [
+            {
+                ...item1,
+                weblink: 'https://www.facebook.com/',
+                align: 'left',
+                newwindow: 1,
+                isWrapLink: true,
+                visibleButton: false,
+            },
+        ],
+    },
+}
+
+export const Border = {
+    render: Template,
+
+    args: {
+        ...NoImage.args,
+        well: '1',
+        items: [
+            {
+                ...item1,
+                image: '',
+                promoColor: '#3eb183',
+                textureImage: {
+                    image: '/subtle-white-feathers.png',
+                    gradientColors: ['#3eb183', '#00a4fc'],
                 },
-                {
-                    name: 'btn2',
-                    link: '/newpage/',
-                    window: '',
-                    label: 'Btn2',
-                    active: true,
-                    btnType: 'btn2_override',
-                    btnSize: 'btn_md',
-                    linkType: 'local',
-                    blockBtn: false,
-                },
-            ],
-            itemStyle: { background: `rgb(251,13,13)` },
-        },
-    ],
-}
-export const CustomHeight = Template.bind({})
-CustomHeight.args = {
-    ...Plain.args,
-    well: '1',
-    items: [
-        {
-            ...item1,
-            modOne: 300,
-        },
-    ],
+                itemStyle: itemStyle.borderStyle,
+            },
+        ],
+    },
 }
 
-export const ImageOpacity = Template.bind({})
-ImageOpacity.args = {
-    ...Plain.args,
-    well: '1',
-    items: [
-        {
-            ...item1,
-            modOpacity: 0.5,
-        },
-    ],
+export const ModColorCustom = {
+    render: Template,
+
+    args: {
+        ...NoImage.args,
+        modId: '6446',
+        items: [
+            {
+                ...item1,
+                //image: '',
+                modColor1: 'rgb(251,13,13)',
+                buttonList: [
+                    {
+                        name: 'btn1',
+                        link: '/other/',
+                        window: '',
+                        label: 'Btn1',
+                        active: true,
+                        btnType: 'btn_override',
+                        btnSize: 'btn_md',
+                        linkType: 'local',
+                        blockBtn: false,
+                    },
+                    {
+                        name: 'btn2',
+                        link: '/newpage/',
+                        window: '',
+                        label: 'Btn2',
+                        active: true,
+                        btnType: 'btn2_override',
+                        btnSize: 'btn_md',
+                        linkType: 'local',
+                        blockBtn: false,
+                    },
+                ],
+                itemStyle: { background: `rgb(251,13,13)` },
+            },
+        ],
+    },
 }
 
-export const Featured = Template.bind({})
-Featured.args = {
-    ...AlignLeft.args,
-    items: [{ ...item1, isFeatured: 'active', align: 'left' }],
+export const CustomHeight = {
+    render: Template,
+
+    args: {
+        ...Plain.args,
+        well: '1',
+        items: [
+            {
+                ...item1,
+                modOne: 300,
+            },
+        ],
+    },
 }
 
-export const Hidden = Template.bind({})
-Hidden.args = {
-    ...Plain.args,
-    items: [{ ...item1, disabled: 'disabled' }],
+export const ImageOpacity = {
+    render: Template,
+
+    args: {
+        ...Plain.args,
+        well: '1',
+        items: [
+            {
+                ...item1,
+                modOpacity: 0.5,
+            },
+        ],
+    },
 }
 
-export const Icon3 = Template.bind({})
-Icon3.args = {
-    ...Plain.args,
+export const Featured = {
+    render: Template,
 
-    items: [{ ...item1, icon3: 'faAnchor', imageIcon: icon }],
+    args: {
+        ...AlignLeft.args,
+        items: [{ ...item1, isFeatured: 'active', align: 'left' }],
+    },
+}
+
+export const Hidden = {
+    render: Template,
+
+    args: {
+        ...Plain.args,
+        items: [{ ...item1, disabled: 'disabled' }],
+    },
+}
+
+export const Icon3 = {
+    render: Template,
+
+    args: {
+        ...Plain.args,
+
+        items: [{ ...item1, icon3: 'faAnchor', imageIcon: icon }],
+    },
 }

@@ -27,9 +27,12 @@ Default.args = {
     siteData: siteDataEx,
 }
 
-export const Plain = Template.bind({})
-Plain.args = {
-    ...Default.args,
+export const Plain = {
+    render: Template,
+
+    args: {
+        ...Default.args,
+    },
 }
 
 const headerOptions2: HeaderOptions = {
@@ -74,51 +77,66 @@ const headerOptions2: HeaderOptions = {
     ], */
 }
 
-export const CtaButtons = Template.bind({})
-CtaButtons.args = {
-    ...Default.args,
-    siteData: { ...siteDataEx, headerOptions: headerOptions2 },
+export const CtaButtons = {
+    render: Template,
+
+    args: {
+        ...Default.args,
+        siteData: { ...siteDataEx, headerOptions: headerOptions2 },
+    },
 }
 
-export const Hamburger = Template.bind({})
-Hamburger.args = {
-    ...Default.args,
-    siteData: {
-        ...siteDataEx,
-        headerOptions: {
-            desktopBurgerNav: true,
+export const Hamburger = {
+    render: Template,
+
+    args: {
+        ...Default.args,
+        siteData: {
+            ...siteDataEx,
+            headerOptions: {
+                desktopBurgerNav: true,
+            },
         },
     },
 }
 
-export const ReverseSocial = Template.bind({})
-ReverseSocial.args = {
-    ...Default.args,
-    siteData: {
-        ...siteDataEx,
-        headerOptions: {
-            //reverseHeaderLayout: true,
-            reverseSocial: true,
+export const ReverseSocial = {
+    render: Template,
+
+    args: {
+        ...Default.args,
+        siteData: {
+            ...siteDataEx,
+            headerOptions: {
+                //reverseHeaderLayout: true,
+                reverseSocial: true,
+            },
         },
     },
 }
 
-export const ReverseLayout = Template.bind({})
-ReverseLayout.args = {
-    ...Default.args,
-    siteData: {
-        ...siteDataEx,
-        headerOptions: {
-            reverseHeaderLayout: true,
+export const ReverseLayout = {
+    render: Template,
+
+    args: {
+        ...Default.args,
+        siteData: {
+            ...siteDataEx,
+            headerOptions: {
+                reverseHeaderLayout: true,
+            },
         },
     },
 }
 
-export const ShowContactBox = Template.bind({})
-ShowContactBox.args = {
-    ...Default.args,
-    siteData: {
-        ...siteDataEx,
-        contact: { ...siteDataEx.contact, showContactBox: true },
+export const ShowContactBox = {
+    render: Template,
+
+    args: {
+        ...Default.args,
+        siteData: {
+            ...siteDataEx,
+            contact: { ...siteDataEx.contact, showContactBox: true },
+        },
     },
 }

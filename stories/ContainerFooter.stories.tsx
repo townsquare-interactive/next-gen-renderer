@@ -20,118 +20,125 @@ Default.args = {
     siteData: siteDataEx,
 }
 
-export const Plain = Template.bind({})
-Plain.args = {
-    ...Default.args,
-}
-
-export const Social = Template.bind({})
-Social.args = {
-    ...Default.args,
-    siteData: {
-        ...siteDataEx,
-        composites: {
-            footer: {
-                type: 'composite',
-                layout: null,
-                columns: 3,
-                modules: {
-                    type: 'composite',
-                    items: [
-                        {
-                            title: '',
-                            component: 'social_media',
-                        },
-                    ],
-                },
-                sections: null,
-            },
-        },
+export const Plain = {
+    args: {
+        ...Default.args,
     },
 }
 
-export const TextWidget = Template.bind({})
-TextWidget.args = {
-    ...Default.args,
-    siteData: {
-        ...siteDataEx,
-        composites: {
-            footer: {
-                type: 'composite',
-                layout: null,
-                columns: 3,
-                modules: {
+export const Social = {
+    args: {
+        ...Default.args,
+        siteData: {
+            ...siteDataEx,
+            composites: {
+                footer: {
                     type: 'composite',
-                    items: [
-                        {
-                            text: 'dscc',
-                            title: 'This is a footer text widget',
-                            filter: false,
-                            component: 'text',
-                        },
-                    ],
+                    layout: null,
+                    columns: 3,
+                    modules: {
+                        type: 'composite',
+                        items: [
+                            {
+                                title: '',
+                                component: 'social_media',
+                            },
+                        ],
+                    },
+                    sections: null,
                 },
-                sections: null,
             },
         },
     },
 }
-export const Menu = Template.bind({})
-Menu.args = {
-    ...Default.args,
-    siteData: {
-        ...siteDataEx,
-        composites: {
-            footer: {
-                type: 'composite',
-                layout: null,
-                columns: 4,
-                modules: {
+
+export const TextWidget = {
+    args: {
+        ...Default.args,
+        siteData: {
+            ...siteDataEx,
+            composites: {
+                footer: {
                     type: 'composite',
-                    items: [
-                        {
-                            title: '',
-                            component: 'nav_menu',
-                            nav_menu: 62387,
-                        },
-                    ],
+                    layout: null,
+                    columns: 3,
+                    modules: {
+                        type: 'composite',
+                        items: [
+                            {
+                                text: 'dscc',
+                                title: 'This is a footer text widget',
+                                filter: false,
+                                component: 'text',
+                            },
+                        ],
+                    },
+                    sections: null,
                 },
-                sections: null,
             },
         },
     },
 }
-export const MultiWidgets = Template.bind({})
-MultiWidgets.args = {
-    ...Default.args,
-    siteData: {
-        ...siteDataEx,
-        composites: {
-            footer: {
-                type: 'composite',
-                layout: null,
-                columns: 4,
-                modules: {
+
+export const Menu = {
+    args: {
+        ...Default.args,
+        siteData: {
+            ...siteDataEx,
+            composites: {
+                footer: {
                     type: 'composite',
-                    items: [
-                        {
-                            text: 'dscc',
-                            title: 'This is a footer text widget',
-                            filter: false,
-                            component: 'text',
-                        },
-                        {
-                            title: '',
-                            component: 'social_media',
-                        },
-                        {
-                            title: '',
-                            component: 'nav_menu',
-                            nav_menu: 62387,
-                        },
-                    ],
+                    layout: null,
+                    columns: 4,
+                    modules: {
+                        type: 'composite',
+                        items: [
+                            {
+                                title: '',
+                                component: 'nav_menu',
+                                nav_menu: 62387,
+                            },
+                        ],
+                    },
+                    sections: null,
                 },
-                sections: null,
+            },
+        },
+    },
+}
+
+export const MultiWidgets = {
+    args: {
+        ...Default.args,
+        siteData: {
+            ...siteDataEx,
+            composites: {
+                footer: {
+                    type: 'composite',
+                    layout: null,
+                    columns: 4,
+                    modules: {
+                        type: 'composite',
+                        items: [
+                            {
+                                text: 'dscc',
+                                title: 'This is a footer text widget',
+                                filter: false,
+                                component: 'text',
+                            },
+                            {
+                                title: '',
+                                component: 'social_media',
+                            },
+                            {
+                                title: '',
+                                component: 'nav_menu',
+                                nav_menu: 62387,
+                            },
+                        ],
+                    },
+                    sections: null,
+                },
             },
         },
     },

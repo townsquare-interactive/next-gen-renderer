@@ -191,213 +191,283 @@ if (Default.args?.themeStyles) {
     colorStyles = textColors + btnStyles
 }
 
-export const Plain = Template.bind({})
-Plain.args = {
-    ...Default.args,
-}
+export const Plain = {
+    render: Template,
 
-export const NoImage = Template.bind({})
-NoImage.args = {
-    ...Default.args,
-    items: [
-        {
-            ...item1,
-            image: '',
-        },
-        {
-            ...item2,
-            image: '',
-        },
-    ],
-}
-export const AlignLeft = Template.bind({})
-AlignLeft.args = {
-    ...Plain.args,
-    items: [
-        {
-            ...item1,
-            align: 'left',
-        },
-    ],
-}
-
-export const OnlyImage = Template.bind({})
-OnlyImage.args = {
-    ...Plain.args,
-    items: [
-        {
-            ...item1,
-            subheader: '',
-            headline: '',
-            desc: '',
-            align: '',
-            visibleButton: false,
-        },
-    ],
-}
-
-export const Button = Template.bind({})
-Button.args = {
-    ...Default.args,
-    items: [
-        {
-            ...item1,
-            buttonList: buttonList1,
-            btnCount: 1,
-            isWrapLink: true,
-            visibleButton: true,
-        },
-    ],
-}
-export const TwoButtons = Template.bind({})
-TwoButtons.args = {
-    ...Button.args,
-    items: [
-        {
-            ...item1,
-            buttonList: buttonList2,
-            btnCount: 2,
-            isWrapLink: false,
-            visibleButton: true,
-        },
-    ],
-}
-export const Button2 = Template.bind({})
-Button2.args = {
-    ...Default.args,
-    items: [
-        {
-            ...item1,
-            buttonList: buttonListJust2,
-            btnCount: 2,
-            isWrapLink: false,
-            visibleButton: true,
-        },
-    ],
-}
-export const ButtonSizesBlock = Template.bind({})
-ButtonSizesBlock.args = {
-    ...Default.args,
-    items: [
-        {
-            ...item1,
-            buttonList: [
-                {
-                    name: 'btn1',
-                    link: '/article/',
-                    window: '',
-                    label: 'Button1',
-                    active: true,
-                    btnType: 'btn_1',
-                    btnSize: 'btn_md',
-                    linkType: 'local',
-                    blockBtn: true,
-                },
-            ],
-            btnCount: 2,
-            isWrapLink: false,
-            visibleButton: true,
-        },
-    ],
-}
-export const LinkNoButton = Template.bind({})
-LinkNoButton.args = {
-    ...Default.args,
-    well: '1',
-    items: [
-        {
-            ...item1,
-            weblink: 'https://www.facebook.com/',
-            align: 'left',
-            newwindow: 1,
-            isWrapLink: true,
-            visibleButton: false,
-        },
-    ],
-}
-
-export const Border = Template.bind({})
-Border.args = {
-    ...NoImage.args,
-    well: '1',
-    items: [
-        {
-            ...item1,
-            image: '',
-            promoColor: '#3eb183',
-            textureImage: {
-                image: '/subtle-white-feathers.png',
-                gradientColors: ['#3eb183', '#00a4fc'],
-            },
-            itemStyle: itemStyle.borderStyle,
-        },
-        {
-            ...item2,
-            image: '',
-            promoColor: '#3eb183',
-            textureImage: {
-                image: '/shattered-dark.png',
-                gradientColors: ['#00a4fc', '#c037dd'],
-            },
-            itemStyle: itemStyle.borderStyle,
-        },
-    ],
-}
-
-export const Featured = Template.bind({})
-Featured.args = {
-    ...Plain.args,
-    well: 1,
-    items: [
-        {
-            ...item1,
-            isFeatured: 'active',
-        },
-    ],
-}
-
-export const Icon = Template.bind({})
-Icon.args = {
-    ...Plain.args,
-
-    items: [{ ...item1, icon3: 'faAnchor', imageIcon: icon }],
-}
-
-export const AutoPlay = Template.bind({})
-AutoPlay.args = {
-    ...Plain.args,
-    settings: { animation: 'waterfall', autoplay: true, effect: 'slide', interval: 5000, mobileResize: true, pauseOnHover: false, restartDelay: 2500 },
-}
-
-export const Waterfall = Template.bind({})
-Waterfall.args = {
-    ...Plain.args,
-    settings: { animation: 'waterfall', autoplay: true, effect: 'slide', interval: 5000, mobileResize: true, pauseOnHover: false, restartDelay: 2500 },
-}
-
-export const SlideInAnimation = Template.bind({})
-SlideInAnimation.args = {
-    ...Plain.args,
-    settings: {
-        autoplay: false,
-        pauseOnHover: true,
-        animation: 'slidein',
-        effect: 'slide',
-        interval: 4000,
-        restartDelay: 2500,
-        mobileResize: true,
+    args: {
+        ...Default.args,
     },
 }
-export const FadeAnimation = Template.bind({})
-FadeAnimation.args = {
-    ...Plain.args,
-    settings: {
-        autoplay: false,
-        pauseOnHover: true,
-        animation: 'slidein',
-        effect: 'fade',
-        interval: 4000,
-        restartDelay: 2500,
-        mobileResize: true,
+
+export const NoImage = {
+    render: Template,
+
+    args: {
+        ...Default.args,
+        items: [
+            {
+                ...item1,
+                image: '',
+            },
+            {
+                ...item2,
+                image: '',
+            },
+        ],
+    },
+}
+
+export const AlignLeft = {
+    render: Template,
+
+    args: {
+        ...Plain.args,
+        items: [
+            {
+                ...item1,
+                align: 'left',
+            },
+        ],
+    },
+}
+
+export const OnlyImage = {
+    render: Template,
+
+    args: {
+        ...Plain.args,
+        items: [
+            {
+                ...item1,
+                subheader: '',
+                headline: '',
+                desc: '',
+                align: '',
+                visibleButton: false,
+            },
+        ],
+    },
+}
+
+export const Button = {
+    render: Template,
+
+    args: {
+        ...Default.args,
+        items: [
+            {
+                ...item1,
+                buttonList: buttonList1,
+                btnCount: 1,
+                isWrapLink: true,
+                visibleButton: true,
+            },
+        ],
+    },
+}
+
+export const TwoButtons = {
+    render: Template,
+
+    args: {
+        ...Button.args,
+        items: [
+            {
+                ...item1,
+                buttonList: buttonList2,
+                btnCount: 2,
+                isWrapLink: false,
+                visibleButton: true,
+            },
+        ],
+    },
+}
+
+export const Button2 = {
+    render: Template,
+
+    args: {
+        ...Default.args,
+        items: [
+            {
+                ...item1,
+                buttonList: buttonListJust2,
+                btnCount: 2,
+                isWrapLink: false,
+                visibleButton: true,
+            },
+        ],
+    },
+}
+
+export const ButtonSizesBlock = {
+    render: Template,
+
+    args: {
+        ...Default.args,
+        items: [
+            {
+                ...item1,
+                buttonList: [
+                    {
+                        name: 'btn1',
+                        link: '/article/',
+                        window: '',
+                        label: 'Button1',
+                        active: true,
+                        btnType: 'btn_1',
+                        btnSize: 'btn_md',
+                        linkType: 'local',
+                        blockBtn: true,
+                    },
+                ],
+                btnCount: 2,
+                isWrapLink: false,
+                visibleButton: true,
+            },
+        ],
+    },
+}
+
+export const LinkNoButton = {
+    render: Template,
+
+    args: {
+        ...Default.args,
+        well: '1',
+        items: [
+            {
+                ...item1,
+                weblink: 'https://www.facebook.com/',
+                align: 'left',
+                newwindow: 1,
+                isWrapLink: true,
+                visibleButton: false,
+            },
+        ],
+    },
+}
+
+export const Border = {
+    render: Template,
+
+    args: {
+        ...NoImage.args,
+        well: '1',
+        items: [
+            {
+                ...item1,
+                image: '',
+                promoColor: '#3eb183',
+                textureImage: {
+                    image: '/subtle-white-feathers.png',
+                    gradientColors: ['#3eb183', '#00a4fc'],
+                },
+                itemStyle: itemStyle.borderStyle,
+            },
+            {
+                ...item2,
+                image: '',
+                promoColor: '#3eb183',
+                textureImage: {
+                    image: '/shattered-dark.png',
+                    gradientColors: ['#00a4fc', '#c037dd'],
+                },
+                itemStyle: itemStyle.borderStyle,
+            },
+        ],
+    },
+}
+
+export const Featured = {
+    render: Template,
+
+    args: {
+        ...Plain.args,
+        well: 1,
+        items: [
+            {
+                ...item1,
+                isFeatured: 'active',
+            },
+        ],
+    },
+}
+
+export const Icon = {
+    render: Template,
+
+    args: {
+        ...Plain.args,
+
+        items: [{ ...item1, icon3: 'faAnchor', imageIcon: icon }],
+    },
+}
+
+export const AutoPlay = {
+    render: Template,
+
+    args: {
+        ...Plain.args,
+        settings: {
+            animation: 'waterfall',
+            autoplay: true,
+            effect: 'slide',
+            interval: 5000,
+            mobileResize: true,
+            pauseOnHover: false,
+            restartDelay: 2500,
+        },
+    },
+}
+
+export const Waterfall = {
+    render: Template,
+
+    args: {
+        ...Plain.args,
+        settings: {
+            animation: 'waterfall',
+            autoplay: true,
+            effect: 'slide',
+            interval: 5000,
+            mobileResize: true,
+            pauseOnHover: false,
+            restartDelay: 2500,
+        },
+    },
+}
+
+export const SlideInAnimation = {
+    render: Template,
+
+    args: {
+        ...Plain.args,
+        settings: {
+            autoplay: false,
+            pauseOnHover: true,
+            animation: 'slidein',
+            effect: 'slide',
+            interval: 4000,
+            restartDelay: 2500,
+            mobileResize: true,
+        },
+    },
+}
+
+export const FadeAnimation = {
+    render: Template,
+
+    args: {
+        ...Plain.args,
+        settings: {
+            autoplay: false,
+            pauseOnHover: true,
+            animation: 'slidein',
+            effect: 'fade',
+            interval: 4000,
+            restartDelay: 2500,
+            mobileResize: true,
+        },
     },
 }

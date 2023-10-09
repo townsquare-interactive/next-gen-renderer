@@ -21,7 +21,7 @@ export const ImageElement = (props: ImageProps) => {
                 (imageType === 'nocrop' ? (
                     //Setting width and height of item using calcImageSize
                     <Image
-                        src={domainImage(imgSrc, true, cmsUrl || '')}
+                        src={imgSrc}
                         onLoadingComplete={calcImageSize}
                         width={imageWidth}
                         height={imageHeight}
@@ -44,7 +44,7 @@ export const ImageElement = (props: ImageProps) => {
                     />
                 ) : (
                     <Image
-                        src={domainImage(imgSrc, true, cmsUrl || '')}
+                        src={imgSrc}
                         fill
                         alt={imgAlt || ''}
                         quality="50"

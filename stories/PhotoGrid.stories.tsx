@@ -137,252 +137,347 @@ if (Default.args?.themeStyles) {
     colorStyles = textColors + btnStyles
 }
 
-export const Plain = Template.bind({})
-Plain.args = {
-    ...Default.args,
-    items: [
-        {
-            ...item1,
-        },
-    ],
-}
-export const NoImage = Template.bind({})
-NoImage.args = {
-    ...Default.args,
-    items: [
-        {
-            ...item1,
-            image: '',
-        },
-    ],
-}
-export const AlignLeft = Template.bind({})
-AlignLeft.args = {
-    ...Plain.args,
-    items: [
-        {
-            ...item1,
-            align: 'left',
-        },
-    ],
-}
-export const AlignRight = Template.bind({})
-AlignRight.args = {
-    ...Plain.args,
-    items: [
-        {
-            ...item1,
+export const Plain = {
+    render: Template,
 
-            align: 'right',
-        },
-    ],
-}
-export const H1 = Template.bind({})
-H1.args = {
-    ...Plain.args,
-    items: [
-        {
-            ...item1,
-            headerTag: '1',
-            align: 'left',
-        },
-    ],
+    args: {
+        ...Default.args,
+        items: [
+            {
+                ...item1,
+            },
+        ],
+    },
 }
 
-export const OnlyImage = Template.bind({})
-OnlyImage.args = {
-    ...Plain.args,
-    items: [
-        {
-            ...item1,
-            subheader: '',
-            headline: '',
-            desc: '',
-            align: '',
-        },
-    ],
-}
-export const ModuleTitle = Template.bind({})
-ModuleTitle.args = {
-    ...AlignLeft.args,
-    title: 'Module Title',
+export const NoImage = {
+    render: Template,
+
+    args: {
+        ...Default.args,
+        items: [
+            {
+                ...item1,
+                image: '',
+            },
+        ],
+    },
 }
 
-export const ImageSquare = Template.bind({})
-ImageSquare.args = {
-    ...AlignLeft.args,
-    imgsize: 'square_1_1',
-}
-export const ImageLandscape_4_3 = Template.bind({})
-ImageLandscape_4_3.args = {
-    ...AlignLeft.args,
-    imgsize: 'landscape_4_3',
+export const AlignLeft = {
+    render: Template,
+
+    args: {
+        ...Plain.args,
+        items: [
+            {
+                ...item1,
+                align: 'left',
+            },
+        ],
+    },
 }
 
-export const ImageLandscape_3_2 = Template.bind({})
-ImageLandscape_3_2.args = {
-    ...AlignLeft.args,
-    imgsize: 'landscape_3_2',
-}
-export const ImagePortrait_3_4 = Template.bind({})
-ImagePortrait_3_4.args = {
-    ...AlignLeft.args,
-    imgsize: 'portrait_3_4',
-}
-export const ImagePortrait_2_3 = Template.bind({})
-ImagePortrait_2_3.args = {
-    ...AlignLeft.args,
-    imgsize: 'portrait_2_3',
-}
-export const ImageWideScreen_16_9 = Template.bind({})
-ImageWideScreen_16_9.args = {
-    ...AlignLeft.args,
-    imgsize: 'widescreen_16_9',
+export const AlignRight = {
+    render: Template,
+
+    args: {
+        ...Plain.args,
+        items: [
+            {
+                ...item1,
+
+                align: 'right',
+            },
+        ],
+    },
 }
 
-export const ImageWideScreen_2_4_1 = Template.bind({})
-ImageWideScreen_2_4_1.args = {
-    ...AlignLeft.args,
-    imgsize: 'widescreen_2_4_1',
-}
-export const ImageWideScreen_3_1 = Template.bind({})
-ImageWideScreen_3_1.args = {
-    ...AlignLeft.args,
-    imgsize: 'widescreen_3_1',
-}
-export const ImageNoSizing = Template.bind({})
-ImageNoSizing.args = {
-    ...AlignLeft.args,
-    imgsize: 'no_sizing',
+export const H1 = {
+    render: Template,
+
+    args: {
+        ...Plain.args,
+        items: [
+            {
+                ...item1,
+                headerTag: '1',
+                align: 'left',
+            },
+        ],
+    },
 }
 
-export const ButtonSizesBlock = Template.bind({})
-ButtonSizesBlock.args = {
-    ...Default.args,
-    items: [
-        {
-            ...item1,
-            buttonList: [
-                {
-                    name: 'btn1',
-                    link: '/article/',
-                    window: '',
-                    label: 'Button1',
-                    active: true,
-                    btnType: 'btn_1',
-                    btnSize: 'btn_md',
-                    linkType: 'local',
-                    blockBtn: true,
-                },
-            ],
-            btnCount: 2,
-            isWrapLink: false,
-            visibleButton: true,
-        },
-    ],
+export const OnlyImage = {
+    render: Template,
+
+    args: {
+        ...Plain.args,
+        items: [
+            {
+                ...item1,
+                subheader: '',
+                headline: '',
+                desc: '',
+                align: '',
+            },
+        ],
+    },
 }
 
-export const LinkNoButton = Template.bind({})
-LinkNoButton.args = {
-    ...Default.args,
-    well: '1',
-    items: [
-        {
-            ...item1,
-            weblink: 'https://www.facebook.com/',
-            align: 'left',
-            newwindow: 1,
-            isWrapLink: true,
-            visibleButton: false,
-        },
-    ],
+export const ModuleTitle = {
+    render: Template,
+
+    args: {
+        ...AlignLeft.args,
+        title: 'Module Title',
+    },
 }
 
-export const TwoColumns = Template.bind({})
-TwoColumns.args = {
-    ...Default.args,
-    columns: 2,
-    items: [{ ...item1 }, { ...item2 }, { ...item3 }],
+export const ImageSquare = {
+    render: Template,
+
+    args: {
+        ...AlignLeft.args,
+        imgsize: 'square_1_1',
+    },
 }
 
-export const ThreeColumns = Template.bind({})
-ThreeColumns.args = {
-    ...Default.args,
-    columns: 3,
-    items: [{ ...item1 }, { ...item2 }, { ...item3 }],
+export const ImageLandscape_4_3 = {
+    render: Template,
+
+    args: {
+        ...AlignLeft.args,
+        imgsize: 'landscape_4_3',
+    },
 }
 
-export const FourColumns = Template.bind({})
-FourColumns.args = {
-    ...Default.args,
-    columns: 4,
-    items: [{ ...item1 }, { ...item2 }, { ...item3 }, { ...item1 }],
+export const ImageLandscape_3_2 = {
+    render: Template,
+
+    args: {
+        ...AlignLeft.args,
+        imgsize: 'landscape_3_2',
+    },
 }
 
-export const Border = Template.bind({})
-Border.args = {
-    ...AlignLeft.args,
-    well: '1',
+export const ImagePortrait_3_4 = {
+    render: Template,
+
+    args: {
+        ...AlignLeft.args,
+        imgsize: 'portrait_3_4',
+    },
 }
 
-export const Featured = Template.bind({})
-Featured.args = {
-    ...AlignLeft.args,
-    items: [{ ...item1, isFeatured: 'active', align: 'left' }],
+export const ImagePortrait_2_3 = {
+    render: Template,
+
+    args: {
+        ...AlignLeft.args,
+        imgsize: 'portrait_2_3',
+    },
 }
 
-export const MultiFeatured = Template.bind({})
-MultiFeatured.args = {
-    ...AlignLeft.args,
-    columns: 3,
-    items: [{ ...item1 }, { ...item1, isFeatured: 'active' }, { ...item1 }],
+export const ImageWideScreen_16_9 = {
+    render: Template,
+
+    args: {
+        ...AlignLeft.args,
+        imgsize: 'widescreen_16_9',
+    },
 }
 
-export const MultipleBorder = Template.bind({})
-MultipleBorder.args = {
-    ...ThreeColumns.args,
-    well: '1',
+export const ImageWideScreen_2_4_1 = {
+    render: Template,
+
+    args: {
+        ...AlignLeft.args,
+        imgsize: 'widescreen_2_4_1',
+    },
 }
 
-export const MultipleBorderLinked = Template.bind({})
-MultipleBorderLinked.args = {
-    ...ThreeColumns.args,
-    columns: 3,
-    well: '1',
-    items: [
-        {
-            ...item1,
-            pagelink: '/',
-            align: 'center',
-        },
-        {
-            ...item1,
-            pagelink: '/',
-            align: 'center',
-        },
-        {
-            ...item1,
-            pagelink: '/',
-            align: 'center',
-        },
-    ],
+export const ImageWideScreen_3_1 = {
+    render: Template,
+
+    args: {
+        ...AlignLeft.args,
+        imgsize: 'widescreen_3_1',
+    },
 }
 
-export const Hidden = Template.bind({})
-Hidden.args = {
-    ...Plain.args,
-    items: [{ ...item1, disabled: 'disabled' }],
+export const ImageNoSizing = {
+    render: Template,
+
+    args: {
+        ...AlignLeft.args,
+        imgsize: 'no_sizing',
+    },
 }
 
-export const RoundedBorder = Template.bind({})
-RoundedBorder.args = {
-    ...MultipleBorder.args,
-    columns: 1,
-    items: [
-        {
-            ...item1,
-            useAccentColor: true,
-            borderType: 'round',
-        },
-    ],
+export const ButtonSizesBlock = {
+    render: Template,
+
+    args: {
+        ...Default.args,
+        items: [
+            {
+                ...item1,
+                buttonList: [
+                    {
+                        name: 'btn1',
+                        link: '/article/',
+                        window: '',
+                        label: 'Button1',
+                        active: true,
+                        btnType: 'btn_1',
+                        btnSize: 'btn_md',
+                        linkType: 'local',
+                        blockBtn: true,
+                    },
+                ],
+                btnCount: 2,
+                isWrapLink: false,
+                visibleButton: true,
+            },
+        ],
+    },
+}
+
+export const LinkNoButton = {
+    render: Template,
+
+    args: {
+        ...Default.args,
+        well: '1',
+        items: [
+            {
+                ...item1,
+                weblink: 'https://www.facebook.com/',
+                align: 'left',
+                newwindow: 1,
+                isWrapLink: true,
+                visibleButton: false,
+            },
+        ],
+    },
+}
+
+export const TwoColumns = {
+    render: Template,
+
+    args: {
+        ...Default.args,
+        columns: 2,
+        items: [{ ...item1 }, { ...item2 }, { ...item3 }],
+    },
+}
+
+export const ThreeColumns = {
+    render: Template,
+
+    args: {
+        ...Default.args,
+        columns: 3,
+        items: [{ ...item1 }, { ...item2 }, { ...item3 }],
+    },
+}
+
+export const FourColumns = {
+    render: Template,
+
+    args: {
+        ...Default.args,
+        columns: 4,
+        items: [{ ...item1 }, { ...item2 }, { ...item3 }, { ...item1 }],
+    },
+}
+
+export const Border = {
+    render: Template,
+
+    args: {
+        ...AlignLeft.args,
+        well: '1',
+    },
+}
+
+export const Featured = {
+    render: Template,
+
+    args: {
+        ...AlignLeft.args,
+        items: [{ ...item1, isFeatured: 'active', align: 'left' }],
+    },
+}
+
+export const MultiFeatured = {
+    render: Template,
+
+    args: {
+        ...AlignLeft.args,
+        columns: 3,
+        items: [{ ...item1 }, { ...item1, isFeatured: 'active' }, { ...item1 }],
+    },
+}
+
+export const MultipleBorder = {
+    render: Template,
+
+    args: {
+        ...ThreeColumns.args,
+        well: '1',
+    },
+}
+
+export const MultipleBorderLinked = {
+    render: Template,
+
+    args: {
+        ...ThreeColumns.args,
+        columns: 3,
+        well: '1',
+        items: [
+            {
+                ...item1,
+                pagelink: '/',
+                align: 'center',
+            },
+            {
+                ...item1,
+                pagelink: '/',
+                align: 'center',
+            },
+            {
+                ...item1,
+                pagelink: '/',
+                align: 'center',
+            },
+        ],
+    },
+}
+
+export const Hidden = {
+    render: Template,
+
+    args: {
+        ...Plain.args,
+        items: [{ ...item1, disabled: 'disabled' }],
+    },
+}
+
+export const RoundedBorder = {
+    render: Template,
+
+    args: {
+        ...MultipleBorder.args,
+        columns: 1,
+        items: [
+            {
+                ...item1,
+                useAccentColor: true,
+                borderType: 'round',
+            },
+        ],
+    },
 }

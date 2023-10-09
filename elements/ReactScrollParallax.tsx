@@ -2,8 +2,6 @@
 import { ParallaxBanner, ParallaxProvider } from 'react-scroll-parallax'
 import { ImageElement } from 'elements/ImageElement'
 import styles from '../components/parallax.module.scss'
-/* import Image from 'next/image'
-import { domainImage } from 'functions' */
 import { useEffect, useState } from 'react'
 import cn from 'classnames'
 import { ReactScrollProps } from '../types'

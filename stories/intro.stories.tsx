@@ -106,12 +106,15 @@ if (Default.args?.themeStyles) {
     colorStyles = createStoryStyles(Default.args.themeStyles)
 }
 
-export const Welcome = Template.bind({})
-Welcome.args = {
-    ...Default.args,
-    items: [
-        {
-            ...item1,
-        },
-    ],
+export const Welcome = {
+    render: Template,
+
+    args: {
+        ...Default.args,
+        items: [
+            {
+                ...item1,
+            },
+        ],
+    },
 }
