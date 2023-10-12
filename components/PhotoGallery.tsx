@@ -155,7 +155,7 @@ const ItemWrap = (props: ItemWrapProps) => {
             }
         >
             <div className={styles['image-block']}>
-                <ImageBlock item={item} imgsize={imgsize} well={well} cmsUrl={cmsUrl} modType={'gallery'} columns={columns} />
+                <ImageBlock item={item} imgsize={imgsize} well={well} modType={'gallery'} columns={columns} />
             </div>
 
             <div

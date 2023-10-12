@@ -6,7 +6,7 @@ import { ImageElement } from './ImageElement'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const ImageBlock = (props: ImageBlockProps) => {
-    const { item, imgsize = 'landscape_4_3', cmsUrl, modType = 'article', columns } = props
+    const { item, imgsize = 'landscape_4_3', modType = 'article', columns } = props
 
     return (
         <>
@@ -27,7 +27,6 @@ export const ImageBlock = (props: ImageBlockProps) => {
                         imgAlt={item.img_alt_tag}
                         imagePriority={item.imagePriority}
                         imgsize={imgsize}
-                        cmsUrl={cmsUrl}
                         modType={modType}
                         nextImageSizes={item.nextImageSizes}
                         columns={columns}

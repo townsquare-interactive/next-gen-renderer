@@ -153,7 +153,7 @@ const ItemWrap = (props: ItemWrapProps) => {
     const ImageSection = () => {
         return (
             <figure className={cn(styles['image-block'])} data-alt="Headline">
-                <ImageBlock item={item} imgsize={imgsize} well={well} cmsUrl={cmsUrl} modType={'Card'} columns={columns} />
+                <ImageBlock item={item} imgsize={imgsize} well={well} modType={'Card'} columns={columns} />
             </figure>
         )
     }

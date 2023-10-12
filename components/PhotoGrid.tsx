@@ -109,7 +109,7 @@ const PhotoItem = (props: PhotoItemProps) => {
                             : { background: `${item.promoColor}` }
                     }
                 >
-                    <ImageBlock item={item} well={well} imgsize={imgsize} cmsUrl={cmsUrl} modType="photo_grid" columns={columns} />
+                    <ImageBlock item={item} well={well} imgsize={imgsize} modType="photo_grid" columns={columns} />
                     {(item.headline || item.subheader) && (
                         <figcaption className={cn(styles.caption)} style={item.image ? { background: themeStyles.captionBackground } : {}}>
                             <div className={styles['cap-cont']}>

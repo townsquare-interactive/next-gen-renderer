@@ -1,11 +1,10 @@
 'use client'
 import { Media, ImageProps } from '../types'
 import Image from 'next/image'
-import { domainImage } from '../functions'
 import { useState } from 'react'
 
 export const ImageElement = (props: ImageProps) => {
-    const { imgSrc, imgAlt, imagePriority, cmsUrl, modType = 'article', imageType, opacity, nextImageSizes } = props
+    const { imgSrc, imgAlt, imagePriority, modType = 'article', imageType, opacity, nextImageSizes } = props
     const [hideImage, setHideImage] = useState(false)
     const [imageHeight, setHeight] = useState(100)
     const [imageWidth, setWidth] = useState(300)

@@ -83,7 +83,6 @@ const ModuleItem = (props: ModuleItemProps) => {
                     imgAlt={item.img_alt_tag}
                     imagePriority={item.imagePriority}
                     imgsize={imgsize}
-                    cmsUrl={cmsUrl}
                     modType={'Banner'}
                     opacity={item.modOpacity || 1}
                     nextImageSizes={item.nextImageSizes}

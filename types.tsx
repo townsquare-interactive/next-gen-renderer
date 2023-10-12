@@ -112,6 +112,15 @@ interface modalData {
     subheader?: string
     text: string
     autoopen: boolean
+    image?: string
+}
+
+export interface ModalContent {
+    headline?: string
+    subheader?: string
+    desc?: string
+    image?: string
+    item?: any
 }
 
 interface CMSLogo {
@@ -247,6 +256,8 @@ export interface ContactModalProps {
     siteData: GlobalData
     setContactModal: () => void
     showContactModal: boolean
+    items?: ArticleItems[]
+    openEveryVisit?: boolean
 }
 
 export interface ContactLinkProps {
@@ -824,7 +835,6 @@ export interface ImageBlockProps {
     imageHeight?: number
     imgsize: string
     well: string | number
-    cmsUrl?: string
     modType?: string
     nextImageSizes?: string
     columns: number
@@ -836,7 +846,6 @@ export interface ImageProps {
     imagePriority?: boolean
     imgtype?: string
     imgsize?: string
-    cmsUrl?: string
     modType: string
     opacity?: number
     nextImageSizes?: string

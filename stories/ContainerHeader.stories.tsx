@@ -2,14 +2,13 @@
 import { StoryFn, Meta } from '@storybook/react'
 import ContainerHeader from '../components/ContainerHeader'
 import { siteDataEx } from 'storydefaults'
-//import { social } from 'storydefaults'
 import { HeaderOptions } from 'types'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
-//import SlidingHeader from 'elements/SlidingHeader'
 const { library } = require('@fortawesome/fontawesome-svg-core')
 
+//havel to add fontawesome since it is normally added outside of module
 library.add(fas, fab, far)
 export default {
     title: 'new-render/ContainerHeader',

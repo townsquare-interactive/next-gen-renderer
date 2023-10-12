@@ -4,7 +4,7 @@ import styles from './containerlayout.module.scss'
 import cn from 'classnames'
 import ContainerHeader from './ContainerHeader'
 import ContainerFooter from './ContainerFooter'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import SlidingHeader from 'elements/SlidingHeader'
 import ContactModal from './ContactModal'
 import Modal from './Modal'
@@ -14,8 +14,16 @@ export default function Layout(props: LayoutProps) {
     const [navCheck, setNav] = useState<boolean>(false)
     const [showContactModal, setContactModal] = useState<boolean>(false)
     const [showSiteModal, setSiteModal] = useState<boolean>(true)
-
     const twoPhones = true
+
+    //modal only shows up on first visit
+    useEffect(() => {
+        const flag = localStorage.getItem('flag')
+        if (!flag) {
+            setSiteModal(true)
+            localStorage.setItem('flag', '1')
+        }
+    }, [])
 
     function navSwitch() {
         setNav(!navCheck)
@@ -27,7 +35,15 @@ export default function Layout(props: LayoutProps) {
 
     //siteData.modalData
     function triggerSiteModal() {
-        setSiteModal(!showSiteModal)
+        //const flag = localStorage.getItem('flag')
+        /*         if (flag != '1') {
+            localStorage.setItem('flag', '1')
+            //setSiteModal(!showSiteModal)
+            setSiteModal(true)
+        } else {
+            setSiteModal(false)
+        } */
+        setSiteModal(false)
     }
 
     return (
@@ -36,7 +52,7 @@ export default function Layout(props: LayoutProps) {
                 <SlidingHeader navSwitch={navSwitch} navCheck={navCheck} themeStyles={themeStyles} siteData={siteData} />
                 {twoPhones && <ContactModal siteData={siteData} showContactModal={showContactModal} setContactModal={triggerContactModal} />}
 
-                {/*   {siteData.modalData && <Modal siteData={siteData} showContactModal={showSiteModal} setContactModal={triggerSiteModal} />} */}
+                {siteData.modalData && <Modal siteData={siteData} showContactModal={showSiteModal} setContactModal={triggerSiteModal} />}
                 <ContainerHeader siteData={siteData} navSwitch={navSwitch} setContactModal={triggerContactModal} cmsUrl={cmsUrl} />
 
                 <main className={'content-background'}>{children}</main>

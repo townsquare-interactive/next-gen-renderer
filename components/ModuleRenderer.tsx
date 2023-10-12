@@ -22,6 +22,7 @@ import Card from './Card'
 import PhotoGallery from './PhotoGallery'
 import ContactFormRoutes from './ContactFormRoutes'
 import dynamic from 'next/dynamic'
+import Modal from './Modal'
 const Map = dynamic(() => import('./Map'), {
     ssr: false,
 })
@@ -47,6 +48,7 @@ const keysToComponentMap: any = {
     PhotoGallery,
     ContactFormRoutes,
     Map,
+    Modal,
 }
 
 const mapPropsToConfig = (config: ModuleProps[]) => {

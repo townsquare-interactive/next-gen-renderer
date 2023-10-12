@@ -64,8 +64,8 @@ export function domainImage(url: string, cms = false, cmsSiteUrl = '', type = ''
             return encodeURI(imageUrl)
         }
     } else {
-        let imageUrl = globalAssets + url
-        return encodeURI(imageUrl)
+        //let imageUrl = globalAssets + url
+        return encodeURI(url)
     }
 }
 
