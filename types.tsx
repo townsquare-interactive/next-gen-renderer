@@ -113,6 +113,21 @@ interface modalData {
     text: string
     autoopen: boolean
     image?: string
+    items: modalItem[]
+}
+
+interface modalItem {
+    headline?: string
+    component: string
+    nav_menu: null | any // Change 'any' to the actual type if needed
+    name?: string
+    subheader?: string
+    text?: string
+    autoopen: boolean
+    image?: string
+    disabled?: boolean
+    desc?: string
+    align?: string
 }
 
 export interface ModalContent {

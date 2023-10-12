@@ -8,12 +8,7 @@ import { HeadlineBlock } from 'elements/HeadlineBlock'
 import { Fragment, useEffect, useState } from 'react'
 import { ImageBlock } from 'elements/ImageBlock'
 
-const Modal = ({
-    siteData,
-    // setContactModal, //showContactModal,
-    items,
-    openEveryVisit = true,
-}: ContactModalProps) => {
+const Modal = ({ siteData, items, openEveryVisit = true }: ContactModalProps) => {
     const [showSiteModal, setSiteModal] = useState<boolean>(openEveryVisit)
 
     //stop modal from appearing on refresh is openEveryVisit is false
@@ -29,6 +24,8 @@ const Modal = ({
         setSiteModal(false)
     }
 
+    const modalItems = siteData?.modalData?.items ? siteData?.modalData.items : items ? items : []
+
     return (
         <div
             className={cn(styles.root, styles['site-modal'], {
@@ -38,31 +35,20 @@ const Modal = ({
         >
             <div className={styles.wrapper}>
                 <NavClose setContactModal={setContactModal} type="contact" />
+                {/*  <div className={styles.title}>Stuff</div> */}
 
-                {siteData?.modalData ? (
+                {modalItems && (
                     <>
-                        <ModalContent
-                            headline={siteData.modalData.headline}
-                            subheader={siteData.modalData.subheader}
-                            desc={siteData.modalData.text}
-                            image={siteData.modalData.image}
-                            item={siteData.modalData}
-                        />
+                        {modalItems.map((item, index) => (
+                            <Fragment key={index}>
+                                {item.disabled != true && (
+                                    <div className={cn(styles.item, styles[`${item.align}`])}>
+                                        <ModalContent headline={item.headline} subheader={item.subheader} desc={item.desc} image={item.image} item={item} />
+                                    </div>
+                                )}
+                            </Fragment>
+                        ))}
                     </>
-                ) : (
-                    items && (
-                        <>
-                            {items.map((item, index) => (
-                                <Fragment key={index}>
-                                    {item.disabled != true && (
-                                        <div className={cn(styles.item, styles[`${item.align}`])}>
-                                            <ModalContent headline={item.headline} subheader={item.subheader} desc={item.desc} image={item.image} item={item} />
-                                        </div>
-                                    )}
-                                </Fragment>
-                            ))}
-                        </>
-                    )
                 )}
             </div>
         </div>
