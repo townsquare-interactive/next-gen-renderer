@@ -2,7 +2,7 @@
 import styles from './modal.module.scss'
 import cn from 'classnames'
 import { Fragment } from 'react'
-import NavClose from 'elements/NavClose'
+import WindowCloser from 'elements/WindowCloser'
 import ContactLink from 'elements/ContactLink'
 import { ContactModalProps } from '../types'
 
@@ -17,7 +17,7 @@ const ContactModal = ({ siteData, setContactModal, showContactModal }: ContactMo
             <div className={styles.wrapper}>
                 <div className={styles['title-block']}>
                     <h4>Contact Title</h4>
-                    <NavClose setContactModal={setContactModal} type="contact" />
+                    <WindowCloser closerFunction={setContactModal} type="contact" />
                 </div>
 
                 <div className={styles.list}>

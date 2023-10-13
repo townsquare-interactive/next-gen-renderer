@@ -1,40 +1,55 @@
 'use client'
 import styles from './modal.module.scss'
 import cn from 'classnames'
-import NavClose from 'elements/NavClose'
+import WindowCloser from 'elements/WindowCloser'
 import { ContactModalProps, ModalContent } from '../types'
 import DescBlock from 'elements/DescBlock'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
 import { Fragment, useEffect, useState } from 'react'
 import { ImageBlock } from 'elements/ImageBlock'
 
-const Modal = ({ siteData, items, openEveryVisit = true }: ContactModalProps) => {
-    const [showSiteModal, setSiteModal] = useState<boolean>(openEveryVisit)
+//hook to trigger modal
+const useModal = (openEveryVisit: boolean) => {
+    const [showSiteModal, showModal] = useState<boolean>(openEveryVisit)
 
-    //stop modal from appearing on refresh is openEveryVisit is false
+    //hide modal after seeing it the first time
     useEffect(() => {
         const flag = localStorage.getItem('modal-flag')
         if (!flag) {
-            setSiteModal(true)
+            showModal(true)
             localStorage.setItem('modal-flag', '1')
         }
-    }, [showSiteModal])
+    }, [])
 
     function setContactModal() {
-        setSiteModal(false)
+        showModal(false)
     }
 
-    const modalItems = siteData?.modalData?.items ? siteData?.modalData.items : items ? items : []
+    return {
+        isShowing: showSiteModal,
+        close: setContactModal,
+    }
+}
+
+const Modal = ({ siteData, items, openEveryVisit = true }: ContactModalProps) => {
+    const { isShowing, close } = useModal(openEveryVisit)
+
+    let modalItems
+    if (siteData?.modalData?.items) {
+        modalItems = siteData?.modalData.items
+    } else if (items) {
+        modalItems = items
+    }
 
     return (
         <div
             className={cn(styles.root, styles['site-modal'], {
                 [styles.box]: true,
-                [styles.show]: showSiteModal,
+                [styles.show]: isShowing,
             })}
         >
             <div className={styles.wrapper}>
-                <NavClose setContactModal={setContactModal} type="contact" />
+                <WindowCloser closerFunction={close} type="contact" />
                 {/*  <div className={styles.title}>Stuff</div> */}
 
                 {modalItems && (
@@ -43,7 +58,13 @@ const Modal = ({ siteData, items, openEveryVisit = true }: ContactModalProps) =>
                             <Fragment key={index}>
                                 {item.disabled != true && (
                                     <div className={cn(styles.item, styles[`${item.align}`])}>
-                                        <ModalContent headline={item.headline} subheader={item.subheader} desc={item.desc} image={item.image} item={item} />
+                                        <ModalContent
+                                            headline={item.headline}
+                                            subheader={item.subheader}
+                                            desc={item.desc || ''}
+                                            image={item.image}
+                                            item={item}
+                                        />
                                     </div>
                                 )}
                             </Fragment>

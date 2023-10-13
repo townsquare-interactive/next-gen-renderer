@@ -261,10 +261,9 @@ export interface NavListItemProps {
     navSwitch: () => void
 }
 
-export interface NavCLoseProps {
-    navSwitch?: () => void
+export interface WindowCloserProps {
     type: string
-    setContactModal?: () => void
+    closerFunction: () => void
 }
 
 export interface ContactModalProps {

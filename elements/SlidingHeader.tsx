@@ -3,7 +3,7 @@ import cn from 'classnames'
 import styles from './slidingheader.module.scss'
 import SocialLinks from './SocialLinks'
 import Nav from './Nav'
-import NavClose from './NavClose'
+import WindowCloser from './WindowCloser'
 
 const SlidingHeader = (props: SlidingHeaderProps) => {
     const { navSwitch, navCheck, themeStyles, siteData } = props
@@ -16,7 +16,7 @@ const SlidingHeader = (props: SlidingHeaderProps) => {
             })}
         >
             <div className={cn(styles['wrapper'], 'header-background')}>
-                <NavClose navSwitch={navSwitch} type="sliding" />
+                <WindowCloser closerFunction={navSwitch} type="sliding" />
 
                 <div className={styles['access']}>
                     <div className={styles.social}>
