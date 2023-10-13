@@ -77,7 +77,6 @@ const ReactParallax = ({ item, imgsize, cmsUrl, children }: any) => {
                                 imgAlt={item.img_alt_tag}
                                 imagePriority={item.imagePriority}
                                 imgsize={imgsize}
-                                cmsUrl={cmsUrl}
                                 modType={'Parallax'}
                                 opacity={item.modOpacity}
                                 columns={item.columns}
