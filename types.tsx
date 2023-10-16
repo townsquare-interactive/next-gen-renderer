@@ -114,9 +114,10 @@ interface modalData {
     autoopen: boolean
     image?: string
     items: modalItem[]
+    contactFormData?: contactFormData
 }
 
-interface modalItem {
+export interface modalItem {
     headline?: string
     component: string
     nav_menu: null | any // Change 'any' to the actual type if needed
@@ -128,6 +129,7 @@ interface modalItem {
     disabled?: boolean
     desc?: string
     align?: string
+    plugin?: string
 }
 
 export interface ModalContent {
@@ -270,8 +272,15 @@ export interface ContactModalProps {
     siteData: GlobalData
     setContactModal: () => void
     showContactModal: boolean
+    //items?: ArticleItems[]
+    //openEveryVisit?: boolean
+}
+export interface SiteModalProps {
+    siteData: GlobalData
     items?: ArticleItems[]
     openEveryVisit?: boolean
+    modalType?: 'global' | 'page'
+    contactFormData?: contactFormData
 }
 
 export interface ContactLinkProps {
@@ -964,11 +973,17 @@ export interface ContactFormData {
 }
 
 export interface ContactFormRoutesProps {
-    cmsUrl: string
-    themeStyles: ThemeStyles
-    contactFormData: { formFields: FormFields[]; formTitle: string }
-    items: ArticleItems[]
+    //cmsUrl: string
+    //themeStyles: ThemeStyles
+    contactFormData: contactFormData
+    items: ArticleItems[] | modalItem[]
     title?: string
+    modType?: string
+}
+
+interface contactFormData {
+    formFields: FormFields[]
+    formTitle: string
 }
 
 export interface MapAddress {

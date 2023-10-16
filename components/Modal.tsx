@@ -2,22 +2,23 @@
 import styles from './modal.module.scss'
 import cn from 'classnames'
 import WindowCloser from 'elements/WindowCloser'
-import { ContactModalProps, ModalContent } from '../types'
+import { ArticleItems, ModalContent, SiteModalProps, modalItem } from '../types'
 import DescBlock from 'elements/DescBlock'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
 import { Fragment, useEffect, useState } from 'react'
 import { ImageBlock } from 'elements/ImageBlock'
+import ContactFormRoutes from './ContactFormRoutes'
 
 //hook to trigger modal
-const useModal = (openEveryVisit: boolean) => {
+const useModal = (openEveryVisit: boolean, flagName: string) => {
     const [showSiteModal, showModal] = useState<boolean>(openEveryVisit)
 
     //hide modal after seeing it the first time
     useEffect(() => {
-        const flag = localStorage.getItem('modal-flag')
+        const flag = localStorage.getItem(flagName)
         if (!flag) {
             showModal(true)
-            localStorage.setItem('modal-flag', '1')
+            localStorage.setItem(flagName, '1')
         }
     }, [])
 
@@ -31,10 +32,13 @@ const useModal = (openEveryVisit: boolean) => {
     }
 }
 
-const Modal = ({ siteData, items, openEveryVisit = true }: ContactModalProps) => {
-    const { isShowing, close } = useModal(openEveryVisit)
+const Modal = ({ siteData, items, openEveryVisit = true, modalType = 'page' }: SiteModalProps) => {
+    const flag = modalType === 'page' ? 'page-modal' : 'global-modal'
+    console.log(flag)
+    const { isShowing, close } = useModal(openEveryVisit, flag)
 
-    let modalItems
+    //current modals can be global from siteData or inside of page modules
+    let modalItems: modalItem[] | ArticleItems[] = []
     if (siteData?.modalData?.items) {
         modalItems = siteData?.modalData.items
     } else if (items) {
@@ -52,7 +56,7 @@ const Modal = ({ siteData, items, openEveryVisit = true }: ContactModalProps) =>
                 <WindowCloser closerFunction={close} type="contact" />
                 {/*  <div className={styles.title}>Stuff</div> */}
 
-                {modalItems && (
+                {modalItems.length != 0 && (
                     <>
                         {modalItems.map((item, index) => (
                             <Fragment key={index}>
@@ -66,6 +70,9 @@ const Modal = ({ siteData, items, openEveryVisit = true }: ContactModalProps) =>
                                             item={item}
                                         />
                                     </div>
+                                )}
+                                {siteData?.modalData?.contactFormData && (
+                                    <ContactFormRoutes items={modalItems} contactFormData={siteData?.modalData?.contactFormData} modType="modal" />
                                 )}
                             </Fragment>
                         ))}

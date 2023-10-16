@@ -1,11 +1,9 @@
 //import { ParallaxProvider, useParallax, Parallax } from 'react-scroll-parallax'
-import { useEffect, useRef, useState } from 'react'
+//import { useEffect, useRef, useState } from 'react'
 import { Parallax, Background } from 'react-parallax'
-
 import { ImageElement } from './ImageElement'
-
-import { domainImage } from 'functions'
-import Image from 'next/image'
+/* import { domainImage } from 'functions'
+import Image from 'next/image' */
 
 const ReactParallax = ({ item, imgsize, cmsUrl, children }: any) => {
     //const [imageHeight, setHeight] = useState(100)

@@ -69,6 +69,11 @@
             padding: 2rem 6rem;
             background-color: var(--header-background);
             max-width: 48.3333333333em;
+            max-height: 70vh;
+            overflow: auto;
+        }
+        img {
+            max-width: 25rem;
         }
     }
 

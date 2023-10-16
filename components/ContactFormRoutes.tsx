@@ -35,13 +35,13 @@ interface Values {
 }
 
 const ContactFormRoutes = (props: ContactFormRoutesProps) => {
-    const { contactFormData, items, title } = props
+    const { contactFormData, items, title, modType = 'page' } = props
     const [formMessage, setFormMessage] = useState('')
     const [formSent, setFormSent] = useState(false)
 
     return (
         <>
-            <div className={styles.root}>
+            <div className={cn(styles.root, styles[`${modType}`])}>
                 <div className={cn(styles.wrapper, 'txt-color')}>
                     {title && <ModuleTitle title={title} />}
                     {items.map((item, ind: number) => (
