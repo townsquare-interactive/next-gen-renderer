@@ -16,6 +16,9 @@
     opacity: 1;
     z-index: 1011;
 
+    //
+    //display: none;
+
     .wrapper {
         top: -100%;
         background-color: rgba(16, 37, 46, 1);
@@ -66,12 +69,25 @@
 
     &.site-modal {
         .wrapper {
-            padding: 2rem 6rem;
             background-color: var(--header-background);
             max-width: 48.3333333333em;
             max-height: 70vh;
             overflow: auto;
+
+            .modal-body {
+                padding: 2rem 6rem;
+                max-height: 70vh;
+                overflow: auto;
+            }
         }
+
+        .title {
+            background: var(--promo);
+            padding: 0.9rem 0.7rem;
+            font-weight: bold;
+            color: var(--hero-btn-txt);
+        }
+
         img {
             max-width: 25rem;
         }
@@ -79,6 +95,7 @@
 
     &.show {
         visibility: visible;
+        display: block;
 
         &.contact {
             .wrapper {
@@ -98,5 +115,8 @@
                 }
             }
         }
+    }
+    &.hide {
+        visibility: hidden;
     }
 }

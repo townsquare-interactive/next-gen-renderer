@@ -60,11 +60,14 @@ export interface LayoutProps {
     cName?: string
     cmsUrl?: string
     //page: CMSPage
+    pageModalVars?: pageModalVars[]
 }
 export interface RendererProps {
     config: any
     cmsUrl: string
     themeStyles: ThemeStyles
+    siteData: GlobalData
+    pageModalVars?: pageModalVars[]
 }
 
 export interface WidgetRendererProps {
@@ -132,7 +135,7 @@ export interface modalItem {
     plugin?: string
 }
 
-export interface ModalContent {
+export interface ModalContentProps {
     headline?: string
     subheader?: string
     desc?: string
@@ -182,6 +185,7 @@ export interface SingleButtonProps {
     index?: number
     type: string
     isFeatureButton?: boolean
+    pageModalVars?: pageModalVars[]
 }
 
 interface ButtonListProps {
@@ -195,6 +199,7 @@ interface ButtonListProps {
     icon?: any
     linkType?: string
     blockBtn?: boolean
+    opensModal?: number
 }
 
 export interface HeaderCTAProps {
@@ -281,6 +286,9 @@ export interface SiteModalProps {
     openEveryVisit?: boolean
     modalType?: 'global' | 'page'
     contactFormData?: contactFormData
+    title?: string
+    pageModalVars?: pageModalVars[]
+    modalNum?: number
 }
 
 export interface ContactLinkProps {
@@ -384,6 +392,12 @@ export interface CMSPageData {
     columnStyles: string
     slug: string
     anchorTags?: any[]
+    pageModalTitles: string[]
+}
+
+interface pageModalVars {
+    close: () => void
+    isShowing: boolean
 }
 
 export interface GlobalModule {
@@ -604,6 +618,7 @@ export interface ModuleProps {
     modCount?: number
     settings?: CarouselSettings
     anchorLink?: string
+    pageModalVars?: pageModalVars[]
 }
 
 export interface CarouselSettings {
@@ -724,6 +739,7 @@ export interface ItemWrapProps {
     laxType?: string
     useThumbnail?: boolean
     useCarousel?: boolean
+    pageModalVars?: pageModalVars[]
     //temp
 }
 
@@ -766,6 +782,7 @@ export interface ModuleItemProps {
     cmsUrl?: string
     useThumbnail?: boolean
     useCarousel?: boolean
+    pageModalVars?: pageModalVars[]
 }
 
 //module items
@@ -938,6 +955,7 @@ export interface ButtonWrapProps {
     btnStyles?: string
     isFeatureButton?: boolean
     image?: string
+    pageModalVars?: pageModalVars[]
 }
 
 /*--------- Forms ----------------*/
@@ -979,6 +997,7 @@ export interface ContactFormRoutesProps {
     items: ArticleItems[] | modalItem[]
     title?: string
     modType?: string
+    siteData: GlobalData
 }
 
 interface contactFormData {

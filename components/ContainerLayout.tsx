@@ -4,15 +4,16 @@ import styles from './containerlayout.module.scss'
 import cn from 'classnames'
 import ContainerHeader from './ContainerHeader'
 import ContainerFooter from './ContainerFooter'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import SlidingHeader from 'elements/SlidingHeader'
 import ContactModal from './ContactModal'
 import Modal from './Modal'
 
 export default function Layout(props: LayoutProps) {
-    const { children, siteData, themeStyles, cName, cmsUrl } = props
+    const { children, siteData, themeStyles, cName, cmsUrl, pageModalVars } = props
     const [navCheck, setNav] = useState<boolean>(false)
     const [showContactModal, setContactModal] = useState<boolean>(false)
+    const [modalStyles, setModalStyles] = useState('')
     const twoPhones = true
 
     function navSwitch() {
@@ -23,16 +24,21 @@ export default function Layout(props: LayoutProps) {
         setContactModal(!showContactModal)
     }
 
+    function showCertainModal(name: string) {
+        setModalStyles(`${name}{display:block; visibility:visible;}`)
+    }
+
     return (
         <>
             <div className={cn(styles.root, `page-${cName}`)}>
                 <SlidingHeader navSwitch={navSwitch} navCheck={navCheck} themeStyles={themeStyles} siteData={siteData} />
                 {twoPhones && <ContactModal siteData={siteData} showContactModal={showContactModal} setContactModal={triggerContactModal} />}
 
-                {siteData.modalData && <Modal siteData={siteData} modalType="global" />}
                 <ContainerHeader siteData={siteData} navSwitch={navSwitch} setContactModal={triggerContactModal} cmsUrl={cmsUrl} />
 
                 <main className={'content-background'}>{children}</main>
+
+                {siteData.modalData && <Modal siteData={siteData} modalType="global" pageModalVars={pageModalVars} />}
 
                 <ContainerFooter siteData={siteData} navSwitch={navSwitch} cmsUrl={cmsUrl} />
             </div>

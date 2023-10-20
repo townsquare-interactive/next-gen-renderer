@@ -7,9 +7,11 @@ import cn from 'classnames'
 const SocialLinks = ({ siteData, modType = 'header' }: SocialLinksProps) => {
     return (
         <ul
-            className={cn(styles['social-media-links'], {
+            className={cn(styles['social-media-links'], 'social-links', {
                 [styles['slide-social']]: modType === 'slide-header',
+                ['slide-social']: modType === 'slide-header',
                 [styles['head-social']]: modType === 'header',
+                ['head-social']: modType === 'header',
                 [styles['foot-social']]: modType === 'footer',
                 [styles['widget']]: modType === 'widget',
                 [styles['reverse-social']]: siteData.headerOptions?.reverseSocial,

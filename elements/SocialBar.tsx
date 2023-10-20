@@ -8,7 +8,7 @@ import ContactLink from './ContactLink'
 
 const SocialBar = ({ siteData, setContactModal }: SocialBarProps) => {
     return (
-        <div className={cn(styles['social-bar'], 'social-bar-background')}>
+        <div className={cn(styles['social-bar'], 'social-bar', 'social-bar-background')}>
             <SocialLinks siteData={siteData} />
             <aside className={styles.contact}>
                 <ul>

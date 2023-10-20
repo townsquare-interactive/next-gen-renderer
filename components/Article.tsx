@@ -27,6 +27,7 @@ const Article = (props: ModuleProps) => {
         columnLocation,
         isSingleColumn,
         anchorLink,
+        pageModalVars,
     } = props
 
     if (disabled === 'disabled' || disabled === true) {
@@ -72,6 +73,7 @@ const Article = (props: ModuleProps) => {
                                     columns={columns}
                                     itemIndex={index}
                                     cmsUrl={cmsUrl}
+                                    pageModalVars={pageModalVars}
                                 />
                             ) : (
                                 <></>
@@ -85,7 +87,7 @@ const Article = (props: ModuleProps) => {
 }
 
 const ModuleItem = (props: ModuleItemProps) => {
-    const { item, modId, itemIndex, cmsUrl, themeStyles, type, imgsize, columns, well } = props
+    const { item, modId, itemIndex, cmsUrl, themeStyles, type, imgsize, columns, well, pageModalVars } = props
 
     return item.disabled ? (
         <></>
@@ -116,20 +118,30 @@ const ModuleItem = (props: ModuleItemProps) => {
             )}
             lang="en"
         >
-            {item.isWrapLink && <LinkWrap item={item} modType={'article'}></LinkWrap>}
+            {/*   {item.isWrapLink && <LinkWrap item={item} modType={'article'}></LinkWrap>} */}
             <div
                 className={cn(styles['item-wrap'], {
                     ['hero-background']: (item.isFeatured === 'active' || item.isFeatured === true) && type === 'article',
                 })}
             >
-                <ItemWrap item={item} imgsize={imgsize} well={well} type={type} themeStyles={themeStyles} columns={columns} modId={modId} cmsUrl={cmsUrl} />
+                <ItemWrap
+                    item={item}
+                    imgsize={imgsize}
+                    well={well}
+                    type={type}
+                    themeStyles={themeStyles}
+                    columns={columns}
+                    modId={modId}
+                    cmsUrl={cmsUrl}
+                    pageModalVars={pageModalVars}
+                />
             </div>
         </article>
     )
 }
 
 const ItemWrap = (props: ItemWrapProps) => {
-    const { item, imgsize, well, themeStyles, type, modId, cmsUrl, columns } = props
+    const { item, imgsize, well, themeStyles, type, modId, cmsUrl, columns, pageModalVars } = props
 
     return (
         <>
@@ -186,7 +198,9 @@ const ItemWrap = (props: ItemWrapProps) => {
                     />
                 </div>
             )}
-            {item.visibleButton && <ButtonWrap well={well} modId={modId} type={type} columns={columns} themeStyles={themeStyles} {...item} />}
+            {item.visibleButton && (
+                <ButtonWrap well={well} modId={modId} type={type} columns={columns} themeStyles={themeStyles} {...item} pageModalVars={pageModalVars} />
+            )}
         </>
     )
 }

@@ -6,7 +6,7 @@ import { Fragment } from 'react'
 import { Button } from './Button'
 
 export const ButtonWrap = (props: ButtonWrapProps) => {
-    const { actionlbl, well, actionlbl2, type, buttonList, modId, align, btnCount, btnStyles, image = '', isFeatureButton = false } = props
+    const { actionlbl, well, actionlbl2, type, buttonList, modId, align, btnCount, btnStyles, image = '', isFeatureButton = false, pageModalVars } = props
 
     return (
         <div
@@ -28,7 +28,9 @@ export const ButtonWrap = (props: ButtonWrapProps) => {
                 })}
             >
                 {buttonList.map((bt, index) => (
-                    <Fragment key={index}>{bt.active && <Button btn={bt} well={well} index={index} type={type} isFeatureButton={isFeatureButton} />}</Fragment>
+                    <Fragment key={index}>
+                        {bt.active && <Button btn={bt} well={well} index={index} type={type} isFeatureButton={isFeatureButton} pageModalVars={pageModalVars} />}
+                    </Fragment>
                 ))}
             </div>
         </div>

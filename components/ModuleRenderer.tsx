@@ -68,7 +68,7 @@ const mapPropsToConfig = (config: ModuleProps[]) => {
     return configWithProps
 }
 
-export const ModuleRenderer = ({ config, themeStyles, cmsUrl = '' }: RendererProps) => {
+export const ModuleRenderer = ({ config, themeStyles, cmsUrl = '', siteData, pageModalVars }: RendererProps) => {
     if (!config) {
         throw new Error('You are calling Renderer with no config.')
     }
@@ -86,7 +86,7 @@ export const ModuleRenderer = ({ config, themeStyles, cmsUrl = '' }: RendererPro
                         <Fragment key={index}>
                             {props.attributes.disabled != 'disabled' && (
                                 <>
-                                    <Comp {...props.attributes} themeStyles={themeStyles} cmsUrl={cmsUrl} />
+                                    <Comp {...props.attributes} themeStyles={themeStyles} cmsUrl={cmsUrl} siteData={siteData} pageModalVars={pageModalVars} />
                                 </>
                             )}
                         </Fragment>

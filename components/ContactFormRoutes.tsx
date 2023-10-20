@@ -35,7 +35,7 @@ interface Values {
 }
 
 const ContactFormRoutes = (props: ContactFormRoutesProps) => {
-    const { contactFormData, items, title, modType = 'page' } = props
+    const { contactFormData, items, title, modType = 'page', siteData } = props
     const [formMessage, setFormMessage] = useState('')
     const [formSent, setFormSent] = useState(false)
 
@@ -48,7 +48,7 @@ const ContactFormRoutes = (props: ContactFormRoutesProps) => {
                         <Fragment key={ind}>
                             {item.plugin === '[gravity]' && (
                                 <div className={styles.item}>
-                                    {contactFormData.formTitle && <h3 className={styles.title}>{contactFormData.formTitle}</h3>}
+                                    {contactFormData.formTitle && modType != 'modal' && <h3 className={styles.title}>{contactFormData.formTitle}</h3>}
                                     <div className={styles['message-block']}>
                                         {formMessage && (
                                             <div
@@ -99,6 +99,7 @@ const ContactFormRoutes = (props: ContactFormRoutesProps) => {
                                                             state: values.state,
                                                             city: values.city,
                                                         },
+                                                        clientEmail: siteData.email,
                                                     }
 
                                                     setTimeout(async () => {

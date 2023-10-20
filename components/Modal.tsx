@@ -2,7 +2,7 @@
 import styles from './modal.module.scss'
 import cn from 'classnames'
 import WindowCloser from 'elements/WindowCloser'
-import { ArticleItems, ModalContent, SiteModalProps, modalItem } from '../types'
+import { ArticleItems, ModalContentProps, SiteModalProps, modalItem } from '../types'
 import DescBlock from 'elements/DescBlock'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
 import { Fragment, useEffect, useState } from 'react'
@@ -32,67 +32,73 @@ const useModal = (openEveryVisit: boolean, flagName: string) => {
     }
 }
 
-const Modal = ({ siteData, items, openEveryVisit = true, modalType = 'page' }: SiteModalProps) => {
+const Modal = ({ siteData, items, openEveryVisit = true, modalType = 'page', title, pageModalVars, modalNum = 0 }: SiteModalProps) => {
     const flag = modalType === 'page' ? 'page-modal' : 'global-modal'
-    console.log(flag)
-    const { isShowing, close } = useModal(openEveryVisit, flag)
+
+    //const { isShowing, close } = useModal(openEveryVisit, flag)
 
     //current modals can be global from siteData or inside of page modules
     let modalItems: modalItem[] | ArticleItems[] = []
-    if (siteData?.modalData?.items) {
+    if (siteData?.modalData?.items && modalType != 'page') {
         modalItems = siteData?.modalData.items
     } else if (items) {
         modalItems = items
     }
 
+    const id = 'page-mod'
+
     return (
         <div
-            className={cn(styles.root, styles['site-modal'], {
+            className={cn(styles.root, styles['site-modal'], 'modal', {
                 [styles.box]: true,
-                [styles.show]: isShowing,
+                [styles.show]: pageModalVars && pageModalVars[modalNum].isShowing,
+                [id]: id && modalType === 'page',
             })}
         >
+            {/*  <style>{id ? `.${id}{visibility:hidden}` : ''}</style> */}
             <div className={styles.wrapper}>
-                <WindowCloser closerFunction={close} type="contact" />
-                {/*  <div className={styles.title}>Stuff</div> */}
-
-                {modalItems.length != 0 && (
-                    <>
-                        {modalItems.map((item, index) => (
-                            <Fragment key={index}>
-                                {item.disabled != true && (
-                                    <div className={cn(styles.item, styles[`${item.align}`])}>
-                                        <ModalContent
-                                            headline={item.headline}
-                                            subheader={item.subheader}
-                                            desc={item.desc || ''}
-                                            image={item.image}
-                                            item={item}
+                {items && <div className={styles.title}>{title}</div>}
+                {pageModalVars && <WindowCloser closerFunction={pageModalVars[modalNum].close} type="contact" />}
+                <div className={styles['modal-body']}>
+                    {modalItems.length != 0 && (
+                        <>
+                            {modalItems.map((item, index) => (
+                                <Fragment key={index}>
+                                    {item.disabled != true && (
+                                        <div className={cn(styles.item, styles[`${item.align}`])}>
+                                            <ModalContent
+                                                headline={item.headline}
+                                                subheader={item.subheader}
+                                                desc={item.desc || ''}
+                                                image={item.image}
+                                                item={item}
+                                            />
+                                        </div>
+                                    )}
+                                    {siteData?.modalData?.contactFormData && modalType != 'page' && (
+                                        <ContactFormRoutes
+                                            items={modalItems}
+                                            contactFormData={siteData?.modalData?.contactFormData}
+                                            modType="modal"
+                                            siteData={siteData}
                                         />
-                                    </div>
-                                )}
-                                {siteData?.modalData?.contactFormData && (
-                                    <ContactFormRoutes items={modalItems} contactFormData={siteData?.modalData?.contactFormData} modType="modal" />
-                                )}
-                            </Fragment>
-                        ))}
-                    </>
-                )}
+                                    )}
+                                </Fragment>
+                            ))}
+                        </>
+                    )}
+                </div>
             </div>
         </div>
     )
 }
 
-const ModalContent = ({ headline, desc, subheader, image, item }: ModalContent) => {
+const ModalContent = ({ headline, desc, subheader, image, item }: ModalContentProps) => {
     return (
         <>
             {(headline || subheader) && <HeadlineBlock item={item} well={''} columns={1} modType={'modal'} />}
             {image && <ImageBlock item={item} imgsize={item.imageSize} well={''} columns={1} />}
-            {desc && (
-                <div className={cn(styles['txt-block'])}>
-                    <DescBlock desc={desc} descSize={'md'} type={'modal'} />
-                </div>
-            )}
+            {desc && <DescBlock desc={desc} descSize={'md'} type={'modal'} />}
         </>
     )
 }
