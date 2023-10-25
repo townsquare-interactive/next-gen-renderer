@@ -60,14 +60,14 @@ export interface LayoutProps {
     cName?: string
     cmsUrl?: string
     //page: CMSPage
-    pageModalVars?: pageModalVars[]
+    pageModalVars?: PageModalVars[]
 }
 export interface RendererProps {
     config: any
     cmsUrl: string
     themeStyles: ThemeStyles
     siteData: GlobalData
-    pageModalVars?: pageModalVars[]
+    pageModalVars?: PageModalVars[]
 }
 
 export interface WidgetRendererProps {
@@ -114,7 +114,7 @@ interface modalData {
     name: string
     subheader?: string
     text: string
-    autoopen: boolean
+    autoOpen: boolean
     image?: string
     items: modalItem[]
     contactFormData?: contactFormData
@@ -127,12 +127,13 @@ export interface modalItem {
     name?: string
     subheader?: string
     text?: string
-    autoopen: boolean
+    autoOpen: boolean
     image?: string
     disabled?: boolean
     desc?: string
     align?: string
     plugin?: string
+    contactFormData?: contactFormData
 }
 
 export interface ModalContentProps {
@@ -185,7 +186,7 @@ export interface SingleButtonProps {
     index?: number
     type: string
     isFeatureButton?: boolean
-    pageModalVars?: pageModalVars[]
+    pageModalVars?: PageModalVars[]
 }
 
 interface ButtonListProps {
@@ -199,7 +200,7 @@ interface ButtonListProps {
     icon?: any
     linkType?: string
     blockBtn?: boolean
-    opensModal?: number
+    opensModal: number
 }
 
 export interface HeaderCTAProps {
@@ -287,8 +288,9 @@ export interface SiteModalProps {
     modalType?: 'global' | 'page'
     contactFormData?: contactFormData
     title?: string
-    pageModalVars?: pageModalVars[]
+    pageModalVars?: PageModalVars[]
     modalNum?: number
+    autoOpen?: boolean
 }
 
 export interface ContactLinkProps {
@@ -392,11 +394,11 @@ export interface CMSPageData {
     columnStyles: string
     slug: string
     anchorTags?: any[]
-    pageModalTitles: string[]
+    pageModals: { modalNum: number; modalTitle: any; autoOpen?: boolean; openEveryTime: boolean }[]
 }
 
-interface pageModalVars {
-    close: () => void
+export interface PageModalVars {
+    toggleModal: () => void
     isShowing: boolean
 }
 
@@ -463,34 +465,6 @@ export interface PageProps {
     head_script: string | null
     hideTitle: number
     sections: [{ wide: string }, { wide: string }, { wide: string }, { wide: string }, { wide: string }]
-}
-
-export interface ModuleProps2 {
-    uid: string
-    modId: string
-    /* type: string */
-    type: string
-    /**Border background on items*/
-    well: string | number
-    align?: string
-    items: ArticleItems[]
-    imgsize: string
-    /**Custom class addition*/
-    class: string
-    /**Title text to go above module*/
-    title: string
-    hideTitle?: number
-    export: number
-    columns: number
-    lightbox: string
-    blockSwitch1: number
-    scale_to_fit: string
-    /**Global styles for site*/
-    themeStyles: ThemeStyles
-    /**Check to see if element is hidden */
-    disabled?: string | boolean
-    cmsUrl?: string
-    contentSpacing?: string
 }
 
 /*-----------------------------TSI Modules ----------------------------------*/
@@ -562,6 +536,7 @@ export interface ArticleItems {
         pagelink2?: string
         weblink2?: string
     }
+    contactFormData?: contactFormData
 }
 
 export interface ReactScrollProps {
@@ -618,7 +593,7 @@ export interface ModuleProps {
     modCount?: number
     settings?: CarouselSettings
     anchorLink?: string
-    pageModalVars?: pageModalVars[]
+    pageModalVars?: PageModalVars[]
 }
 
 export interface CarouselSettings {
@@ -739,7 +714,7 @@ export interface ItemWrapProps {
     laxType?: string
     useThumbnail?: boolean
     useCarousel?: boolean
-    pageModalVars?: pageModalVars[]
+    pageModalVars?: PageModalVars[]
     //temp
 }
 
@@ -782,7 +757,7 @@ export interface ModuleItemProps {
     cmsUrl?: string
     useThumbnail?: boolean
     useCarousel?: boolean
-    pageModalVars?: pageModalVars[]
+    pageModalVars?: PageModalVars[]
 }
 
 //module items
@@ -955,7 +930,7 @@ export interface ButtonWrapProps {
     btnStyles?: string
     isFeatureButton?: boolean
     image?: string
-    pageModalVars?: pageModalVars[]
+    pageModalVars?: PageModalVars[]
 }
 
 /*--------- Forms ----------------*/
@@ -993,7 +968,7 @@ export interface ContactFormData {
 export interface ContactFormRoutesProps {
     //cmsUrl: string
     //themeStyles: ThemeStyles
-    contactFormData: contactFormData
+    contactFormData?: contactFormData
     items: ArticleItems[] | modalItem[]
     title?: string
     modType?: string

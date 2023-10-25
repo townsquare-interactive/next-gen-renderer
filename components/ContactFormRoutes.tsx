@@ -44,91 +44,92 @@ const ContactFormRoutes = (props: ContactFormRoutesProps) => {
             <div className={cn(styles.root, styles[`${modType}`])}>
                 <div className={cn(styles.wrapper, 'txt-color')}>
                     {title && <ModuleTitle title={title} />}
-                    {items.map((item, ind: number) => (
-                        <Fragment key={ind}>
-                            {item.plugin === '[gravity]' && (
-                                <div className={styles.item}>
-                                    {contactFormData.formTitle && modType != 'modal' && <h3 className={styles.title}>{contactFormData.formTitle}</h3>}
-                                    <div className={styles['message-block']}>
-                                        {formMessage && (
-                                            <div
-                                                className={cn(styles.message, {
-                                                    [styles.blue]: formMessage === 'Sending....',
-                                                    [styles.red]: formMessage === 'Form error' || formMessage === 'Email not entered correctly',
-                                                    [styles.green]: formSent,
-                                                })}
-                                            >
-                                                {formMessage}
-                                            </div>
-                                        )}
-                                    </div>
-                                    {!formSent && (
-                                        <>
-                                            <Formik
-                                                initialValues={{
-                                                    fName: '',
-                                                    lName: '',
-                                                    email: '',
-                                                    phone: '',
-                                                    messagebox: '',
-                                                    street: '',
-                                                    zip: '',
-                                                    state: '',
-                                                    city: '',
-                                                }}
-                                                validate={(values) => {
-                                                    const errors: any = {}
-                                                    /*                                                   if (!values.email) {
+                    {contactFormData &&
+                        items.map((item, ind: number) => (
+                            <Fragment key={ind}>
+                                {item.plugin === '[gravity]' && (
+                                    <div className={styles.item}>
+                                        {contactFormData.formTitle && modType != 'modal' && <h3 className={styles.title}>{contactFormData.formTitle}</h3>}
+                                        <div className={styles['message-block']}>
+                                            {formMessage && (
+                                                <div
+                                                    className={cn(styles.message, {
+                                                        [styles.blue]: formMessage === 'Sending....',
+                                                        [styles.red]: formMessage === 'Form error' || formMessage === 'Email not entered correctly',
+                                                        [styles.green]: formSent,
+                                                    })}
+                                                >
+                                                    {formMessage}
+                                                </div>
+                                            )}
+                                        </div>
+                                        {!formSent && (
+                                            <>
+                                                <Formik
+                                                    initialValues={{
+                                                        fName: '',
+                                                        lName: '',
+                                                        email: '',
+                                                        phone: '',
+                                                        messagebox: '',
+                                                        street: '',
+                                                        zip: '',
+                                                        state: '',
+                                                        city: '',
+                                                    }}
+                                                    validate={(values) => {
+                                                        const errors: any = {}
+                                                        /*                                                   if (!values.email) {
                                                         errors.email = 'Required'
                                                     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
                                                         errors.email = 'Invalid email address'
                                                     } */
-                                                    return errors
-                                                }}
-                                                validationSchema={toFormikValidationSchema(Schema)}
-                                                onSubmit={async (values: Values, { setSubmitting }: FormikHelpers<Values>) => {
-                                                    const formData = {
-                                                        fName: values.fName,
-                                                        lName: values.lName,
-                                                        phone: values.phone,
-                                                        email: values.email,
-                                                        messagebox: values.messagebox,
-                                                        address: {
-                                                            street: values.street,
-                                                            zip: values.zip,
-                                                            state: values.state,
-                                                            city: values.city,
-                                                        },
-                                                        clientEmail: siteData.email,
-                                                    }
+                                                        return errors
+                                                    }}
+                                                    validationSchema={toFormikValidationSchema(Schema)}
+                                                    onSubmit={async (values: Values, { setSubmitting }: FormikHelpers<Values>) => {
+                                                        const formData = {
+                                                            fName: values.fName,
+                                                            lName: values.lName,
+                                                            phone: values.phone,
+                                                            email: values.email,
+                                                            messagebox: values.messagebox,
+                                                            address: {
+                                                                street: values.street,
+                                                                zip: values.zip,
+                                                                state: values.state,
+                                                                city: values.city,
+                                                            },
+                                                            clientEmail: siteData.email,
+                                                        }
 
-                                                    setTimeout(async () => {
-                                                        setFormMessage('Sending....')
-                                                        await postContactFormRoute(`/api/contacts`, formData)
-                                                        setFormMessage('Thank you for contacting us')
-                                                        setFormSent(true)
+                                                        setTimeout(async () => {
+                                                            setFormMessage('Sending....')
+                                                            await postContactFormRoute(`/api/contacts`, formData)
+                                                            setFormMessage('Thank you for contacting us')
+                                                            setFormSent(true)
 
-                                                        setSubmitting(false)
-                                                    }, 500)
-                                                }}
-                                            >
-                                                <Form>
-                                                    {contactFormData.formFields.map((field, index: number) => (
-                                                        <ContactField {...field} key={index} />
-                                                    ))}
-                                                    <div className={styles['btn-block']}>
-                                                        <button type="submit" className={styles.submit}>
-                                                            Submit
-                                                        </button>
-                                                    </div>
-                                                </Form>
-                                            </Formik>
-                                        </>
-                                    )}
-                                </div>
-                            )}
-                        </Fragment>
-                    ))}
+                                                            setSubmitting(false)
+                                                        }, 500)
+                                                    }}
+                                                >
+                                                    <Form>
+                                                        {contactFormData.formFields.map((field, index: number) => (
+                                                            <ContactField {...field} key={index} />
+                                                        ))}
+                                                        <div className={styles['btn-block']}>
+                                                            <button type="submit" className={styles.submit}>
+                                                                Submit
+                                                            </button>
+                                                        </div>
+                                                    </Form>
+                                                </Formik>
+                                            </>
+                                        )}
+                                    </div>
+                                )}
+                            </Fragment>
+                        ))}
                 </div>
             </div>
         </>

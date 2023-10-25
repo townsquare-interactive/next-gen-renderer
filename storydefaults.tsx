@@ -75,6 +75,7 @@ export const buttonList1 = [
         btnSize: 'btn_md',
         linkType: 'local',
         blockBtn: false,
+        opensModal: -1,
     },
     {
         name: 'btn2',
@@ -86,6 +87,7 @@ export const buttonList1 = [
         btnSize: 'btn_md',
         linkType: 'local',
         blockBtn: false,
+        opensModal: -1,
     },
 ]
 
@@ -100,6 +102,7 @@ export const buttonList2 = [
         btnSize: 'btn_md',
         linkType: 'local',
         blockBtn: false,
+        opensModal: -1,
     },
     {
         name: 'btn2',
@@ -111,6 +114,7 @@ export const buttonList2 = [
         btnSize: 'btn_md',
         linkType: 'local',
         blockBtn: false,
+        opensModal: -1,
     },
 ]
 
@@ -125,6 +129,7 @@ export const buttonListJust2 = [
         btnSize: 'btn_md',
         linkType: 'local',
         blockBtn: false,
+        opensModal: -1,
     },
 ]
 

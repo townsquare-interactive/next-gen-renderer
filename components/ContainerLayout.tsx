@@ -4,7 +4,7 @@ import styles from './containerlayout.module.scss'
 import cn from 'classnames'
 import ContainerHeader from './ContainerHeader'
 import ContainerFooter from './ContainerFooter'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import SlidingHeader from 'elements/SlidingHeader'
 import ContactModal from './ContactModal'
 import Modal from './Modal'
@@ -13,7 +13,6 @@ export default function Layout(props: LayoutProps) {
     const { children, siteData, themeStyles, cName, cmsUrl, pageModalVars } = props
     const [navCheck, setNav] = useState<boolean>(false)
     const [showContactModal, setContactModal] = useState<boolean>(false)
-    const [modalStyles, setModalStyles] = useState('')
     const twoPhones = true
 
     function navSwitch() {
@@ -22,10 +21,6 @@ export default function Layout(props: LayoutProps) {
 
     function triggerContactModal() {
         setContactModal(!showContactModal)
-    }
-
-    function showCertainModal(name: string) {
-        setModalStyles(`${name}{display:block; visibility:visible;}`)
     }
 
     return (

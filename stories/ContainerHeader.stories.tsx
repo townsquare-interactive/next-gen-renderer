@@ -47,6 +47,7 @@ const headerOptions2: HeaderOptions = {
             active: true,
             btnSize: 'btn_lg',
             icon: { iconModel: 'list-alt', iconPrefix: 'far' },
+            opensModal: -1,
         },
     ],
     ctaBtns: [
@@ -67,6 +68,7 @@ const headerOptions2: HeaderOptions = {
             window: 1,
             active: true,
             btnSize: 'btn_sm',
+            opensModal: -1,
         },
     ],
     /* textCta: [

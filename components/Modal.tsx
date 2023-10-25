@@ -5,39 +5,15 @@ import WindowCloser from 'elements/WindowCloser'
 import { ArticleItems, ModalContentProps, SiteModalProps, modalItem } from '../types'
 import DescBlock from 'elements/DescBlock'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
-import { Fragment, useEffect, useState } from 'react'
+import { Fragment } from 'react'
 import { ImageBlock } from 'elements/ImageBlock'
 import ContactFormRoutes from './ContactFormRoutes'
 
-//hook to trigger modal
-const useModal = (openEveryVisit: boolean, flagName: string) => {
-    const [showSiteModal, showModal] = useState<boolean>(openEveryVisit)
-
-    //hide modal after seeing it the first time
-    useEffect(() => {
-        const flag = localStorage.getItem(flagName)
-        if (!flag) {
-            showModal(true)
-            localStorage.setItem(flagName, '1')
-        }
-    }, [])
-
-    function setContactModal() {
-        showModal(false)
-    }
-
-    return {
-        isShowing: showSiteModal,
-        close: setContactModal,
-    }
-}
-
-const Modal = ({ siteData, items, openEveryVisit = true, modalType = 'page', title, pageModalVars, modalNum = 0 }: SiteModalProps) => {
-    const flag = modalType === 'page' ? 'page-modal' : 'global-modal'
-
+const Modal = ({ siteData, items, modalType = 'page', title, pageModalVars, modalNum = 0 }: SiteModalProps) => {
+    //const flag = modalType === 'page' ? 'page-modal' : 'global-modal'
     //const { isShowing, close } = useModal(openEveryVisit, flag)
-
     //current modals can be global from siteData or inside of page modules
+    //const id = 'page-mod'
     let modalItems: modalItem[] | ArticleItems[] = []
     if (siteData?.modalData?.items && modalType != 'page') {
         modalItems = siteData?.modalData.items
@@ -45,20 +21,16 @@ const Modal = ({ siteData, items, openEveryVisit = true, modalType = 'page', tit
         modalItems = items
     }
 
-    const id = 'page-mod'
-
     return (
         <div
-            className={cn(styles.root, styles['site-modal'], 'modal', {
-                [styles.box]: true,
+            className={cn(styles.root, styles['site-modal'], 'modal', styles.box, {
                 [styles.show]: pageModalVars && pageModalVars[modalNum].isShowing,
-                [id]: id && modalType === 'page',
+                //[id]: id && modalType === 'page',
             })}
         >
-            {/*  <style>{id ? `.${id}{visibility:hidden}` : ''}</style> */}
             <div className={styles.wrapper}>
-                {items && <div className={styles.title}>{title}</div>}
-                {pageModalVars && <WindowCloser closerFunction={pageModalVars[modalNum].close} type="contact" />}
+                <div className={styles.title}>{title}</div>
+                {pageModalVars && <WindowCloser closerFunction={pageModalVars[modalNum].toggleModal} type="contact" />}
                 <div className={styles['modal-body']}>
                     {modalItems.length != 0 && (
                         <>
@@ -75,10 +47,10 @@ const Modal = ({ siteData, items, openEveryVisit = true, modalType = 'page', tit
                                             />
                                         </div>
                                     )}
-                                    {siteData?.modalData?.contactFormData && modalType != 'page' && (
+                                    {((siteData?.modalData?.contactFormData && modalType != 'page') || (item.contactFormData && modalType === 'page')) && (
                                         <ContactFormRoutes
                                             items={modalItems}
-                                            contactFormData={siteData?.modalData?.contactFormData}
+                                            contactFormData={item.contactFormData ? item.contactFormData : siteData?.modalData?.contactFormData}
                                             modType="modal"
                                             siteData={siteData}
                                         />

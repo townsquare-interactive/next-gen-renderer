@@ -1,6 +1,6 @@
 'use client'
 import styles from './container.module.scss'
-import { ContainerProps, ModuleData } from '../types'
+import { ContainerProps, ModuleData, PageModalVars } from '../types'
 import ContainerLayout from './ContainerLayout'
 import { ModuleRenderer } from './ModuleRenderer'
 import { defineContainerVars } from '../functions'
@@ -14,46 +14,107 @@ const { library } = require('@fortawesome/fontawesome-svg-core')
 import FontLoad from './FontLoad'
 library.add(fas, fab, far)
 
-const useModal = (openEveryVisit: boolean, flagName: string) => {
-    const [showSiteModal, showModal] = useState<boolean>(openEveryVisit)
+export interface ModalDef {
+    autoOpen: boolean
+    flagName: string
+    openEveryTime: boolean
+}
 
+//modal { autoOpen, openEveryTime}
+
+const useModals = (modals: ModalDef[]) => {
+    const init = Array(modals.length).fill(false)
+    const [showSiteModals, showModals] = useState<boolean[]>(init)
+
+    useEffect(() => {
+        const showModalFlags = modals.map(({ flagName, autoOpen, openEveryTime }) => {
+            if (!openEveryTime) {
+                const alreadyOpened = localStorage.getItem(flagName)
+                if (!alreadyOpened) {
+                    localStorage.setItem(flagName, '1')
+                    return true
+                }
+                return false
+            } else {
+                return true
+            }
+        })
+        showModals(showModalFlags)
+    }, [])
+
+    return showSiteModals.map((isShowing, index) => {
+        const toggleModal = () => {
+            const flags = showSiteModals.map((flag, i) => {
+                if (i === index) {
+                    return !isShowing
+                }
+                return flag
+            })
+            showModals(flags)
+        }
+
+        return {
+            isShowing,
+            toggleModal,
+        }
+    })
+}
+
+const useModal = (autoOpen: boolean, flagName: string, openEveryTime: boolean) => {
+    const [showSiteModal, showModal] = useState<boolean>(false)
+
+    //loop
     //hide modal after seeing it the first time
     useEffect(() => {
-        const flag = localStorage.getItem(flagName)
-        if (!flag) {
+        if (!openEveryTime) {
+            const flag = localStorage.getItem(flagName)
+            if (!flag) {
+                showModal(true)
+                localStorage.setItem(flagName, '1')
+            }
+        } else {
             showModal(true)
-            localStorage.setItem(flagName, '1')
         }
     }, [])
 
     function setModalVisibility() {
         showModal(!showSiteModal)
-        console.log('switching modal', showSiteModal)
     }
 
     return {
         isShowing: showSiteModal,
-        close: setModalVisibility,
+        toggleModal: setModalVisibility,
     }
 }
+
+/* const CreateModalList = (autoOpen: boolean, flag: string, pageModalVars: PageModalVars[]) => {
+    pageModalVars.push(useModal(autoOpen || false, flag))
+} */
 
 export const Container = (props: ContainerProps) => {
     const { page, siteData } = props
     const { cmsUrl, themeStyles, columnStyles } = defineContainerVars(page, siteData)
+    const siteModalVars = [useModal(siteData.modalData?.autoOpen || false, 'site', true)]
 
-    console.log(!page.data ? page : 'there is a page here')
-    const openEveryVisit = true
-
-    const siteModalVars = [useModal(openEveryVisit, 'site')]
-    let pageModalVars: any = []
-    if (page.data.pageModalTitles?.length > 0) {
-        for (let n = 0; n < page.data.pageModalTitles.length; n++) {
-            pageModalVars[n] = useModal(openEveryVisit, `page${n}`)
+    const modalArgs: ModalDef[] = (page.data.pageModals || []).map((m, n) => {
+        return {
+            autoOpen: m.autoOpen || false,
+            flagName: `page${n}`,
+            openEveryTime: m.openEveryTime || false,
         }
-    }
+    })
+    const pageModalVars = useModals(modalArgs)
 
-    console.log('site vars', siteModalVars)
+    /*  let pageModalVars: PageModalVars[] = []
 
+    if (page.data.pageModals?.length > 0) {
+        for (let n = 0; n < page.data.pageModals.length; n++) {
+            //pageModalVars[n] = useModal(page.data.pageModals[n].autoOpen || false, `page${n}`)
+            CreateModalList(page.data.pageModals[n].autoOpen || false, `page${n}`, pageModalVars)
+        }
+    } */
+
+    //eslint-disable-next-line react-hooks/rules-of-hooks
     return (
         <>
             {page && (
@@ -98,8 +159,6 @@ export const Container = (props: ContainerProps) => {
                                 )}
                             </div>
                         )}
-                        <button onClick={pageModalVars.close}>This is a test btn</button>
-                        {/* {modalStyles && <style>{modalStyles}</style>} */}
                     </ContainerLayout>
                     <FontLoad fonts={siteData.fontImport} />
                 </>
