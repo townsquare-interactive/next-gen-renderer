@@ -8,6 +8,7 @@ import { HeadlineBlock } from 'elements/HeadlineBlock'
 import { Fragment } from 'react'
 import { ImageBlock } from 'elements/ImageBlock'
 import ContactFormRoutes from './ContactFormRoutes'
+import Map from './Map'
 
 const Modal = ({ siteData, items, modalType = 'page', title, pageModalVars, modalNum = 0 }: SiteModalProps) => {
     //const flag = modalType === 'page' ? 'page-modal' : 'global-modal'
@@ -55,6 +56,8 @@ const Modal = ({ siteData, items, modalType = 'page', title, pageModalVars, moda
                                             siteData={siteData}
                                         />
                                     )}
+
+                                    {item.plugin === '[map]' && <Map siteData={siteData} mapTitle="" />}
                                 </Fragment>
                             ))}
                         </>

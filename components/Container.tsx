@@ -20,8 +20,6 @@ export interface ModalDef {
     openEveryTime: boolean
 }
 
-//modal { autoOpen, openEveryTime}
-
 const useModals = (modals: ModalDef[]) => {
     const init = Array(modals.length).fill(false)
     const [showSiteModals, showModals] = useState<boolean[]>(init)
@@ -32,15 +30,18 @@ const useModals = (modals: ModalDef[]) => {
                 const alreadyOpened = localStorage.getItem(flagName)
                 if (!alreadyOpened) {
                     localStorage.setItem(flagName, '1')
-                    return true
+                    return autoOpen
                 }
                 return false
             } else {
                 return true
             }
         })
+        console.log('show modal flags', showModalFlags)
         showModals(showModalFlags)
     }, [])
+
+    console.log('show site mods', showSiteModals)
 
     return showSiteModals.map((isShowing, index) => {
         const toggleModal = () => {
@@ -61,9 +62,9 @@ const useModals = (modals: ModalDef[]) => {
 }
 
 const useModal = (autoOpen: boolean, flagName: string, openEveryTime: boolean) => {
-    const [showSiteModal, showModal] = useState<boolean>(false)
+    const [showSiteModal, showModal] = useState<boolean>(autoOpen)
+    console.log('is it autoOpn', autoOpen)
 
-    //loop
     //hide modal after seeing it the first time
     useEffect(() => {
         if (!openEveryTime) {
@@ -100,7 +101,8 @@ export const Container = (props: ContainerProps) => {
         return {
             autoOpen: m.autoOpen || false,
             flagName: `page${n}`,
-            openEveryTime: m.openEveryTime || false,
+            //openEveryTime: m.openEveryTime || false,
+            openEveryTime: false,
         }
     })
     const pageModalVars = useModals(modalArgs)

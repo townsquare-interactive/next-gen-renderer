@@ -7,8 +7,11 @@ import L from 'leaflet'
 import { MapAddress } from '../types'
 import styles from './map.module.scss'
 
-const Map = (props: { address: MapAddress; mapTitle: string }) => {
-    const { address, mapTitle } = props
+const Map = (props: { addresss?: MapAddress; mapTitle: string; siteData: any }) => {
+    const { addresss, mapTitle, siteData } = props
+
+    const address = siteData.contact.address
+    console.log('coords', address.coordinates)
 
     const marker = 'https://townsquareinteractive.s3.amazonaws.com/global-assets/placeholder.png'
     const myIcon = new L.Icon({
@@ -18,7 +21,7 @@ const Map = (props: { address: MapAddress; mapTitle: string }) => {
         iconSize: [32, 32],
     })
 
-    const position: LatLngTuple = address.coordinates
+    const position: LatLngTuple = [address.coordinates.lat, address.coordinates.long]
 
     return (
         <div className={styles.root}>
