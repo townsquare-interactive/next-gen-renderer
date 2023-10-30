@@ -25,19 +25,21 @@ const Map = (props: { addresss?: MapAddress; mapTitle: string; siteData: any }) 
 
     return (
         <div className={styles.root}>
-            <MapContainer center={position} zoom={14} scrollWheelZoom={false}>
-                <TileLayer
-                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
-                <Marker position={position} icon={myIcon}>
-                    <Popup>
-                        <Link href={address.url || ''} target={'_blank'}>
-                            {address.street}
-                        </Link>
-                    </Popup>
-                </Marker>
-            </MapContainer>
+            {position && position.length > 1 && (
+                <MapContainer center={position} zoom={14} scrollWheelZoom={false}>
+                    <TileLayer
+                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                    <Marker position={position} icon={myIcon}>
+                        <Popup>
+                            <Link href={address.url || ''} target={'_blank'}>
+                                {address.street}
+                            </Link>
+                        </Popup>
+                    </Marker>
+                </MapContainer>
+            )}
         </div>
     )
 }
