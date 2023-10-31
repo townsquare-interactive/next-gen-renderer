@@ -38,14 +38,7 @@ export const Button = (props: SingleButtonProps) => {
                     {` ${btn.label}`} {isFeatureButton && !type.includes('article') && '>'}
                 </button>
             ) : (
-                <Link
-                    href={btn.link || ''}
-                    passHref={btn.linkType === 'ext'}
-                    target={btn.window == 1 ? '_blank' : '_self'}
-                    className={btnClassesList}
-                    //onClick={isModalBtn && pageModalVars && btn.opensModal != -1 ? pageModalVars[btn.opensModal].toggleModal : () => {}}
-                    //legacyBehavior={isModalBtn && pageModalVars ? true : false}
-                >
+                <Link href={btn.link || ''} passHref={btn.linkType === 'ext'} target={btn.window == 1 ? '_blank' : '_self'} className={btnClassesList}>
                     {btn.icon && <FontAwesomeIcon icon={[btn.icon.iconPrefix, btn.icon.iconModel]} />}
                     {` ${btn.label}`} {isFeatureButton && !type.includes('article') && '>'}
                 </Link>

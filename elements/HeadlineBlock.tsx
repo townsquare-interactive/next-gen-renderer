@@ -6,7 +6,7 @@ import cn from 'classnames'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const HeadlineBlock = (props: HeadlineBlockProps) => {
-    const { item, columns, well, isBeaconHero, modType, noDesc = false, useAccentColor } = props
+    const { item, columns = 1, well = '', isBeaconHero, modType, noDesc = false, useAccentColor } = props
 
     return (
         <header

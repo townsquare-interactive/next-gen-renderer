@@ -4,14 +4,13 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import { LatLngTuple } from 'leaflet'
 import Link from 'next/link'
 import L from 'leaflet'
-import { MapAddress } from '../types'
+import { MapAddress, GlobalData } from '../types'
 import styles from './map.module.scss'
 
-const Map = (props: { addresss?: MapAddress; mapTitle: string; siteData: any }) => {
-    const { addresss, mapTitle, siteData } = props
+const Map = (props: { addresss?: MapAddress; mapTitle: string; siteData: GlobalData }) => {
+    const { mapTitle, siteData } = props
 
     const address = siteData.contact.address
-    console.log('coords', address.coordinates)
 
     const marker = 'https://townsquareinteractive.s3.amazonaws.com/global-assets/placeholder.png'
     const myIcon = new L.Icon({

@@ -726,8 +726,8 @@ export interface LinkWrapProps {
 
 export interface HeadlineBlockProps {
     item: ArticleItems | any
-    columns: number
-    well: string | number
+    columns?: number
+    well?: string | number
     isBeaconHero?: boolean
     modType?: string
     noDesc?: boolean
@@ -849,10 +849,10 @@ export interface ImageBlockProps {
     imageWidth?: number
     imageHeight?: number
     imgsize: string
-    well: string | number
+    //well: string | number
     modType?: string
     nextImageSizes?: string
-    columns: number
+    columns?: number
 }
 
 export interface ImageProps {

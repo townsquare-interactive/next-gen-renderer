@@ -30,7 +30,13 @@ const Modal = ({ siteData, items, modalType = 'page', title, pageModalVars, moda
             })}
         >
             <div className={styles.wrapper}>
-                <div className={styles.title}>{title}</div>
+                <div
+                    className={cn(styles.title, {
+                        [styles['no-text']]: !title,
+                    })}
+                >
+                    {title}
+                </div>
                 {pageModalVars && <WindowCloser closerFunction={pageModalVars[modalNum].toggleModal} type="contact" />}
                 <div className={styles['modal-body']}>
                     {modalItems.length != 0 && (
@@ -71,8 +77,8 @@ const Modal = ({ siteData, items, modalType = 'page', title, pageModalVars, moda
 const ModalContent = ({ headline, desc, subheader, image, item }: ModalContentProps) => {
     return (
         <>
-            {(headline || subheader) && <HeadlineBlock item={item} well={''} columns={1} modType={'modal'} />}
-            {image && <ImageBlock item={item} imgsize={item.imageSize} well={''} columns={1} />}
+            {(headline || subheader) && <HeadlineBlock item={item} modType={'modal'} />}
+            {image && <ImageBlock item={item} imgsize={item.imageSize} />}
             {desc && <DescBlock desc={desc} descSize={'md'} type={'modal'} />}
         </>
     )

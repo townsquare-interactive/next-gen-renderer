@@ -83,9 +83,13 @@
 
         .title {
             background: var(--promo);
-            padding: 0.9rem 0.7rem;
+            padding: 0.9rem 0.8rem;
             font-weight: bold;
             color: var(--hero-btn-txt);
+
+            &.no-text {
+                padding: 1.5rem;
+            }
         }
 
         img {

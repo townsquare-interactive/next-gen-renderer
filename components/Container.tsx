@@ -1,6 +1,6 @@
 'use client'
 import styles from './container.module.scss'
-import { ContainerProps, ModuleData, PageModalVars } from '../types'
+import { ContainerProps, ModuleData } from '../types'
 import ContainerLayout from './ContainerLayout'
 import { ModuleRenderer } from './ModuleRenderer'
 import { defineContainerVars } from '../functions'
@@ -37,11 +37,8 @@ const useModals = (modals: ModalDef[]) => {
                 return true
             }
         })
-        console.log('show modal flags', showModalFlags)
         showModals(showModalFlags)
     }, [])
-
-    console.log('show site mods', showSiteModals)
 
     return showSiteModals.map((isShowing, index) => {
         const toggleModal = () => {
@@ -63,7 +60,6 @@ const useModals = (modals: ModalDef[]) => {
 
 const useModal = (autoOpen: boolean, flagName: string, openEveryTime: boolean) => {
     const [showSiteModal, showModal] = useState<boolean>(autoOpen)
-    console.log('is it autoOpn', autoOpen)
 
     //hide modal after seeing it the first time
     useEffect(() => {
@@ -95,7 +91,7 @@ const useModal = (autoOpen: boolean, flagName: string, openEveryTime: boolean) =
 export const Container = (props: ContainerProps) => {
     const { page, siteData } = props
     const { cmsUrl, themeStyles, columnStyles } = defineContainerVars(page, siteData)
-    const siteModalVars = [useModal(siteData.modalData?.autoOpen || false, 'site', true)]
+    const siteModalVars = [useModal(siteData.modalData?.autoOpen || false, 'site', false)]
 
     const modalArgs: ModalDef[] = (page.data.pageModals || []).map((m, n) => {
         return {
@@ -107,16 +103,6 @@ export const Container = (props: ContainerProps) => {
     })
     const pageModalVars = useModals(modalArgs)
 
-    /*  let pageModalVars: PageModalVars[] = []
-
-    if (page.data.pageModals?.length > 0) {
-        for (let n = 0; n < page.data.pageModals.length; n++) {
-            //pageModalVars[n] = useModal(page.data.pageModals[n].autoOpen || false, `page${n}`)
-            CreateModalList(page.data.pageModals[n].autoOpen || false, `page${n}`, pageModalVars)
-        }
-    } */
-
-    //eslint-disable-next-line react-hooks/rules-of-hooks
     return (
         <>
             {page && (

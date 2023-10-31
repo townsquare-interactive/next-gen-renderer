@@ -46,7 +46,7 @@ const Carousel = (props: CarouselProps) => {
                             >
                                 {modItems.map((item, index: number) => (
                                     <div className={cn('thumb-nav', styles['thumb-nav'])} key={index}>
-                                        <ImageBlock item={item} imgsize={imgsize} well={0} modType={'thumbnail'} columns={1} />
+                                        <ImageBlock item={item} imgsize={imgsize} modType={'thumbnail'} columns={1} />
 
                                         <div
                                             className={cn(styles['caption'], 'caption', {
