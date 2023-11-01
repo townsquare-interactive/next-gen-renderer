@@ -229,6 +229,15 @@
             width: variables.$half-item-width;
         }
     }
+    &.modal {
+        .item {
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+        }
+        padding-left: 0rem;
+        padding-right: 0rem;
+    }
 }
 
 @mixin photo-flex {

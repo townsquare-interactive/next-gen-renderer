@@ -2,19 +2,27 @@
 import styles from './modal.module.scss'
 import cn from 'classnames'
 import WindowCloser from 'elements/WindowCloser'
-import { ArticleItems, ModalContentProps, SiteModalProps, modalItem } from '../types'
-import DescBlock from 'elements/DescBlock'
-import { HeadlineBlock } from 'elements/HeadlineBlock'
+import { ArticleItems, SiteModalProps, modalItem } from '../types'
 import { Fragment } from 'react'
-import { ImageBlock } from 'elements/ImageBlock'
 import ContactFormRoutes from './ContactFormRoutes'
+import Article from 'components/Article'
 import Map from './Map'
 
-const Modal = ({ siteData, items, modalType = 'page', title, pageModalVars, modalNum = 0 }: SiteModalProps) => {
-    //const flag = modalType === 'page' ? 'page-modal' : 'global-modal'
-    //const { isShowing, close } = useModal(openEveryVisit, flag)
+const Modal = (props: SiteModalProps) => {
+    const {
+        siteData,
+        items,
+        modalType = 'page',
+        title,
+        pageModalVars,
+        modalNum = 0,
+        imgsize = 'landscape_16_9',
+        align = 'center',
+        themeStyles,
+        uid = 'site_modal',
+    } = props
+
     //current modals can be global from siteData or inside of page modules
-    //const id = 'page-mod'
     let modalItems: modalItem[] | ArticleItems[] = []
     if (siteData?.modalData?.items && modalType != 'page') {
         modalItems = siteData?.modalData.items
@@ -24,7 +32,7 @@ const Modal = ({ siteData, items, modalType = 'page', title, pageModalVars, moda
 
     return (
         <div
-            className={cn(styles.root, styles['site-modal'], 'modal', styles.box, {
+            className={cn(styles.root, styles['site-modal'], 'modal', styles.box, `id_${uid}`, {
                 [styles.show]: pageModalVars && pageModalVars[modalNum].isShowing,
                 //[id]: id && modalType === 'page',
             })}
@@ -41,9 +49,7 @@ const Modal = ({ siteData, items, modalType = 'page', title, pageModalVars, moda
                 <div className={styles['modal-body']}>
                     {modalItems.length != 0 && (
                         <>
-                            {modalItems.map((item, index) => (
-                                <Fragment key={index}>
-                                    {item.disabled != true && (
+                            {/* {item.disabled != true && (
                                         <div className={cn(styles.item, styles[`${item.align}`])}>
                                             <ModalContent
                                                 headline={item.headline}
@@ -51,9 +57,23 @@ const Modal = ({ siteData, items, modalType = 'page', title, pageModalVars, moda
                                                 desc={item.desc || ''}
                                                 image={item.image}
                                                 item={item}
-                                            />
+                                            /> 
+                                         
                                         </div>
-                                    )}
+                                    )} */}
+                            <Article
+                                items={modalItems}
+                                type={'modal'}
+                                well=""
+                                imgsize={imgsize}
+                                align={align}
+                                modType="Article"
+                                columns={1}
+                                themeStyles={themeStyles}
+                                modId={'modalArticle'}
+                            />
+                            {modalItems.map((item, index) => (
+                                <Fragment key={index}>
                                     {((siteData?.modalData?.contactFormData && modalType != 'page') || (item.contactFormData && modalType === 'page')) && (
                                         <ContactFormRoutes
                                             items={modalItems}
@@ -74,14 +94,16 @@ const Modal = ({ siteData, items, modalType = 'page', title, pageModalVars, moda
     )
 }
 
-const ModalContent = ({ headline, desc, subheader, image, item }: ModalContentProps) => {
+/* const ModalContent = ({ headline, desc, subheader, image, item }: ModalContentProps) => {
     return (
         <>
             {(headline || subheader) && <HeadlineBlock item={item} modType={'modal'} />}
             {image && <ImageBlock item={item} imgsize={item.imageSize} />}
             {desc && <DescBlock desc={desc} descSize={'md'} type={'modal'} />}
+            {item.visibleButton && <ButtonWrap well={0} type={'article_1'} columns={1} {...item} />}
+
         </>
     )
-}
+} */
 
 export default Modal

@@ -33,7 +33,7 @@ export default function Layout(props: LayoutProps) {
 
                 <main className={'content-background'}>{children}</main>
 
-                {siteData.modalData && <Modal siteData={siteData} modalType="global" pageModalVars={pageModalVars} />}
+                {siteData.modalData && <Modal siteData={siteData} modalType="global" pageModalVars={pageModalVars} themeStyles={themeStyles} />}
 
                 <ContainerFooter siteData={siteData} navSwitch={navSwitch} cmsUrl={cmsUrl} />
             </div>

@@ -59,27 +59,28 @@ const Article = (props: ModuleProps) => {
             >
                 {title && <ModuleTitle title={title} />}
                 <div className={cn(styles.wrapper, 'wrapper')}>
-                    {items.map((item, index) => (
-                        <Fragment key={index}>
-                            {item.disabled != true ? (
-                                <ModuleItem
-                                    item={item}
-                                    well={well}
-                                    modId={modId}
-                                    themeStyles={themeStyles}
-                                    key={index}
-                                    imgsize={imgsize}
-                                    type={type}
-                                    columns={columns}
-                                    itemIndex={index}
-                                    cmsUrl={cmsUrl}
-                                    pageModalVars={pageModalVars}
-                                />
-                            ) : (
-                                <></>
-                            )}
-                        </Fragment>
-                    ))}
+                    {items?.length > 0 &&
+                        items.map((item, index) => (
+                            <Fragment key={index}>
+                                {item.disabled != true ? (
+                                    <ModuleItem
+                                        item={item}
+                                        well={well}
+                                        modId={modId}
+                                        themeStyles={themeStyles}
+                                        key={index}
+                                        imgsize={imgsize}
+                                        type={type}
+                                        columns={columns}
+                                        itemIndex={index}
+                                        cmsUrl={cmsUrl}
+                                        pageModalVars={pageModalVars}
+                                    />
+                                ) : (
+                                    <></>
+                                )}
+                            </Fragment>
+                        ))}
                 </div>
             </div>
         )
@@ -145,7 +146,7 @@ const ItemWrap = (props: ItemWrapProps) => {
 
     return (
         <>
-            {props.type != 'article_2' ? (
+            {props.type != 'article_2' && props.type != 'modal' ? (
                 <>
                     {item.image && (
                         <figure className={cn(styles['image-block'])} data-alt="Headline">

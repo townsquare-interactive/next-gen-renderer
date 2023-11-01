@@ -111,6 +111,7 @@
 
     &.article_1,
     &.article_2,
+    &.modal,
     &.article_3.nImg,
     &.photo_grid,
     &.banner,
@@ -182,7 +183,8 @@
         }
 
         &.article_1,
-        &.article_2 {
+        &.article_2,
+        &.modal {
             &.two-btns {
                 padding: 0 2rem 1.5rem;
             }

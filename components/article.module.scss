@@ -26,7 +26,8 @@
         @include utils.flex-mod;
 
         &.article_1,
-        &.article_2 {
+        &.article_2,
+        &.modal {
             .item-wrap {
                 display: flex;
                 flex-direction: column;
@@ -36,7 +37,8 @@
     }
 
     &.article_1,
-    &.article_2 {
+    &.article_2,
+    &.modal {
         text-align: left;
 
         .right {
@@ -133,7 +135,8 @@
             }
         }
 
-        &.article_2 {
+        &.article_2,
+        &.modal {
             .hd-block {
                 padding: 1rem 2rem;
                 width: 100%;
@@ -187,6 +190,11 @@
         &.col_1 .item:first-of-type {
             margin-top: 2rem;
         }
+        &.modal .item {
+            &.nHero:first-of-type {
+                margin-top: 0.5rem;
+            }
+        }
 
         &.beacon {
             .mod_left .image-block,
@@ -237,6 +245,12 @@
         }
     }
 
+    &.modal.flex-mod {
+        &.col_1 .item {
+            margin-bottom: 1rem;
+        }
+    }
+
     //font sizes
     @include utils.text-sizes;
 
@@ -268,6 +282,10 @@
                 margin-right: auto;
             }
         }
+    }
+
+    &.modal {
+        padding-top: 1rem;
     }
 }
 

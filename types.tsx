@@ -120,19 +120,19 @@ interface modalData {
     contactFormData?: contactFormData
 }
 
-export interface modalItem {
-    headline?: string
-    component: string
-    nav_menu: null | any // Change 'any' to the actual type if needed
+export interface modalItem extends ArticleItems {
+    //headline?: string
+    //component: string
+    nav_menu?: any
     name?: string
-    subheader?: string
+    //subheader?: string
     text?: string
-    autoOpen: boolean
-    image?: string
-    disabled?: boolean
-    desc?: string
-    align?: string
-    plugin?: string
+    //autoOpen: boolean
+    //image?: string
+    //disabled?: boolean
+    //desc?: string
+    //align?: string
+    //plugin?: string
     contactFormData?: contactFormData
 }
 
@@ -291,6 +291,10 @@ export interface SiteModalProps {
     pageModalVars?: PageModalVars[]
     modalNum?: number
     autoOpen?: boolean
+    imgsize?: string
+    align?: string
+    themeStyles: ThemeStyles
+    uid?: string
 }
 
 export interface ContactLinkProps {
@@ -560,9 +564,9 @@ export interface DescBlockProps {
 export interface ModuleProps {
     id?: string
     lazy?: string
-    blockField1: string
-    blockField2: string
-    uid: string
+    blockField1?: string
+    blockField2?: string
+    uid?: string
     modId: string
     /* type: string */
     type: string
@@ -572,28 +576,29 @@ export interface ModuleProps {
     items: ArticleItems[]
     imgsize: string
     /**Custom class addition*/
-    customClassName: string
+    customClassName?: string
     /**Title text to go above module*/
-    title: string
+    title?: string
     hideTitle?: number
-    export: number
+    export?: number
     columns: number
     imagePriority?: boolean
-    lightbox: string
-    blockSwitch1: number
-    scale_to_fit: string
+    lightbox?: string
+    blockSwitch1?: number
+    scale_to_fit?: string
     /**Global styles for site*/
     themeStyles: ThemeStyles
     /**Check to see if element is hidden */
     disabled?: string | boolean
     cmsUrl?: string
     contentSpacing?: string
-    columnLocation: number
-    isSingleColumn: boolean
+    columnLocation?: number
+    isSingleColumn?: boolean
     modCount?: number
     settings?: CarouselSettings
     anchorLink?: string
     pageModalVars?: PageModalVars[]
+    modType?: string
 }
 
 export interface CarouselSettings {
