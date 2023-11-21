@@ -13,6 +13,7 @@ import { far } from '@fortawesome/free-regular-svg-icons'
 const { library } = require('@fortawesome/fontawesome-svg-core')
 import FontLoad from './FontLoad'
 library.add(fas, fab, far)
+import Script from 'next/script'
 
 export interface ModalDef {
     autoOpen: boolean
@@ -93,6 +94,9 @@ export const Container = (props: ContainerProps) => {
     const { cmsUrl, themeStyles, columnStyles } = defineContainerVars(page, siteData)
     const siteModalVars = [useModal(siteData.modalData?.autoOpen || false, 'site', false)]
 
+    const GOBAL_MEASUREMENT_ID = 'globaltag1'
+    const SITE_MEASUREMENT_ID = 'sitetag1'
+
     const modalArgs: ModalDef[] = (page.data.pageModals || []).map((m, n) => {
         return {
             autoOpen: m.autoOpen || false,
@@ -148,6 +152,34 @@ export const Container = (props: ContainerProps) => {
                             </div>
                         )}
                     </ContainerLayout>
+                    {GOBAL_MEASUREMENT_ID && (
+                        <>
+                            <Script src={`https://www.googletagmanager.com/gtag/js?id=${GOBAL_MEASUREMENT_ID}`} />
+                            <Script id="google-analytics">
+                                {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+ 
+          gtag('config', '${GOBAL_MEASUREMENT_ID}');
+        `}
+                            </Script>
+                        </>
+                    )}
+                    {SITE_MEASUREMENT_ID && (
+                        <>
+                            <Script src={`https://www.googletagmanager.com/gtag/js?id=${SITE_MEASUREMENT_ID}`} />
+                            <Script id="google-analytics">
+                                {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+ 
+          gtag('config', '${SITE_MEASUREMENT_ID}');
+        `}
+                            </Script>
+                        </>
+                    )}
                     <FontLoad fonts={siteData.fontImport} />
                 </>
             )}
