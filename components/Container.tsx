@@ -152,34 +152,6 @@ export const Container = (props: ContainerProps) => {
                             </div>
                         )}
                     </ContainerLayout>
-                    {GOBAL_MEASUREMENT_ID && (
-                        <>
-                            <Script src={`https://www.googletagmanager.com/gtag/js?id=${GOBAL_MEASUREMENT_ID}`} />
-                            <Script id="google-analytics">
-                                {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
- 
-          gtag('config', '${GOBAL_MEASUREMENT_ID}');
-        `}
-                            </Script>
-                        </>
-                    )}
-                    {SITE_MEASUREMENT_ID && (
-                        <>
-                            <Script src={`https://www.googletagmanager.com/gtag/js?id=${SITE_MEASUREMENT_ID}`} />
-                            <Script id="google-analytics">
-                                {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
- 
-          gtag('config', '${SITE_MEASUREMENT_ID}');
-        `}
-                            </Script>
-                        </>
-                    )}
                     <FontLoad fonts={siteData.fontImport} />
                 </>
             )}

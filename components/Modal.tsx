@@ -6,7 +6,10 @@ import { ArticleItems, SiteModalProps, modalItem } from '../types'
 import { Fragment } from 'react'
 import ContactFormRoutes from './ContactFormRoutes'
 import Article from 'components/Article'
-import Map from './Map'
+import dynamic from 'next/dynamic'
+const Map = dynamic(() => import('./Map'), {
+    ssr: false,
+}) 
 
 const Modal = (props: SiteModalProps) => {
     const {
@@ -34,7 +37,6 @@ const Modal = (props: SiteModalProps) => {
         <div
             className={cn(styles.root, styles['site-modal'], 'modal', styles.box, `id_${uid}`, {
                 [styles.show]: pageModalVars && pageModalVars[modalNum].isShowing,
-                //[id]: id && modalType === 'page',
             })}
         >
             <div className={styles.wrapper}>
@@ -49,18 +51,6 @@ const Modal = (props: SiteModalProps) => {
                 <div className={styles['modal-body']}>
                     {modalItems.length != 0 && (
                         <>
-                            {/* {item.disabled != true && (
-                                        <div className={cn(styles.item, styles[`${item.align}`])}>
-                                            <ModalContent
-                                                headline={item.headline}
-                                                subheader={item.subheader}
-                                                desc={item.desc || ''}
-                                                image={item.image}
-                                                item={item}
-                                            /> 
-                                         
-                                        </div>
-                                    )} */}
                             <Article
                                 items={modalItems}
                                 type={'modal'}
