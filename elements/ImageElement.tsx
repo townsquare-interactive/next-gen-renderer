@@ -1,7 +1,7 @@
 'use client'
 import { Media, ImageProps } from '../types'
 import Image from 'next/image'
-import { useState } from 'react'
+import { ReactEventHandler, useState } from 'react'
 
 export const ImageElement = (props: ImageProps) => {
     const { imgSrc, imgAlt, imagePriority, modType = 'article', imageType, opacity, nextImageSizes } = props
@@ -9,9 +9,9 @@ export const ImageElement = (props: ImageProps) => {
     const [imageHeight, setHeight] = useState(100)
     const [imageWidth, setWidth] = useState(300)
 
-    const calcImageSize = (loadedMedia: Media) => {
-        setWidth(loadedMedia.naturalWidth)
-        setHeight(loadedMedia.naturalHeight)
+    const calcImageSize = (loadedMedia: any) => {
+        setWidth(loadedMedia.currentTarget.naturalWidth)
+        setHeight(loadedMedia.currentTarget.naturalHeight)
     }
 
     return (
@@ -21,7 +21,7 @@ export const ImageElement = (props: ImageProps) => {
                     //Setting width and height of item using calcImageSize
                     <Image
                         src={imgSrc}
-                        onLoadingComplete={calcImageSize}
+                        onLoad={calcImageSize}
                         width={imageWidth}
                         height={imageHeight}
                         alt={imgAlt || ''}

@@ -22,7 +22,7 @@ const SocialLinks = ({ siteData, modType = 'header' }: SocialLinksProps) => {
                     <li key={index}>
                         <a
                             target="blank"
-                            aria-label={item.name}
+                            aria-label={item.label || item.name}
                             className={cn({
                                 ['social-icon']: modType === 'slide-header' || modType === 'header',
                                 ['footer-icon']: modType === 'footer' || modType === 'widget',

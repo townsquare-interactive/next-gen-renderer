@@ -11,7 +11,7 @@ const ReactScroll = ({ item, imgsize, children, columns }: ReactScrollProps) => 
 
     let useDelay = item.image ? true : false
 
-    //Setting state to false on load to avoid Hydration Error
+    //Load image before parallax effect
     useEffect(() => {
         if (useDelay === true) {
             setIsSSR(false)
