@@ -6,7 +6,7 @@ const assetFolder = '/assets/'
 //const globalAssets = bucketUrl + '/global-assets'
 const env = process.env.NEXT_PUBLIC_URL_ENV
 const domain = process.env.NEXT_PUBLIC_CMS_URL
-const usePostgres = true
+const usePostgres = false
 import { sql } from '@vercel/postgres'
 //import { SiteDataSchema, CMSPageSchema, PageListSchema } from './zod-objects'
 
