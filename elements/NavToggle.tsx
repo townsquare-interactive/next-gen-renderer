@@ -16,7 +16,7 @@ const NavToggle = (props: NavToggleProps) => {
                 ['navLink']: modType === 'header',
             })}
             onClick={navSwitch}
-            aria-label="toggle navigation"
+            aria-label={modType === 'footer' ? 'Menu' : 'toggle navigation'}
         >
             <FontAwesomeIcon icon={['fas', 'bars']} /> {modType === 'footer' && 'Menu'}
         </button>
