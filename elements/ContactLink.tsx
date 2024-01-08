@@ -26,7 +26,7 @@ const ContactLink = ({ cname, link, icon, content, setContactModal, type, showCo
                     <li className={cn(styles[`${cname}`], styles.icon, styles[`${type}`])}>
                         <a
                             href={link}
-                            aria-label={cname}
+                            aria-label={content || cname}
                             className={cn(!showContactBox ? 'social-icon' : 'box-links')}
                             target="_blank"
                             rel="noopener noreferrer"
