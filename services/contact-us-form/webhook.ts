@@ -1,20 +1,16 @@
-import { generateLayout } from 'functions'
-import { ContactFormData } from 'types'
+import { ContactFormData, GlobalData } from 'types'
 
-export async function submit(formData: ContactFormData) {
-    const { CMSLayout } = await generateLayout()
-
-    if (CMSLayout.config.zapierUrl) {
+export async function submit(formData: ContactFormData, siteData: GlobalData) {
+    if (siteData.config?.zapierUrl || siteData.config?.makeUrl) {
         let body = formData
 
         const useZap = false
-        const zapUrl = CMSLayout.config.zapierUrl
-        const makeUrl = CMSLayout.config.makeUrl
-
+        const zapUrl = siteData.config?.zapierUrl
+        const makeUrl = siteData.config?.makeUrl
         const webhookUrl = useZap ? zapUrl : makeUrl
 
         try {
-            await fetch(webhookUrl, {
+            await fetch(webhookUrl || '', {
                 method: 'POST',
                 body: JSON.stringify(body),
             })

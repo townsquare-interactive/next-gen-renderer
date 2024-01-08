@@ -1,4 +1,4 @@
-import { ContactFormData } from 'types'
+import { ContactFormData, GlobalData } from 'types'
 
 const AWS = require('aws-sdk')
 
@@ -12,7 +12,7 @@ const s3 = new AWS.S3()
 
 const tsiBucket = 'townsquareinteractive'
 
-export async function submit(formData: ContactFormData) {
+export async function submit(formData: ContactFormData, siteData: GlobalData) {
     let body = formData
 
     try {

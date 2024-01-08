@@ -3,10 +3,11 @@ import '../../styles/globals.scss'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import { config } from '@fortawesome/fontawesome-svg-core'
 import { transformFetchingDomain } from 'functions'
+import { use } from 'react'
 config.autoAddCss = false /* eslint-disable import/first */
 
 export default function RootLayout({ children, params }: { children: React.ReactNode; params: { domain: string; slug?: string } }) {
-    let fetchingDomain = transformFetchingDomain(params)
+    let fetchingDomain = use(transformFetchingDomain(params))
     const s3ColorStyles = fetchingDomain + '/' + 'global.css'
 
     return (

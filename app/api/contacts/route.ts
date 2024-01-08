@@ -5,10 +5,11 @@ import { submit as s3FilePost } from '../../../services/contact-us-form/s3file'
 import { submit as webhookSubmit } from '../../../services/contact-us-form/webhook'
 
 export async function POST(request: any) {
-    const formData = await request.json()
+    const formRequest = await request.json()
+    console.log('sietData', formRequest.siteData)
 
     let submit: ContactFormSubmitFn
-    switch (formData.formService) {
+    switch (formRequest.formData.formService) {
         case 'mailchimp':
             submit = mailchimpSubmit
             break
@@ -27,7 +28,7 @@ export async function POST(request: any) {
     }
 
     try {
-        await submit(formData)
+        await submit(formRequest.formData, formRequest.siteData)
         return NextResponse.json('Form submitted succesfully')
     } catch (error) {
         console.log(error)

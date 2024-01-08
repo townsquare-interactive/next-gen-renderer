@@ -8,7 +8,6 @@ import { Formik, Field, Form, FormikHelpers, ErrorMessage } from 'formik'
 import { z } from 'zod'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
 import ModuleTitle from 'elements/ModuleTitle'
-//import { Button } from 'elements/Button'
 
 const Schema = z.object({
     fName: z.string(),
@@ -105,7 +104,7 @@ const ContactFormRoutes = (props: ContactFormRoutesProps) => {
 
                                                         setTimeout(async () => {
                                                             setFormMessage('Sending....')
-                                                            await postContactFormRoute(`/api/contacts`, formData)
+                                                            await postContactFormRoute(`/api/contacts`, { formData: formData, siteData: siteData })
                                                             setFormMessage('Thank you for contacting us')
                                                             setFormSent(true)
 
@@ -137,7 +136,7 @@ const ContactFormRoutes = (props: ContactFormRoutesProps) => {
 }
 
 const ContactField = (props: ContactFieldProps) => {
-    const { label, placeholder, name, isReq, fieldType, isVisible, type, size = 'md' } = props
+    const { label, placeholder, name, isReq, fieldType, isVisible, type = '', size = 'md' } = props
 
     return (
         <>

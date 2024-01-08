@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getToken } from 'next-auth/jwt'
-import { transformFetchingDomain } from 'functions'
+import { getDomainList, transformFetchingDomain } from 'functions'
 
 export const config = {
     matcher: [
@@ -12,8 +12,12 @@ export const config = {
          * 4. all root files inside /public (e.g. /favicon.ico)
          */
         '/((?!api/|_next/|_static/|_vercel|[\\w-]+\\.\\w+).*)',
+        //'/((?!api|_next/static|_next/image|favicon.ico).*)'
+        
     ],
 }
+
+
 
 export default async function middleware(req: NextRequest) {
     const url = req.nextUrl
@@ -22,8 +26,21 @@ export default async function middleware(req: NextRequest) {
     // Get hostname of request (e.g. demo.vercel.pub, demo.localhost:3000)
     let hostname = req.headers.get('host')!.replace('.localhost:3000', `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`)
 
+
+    //const basepath = await getDomainList('bobconstruction.vercel.app');
+
+    //const basepath = await transformFetchingDomain({domain:req.headers.get('host') || '', slug:''});
+    //let hostname = req.headers.get('host')!.replace('localhost:3000', basepath)
+    //hostname = req.headers.get('host')!.replace('favicon.ico', basepath)
+
+
+
+    
+    console.log('what is hostname------------------', hostname)
+
     // Get the pathname of the request (e.g. /, /about, /blog/first-post)
     const path = url.pathname
+
 
     // rewrites for app pages
     if (hostname == `app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`) {
@@ -49,6 +66,5 @@ export default async function middleware(req: NextRequest) {
     }
 
     // rewrite everything else to `/[domain]/[path] dynamic route
-    //return NextResponse.rewrite(new URL(`/${hostname}${path}`))
     return NextResponse.rewrite(new URL(`/${hostname}${path}`, req.url))
 }

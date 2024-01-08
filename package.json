@@ -24,6 +24,7 @@
         "@react-spring/parallax": "^9.7.1",
         "@react-spring/web": "^9.7.1",
         "@storybook/addon-docs": "^7.4.6",
+        "@vercel/postgres": "^0.5.1",
         "aws-sdk": "^2.1397.0",
         "axios": "^1.4.0",
         "classnames": "^2.3.1",

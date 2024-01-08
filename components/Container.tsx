@@ -13,7 +13,7 @@ import { far } from '@fortawesome/free-regular-svg-icons'
 const { library } = require('@fortawesome/fontawesome-svg-core')
 import FontLoad from './FontLoad'
 library.add(fas, fab, far)
-import Script from 'next/script'
+import { redirect } from 'next/navigation'
 
 export interface ModalDef {
     autoOpen: boolean
@@ -21,6 +21,7 @@ export interface ModalDef {
     openEveryTime: boolean
 }
 
+//create array of modals so we can allow multiple to be used at once
 const useModals = (modals: ModalDef[]) => {
     const init = Array(modals.length).fill(false)
     const [showSiteModals, showModals] = useState<boolean[]>(init)
@@ -94,8 +95,10 @@ export const Container = (props: ContainerProps) => {
     const { cmsUrl, themeStyles, columnStyles } = defineContainerVars(page, siteData)
     const siteModalVars = [useModal(siteData.modalData?.autoOpen || false, 'site', false)]
 
-    const GOBAL_MEASUREMENT_ID = 'globaltag1'
-    const SITE_MEASUREMENT_ID = 'sitetag1'
+    if (siteData.published === false) {
+        console.log('unpublish time')
+        redirect(siteData.redirectUrl || 'https://townsquareinteractive.com/')
+    }
 
     const modalArgs: ModalDef[] = (page.data.pageModals || []).map((m, n) => {
         return {

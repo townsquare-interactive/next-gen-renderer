@@ -102,9 +102,11 @@ export interface GlobalData {
     cmsUrl: string
     s3Folder: string
     headerOptions?: HeaderOptions
-    config?: { mailChimp: { audId: string; datacenter: string; auth: string } }
+    config?: { mailChimp: { audId: string; datacenter: string; auth: string }; zapierUrl?: string; makeUrl?: string }
     navAlign?: 'left' | 'right' | 'center'
     modalData?: modalData
+    published?: boolean
+    redirectUrl?: string
 }
 
 interface modalData {
@@ -958,7 +960,7 @@ export interface ContactFieldProps extends FormFields {
  *  Function responsible for submitting a contact-us form.
  */
 export interface ContactFormSubmitFn {
-    (formData: ContactFormData): Promise<void>
+    (formData: ContactFormData, siteData: GlobalData): Promise<void>
 }
 
 export interface ContactFormData {

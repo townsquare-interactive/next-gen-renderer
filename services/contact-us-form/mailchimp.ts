@@ -1,13 +1,13 @@
 import { generateLayout } from 'functions'
-import { ContactFormData } from 'types'
+import { ContactFormData, GlobalData } from 'types'
 
-export async function submit(formData: ContactFormData) {
-    const { CMSLayout } = await generateLayout()
+export async function submit(formData: ContactFormData, siteData: GlobalData) {
+    //siteData changed so need to update this if we change mailchimp
 
-    if (CMSLayout.config.mailChimp) {
-        const AUDIENCE_ID = CMSLayout.config.mailChimp.audId
-        const API_KEY = CMSLayout.config.mailChimp.auth
-        const DATACENTER = CMSLayout.config.mailChimp.datacenter
+    if (siteData.config?.mailChimp) {
+        const AUDIENCE_ID = siteData.config.mailChimp.audId
+        const API_KEY = siteData.config.mailChimp.auth
+        const DATACENTER = siteData.config.mailChimp.datacenter
         const mailchimpUrl = `https://${DATACENTER}.api.mailchimp.com/3.0/lists/${AUDIENCE_ID}/members`
 
         const headers = {

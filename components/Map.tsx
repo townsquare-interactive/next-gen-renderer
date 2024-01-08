@@ -10,14 +10,12 @@ import { useEffect, useState } from 'react'
 
 const MapWrapper = (props: { addresss?: MapAddress; mapTitle: string; siteData: GlobalData }) => {
     const [isWindow, checkWindow] = useState(false)
-    
+
     useEffect(() => {
         if (typeof window !== 'undefined') {
             checkWindow(true)
-
         }
     }, [])
-    
 
     return <>{isWindow && <Map {...props} />}</>
 }
@@ -26,7 +24,6 @@ const Map = (props: { addresss?: MapAddress; mapTitle: string; siteData: GlobalD
     const { mapTitle, siteData } = props
     //const [isWindow, checkWindow] = useState(false)
     const [mapIcon, setMapIcon] = useState<any>()
-    
 
     const marker = 'https://townsquareinteractive.s3.amazonaws.com/global-assets/placeholder.png'
 
@@ -40,7 +37,6 @@ const Map = (props: { addresss?: MapAddress; mapTitle: string; siteData: GlobalD
     )
 
     const address = siteData.contact.address
-
     const position: LatLngTuple = [address.coordinates.lat, address.coordinates.long]
 
     return (

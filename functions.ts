@@ -3,9 +3,11 @@ const bucketUrl = process.env.BUCKET_URL || 'https://townsquareinteractive.s3.am
 const localUrl = 'wanderlustadventures'
 const cmsUrl = process.env.NEXT_PUBLIC_CMS_URL || 'clttestsiteforjoshedwards'
 const assetFolder = '/assets/'
-const globalAssets = bucketUrl + '/global-assets'
+//const globalAssets = bucketUrl + '/global-assets'
 const env = process.env.NEXT_PUBLIC_URL_ENV
 const domain = process.env.NEXT_PUBLIC_CMS_URL
+const usePostgres = true
+import { sql } from '@vercel/postgres'
 //import { SiteDataSchema, CMSPageSchema, PageListSchema } from './zod-objects'
 
 export const bucketAndSiteUrl = getDomain(true)
@@ -125,18 +127,32 @@ export const findHomePageSlug = (pageList: any) => {
     return homePageSlug
 }
 
-export const transformFetchingDomain = (params?: { slug?: string; domain: string }) => {
+export const transformFetchingDomain = async (params: { slug?: string; domain: string }) => {
     let fetchingDomain
     let vercelDomain = params?.domain
-    if (params?.domain && (vercelDomain?.includes('vercel') || vercelDomain?.includes('.com'))) {
-        console.log('using vercelDomain')
-        const removeAfterPeriod = /\..*/
-        fetchingDomain = vercelDomain?.replace(removeAfterPeriod, '')
-        //remove vercel url prefixes (prev/preview indicate using the preview branch)
-        fetchingDomain = fetchingDomain.replace('-preview', '')
-        fetchingDomain = fetchingDomain.replace('-prev', '')
-        fetchingDomain = fetchingDomain.replace('-main', '')
-        fetchingDomain = bucketUrl + '/' + fetchingDomain
+
+    if (params?.domain.includes('favicon')) {
+        console.log('using favicon')
+        fetchingDomain = bucketUrl + '/' + cmsUrl
+
+        //determine if we are on a live vercel hosted site
+    } else if (params?.domain && (vercelDomain?.includes('vercel') || vercelDomain?.includes('.com'))) {
+        //use domain mapping with postgres in vercel storage
+        if (usePostgres) {
+            const apexId = await getDomainListFromVercel(params.domain)
+            console.log('using postgres apexId', apexId)
+            return bucketUrl + '/' + apexId
+        } else {
+            console.log('using vercelDomain')
+            const removeAfterPeriod = /\..*/
+            fetchingDomain = vercelDomain?.replace(removeAfterPeriod, '')
+
+            //remove vercel url prefixes (prev/preview indicate using the preview branch)
+            fetchingDomain = fetchingDomain.replace('-preview', '')
+            fetchingDomain = fetchingDomain.replace('-prev', '')
+            fetchingDomain = fetchingDomain.replace('-main', '')
+            fetchingDomain = bucketUrl + '/' + fetchingDomain
+        }
     } else {
         console.log('using local domain')
         fetchingDomain = bucketUrl + '/' + cmsUrl
@@ -144,8 +160,11 @@ export const transformFetchingDomain = (params?: { slug?: string; domain: string
     return fetchingDomain
 }
 
-export async function generateLayout(params?: { slug: string; domain: string }) {
-    let fetchingDomain = transformFetchingDomain(params)
+export async function generateLayout(params: { slug: string; domain: string }) {
+    //let fetchingDomain = transformFetchingDomain(params)
+    let fetchingDomain
+
+    fetchingDomain = await transformFetchingDomain(params)
 
     try {
         const resLayout = await fetch(fetchingDomain + '/layout.json', {
@@ -165,6 +184,29 @@ export async function generateLayout(params?: { slug: string; domain: string }) 
     }
 }
 
+//check domain list to find basepath for fetching
+export async function getDomainList(domainName?: string) {
+    console.log('getDomainList arg', domainName)
+
+    try {
+        const resDomains = await fetch(bucketUrl + '/sites/domains.json', {
+            next: { revalidate: 0 },
+        })
+        const domainList: any[] = await resDomains.json()
+
+        for (const [key, value] of Object.entries(domainList)) {
+            if (key === domainName) {
+                console.log('key is domainname')
+                return value
+            }
+        }
+    } catch (err) {
+        console.log('layout fetch error', err)
+
+        return 'error on fetch'
+    }
+}
+
 export function removeAfterFirstSlash(inputString: string) {
     const parts = inputString.split('/')
     const result = parts[0]
@@ -173,10 +215,26 @@ export function removeAfterFirstSlash(inputString: string) {
 
 export async function getAnyPageData(params: { domain: string; slug?: string }) {
     let pageSlug
-    let fetchingDomain = transformFetchingDomain(params)
+    let fetchingDomain
+
+    fetchingDomain = await transformFetchingDomain(params)
+
+    //use postGres to get domain
+
+    //let fetchingDomain = params?.domain
+
+    //For fetching basepath
+    /*     let fetchingDomain
+    if (params?.domain && (params?.domain?.includes('vercel') || params?.domain?.includes('.com'))) {
+        const basePath = await getDomainList(params?.domain)
+    fetchingDomain = bucketUrl + '/' + basePath
+    } else {
+        console.log('using local domain')
+        fetchingDomain = bucketUrl + '/' + cmsUrl
+    } */
 
     //determining the page slug
-    if (!params.slug) {
+    if (!params?.slug) {
         try {
             const resPageList = await fetch(fetchingDomain + '/pages/page-list.json', {
                 next: { revalidate: 10 },
@@ -207,6 +265,13 @@ export async function getAnyPageData(params: { domain: string; slug?: string }) 
         console.log('anypage fetch error', err)
         return { page: 'error on fetch' }
     }
+}
+
+export const getDomainListFromVercel = async (domain: string) => {
+    const row = await sql`SELECT * FROM Domains WHERE domain = ${domain};`
+    console.log(row)
+    const apexId = row?.rows[0]?.apexid || 'notfound'
+    return apexId || 'notfound'
 }
 
 //check data based off Zod schema
