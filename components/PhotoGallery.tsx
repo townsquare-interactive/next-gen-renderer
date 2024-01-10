@@ -140,7 +140,6 @@ const ItemWrap = (props: ItemWrapProps) => {
     const [isCaptionVisible, toggleCaption] = useState(useThumbnail ? false : true)
 
     const forceAccentColor = item.isFeatured === 'active' || item.isFeatured === true ? well == '1' && false : true
-    console.log('cappy stylesss', item.captionStyle)
 
     return (
         <div

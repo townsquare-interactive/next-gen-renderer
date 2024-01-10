@@ -269,7 +269,6 @@ export async function getAnyPageData(params: { domain: string; slug?: string }) 
 
 export const getDomainListFromVercel = async (domain: string) => {
     const row = await sql`SELECT * FROM Domains WHERE domain = ${domain};`
-    console.log(row)
     const apexId = row?.rows[0]?.apex_id || row?.rows[0]?.apexid || 'notfound'
     return apexId || 'notfound'
 }
