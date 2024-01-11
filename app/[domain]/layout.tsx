@@ -2,12 +2,12 @@ import '../../styles/globals.scss'
 //prevent large loading of fontawesome icons flashing
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import { config } from '@fortawesome/fontawesome-svg-core'
-import { transformFetchingDomain } from 'functions'
+import { getFetchingUrl } from 'functions'
 import { use } from 'react'
 config.autoAddCss = false /* eslint-disable import/first */
 
 export default function RootLayout({ children, params }: { children: React.ReactNode; params: { domain: string; slug?: string } }) {
-    let fetchingDomain = use(transformFetchingDomain(params))
+    let fetchingDomain = use(getFetchingUrl(params))
     const s3ColorStyles = fetchingDomain + '/' + 'global.css'
 
     return (

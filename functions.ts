@@ -11,6 +11,7 @@ import { sql } from '@vercel/postgres'
 //import { SiteDataSchema, CMSPageSchema, PageListSchema } from './zod-objects'
 
 export const bucketAndSiteUrl = getDomain(true)
+
 //determines environment (preview/live) and creates url for it
 function envCheck(api: string) {
     if (env === '1') {
@@ -161,10 +162,7 @@ export const transformFetchingDomain = async (params: { slug?: string; domain: s
 }
 
 export async function generateLayout(params: { slug: string; domain: string }) {
-    //let fetchingDomain = transformFetchingDomain(params)
-    let fetchingDomain
-
-    fetchingDomain = await transformFetchingDomain(params)
+    const fetchingDomain = await getFetchingUrl(params)
 
     try {
         const resLayout = await fetch(fetchingDomain + '/layout.json', {
@@ -213,25 +211,46 @@ export function removeAfterFirstSlash(inputString: string) {
     return result
 }
 
+const fetchRedirect = async (url: string) => {
+    const resRedirect = await fetch(url)
+
+    if (resRedirect.ok) {
+        const redirect = await resRedirect.json()
+        return redirect
+    } else if (resRedirect.status === 404) {
+        // Handle the case where the file does not exist
+        console.log('Redirect file not found')
+        return 'redirect file not found'
+    } else {
+        // Handle other HTTP errors, also not found
+        //console.error(`Error: ${resRedirect.status} - ${resRedirect.statusText}`)
+        console.log('Redirect file not found')
+        return 'redirect file not found'
+    }
+}
+
+//get url to fetch s3 files from
+export const getFetchingUrl = async (params: { slug?: string; domain: string }) => {
+    let fetchingDomain
+    fetchingDomain = await transformFetchingDomain(params)
+    const redirect = await fetchRedirect(fetchingDomain + '/redirect.json')
+
+    //if redirect file exists, use that new fetchingDomain
+    if (redirect?.apexId) {
+        console.log('redirecting', redirect.apexId)
+        fetchingDomain = bucketUrl + '/' + redirect.apexId
+    } else {
+        console.log('no redirect')
+    }
+
+    return fetchingDomain
+}
+
 export async function getAnyPageData(params: { domain: string; slug?: string }) {
     let pageSlug
-    let fetchingDomain
+    const fetchingDomain = await getFetchingUrl(params)
 
-    fetchingDomain = await transformFetchingDomain(params)
-
-    //use postGres to get domain
-
-    //let fetchingDomain = params?.domain
-
-    //For fetching basepath
-    /*     let fetchingDomain
-    if (params?.domain && (params?.domain?.includes('vercel') || params?.domain?.includes('.com'))) {
-        const basePath = await getDomainList(params?.domain)
-    fetchingDomain = bucketUrl + '/' + basePath
-    } else {
-        console.log('using local domain')
-        fetchingDomain = bucketUrl + '/' + cmsUrl
-    } */
+    //zodDataCheck(pageList, PageListSchema, 'Page List')
 
     //determining the page slug
     if (!params?.slug) {
