@@ -217,15 +217,13 @@ const fetchRedirect = async (url: string) => {
     if (resRedirect.ok) {
         const redirect = await resRedirect.json()
         return redirect
-    } else if (resRedirect.status === 404) {
+    } else if (resRedirect.status === 404 || resRedirect.status === 403) {
         // Handle the case where the file does not exist
         console.log('Redirect file not found')
         return 'redirect file not found'
     } else {
         // Handle other HTTP errors, also not found
-        //console.error(`Error: ${resRedirect.status} - ${resRedirect.statusText}`)
-        console.log('Redirect file not found')
-        return 'redirect file not found'
+        console.error(`Error: ${resRedirect.status} ${resRedirect.status} - ${resRedirect.statusText}`)
     }
 }
 
