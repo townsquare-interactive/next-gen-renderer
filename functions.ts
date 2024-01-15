@@ -8,8 +8,6 @@ const env = process.env.NEXT_PUBLIC_URL_ENV
 const domain = process.env.NEXT_PUBLIC_CMS_URL
 const usePostgres = false
 import { sql } from '@vercel/postgres'
-//import { SiteDataSchema, CMSPageSchema, PageListSchema } from './zod-objects'
-
 export const bucketAndSiteUrl = getDomain(true)
 
 //determines environment (preview/live) and creates url for it
@@ -41,24 +39,9 @@ export function getDomain(cms = false) {
 export function domainImage(url: string, cms = false, cmsSiteUrl = '', type = '') {
     const useStrapi = process.env.NEXT_PUBLIC_CMS_CLIENT === 'strapi' ? true : false
     if (cms == true) {
+        return url
+    } else if (type === 'favicon') {
         if (useStrapi === true) {
-            //http://127.0.0.1:1337'
-            //let imageUrl = process.env.NEXT_PUBLIC_STRAPI_IMAGE_URL + url
-            let imageUrl = url
-            return imageUrl
-        } else {
-            //let imageUrl = 'http://' + (cmsSiteUrl || cmsUrl + '.production.townsquareinteractive.com') + url
-            //return encodeURI(imageUrl)
-            return url
-        }
-    } /* else {
-        const assetsApi = process.env.NEXT_PUBLIC_API_URL_ASSETS || bucketUrl
-        let imageUrl = process.env.NEXT_PUBLIC_URL_ENV ? envCheck(assetsApi) + '/assets' + url : assetsApi + '/' + localUrl + '/assets' + url
-        return encodeURI(imageUrl)
-    } */ else if (type === 'favicon') {
-        if (useStrapi === true) {
-            //http://127.0.0.1:1337'
-            //let imageUrl = process.env.NEXT_PUBLIC_STRAPI_IMAGE_URL + url
             let imageUrl = url
             return imageUrl
         } else {
@@ -67,31 +50,9 @@ export function domainImage(url: string, cms = false, cmsSiteUrl = '', type = ''
             return encodeURI(imageUrl)
         }
     } else {
-        //let imageUrl = globalAssets + url
         return encodeURI(url)
     }
 }
-
-/*------------------------- Alternate CMS ----------------------------*/
-/* //Sanity CMS
-const client = createClient({
-    projectId: '5q931z68',
-    dataset: 'production',
-    apiVersion: '2023-05-26',
-    useCdn: false,
-})
-
-export async function getSanityPages() {
-    const sanityPages = await client.fetch(`*[_type == "pages"]`)
-    return sanityPages
-}
-
-export async function getSanitySiteData() {
-    const sanitySiteData = await client.fetch(`*[_type == "sitedata"]`)
-    return sanitySiteData
-} */
-
-/*----------------------------- End of Alt CMS --------------------------------*/
 
 /*----------------------------- Forms --------------------------------*/
 
@@ -212,7 +173,9 @@ export function removeAfterFirstSlash(inputString: string) {
 }
 
 const fetchRedirect = async (url: string) => {
-    const resRedirect = await fetch(url)
+    const resRedirect = await fetch(url, {
+        next: { revalidate: 0 },
+    })
 
     if (resRedirect.ok) {
         const redirect = await resRedirect.json()
@@ -229,8 +192,7 @@ const fetchRedirect = async (url: string) => {
 
 //get url to fetch s3 files from
 export const getFetchingUrl = async (params: { slug?: string; domain: string }) => {
-    let fetchingDomain
-    fetchingDomain = await transformFetchingDomain(params)
+    let fetchingDomain = await transformFetchingDomain(params)
     const redirect = await fetchRedirect(fetchingDomain + '/redirect.json')
 
     //if redirect file exists, use that new fetchingDomain
