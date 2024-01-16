@@ -30,13 +30,15 @@ const Map = (props: { addresss?: MapAddress; mapTitle: string; siteData: GlobalD
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
-                    <Marker position={position} icon={mapIcon}>
-                        <Popup>
-                            <Link href={address.url || ''} target={'_blank'}>
-                                {address.street}
-                            </Link>
-                        </Popup>
-                    </Marker>
+                    {address.street && (
+                        <Marker position={position} icon={mapIcon}>
+                            <Popup>
+                                <Link href={address.url || ''} target={'_blank'}>
+                                    {address.street}
+                                </Link>
+                            </Popup>
+                        </Marker>
+                    )}
                 </MapContainer>
             )}
         </div>
