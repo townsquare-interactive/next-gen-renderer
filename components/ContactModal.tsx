@@ -22,20 +22,24 @@ const ContactModal = ({ siteData, setContactModal, showContactModal }: ContactMo
 
                 <div className={styles.list}>
                     <ul>
-                        {siteData.contact.contactLinks.map((item, index) => (
-                            <Fragment key={index}>
-                                {item.active && (
-                                    <ContactLink
-                                        cname={item.cName}
-                                        link={item.link}
-                                        icon={item.icon}
-                                        content={item.content}
-                                        type="box"
-                                        showContactBox={siteData.contact.showContactBox}
-                                    />
-                                )}
-                            </Fragment>
-                        ))}
+                        {siteData.contact?.contactLinks && (
+                            <>
+                                {siteData.contact.contactLinks.map((item, index) => (
+                                    <Fragment key={index}>
+                                        {item.active && (
+                                            <ContactLink
+                                                cname={item.cName}
+                                                link={item.link}
+                                                icon={item.icon}
+                                                content={item.content}
+                                                type="box"
+                                                showContactBox={siteData.contact.showContactBox}
+                                            />
+                                        )}
+                                    </Fragment>
+                                ))}
+                            </>
+                        )}
                     </ul>
                 </div>
             </div>

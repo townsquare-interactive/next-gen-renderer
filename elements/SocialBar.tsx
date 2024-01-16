@@ -12,21 +12,25 @@ const SocialBar = ({ siteData, setContactModal }: SocialBarProps) => {
             <SocialLinks siteData={siteData} />
             <aside className={styles.contact}>
                 <ul>
-                    {siteData.contact.contactLinks.map((item, index) => (
-                        <Fragment key={index}>
-                            {item.active && (
-                                <ContactLink
-                                    cname={item.cName}
-                                    link={item.link}
-                                    icon={item.icon}
-                                    content={item.content}
-                                    setContactModal={setContactModal}
-                                    showContactBox={siteData.contact.showContactBox}
-                                    type="bar"
-                                />
-                            )}
-                        </Fragment>
-                    ))}
+                    {siteData.contact?.contactLinks && (
+                        <>
+                            {siteData.contact.contactLinks.map((item, index) => (
+                                <Fragment key={index}>
+                                    {item.active && (
+                                        <ContactLink
+                                            cname={item.cName}
+                                            link={item.link}
+                                            icon={item.icon}
+                                            content={item.content}
+                                            setContactModal={setContactModal}
+                                            showContactBox={siteData.contact.showContactBox}
+                                            type="bar"
+                                        />
+                                    )}
+                                </Fragment>
+                            ))}
+                        </>
+                    )}
                 </ul>
             </aside>
         </div>

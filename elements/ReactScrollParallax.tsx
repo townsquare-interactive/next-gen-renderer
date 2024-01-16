@@ -22,6 +22,8 @@ const ReactScroll = ({ item, imgsize, children, columns }: ReactScrollProps) => 
         setIsSSR(false)
     }
 
+    console.log(item.imagePriority)
+
     return (
         <>
             {isSSR && (
