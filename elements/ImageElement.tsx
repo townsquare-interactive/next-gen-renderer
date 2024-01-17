@@ -1,7 +1,7 @@
 'use client'
-import { Media, ImageProps } from '../types'
+import { ImageProps } from '../types'
 import Image from 'next/image'
-import { ReactEventHandler, useState } from 'react'
+import { useState } from 'react'
 
 export const ImageElement = (props: ImageProps) => {
     const { imgSrc, imgAlt, imagePriority, modType = 'article', imageType, opacity, nextImageSizes } = props
@@ -16,6 +16,7 @@ export const ImageElement = (props: ImageProps) => {
 
     return (
         <>
+            {imagePriority && <div style={{ border: '10px solid red' }}>Hello</div>}
             {!hideImage &&
                 (imageType === 'nocrop' ? (
                     //Setting width and height of item using calcImageSize

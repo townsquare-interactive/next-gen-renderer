@@ -119,7 +119,7 @@ const ModuleItem = (props: ModuleItemProps) => {
             )}
             lang="en"
         >
-            {/*   {item.isWrapLink && <LinkWrap item={item} modType={'article'}></LinkWrap>} */}
+            {item.isWrapLink && <LinkWrap item={item} modType={'article'}></LinkWrap>}
             <div
                 className={cn(styles['item-wrap'], {
                     ['hero-background']: (item.isFeatured === 'active' || item.isFeatured === true) && type === 'article',
