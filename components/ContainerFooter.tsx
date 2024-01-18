@@ -42,9 +42,9 @@ const ContainerFooter = (props: ContainerFooterProps) => {
                         </span>
                         {siteData.contact.address?.street && <span className={styles['street-address']}>{siteData.contact.address.street}, </span>}
                         <span className={styles['city-state-zip-address']}>
-                            {siteData.contact.address?.city && `${siteData.contact.address.city} ,`}
-                            {siteData.contact.address?.state && `${siteData.contact.address.state} ,`}
-                            {siteData.contact.address?.zip && `${siteData.contact.address.zip} ,`}
+                            {siteData.contact.address?.city && `${siteData.contact.address.city}, `}
+                            {siteData.contact.address?.state && `${siteData.contact.address.state} `}
+                            {siteData.contact.address?.zip && `${siteData.contact.address.zip}`}
                         </span>
                     </address>
                 </div>
