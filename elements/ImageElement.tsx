@@ -16,7 +16,6 @@ export const ImageElement = (props: ImageProps) => {
 
     return (
         <>
-            {imagePriority && <div style={{ border: '10px solid red' }}>Hello</div>}
             {!hideImage &&
                 (imageType === 'nocrop' ? (
                     //Setting width and height of item using calcImageSize

@@ -11,9 +11,6 @@ export default async function RootLayout({ children, params }: { children: React
 
     return (
         <html lang="en">
-            <head>
-                <link rel="stylesheet" href={s3ColorStyles} type="text/css"></link>
-            </head>
             <body>
                 <div>{children}</div>
             </body>

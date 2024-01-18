@@ -11,7 +11,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 const { library } = require('@fortawesome/fontawesome-svg-core')
-import FontLoad from './FontLoad'
+import DeferLoad from './DeferLoad'
 library.add(fas, fab, far)
 import { redirect } from 'next/navigation'
 
@@ -155,7 +155,7 @@ export const Container = (props: ContainerProps) => {
                             </div>
                         )}
                     </ContainerLayout>
-                    <FontLoad fonts={siteData.fontImport} />
+                    <DeferLoad fonts={siteData.fontImport} siteData={siteData} />
                 </>
             )}
         </>
