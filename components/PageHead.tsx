@@ -18,6 +18,8 @@ export default function PageHead(props: PageHeadProps) {
             <title>{pageTitle}</title>
             {page.seo?.title && <meta property="og:title" content={pageTitle} key="title" />}
             {pageDesc ? <meta name="description" content={pageDesc} /> : <meta name="description" content="description" />}
+            <meta name="robots" content="noindex"></meta>
+            <meta name="google-site-verification" content="S7-oAcXinNESq171RoKBw7Er3q9LWIpgPiDvG_CwpcU" />
             {page.seo?.imageOverride ||
                 (page.seo?.selectedImage && (
                     <>

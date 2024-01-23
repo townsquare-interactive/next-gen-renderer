@@ -31,7 +31,6 @@ export const Button = (props: SingleButtonProps) => {
 
     return (
         <>
-            {/*  {(pageModalVars && btn.opensModal) === 0 && <button onClick={pageModalVars[0].toggleModal}>Modal time</button>} */}
             {isModalBtn && pageModalVars && btn.opensModal != -1 ? (
                 <button onClick={pageModalVars[btn.opensModal].toggleModal} className={btnClassesList}>
                     {btn.icon && <FontAwesomeIcon icon={[btn.icon.iconPrefix, btn.icon.iconModel]} />}

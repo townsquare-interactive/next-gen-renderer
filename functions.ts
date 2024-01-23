@@ -210,8 +210,6 @@ export async function getAnyPageData(params: { domain: string; slug?: string }) 
     let pageSlug
     const fetchingDomain = await getFetchingUrl(params)
 
-    //zodDataCheck(pageList, PageListSchema, 'Page List')
-
     //determining the page slug
     if (!params?.slug) {
         try {
