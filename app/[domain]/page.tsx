@@ -1,4 +1,4 @@
-import { generateLayout, getAnyPageData, getDomainListFromVercel } from '../../functions'
+import { generateLayout, getAnyPageData } from '../../functions'
 import { use } from 'react'
 import { Container } from 'components/Container'
 
