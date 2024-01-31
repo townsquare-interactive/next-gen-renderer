@@ -34,6 +34,10 @@ a {
     }
 }
 
+.is-wrap-link {
+    position: relative;
+}
+
 .grid-item {
     @include utils.grid;
 }
