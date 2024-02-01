@@ -8,6 +8,12 @@
         .logo {
             width: 100%;
             position: relative;
+
+            img {
+                max-width: 100%;
+                height: auto;
+                width: auto;
+            }
         }
     }
 }

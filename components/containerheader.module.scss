@@ -51,9 +51,7 @@
 
                 img {
                     max-height: 6rem;
-                    height: auto;
                     transition: all 0.2s linear;
-                    width: auto;
 
                     @include breakpoints.lg-min {
                         max-height: 8.75rem;
@@ -94,7 +92,7 @@
 
             img {
                 max-height: 3.75rem !important;
-                width: 100%;
+                //width: 100%;
             }
         }
     }
