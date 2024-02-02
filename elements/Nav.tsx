@@ -77,7 +77,6 @@ const NavListItem = ({ item, arrow = false, navType, navSwitch }: NavListItemPro
     return (
         <Link
             href={item.url || ''}
-            //href="#id_5"
             className={cn({
                 [styles.arrow]: arrow == true,
                 ['navLink']: navType === 'desktop-nav' || navType === 'mobile-nav',
@@ -85,7 +84,7 @@ const NavListItem = ({ item, arrow = false, navType, navSwitch }: NavListItemPro
                 ['current-page']: checkCurrentPage(),
             })}
             aria-label={item.title}
-            onClick={navType != 'desktop-nav' ? navSwitch : undefined}
+            onClick={navType === 'mobile-nav' ? navSwitch : undefined}
         >
             {item.title}
         </Link>
