@@ -2,12 +2,12 @@
 import styles from './photogallery.module.scss'
 import { ModuleProps, ItemWrapProps, ModuleItemProps } from '../types'
 import cn from 'classnames'
-import { Fragment, useState } from 'react'
+import { useState } from 'react'
 import { ButtonWrap } from '../elements/ButtonWrap'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
 import LinkWrap from 'elements/LinkWrap'
 import DescBlock from 'elements/DescBlock'
-import { domainImage } from 'functions'
+import { ConditionalWrapper, domainImage } from 'functions'
 import Carousel from 'elements/Carousel'
 import { ImageBlock } from 'elements/ImageBlock'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -38,12 +38,7 @@ const PhotoGallery = (props: ModuleProps) => {
     }
 
     //remove hidden items for Carousel
-    let newItems = []
-    for (let x in items) {
-        if (items[x].disabled != 'disabled') {
-            newItems.push(items[x])
-        }
-    }
+    let galleryItems = items.filter((item) => item.disabled !== 'disabled')
 
     if (disabled === 'disabled' || disabled === true) {
         return <></>
@@ -67,33 +62,38 @@ const PhotoGallery = (props: ModuleProps) => {
                     id={anchorLink ? anchorLink : `id_${modId}`}
                 >
                     <div className={cn(styles.wrapper, 'wrapper')}>
-                        <Carousel settings={carouselSettings} modItems={items} cmsUrl={cmsUrl} useThumbnail={useThumbnail} modType={type}>
-                            {newItems.map((item, index: number) => (
-                                <Fragment key={index}>
-                                    {item.disabled != true && (
-                                        <ModuleItem
-                                            item={item}
-                                            well={well}
-                                            modId={modId}
-                                            themeStyles={themeStyles}
-                                            key={index}
-                                            imgsize={imgsize}
-                                            type={type}
-                                            columns={columns}
-                                            itemIndex={index}
-                                            cmsUrl={cmsUrl}
-                                            useThumbnail={useThumbnail}
-                                        />
-                                    )}
-                                </Fragment>
+                        <ConditionalWrapper
+                            condition={galleryItems.length > 1}
+                            trueOutput={(children: Element) => (
+                                <Carousel settings={carouselSettings} modItems={items} cmsUrl={cmsUrl} useThumbnail={useThumbnail} modType={type}>
+                                    {children}
+                                </Carousel>
+                            )}
+                            falseOutput={(children: Element) => <>{children}</>}
+                        >
+                            {galleryItems.map((item, index: number) => (
+                                <ModuleItem
+                                    item={item}
+                                    well={well}
+                                    modId={modId}
+                                    themeStyles={themeStyles}
+                                    key={index}
+                                    imgsize={imgsize}
+                                    type={type}
+                                    columns={columns}
+                                    itemIndex={index}
+                                    cmsUrl={cmsUrl}
+                                    useThumbnail={useThumbnail}
+                                />
                             ))}
-                        </Carousel>
+                        </ConditionalWrapper>
                     </div>
                 </div>
             </>
         )
     }
 }
+//add conditional wrapper so Carousel only effects if more than one item
 
 const ModuleItem = (props: ModuleItemProps) => {
     const { item, modId, itemIndex, cmsUrl, themeStyles, type, imgsize, columns, well, useThumbnail } = props
@@ -195,7 +195,7 @@ const ItemWrap = (props: ItemWrapProps) => {
                 {item.isWrapLink && <LinkWrap item={item}></LinkWrap>}
             </div>
 
-            {useThumbnail && (
+            {useThumbnail && (item.headline || item.desc || item.subheader || item.visibleButton) && (
                 <button type="button" className={styles['carousel-btn']} onClick={() => toggleCaption(!isCaptionVisible)}>
                     <FontAwesomeIcon icon={!isCaptionVisible ? ['fas', 'message'] : ['fas', 'x']} />
                 </button>

@@ -107,6 +107,7 @@ export interface GlobalData {
     modalData?: modalData
     published?: boolean
     redirectUrl?: string
+    allStyles?: string
 }
 
 interface modalData {
@@ -902,9 +903,9 @@ export interface SocialLinksProps {
 
 export interface ConditionalWrapperProps {
     condition: boolean
-    children: ReactChild
-    falseOutput: (children: ReactChild) => ReactElement
-    trueOutput: (children: ReactChild) => ReactElement
+    children: any
+    falseOutput: (children: any) => ReactElement
+    trueOutput: (children: any) => ReactElement
 }
 
 export interface ButtonWrapProps {
