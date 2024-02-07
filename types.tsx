@@ -76,6 +76,17 @@ export interface WidgetRendererProps {
     navSwitch: () => void
 }
 
+interface Contact {
+    email: any
+    phone: any
+    hours?: any
+    address?: any
+    contactLinks: ContactLinks[]
+    showContactBox: boolean
+    disabled?: string
+    displayInMap: boolean
+}
+
 export interface GlobalData {
     fontImport?: string
     logoUrl?: string
@@ -90,7 +101,7 @@ export interface GlobalData {
     siteName?: string
     phoneNumber?: String
     themeStyles?: ThemeStyles
-    contact: { email: any; phone: any; hours?: any; address?: any; contactLinks: ContactLinks[]; showContactBox: boolean }
+    contact: Contact
     cmsNav?: NavItem[]
     logos?: CMSLogo
     //mobileLogos?: Logo
