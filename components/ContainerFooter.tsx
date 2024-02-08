@@ -40,12 +40,13 @@ const ContainerFooter = (props: ContainerFooterProps) => {
                         <span className={styles.copyright}>
                             Copyright &#169; {new Date().getFullYear()} {siteData.siteName}, all rights reserved.
                         </span>
-                        {siteData.contact.address?.street && <span className={styles['street-address']}>{siteData.contact.address.street}, </span>}
+                        {siteData.contact.address?.street && <span className={styles['street-address']}>{siteData.contact.address.street}, </span>}{' '}
                         <span className={styles['city-state-zip-address']}>
-                            {siteData.contact.address?.city && `${siteData.contact.address.city}, `}
-                            {siteData.contact.address?.state && `${siteData.contact.address.state} `}
+                            {siteData.contact.address?.city && `${siteData.contact.address.city},`}{' '}
+                            {siteData.contact.address?.state && `${siteData.contact.address.state}`}{' '}
                             {siteData.contact.address?.zip && `${siteData.contact.address.zip}`}
-                        </span>
+                        </span>{' '}
+                        <span className={styles['phone']}>{siteData.phoneNumber && `${siteData.phoneNumber}`}</span>
                     </address>
                 </div>
                 <div className={styles['bottom']}>
