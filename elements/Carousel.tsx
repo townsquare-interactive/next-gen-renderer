@@ -2,7 +2,7 @@
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import { useEffect, useState, useRef, ReactElement } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { ImageBlock } from './ImageBlock'
 import { CarouselProps } from 'types'
 import styles from './carousel.module.scss'
@@ -40,7 +40,6 @@ const Carousel = (props: CarouselProps) => {
                                 slidesToShow={modItems.length}
                                 swipeToSlide={true}
                                 focusOnSelect={true}
-                                //className= "center"
                                 ref={(slider) => setNav2(slider)}
                                 className={'thumb-slider'}
                             >
@@ -65,7 +64,6 @@ const Carousel = (props: CarouselProps) => {
             ) : modType === 'review_carousel' ? (
                 <Slider
                     {...settings}
-                    //className="center"
                     centerMode={true}
                     centerPadding="0"
                     //adaptiveHeight={true}

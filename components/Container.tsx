@@ -92,6 +92,7 @@ const useModal = (autoOpen: boolean, flagName: string, openEveryTime: boolean) =
 
 export const Container = (props: ContainerProps) => {
     const { page, siteData } = props
+
     const { cmsUrl, themeStyles, columnStyles } = defineContainerVars(page, siteData)
     const siteModalVars = [useModal(siteData.modalData?.autoOpen || false, 'site', false)]
 
@@ -155,7 +156,7 @@ export const Container = (props: ContainerProps) => {
                             </div>
                         )}
                     </ContainerLayout>
-                    <DeferLoad fonts={siteData.fontImport} siteData={siteData} />
+                    <DeferLoad fonts={siteData.fontImport || ''} globalStyles={siteData.allStyles || ''} />
                 </>
             )}
         </>

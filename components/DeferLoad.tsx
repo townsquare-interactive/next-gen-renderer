@@ -1,18 +1,18 @@
 'use client'
 import { useEffect, useState } from 'react'
 
-const DeferLoad = (props: any) => {
+const DeferLoad = ({ fonts, globalStyles }: { fonts?: string; globalStyles?: string }) => {
     const [isSSR, setIsSSR] = useState(true)
 
-    //Setting state to false on load to avoid Hydration Error
+    //Setting state to false on load to defer loading of this component until after other content
     useEffect(() => {
         setIsSSR(false)
     }, [])
     return (
         <>
-            {!isSSR && (
+            {!isSSR && (fonts || globalStyles) && (
                 <style>
-                    {props.fonts} {props.siteData?.allStyles ? props.siteData?.allStyles : ''}
+                    {fonts} {globalStyles}
                 </style>
             )}
         </>

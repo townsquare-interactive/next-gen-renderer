@@ -267,7 +267,6 @@ $ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
             .slick-center {
                 transform: scale(1.2);
             }
-            // .slick-current + div {
         }
     }
 }
@@ -661,19 +660,12 @@ $ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     .slick-current {
         transform: scale(1.1, 1.1);
-        transition: all 2s ease-in-out;
+        transition: all 0.2s ease-in-out;
         ransform-origin: center center;
-        // box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 
         .caption {
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         }
-
-        /*  .image-block {
-            transform: scale(1.1, 1.1);
-            transform-origin: center center;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-        } */
     }
 }
 

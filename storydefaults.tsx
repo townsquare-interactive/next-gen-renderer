@@ -293,6 +293,7 @@ export const siteDataEx = {
     selectedPrimaryPhoneLabel: '',
     selectedPrimaryPhoneNumber: '2343423432',
     selectedPrimaryEmailAddress: 'NExtEmail@email.com', */
+        displayInMap: true,
         contactLinks: [
             {
                 cName: 'phone',
