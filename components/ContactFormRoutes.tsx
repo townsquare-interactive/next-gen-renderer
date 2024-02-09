@@ -13,7 +13,15 @@ const Schema = z.object({
     fName: z.string(),
     lName: z.string(),
     email: z.string().includes('@'),
-    phone: z.string().optional(),
+    phone: z.string().refine(
+        (value) => {
+            const phoneRegex = /^(\+\d{1,2}\s?)?(\(\d{3}\)|\d{3})([-.\s]?)\d{3}([-.\s]?)\d{4}$/
+            return phoneRegex.test(value)
+        },
+        {
+            message: 'Invalid phone number format',
+        }
+    ),
     messagebox: z.string().min(2, 'Too Short!'),
     street: z.string().optional(),
     city: z.string().optional(),
