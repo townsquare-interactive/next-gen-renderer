@@ -119,6 +119,7 @@ export interface GlobalData {
     published?: boolean
     redirectUrl?: string
     allStyles?: string
+    styles?:any
 }
 
 interface modalData {

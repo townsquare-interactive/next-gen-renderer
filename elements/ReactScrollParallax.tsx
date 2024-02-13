@@ -7,24 +7,16 @@ import cn from 'classnames'
 import { ReactScrollProps } from '../types'
 
 const ReactScroll = ({ item, imgsize, children, columns }: ReactScrollProps) => {
-    const [isSSR, setIsSSR] = useState(true)
+    const [isSSR, setIsSSR] = useState(false)
 
-    let useDelay = item.image ? true : false
-
-    //Load image before parallax effect
     useEffect(() => {
-        if (useDelay === true) {
-            setIsSSR(false)
-        }
-    }, [useDelay])
-
-    if (useDelay === false) {
-        setIsSSR(false)
-    }
+        // Check if the code is executing on the server (SSR)
+        setIsSSR(typeof window === 'undefined')
+    }, [])
 
     return (
         <>
-            {isSSR && (
+            {isSSR ? (
                 <>
                     <div className={styles.outer}>
                         <div className={cn(styles['image-block'], styles['image-block2'])} style={item.modColor1 ? { background: item.modColor1 } : {}}>
@@ -42,8 +34,7 @@ const ReactScroll = ({ item, imgsize, children, columns }: ReactScrollProps) => 
                     </div>
                     {children}
                 </>
-            )}
-            {!isSSR && (
+            ) : (
                 <ParallaxProvider>
                     <ParallaxBanner
                         layers={[

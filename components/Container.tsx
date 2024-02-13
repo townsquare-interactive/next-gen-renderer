@@ -156,7 +156,9 @@ export const Container = (props: ContainerProps) => {
                             </div>
                         )}
                     </ContainerLayout>
-                    <DeferLoad fonts={siteData.fontImport || ''} globalStyles={siteData.allStyles || ''} />
+                    
+                    {siteData.styles?.global && <style>{siteData.styles.global}</style>}
+                    <DeferLoad fonts={siteData.fontImport || ''} globalStyles={siteData.styles ? siteData.styles : siteData.allStyles} /> 
                 </>
             )}
         </>
