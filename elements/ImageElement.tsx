@@ -25,7 +25,7 @@ export const ImageElement = (props: ImageProps) => {
                         width={imageWidth}
                         height={imageHeight}
                         alt={imgAlt || ''}
-                        quality="50"
+                        quality="80"
                         priority={imagePriority}
                         style={
                             modType === 'Card'
@@ -46,7 +46,7 @@ export const ImageElement = (props: ImageProps) => {
                         src={imgSrc}
                         fill
                         alt={imgAlt || ''}
-                        quality="50"
+                        quality="80"
                         priority={imagePriority}
                         style={{
                             objectFit: 'cover',
