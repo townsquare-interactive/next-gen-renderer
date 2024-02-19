@@ -1,0 +1,97 @@
+@use './styles/breakpoints.scss';
+
+.social_items{
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    position: fixed;
+    bottom: 70px;
+    z-index: 999999;
+    
+    
+   .social_button {
+        height: 60px;
+        width: 60px;
+        float: left;
+        margin: 5px;
+        overflow: hidden;
+        background: #fff;
+        border-radius: 50px;
+        cursor: pointer;
+        box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+        transition: all 0.3s ease-out;
+
+        &:hover {
+            width: 330px;
+
+            .floating_icon svg {
+                color: #fff !important;
+            }
+        }
+
+        .floating_icon {
+            display: inline-block;
+            height: 60px;
+            width: 60px;
+            text-align: center;
+            border-radius: 50px;
+            box-sizing: border-box;
+            line-height: 60px;
+            transition: all 0.3s ease-out;
+
+            i {
+                font-size: 25px;
+                line-height: 60px;
+            }
+        }
+
+        span {
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 60px;
+            margin-left: 10px;
+            transition: all 0.3s ease-out;
+        }
+        
+
+        &.google_button{
+            &:hover {
+                .floating_icon {
+                    background: #32A350;
+                }
+                span {
+                    color: #32A350;
+                }
+            }
+
+            .floating_icon {
+                color: #32A350; 
+            }
+        }
+
+        &.facebook_button{
+            &:hover {
+                .floating_icon {
+                    background: #1773EA;
+                }
+                span {
+                    color: #1773EA;
+                }
+        }
+
+            .floating_icon {
+                color: #1773EA; 
+            }
+        }
+    }
+    
+    
+    @include breakpoints.lg-min {
+        display: flex;
+    }
+
+}
+    /* ------------------ End Floating Social Media Tabs ------------------ */
+
+
+    

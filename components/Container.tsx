@@ -14,6 +14,7 @@ const { library } = require('@fortawesome/fontawesome-svg-core')
 import DeferLoad from './DeferLoad'
 library.add(fas, fab, far)
 import { redirect } from 'next/navigation'
+import { CustomComponents } from './custom/CustomComponents'
 
 export interface ModalDef {
     autoOpen: boolean
@@ -21,7 +22,7 @@ export interface ModalDef {
     openEveryTime: boolean
 }
 
-//create array of modals so we can allow multiple to be used at once
+//create array of modals so we can allow multiple to be used at once for page modals
 const useModals = (modals: ModalDef[]) => {
     const init = Array(modals.length).fill(false)
     const [showSiteModals, showModals] = useState<boolean[]>(init)
@@ -60,6 +61,7 @@ const useModals = (modals: ModalDef[]) => {
     })
 }
 
+//set states for single site modal
 const useModal = (autoOpen: boolean, flagName: string, openEveryTime: boolean) => {
     const [showSiteModal, showModal] = useState<boolean>(autoOpen)
 
@@ -86,15 +88,12 @@ const useModal = (autoOpen: boolean, flagName: string, openEveryTime: boolean) =
     }
 }
 
-/* const CreateModalList = (autoOpen: boolean, flag: string, pageModalVars: PageModalVars[]) => {
-    pageModalVars.push(useModal(autoOpen || false, flag))
-} */
-
 export const Container = (props: ContainerProps) => {
     const { page, siteData } = props
-
     const { cmsUrl, themeStyles, columnStyles } = defineContainerVars(page, siteData)
     const siteModalVars = [useModal(siteData.modalData?.autoOpen || false, 'site', false)]
+
+    console.log(siteData.customComponents)
 
     if (siteData.published === false) {
         console.log('unpublish time')
@@ -156,6 +155,10 @@ export const Container = (props: ContainerProps) => {
                             </div>
                         )}
                     </ContainerLayout>
+
+                        {siteData.customComponents &&
+                            <CustomComponents config={siteData.customComponents}/>
+                        }
                     
                     {siteData.styles?.global && <style>{siteData.styles.global}</style>}
                     <DeferLoad fonts={siteData.fontImport || ''} globalStyles={siteData.styles ? siteData.styles : siteData.allStyles} /> 
