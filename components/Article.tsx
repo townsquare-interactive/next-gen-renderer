@@ -28,6 +28,7 @@ const Article = (props: ModuleProps) => {
         isSingleColumn,
         anchorLink,
         pageModalVars,
+        hideTitle
     } = props
 
     if (disabled === 'disabled' || disabled === true) {
@@ -57,7 +58,7 @@ const Article = (props: ModuleProps) => {
                 )}
                 id={anchorLink ? anchorLink : `id_${modId}`}
             >
-                {title && <ModuleTitle title={title} />}
+                {title && hideTitle!=0 && <ModuleTitle title={title} />}
                 <div className={cn(styles.wrapper, 'wrapper')}>
                     {items?.length > 0 &&
                         items.map((item, index) => (

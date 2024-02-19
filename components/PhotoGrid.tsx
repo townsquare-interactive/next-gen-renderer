@@ -11,7 +11,7 @@ import { HeadlineBlock } from 'elements/HeadlineBlock'
 import LinkWrap from 'elements/LinkWrap'
 
 export const PhotoGrid = (props: PhotoGridProps) => {
-    const { columns = 1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl, customClassName, contentSpacing, anchorLink, disabled } = props
+    const { columns = 1, type, well, imgsize, modId, title, items, themeStyles, cmsUrl, customClassName, contentSpacing, anchorLink, disabled, hideTitle } = props
 
     if (disabled === 'disabled' || disabled === true) {
         return <></>
@@ -36,7 +36,7 @@ export const PhotoGrid = (props: PhotoGridProps) => {
             )}
             id={anchorLink ? anchorLink : `id_${modId}`}
         >
-            {title && <ModuleTitle title={title} />}
+            {title && hideTitle!=0 && <ModuleTitle title={title} />}
             <div className={styles.wrapper}>
                 {items.map((item, index) => (
                     <Fragment key={index}>

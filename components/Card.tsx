@@ -27,6 +27,7 @@ const Card = (props: ModuleProps) => {
         columnLocation,
         isSingleColumn,
         anchorLink,
+        hideTitle
     } = props
 
     if (disabled === 'disabled' || disabled === true) {
@@ -44,7 +45,7 @@ const Card = (props: ModuleProps) => {
                 })}
                 id={anchorLink ? anchorLink : `id_${modId}`}
             >
-                {title && <ModuleTitle title={title} />}
+                {title && hideTitle!=0 && <ModuleTitle title={title} />}
                 <div className={cn(styles.wrapper, 'wrapper')}>
                     {items.map((item, index) => (
                         <Fragment key={index}>
