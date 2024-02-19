@@ -120,7 +120,9 @@ export interface GlobalData {
     redirectUrl?: string
     allStyles?: string
     styles?:any
+    customComponents?:[FloatingReviewButtonsProps]
 }
+
 
 interface modalData {
     headline?: string
@@ -664,6 +666,7 @@ export interface PhotoGridProps {
     contentSpacing?: string
     anchorLink?: string
     disabled?: string | boolean
+    
 }
 
 export interface Colors {
@@ -1009,6 +1012,13 @@ export interface MapAddress {
     street2?: string
     coordinates: LatLngTuple
     url?: string
+}
+
+/*----------------- Custom Components ---------------*/
+export type ReviewButtonProps ={ link:string, content:string, type:string}
+
+export interface FloatingReviewButtonsProps {
+    btns: ReviewButtonProps[]
 }
 
 /*------------------------------Non CMS types-------------------------*/
@@ -1358,3 +1368,5 @@ export interface ButtonProps {
     themeStyles: ThemeStyles
     btnType?: 'normal' | 'accent' | 'alt' | 'alt2' | 'accent2'
 }
+
+
