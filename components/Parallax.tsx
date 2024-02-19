@@ -13,6 +13,9 @@ import ReactScroll from 'elements/ReactScrollParallax'
 //can be jarallax, custom, scroll
 const choseLax: string = 'scroll'
 
+//allow custom height field in cms to affect height here
+const useCustomHeight = false
+
 const Parallax = (props: ModuleProps) => {
     const { columns = 1, type, well, imgsize, modId, items, themeStyles, cmsUrl, disabled, customClassName, modCount, isSingleColumn, anchorLink } = props
 
@@ -27,6 +30,7 @@ const Parallax = (props: ModuleProps) => {
                         [styles[`cst_${customClassName}`]]: customClassName,
                         [`cst_${customClassName}`]: customClassName,
                         [styles['first-mod']]: modCount === 1,
+                        'first-mod': modCount === 1,
                         [styles['react-scroll']]: choseLax === 'scroll',
                         [styles['react-parallax']]: choseLax === 'react-parallax',
                         [styles['single-column']]: isSingleColumn,
@@ -102,10 +106,12 @@ const ModuleItem = (props: ModuleItemProps) => {
 
 const ItemWrap = (props: ItemWrapProps) => {
     const { item, well, themeStyles, modId, columns, type, cmsUrl, imgsize } = props
+    //const dlHeight = item.modOne || '70vh'
+    const dlHeight= useCustomHeight ? item.modOne || '70vh' : '70vh'
 
     return (
         <div
-            className={cn(styles['item-wrap'], {
+            className={cn(styles['item-wrap'],'item-wrap', {
                 [styles['react-scroll']]: choseLax === 'scroll',
             })}
             aria-label={item.headline || 'item-wrap'}
@@ -114,9 +120,9 @@ const ItemWrap = (props: ItemWrapProps) => {
                     ? {
                           backgroundImage: item.textureImage?.image ? `url(${domainImage(item.textureImage.image, false)})` : 'none',
                           backgroundPositionY: item.modTwo ? item.modTwo + '%' : '0%',
-                          height: item.modOne || '70vh',
+                          height: dlHeight,
                       }
-                    : { height: item.modOne || '70vh' }
+                    : { height: dlHeight }
             }
         >
             <ConditionalWrapper
@@ -138,10 +144,11 @@ const ParallaxChildren = ({ item, columns, well, modId, themeStyles }: ItemWrapP
     return (
         <>
             <div
-                className={cn(styles['caption'], {
+                className={cn(styles['caption'],'caption', {
                     [styles['cap-bckg']]: item.modSwitch1 != 1 && item.image,
                 })}
-                style={item.modOne ? { height: item.modOne } : { minHeight: '70vh' }}
+                //style={item.modOne ? { height: item.modOne } : { minHeight: '70vh' }}
+                style={!useCustomHeight ? { minHeight: '70vh'} : item.modOne ? { height: item.modOne } : { minHeight: '70vh' }}
             >
                 <div className={styles.content}>
                     {(item.headline || item.subheader) && (
