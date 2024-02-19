@@ -558,6 +558,7 @@ export interface ArticleItems {
         weblink2?: string
     }
     contactFormData?: contactFormData
+    video?: any
 }
 
 export interface ReactScrollProps {

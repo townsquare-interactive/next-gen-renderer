@@ -7,7 +7,6 @@ const Page = ({ params }: { params: { slug: string; domain: string } }) => {
     const { CMSLayout } = use(generateLayout(params))
     const { page } = use(getAnyPageData(params))
     console.log('params', params)
-    console.log('here is page', page)
 
     //for page not existing
     if (typeof page === 'string') {

@@ -9,6 +9,7 @@ import ModuleTitle from 'elements/ModuleTitle'
 import { HeadlineBlock } from 'elements/HeadlineBlock'
 import LinkWrap from 'elements/LinkWrap'
 import DescBlock from 'elements/DescBlock'
+import Video from './Video'
 
 const Article = (props: ModuleProps) => {
     const {
@@ -188,16 +189,17 @@ const ItemWrap = (props: ItemWrapProps) => {
                 </>
             )}
 
-            {item.desc && (
+            {(item.desc || item.video) && (
                 <div className={cn(styles['txt-block'])}>
                     <DescBlock
-                        desc={item.desc}
+                        desc={item.desc || ''}
                         descSize={item.descSize}
                         type={type}
                         well={well}
                         isBeaconHero={item.isBeaconHero}
                         useAccentColor={item.useAccentColor || false}
                     />
+                    {item.video?.src && <Video videoUrl={item.video.src} modLayout={item.video.method}/>}
                 </div>
             )}
             {item.visibleButton && (

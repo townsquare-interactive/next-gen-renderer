@@ -4,8 +4,6 @@ import { useEffect, useState } from 'react'
 const DeferLoad = ({ fonts, globalStyles }: { fonts?: string; globalStyles?: any }) => {
     const [isSSR, setIsSSR] = useState(true)
 
-    console.log(typeof globalStyles)
-
     //Setting state to false on load to defer loading of this component until after other content
     useEffect(() => {
         setIsSSR(false)

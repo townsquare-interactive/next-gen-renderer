@@ -74,8 +74,6 @@ const NavListItem = ({ item, arrow = false, navType, navSwitch }: NavListItemPro
         }
     }
 
-    console.log(item.target)
-
     return (
         <Link
             href={item.url || ''}

@@ -93,8 +93,6 @@ export const Container = (props: ContainerProps) => {
     const { cmsUrl, themeStyles, columnStyles } = defineContainerVars(page, siteData)
     const siteModalVars = [useModal(siteData.modalData?.autoOpen || false, 'site', false)]
 
-    console.log(siteData.customComponents)
-
     if (siteData.published === false) {
         console.log('unpublish time')
         redirect(siteData.redirectUrl || 'https://townsquareinteractive.com/')

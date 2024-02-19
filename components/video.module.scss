@@ -1,7 +1,7 @@
-@use '../../styles/breakpoints.scss';
+@use '../styles/breakpoints.scss';
 @use 'sass:math';
-@use '../../styles/variables.scss';
-@use '../../styles/utils.scss';
+@use '../styles/variables.scss';
+@use '../styles/utils.scss';
 
 .root {
     @include utils.root;
