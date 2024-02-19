@@ -74,6 +74,8 @@ const NavListItem = ({ item, arrow = false, navType, navSwitch }: NavListItemPro
         }
     }
 
+    console.log(item.target)
+
     return (
         <Link
             href={item.url || ''}
@@ -85,6 +87,7 @@ const NavListItem = ({ item, arrow = false, navType, navSwitch }: NavListItemPro
             })}
             aria-label={item.title}
             onClick={navType === 'mobile-nav' ? navSwitch : undefined}
+            target={item.target === '_blank' ? '_blank' : '_self'}
         >
             {item.title}
         </Link>
