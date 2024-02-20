@@ -114,6 +114,10 @@ export const transformFetchingDomain = async (params: { slug?: string; domain: s
             fetchingDomain = fetchingDomain.replace('-prev', '')
             fetchingDomain = fetchingDomain.replace('-main', '')
             fetchingDomain = bucketUrl + '/' + fetchingDomain
+
+            if (fetchingDomain.includes('next-gen-renderer')){
+                fetchingDomain = bucketUrl + '/' + cmsUrl
+            }
         }
     } else {
         console.log('using local domain')
