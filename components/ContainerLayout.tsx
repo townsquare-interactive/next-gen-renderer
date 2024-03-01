@@ -25,7 +25,9 @@ export default function Layout(props: LayoutProps) {
 
     return (
         <>
-            <div className={cn(styles.root, `page-${cName}`)}>
+            <div className={cn(styles.root, `page-${cName}`,{
+                'transparent-header':false
+            })}>
                 <SlidingHeader navSwitch={navSwitch} navCheck={navCheck} themeStyles={themeStyles} siteData={siteData} />
                 {twoPhones && <ContactModal siteData={siteData} showContactModal={showContactModal} setContactModal={triggerContactModal} />}
 

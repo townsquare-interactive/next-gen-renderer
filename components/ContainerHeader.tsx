@@ -32,9 +32,11 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
 
     return (
         <header
-            className={cn(styles.root, 'header-background', {
+            className={cn(styles.root, 'header-background','desktop-header', {
                 [styles.shrink]: ref?.current?.offsetHeight && windowHeight > ref?.current?.offsetHeight,
+                'shrink': ref?.current?.offsetHeight && windowHeight > ref?.current?.offsetHeight,
                 [styles['reverse-head']]: siteData.headerOptions?.reverseHeaderLayout,
+                [styles.transparent]:true
             })}
             ref={ref}
         >

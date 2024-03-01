@@ -121,6 +121,10 @@ export interface GlobalData {
     allStyles?: string
     styles?:any
     customComponents?:[FloatingReviewButtonsProps]
+    scripts?:{
+        header:string,
+        footer:string
+    }
 }
 
 
@@ -416,6 +420,7 @@ export interface CMSPageData {
     slug: string
     anchorTags?: any[]
     pageModals: { modalNum: number; modalTitle: any; autoOpen?: boolean; openEveryTime: boolean }[]
+    scripts?: string
 }
 
 export interface PageModalVars {

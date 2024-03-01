@@ -11,10 +11,20 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 const { library } = require('@fortawesome/fontawesome-svg-core')
-import DeferLoad from './DeferLoad'
 library.add(fas, fab, far)
 import { redirect } from 'next/navigation'
 import { CustomComponents } from './custom/CustomComponents'
+import dynamic from 'next/dynamic'
+//dynamic import with ssr false allows it load after initial render
+const DeferLoad = dynamic(() => import('./DeferLoad'), {
+    ssr: false,
+})
+const ReturnNextScript = dynamic(() => import('./custom/ReturnNextScript'), {
+    ssr: false,
+})
+
+const useCustomComponents = false
+const useCustomScripts = true
 
 export interface ModalDef {
     autoOpen: boolean
@@ -93,6 +103,8 @@ export const Container = (props: ContainerProps) => {
     const { cmsUrl, themeStyles, columnStyles } = defineContainerVars(page, siteData)
     const siteModalVars = [useModal(siteData.modalData?.autoOpen || false, 'site', false)]
 
+    console.log(page.data.scripts)
+
     if (siteData.published === false) {
         console.log('unpublish time')
         redirect(siteData.redirectUrl || 'https://townsquareinteractive.com/')
@@ -154,12 +166,15 @@ export const Container = (props: ContainerProps) => {
                         )}
                     </ContainerLayout>
 
-                        {siteData.customComponents &&
-                            <CustomComponents config={siteData.customComponents}/>
-                        }
-                    
+                    {siteData.customComponents && useCustomComponents && <CustomComponents config={siteData.customComponents} />}
+
                     {siteData.styles?.global && <style>{siteData.styles.global}</style>}
-                    <DeferLoad fonts={siteData.fontImport || ''} globalStyles={siteData.styles ? siteData.styles : siteData.allStyles} /> 
+
+                    <DeferLoad fonts={siteData.fontImport || ''} globalStyles={siteData.styles ? siteData.styles : siteData.allStyles} />
+
+                    {(siteData.scripts?.header || siteData.scripts?.footer || page.data.scripts) && useCustomScripts && (
+                        <ReturnNextScript code={(siteData.scripts?.header || '') + (siteData.scripts?.footer || '') + (page.data.scripts || '')} />
+                    )}
                 </>
             )}
         </>
