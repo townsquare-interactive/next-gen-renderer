@@ -61,6 +61,7 @@ export interface LayoutProps {
     cmsUrl?: string
     //page: CMSPage
     pageModalVars?: PageModalVars[]
+    pageScripts?: string
 }
 export interface RendererProps {
     config: any
@@ -119,14 +120,13 @@ export interface GlobalData {
     published?: boolean
     redirectUrl?: string
     allStyles?: string
-    styles?:any
-    customComponents?:[FloatingReviewButtonsProps]
-    scripts?:{
-        header:string,
-        footer:string
+    styles?: any
+    customComponents?: [FloatingReviewButtonsProps]
+    scripts?: {
+        header: string
+        footer: string
     }
 }
-
 
 interface modalData {
     headline?: string
@@ -672,7 +672,6 @@ export interface PhotoGridProps {
     contentSpacing?: string
     anchorLink?: string
     disabled?: string | boolean
-    
 }
 
 export interface Colors {
@@ -1021,7 +1020,7 @@ export interface MapAddress {
 }
 
 /*----------------- Custom Components ---------------*/
-export type ReviewButtonProps ={ link:string, content:string, type:string}
+export type ReviewButtonProps = { link: string; content: string; type: string }
 
 export interface FloatingReviewButtonsProps {
     btns: ReviewButtonProps[]
@@ -1374,5 +1373,3 @@ export interface ButtonProps {
     themeStyles: ThemeStyles
     btnType?: 'normal' | 'accent' | 'alt' | 'alt2' | 'accent2'
 }
-
-

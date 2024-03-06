@@ -1,13 +1,11 @@
 'use client'
 
-const DeferLoad = ({ fonts, globalStyles }: { fonts?: string; globalStyles?: any }) => {
-
+const DeferLoad = ({ fonts, globalStyles }: { fonts?: string; globalStyles?: { custom: string; global: string } }) => {
     return (
         <>
-             <style>
-                {fonts} {(typeof globalStyles != 'string' && globalStyles?.custom) ? globalStyles?.custom : globalStyles || ''}
-             </style>
-             
+            <style>
+                {fonts} {globalStyles?.custom ? globalStyles.custom : ''}
+            </style>
         </>
     )
 }

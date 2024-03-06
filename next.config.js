@@ -33,7 +33,7 @@ module.exports = withBundleAnalyzer({
     experimental: {
         //appDir: true,
         //serverActions: true,
-        //nextScriptWorkers: true,
+        nextScriptWorkers: true,
     },
 
     webpack(config) {

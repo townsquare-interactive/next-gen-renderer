@@ -8,9 +8,14 @@ import { useState } from 'react'
 import SlidingHeader from 'elements/SlidingHeader'
 import ContactModal from './ContactModal'
 import Modal from './Modal'
+import dynamic from 'next/dynamic'
+
+const ReturnNextScript = dynamic(() => import('./custom/ReturnNextScript'), {
+    ssr: false,
+})
 
 export default function Layout(props: LayoutProps) {
-    const { children, siteData, themeStyles, cName, cmsUrl, pageModalVars } = props
+    const { children, siteData, themeStyles, cName, cmsUrl, pageModalVars, pageScripts } = props
     const [navCheck, setNav] = useState<boolean>(false)
     const [showContactModal, setContactModal] = useState<boolean>(false)
     const twoPhones = true
@@ -25,9 +30,11 @@ export default function Layout(props: LayoutProps) {
 
     return (
         <>
-            <div className={cn(styles.root, `page-${cName}`,{
-                'transparent-header':false
-            })}>
+            <div
+                className={cn(styles.root, `page-${cName}`, {
+                    'transparent-header': false,
+                })}
+            >
                 <SlidingHeader navSwitch={navSwitch} navCheck={navCheck} themeStyles={themeStyles} siteData={siteData} />
                 {twoPhones && <ContactModal siteData={siteData} showContactModal={showContactModal} setContactModal={triggerContactModal} />}
 
@@ -38,6 +45,10 @@ export default function Layout(props: LayoutProps) {
                 {siteData.modalData && <Modal siteData={siteData} modalType="global" pageModalVars={pageModalVars} themeStyles={themeStyles} />}
 
                 <ContainerFooter siteData={siteData} navSwitch={navSwitch} cmsUrl={cmsUrl} />
+
+                {(siteData.scripts?.header || siteData.scripts?.footer || pageScripts) && (
+                    <ReturnNextScript code={(siteData.scripts?.header || '') + (siteData.scripts?.footer || '') + pageScripts} />
+                )}
             </div>
         </>
     )

@@ -3,7 +3,6 @@
 @use './utils.scss';
 @use './variables.scss';
 
-
 html {
     scroll-behavior: smooth !important;
 }
@@ -680,33 +679,32 @@ $ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 .page-home.transparent-header {
     //Needs to work for parallax and photo gal
     .first-mod {
-        margin-top:-3rem !important;
+        margin-top: -3rem !important;
 
         .item-wrap {
-            height: 75vh ;
-            }
+            height: 75vh;
+        }
 
-            .caption {
-                height: 75vh ;
-                padding-top: 12rem ;
-            }
-
+        .caption {
+            height: 75vh;
+            padding-top: 12rem;
+        }
     }
 
-    .social-bar-background, .header-background.desktop-header {
-        background:transparent;
+    .social-bar-background,
+    .header-background.desktop-header {
+        background: transparent;
     }
-    .header-background.desktop-header{
-        position:fixed;
+    .header-background.desktop-header {
+        position: fixed;
     }
 
-    
     .shrink {
         .social-bar-background {
-            background:var(--social-background);
+            background: var(--social-background);
         }
-        &.header-background.desktop-header{
-            background:var(--header-background);
+        &.header-background.desktop-header {
+            background: var(--header-background);
         }
     }
 }

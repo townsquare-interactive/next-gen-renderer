@@ -19,9 +19,6 @@ import dynamic from 'next/dynamic'
 const DeferLoad = dynamic(() => import('./DeferLoad'), {
     ssr: false,
 })
-const ReturnNextScript = dynamic(() => import('./custom/ReturnNextScript'), {
-    ssr: false,
-})
 
 const useCustomComponents = false
 const useCustomScripts = true
@@ -103,8 +100,6 @@ export const Container = (props: ContainerProps) => {
     const { cmsUrl, themeStyles, columnStyles } = defineContainerVars(page, siteData)
     const siteModalVars = [useModal(siteData.modalData?.autoOpen || false, 'site', false)]
 
-    console.log(page.data.scripts)
-
     if (siteData.published === false) {
         console.log('unpublish time')
         redirect(siteData.redirectUrl || 'https://townsquareinteractive.com/')
@@ -125,7 +120,14 @@ export const Container = (props: ContainerProps) => {
             {page && (
                 <>
                     <PageHead page={page} siteData={siteData} pageType={page.data.slug === 'home' ? 'index' : 'slug'} />
-                    <ContainerLayout siteData={siteData} themeStyles={themeStyles} cName={page.data.slug} cmsUrl={cmsUrl} pageModalVars={siteModalVars}>
+                    <ContainerLayout
+                        siteData={siteData}
+                        themeStyles={themeStyles}
+                        cName={page.data.slug}
+                        cmsUrl={cmsUrl}
+                        pageModalVars={siteModalVars}
+                        pageScripts={page.data.scripts || ''}
+                    >
                         {/*  {page.data.anchorTags && page.data.anchorTags?.length != 0 && <Anchors anchorTags={page.data.anchorTags} />}
                          */}
                         {page.data && (
@@ -170,11 +172,7 @@ export const Container = (props: ContainerProps) => {
 
                     {siteData.styles?.global && <style>{siteData.styles.global}</style>}
 
-                    <DeferLoad fonts={siteData.fontImport || ''} globalStyles={siteData.styles ? siteData.styles : siteData.allStyles} />
-
-                    {(siteData.scripts?.header || siteData.scripts?.footer || page.data.scripts) && useCustomScripts && (
-                        <ReturnNextScript code={(siteData.scripts?.header || '') + (siteData.scripts?.footer || '') + (page.data.scripts || '')} />
-                    )}
+                    <DeferLoad fonts={siteData.fontImport} globalStyles={siteData.styles ? siteData.styles : siteData.allStyles} />
                 </>
             )}
         </>
