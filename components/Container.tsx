@@ -15,13 +15,13 @@ library.add(fas, fab, far)
 import { redirect } from 'next/navigation'
 import { CustomComponents } from './custom/CustomComponents'
 import dynamic from 'next/dynamic'
+
 //dynamic import with ssr false allows it load after initial render
 const DeferLoad = dynamic(() => import('./DeferLoad'), {
     ssr: false,
 })
 
-const useCustomComponents = false
-const useCustomScripts = true
+const useCustomComponents = true
 
 export interface ModalDef {
     autoOpen: boolean

@@ -1,21 +1,26 @@
-import { Fragment } from "react"
-import { FloatingReviewButtons } from "./FloatingReviewButtons"
-
+import { Fragment } from 'react'
+import { FloatingReviewButtons } from './FloatingReviewButtons'
+import dynamic from 'next/dynamic'
+import { FacebookWidget, FloatingReviewButtonsProps } from 'types'
+const FacebookFeed = dynamic(() => import('./FacebookFeed'), {
+    ssr: false,
+})
 
 const keysToComponentMap: any = {
-    FloatingReviewButtons
+    FloatingReviewButtons,
+    FacebookFeed,
 }
 
-const mapPropsToConfig = (config: any[]) => {
+const mapPropsToConfig = (config: [FloatingReviewButtonsProps | FacebookWidget]) => {
     const configWithProps: any = []
 
-    config.forEach((item: any) => {
+    config.forEach((item: FloatingReviewButtonsProps | FacebookWidget) => {
         if (item.type) {
             const { type, ...props } = item
 
             configWithProps.push({
                 ...props,
-                type: type
+                type: type,
             })
         }
     })
@@ -23,10 +28,12 @@ const mapPropsToConfig = (config: any[]) => {
     return configWithProps
 }
 
-export const CustomComponents = ({ config}: any) => {
+export const CustomComponents = ({ config }: { config: [FloatingReviewButtonsProps | FacebookWidget] }) => {
     if (!config) {
         throw new Error('You are calling Renderer with no config.')
     }
+
+    console.log(config)
 
     const configWithProps = mapPropsToConfig(config)
 
@@ -39,18 +46,14 @@ export const CustomComponents = ({ config}: any) => {
                 if (Comp) {
                     return (
                         <Fragment key={idx}>
-  
-            <Comp {...props}/>
-
-    </Fragment>
+                            <Comp {...props} />
+                        </Fragment>
                     )
                 }
             })}
         </>
     )
 }
-
-
 
 /* export const CustomComponents = ({customComponents}:any) => {
     return(

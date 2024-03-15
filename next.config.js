@@ -58,6 +58,10 @@ module.exports = withBundleAnalyzer({
                         key: 'Access-Control-Allow-Headers',
                         value: 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version',
                     },
+                    {
+                        key: 'Content-Security-Policy',
+                        value: "script-src 'self' 'sha256-+k+U1HKjyVLWWT+aR4rGHdJJs1SqatL7WFqMOnwAeg4='",
+                    },
                 ],
             },
         ]
