@@ -2,6 +2,7 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { ReactChild, ReactElement, ReactNode } from 'react'
 import { LatLngTuple } from 'leaflet'
+import { VcitaData } from 'components/custom/Engage'
 
 export interface ThemeStyles {
     logoColor: string
@@ -121,11 +122,17 @@ export interface GlobalData {
     redirectUrl?: string
     allStyles?: string
     styles?: any
-    customComponents?: [FloatingReviewButtonsProps]
+    customComponents?: [FloatingReviewButtonsProps | FacebookWidget]
     scripts?: {
         header: string
         footer: string
     }
+    vcita?: VcitaData
+}
+
+export interface FacebookWidget {
+    src: string
+    type: 'FacebookFeed'
 }
 
 interface modalData {
@@ -1024,6 +1031,7 @@ export type ReviewButtonProps = { link: string; content: string; type: string }
 
 export interface FloatingReviewButtonsProps {
     btns: ReviewButtonProps[]
+    type: 'string'
 }
 
 /*------------------------------Non CMS types-------------------------*/

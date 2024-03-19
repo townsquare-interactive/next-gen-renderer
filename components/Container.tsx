@@ -15,13 +15,15 @@ library.add(fas, fab, far)
 import { redirect } from 'next/navigation'
 import { CustomComponents } from './custom/CustomComponents'
 import dynamic from 'next/dynamic'
-
 //dynamic import with ssr false allows it load after initial render
+const Engage = dynamic(() => import('./custom/Engage'), {
+    ssr: false,
+})
 const DeferLoad = dynamic(() => import('./DeferLoad'), {
     ssr: false,
 })
 
-const useCustomComponents = true
+const useCustomComponents = false
 
 export interface ModalDef {
     autoOpen: boolean
@@ -101,7 +103,7 @@ export const Container = (props: ContainerProps) => {
     const siteModalVars = [useModal(siteData.modalData?.autoOpen || false, 'site', false)]
 
     if (siteData.published === false) {
-        console.log('unpublish time')
+        console.log('unpublished site')
         redirect(siteData.redirectUrl || 'https://townsquareinteractive.com/')
     }
 
@@ -114,6 +116,12 @@ export const Container = (props: ContainerProps) => {
         }
     })
     const pageModalVars = useModals(modalArgs)
+
+    //add fb feed component
+    /*     if (siteData.customComponents && siteData.customComponents?.filter((e: any) => e.type === 'FacebookFeed').length < 1) {
+        siteData.customComponents?.push({ src: 'https://www.facebook.com/facebook', type: 'FacebookFeed' })
+        console.log(siteData.customComponents)
+    } */
 
     return (
         <>
@@ -171,6 +179,8 @@ export const Container = (props: ContainerProps) => {
                     {siteData.customComponents && useCustomComponents && <CustomComponents config={siteData.customComponents} />}
 
                     {siteData.styles?.global && <style>{siteData.styles.global}</style>}
+
+                    {siteData.vcita?.businessId && <Engage {...siteData.vcita} />}
 
                     <DeferLoad fonts={siteData.fontImport} globalStyles={siteData.styles ? siteData.styles : siteData.allStyles} />
                 </>

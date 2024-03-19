@@ -33,8 +33,6 @@ export const CustomComponents = ({ config }: { config: [FloatingReviewButtonsPro
         throw new Error('You are calling Renderer with no config.')
     }
 
-    console.log(config)
-
     const configWithProps = mapPropsToConfig(config)
 
     return (
@@ -54,22 +52,3 @@ export const CustomComponents = ({ config }: { config: [FloatingReviewButtonsPro
         </>
     )
 }
-
-/* export const CustomComponents = ({customComponents}:any) => {
-    return(
-        <>
-{customComponents?.map((comp: any, idx: number) => {
-    console.log('comp', comp.type)
-    return (
-    <Fragment key={idx}>
-        {comp.type==='socialBtns' ? (
-            <SocialButtons btns={comp.btns}/>
-        ) : (
-            <></>
-        )}
-    </Fragment>
-)})}
-</>
-)
-
-        } */
