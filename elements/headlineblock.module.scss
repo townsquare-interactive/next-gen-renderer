@@ -451,6 +451,24 @@
             margin-right: 0.3rem;
         }
     }
+
+    &.lg {
+        .hd {
+            font-size: 2rem;
+            @include breakpoints.md-min {
+                font-size: 3.5rem;
+            }
+        }
+    }
+
+    &.xl {
+        .hd {
+            font-size: 2.5rem;
+            @include breakpoints.md-min {
+                font-size: 4rem;
+            }
+        }
+    }
 }
 
 .hero,

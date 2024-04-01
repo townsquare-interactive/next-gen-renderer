@@ -121,6 +121,8 @@
             .item-wrap {
                 padding: 1.5rem 2.5rem 2rem;
                 display: block;
+                max-width: 38rem;
+                margin: 0 auto;
             }
 
             .caption {
@@ -153,6 +155,21 @@
                 @media (min-width: 1209px) {
                     font-size: 80%;
                 }
+            }
+        }
+
+        &.thin .item .item-wrap {
+            padding: 0.5rem;
+            padding-bottom: 0;
+        }
+
+        &.landing {
+            h2 {
+                font-size: 1.1875em;
+                margin-top: 0em;
+                margin-bottom: 0.2105263158em;
+                line-height: 1.4736842105em;
+                font-family: 'Oswald', Helvetica, Arial, sans-serif;
             }
         }
     }

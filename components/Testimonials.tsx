@@ -31,7 +31,8 @@ const Testimonials = (props: ModuleProps) => {
         blockField1,
         blockField2,
         anchorLink,
-        hideTitle
+        hideTitle,
+        siteData,
     } = props
 
     const [maxHeight, setHeights] = useState(0)
@@ -131,11 +132,13 @@ const Testimonials = (props: ModuleProps) => {
                         [styles.carousel]: useCarousel,
                         ['custom-height-1']: blockField1,
                         ['custom-height-2']: blockField2,
+                        [styles['thin']]: siteData?.siteType === 'landing',
+                        [styles['landing']]: siteData?.siteType === 'landing',
                     }
                 )}
                 id={anchorLink ? anchorLink : `id_${modId}`}
             >
-                {title && hideTitle!=0 && <ModuleTitle title={title} />}
+                {title && hideTitle != 0 && <ModuleTitle title={title} />}
 
                 <div className={cn(styles.wrapper, 'wrapper')}>
                     {!useCarousel ? (

@@ -6,7 +6,7 @@
     display: none;
 
     &.no-thumb {
-        @include breakpoints.sm-min {
+        @include breakpoints.md-min {
             display: block;
         }
     }
