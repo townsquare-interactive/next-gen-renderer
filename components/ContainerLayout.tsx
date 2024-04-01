@@ -35,6 +35,7 @@ export default function Layout(props: LayoutProps) {
             <div
                 className={cn(styles.root, `page-${cName}`, {
                     'transparent-header': false,
+                    'landing-page': siteData.siteType === 'landing',
                 })}
             >
                 <SlidingHeader navSwitch={navSwitch} navCheck={navCheck} themeStyles={themeStyles} siteData={siteData} />

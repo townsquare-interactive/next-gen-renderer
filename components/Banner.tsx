@@ -127,7 +127,7 @@ const ItemWrap = (props: ItemWrapProps) => {
                     : { height: item.modOne || 'auto' }
             }
         >
-            <div className={styles.content}>
+            <div className={cn(styles.content, 'banner-content')}>
                 <>
                     {(item.headline || item.subheader) && (
                         <HeadlineBlock item={item} well={1} columns={columns} isBeaconHero={item.isBeaconHero} modType={'banner'} />

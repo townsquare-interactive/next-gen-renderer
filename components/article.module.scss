@@ -238,10 +238,6 @@
                     }
                 }
             }
-
-            &.thin .item {
-                margin-bottom: 0.5rem;
-            }
         }
     }
 
@@ -286,6 +282,13 @@
 
     &.modal {
         padding-top: 0;
+    }
+
+    &.thin {
+        .item,
+        &.col_1 .item {
+            margin-bottom: 0.5rem;
+        }
     }
 }
 

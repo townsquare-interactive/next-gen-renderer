@@ -269,6 +269,23 @@ $ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
             }
         }
     }
+
+    &.thin {
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-bottom: 0;
+
+        .slick-slider {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        @media (min-width: 1209px) {
+            .slick-slide {
+                margin-top: 0rem;
+                margin-bottom: 0rem;
+            }
+        }
+    }
 }
 
 .normal-carousel {
@@ -368,6 +385,10 @@ $ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
         bottom: 0 !important;
         padding: 0.5rem 0;
     }
+}
+
+.rev-carousel .slick-dots li {
+    margin: 0;
 }
 
 .thumbnail .slick-dots li {
@@ -706,5 +727,82 @@ $ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
         &.header-background.desktop-header {
             background: var(--header-background);
         }
+    }
+}
+
+//Landing page css
+/*------------TEXT RELATED CHANGES------------*/
+
+.mobiletext {
+    font-weight: bold;
+    font-size: 3.2rem;
+}
+
+.guarn {
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: red;
+    font-weight: bold;
+    font-size: 4.5rem;
+    line-height: 1.2;
+    letter-spacing: 1.5px;
+}
+span.guarntext {
+    font-size: 17px;
+    font-weight: bold;
+    color: red;
+    line-height: normal;
+
+    @include breakpoints.md-min {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 800px) {
+    .mobiletext {
+        font-size: 2.5rem;
+    }
+    .guarn {
+        font-size: 3.5rem;
+    }
+}
+@media (max-width: 500px) {
+    .mobiletext {
+        font-size: 2.2rem;
+    }
+    .guarn {
+        font-size: 2.5rem;
+        -webkit-text-stroke-width: 1.5px;
+    }
+}
+
+@media (max-width: 360px) {
+    .guarn {
+        font-size: 2rem !important;
+        -webkit-text-stroke-width: 1.3px !important;
+    }
+}
+
+.cta-icon {
+    display: none;
+}
+
+.landing-page {
+    .banner-mod .banner-content {
+        align-items: center;
+    }
+    .slick-track {
+        padding-bottom: 0;
+    }
+
+    .slick-arrow.carouselarrow {
+        display: none;
+
+        @include breakpoints.md-min {
+            display: block;
+        }
+    }
+
+    .slick-slider {
+        padding-top: 0;
     }
 }

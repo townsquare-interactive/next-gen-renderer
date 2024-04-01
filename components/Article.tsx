@@ -29,7 +29,8 @@ const Article = (props: ModuleProps) => {
         isSingleColumn,
         anchorLink,
         pageModalVars,
-        hideTitle
+        hideTitle,
+        thinSpacing,
     } = props
 
     if (disabled === 'disabled' || disabled === true) {
@@ -55,11 +56,12 @@ const Article = (props: ModuleProps) => {
                         [`cst_${customClassName}`]: customClassName,
                         [styles['feature-column']]: columnLocation === 0,
                         [styles['single-column']]: isSingleColumn,
+                        [styles.thin]: thinSpacing,
                     }
                 )}
                 id={anchorLink ? anchorLink : `id_${modId}`}
             >
-                {title && hideTitle!=0 && <ModuleTitle title={title} />}
+                {title && hideTitle != 0 && <ModuleTitle title={title} />}
                 <div className={cn(styles.wrapper, 'wrapper')}>
                     {items?.length > 0 &&
                         items.map((item, index) => (
@@ -199,7 +201,7 @@ const ItemWrap = (props: ItemWrapProps) => {
                         isBeaconHero={item.isBeaconHero}
                         useAccentColor={item.useAccentColor || false}
                     />
-                    {item.video?.src && <Video videoUrl={item.video.src} modLayout={item.video.method}/>}
+                    {item.video?.src && <Video videoUrl={item.video.src} modLayout={item.video.method} />}
                 </div>
             )}
             {item.visibleButton && (
