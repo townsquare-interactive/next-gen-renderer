@@ -108,15 +108,16 @@ export interface GlobalData {
     logos?: CMSLogo
     //mobileLogos?: Logo
     footerLogos?: Logo
-    composites?: { footer?: CompositeData; right_rail?: CompositeData }
+    composites?: { footer?: CompositeData; right_rail?: CompositeData } | null
     theme?: string
     cmsColors?: any
     favicon?: string
     cmsUrl: string
     s3Folder: string
     headerOptions?: HeaderOptions
-    config?: { mailChimp: { audId: string; datacenter: string; auth: string }; zapierUrl?: string; makeUrl?: string }
-    navAlign?: 'left' | 'right' | 'center'
+    config?: { mailChimp?: { audId: string; datacenter: string; auth: string }; zapierUrl?: string; makeUrl?: string }
+    navAlign?: any
+    //navAlign?: 'left' | 'right' | 'center'
     modalData?: modalData
     published?: boolean
     redirectUrl?: string
@@ -127,7 +128,8 @@ export interface GlobalData {
         header: string
         footer: string
     }
-    vcita?: VcitaData
+    vcita?: VcitaData | null
+    siteType?: string
 }
 
 export interface FacebookWidget {
@@ -181,13 +183,13 @@ interface CMSLogo {
 }
 
 export interface LogoSlot {
-    show: number
-    type: string
-    markup: string
-    hasLinks: boolean
-    alignment: string
-    image_src: string
-    image_link: string
+    show?: number
+    type?: string
+    markup?: string
+    hasLinks?: boolean
+    alignment?: string
+    image_src?: string
+    image_link?: string
     image_link_ext?: string
 }
 
@@ -197,8 +199,11 @@ export interface HeaderOptions {
     desktopBurgerNav?: boolean
     ctaBanner?: ButtonListProps[]
     ctaBtns?: ButtonListProps[]
+    mobileHeaderBtns?: ButtonListProps[]
     showPrintEmail?: boolean
     textCta?: { text: string }[]
+    hideNav?: boolean
+    hideSocial?: boolean
 }
 
 interface CtaBtn {
@@ -229,6 +234,8 @@ interface ButtonListProps {
     linkType?: string
     blockBtn?: boolean
     opensModal: number
+    googleIcon?: string
+    btnStyle?: 'round' | 'rectangle'
 }
 
 export interface HeaderCTAProps {
@@ -415,14 +422,15 @@ export interface Module {
 }
 
 export interface CMSPageData {
-    modules: ModuleData[][]
+    //modules: ModuleData[][]
+    modules: any
     type?: string
     layout?: number
     columns?: number
     JS?: string | null
     head_script: string | null
     hideTitle: number
-    sections: [{ wide: string }, { wide: string }, { wide: string }, { wide: string }, { wide: string }]
+    sections: { wide: string }[]
     columnStyles: string
     slug: string
     anchorTags?: any[]
@@ -629,6 +637,8 @@ export interface ModuleProps {
     anchorLink?: string
     pageModalVars?: PageModalVars[]
     modType?: string
+    siteData?: GlobalData
+    thinSpacing?: boolean
 }
 
 export interface CarouselSettings {
@@ -830,14 +840,14 @@ export interface HeaderLogoBlockProps {
 }
 
 export interface SocialItem {
-    enabled: number
-    format: string
-    id: number
-    input: any
-    label: string
+    enabled?: number
+    format?: string
+    id?: number
+    input?: any
+    label?: string
     name: string
     url: string
-    value: string
+    value?: string
     icon: any
 }
 
@@ -907,7 +917,7 @@ export interface MyNavProps {
     navType?: string
     cmsNav: any
     currentPage?: string
-    navAlign?: 'left' | 'right' | 'center'
+    navAlign?: any
     navSwitch: () => void
 }
 
@@ -915,6 +925,7 @@ export interface LogoProps {
     logoUrl?: string
     link?: string
     cmsUrl?: string
+    isLanding?: boolean
 }
 
 export interface SocialBarProps {

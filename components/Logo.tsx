@@ -4,6 +4,7 @@ import Link from 'next/dist/client/link'
 import Image from 'next/image'
 import { LogoProps, Media } from '../types'
 import { useState } from 'react'
+import cn from 'classnames'
 
 const Logo = (props: LogoProps) => {
     const { logoUrl = '', link = '/' } = props
@@ -16,7 +17,11 @@ const Logo = (props: LogoProps) => {
     }
 
     return (
-        <div className={styles.root}>
+        <div
+            className={cn(styles.root, {
+                [styles.landing]: props.isLanding,
+            })}
+        >
             <div className={styles.wrapper}>
                 <div className={styles.logo}>
                     <Link href={link}>

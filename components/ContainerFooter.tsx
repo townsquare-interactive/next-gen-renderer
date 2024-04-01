@@ -12,8 +12,33 @@ import { Fragment } from 'react'
 const ContainerFooter = (props: ContainerFooterProps) => {
     const { siteData, navSwitch, cmsUrl } = props
 
+    const InfoBlock = () => {
+        return (
+            <div className={styles['info-block']}>
+                <address className={styles.copy}>
+                    <span className={styles.copyright}>
+                        Copyright &#169; {new Date().getFullYear()} {siteData.siteName}, all rights reserved.
+                    </span>
+                    {siteData.contact.address?.street && <span className={styles['street-address']}>{siteData.contact.address.street}, </span>}{' '}
+                    <span className={styles['city-state-zip-address']}>
+                        {siteData.contact.address?.city && `${siteData.contact.address.city},`}{' '}
+                        {siteData.contact.address?.state && `${siteData.contact.address.state}`}{' '}
+                        {siteData.contact.address?.zip && `${siteData.contact.address.zip}`}
+                    </span>{' '}
+                    <span className={styles['phone']}>{siteData.phoneNumber && `${siteData.phoneNumber}`}</span>
+                </address>
+            </div>
+        )
+    }
+
     return (
-        <footer className={cn(styles.root, 'footer')}>
+        <footer
+            className={cn(styles.root, 'footer', {
+                //[styles['landing']]: siteData.siteType === 'landing',
+                [styles['landing']]: true,
+                ['landing-footer']: true,
+            })}
+        >
             <div className={styles.wrapper}>
                 {process.env.NEXT_PUBLIC_CMS_CLIENT != 'strapi' && (
                     <div className={styles.content}>
@@ -29,30 +54,32 @@ const ContainerFooter = (props: ContainerFooterProps) => {
                         <div className={cn(styles['logo-block'])}>
                             {siteData.logos?.footer?.slots.map((item: any, index: number) => (
                                 <Fragment key={index}>
-                                    {item.image_src && <Logo logoUrl={domainImage(item.image_src, true, cmsUrl)} link={item.image_link} />}
+                                    {item.image_src && (
+                                        <Logo
+                                            logoUrl={domainImage(item.image_src, true, cmsUrl)}
+                                            link={item.image_link}
+                                            isLanding={siteData.siteType === 'landing'}
+                                        />
+                                    )}
                                 </Fragment>
                             ))}
                         </div>
                     )}
+                    {siteData.siteType === 'landing' && (
+                        <div className={styles['social-landing']}>
+                            <SocialLinks siteData={siteData} modType="landing" />
+                        </div>
+                    )}
                 </div>
-                <div className={styles['info-block']}>
-                    <address className={styles.copy}>
-                        <span className={styles.copyright}>
-                            Copyright &#169; {new Date().getFullYear()} {siteData.siteName}, all rights reserved.
-                        </span>
-                        {siteData.contact.address?.street && <span className={styles['street-address']}>{siteData.contact.address.street}, </span>}{' '}
-                        <span className={styles['city-state-zip-address']}>
-                            {siteData.contact.address?.city && `${siteData.contact.address.city},`}{' '}
-                            {siteData.contact.address?.state && `${siteData.contact.address.state}`}{' '}
-                            {siteData.contact.address?.zip && `${siteData.contact.address.zip}`}
-                        </span>{' '}
-                        <span className={styles['phone']}>{siteData.phoneNumber && `${siteData.phoneNumber}`}</span>
-                    </address>
-                </div>
+                {siteData.siteType != 'landing' && <InfoBlock />}
                 <div className={styles['bottom']}>
-                    <div className={styles['social-block']}>
-                        <SocialLinks siteData={siteData} modType="footer" />
-                    </div>
+                    {siteData.siteType != 'landing' ? (
+                        <div className={styles['social-block']}>
+                            <SocialLinks siteData={siteData} modType="footer" />
+                        </div>
+                    ) : (
+                        <InfoBlock />
+                    )}
                     {siteData.cmsNav && siteData.cmsNav.length != 0 && (
                         <div className={styles['nav-block']}>
                             <NavToggle navSwitch={navSwitch} modType="footer" />

@@ -117,4 +117,21 @@
     &.reverse-social {
         flex-direction: row-reverse;
     }
+
+    &.landing {
+        a:hover {
+            background: var(--link);
+            scale: 1.2;
+            transition: all 0.3s ease-in-out;
+        }
+
+        @include breakpoints.sm-min {
+            justify-content: start;
+
+            a {
+                font-size: 2em;
+                padding: 1rem;
+            }
+        }
+    }
 }

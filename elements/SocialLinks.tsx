@@ -15,6 +15,7 @@ const SocialLinks = ({ siteData, modType = 'header' }: SocialLinksProps) => {
                 [styles['foot-social']]: modType === 'footer',
                 [styles['widget']]: modType === 'widget',
                 [styles['reverse-social']]: siteData.headerOptions?.reverseSocial,
+                [styles['landing']]: modType === 'landing',
             })}
         >
             {siteData.social &&

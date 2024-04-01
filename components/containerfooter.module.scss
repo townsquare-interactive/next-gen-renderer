@@ -162,4 +162,38 @@
             width: 100%;
         }
     }
+    &.landing {
+        padding-bottom: 3rem;
+
+        .brand {
+            @include breakpoints.sm-min {
+                display: flex;
+                align-items: center;
+
+                /* Optionally, adjust styling for SocialLinks */
+                .social-landing {
+                    flex: 1; /* Takes up half of the width */
+                }
+
+                .info-block {
+                    flex: 1;
+                }
+            }
+
+            .logo-block {
+                img {
+                    max-height: 7rem;
+                    height: 7rem;
+                }
+                @include breakpoints.sm-min {
+                    flex: 1;
+
+                    img {
+                        max-height: 9rem;
+                        height: 9rem;
+                    }
+                }
+            }
+        }
+    }
 }

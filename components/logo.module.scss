@@ -2,6 +2,7 @@
 @use 'sass:math';
 @use '../styles/variables.scss';
 @use '../styles/utils.scss';
+@value landing-footer from './container.module.scss';
 
 .root {
     .wrapper {
@@ -14,6 +15,17 @@
                 height: auto;
                 width: auto;
             }
+        }
+    }
+    &.landing-footer .logo {
+        text-align: center;
+
+        @include breakpoints.sm-min {
+            display: flex;
+            justify-content: flex-end;
+        }
+        img {
+            max-height: 9rem;
         }
     }
 }
