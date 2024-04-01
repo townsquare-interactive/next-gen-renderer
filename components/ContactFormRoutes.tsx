@@ -48,7 +48,11 @@ const ContactFormRoutes = (props: ContactFormRoutesProps) => {
 
     return (
         <>
-            <div className={cn(styles.root, styles[`${modType}`])}>
+            <div
+                className={cn(styles.root, styles[`${modType}`], {
+                    [styles.landing]: siteData.siteType === 'landing',
+                })}
+            >
                 <div className={cn(styles.wrapper, 'txt-color')}>
                     {title && <ModuleTitle title={title} />}
                     {contactFormData &&

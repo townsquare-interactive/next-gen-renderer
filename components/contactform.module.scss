@@ -149,4 +149,19 @@
             justify-content: center;
         }
     }
+
+    &.landing {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+
+        .wrapper {
+            background: var(--accent-background);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+        }
+        .title,
+        label {
+            color: var(--txt-accent);
+        }
+    }
 }
