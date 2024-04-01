@@ -78,6 +78,12 @@
             line-height: 1.4285714286em;
         }
 
+        &.btn_xl-landing {
+            font-size: 1.5rem;
+            font-weight: bold;
+            padding: 0.625em 1.25em;
+        }
+
         @include breakpoints.md-min {
             &.btn_lg {
                 padding: 0.825em 2.25em;
@@ -88,6 +94,14 @@
                 line-height: 1.5em;
                 padding: 1.125em 2.75em;
             }
+
+            &.btn_xl-landing {
+                line-height: 1.5em;
+            }
+        }
+
+        &.round {
+            border-radius: 50px;
         }
 
         &.btn-block {
@@ -106,6 +120,40 @@
 
         &.btn2_override:hover {
             border-color: transparent;
+        }
+
+        &.landing {
+            background-color: #fc070a;
+            //display: inline-block;
+            //color: #fff;
+            //font-size: 1.3rem;
+            margin: 0 0.3rem 0 0;
+            border-radius: 14px;
+            text-transform: uppercase;
+            font-family: 'Oswald', Helvetica, Arial, sans-serif;
+            text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.3);
+            border: none;
+            transition: 0.25s;
+            font-weight: normal;
+            letter-spacing: 0.2px;
+
+            span {
+                margin-right: 4px;
+            }
+
+            @include breakpoints.lg-min {
+                font-size: 1.6rem;
+                margin: 0 1rem;
+                padding: 0.4rem 1rem;
+            }
+
+            &:hover,
+            &:focus,
+            &:hover,
+            &:focus {
+                box-shadow: 0.2em 0.2em #cf0d0f;
+                transform: translateY(-0.25em);
+            }
         }
     }
 
@@ -267,8 +315,12 @@
 
         .btn-wrap {
             justify-content: flex-end;
-            gap: 10px;
+            gap: 5px;
             align-items: center;
+
+            @include breakpoints.sm-min {
+                gap: 10px;
+            }
 
             a:nth-of-type(even) {
                 div {
@@ -277,14 +329,6 @@
                     &:hover {
                         background-color: var(--promo3);
                     }
-                }
-            }
-
-            .btn_cta {
-                display: none;
-
-                @include breakpoints.sm-min {
-                    display: block;
                 }
             }
         }

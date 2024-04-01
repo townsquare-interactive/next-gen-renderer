@@ -17,10 +17,35 @@
         gap: 10px;
         align-items: center;
         flex-basis: 100%;
+        display: none;
+
+        @include breakpoints.sm-min {
+            display: block;
+        }
 
         @include breakpoints.lg-min {
             margin-right: 2rem;
             flex-basis: 50%;
+        }
+    }
+    &.landing {
+        .cta-block {
+            display: none;
+            @include breakpoints.md-min {
+                flex-basis: 60%;
+            }
+
+            @include breakpoints.md-min {
+                display: block;
+            }
+        }
+    }
+
+    .cta-block.mobile-cta-block {
+        display: block;
+
+        @include breakpoints.md-min {
+            display: none;
         }
     }
 
@@ -99,5 +124,45 @@
 
     &.reverse-head {
         flex-direction: column-reverse;
+    }
+
+    &.landing {
+        .wrapper {
+            padding: 0.5rem;
+            //max-height: 4rem;
+
+            .logo-block {
+                flex-basis: 39%;
+                @include breakpoints.sm-min {
+                    flex-basis: auto;
+                }
+
+                .logo-item {
+                    width: 100%;
+                }
+            }
+
+            .logo-block img {
+                //max-height: 3.75rem !important;
+                //width: 100%;
+                /*                 @include breakpoints.sm-min {
+                    max-height: 6rem;
+                } */
+                @include breakpoints.md-min {
+                    max-height: 10rem;
+                    width: auto;
+                    height: 10rem;
+                }
+            }
+        }
+
+        &.shrink {
+            .wrapper {
+                img {
+                    max-height: 8rem !important;
+                    //width: 100%;
+                }
+            }
+        }
     }
 }

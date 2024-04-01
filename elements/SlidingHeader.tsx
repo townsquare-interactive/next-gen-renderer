@@ -4,6 +4,7 @@ import styles from './slidingheader.module.scss'
 import SocialLinks from './SocialLinks'
 import Nav from './Nav'
 import WindowCloser from './WindowCloser'
+import { ButtonWrap } from './ButtonWrap'
 
 const SlidingHeader = (props: SlidingHeaderProps) => {
     const { navSwitch, navCheck, themeStyles, siteData } = props
@@ -23,7 +24,19 @@ const SlidingHeader = (props: SlidingHeaderProps) => {
                         <SocialLinks siteData={siteData} modType="slide-header" />
                     </div>
 
-                    <Nav navType={'mobile-nav'} cmsNav={siteData.cmsNav} navSwitch={navSwitch} />
+                    {!siteData.headerOptions?.hideNav && <Nav navType={'mobile-nav'} cmsNav={siteData.cmsNav} navSwitch={navSwitch} />}
+
+                    {siteData.siteType === 'landing' && siteData.headerOptions?.ctaBtns && (
+                        <div className={styles['cta-block']}>
+                            <ButtonWrap buttonList={siteData.headerOptions.ctaBtns} type="cta" />
+                        </div>
+                    )}
+
+                    {siteData.headerOptions?.mobileHeaderBtns && siteData.siteType === 'landing' && (
+                        <div className={cn(styles['cta-block'], styles['mobile-cta-block'])}>
+                            <ButtonWrap buttonList={siteData.headerOptions?.mobileHeaderBtns} type="cta" />
+                        </div>
+                    )}
                 </div>
             </div>
         </div>

@@ -32,11 +32,12 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
 
     return (
         <header
-            className={cn(styles.root, 'header-background','desktop-header', {
+            className={cn(styles.root, 'header-background', 'desktop-header', {
                 [styles.shrink]: ref?.current?.offsetHeight && windowHeight > ref?.current?.offsetHeight,
-                'shrink': ref?.current?.offsetHeight && windowHeight > ref?.current?.offsetHeight,
+                shrink: ref?.current?.offsetHeight && windowHeight > ref?.current?.offsetHeight,
                 [styles['reverse-head']]: siteData.headerOptions?.reverseHeaderLayout,
-                [styles.transparent]:true
+                [styles.transparent]: false,
+                [styles.landing]: siteData.siteType === 'landing',
             })}
             ref={ref}
         >
@@ -45,7 +46,8 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
                 {siteData.logos?.header?.slots && <HeaderLogoBlock type="desktop" logos={siteData.logos.header.slots} cmsUrl={cmsUrl} />}
 
                 {siteData.logos?.mobile?.slots && <HeaderLogoBlock type="mobile" logos={siteData.logos.mobile.slots} cmsUrl={cmsUrl} />}
-                {!siteData.headerOptions?.desktopBurgerNav && (
+
+                {!siteData.headerOptions?.desktopBurgerNav && !siteData.headerOptions?.hideNav && (
                     <Nav navType={'desktop-nav'} cmsNav={siteData.cmsNav} navSwitch={navSwitch} navAlign={siteData.navAlign} />
                 )}
 
@@ -57,14 +59,21 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
                                     <TextWidget text={item.text} type="header" />
                                 </Fragment>
                             ))}
+
                         {siteData.headerOptions?.ctaBtns && <ButtonWrap buttonList={siteData.headerOptions.ctaBtns} type="cta" />}
                     </div>
                 )}
-                {siteData.cmsNav && siteData.cmsNav.length != 0 && (
+                {siteData.headerOptions?.mobileHeaderBtns && (
+                    <div className={cn(styles['cta-block'], styles['mobile-cta-block'])}>
+                        <ButtonWrap buttonList={siteData.headerOptions?.mobileHeaderBtns} type="cta" />
+                    </div>
+                )}
+
+                {siteData.cmsNav && siteData.cmsNav.length != 0 && !siteData.headerOptions?.hideNav && (
                     <NavToggle navSwitch={navSwitch} desktopBurgerNav={siteData.headerOptions?.desktopBurgerNav} />
                 )}
             </div>
-            <SocialBar siteData={siteData} setContactModal={setContactModal} />
+            {!siteData.headerOptions?.hideSocial && <SocialBar siteData={siteData} setContactModal={setContactModal} />}
         </header>
     )
 }

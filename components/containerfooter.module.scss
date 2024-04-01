@@ -162,7 +162,7 @@
             width: 100%;
         }
     }
-    &.landing {
+    &.landing .wrapper {
         padding-bottom: 3rem;
 
         .brand {
@@ -182,15 +182,18 @@
 
             .logo-block {
                 img {
-                    max-height: 7rem;
-                    height: 7rem;
+                    height: auto;
+                    //width: auto;
+                    max-height: 100%;
+                    width: 9rem;
+                    max-width: 100%;
                 }
+
                 @include breakpoints.sm-min {
                     flex: 1;
 
                     img {
-                        max-height: 9rem;
-                        height: 9rem;
+                        width: 13rem;
                     }
                 }
             }

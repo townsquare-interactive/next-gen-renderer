@@ -100,4 +100,21 @@
             text-align: center;
         }
     }
+    .cta-block {
+        display: none;
+        @include breakpoints.md-min {
+            display: block;
+        }
+        & > div > div {
+            justify-content: center !important;
+        }
+    }
+
+    .cta-block.mobile-cta-block {
+        display: block;
+
+        @include breakpoints.md-min {
+            display: none;
+        }
+    }
 }
