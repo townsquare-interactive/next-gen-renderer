@@ -276,7 +276,7 @@
         },
         "styles": {
             "global": ":root {\n  --logo: #444444;\n  --hd: #002253;\n  --sh: #002253;\n  --txt: #444444;\n  --link: #fc070a;\n  --link-hover: #fc070a;\n  --btn-txt: #ffffff;\n  --btn-background: #fc070a;\n  --txt-accent: #ffffff;\n  --hero-sh: #ffffff;\n  --hero-txt: #ffffff;\n  --hero-btn-txt: #ffffff;\n  --hero-btn-background: #444444;\n  --hero-link: #DDDDDD;\n  --hero-link-hover: #dddddd;\n  --caption-txt: #ffffff;\n  --caption-background: rgba(0,0,0,0.4);\n  --nav-txt: #666666;\n  --nav-hover: #fc070a;\n  --nav-current: #fc070a;\n  --main-background: #ffffff;\n  --content-background: rgba(255,255,255,1);\n  --header-background: rgba(255,255,255,1);\n  --social-background: #ffffff;\n  --accent-background: #002253;\n  --hero-background: #002253;\n  --footer-background: #002253;\n  --footer-txt: #ffffff;\n  --footer-link: #7fa7b8;\n  --promo-txt: #ffffff;\n  --promo: #fc070a;\n  --promo2: #002253;\n  --promo3: #7fa7b8;\n  --promo4: #002253;\n  --promo5: #f2f6fc;\n  --promo6: #002253;\n}\n\nbody .txt-font .dsc a {\n  color: var(--link);\n}\n\n.accent-txt {\n  color: var(--txt-accent);\n}\n\n.txt-color {\n  color: var(--txt);\n}\n\n.txt-color-hd {\n  color: var(--hd);\n}\n\n.txt-color-sh {\n  color: var(--sh);\n}\n\n.navLink:hover {\n  color: var(--nav-hover);\n}\n\n.navLink {\n  color: var(--nav-txt);\n}\n\n.social-icon {\n  color: var(--nav-txt);\n}\n\n.social-icon:hover, .footer-icon:hover {\n  background-color: var(--btn-background);\n  color: var(--btn-txt);\n}\n\n.current-page {\n  color: var(--nav-current);\n}\n\n.caption-txt {\n  color: var(--caption-txt);\n}\n\n.box-links {\n  color: var(--link);\n}\n\n.box-links:hover {\n  color: var(--nav-hover);\n}\n\n.testimonial-txt-color {\n  color: var(--btn-background);\n}\n\n.testimonials-mod.well .hero.item, .testimonials-mod.well .hero .desc, .card-mod .hero.item, .card-mod .hero .desc, .photogallery-mod.well .hero.item, .photogallery-mod.well .hero .desc {\n  color: var(--hero-txt);\n}\n.testimonials-mod.well .hero .stars, .testimonials-mod.well .hero .quotes, .testimonials-mod.well .hero .hd, .testimonials-mod.well .hero .sh, .card-mod .hero .stars, .card-mod .hero .quotes, .card-mod .hero .hd, .card-mod .hero .sh, .photogallery-mod.well .hero .stars, .photogallery-mod.well .hero .quotes, .photogallery-mod.well .hero .hd, .photogallery-mod.well .hero .sh {\n  color: var(--txt-accent);\n}\n\n.btn_1 {\n  color: var(--btn-txt);\n  background-color: var(--btn-background);\n}\n\n.btn_1:hover {\n  color: var(--btn-background);\n  background-color: var(--btn-txt);\n}\n\n.btn_2 {\n  color: var(--link);\n  border-color: var(--link);\n}\n\n.btn_2:hover {\n  color: var(--link-hover);\n  border-color: var(--link-hover);\n}\n\n.btn_alt {\n  color: var(--promo);\n  background-color: var(--btn-txt);\n}\n\n.btn_alt:hover {\n  color: var(--btn-txt);\n  background-color: var(--promo);\n}\n\n.close-toggle {\n  color: var(--btn-txt);\n  background-color: var(--btn-background);\n}\n\n.close-toggle:hover {\n  color: var(--btn-background);\n  background-color: var(--btn-txt);\n}\n\n.btn_p4.btn_1 {\n  background-color: var(--promo4);\n  color: var(--btn-txt);\n}\n\n.btn_p4.btn_1:hover {\n  color: var(--promo4);\n  background-color: var(--btn-txt);\n}\n\n.btn_p3.btn_1 {\n  background-color: var(--promo3);\n  color: var(--btn-txt);\n}\n\n.btn_p3.btn_1:hover {\n  color: var(--promo3);\n  background-color: var(--btn-txt);\n}\n\n.btn_p2.btn_1 {\n  background-color: var(--promo2);\n  color: var(--btn-txt);\n}\n\n.btn_p2.btn_1:hover {\n  color: var(--promo2);\n  background-color: var(--btn-txt);\n}\n\n.btn_p4.btn_2 {\n  border-color: var(--promo4);\n  color: var(--promo4);\n}\n\n.btn_p3.btn_2 {\n  border-color: var(--promo3);\n  color: var(--promo3);\n}\n\n.btn_p2.btn_2 {\n  border-color: var(--promo2);\n  color: var(--promo2);\n}\n\n.btn_p4.btn_2:hover, .btn_p3.btn_2:hover, .btn_p2.btn_2:hover {\n  border-color: var(--link-hover);\n  color: var(--link-hover);\n}\n\n.hero .one-btn-w .btn_1.btn_w {\n  color: var(--btn-txt);\n  background-color: var(--hero-btn-background);\n}\n\n.border-background {\n  background-color: var(--accent-background);\n}\n\n.hero-background {\n  background-color: var(--promo);\n}\n\n.content-background {\n  background-color: var(--content-background);\n}\n\n.footer {\n  background-color: var(--footer-background);\n  color: var(--footer-txt);\n}\n\n.header-background {\n  background-color: var(--header-background);\n}\n\n.social-bar-background {\n  background-color: var(--social-background);\n}\n\n.promo-background {\n  background-color: var(--promo);\n}\n\n.cta {\n  background-color: var(--promo);\n}\n\n.cta:hover {\n  background-color: var(--promo2);\n}\n\n.testimonials-mod .hero-background, .card-mod .hero-background {\n  background-color: var(--hero-background);\n}\n\n.caption-background {\n  background-color: var(--caption-background);\n}",
-            "custom": ""
+            "custom": "body {font-family:Open Sans}.hd-font{font-family:Oswald}.txt-font{font-family:Open Sans}.feat-font{font-family:Oswald}"
         },
         "scripts": {
             "header": "",
@@ -372,7 +372,7 @@
                                     "desc": "",
                                     "align": "center",
                                     "image": "http://guaranteedservice.com/files/2023/03/heatingserviceaddl.jpg",
-                                    "modOne": 0.3,
+                                    "modOne": "50vh",
                                     "plugin": "",
                                     "btnType": "btn_1 btn_p1",
                                     "reviews": "",
@@ -414,7 +414,7 @@
                                             "window": "0",
                                             "label": "GIVE US A CALL",
                                             "active": true,
-                                            "btnType": "btn_1 btn_p1",
+                                            "btnType": "btn_1 btn_p1 btn_land-colors",
                                             "btnSize": "btn_md",
                                             "linkType": "ext",
                                             "blockBtn": false,
@@ -683,11 +683,12 @@
                                             "window": "0",
                                             "label": "GIVE US A CALL",
                                             "active": true,
-                                            "btnType": "btn_1",
                                             "btnSize": "btn_md",
                                             "linkType": "ext",
                                             "blockBtn": false,
-                                            "opensModal": -1
+                                            "opensModal": -1,
+                                            "btnStyle": "round",
+                                            "btnType": "btn_1 btn_p1"
                                         },
                                         {
                                             "name": "btn2",
@@ -775,7 +776,11 @@
                                         "isVisible": true,
                                         "size": "lg"
                                     }
-                                ]
+                                ],
+                                "btnStyles": {
+                                    "btnStyle": "round",
+                                    "btnType": "btn_1 btn_p1"
+                                }
                             },
                             "modId": "14d36b73_a89c_4cc0_fe84_3b8ca9724ad0",
                             "modCount": 3,
@@ -867,7 +872,7 @@
                                     "isBeaconHero": false,
                                     "imagePriority": false,
                                     "itemCount": 1,
-                                    "btnStyles": " #id_5cd0c223_3db2_439e_c02c_367a4bf641fa .item_1 .btn2_override {color:#ffffff; background-color:transparent;} #id_5cd0c223_3db2_439e_c02c_367a4bf641fa .item_1 .btn_promo {color: var(--promo); background-color: #ffffff;}\n            #id_5cd0c223_3db2_439e_c02c_367a4bf641fa .item_1 .btn_promo:hover{color: #ffffff; background-color: var(--promo);}",
+                                    "btnStyles": " #id_5cd0c223_3db2_439e_c02c_367a4bf641fa .item_1 .btn2_override {color:#ffffff; background-color:transparent;} #id_5cd0c223_3db2_439e_c02c_367a4bf641fa .item_1 .btn_promo {color: var(--promo); background-color: #ffffff;}\n            #id_5cd0c223_3db2_439e_c02c_367a4bf641fa .item_1 .btn_promo:hover{color: #ffffff; background-color: var(--promo3);}",
                                     "nextImageSizes": "100vw",
                                     "isFeatureButton": false
                                 }
@@ -969,6 +974,7 @@
                                 },
                                 {
                                     "desc": "<i>It doesn&#39;t emit enough warmth<br>It cycles on and off too often<br>It provides uneven heating throughout your home<br>It will not turn on or shut off<br>It makes unusual or loud noises<br>You need to frequently adjust the thermostat<br>You smell burning<br>Your energy bills are unusually high</i><br><br>It&#39;s extremely important that you don&#39;t ignore any of these symptoms. The sooner you call our New Jersey heating repair experts, the quicker we can diagnose the issue and perform the necessary repairs.",
+                                    "descSize": "font_lg",
                                     "icon": "",
                                     "align": "center",
                                     "icon2": "",
@@ -2054,7 +2060,7 @@
                                     "isBeaconHero": false,
                                     "imagePriority": false,
                                     "itemCount": 1,
-                                    "btnStyles": " #id_ee4f63cc_cd6d_4b47_e1f4_0ffff14849ec .item_1 .btn2_override {color:#ffffff; background-color:transparent;} #id_ee4f63cc_cd6d_4b47_e1f4_0ffff14849ec .item_1 .btn_promo {color: var(--promo); background-color: #ffffff;}\n            #id_ee4f63cc_cd6d_4b47_e1f4_0ffff14849ec .item_1 .btn_promo:hover{color: #ffffff; background-color: var(--promo);}",
+                                    "btnStyles": " #id_ee4f63cc_cd6d_4b47_e1f4_0ffff14849ec .item_1 .btn2_override {color:#ffffff; background-color:transparent;} #id_ee4f63cc_cd6d_4b47_e1f4_0ffff14849ec .item_1 .btn_promo {color: var(--promo); background-color: #ffffff;}\n            #id_ee4f63cc_cd6d_4b47_e1f4_0ffff14849ec .item_1 .btn_promo:hover{color: #ffffff; background-color: var(--promo3);}",
                                     "nextImageSizes": "100vw",
                                     "isFeatureButton": false
                                 }

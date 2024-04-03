@@ -14,7 +14,7 @@ import ReactScroll from 'elements/ReactScrollParallax'
 const choseLax: string = 'scroll'
 
 //allow custom height field in cms to affect height here
-const useCustomHeight = false
+const useCustomHeight = true
 
 const Parallax = (props: ModuleProps) => {
     const { columns = 1, type, well, imgsize, modId, items, themeStyles, cmsUrl, disabled, customClassName, modCount, isSingleColumn, anchorLink } = props
@@ -106,7 +106,6 @@ const ModuleItem = (props: ModuleItemProps) => {
 
 const ItemWrap = (props: ItemWrapProps) => {
     const { item, well, themeStyles, modId, columns, type, cmsUrl, imgsize } = props
-    //const dlHeight = item.modOne || '70vh'
     const dlHeight = useCustomHeight ? item.modOne || '70vh' : '70vh'
 
     return (
