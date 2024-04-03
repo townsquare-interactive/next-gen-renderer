@@ -138,6 +138,11 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: flex-end;
+
+            .info-block,
+            .nav-block {
+                flex: 1;
+            }
         }
 
         span {
@@ -170,9 +175,8 @@
                 display: flex;
                 align-items: center;
 
-                /* Optionally, adjust styling for SocialLinks */
                 .social-landing {
-                    flex: 1; /* Takes up half of the width */
+                    flex: 1;
                 }
 
                 .info-block {

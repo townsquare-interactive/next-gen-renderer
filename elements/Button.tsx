@@ -18,7 +18,7 @@ export const Button = (props: SingleButtonProps) => {
         [styles.btn_w]: well === '1' && (type.includes('article') || type.includes('banner') || type.includes('card')),
         ['btn_w']: well === '1' && (type.includes('article') || type.includes('banner') || type.includes('card')),
         [styles['btn_cta']]: btn.btnType === 'btn_cta' || btn.btnType === 'btn_cta_landing',
-        [styles['landing']]: btn.btnType === 'btn_cta_landing',
+        [styles['cta-landing']]: btn.btnType === 'btn_cta_landing',
         [styles['btn_banner']]: btn.btnType === 'btn_banner',
         ['btn_1']: btn.btnType?.includes('btn_1') || (!btn.btnType && index === 0),
         [styles.btn_1]: btn.btnType?.includes('btn_1') || (!btn.btnType && index === 0 && btn.btnType != 'btn_cta'),
@@ -29,6 +29,7 @@ export const Button = (props: SingleButtonProps) => {
         ['btn_p4']: btn.btnType?.includes('btn_p4'),
         ['cta']: btn.btnType === 'btn_cta' || btn.btnType === 'btn_banner' || btn.btnType === 'btn_cta_landing',
         ['accent-txt']: btn.btnType === 'btn_cta' || btn.btnType === 'btn_banner' || btn.btnType === 'btn_cta_landing',
+        [styles['land-colors']]: btn.btnType?.includes('btn_land-colors'),
     })
 
     return (

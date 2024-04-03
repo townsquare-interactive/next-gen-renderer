@@ -16,9 +16,6 @@ import { redirect } from 'next/navigation'
 import { CustomComponents } from './custom/CustomComponents'
 import dynamic from 'next/dynamic'
 //dynamic import with ssr false allows it load after initial render
-const Engage = dynamic(() => import('./custom/Engage'), {
-    ssr: false,
-})
 const DeferLoad = dynamic(() => import('./DeferLoad'), {
     ssr: false,
 })
@@ -180,9 +177,13 @@ export const Container = (props: ContainerProps) => {
 
                     {siteData.styles?.global && <style>{siteData.styles.global}</style>}
 
-                    {siteData.vcita?.businessId && <Engage {...siteData.vcita} />}
+                    {/*                     {siteData.vcita?.businessId && <Engage {...siteData.vcita} />} */}
 
-                    <DeferLoad fonts={siteData.fontImport} globalStyles={siteData.styles ? siteData.styles : siteData.allStyles} />
+                    <DeferLoad
+                        fonts={siteData.fontImport}
+                        globalStyles={siteData.styles ? siteData.styles : siteData.allStyles}
+                        isLanding={siteData.siteType === 'landing' ? true : false}
+                    />
                 </>
             )}
         </>

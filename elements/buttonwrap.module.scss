@@ -122,29 +122,25 @@
             border-color: transparent;
         }
 
-        &.landing {
-            background-color: #fc070a;
-            //display: inline-block;
-            //color: #fff;
-            //font-size: 1.3rem;
-            margin: 0 0.3rem 0 0;
-            border-radius: 14px;
-            text-transform: uppercase;
-            font-family: 'Oswald', Helvetica, Arial, sans-serif;
-            text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.3);
-            border: none;
-            transition: 0.25s;
-            font-weight: normal;
-            letter-spacing: 0.2px;
+        &.cta-landing {
+            @include utils.landing-btn;
 
             span {
                 margin-right: 4px;
             }
 
-            @include breakpoints.lg-min {
-                font-size: 1.6rem;
-                margin: 0 1rem;
+            @include breakpoints.md-min {
+                font-size: 1.3rem;
+                margin: 0 0.5rem;
                 padding: 0.4rem 1rem;
+                line-height: 1.4;
+            }
+
+            @include breakpoints.lg-min {
+                font-size: 1.7rem;
+                margin: 0 0.5rem;
+                padding: 0.4rem 1rem;
+                line-height: 1.7;
             }
 
             &:hover,
@@ -153,6 +149,13 @@
             &:focus {
                 box-shadow: 0.2em 0.2em #cf0d0f;
                 transform: translateY(-0.25em);
+            }
+        }
+
+        &.land-colors {
+            &:hover {
+                background: var(--promo3);
+                color: #fff;
             }
         }
     }

@@ -103,6 +103,28 @@
                     color: var(--btn-background);
                     background-color: var(--btn-txt);
                 }
+
+                &.landing {
+                    @include utils.landing-btn;
+
+                    span {
+                        margin-right: 4px;
+                    }
+
+                    @include breakpoints.lg-min {
+                        font-size: 1.6rem;
+                        margin: 0 1rem;
+                        padding: 0.4rem 1rem;
+                    }
+
+                    &:hover,
+                    &:focus,
+                    &:hover,
+                    &:focus {
+                        box-shadow: 0.2em 0.2em #cf0d0f;
+                        transform: translateY(-0.25em);
+                    }
+                }
             }
         }
 
@@ -162,6 +184,33 @@
         .title,
         label {
             color: var(--txt-accent);
+        }
+
+        .btn-block {
+            .submit {
+                background-color: var(--btn-background);
+                color: #fff;
+                margin: 0 0.3rem 0 0;
+                text-transform: uppercase;
+                border: none;
+                transition: 0.25s;
+                font-weight: normal;
+                letter-spacing: 0.2px;
+                border-radius: 50px;
+
+                font-size: variables.$xs-txt;
+                line-height: 1.4285714286em;
+                padding: 0.625em 1.25em;
+
+                @include breakpoints.md-min {
+                    padding: 0.825em 2.25em;
+                }
+
+                &:hover {
+                    background-color: var(--promo3);
+                    color: #fff;
+                }
+            }
         }
     }
 }

@@ -328,6 +328,19 @@
     }
 }
 
+@mixin landing-btn {
+    background-color: var(--btn-background);
+    margin: 0 0.3rem 0 0;
+    border-radius: 14px;
+    text-transform: uppercase;
+    font-family: 'Oswald', Helvetica, Arial, sans-serif;
+    text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.3);
+    border: none;
+    transition: 0.25s;
+    font-weight: normal;
+    letter-spacing: 0.2px;
+}
+
 /*-----------Text Sizes-------------------*/
 
 /* @mixin sm-text-sizes {
