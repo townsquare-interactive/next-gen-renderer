@@ -1,7 +1,6 @@
 import { domainImage } from 'functions'
 import { PageHeadProps } from 'types'
 
-
 export default function PageHead(props: PageHeadProps) {
     const { siteData, page, pageType } = props
     const cmsUrl = siteData.cmsUrl
@@ -32,7 +31,6 @@ export default function PageHead(props: PageHeadProps) {
                 ))}
             {siteData.favicon && <link rel="shortcut icon" href={encodeURI(siteData.favicon)} />}
             <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
-            
         </>
     )
 }

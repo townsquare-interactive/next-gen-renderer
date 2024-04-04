@@ -1,0 +1,61 @@
+import { useEffect, useState } from 'react'
+declare var WebChat: any
+
+const ChatWidget = ({ apiKey }: { apiKey: string }) => {
+    const [webChatLoaded, setWebChatLoaded] = useState(false)
+
+    useEffect(() => {
+        const scriptChat = document.createElement('script')
+        scriptChat.src = 'https://webchat.scheduleengine.net/webchat-v1.js'
+        scriptChat.async = true
+        document.body.appendChild(scriptChat)
+
+        scriptChat.onload = () => {
+            setWebChatLoaded(true)
+        }
+
+        return () => {
+            // Cleanup function to remove the script from the DOM
+            document.body.removeChild(scriptChat)
+        }
+    }, [])
+
+    useEffect(() => {
+        if (webChatLoaded) {
+            openChat()
+        }
+    }, [webChatLoaded])
+
+    const openChat = () => {
+        if (typeof WebChat !== 'undefined') {
+            WebChat.loadChat({
+                apiKey: apiKey,
+                initialMessage: 'Thank you for choosing Guaranteed Service. How can I help you today?',
+                initialResponses: [],
+                logoUrl: 'https://guaranteedservice.com/files/2023/03/guaranteedservice.png',
+                title: 'Welcome',
+                primaryAccentColor: '#002353',
+                primaryAccentTextColor: '#FFFFFF',
+                backgroundColor: '#FFFFFF',
+                agentBubbleBackgroundColor: '#002353',
+                agentBubbleTextColor: '#FFFFFF',
+                bubbleBackgroundColor: '#F1F1F1',
+                bubbleTextColor: '#000000',
+                sendButtonBackgroundColor: '#002353',
+                sendButtonTextColor: '#FFFFFF',
+                suggestedResponseColor: '#002353',
+                autoOpen: true,
+                autoOpenMobile: false,
+                position: 'right',
+                buttonBackgroundColor: '#FC080A',
+                buttonText: 'Chat with Us',
+                buttonTextColor: '#FFFFFF',
+                autoOpenDelay: 3,
+            })
+        }
+    }
+
+    return <></>
+}
+
+export default ChatWidget
