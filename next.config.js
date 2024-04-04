@@ -62,6 +62,10 @@ module.exports = withBundleAnalyzer({
                         key: 'Content-Security-Policy',
                         value: "script-src 'self' 'sha256-+k+U1HKjyVLWWT+aR4rGHdJJs1SqatL7WFqMOnwAeg4='",
                     },
+                    {
+                        key: 'Content-Security-Policy',
+                        value: "script-src 'self' https://guaranteedserv.widget.scheduleengine.net",
+                    },
                 ],
             },
         ]
