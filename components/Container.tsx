@@ -146,7 +146,7 @@ export const Container = (props: ContainerProps) => {
                                         pageModalVars={pageModalVars}
                                     />
                                 </div>
-                                {page.data.modules[1].length != 0 && (
+                                {page.data.modules[1]?.length != 0 && (
                                     <div className={styles['column-blocks']}>
                                         <div className={cn(styles.columns, styles[`${columnStyles}`], 'columns')}>
                                             {page.data.modules.map((data: ModuleData[], idx: number) => (
@@ -173,8 +173,6 @@ export const Container = (props: ContainerProps) => {
                         )}
                     </ContainerLayout>
 
-                    {siteData.customComponents && useCustomComponents && <CustomComponents config={siteData.customComponents} />}
-
                     {siteData.styles?.global && <style>{siteData.styles.global}</style>}
 
                     {/*                     {siteData.vcita?.businessId && <Engage {...siteData.vcita} />} */}
@@ -184,6 +182,8 @@ export const Container = (props: ContainerProps) => {
                         globalStyles={siteData.styles ? siteData.styles : siteData.allStyles}
                         isLanding={siteData.siteType === 'landing' ? true : false}
                     />
+
+                    {siteData.customComponents && <CustomComponents config={siteData.customComponents} />}
                 </>
             )}
         </>

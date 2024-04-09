@@ -5,10 +5,17 @@ import { FacebookWidget, FloatingReviewButtonsProps } from 'types'
 const FacebookFeed = dynamic(() => import('./FacebookFeed'), {
     ssr: false,
 })
+const Webchat = dynamic(() => import('./Webchat'), {
+    ssr: false,
+})
+const ScheduleEngine = dynamic(() => import('./ScheduleEngine'), {
+    ssr: false,
+})
 
 const keysToComponentMap: any = {
     FloatingReviewButtons,
     FacebookFeed,
+    Webchat,
 }
 
 const mapPropsToConfig = (config: [FloatingReviewButtonsProps | FacebookWidget]) => {

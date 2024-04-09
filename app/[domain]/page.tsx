@@ -17,7 +17,8 @@ const Home = ({ params }: { params: { slug: string; domain: string } }) => {
 
         return <>{<Container page={page} siteData={CMSLayout} />}</>
     } else {
-        return <>{<Container page={landingPage} siteData={landingLayout} />}</>
+        const { page } = use(getAnyPageData({ slug: 'landing', domain: params.domain }))
+        return <>{<Container page={page} siteData={CMSLayout} />}</>
     }
 }
 
