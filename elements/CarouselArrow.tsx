@@ -13,6 +13,7 @@ const Arrow = (props: { type: string; onClick?: MouseEventHandler<HTMLAnchorElem
                 [styles['thumbnail']]: useThumbnail,
                 [styles['no-thumb']]: !useThumbnail,
             })}
+            href="#0"
         ></a>
     )
 }
