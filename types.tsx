@@ -236,6 +236,7 @@ interface ButtonListProps {
     opensModal: number
     googleIcon?: string
     btnStyle?: 'round' | 'rectangle'
+    action?: string
 }
 
 export interface HeaderCTAProps {

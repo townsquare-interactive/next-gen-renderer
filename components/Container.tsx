@@ -15,6 +15,10 @@ library.add(fas, fab, far)
 import { redirect } from 'next/navigation'
 import { CustomComponents } from './custom/CustomComponents'
 import dynamic from 'next/dynamic'
+import ScheduleEngine2 from './custom/ScheduleEngine2'
+import FacebookLiveFeed from './custom/FacebookFeed'
+import ScheduleEngine from './custom/ScheduleEngine'
+import Iframe from 'react-iframe'
 //dynamic import with ssr false allows it load after initial render
 const DeferLoad = dynamic(() => import('./DeferLoad'), {
     ssr: false,
@@ -113,12 +117,6 @@ export const Container = (props: ContainerProps) => {
         }
     })
     const pageModalVars = useModals(modalArgs)
-
-    //add fb feed component
-    /*     if (siteData.customComponents && siteData.customComponents?.filter((e: any) => e.type === 'FacebookFeed').length < 1) {
-        siteData.customComponents?.push({ src: 'https://www.facebook.com/facebook', type: 'FacebookFeed' })
-        console.log(siteData.customComponents)
-    } */
 
     return (
         <>

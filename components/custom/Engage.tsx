@@ -93,7 +93,6 @@ const Engage = ({ businessId, actions, themeColors, titleText, mainAction, bodyT
        #livesite_engage_button a.ls-engage-button { background-color: ${themeColors.labelBgColor}; color: ${themeColors.labelTextColor}; }
        #livesite_engage_button a.ls-engage-button:hover { background-color: ${themeColors.labelBgColor}; color: ${themeColors.labelTextColor}; }
    `)
-        console.log('vcita business id', businessId)
 
         return () => {
             // Perform any cleanup if necessary

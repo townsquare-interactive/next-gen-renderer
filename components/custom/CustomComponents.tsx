@@ -16,6 +16,7 @@ const keysToComponentMap: any = {
     FloatingReviewButtons,
     FacebookFeed,
     Webchat,
+    ScheduleEngine,
 }
 
 const mapPropsToConfig = (config: [FloatingReviewButtonsProps | FacebookWidget]) => {

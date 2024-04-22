@@ -32,9 +32,27 @@ export const Button = (props: SingleButtonProps) => {
         [styles['land-colors']]: btn.btnType?.includes('btn_land-colors'),
     })
 
+    const bookScheduleEngine = () => {
+        // Call the function provided by Schedule Engine when the button is clicked
+        if (window.ScheduleEngine && window.ScheduleEngine.show) {
+            window.ScheduleEngine.show()
+
+            const iframeContainer = document.getElementById('se-widget-iframe-container')
+            if (iframeContainer) {
+                iframeContainer.style.visibility = 'visible'
+                iframeContainer.style.inset = '0'
+            }
+        }
+    }
+
     return (
         <>
-            {isModalBtn && pageModalVars && btn.opensModal != -1 ? (
+            {btn.action === `schedule` ? (
+                <button onClick={bookScheduleEngine} className={btnClassesList}>
+                    {btn.icon && <FontAwesomeIcon icon={[btn.icon.iconPrefix, btn.icon.iconModel]} />}
+                    {` ${btn.label}`} {isFeatureButton && !type.includes('article') && '>'}
+                </button>
+            ) : isModalBtn && pageModalVars && btn.opensModal != -1 ? (
                 <button onClick={pageModalVars[btn.opensModal].toggleModal} className={btnClassesList}>
                     {btn.icon && <FontAwesomeIcon icon={[btn.icon.iconPrefix, btn.icon.iconModel]} />}
                     {` ${btn.label}`} {isFeatureButton && !type.includes('article') && '>'}
