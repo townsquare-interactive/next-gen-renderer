@@ -15,10 +15,6 @@ library.add(fas, fab, far)
 import { redirect } from 'next/navigation'
 import { CustomComponents } from './custom/CustomComponents'
 import dynamic from 'next/dynamic'
-import ScheduleEngine2 from './custom/ScheduleEngine2'
-import FacebookLiveFeed from './custom/FacebookFeed'
-import ScheduleEngine from './custom/ScheduleEngine'
-import Iframe from 'react-iframe'
 //dynamic import with ssr false allows it load after initial render
 const DeferLoad = dynamic(() => import('./DeferLoad'), {
     ssr: false,
