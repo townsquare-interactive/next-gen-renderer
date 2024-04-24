@@ -130,6 +130,10 @@ export interface GlobalData {
     }
     vcita?: VcitaData | null
     siteType?: string
+    analytics?: {
+        gaId?: string
+        gtmId?: string
+    }
 }
 
 export interface FacebookWidget {
