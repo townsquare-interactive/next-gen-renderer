@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
+import { ThemeStyles } from 'types'
 declare var WebChat: any
 
-const ChatWidget = ({ apiKey }: { apiKey: string }) => {
+const ChatWidget = ({ apiKey, themeStyles }: { apiKey: string; themeStyles: ThemeStyles }) => {
     const [webChatLoaded, setWebChatLoaded] = useState(false)
 
     useEffect(() => {
@@ -34,20 +35,20 @@ const ChatWidget = ({ apiKey }: { apiKey: string }) => {
                 initialResponses: [],
                 logoUrl: 'https://guaranteedservice.com/files/2023/03/guaranteedservice.png',
                 title: 'Welcome',
-                primaryAccentColor: '#002353',
+                primaryAccentColor: themeStyles.promoColor,
                 primaryAccentTextColor: '#FFFFFF',
                 backgroundColor: '#FFFFFF',
-                agentBubbleBackgroundColor: '#002353',
+                agentBubbleBackgroundColor: themeStyles.promoColor,
                 agentBubbleTextColor: '#FFFFFF',
                 bubbleBackgroundColor: '#F1F1F1',
                 bubbleTextColor: '#000000',
-                sendButtonBackgroundColor: '#002353',
+                sendButtonBackgroundColor: themeStyles.promoColor,
                 sendButtonTextColor: '#FFFFFF',
-                suggestedResponseColor: '#002353',
+                suggestedResponseColor: themeStyles.promoColor,
                 autoOpen: true,
                 autoOpenMobile: false,
                 position: 'right',
-                buttonBackgroundColor: '#FC080A',
+                buttonBackgroundColor: themeStyles.promoColor,
                 buttonText: 'Chat with Us',
                 buttonTextColor: '#FFFFFF',
                 autoOpenDelay: 3,

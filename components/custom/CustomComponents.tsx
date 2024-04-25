@@ -1,7 +1,7 @@
 import { Fragment } from 'react'
 import { FloatingReviewButtons } from './FloatingReviewButtons'
 import dynamic from 'next/dynamic'
-import { FacebookWidget, FloatingReviewButtonsProps } from 'types'
+import { FacebookWidget, FloatingReviewButtonsProps, ThemeStyles } from 'types'
 const FacebookFeed = dynamic(() => import('./FacebookFeed'), {
     ssr: false,
 })
@@ -36,7 +36,7 @@ const mapPropsToConfig = (config: [FloatingReviewButtonsProps | FacebookWidget])
     return configWithProps
 }
 
-export const CustomComponents = ({ config }: { config: [FloatingReviewButtonsProps | FacebookWidget] }) => {
+export const CustomComponents = ({ config, themeStyles }: { config: [FloatingReviewButtonsProps | FacebookWidget]; themeStyles: ThemeStyles }) => {
     if (!config) {
         throw new Error('You are calling Renderer with no config.')
     }
@@ -52,7 +52,7 @@ export const CustomComponents = ({ config }: { config: [FloatingReviewButtonsPro
                 if (Comp) {
                     return (
                         <Fragment key={idx}>
-                            <Comp {...props} />
+                            <Comp {...props} themeStyles={themeStyles} />
                         </Fragment>
                     )
                 }

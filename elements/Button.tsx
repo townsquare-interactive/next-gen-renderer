@@ -19,6 +19,7 @@ export const Button = (props: SingleButtonProps) => {
         ['btn_w']: well === '1' && (type.includes('article') || type.includes('banner') || type.includes('card')),
         [styles['btn_cta']]: btn.btnType === 'btn_cta' || btn.btnType === 'btn_cta_landing',
         [styles['cta-landing']]: btn.btnType === 'btn_cta_landing',
+        ['cta-landing']: btn.btnType === 'btn_cta_landing',
         [styles['btn_banner']]: btn.btnType === 'btn_banner',
         ['btn_1']: btn.btnType?.includes('btn_1') || (!btn.btnType && index === 0),
         [styles.btn_1]: btn.btnType?.includes('btn_1') || (!btn.btnType && index === 0 && btn.btnType != 'btn_cta'),

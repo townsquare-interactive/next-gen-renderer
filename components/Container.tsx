@@ -177,7 +177,7 @@ export const Container = (props: ContainerProps) => {
                         isLanding={siteData.siteType === 'landing' ? true : false}
                     />
 
-                    {siteData.customComponents && <CustomComponents config={siteData.customComponents} />}
+                    {siteData.customComponents && <CustomComponents config={siteData.customComponents} themeStyles={themeStyles} />}
                 </>
             )}
         </>

@@ -27,6 +27,7 @@ const SocialLinks = ({ siteData, modType = 'header' }: SocialLinksProps) => {
                             className={cn({
                                 ['social-icon']: modType === 'slide-header' || modType === 'header',
                                 ['footer-icon']: modType === 'footer' || modType === 'widget',
+                                ['social-landing-icon']: modType === 'landing',
                             })}
                             href={item.url}
                         >

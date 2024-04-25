@@ -1,4 +1,5 @@
 @use './styles/breakpoints.scss';
+@use 'sass:color';
 
 .social-media-links {
     padding: 0.25rem 0;
@@ -120,7 +121,8 @@
 
     &.landing {
         a:hover {
-            background: var(--link);
+            background: var(--promo);
+            color: #fff;
             scale: 1.2;
             transition: all 0.3s ease-in-out;
         }

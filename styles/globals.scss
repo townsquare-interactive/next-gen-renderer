@@ -190,9 +190,6 @@ $ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .slick-dots {
-    //display: none !important;
-    //@include breakpoints.sm-min {
-
     @container module (min-width:481px) {
         display: block !important;
     }
@@ -207,9 +204,6 @@ $ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
 }
 
-/* :root {
-    --item-max-height: 0;
-} */
 :root {
     --ç: 0;
     --block-height-1: 2;
@@ -744,7 +738,7 @@ $ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
 .guarn {
     -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: red;
+    -webkit-text-stroke-color: var(--promo);
     font-weight: bold;
     font-size: 4.5rem;
     line-height: 1.2;
@@ -753,7 +747,7 @@ $ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 span.guarntext {
     font-size: 17px;
     font-weight: bold;
-    color: red;
+    color: var(--promo);
     line-height: normal;
 
     @include breakpoints.md-min {
