@@ -143,24 +143,25 @@
             }
 
             .logo-block img {
-                //max-height: 3.75rem !important;
-                //width: 100%;
-                /*                 @include breakpoints.sm-min {
-                    max-height: 6rem;
-                } */
                 @include breakpoints.md-min {
+                    max-width: 17rem;
                     max-height: 10rem;
                     width: auto;
                     height: 10rem;
+                    object-fit: contain;
                 }
             }
         }
 
         &.shrink {
-            .wrapper {
-                img {
-                    max-height: 8rem !important;
-                    //width: 100%;
+            @include breakpoints.md-min {
+                .wrapper {
+                    img {
+                        max-height: 8rem !important;
+                        height: 8rem;
+                        //width: 100%;
+                        max-width: 11rem;
+                    }
                 }
             }
         }

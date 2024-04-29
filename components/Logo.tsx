@@ -15,7 +15,6 @@ const Logo = (props: LogoProps) => {
         setWidth(loadedMedia.currentTarget.naturalWidth)
         setHeight(loadedMedia.currentTarget.naturalHeight)
     }
-
     return (
         <div
             className={cn(styles.root, {
