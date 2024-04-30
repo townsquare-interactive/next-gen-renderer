@@ -66,7 +66,10 @@ const ContactFormRoutes = (props: ContactFormRoutesProps) => {
                                                 <div
                                                     className={cn(styles.message, {
                                                         [styles.blue]: formMessage === 'Sending....',
-                                                        [styles.red]: formMessage === 'Form error' || formMessage === 'Email not entered correctly',
+                                                        [styles.red]:
+                                                            formMessage === 'Form error' ||
+                                                            formMessage === 'Email not entered correctly' ||
+                                                            formMessage === 'No client email set up for this form',
                                                         [styles.green]: formSent,
                                                     })}
                                                 >
@@ -115,12 +118,16 @@ const ContactFormRoutes = (props: ContactFormRoutesProps) => {
                                                         }
 
                                                         setTimeout(async () => {
-                                                            setFormMessage('Sending....')
-                                                            await postContactFormRoute(`/api/contacts`, { formData: formData, siteData: siteData })
-                                                            setFormMessage('Thank you for contacting us')
-                                                            setFormSent(true)
+                                                            if (!siteData.email) {
+                                                                setFormMessage('No client email set up for this form')
+                                                            } else {
+                                                                setFormMessage('Sending....')
+                                                                await postContactFormRoute(`/api/contacts`, { formData: formData, siteData: siteData })
+                                                                setFormMessage('Thank you for contacting us')
+                                                                setFormSent(true)
 
-                                                            setSubmitting(false)
+                                                                setSubmitting(false)
+                                                            }
                                                         }, 500)
                                                     }}
                                                 >
