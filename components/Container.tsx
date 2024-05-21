@@ -20,8 +20,6 @@ const DeferLoad = dynamic(() => import('./DeferLoad'), {
     ssr: false,
 })
 
-const useCustomComponents = false
-
 export interface ModalDef {
     autoOpen: boolean
     flagName: string

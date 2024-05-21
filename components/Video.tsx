@@ -15,7 +15,7 @@ const Video = (props: VideoProps) => {
 
     return (
         <div className={styles.root}>
-            {!isSSR && (
+            {!isSSR && videoUrl && (
                 <div className={styles.wrapper}>
                     <div className={styles.videoBlock}>
                         {modLayout === 'ext' && (

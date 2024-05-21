@@ -65,7 +65,7 @@ const ContainerFooter = (props: ContainerFooterProps) => {
                             ))}
                         </div>
                     )}
-                    {siteData.siteType === 'landing' && (
+                    {siteData.siteType === 'landing' && siteData.social?.length > 0 && (
                         <div className={styles['social-landing']}>
                             <SocialLinks siteData={siteData} modType="landing" />
                         </div>

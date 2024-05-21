@@ -20,20 +20,24 @@ const SocialLinks = ({ siteData, modType = 'header' }: SocialLinksProps) => {
         >
             {siteData.social &&
                 siteData.social.map((item: SocialItem, index: number) => (
-                    <li key={index}>
-                        <a
-                            target="blank"
-                            aria-label={item.label || item.name}
-                            className={cn({
-                                ['social-icon']: modType === 'slide-header' || modType === 'header',
-                                ['footer-icon']: modType === 'footer' || modType === 'widget',
-                                ['social-landing-icon']: modType === 'landing',
-                            })}
-                            href={item.url}
-                        >
-                            <FontAwesomeIcon icon={item.icon} /> {modType === 'widget' && item.label}
-                        </a>
-                    </li>
+                    <>
+                        {item.url && (
+                            <li key={index}>
+                                <a
+                                    target="blank"
+                                    aria-label={item.label || item.name}
+                                    className={cn({
+                                        ['social-icon']: modType === 'slide-header' || modType === 'header',
+                                        ['footer-icon']: modType === 'footer' || modType === 'widget',
+                                        ['social-landing-icon']: modType === 'landing',
+                                    })}
+                                    href={item.url}
+                                >
+                                    <FontAwesomeIcon icon={item.icon} /> {modType === 'widget' && item.label}
+                                </a>
+                            </li>
+                        )}
+                    </>
                 ))}
             {siteData.headerOptions?.showPrintEmail && (
                 <>
