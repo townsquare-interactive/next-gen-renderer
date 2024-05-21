@@ -110,10 +110,10 @@ export const transformFetchingDomain = async (params: { slug?: string; domain: s
             fetchingDomain = vercelDomain?.replace(removeAfterPeriod, '')
 
             //remove vercel url prefixes (prev/preview indicate using the preview branch)
-            fetchingDomain = fetchingDomain.replace('-preview.', '.')
-            fetchingDomain = fetchingDomain.replace('-lp.', '.')
-            fetchingDomain = fetchingDomain.replace('-prev.', '.')
-            fetchingDomain = fetchingDomain.replace('-main.', '.')
+            fetchingDomain = fetchingDomain.replace('-preview', '')
+            fetchingDomain = fetchingDomain.replace('-lp', '')
+            fetchingDomain = fetchingDomain.replace('-prev', '')
+            fetchingDomain = fetchingDomain.replace('-main', '')
             fetchingDomain = bucketUrl + '/' + fetchingDomain
 
             if (fetchingDomain.includes('next-gen-renderer')) {
