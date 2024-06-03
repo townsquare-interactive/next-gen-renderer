@@ -34,9 +34,8 @@ const ContainerFooter = (props: ContainerFooterProps) => {
     return (
         <footer
             className={cn(styles.root, 'footer', {
-                //[styles['landing']]: siteData.siteType === 'landing',
-                [styles['landing']]: true,
-                ['landing-footer']: true,
+                [styles['landing']]: siteData.siteType === 'landing',
+                ['landing-footer']: siteData.siteType === 'landing',
             })}
         >
             <div className={styles.wrapper}>
@@ -49,7 +48,11 @@ const ContainerFooter = (props: ContainerFooterProps) => {
                         ))}
                     </div>
                 )}
-                <div className={styles.brand}>
+                <div
+                    className={cn(styles.brand, {
+                        [styles.lp]: siteData.logos?.footer?.slots && siteData.social?.length && siteData.siteType === 'landing',
+                    })}
+                >
                     {siteData.logos?.footer?.slots && (
                         <div className={cn(styles['logo-block'])}>
                             {siteData.logos?.footer?.slots.map((item: any, index: number) => (

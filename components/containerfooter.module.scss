@@ -175,18 +175,29 @@
                 display: flex;
                 align-items: center;
 
-                .social-landing {
-                    flex: 1;
+                .logo-block {
+                    display: flex;
+                    justify-content: center;
                 }
 
-                .info-block {
-                    flex: 1;
+                &.lp {
+                    .social-landing {
+                        flex: 1;
+                    }
+
+                    .info-block {
+                        flex: 1;
+                    }
+
+                    .logo-block {
+                        display: block;
+                    }
                 }
             }
 
             .logo-block {
                 img {
-                    width: auto;
+                    width: 100%;
                     object-fit: contain;
                     height: 6rem;
                     max-height: 6rem;
