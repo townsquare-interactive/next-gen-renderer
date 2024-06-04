@@ -45,7 +45,7 @@ const ChatWidget = ({ apiKey, themeStyles }: { apiKey: string; themeStyles: Them
                 sendButtonBackgroundColor: themeStyles.promoColor,
                 sendButtonTextColor: '#FFFFFF',
                 suggestedResponseColor: themeStyles.promoColor,
-                autoOpen: true,
+                autoOpen: false,
                 autoOpenMobile: false,
                 position: 'right',
                 buttonBackgroundColor: themeStyles.promoColor,
