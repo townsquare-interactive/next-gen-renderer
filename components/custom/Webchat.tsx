@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { ThemeStyles } from 'types'
 declare var WebChat: any
 
-const ChatWidget = ({ apiKey, themeStyles, logo = '' }: { apiKey: string; themeStyles: ThemeStyles; logo?: string }) => {
+const ChatWidget = ({ apiKey, themeStyles, logo = '', siteName }: { apiKey: string; themeStyles: ThemeStyles; logo?: string; siteName?: string }) => {
     const [webChatLoaded, setWebChatLoaded] = useState(false)
 
     useEffect(() => {
@@ -31,7 +31,7 @@ const ChatWidget = ({ apiKey, themeStyles, logo = '' }: { apiKey: string; themeS
         if (typeof WebChat !== 'undefined') {
             WebChat.loadChat({
                 apiKey: apiKey,
-                //initialMessage: 'Thank you for choosing Guaranteed Service. How can I help you today?',
+                initialMessage: `Thank you for choosing ${siteName}. How can I help you today?`,
                 initialResponses: [],
                 logoUrl: logo || '',
                 title: 'Welcome',
