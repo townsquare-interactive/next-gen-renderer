@@ -1,4 +1,5 @@
 import { useLayoutEffect, useState } from 'react'
+import { ThemeStyles } from 'types'
 
 declare var LiveSite: any
 
@@ -19,18 +20,19 @@ interface ThemeColors {
 }
 
 export interface VcitaData {
-    actions: Action[]
-    themeColors: ThemeColors
     businessId: string
+    actions?: Action[]
+    themeColors?: ThemeColors
     titleText?: string
     mainAction?: string
     bodyText?: string
     widgetLabel?: string
     showMyAccountBtn?: boolean
+    themeStyles?: ThemeStyles
 }
 
 ///Users/joshedwards/Documents/docker/repos/wordpress/current/cms_websites/classes/scripts/vcita.php
-const Engage = ({ businessId, actions, themeColors, titleText, mainAction, bodyText, widgetLabel, showMyAccountBtn }: VcitaData) => {
+const Engage = ({ businessId, actions, themeColors, titleText, mainAction, bodyText, widgetLabel, showMyAccountBtn, themeStyles }: VcitaData) => {
     const [themeColor, setThemeColor] = useState<string>('')
 
     useLayoutEffect(() => {
@@ -47,25 +49,30 @@ const Engage = ({ businessId, actions, themeColors, titleText, mainAction, bodyT
                     activeEngageText: bodyText ? bodyText : "Thanks for stopping by! We're here to help, please don't hesitate to reach out.",
                     activeEngageTitle: titleText ? titleText : "Let's Talk",
                     collapsedActions: false,
-                    actionButtons: false,
+                    actionButtons: true, //side buttons
+                })
+                LiveSite.init({
+                    id: businessId,
                 })
 
                 //add actions before render
-                LiveSite.on('beforeRender', function () {
-                    //you can find examples of actions in chrome scripts window under vcita
-                    //loop through the current actions to get url and icon
-                    LiveSite.config.actions.forEach((currentItem: any) => {
-                        const matchingItem = actions.find((firstItem) => firstItem.name === currentItem.name)
+                if (actions) {
+                    LiveSite.on('beforeRender', function () {
+                        //you can find examples of actions in chrome scripts window under vcita
+                        //loop through the current actions to get url and icon
+                        LiveSite.config.actions.forEach((currentItem: any) => {
+                            const matchingItem = actions.find((firstItem) => firstItem.name === currentItem.name)
 
-                        // If a matching item is found, update its url and icon
-                        if (matchingItem) {
-                            matchingItem.url = currentItem.url
-                            matchingItem.icon = currentItem.icon
-                        }
+                            // If a matching item is found, update its url and icon
+                            if (matchingItem) {
+                                matchingItem.url = currentItem.url
+                                matchingItem.icon = currentItem.icon
+                            }
+                        })
+
+                        LiveSite.config.actions = actions
                     })
-
-                    LiveSite.config.actions = actions
-                })
+                }
             }
             ;(function (d: Document, s: string, id: string) {
                 var js,
@@ -84,7 +91,8 @@ const Engage = ({ businessId, actions, themeColors, titleText, mainAction, bodyT
 
         initEngage()
 
-        setThemeColor(`
+        if (themeColors) {
+            setThemeColor(`
        #livesite_active_engage .ls-ae-text-T { color: ${themeColors.color}; }
        #livesite_active_engage .ls-ae-bg-T { background-color: ${themeColors.bgColor}; }
        #livesite_active_engage .ls-main-action-T { color: ${themeColors.buttonTextColor}; }
@@ -92,11 +100,16 @@ const Engage = ({ businessId, actions, themeColors, titleText, mainAction, bodyT
        #livesite_active_engage .ls-main-action-T:hover {  background-color: ${themeColors.buttonBgColor}; }
        #livesite_engage_button a.ls-engage-button { background-color: ${themeColors.labelBgColor}; color: ${themeColors.labelTextColor}; }
        #livesite_engage_button a.ls-engage-button:hover { background-color: ${themeColors.labelBgColor}; color: ${themeColors.labelTextColor}; }
-   `)
-
-        return () => {
-            // Perform any cleanup if necessary
+        `)
+        } else {
+            setThemeColor(
+                `#livesite_active_engage .ls-main-action-T, #livesite_engage_button a.ls-engage-button, #livesite_engage_button .ls-action-T, #livesite_action_buttons .ls-action-T {  background-color: var(--promo); }
+                #livesite_engage_button a.ls-engage-button:hover, #livesite_active_engage .ls-main-action-T:hover, #livesite_action_buttons .ls-action-T:hover {background-color: var(--promo2)}`
+            )
         }
+        themeStyles
+
+        return () => {}
     }, [])
 
     return <style>{themeColor ? themeColor : ''}</style>

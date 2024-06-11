@@ -11,15 +11,19 @@ const Webchat = dynamic(() => import('./Webchat'), {
 const ScheduleEngine = dynamic(() => import('./ScheduleEngine'), {
     ssr: false,
 })
+const Engage = dynamic(() => import('./Engage'), {
+    ssr: false,
+})
 
 const keysToComponentMap: any = {
     FloatingReviewButtons,
     FacebookFeed,
     Webchat,
     ScheduleEngine,
+    Engage,
 }
 
-const mapPropsToConfig = (config: [FloatingReviewButtonsProps | FacebookWidget]) => {
+const mapPropsToConfig = (config: any[]) => {
     const configWithProps: any = []
 
     config.forEach((item: FloatingReviewButtonsProps | FacebookWidget) => {
@@ -36,7 +40,7 @@ const mapPropsToConfig = (config: [FloatingReviewButtonsProps | FacebookWidget])
     return configWithProps
 }
 
-export const CustomComponents = ({ config, themeStyles }: { config: [FloatingReviewButtonsProps | FacebookWidget]; themeStyles: ThemeStyles }) => {
+export const CustomComponents = ({ config, themeStyles }: { config: any[]; themeStyles: ThemeStyles }) => {
     if (!config) {
         throw new Error('You are calling Renderer with no config.')
     }
