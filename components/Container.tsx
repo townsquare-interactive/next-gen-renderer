@@ -120,7 +120,7 @@ export const Container = (props: ContainerProps) => {
     // Assuming siteData.customComponents is an array of objects
 
     // Check if there is an object with type "Engage"
-    if (siteData.customComponents) {
+    /*     if (siteData.customComponents) {
         let hasEngage = siteData.customComponents.some((component) => component.type === 'Engage')
 
         if (hasEngage) {
@@ -131,7 +131,7 @@ export const Container = (props: ContainerProps) => {
             siteData.customComponents = siteData.customComponents.filter((component) => component.type !== 'Webchat')
         }
         console.log(siteData.customComponents)
-    }
+    } */
 
     return (
         <>
