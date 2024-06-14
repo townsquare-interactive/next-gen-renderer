@@ -124,6 +124,7 @@
 
         &.cta-landing {
             @include utils.landing-btn;
+            color: var(--btn-txt);
 
             span {
                 margin-right: 4px;
