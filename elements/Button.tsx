@@ -29,7 +29,7 @@ export const Button = (props: SingleButtonProps) => {
         ['btn_p3']: btn.btnType?.includes('btn_p3'),
         ['btn_p4']: btn.btnType?.includes('btn_p4'),
         ['cta']: btn.btnType === 'btn_cta' || btn.btnType === 'btn_banner' || btn.btnType === 'btn_cta_landing',
-        ['accent-txt']: btn.btnType === 'btn_cta' || btn.btnType === 'btn_banner' || btn.btnType === 'btn_cta_landing',
+        ['accent-txt']: btn.btnType === 'btn_banner' || btn.btnType === 'btn_cta_landing',
         [styles['land-colors']]: btn.btnType?.includes('btn_land-colors'),
     })
 
