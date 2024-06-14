@@ -123,7 +123,7 @@ export interface GlobalData {
     redirectUrl?: string
     allStyles?: string
     styles?: any
-    customComponents?: [FloatingReviewButtonsProps | FacebookWidget]
+    customComponents?: any[]
     scripts?: {
         header: string
         footer: string

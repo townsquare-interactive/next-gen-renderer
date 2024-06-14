@@ -6,23 +6,25 @@ const ChatWidget = ({ apiKey, themeStyles, logo = '', siteName }: { apiKey: stri
     const [webChatLoaded, setWebChatLoaded] = useState(false)
 
     useEffect(() => {
-        const scriptChat = document.createElement('script')
-        scriptChat.src = 'https://webchat.scheduleengine.net/webchat-v1.js'
-        scriptChat.async = true
-        document.body.appendChild(scriptChat)
+        if (apiKey) {
+            const scriptChat = document.createElement('script')
+            scriptChat.src = 'https://webchat.scheduleengine.net/webchat-v1.js'
+            scriptChat.async = true
+            document.body.appendChild(scriptChat)
 
-        scriptChat.onload = () => {
-            setWebChatLoaded(true)
-        }
+            scriptChat.onload = () => {
+                setWebChatLoaded(true)
+            }
 
-        return () => {
-            // Cleanup function to remove the script from the DOM
-            document.body.removeChild(scriptChat)
+            return () => {
+                // Cleanup function to remove the script from the DOM
+                document.body.removeChild(scriptChat)
+            }
         }
     }, [])
 
     useEffect(() => {
-        if (webChatLoaded) {
+        if (webChatLoaded && apiKey) {
             openChat()
         }
     }, [webChatLoaded])
