@@ -20,7 +20,6 @@ const keysToComponentMap: any = {
     FacebookFeed,
     Webchat,
     ScheduleEngine,
-    Engage,
 }
 
 const mapPropsToConfig = (config: any[]) => {
