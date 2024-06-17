@@ -3,6 +3,7 @@ import { printPage } from '../functions'
 import { SocialLinksProps, SocialItem } from '../types'
 import styles from './sociallinks.module.scss'
 import cn from 'classnames'
+import { Fragment } from 'react'
 
 const SocialLinks = ({ siteData, modType = 'header' }: SocialLinksProps) => {
     return (
@@ -20,7 +21,7 @@ const SocialLinks = ({ siteData, modType = 'header' }: SocialLinksProps) => {
         >
             {siteData.social &&
                 siteData.social.map((item: SocialItem, index: number) => (
-                    <>
+                    <Fragment key={index}>
                         {item.url && (
                             <li key={index}>
                                 <a
@@ -37,7 +38,7 @@ const SocialLinks = ({ siteData, modType = 'header' }: SocialLinksProps) => {
                                 </a>
                             </li>
                         )}
-                    </>
+                    </Fragment>
                 ))}
             {siteData.headerOptions?.showPrintEmail && (
                 <>

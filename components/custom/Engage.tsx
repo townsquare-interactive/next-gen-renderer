@@ -104,7 +104,8 @@ const Engage = ({ businessId, actions, themeColors, titleText, mainAction, bodyT
         } else {
             setThemeColor(
                 `#livesite_active_engage .ls-main-action-T, #livesite_engage_button a.ls-engage-button, #livesite_engage_button .ls-action-T, #livesite_action_buttons .ls-action-T {  background-color: var(--promo); }
-                #livesite_engage_button a.ls-engage-button:hover, #livesite_active_engage .ls-main-action-T:hover, #livesite_action_buttons .ls-action-T:hover {background-color: var(--promo2)}`
+                #livesite_engage_button a.ls-engage-button:hover, #livesite_active_engage .ls-main-action-T:hover, #livesite_action_buttons .ls-action-T:hover {background-color: var(--promo2)}
+                #livesite_action_buttons{margin-top:10%;}`
             )
         }
         themeStyles

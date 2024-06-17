@@ -15,6 +15,7 @@ library.add(fas, fab, far)
 import { redirect } from 'next/navigation'
 import { CustomComponents } from './custom/CustomComponents'
 import dynamic from 'next/dynamic'
+import Engage from './custom/Engage'
 //import FlexColors from './FlexColors'
 //dynamic import with ssr false allows it load after initial render
 const DeferLoad = dynamic(() => import('./DeferLoad'), {
@@ -115,24 +116,6 @@ export const Container = (props: ContainerProps) => {
     })
     const pageModalVars = useModals(modalArgs)
 
-    console.log(siteData.themeStyles)
-
-    // Assuming siteData.customComponents is an array of objects
-
-    // Check if there is an object with type "Engage"
-    /*     if (siteData.customComponents) {
-        let hasEngage = siteData.customComponents.some((component) => component.type === 'Engage')
-
-        if (hasEngage) {
-            // Filter out the object with type "Webchat"
-            siteData.customComponents = siteData.customComponents.filter((component) => component.type !== 'Webchat')
-        } else {
-            siteData.customComponents.push({ type: 'Engage', businessId: 'WI-TLS9L59J8UGP3ZQ8B83G' })
-            siteData.customComponents = siteData.customComponents.filter((component) => component.type !== 'Webchat')
-        }
-        console.log(siteData.customComponents)
-    } */
-
     return (
         <>
             {page && (
@@ -196,6 +179,8 @@ export const Container = (props: ContainerProps) => {
                         globalStyles={siteData.styles ? siteData.styles : siteData.allStyles}
                         isLanding={siteData.siteType === 'landing' ? true : false}
                     />
+
+                    {siteData.vcita?.businessId && <Engage {...siteData.vcita} />}
 
                     {siteData.customComponents && <CustomComponents config={siteData.customComponents} themeStyles={themeStyles} />}
                 </>
