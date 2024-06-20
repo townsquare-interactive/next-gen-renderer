@@ -1,6 +1,6 @@
 'use client'
 import styles from './container.module.scss'
-import { ContainerProps, ModuleData } from '../types'
+import { ContainerProps, GlobalData, ModuleData } from '../types'
 import ContainerLayout from './ContainerLayout'
 import { ModuleRenderer } from './ModuleRenderer'
 import { defineContainerVars } from '../functions'
@@ -16,6 +16,8 @@ import { redirect } from 'next/navigation'
 import { CustomComponents } from './custom/CustomComponents'
 import dynamic from 'next/dynamic'
 import Engage from './custom/Engage'
+import { useEngageContext } from 'context/EngageActionsContext'
+import Link from 'next/link'
 //import FlexColors from './FlexColors'
 //dynamic import with ssr false allows it load after initial render
 const DeferLoad = dynamic(() => import('./DeferLoad'), {
@@ -96,15 +98,46 @@ const useModal = (autoOpen: boolean, flagName: string, openEveryTime: boolean) =
 
 export const Container = (props: ContainerProps) => {
     const { page, siteData } = props
+    const [updatedSiteData, setUpdatedSiteData] = useState<GlobalData>(siteData)
+
     const { cmsUrl, themeStyles, columnStyles } = defineContainerVars(page, siteData)
     const siteModalVars = [useModal(siteData.modalData?.autoOpen || false, 'site', false)]
-
-    useEffect(() => {}, [])
+    const { engageLinks, setEngageLinks } = useEngageContext()
 
     if (siteData.published === false) {
         console.log('unpublished site')
         redirect(siteData.redirectUrl || 'https://townsquareinteractive.com/')
     }
+
+    //update header buttons with engage links gathered from script if necessary
+    useEffect(() => {
+        if (engageLinks && engageLinks.length > 0 && siteData.headerOptions?.mobileHeaderBtns && siteData.headerOptions?.ctaBtns) {
+            const newHeaderOptions = { ...siteData.headerOptions }
+
+            if (newHeaderOptions.mobileHeaderBtns && newHeaderOptions.ctaBtns) {
+                //update the mobile header buttons
+                for (let i = 0; i < newHeaderOptions.mobileHeaderBtns.length; i++) {
+                    if (engageLinks[i]) {
+                        newHeaderOptions.mobileHeaderBtns[i].link = engageLinks[i].href
+                        newHeaderOptions.mobileHeaderBtns[i].window = 0
+                    }
+                }
+
+                //update the desktop header buttons
+                for (let x = 0; x < newHeaderOptions.ctaBtns.length; x++) {
+                    if (engageLinks[x]) {
+                        newHeaderOptions.ctaBtns[x].link = engageLinks[x].href
+                        newHeaderOptions.ctaBtns[x].window = 0
+                    }
+                }
+
+                setUpdatedSiteData((prevState) => ({
+                    ...prevState,
+                    headerOptions: newHeaderOptions,
+                }))
+            }
+        }
+    }, [engageLinks])
 
     const modalArgs: ModalDef[] = (page.data.pageModals || []).map((m, n) => {
         return {
@@ -122,7 +155,7 @@ export const Container = (props: ContainerProps) => {
                 <>
                     <PageHead page={page} siteData={siteData} pageType={page.data.slug === 'home' ? 'index' : 'slug'} />
                     <ContainerLayout
-                        siteData={siteData}
+                        siteData={updatedSiteData}
                         themeStyles={themeStyles}
                         cName={page.data.slug}
                         cmsUrl={cmsUrl}
@@ -172,8 +205,6 @@ export const Container = (props: ContainerProps) => {
 
                     {siteData.styles?.global && <style>{siteData.styles.global}</style>}
 
-                    {/*                     {siteData.vcita?.businessId && <Engage {...siteData.vcita} />} */}
-
                     <DeferLoad
                         fonts={siteData.fontImport}
                         globalStyles={siteData.styles ? siteData.styles : siteData.allStyles}
@@ -181,7 +212,6 @@ export const Container = (props: ContainerProps) => {
                     />
 
                     {siteData.vcita?.businessId && <Engage {...siteData.vcita} />}
-
                     {siteData.customComponents && <CustomComponents config={siteData.customComponents} themeStyles={themeStyles} />}
                 </>
             )}
