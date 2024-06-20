@@ -5,20 +5,24 @@ describe('transformFetchingDomain', () => {
     const cmsUrl = 'clttestsiteforjoshedwards'
     const s3Bucket = 'https://townsquareinteractive.s3.amazonaws.com/'
 
-    it('should return our local domain when a normal string is passed', () => {
-        expect(transformFetchingDomain({ domain: 'Hi' })).toBe(`${s3Bucket}${cmsUrl}`)
+    it('should return our local domain when a normal string is passed', async () => {
+        expect(await transformFetchingDomain({ domain: 'Hi' })).toBe(`${s3Bucket}${cmsUrl}`)
     })
-    it('should return a stripped siteID when a vercel url is passed', () => {
-        expect(transformFetchingDomain({ domain: 'bluesky.vercel.app' })).toBe(`${s3Bucket}bluesky`)
+
+    it('should return a stripped siteID when a vercel url is passed', async () => {
+        expect(await transformFetchingDomain({ domain: 'bluesky.vercel.app' })).toBe(`${s3Bucket}bluesky`)
     })
-    it('should return our local domain when favicon is passed', () => {
-        expect(transformFetchingDomain({ domain: 'favicon.ico' })).toBe(`${s3Bucket}${cmsUrl}`)
+
+    it('should return our local domain when favicon is passed', async () => {
+        expect(await transformFetchingDomain({ domain: 'favicon.ico' })).toBe(`${s3Bucket}${cmsUrl}`)
     })
-    it('should return sripped domain when given a .com url', () => {
-        expect(transformFetchingDomain({ domain: 'bluesky.com' })).toBe(`${s3Bucket}bluesky`)
+
+    it('should return stripped domain when given a .com url', async () => {
+        expect(await transformFetchingDomain({ domain: 'bluesky.com' })).toBe(`${s3Bucket}bluesky`)
     })
-    it('should return sripped domain without -preview', () => {
-        expect(transformFetchingDomain({ domain: 'bluesky-preview.com' })).toBe(`${s3Bucket}bluesky`)
+
+    it('should return stripped domain without -preview', async () => {
+        expect(await transformFetchingDomain({ domain: 'bluesky-preview.com' })).toBe(`${s3Bucket}bluesky`)
     })
 })
 

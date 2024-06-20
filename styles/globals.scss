@@ -801,3 +801,18 @@ span.guarntext {
         padding-top: 0;
     }
 }
+
+//BMP styles
+#livesite_action_buttons {
+    margin-top: 40%;
+}
+@include breakpoints.md-min {
+    #livesite_action_buttons {
+        margin-top: 20%;
+    }
+}
+@include breakpoints.lg-min {
+    #livesite_action_buttons {
+        margin-top: 15%;
+    }
+}

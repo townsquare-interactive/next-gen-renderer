@@ -4,7 +4,6 @@ import { SingleButtonProps } from '../types'
 import cn from 'classnames'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Parser from 'html-react-parser'
 
 export const Button = (props: SingleButtonProps) => {
     const { btn, well, type, index, isFeatureButton, pageModalVars } = props
@@ -31,6 +30,8 @@ export const Button = (props: SingleButtonProps) => {
         ['cta']: btn.btnType === 'btn_cta' || btn.btnType === 'btn_banner' || btn.btnType === 'btn_cta_landing',
         ['accent-txt']: btn.btnType === 'btn_banner' || btn.btnType === 'btn_cta_landing',
         [styles['land-colors']]: btn.btnType?.includes('btn_land-colors'),
+        ['livesite-contact']: btn.action === 'ls-contact',
+        ['livesite-schedule']: btn.action === 'ls-schedule',
     })
 
     const bookScheduleEngine = () => {
@@ -59,7 +60,14 @@ export const Button = (props: SingleButtonProps) => {
                     {` ${btn.label}`} {isFeatureButton && !type.includes('article') && '>'}
                 </button>
             ) : (
-                <Link href={btn.link || ''} passHref={btn.linkType === 'ext'} target={btn.window == 1 ? '_blank' : '_self'} className={btnClassesList}>
+                <Link
+                    href={btn.link || ''}
+                    passHref={btn.linkType === 'ext'}
+                    target={btn.window == 1 ? '_blank' : '_self'}
+                    className={btnClassesList}
+                    data-origin="livesite_active_engage"
+                    data-options="title:Contact Request;message:"
+                >
                     {btn.icon && <FontAwesomeIcon icon={[btn.icon.iconPrefix, btn.icon.iconModel]} />}
                     {/* {btn.googleIcon && Parser(btn.googleIcon)} */}
                     {` ${btn.label}`} {isFeatureButton && !type.includes('article') && '>'}
