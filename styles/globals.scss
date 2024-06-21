@@ -816,3 +816,9 @@ span.guarntext {
         margin-top: 15%;
     }
 }
+
+#widget.contact_form .center-holder,
+.center-holder {
+    display: flex !important;
+    justify-content: center;
+}
