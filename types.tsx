@@ -1029,6 +1029,7 @@ export interface ContactFormRoutesProps {
 interface contactFormData {
     formFields: FormFields[]
     formTitle: string
+    formEmbed?: string
 }
 
 export interface MapAddress {
