@@ -63,7 +63,7 @@ const ContainerHeader = (props: ContainerHeaderProps) => {
                         {siteData.headerOptions?.ctaBtns && <ButtonWrap buttonList={siteData.headerOptions.ctaBtns} type="cta" />}
                     </div>
                 )}
-                {siteData.headerOptions?.mobileHeaderBtns && (
+                {siteData.headerOptions?.mobileHeaderBtns && siteData.headerOptions?.mobileHeaderBtns?.length > 0 && (
                     <div className={cn(styles['cta-block'], styles['mobile-cta-block'])}>
                         <ButtonWrap buttonList={siteData.headerOptions?.mobileHeaderBtns} type="cta" />
                     </div>
