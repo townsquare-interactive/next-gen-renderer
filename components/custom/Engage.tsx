@@ -35,7 +35,6 @@ export interface VcitaData {
     showMyAccountBtn?: boolean
     themeStyles?: ThemeStyles
     engageLinks?: Action[]
-    setEngageLinks: (links: Action[]) => void
 }
 
 ///Users/joshedwards/Documents/docker/repos/wordpress/current/cms_websites/classes/scripts/vcita.php

@@ -1,28 +1,31 @@
 'use client'
 import { Fragment, useState } from 'react'
 import styles from './contactform.module.scss'
-import { postContactFormRoute } from 'functions'
+import { postContactFormRoute } from '../functions'
 import { ContactFieldProps, ContactFormRoutesProps } from 'types'
 import cn from 'classnames'
 import { Formik, Field, Form, FormikHelpers, ErrorMessage } from 'formik'
 import { z } from 'zod'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
-import ModuleTitle from 'elements/ModuleTitle'
+import ModuleTitle from '../elements/ModuleTitle'
 import Parser from 'html-react-parser'
 
 const Schema = z.object({
     fName: z.string(),
     lName: z.string(),
     email: z.string().includes('@'),
-    phone: z.string().refine(
-        (value) => {
-            const phoneRegex = /^(\+\d{1,2}\s?)?(\(\d{3}\)|\d{3})([-.\s]?)\d{3}([-.\s]?)\d{4}$/
-            return phoneRegex.test(value)
-        },
-        {
-            message: 'Invalid phone number format',
-        }
-    ),
+    phone: z
+        .string()
+        .refine(
+            (value) => {
+                const phoneRegex = /^(\+\d{1,2}\s?)?(\(\d{3}\)|\d{3})([-.\s]?)\d{3}([-.\s]?)\d{4}$/
+                return phoneRegex.test(value)
+            },
+            {
+                message: 'Invalid phone number format',
+            }
+        )
+        .optional(),
     messagebox: z.string().min(2, 'Too Short!'),
     street: z.string().optional(),
     city: z.string().optional(),
@@ -46,6 +49,8 @@ const ContactFormRoutes = (props: ContactFormRoutesProps) => {
     const { contactFormData, items, title, modType = 'page', siteData } = props
     const [formMessage, setFormMessage] = useState('')
     const [formSent, setFormSent] = useState(false)
+
+    const useEngage = siteData.vcita?.businessId ? true : false
 
     return (
         <>
@@ -76,7 +81,8 @@ const ContactFormRoutes = (props: ContactFormRoutesProps) => {
                                                             [styles.red]:
                                                                 formMessage === 'Form error' ||
                                                                 formMessage === 'Email not entered correctly' ||
-                                                                formMessage === 'No client email set up for this form',
+                                                                formMessage === 'No client email set up for this form' ||
+                                                                (!formSent && formMessage != 'Sending....'),
                                                             [styles.green]: formSent,
                                                         })}
                                                     >
@@ -121,14 +127,42 @@ const ContactFormRoutes = (props: ContactFormRoutesProps) => {
                                                             }
 
                                                             setTimeout(async () => {
-                                                                if (!siteData.email) {
-                                                                    setFormMessage('No client email set up for this form')
-                                                                } else {
+                                                                try {
+                                                                    if (!siteData.email && !useEngage) {
+                                                                        throw new Error('No client email set up for this form')
+                                                                    }
+                                                                    if (useEngage && !values.fName) {
+                                                                        throw new Error('First name is required')
+                                                                    }
+
                                                                     setFormMessage('Sending....')
-                                                                    await postContactFormRoute(`/api/contacts`, { formData: formData, siteData: siteData })
+                                                                    setSubmitting(true)
+
+                                                                    const formRoute = useEngage ? '/api/bmp-form' : `/api/contacts`
+
+                                                                    const response = await postContactFormRoute(formRoute, {
+                                                                        formData: formData,
+                                                                        siteData: siteData,
+                                                                    })
+
+                                                                    if (!response.ok) {
+                                                                        let errorMessage = `Status: ${response.status}, Reason: ${response.statusText}`
+                                                                        try {
+                                                                            const errorJson = await response.json()
+                                                                            errorMessage = errorJson.error || errorJson.message || errorMessage
+                                                                        } catch (jsonError) {
+                                                                            console.error('Error parsing JSON:', jsonError)
+                                                                        }
+                                                                        throw new Error(errorMessage)
+                                                                    }
+
+                                                                    const result = await response.json()
                                                                     setFormMessage('Thank you for contacting us')
                                                                     setFormSent(true)
-
+                                                                } catch (error: any) {
+                                                                    setFormMessage(`Error: ${error.message || 'An error occurred'}`)
+                                                                    setFormSent(false)
+                                                                } finally {
                                                                     setSubmitting(false)
                                                                 }
                                                             }, 500)
@@ -173,7 +207,7 @@ const ContactField = (props: ContactFieldProps) => {
                         <ErrorMessage name={name} />
                     </span>
 
-                    <Field id={name} name={name} required={true} as={fieldType ?? 'input'} placeholder={placeholder} type={type} />
+                    <Field id={name} name={name} required={isReq} as={fieldType ?? 'input'} placeholder={placeholder} type={type} />
                 </div>
             )}
         </>

@@ -1,10 +1,10 @@
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import { ContactFormSubmitFn } from 'types'
 import { submit as mailchimpSubmit } from '../../../services/contact-us-form/mailchimp'
 import { submit as s3FilePost } from '../../../services/contact-us-form/s3file'
 import { submit as webhookSubmit } from '../../../services/contact-us-form/webhook'
 
-export async function POST(request: any) {
+export async function POST(request: NextRequest) {
     const formRequest = await request.json()
     console.log('sietData', formRequest.siteData)
 
