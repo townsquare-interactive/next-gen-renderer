@@ -67,7 +67,7 @@ export async function subscribeMailChimp(url: string, headers: any, minData: any
 
 export async function postContactFormRoute(url: string, data: any) {
     console.log(data)
-    await fetch(url, {
+    return await fetch(url, {
         method: 'POST',
         body: JSON.stringify(data),
     })

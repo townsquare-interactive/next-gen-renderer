@@ -83,10 +83,10 @@ interface Contact {
     phone: any
     hours?: any
     address?: any
-    contactLinks: ContactLinks[]
+    contactLinks?: ContactLinks[]
     showContactBox: boolean
     disabled?: string
-    displayInMap: boolean
+    displayInMap?: boolean
 }
 
 export interface GlobalData {
@@ -1369,11 +1369,11 @@ export interface SeoData {
 
 export interface GlobalSEO {
     global: {
-        aiosp_page_title_format: string
-        aiosp_description_format: string
-        aiosp_404_title_format: string
-        aiosp_home_title: string
-        aiosp_home_description: string
+        aiosp_page_title_format?: string
+        aiosp_description_format?: string
+        aiosp_404_title_format?: string
+        aiosp_home_title?: string
+        aiosp_home_description?: string
     }
 }
 

@@ -66,7 +66,7 @@
         "@storybook/preset-scss": "^1.0.3",
         "@storybook/react": "^7.6.10",
         "@storybook/testing-library": "^0.2.2-next.0",
-        "@testing-library/react": "^15.0.4",
+        "@testing-library/react": "^15.0.7",
         "@types/leaflet": "^1.9.3",
         "@types/node": "20.12.2",
         "@types/probe-image-size": "^7.0.1",
