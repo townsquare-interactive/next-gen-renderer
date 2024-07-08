@@ -14,7 +14,7 @@ const ReturnNextScript = dynamic(() => import('./custom/ReturnNextScript'), {
     ssr: false,
 })
 
-const useCustomScripts = false
+const useCustomScripts = true
 
 export default function Layout(props: LayoutProps) {
     const { children, siteData, themeStyles, cName, cmsUrl, pageModalVars, pageScripts } = props
@@ -49,8 +49,8 @@ export default function Layout(props: LayoutProps) {
 
                 <ContainerFooter siteData={siteData} navSwitch={navSwitch} cmsUrl={cmsUrl} />
 
-                {(siteData.scripts?.header || siteData.scripts?.footer || pageScripts) && useCustomScripts && (
-                    <ReturnNextScript code={(siteData.scripts?.header || '') + (siteData.scripts?.footer || '') + pageScripts} />
+                {(siteData.scripts?.footer || pageScripts) && useCustomScripts && (
+                    <ReturnNextScript code={(siteData.scripts?.footer || '') + (pageScripts || '')} />
                 )}
             </div>
         </>

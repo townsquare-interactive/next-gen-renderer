@@ -1,5 +1,6 @@
 import { domainImage } from 'functions'
 import { PageHeadProps } from 'types'
+import ReturnNextScript from './custom/ReturnNextScript'
 
 export default function PageHead(props: PageHeadProps) {
     const { siteData, page, pageType } = props
@@ -31,6 +32,7 @@ export default function PageHead(props: PageHeadProps) {
                 ))}
             {siteData.favicon && <link rel="shortcut icon" href={encodeURI(siteData.favicon)} />}
             <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+            {siteData.scripts?.header && <ReturnNextScript code={siteData.scripts?.header} />}
         </>
     )
 }
