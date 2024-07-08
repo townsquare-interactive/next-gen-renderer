@@ -15,7 +15,7 @@ interface NoSrcScriptsProps {
 describe('ReturnNextScript Component', () => {
     vi.mock('next/script', () => ({
         __esModule: true,
-        default: ({ src, ...props }: ScriptProps) => <script src={src} {...props}></script>,
+        default: ({ src, ...props }: ScriptProps) => <script src={src} {...props} async></script>,
     }))
 
     // Mock the NoSrcScripts component
@@ -24,7 +24,7 @@ describe('ReturnNextScript Component', () => {
         default: ({ noSrcScripts }: NoSrcScriptsProps) => (
             <div>
                 {noSrcScripts.map((script) => (
-                    <script key={script.id} dangerouslySetInnerHTML={{ __html: script.script }} />
+                    <script key={script.id} dangerouslySetInnerHTML={{ __html: script.script }} async />
                 ))}
             </div>
         ),
