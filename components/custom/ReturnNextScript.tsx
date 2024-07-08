@@ -34,6 +34,8 @@ const ReturnNextScript = ({ code }: { code: string }) => {
     const [divTags, setDivTags] = useState<string[]>([])
     const [scriptsReady, setScriptsReady] = useState<boolean>(false)
 
+    const delayScriptsAttempt = false
+
     useEffect(() => {
         function observeLCP(callback: (metric: string) => void) {
             // Create a PerformanceObserver to observe LCP entries
@@ -113,17 +115,6 @@ const ReturnNextScript = ({ code }: { code: string }) => {
                     const script = scriptTags[i]
                     if (script.src) {
                         try {
-                            /*  const scriptElement = document.createElement('script')
-                            scriptElement.src = script.src
-                            scriptElement.async = true
-                            scriptElement.defer = true
-                            //scriptElement.type = 'text/partytown'
-                            await new Promise((resolve, reject) => {
-                                scriptElement.onload = resolve
-                                scriptElement.onerror = reject
-                                document.body.appendChild(scriptElement)
-                            }) */
-
                             const scriptObj = {
                                 src: script.src,
                                 nonce: script.nonce || '',
@@ -169,9 +160,13 @@ const ReturnNextScript = ({ code }: { code: string }) => {
             setDivTags(allDivs)
         }
 
-        observeLCP(handleObservations)
-        observeTBT(handleObservations)
-        //fullScriptCode()
+        //options for observing LCP and TBT before using scripts
+        if (delayScriptsAttempt) {
+            observeLCP(handleObservations)
+            observeTBT(handleObservations)
+        } else {
+            fullScriptCode()
+        }
     }, [code])
 
     return (
@@ -183,7 +178,6 @@ const ReturnNextScript = ({ code }: { code: string }) => {
             {divTags.map((tag: string, idx: number) => (
                 <Fragment key={idx}>{Parser(tag)}</Fragment>
             ))}
-
             {scriptsReady && <NoSrcScripts noSrcScripts={noSrcScripts} />}
         </>
     )

@@ -60,14 +60,7 @@ export const Button = (props: SingleButtonProps) => {
                     {` ${btn.label}`} {isFeatureButton && !type.includes('article') && '>'}
                 </button>
             ) : (
-                <Link
-                    href={btn.link || ''}
-                    passHref={btn.linkType === 'ext'}
-                    target={btn.window == 1 ? '_blank' : '_self'}
-                    className={btnClassesList}
-                    data-origin="livesite_active_engage"
-                    data-options="title:Contact Request;message:"
-                >
+                <Link href={btn.link || ''} passHref={btn.linkType === 'ext'} target={btn.window == 1 ? '_blank' : '_self'} className={btnClassesList}>
                     {btn.icon && <FontAwesomeIcon icon={[btn.icon.iconPrefix, btn.icon.iconModel]} />}
                     {/* {btn.googleIcon && Parser(btn.googleIcon)} */}
                     {` ${btn.label}`} {isFeatureButton && !type.includes('article') && '>'}
