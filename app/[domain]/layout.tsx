@@ -2,7 +2,6 @@ import '../../styles/globals.scss'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import { config } from '@fortawesome/fontawesome-svg-core'
 config.autoAddCss = false /* eslint-disable import/first */
-import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 import { generateLayout } from 'functions'
 import ContextProviders from '../../context/ContextProviders'
 
@@ -17,11 +16,23 @@ export default async function RootLayout({ params, children }: RootLayoutProps) 
     return (
         <html lang="en">
             <body>
+                {
+                    CMSLayout.analytics?.gtmId && (
+                        /* Google Tag Manager (noscript) */
+                        <noscript>
+                            <iframe
+                                src={`https://www.googletagmanager.com/ns.html?id=${CMSLayout.analytics?.gtmId}`}
+                                height="0"
+                                width="0"
+                                style={{ display: 'none', visibility: 'hidden' }}
+                            ></iframe>
+                        </noscript>
+                    )
+                    /* End Google Tag Manager (noscript) */
+                }
                 <ContextProviders>
                     <div>{children}</div>
                 </ContextProviders>
-                {CMSLayout.analytics?.gaId && <GoogleAnalytics gaId={CMSLayout.analytics.gaId} />}
-                {CMSLayout.analytics?.gtmId && <GoogleTagManager gtmId={CMSLayout.analytics.gtmId} />}
             </body>
         </html>
     )
