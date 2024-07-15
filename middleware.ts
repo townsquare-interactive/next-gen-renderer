@@ -26,6 +26,15 @@ export default async function middleware(req: NextRequest) {
     // Get the pathname of the request (e.g. /, /about, /blog/first-post)
     const path = url.pathname
 
+    // Special case for townsquareignite.com and www.townsquareignite.com
+    if (hostname === 'www.townsquareignite.com') {
+        if (path === '/') {
+            return NextResponse.redirect('https://townsquareignite.com')
+        } else if (path === '/landing') {
+            return NextResponse.next()
+        }
+    }
+
     // rewrites for app pages
     if (hostname == `app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`) {
         const session = await getToken({ req })
