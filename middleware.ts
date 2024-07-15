@@ -29,7 +29,7 @@ export default async function middleware(req: NextRequest) {
     // Special case for townsquareignite.com and www.townsquareignite.com
     if (hostname === 'www.townsquareignite.com') {
         if (!path.startsWith('/landing')) {
-            return NextResponse.redirect('https://townsquareignite.com')
+            return NextResponse.redirect(`https://townsquareignite.com${path}`)
         } else {
             return NextResponse.next()
         }
