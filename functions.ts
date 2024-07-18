@@ -1,4 +1,4 @@
-import { ConditionalWrapperProps, GlobalData, CMSPage } from 'types'
+import { ConditionalWrapperProps, GlobalData, CMSPage, SlugParams } from 'types'
 const bucketUrl = process.env.BUCKET_URL || 'https://townsquareinteractive.s3.amazonaws.com'
 const localUrl = 'wanderlustadventures'
 const cmsUrl = process.env.NEXT_PUBLIC_CMS_URL || 'clttestsiteforjoshedwards'
@@ -9,6 +9,9 @@ const domain = process.env.NEXT_PUBLIC_CMS_URL
 const usePostgres = false
 import { sql } from '@vercel/postgres'
 export const bucketAndSiteUrl = getDomain(true)
+
+const igniteUrl = 'www.townsquareignite.com'
+const devIgniteUrl = 'townsquareignite-develop.vercel.app'
 
 //determines environment (preview/live) and creates url for it
 function envCheck(api: string) {
@@ -89,15 +92,34 @@ export const findHomePageSlug = (pageList: any) => {
     return homePageSlug
 }
 
-export const transformFetchingDomain = async (params: { slug?: string; domain: string }) => {
+const removeCustomVercelDomainPostfixes = (str: string) => {
+    let apexID = str
+    apexID = apexID.replace('-preview', '')
+    apexID = apexID.replace('-lp', '')
+    apexID = apexID.replace('-prev', '')
+    apexID = apexID.replace('-main', '')
+    return apexID
+}
+
+export const transformFetchingDomain = async (params: { slug?: string | any[]; domain: string }) => {
     let fetchingDomain
     let vercelDomain = params?.domain
 
+    //handle multi slug
     if (params?.domain.includes('favicon')) {
         console.log('using favicon')
         fetchingDomain = bucketUrl + '/' + cmsUrl
 
         //determine if we are on a live vercel hosted site
+    } else if (
+        Array.isArray(params.slug) &&
+        params.slug?.length === 3 &&
+        (params.domain === igniteUrl || params.domain === 'home' || params.domain === devIgniteUrl)
+    ) {
+        const apexId = params.slug[1]
+        const s3Folder = bucketUrl + '/' + apexId
+        console.log('folder name', s3Folder)
+        fetchingDomain = s3Folder
     } else if (params?.domain && (vercelDomain?.includes('vercel') || vercelDomain?.includes('.com'))) {
         //use domain mapping with postgres in vercel storage
         if (usePostgres) {
@@ -108,12 +130,7 @@ export const transformFetchingDomain = async (params: { slug?: string; domain: s
             console.log('using vercelDomain')
             const removeAfterPeriod = /\..*/
             fetchingDomain = vercelDomain?.replace(removeAfterPeriod, '')
-
-            //remove vercel url prefixes (prev/preview indicate using the preview branch)
-            fetchingDomain = fetchingDomain.replace('-preview', '')
-            fetchingDomain = fetchingDomain.replace('-lp', '')
-            fetchingDomain = fetchingDomain.replace('-prev', '')
-            fetchingDomain = fetchingDomain.replace('-main', '')
+            fetchingDomain = removeCustomVercelDomainPostfixes(fetchingDomain)
             fetchingDomain = bucketUrl + '/' + fetchingDomain
 
             if (fetchingDomain.includes('next-gen-renderer')) {
@@ -121,13 +138,13 @@ export const transformFetchingDomain = async (params: { slug?: string; domain: s
             }
         }
     } else {
-        console.log('using local domain')
-        fetchingDomain = bucketUrl + '/' + cmsUrl
+        console.log('using local domain', params.domain)
+        fetchingDomain = bucketUrl + '/' + removeCustomVercelDomainPostfixes(cmsUrl)
     }
     return fetchingDomain
 }
 
-export async function generateLayout(params: { slug: string; domain: string }) {
+export async function generateLayout(params: { slug: SlugParams; domain: string }) {
     const fetchingDomain = await getFetchingUrl(params)
 
     try {
@@ -196,8 +213,9 @@ const fetchRedirect = async (url: string) => {
 }
 
 //get url to fetch s3 files from
-export const getFetchingUrl = async (params: { slug?: string; domain: string }) => {
+export const getFetchingUrl = async (params: { slug?: SlugParams; domain: string }) => {
     let fetchingDomain = await transformFetchingDomain(params)
+
     const redirect = await fetchRedirect(fetchingDomain + '/redirect.json')
 
     //if redirect file exists, use that new fetchingDomain
@@ -211,12 +229,13 @@ export const getFetchingUrl = async (params: { slug?: string; domain: string }) 
     return fetchingDomain
 }
 
-export async function getAnyPageData(params: { domain: string; slug?: string }) {
+export async function getAnyPageData(params: { domain: string; slug?: SlugParams }) {
     let pageSlug
     const fetchingDomain = await getFetchingUrl(params)
+    const usingLandingPage = Array.isArray(params.slug)
 
-    //determining the page slug
-    if (!params?.slug) {
+    //determining the page slug (either slug doesn't exist at all or it is landing and not long enough)
+    if (!params?.slug || (usingLandingPage && params.slug?.length < 3)) {
         try {
             const resPageList = await fetch(fetchingDomain + '/pages/page-list.json', {
                 next: { revalidate: 10 },
@@ -230,10 +249,16 @@ export async function getAnyPageData(params: { domain: string; slug?: string }) 
             console.log('pagelist error', err)
         }
     } else {
-        pageSlug = params.slug
+        //assign slug to second item in slugs param if there are multiple
+        if (usingLandingPage && (params.domain === igniteUrl || params.domain === 'home' || params.domain === devIgniteUrl)) {
+            pageSlug = params.slug[2]
+        } else {
+            pageSlug = params.slug
+        }
     }
 
     try {
+        console.log('page trying to fetch', fetchingDomain + '/pages/' + pageSlug + '.json')
         const resPage = await fetch(fetchingDomain + '/pages/' + pageSlug + '.json', {
             next: { revalidate: 0 },
         })
