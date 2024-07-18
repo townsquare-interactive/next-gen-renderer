@@ -443,6 +443,8 @@ export interface CMSPageData {
     scripts?: string
 }
 
+export type SlugParams = string | string[]
+
 export interface PageModalVars {
     toggleModal: () => void
     isShowing: boolean

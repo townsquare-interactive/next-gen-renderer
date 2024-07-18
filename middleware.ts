@@ -21,17 +21,13 @@ export default async function middleware(req: NextRequest) {
     // Get hostname of request (e.g. demo.vercel.pub, demo.localhost:3000)
     let hostname = req.headers.get('host')!.replace('.localhost:3000', `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`)
 
-    console.log('what is hostname------------------', hostname)
-
     // Get the pathname of the request (e.g. /, /about, /blog/first-post)
     const path = url.pathname
 
     // Special case for townsquareignite.com and www.townsquareignite.com
     if (hostname === 'www.townsquareignite.com') {
-        if (!path.startsWith('/landing')) {
+        if (!path.startsWith('/landing/')) {
             return NextResponse.redirect(`https://townsquareignite.com${path}`)
-        } else {
-            return NextResponse.next()
         }
     }
 
