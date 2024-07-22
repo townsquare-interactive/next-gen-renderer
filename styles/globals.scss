@@ -733,12 +733,13 @@ $ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .guarn {
-    -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: var(--promo);
     font-weight: bold;
     font-size: 4.5rem;
     line-height: 1.2;
     letter-spacing: 1.5px;
+    paint-order: stroke fill;
+    -webkit-text-stroke-width: 6px;
 }
 span.guarntext {
     font-size: 17px;
@@ -766,14 +767,13 @@ span.guarntext {
     }
     .guarn {
         font-size: 2.5rem;
-        -webkit-text-stroke-width: 1.5px;
+        -webkit-text-stroke-width: 3.5px;
     }
 }
 
 @media (max-width: 360px) {
     .guarn {
         font-size: 2rem !important;
-        -webkit-text-stroke-width: 1.3px !important;
     }
 }
 
