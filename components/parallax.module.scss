@@ -3,6 +3,8 @@
 @use './styles/variables.scss';
 @value columns from '../components/container.module.scss';
 
+$min-dl-height: 330px;
+
 .root {
     margin-top: 2rem;
     text-align: center;
@@ -34,11 +36,13 @@
                 display: flex;
                 justify-content: center;
                 flex-direction: column;
+                min-height: $min-dl-height;
 
                 .caption {
                     display: flex;
                     align-items: center;
                     justify-content: center;
+                    min-height: $min-dl-height;
 
                     //used to fix hiding issue
                     will-change: transform;
@@ -140,6 +144,7 @@
             }
 
             .parallax-banner {
+                min-height: $min-dl-height;
                 & > div:first-of-type {
                     inset: -125px 0px !important;
                 }
