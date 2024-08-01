@@ -24,7 +24,7 @@ interface CustomWindow extends Window {
     totalBlockingTime?: number
 }
 
-const ReturnNextScript = ({ code }: { code: string }) => {
+const ReturnNextScript = ({ code, location }: { code: string; location: string }) => {
     const [srcScripts, setSrcScripts] = useState<ScriptObject[]>([])
     const [noSrcScripts, setNoSrc] = useState<NoSrcObject[]>([])
     const [divTags, setDivTags] = useState<string[]>([])
@@ -99,7 +99,7 @@ const ReturnNextScript = ({ code }: { code: string }) => {
 
         loadScripts().then(() => {
             const noSrcList: NoSrcObject[] = []
-            let nonSrcCount = 1
+            let nonSrcCount = location == 'head' ? 30 : 1
             scriptTags.forEach((script) => {
                 if (script.textContent && !script.src) {
                     if (!script.textContent?.includes('jQuery') && !script.textContent?.includes('$(document)')) {
@@ -134,12 +134,19 @@ const ReturnNextScript = ({ code }: { code: string }) => {
         <>
             {srcScripts.length > 0 &&
                 srcScripts.map((script: ScriptObject, idx: number) => (
-                    <Script src={script.src} key={idx} strategy="lazyOnload" data-api-key={script.dataApiKey || ''} id={script.id}></Script>
+                    <Script
+                        src={script.src}
+                        key={idx}
+                        strategy={location === 'head' ? 'beforeInteractive' : 'lazyOnload'}
+                        data-api-key={script.dataApiKey || ''}
+                        id={script.id}
+                    ></Script>
                 ))}
+
             {divTags.map((tag: string, idx: number) => (
                 <Fragment key={idx}>{Parser(tag)}</Fragment>
             ))}
-            {scriptsReady && <NoSrcScripts noSrcScripts={noSrcScripts} />}
+            {scriptsReady && <NoSrcScripts noSrcScripts={noSrcScripts} strategy={location === 'head' ? 'beforeInteractive' : 'lazyOnload'} />}
         </>
     )
 }

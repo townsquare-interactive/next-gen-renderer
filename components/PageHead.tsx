@@ -1,7 +1,7 @@
 import { domainImage } from 'functions'
 import { PageHeadProps } from 'types'
-import ReturnNextScript from './custom/ReturnNextScript'
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
+import HeadScripts from './custom/HeadScripts'
 
 export default function PageHead(props: PageHeadProps) {
     const { siteData, page, pageType } = props
@@ -35,7 +35,7 @@ export default function PageHead(props: PageHeadProps) {
             <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
             {siteData.analytics?.gaId && <GoogleAnalytics gaId={siteData.analytics.gaId} />}
             {siteData.analytics?.gtmId && <GoogleTagManager gtmId={siteData.analytics.gtmId} />}
-            {siteData.scripts?.header && <ReturnNextScript code={siteData.scripts?.header} />}
+            {siteData.scripts?.header && <HeadScripts code={siteData.scripts?.header} />}
         </>
     )
 }

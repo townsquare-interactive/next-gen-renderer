@@ -50,7 +50,7 @@ export default function Layout(props: LayoutProps) {
                 <ContainerFooter siteData={siteData} navSwitch={navSwitch} cmsUrl={cmsUrl} />
 
                 {(siteData.scripts?.footer || pageScripts) && useCustomScripts && (
-                    <ReturnNextScript code={(siteData.scripts?.footer || '') + (pageScripts || '')} />
+                    <ReturnNextScript code={(siteData.scripts?.footer || '') + (pageScripts || '')} location="body" />
                 )}
             </div>
         </>

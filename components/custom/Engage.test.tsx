@@ -5,12 +5,6 @@ import { describe, it, expect, vi } from 'vitest'
 import ContextProviders from '../../context/ContextProviders'
 
 describe('Engage Component', () => {
-    // Mock the third-party script and its functionalities
-    /*     vi.mock('livesite', () => ({
-        init: vi.fn(),
-        on: vi.fn(),
-    })) */
-
     const mockPropsDefault = {
         businessId: 'WI-URPAA9YRD6TQG05IX80Z',
         setEngageLinks: vi.fn(),

@@ -1,10 +1,11 @@
 import Script from 'next/script'
 
-const NoSrcScripts = ({ noSrcScripts }: any) => {
+const NoSrcScripts = ({ noSrcScripts, strategy }: any) => {
+    console.log(strategy, noSrcScripts)
     return (
         <>
             {noSrcScripts.map((script: any, idx: number) => (
-                <Script key={idx} id={`${script.id}`} async={true} defer={true} strategy="lazyOnload">
+                <Script key={strategy + idx} id={`${script.id}`} async={true} defer={true} strategy={strategy}>
                     {script.script}
                 </Script>
             ))}
