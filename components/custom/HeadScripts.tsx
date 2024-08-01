@@ -1,34 +1,45 @@
 import { useEffect } from 'react'
 
-interface HeadScriptsProps {
-    code: string // Raw HTML containing scripts, styles, meta tags, etc.
-}
-
-const HeadScripts = ({ code }: HeadScriptsProps) => {
+const HeadScripts = ({ code }: { code: string }) => {
     useEffect(() => {
         // Create a container to parse the HTML
         const container = document.createElement('div')
         container.innerHTML = code
 
-        // Append parsed scripts and other elements to the head
         const head = document.head
 
-        const scripts = container.querySelectorAll('script')
-        scripts.forEach((script) => {
+        // Function to add script tags programmatically
+        const addScript = (scriptElement: HTMLScriptElement) => {
+            const script = document.createElement('script')
+            if (scriptElement.src) {
+                script.src = scriptElement.src
+            } else {
+                script.textContent = scriptElement.textContent
+            }
+            script.defer = true
             head.appendChild(script)
+        }
+
+        // Append parsed scripts
+        const scripts = container.querySelectorAll<HTMLScriptElement>('script')
+        scripts.forEach((script) => {
+            addScript(script)
         })
 
-        const styles = container.querySelectorAll('style')
+        // Append styles
+        const styles = container.querySelectorAll<HTMLStyleElement>('style')
         styles.forEach((style) => {
             head.appendChild(style)
         })
 
-        const metaTags = container.querySelectorAll('meta')
+        // Append meta tags
+        const metaTags = container.querySelectorAll<HTMLMetaElement>('meta')
         metaTags.forEach((meta) => {
             head.appendChild(meta)
         })
 
-        const links = container.querySelectorAll('link')
+        // Append link tags
+        const links = container.querySelectorAll<HTMLLinkElement>('link')
         links.forEach((link) => {
             head.appendChild(link)
         })
@@ -36,7 +47,12 @@ const HeadScripts = ({ code }: HeadScriptsProps) => {
         // Clean up function to remove elements when component unmounts
         return () => {
             scripts.forEach((script) => {
-                head.removeChild(script)
+                const scriptElements = head.querySelectorAll<HTMLScriptElement>('script')
+                scriptElements.forEach((scriptEl) => {
+                    if (scriptEl.src === script.src || scriptEl.textContent === script.textContent) {
+                        head.removeChild(scriptEl)
+                    }
+                })
             })
             styles.forEach((style) => {
                 head.removeChild(style)

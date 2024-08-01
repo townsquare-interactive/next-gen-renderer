@@ -13,7 +13,7 @@ interface ScriptObject {
     id?: string
 }
 
-interface NoSrcObject {
+export interface NoSrcObject {
     id: number
     script: string
 }
