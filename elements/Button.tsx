@@ -9,7 +9,7 @@ export const Button = (props: SingleButtonProps) => {
     const { btn, well, type, index, isFeatureButton, pageModalVars } = props
     const isModalBtn = pageModalVars && btn.opensModal != -1 ? true : false
 
-    const btnClassesList = cn(styles['btn'], 'btn', styles['transition'], `${btn.btnType}`, styles[`${btn.btnSize}`], styles[`${btn.btnStyle}`], {
+    const btnClassesList = cn(styles['btn'], 'btn', styles['transition'], `${btn.btnType}`, styles[`${btn.btnSize}`], styles[`${btn.btnStyle}`], btn.cName, {
         [styles['btn-block']]: btn.blockBtn,
         [styles.btn_promo]: btn.btnType === 'btn_promo',
         [styles.btn_override]: btn.btnType === 'btn_override',
@@ -19,6 +19,8 @@ export const Button = (props: SingleButtonProps) => {
         [styles['btn_cta']]: btn.btnType === 'btn_cta' || btn.btnType === 'btn_cta_landing',
         [styles['cta-landing']]: btn.btnType === 'btn_cta_landing',
         ['cta-landing']: btn.btnType === 'btn_cta_landing',
+        ['cta-schedule']: btn.btnType === 'btn_cta_landing' && (btn.action === `schedule` || btn.action === 'ls-schedule'),
+        ['cta-contact']: btn.btnType === 'btn_cta_landing' && btn.action != `schedule` && btn.action != 'ls-schedule',
         [styles['btn_banner']]: btn.btnType === 'btn_banner',
         ['btn_1']: btn.btnType?.includes('btn_1') || (!btn.btnType && index === 0),
         [styles.btn_1]: btn.btnType?.includes('btn_1') || (!btn.btnType && index === 0 && btn.btnType != 'btn_cta'),
@@ -34,9 +36,28 @@ export const Button = (props: SingleButtonProps) => {
         ['livesite-schedule']: btn.action === 'ls-schedule',
     })
 
+    // Function to handle dataLayer push
+    const handleButtonClick = (eventName: string) => {
+        if (window.dataLayer) {
+            window.dataLayer.push({ event_name: eventName })
+            console.log(window.dataLayer)
+        }
+    }
+
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
+        if (btn.dataLayerEvent) {
+            handleButtonClick(btn.dataLayerEvent) // Push to dataLayer 'promotion_click'
+        }
+        if (btn.action === 'schedule') {
+            bookScheduleEngine()
+        } else if (isModalBtn && pageModalVars && btn.opensModal != -1) {
+            pageModalVars[btn.opensModal].toggleModal()
+        }
+    }
+
     const bookScheduleEngine = () => {
         // Call the function provided by Schedule Engine when the button is clicked
-        if (window.ScheduleEngine && window.ScheduleEngine.show) {
+        if (window.ScheduleEngine && window.ScheduleEngine.show && btn.action === `schedule`) {
             window.ScheduleEngine.show()
 
             const iframeContainer = document.getElementById('se-widget-iframe-container')
@@ -50,7 +71,7 @@ export const Button = (props: SingleButtonProps) => {
     return (
         <>
             {btn.action === `schedule` ? (
-                <button onClick={bookScheduleEngine} className={btnClassesList}>
+                <button onClick={handleClick} className={btnClassesList}>
                     {btn.icon && <FontAwesomeIcon icon={[btn.icon.iconPrefix, btn.icon.iconModel]} />}
                     {` ${btn.label}`} {isFeatureButton && !type.includes('article') && '>'}
                 </button>
@@ -60,7 +81,13 @@ export const Button = (props: SingleButtonProps) => {
                     {` ${btn.label}`} {isFeatureButton && !type.includes('article') && '>'}
                 </button>
             ) : (
-                <Link href={btn.link || ''} passHref={btn.linkType === 'ext'} target={btn.window == 1 ? '_blank' : '_self'} className={btnClassesList}>
+                <Link
+                    href={btn.link || ''}
+                    passHref={btn.linkType === 'ext'}
+                    target={btn.window == 1 ? '_blank' : '_self'}
+                    className={btnClassesList}
+                    onClick={handleClick}
+                >
                     {btn.icon && <FontAwesomeIcon icon={[btn.icon.iconPrefix, btn.icon.iconModel]} />}
                     {/* {btn.googleIcon && Parser(btn.googleIcon)} */}
                     {` ${btn.label}`} {isFeatureButton && !type.includes('article') && '>'}

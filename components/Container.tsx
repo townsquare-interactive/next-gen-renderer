@@ -17,8 +17,7 @@ import { CustomComponents } from './custom/CustomComponents'
 import dynamic from 'next/dynamic'
 import Engage from './custom/Engage'
 import { useEngageContext } from 'context/EngageActionsContext'
-import Link from 'next/link'
-//import FlexColors from './FlexColors'
+
 //dynamic import with ssr false allows it load after initial render
 const DeferLoad = dynamic(() => import('./DeferLoad'), {
     ssr: false,
@@ -117,7 +116,7 @@ export const Container = (props: ContainerProps) => {
             if (newHeaderOptions.mobileHeaderBtns && newHeaderOptions.ctaBtns) {
                 //update the mobile header buttons
                 for (let i = 0; i < newHeaderOptions.mobileHeaderBtns.length; i++) {
-                    if (engageLinks[i]) {
+                    if (engageLinks[i] && !newHeaderOptions.mobileHeaderBtns[i].link) {
                         newHeaderOptions.mobileHeaderBtns[i].link = engageLinks[i].href
                         newHeaderOptions.mobileHeaderBtns[i].window = 0
                     }
@@ -125,7 +124,7 @@ export const Container = (props: ContainerProps) => {
 
                 //update the desktop header buttons
                 for (let x = 0; x < newHeaderOptions.ctaBtns.length; x++) {
-                    if (engageLinks[x]) {
+                    if (engageLinks[x] && !newHeaderOptions.ctaBtns[x].link) {
                         newHeaderOptions.ctaBtns[x].link = engageLinks[x].href
                         newHeaderOptions.ctaBtns[x].window = 0
                     }
@@ -210,7 +209,6 @@ export const Container = (props: ContainerProps) => {
                         globalStyles={siteData.styles ? siteData.styles : siteData.allStyles}
                         isLanding={siteData.siteType === 'landing' ? true : false}
                     />
-
                     {siteData.vcita?.businessId && <Engage {...siteData.vcita} />}
                     {siteData.customComponents && <CustomComponents config={siteData.customComponents} themeStyles={themeStyles} />}
                 </>

@@ -241,6 +241,8 @@ interface ButtonListProps {
     googleIcon?: string
     btnStyle?: 'round' | 'rectangle'
     action?: string
+    cName?: string
+    dataLayerEvent?: string
 }
 
 export interface HeaderCTAProps {

@@ -173,7 +173,12 @@ const ContactFormRoutes = (props: ContactFormRoutesProps) => {
                                                                 <ContactField {...field} key={index} />
                                                             ))}
                                                             <div className={styles['btn-block']}>
-                                                                <button type="submit" className={styles.submit}>
+                                                                <button
+                                                                    type="submit"
+                                                                    className={cn(styles.submit, {
+                                                                        ['landing-submit']: siteData.siteType === 'landing',
+                                                                    })}
+                                                                >
                                                                     Submit
                                                                 </button>
                                                             </div>
