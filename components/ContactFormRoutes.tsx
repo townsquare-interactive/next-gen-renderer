@@ -61,7 +61,7 @@ const ContactFormRoutes = (props: ContactFormRoutesProps) => {
             >
                 {contactFormData?.formEmbed ? (
                     <div className={styles['embed-form']}>
-                        <h3>Contact Us</h3>
+                        <h3 className={styles.title}>{contactFormData.formTitle || 'Contact Us'}</h3>
                         {Parser(contactFormData.formEmbed)}
                     </div>
                 ) : (
@@ -74,21 +74,7 @@ const ContactFormRoutes = (props: ContactFormRoutesProps) => {
                                         <div className={styles.item}>
                                             {contactFormData.formTitle && modType != 'modal' && <h3 className={styles.title}>{contactFormData.formTitle}</h3>}
                                             <div className={styles['message-block']}>
-                                                {formMessage && (
-                                                    <div
-                                                        className={cn(styles.message, {
-                                                            [styles.blue]: formMessage === 'Sending....',
-                                                            [styles.red]:
-                                                                formMessage === 'Form error' ||
-                                                                formMessage === 'Email not entered correctly' ||
-                                                                formMessage === 'No client email set up for this form' ||
-                                                                (!formSent && formMessage != 'Sending....'),
-                                                            [styles.green]: formSent,
-                                                        })}
-                                                    >
-                                                        {formMessage}
-                                                    </div>
-                                                )}
+                                                {formMessage && <div className={cn(styles.message)}>{formMessage}</div>}
                                             </div>
                                             {!formSent && (
                                                 <>

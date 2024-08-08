@@ -139,18 +139,8 @@
                 margin-bottom: 0.4705882353em;
                 line-height: 1.1764705882em;
                 text-align: center;
-
-                &.blue {
-                    color: blue;
-                }
-
-                &.red {
-                    color: red;
-                }
-
-                &.green {
-                    color: green;
-                }
+                color: var(--txt-accent);
+                font-weight: bold;
             }
         }
     }
@@ -214,16 +204,20 @@
         }
         .embed-form {
             background: var(--accent-background);
-            max-width: 75.5em;
+            max-width: variables.$wrap-max-width;
             margin: 0 auto;
             padding-top: 2rem;
             margin-left: auto;
             margin-right: auto;
             border-radius: 15px;
 
-            width: 90%;
+            width: 100%;
             padding-left: 20px;
             padding-right: 20px;
+
+            iframe {
+                width: 100%;
+            }
 
             h3 {
                 max-width: 700px;
@@ -231,21 +225,14 @@
                 color: var(--txt-accent);
                 padding-left: 20px;
                 padding-right: 20px;
+                text-align: center;
+                margin-bottom: 1rem;
 
                 @include breakpoints.sm-min {
                     font-size: 3rem;
                     padding-left: 0px;
                     padding-right: 0px;
                 }
-            }
-
-            @include breakpoints.sm-min {
-                width: 79.0892114422%;
-            }
-            @include breakpoints.lg-min {
-                padding-left: 0;
-                padding-right: 0;
-                width: 89.0892114422%;
             }
         }
     }
