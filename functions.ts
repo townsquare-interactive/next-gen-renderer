@@ -323,7 +323,7 @@ export const ConditionalWrapper = ({ condition, falseOutput, trueOutput, childre
 // Function to handle dataLayer push
 export const pushEventToDataLayer = (eventName: string) => {
     if (window.dataLayer) {
-        window.dataLayer.push({ event_name: eventName })
+        window.dataLayer.push({ event: eventName })
         console.log(window.dataLayer)
     }
 }

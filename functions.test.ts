@@ -81,7 +81,7 @@ describe('pushEventToDataLayer', () => {
         pushEventToDataLayer(eventName)
 
         // Assert that dataLayer contains the correct event
-        expect(window.dataLayer).toContainEqual({ event_name: eventName })
+        expect(window.dataLayer).toContainEqual({ event: eventName })
     })
 
     it('should not throw an error if dataLayer does not exist', () => {
