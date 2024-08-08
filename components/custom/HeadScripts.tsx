@@ -8,6 +8,13 @@ const HeadScripts = ({ code }: { code: string }) => {
 
         const head = document.head
 
+        // Function to copy all attributes from one element to another
+        const copyAttributes = (source: HTMLElement, target: HTMLElement) => {
+            Array.from(source.attributes).forEach(({ name, value }) => {
+                target.setAttribute(name, value)
+            })
+        }
+
         // Function to add script tags programmatically
         const addScript = (scriptElement: HTMLScriptElement) => {
             const script = document.createElement('script')
@@ -17,6 +24,7 @@ const HeadScripts = ({ code }: { code: string }) => {
                 script.textContent = scriptElement.textContent
             }
             script.defer = true
+            copyAttributes(scriptElement, script) // Copy all attributes
             head.appendChild(script)
         }
 
