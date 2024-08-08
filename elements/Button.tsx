@@ -4,6 +4,7 @@ import { SingleButtonProps } from '../types'
 import cn from 'classnames'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { pushEventToDataLayer } from 'functions'
 
 export const Button = (props: SingleButtonProps) => {
     const { btn, well, type, index, isFeatureButton, pageModalVars } = props
@@ -36,17 +37,9 @@ export const Button = (props: SingleButtonProps) => {
         ['livesite-schedule']: btn.action === 'ls-schedule',
     })
 
-    // Function to handle dataLayer push
-    const handleButtonClick = (eventName: string) => {
-        if (window.dataLayer) {
-            window.dataLayer.push({ event_name: eventName })
-            console.log(window.dataLayer)
-        }
-    }
-
     const handleClick = (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
         if (btn.dataLayerEvent) {
-            handleButtonClick(btn.dataLayerEvent) // Push to dataLayer 'promotion_click'
+            pushEventToDataLayer(btn.dataLayerEvent) // Push to dataLayer 'promotion_click'
         }
         if (btn.action === 'schedule') {
             bookScheduleEngine()

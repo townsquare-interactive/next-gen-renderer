@@ -319,3 +319,11 @@ export function defineContainerVars(page: CMSPage, siteData: GlobalData) {
 //Used to have conditional tag wraps around code without repeating inside code
 export const ConditionalWrapper = ({ condition, falseOutput, trueOutput, children }: ConditionalWrapperProps) =>
     condition ? trueOutput(children) : falseOutput(children)
+
+// Function to handle dataLayer push
+export const pushEventToDataLayer = (eventName: string) => {
+    if (window.dataLayer) {
+        window.dataLayer.push({ event_name: eventName })
+        console.log(window.dataLayer)
+    }
+}

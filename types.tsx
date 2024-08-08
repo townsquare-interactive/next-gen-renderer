@@ -585,6 +585,7 @@ export interface ArticleItems {
         weblink: string
         pagelink2?: string
         weblink2?: string
+        dataLayerEventWrap?: string
     }
     contactFormData?: contactFormData
     video?: any

@@ -1,7 +1,7 @@
 'use client'
 import { Fragment, useState } from 'react'
 import styles from './contactform.module.scss'
-import { postContactFormRoute } from '../functions'
+import { postContactFormRoute, pushEventToDataLayer } from '../functions'
 import { ContactFieldProps, ContactFormRoutesProps } from 'types'
 import cn from 'classnames'
 import { Formik, Field, Form, FormikHelpers, ErrorMessage } from 'formik'
@@ -51,6 +51,10 @@ const ContactFormRoutes = (props: ContactFormRoutesProps) => {
     const [formSent, setFormSent] = useState(false)
 
     const useEngage = siteData.vcita?.businessId ? true : false
+
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
+        pushEventToDataLayer('form_submit_click')
+    }
 
     return (
         <>
@@ -161,9 +165,10 @@ const ContactFormRoutes = (props: ContactFormRoutesProps) => {
                                                             <div className={styles['btn-block']}>
                                                                 <button
                                                                     type="submit"
-                                                                    className={cn(styles.submit, {
+                                                                    className={cn(styles.submit, 'form-submit-btn', {
                                                                         ['landing-submit']: siteData.siteType === 'landing',
                                                                     })}
+                                                                    onClick={handleClick}
                                                                 >
                                                                     Submit
                                                                 </button>

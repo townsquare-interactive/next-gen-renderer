@@ -27,11 +27,14 @@ const SocialLinks = ({ siteData, modType = 'header' }: SocialLinksProps) => {
                                 <a
                                     target="blank"
                                     aria-label={item.label || item.name}
-                                    className={cn({
-                                        ['social-icon']: modType === 'slide-header' || modType === 'header',
-                                        ['footer-icon']: modType === 'footer' || modType === 'widget',
-                                        ['social-landing-icon']: modType === 'landing',
-                                    })}
+                                    className={cn(
+                                        {
+                                            ['social-icon']: modType === 'slide-header' || modType === 'header',
+                                            ['footer-icon']: modType === 'footer' || modType === 'widget',
+                                            ['social-landing-icon']: modType === 'landing',
+                                        },
+                                        `social-icon-${index + 1}`
+                                    )}
                                     href={item.url}
                                 >
                                     <FontAwesomeIcon icon={item.icon} /> {modType === 'widget' && item.label}

@@ -1,5 +1,5 @@
-import { transformFetchingDomain, decideHeadTag, removeAfterFirstSlash } from './functions'
-import { it, describe, expect } from 'vitest'
+import { transformFetchingDomain, decideHeadTag, removeAfterFirstSlash, pushEventToDataLayer } from './functions'
+import { it, describe, expect, beforeEach, afterEach } from 'vitest'
 
 describe('transformFetchingDomain', () => {
     const cmsUrl = 'clttestsiteforjoshedwards'
@@ -59,5 +59,36 @@ describe('Remove after first slash', () => {
     })
     it('should leave the string without a slash untouched ', () => {
         expect(removeAfterFirstSlash('josh')).toBe(`josh`)
+    })
+})
+
+//pushing events to dataLayer for GTM purposes
+describe('pushEventToDataLayer', () => {
+    beforeEach(() => {
+        // Mock the global dataLayer
+        ;(window as any).dataLayer = []
+    })
+
+    afterEach(() => {
+        // Clean up the dataLayer after each test
+        ;(window as any).dataLayer = undefined
+    })
+
+    it('should push event to dataLayer when dataLayer exists', () => {
+        const eventName = 'promotion_click'
+
+        // Call the function
+        pushEventToDataLayer(eventName)
+
+        // Assert that dataLayer contains the correct event
+        expect(window.dataLayer).toContainEqual({ event_name: eventName })
+    })
+
+    it('should not throw an error if dataLayer does not exist', () => {
+        // Remove dataLayer
+        ;(window as any).dataLayer = undefined
+
+        // Call the function and expect no error to be thrown
+        expect(() => pushEventToDataLayer('promotion_click')).not.toThrow()
     })
 })
