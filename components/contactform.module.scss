@@ -141,6 +141,10 @@
                 text-align: center;
                 color: var(--txt-accent);
                 font-weight: bold;
+
+                @include breakpoints.sm-min {
+                    font-size: 1.5em;
+                }
             }
         }
     }

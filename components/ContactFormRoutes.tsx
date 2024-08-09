@@ -76,7 +76,9 @@ const ContactFormRoutes = (props: ContactFormRoutesProps) => {
                                 <Fragment key={ind}>
                                     {item.plugin === '[gravity]' && (
                                         <div className={styles.item}>
-                                            {contactFormData.formTitle && modType != 'modal' && <h3 className={styles.title}>{contactFormData.formTitle}</h3>}
+                                            {contactFormData.formTitle && modType != 'modal' && !formSent && (
+                                                <h3 className={styles.title}>{contactFormData.formTitle}</h3>
+                                            )}
                                             <div className={styles['message-block']}>
                                                 {formMessage && <div className={cn(styles.message)}>{formMessage}</div>}
                                             </div>
