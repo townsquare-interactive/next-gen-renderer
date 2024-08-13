@@ -6,12 +6,16 @@ import { it, describe, expect, afterEach } from 'vitest'
 import { postContactFormRoute } from '../functions'
 
 // Mock the postContactFormRoute function
-vi.mock('../functions', () => ({
-    postContactFormRoute: vi.fn().mockResolvedValue({
-        ok: true,
-        json: async () => ({}),
-    }),
-}))
+vi.mock('../functions', async () => {
+    const actual: any = await vi.importActual('../functions')
+    return {
+        ...actual,
+        postContactFormRoute: vi.fn().mockResolvedValue({
+            ok: true,
+            json: async () => ({}),
+        }),
+    }
+})
 
 const mockedPostContactFormRoute = vi.mocked(postContactFormRoute)
 
