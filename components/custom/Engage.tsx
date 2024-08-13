@@ -65,6 +65,11 @@ const Engage = ({ businessId, actions, themeColors, titleText, mainAction, bodyT
                 //add actions before render (you can find examples of actions in chrome scripts window under vcita)
                 if (actions) {
                     LiveSite.on('beforeRender', function () {
+                        //if there are no actions hide the schedule floating button
+                        if (LiveSite.config.actions.length <= 0) {
+                            console.log('no actions', LiveSite.config.actions)
+                            LiveSite.config.activeEngage = false
+                        }
                         const newActions: Action[] = []
                         //loop through the current actions from script to match to props we want to use
                         actions.forEach((currentItem: Action) => {
@@ -118,7 +123,6 @@ const Engage = ({ businessId, actions, themeColors, titleText, mainAction, bodyT
                 #livesite_engage_button a.ls-engage-button:hover, #livesite_active_engage .ls-main-action-T:hover, #livesite_action_buttons .ls-action-T:hover {background-color: var(--promo2)}`
             )
         }
-        themeStyles
 
         return () => {}
     }, [])
