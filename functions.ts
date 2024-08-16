@@ -326,4 +326,5 @@ export const pushEventToDataLayer = (eventName: string) => {
         window.dataLayer.push({ event: eventName })
         console.log(window.dataLayer)
     }
+    return
 }

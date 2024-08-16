@@ -427,13 +427,6 @@ $ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 .text-focus-in {
     .slick-active {
         .item {
-            .hd,
-            .sh,
-            .dsc,
-            .btn {
-                //-webkit-animation: text-focus-in 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
-                // animation: text-focus-in 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
-            }
             .hd {
                 animation-delay: 180ms !important;
             }

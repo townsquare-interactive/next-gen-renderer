@@ -211,6 +211,7 @@
             max-width: variables.$wrap-max-width;
             margin: 0 auto;
             padding-top: 2rem;
+            padding-bottom: 1rem;
             margin-left: auto;
             margin-right: auto;
             border-radius: 15px;
@@ -218,9 +219,10 @@
             width: 100%;
             padding-left: 20px;
             padding-right: 20px;
+            text-align: center;
 
             iframe {
-                width: 100%;
+                max-width: 100%;
             }
 
             h3 {
