@@ -1,6 +1,6 @@
-import { ContactFormData } from 'types'
+import type { ContactFormData, GlobalData } from 'types'
 
-export const submitLeadToEngage = async (vcitaBusinessId: string, formData: ContactFormData) => {
+export const submit = async (formData: ContactFormData, siteData: GlobalData) => {
     const getVcitaToken = () => {
         if (process.env.VCITA_SANDBOX_ON === '1') {
             return process.env.VCITA_SANDBOX_TOKEN
@@ -12,8 +12,8 @@ export const submitLeadToEngage = async (vcitaBusinessId: string, formData: Cont
     const vcitaToken = getVcitaToken()
 
     const paramsQueryString = JSON.stringify({
-        business_id: vcitaBusinessId,
-        unique_id: vcitaBusinessId,
+        business_id: siteData.vcita?.businessId,
+        unique_id: siteData.vcita?.businessId,
         first_name: formData.fName,
         identifier_type: 'unique_id',
         request_title: 'Contact Form',
@@ -28,7 +28,7 @@ export const submitLeadToEngage = async (vcitaBusinessId: string, formData: Cont
             accept: 'application/json',
             'content-type': 'application/json',
             authorization: `Token token="${vcitaToken}"`,
-            'X-On-Behalf-Of': vcitaBusinessId,
+            'X-On-Behalf-Of': siteData.vcita?.businessId || '',
         },
         body: paramsQueryString,
     }
@@ -47,10 +47,9 @@ export const submitLeadToEngage = async (vcitaBusinessId: string, formData: Cont
             throw new Error(errorMessage)
         }
         const response = await res.json()
-        console.log(response)
         return response
     } catch (error) {
-        console.error('Error during fetch:', error)
+        console.error('Error during BMP fetch:', error)
         throw error
     }
 }

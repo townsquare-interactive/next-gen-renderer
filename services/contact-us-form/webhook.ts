@@ -1,4 +1,4 @@
-import { ContactFormData, GlobalData } from 'types'
+import type { ContactFormData, GlobalData } from 'types'
 
 export async function submit(formData: ContactFormData, siteData: GlobalData) {
     if (siteData.config?.zapierUrl || siteData.config?.makeUrl) {

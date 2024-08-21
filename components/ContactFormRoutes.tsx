@@ -130,9 +130,7 @@ const ContactFormRoutes = (props: ContactFormRoutesProps) => {
                                                                     setFormMessage('Sending....')
                                                                     setSubmitting(true)
 
-                                                                    const formRoute = useEngage ? '/api/bmp-form' : `/api/contacts`
-
-                                                                    const response = await postContactFormRoute(formRoute, {
+                                                                    const response = await postContactFormRoute(`/api/contacts`, {
                                                                         formData: formData,
                                                                         siteData: siteData,
                                                                     })

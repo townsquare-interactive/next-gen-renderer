@@ -134,6 +134,7 @@ export interface GlobalData {
         gaId?: string
         gtmId?: string
     }
+    formService?: string
 }
 
 export interface FacebookWidget {
