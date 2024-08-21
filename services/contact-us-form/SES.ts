@@ -15,7 +15,7 @@ export const submit = async (formData: ContactFormData, siteData: GlobalData) =>
         const params = {
             Source: process.env.SENDER_EMAIL!,
             Destination: {
-                ToAddresses: ['jedwards405@gmail.com' || siteData.email],
+                ToAddresses: [siteData.email || ''],
             },
             Message: {
                 Subject: { Data: `New Form Submission from ${formData.fName} ${formData.lName}` },

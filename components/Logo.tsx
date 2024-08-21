@@ -3,8 +3,9 @@ import styles from './logo.module.scss'
 import Link from 'next/dist/client/link'
 import Image from 'next/image'
 import { LogoProps } from '../types'
-import { useState } from 'react'
+import { ReactChild, useState } from 'react'
 import cn from 'classnames'
+import { ConditionalWrapper } from 'functions'
 
 const Logo = (props: LogoProps) => {
     const { logoUrl = '', link = '/' } = props
@@ -23,9 +24,13 @@ const Logo = (props: LogoProps) => {
         >
             <div className={styles.wrapper}>
                 <div className={styles.logo}>
-                    <Link href={link}>
+                    <ConditionalWrapper
+                        condition={link ? true : false}
+                        trueOutput={(children: ReactChild) => <Link href={link}>{children}</Link>}
+                        falseOutput={(children: ReactChild) => <>{children}</>}
+                    >
                         <Image src={logoUrl} alt="logo" onLoad={calcImageSize} width={logoWidth} height={logoHeight} quality="50" priority />
-                    </Link>
+                    </ConditionalWrapper>
                 </div>
             </div>
         </div>
