@@ -21,6 +21,11 @@ Accessing landing page sites works a little differently than normal sites on Ape
 
 When accessing these pages locally "localhost:3000/landing" should have the same effect as above.
 
+## Other Documentation Files
+
+-   [API Documentation](/app/api/README.md)
+-   [Apex Transformer Repo](https://github.com/townsquare-interactive/next-gen-transformer)
+
 ## Learn More
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).

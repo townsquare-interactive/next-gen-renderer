@@ -10,7 +10,6 @@ import { handleFormError } from 'services/contact-us-form/errors'
 export async function POST(request: NextRequest, res: any) {
     const formRequest = await request.json()
 
-    //formRequest.formData.formService = 'SES'
     const formService = formRequest.formData.formService ? formRequest.formData.formService : formRequest.siteData.formService
 
     let submit: ContactFormSubmitFn

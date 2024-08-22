@@ -36,8 +36,6 @@ export const handleFormError = (err: BaseError, res: Response, url: string = '')
         state: err.state,
     }
 
-    //const errorIDMessage = ` (Error ID: ${errorID})`
-
     // Log the error with the unique ID
     console.error(`[Error ID: ${errorID}]`, errorData, `${err.stack}`)
 
