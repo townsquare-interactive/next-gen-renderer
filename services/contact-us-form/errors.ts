@@ -8,6 +8,10 @@ interface ErrorClass {
     state: any
 }
 
+interface ErrorState {
+    req?: any
+}
+
 abstract class BaseError extends Error {
     public errorType: string
     public state: any
@@ -27,8 +31,25 @@ export class FormError extends BaseError {
     }
 }
 
+interface ErroredFields {
+    fieldPath: string[]
+    message: string
+}
+
+interface ValidationErrorType extends ErrorClass {
+    state: {
+        erroredFields: ErroredFields[]
+    } & ErrorState
+}
+
+export class ValidationError extends BaseError {
+    constructor({ message, errorType, state }: ValidationErrorType) {
+        super({ message, errorType, state })
+    }
+}
+
 // Handles all types of errors and calls the specified error class
-export const handleFormError = (err: BaseError, res: Response, url: string = '') => {
+export const handleFormError = (err: BaseError) => {
     const errorID = uuidv4()
 
     const errorData = {

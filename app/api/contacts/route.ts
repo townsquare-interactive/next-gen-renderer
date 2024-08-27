@@ -6,44 +6,46 @@ import { submit as webhookSubmit } from '../../../services/contact-us-form/webho
 import { submit as SES } from '../../../services/contact-us-form/SES'
 import { submit as BMP } from '../../../services/contact-us-form/BMP'
 import { handleFormError } from 'services/contact-us-form/errors'
+import { ContactFormSchema, zodDataParse } from 'zod-objects'
 
 export async function POST(request: NextRequest, res: any) {
     const formRequest = await request.json()
-
-    const formService = formRequest.formData.formService ? formRequest.formData.formService : formRequest.siteData.formService
-
-    let submit: ContactFormSubmitFn
-    console.log('formService', formService)
-    switch (formService) {
-        case 'mailchimp':
-            submit = mailchimpSubmit
-            break
-
-        case 's3':
-            submit = s3FilePost
-            break
-
-        case 'webhook':
-            submit = webhookSubmit
-            break
-
-        case 'SES':
-            submit = SES
-            break
-
-        case 'BMP':
-            submit = BMP
-            break
-
-        default:
-            submit = webhookSubmit
-            break
-    }
-
     try {
-        await submit(formRequest.formData, formRequest.siteData)
+        //validate request data
+        const validatedFormData = zodDataParse(formRequest.formData, ContactFormSchema)
+        const formService = validatedFormData.formService ? validatedFormData.formService : formRequest.siteData.formService
+        console.log('formService', formService)
+
+        let submit: ContactFormSubmitFn
+        switch (formService) {
+            case 'mailchimp':
+                submit = mailchimpSubmit
+                break
+
+            case 's3':
+                submit = s3FilePost
+                break
+
+            case 'webhook':
+                submit = webhookSubmit
+                break
+
+            case 'SES':
+                submit = SES
+                break
+
+            case 'BMP':
+                submit = BMP
+                break
+
+            default:
+                submit = webhookSubmit
+                break
+        }
+
+        await submit(validatedFormData, formRequest.siteData)
         return NextResponse.json('Form submitted succesfully')
     } catch (error: any) {
-        return handleFormError(error, res)
+        return handleFormError(error)
     }
 }
