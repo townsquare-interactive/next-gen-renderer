@@ -59,7 +59,6 @@
 
         .logo-block {
             flex: 1 1 auto;
-            flex-basis: auto;
             align-items: center;
 
             * {
@@ -133,9 +132,6 @@
 
             .logo-block {
                 flex-basis: 39%;
-                @include breakpoints.sm-min {
-                    flex-basis: auto;
-                }
 
                 .logo-item {
                     width: 100%;
