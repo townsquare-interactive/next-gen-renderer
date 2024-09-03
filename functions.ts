@@ -128,10 +128,8 @@ export const transformFetchingDomain = async (params: { slug?: string | any[]; d
             return bucketUrl + '/' + apexId
         } else {
             console.log('using vercelDomain')
-            const removeAfterPeriod = /\..*/
-            fetchingDomain = vercelDomain?.replace(removeAfterPeriod, '')
-            fetchingDomain = removeCustomVercelDomainPostfixes(fetchingDomain)
-            fetchingDomain = bucketUrl + '/' + fetchingDomain
+            const apexID = convertURLIntoApexId(vercelDomain)
+            fetchingDomain = bucketUrl + '/' + apexID
 
             if (fetchingDomain.includes('next-gen-renderer')) {
                 fetchingDomain = bucketUrl + '/' + cmsUrl
@@ -142,6 +140,14 @@ export const transformFetchingDomain = async (params: { slug?: string | any[]; d
         fetchingDomain = bucketUrl + '/' + removeCustomVercelDomainPostfixes(cmsUrl)
     }
     return fetchingDomain
+}
+
+const convertURLIntoApexId = (domain: string) => {
+    let apexID
+    const removeAfterPeriod = /\..*/
+    apexID = domain?.replace(removeAfterPeriod, '')
+    apexID = removeCustomVercelDomainPostfixes(apexID)
+    return apexID
 }
 
 export async function generateLayout(params: { slug: SlugParams; domain: string }) {
@@ -232,7 +238,7 @@ export const getFetchingUrl = async (params: { slug?: SlugParams; domain: string
 export async function getAnyPageData(params: { domain: string; slug?: SlugParams }) {
     let pageSlug
     const fetchingDomain = await getFetchingUrl(params)
-    const usingLandingPage = Array.isArray(params.slug)
+    const usingLandingPage = Array.isArray(params.slug) && params.slug.length > 1
 
     //determining the page slug (either slug doesn't exist at all or it is landing and not long enough)
     if (!params?.slug || (usingLandingPage && params.slug?.length < 3)) {
