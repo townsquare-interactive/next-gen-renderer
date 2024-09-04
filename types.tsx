@@ -3,6 +3,7 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { ReactChild, ReactElement, ReactNode } from 'react'
 import { LatLngTuple } from 'leaflet'
 import { VcitaData } from 'components/custom/Engage'
+import { SiteData } from 'zod-objects'
 
 export interface ThemeStyles {
     logoColor: string
@@ -88,6 +89,8 @@ interface Contact {
     disabled?: string
     displayInMap?: boolean
 }
+
+/* export type GlobalData = SiteData */
 
 export interface GlobalData {
     fontImport?: string
@@ -444,6 +447,7 @@ export interface CMSPageData {
     anchorTags?: any[]
     pageModals: { modalNum: number; modalTitle: any; autoOpen?: boolean; openEveryTime: boolean }[]
     scripts?: string
+    siteLayout?: GlobalData
 }
 
 export type SlugParams = string | string[]

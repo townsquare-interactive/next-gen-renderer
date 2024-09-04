@@ -157,43 +157,6 @@ const ContactLink = z.object({
 
 //page
 // Define the schema for the CMSPage interface
-export const CMSPageSchema = z.object({
-    data: z.object({
-        id: z.string(),
-        title: z.string(),
-        slug: z.string(),
-        pageType: z.string(),
-        url: z.string(),
-        JS: z.string(),
-        type: z.string(),
-        layout: z.number(),
-        columns: z.number(),
-        modules: z.unknown(), // 2D array of Modules
-        sections: z.unknown(), // Array of Sections
-        hideTitle: z.number(),
-        head_script: z.string(),
-        columnStyles: z.string(),
-        page_type: z.optional(z.string()),
-    }),
-    attrs: z.record(z.unknown()), // An empty record (you can adjust the type)
-    /*     seo: z.optional(
-        z.object({
-            title: z.optional(z.string()),
-            descr: z.optional(z.string()),
-            selectedImages: z.optional(z.string()),
-            imageOverride: z.optional(z.string()),
-        })
-    ), */
-    seo: z.unknown(),
-    head_script: z.optional(z.string()), // Optional head_script
-    JS: z.optional(z.string()), // Optional JS
-    //title: z.string(),
-    //slug: z.string(),
-    //page_type: z.string(),
-    //url: z.string(),
-    //id: z.string(),
-    sections: z.unknown(), // Array of Sections
-})
 
 export const PageListSchema = z.object({
     pages: z.array(
@@ -395,6 +358,32 @@ export const SiteDataSchema = z.object({
         .nullable(),
     analytics: AnalyticsSchema.optional(),
     formService: z.string().optional(),
+})
+
+export const CMSPageSchema = z.object({
+    data: z.object({
+        id: z.string(),
+        title: z.string(),
+        slug: z.string(),
+        pageType: z.string(),
+        url: z.string(),
+        JS: z.string(),
+        type: z.string(),
+        layout: z.number(),
+        columns: z.number(),
+        modules: z.unknown(),
+        sections: z.unknown(),
+        hideTitle: z.number(),
+        head_script: z.string(),
+        columnStyles: z.string(),
+        page_type: z.optional(z.string()),
+    }),
+    attrs: z.record(z.unknown()),
+    seo: z.unknown(),
+    head_script: z.optional(z.string()),
+    JS: z.optional(z.string()),
+    sections: z.unknown(),
+    siteLayout: SiteDataSchema.optional(),
 })
 
 export const ContactFormReqSchema = z.object({
