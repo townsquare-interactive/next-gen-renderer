@@ -2,10 +2,12 @@ This project renders websites using next.js and json files from Amazon S3. The s
 
 ## Getting Started
 
-If running locally, set NEXT_PUBLIC_CMS_URL to the site name/apexID in S3 (not needed for landing pages).
+If running locally, set NEXT_PUBLIC_CMS_URL to the site name/apexID in S3 or use the single site render strategy noted below.
 Then, run the development server:
 
 ```bash
+npm i
+# then
 npm run dev
 # or
 yarn dev
@@ -13,13 +15,15 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
 ## Landing Pages Access guide
 
-Accessing landing page sites works a little differently than normal sites on Apex. The domain name "www.townsquareignite.com" is used to access these landing pages when using this format "www.townsquareignite.com/landing/s3Folder/pageName". This allows us to render all of our landing pages under the townsquareignite domain.
+Accessing landing page sites under a single URL works a little differently than normal sites on Apex. The domain name "www.townsquareignite.com" is used to access these landing pages when using this format "www.townsquareignite.com/landing/s3Folder/pageName". This allows us to render all of our landing pages under the townsquareignite domain.
 
 When accessing these pages locally "localhost:3000/landing" should have the same effect as above.
+
+You are also able to render these sites by setting the env variable NEXT_PUBLIC_CMS_URL.
+
+[Landing Page Creation AI Tool](https://www.townsquareignite.ai/)
 
 ## Other Documentation Files
 

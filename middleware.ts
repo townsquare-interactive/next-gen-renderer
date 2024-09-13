@@ -18,8 +18,10 @@ export const config = {
 export default async function middleware(req: NextRequest) {
     const url = req.nextUrl
 
+    const freeDomainPostfix = process.env.NEXT_PUBLIC_ROOT_DOMAIN || '.vercel.app'
+
     // Get hostname of request (e.g. demo.vercel.pub, demo.localhost:3000)
-    let hostname = req.headers.get('host')!.replace('.localhost:3000', `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`)
+    let hostname = req.headers.get('host')!.replace('.localhost:3000', `.${freeDomainPostfix}`)
 
     // Get the pathname of the request (e.g. /, /about, /blog/first-post)
     const path = url.pathname
@@ -32,7 +34,7 @@ export default async function middleware(req: NextRequest) {
     }
 
     // rewrites for app pages
-    if (hostname == `app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`) {
+    if (hostname == `app.${freeDomainPostfix}`) {
         const session = await getToken({ req })
         if (!session && path !== '/login') {
             return NextResponse.redirect(new URL('/login', req.url))
@@ -48,7 +50,7 @@ export default async function middleware(req: NextRequest) {
     }
 
     // rewrite root application to `/home` folder
-    if (hostname === 'localhost:3000' || hostname === process.env.NEXT_PUBLIC_ROOT_DOMAIN) {
+    if (hostname === 'localhost:3000' || hostname === freeDomainPostfix) {
         return NextResponse.rewrite(new URL(`/home${path}`, req.url))
     }
 
