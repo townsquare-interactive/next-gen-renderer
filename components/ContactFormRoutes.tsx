@@ -56,6 +56,62 @@ const ContactFormRoutes = (props: ContactFormRoutesProps) => {
         pushEventToDataLayer('form_submit_click')
     }
 
+    const handleSubmit = async (values: Values, { setSubmitting }: FormikHelpers<Values>) => {
+        const formData = {
+            fName: values.fName,
+            lName: values.lName,
+            phone: values.phone,
+            email: values.email,
+            messagebox: values.messagebox,
+            address: {
+                street: values.street,
+                zip: values.zip,
+                state: values.state,
+                city: values.city,
+            },
+            clientEmail: siteData.email,
+        }
+
+        setTimeout(async () => {
+            try {
+                if (!siteData.email && !useEngage) {
+                    throw new Error('No client email set up for this form')
+                }
+                if (useEngage && !values.fName) {
+                    throw new Error('First name is required')
+                }
+
+                setFormMessage('Sending....')
+                setSubmitting(true)
+
+                const response = await postContactFormRoute(`/api/contacts`, {
+                    formData: formData,
+                    siteData: siteData,
+                })
+
+                if (!response.ok) {
+                    let errorMessage = `Status: ${response.status}, Reason: ${response.statusText}`
+                    try {
+                        const errorJson = await response.json()
+                        errorMessage = errorJson.error || errorJson.message || errorMessage
+                    } catch (jsonError) {
+                        console.error('Error parsing JSON:', jsonError)
+                    }
+                    throw new Error(errorMessage)
+                }
+
+                const result = await response.json()
+                setFormMessage('Thank you for contacting us')
+                setFormSent(true)
+            } catch (error: any) {
+                setFormMessage(`Error: ${error.message || 'An error occurred'}`)
+                setFormSent(false)
+            } finally {
+                setSubmitting(false)
+            }
+        }, 500)
+    }
+    
     return (
         <>
             <div
@@ -96,67 +152,8 @@ const ContactFormRoutes = (props: ContactFormRoutesProps) => {
                                                             state: '',
                                                             city: '',
                                                         }}
-                                                        validate={(values) => {
-                                                            const errors: any = {}
-
-                                                            return errors
-                                                        }}
                                                         validationSchema={toFormikValidationSchema(Schema)}
-                                                        onSubmit={async (values: Values, { setSubmitting }: FormikHelpers<Values>) => {
-                                                            const formData = {
-                                                                fName: values.fName,
-                                                                lName: values.lName,
-                                                                phone: values.phone,
-                                                                email: values.email,
-                                                                messagebox: values.messagebox,
-                                                                address: {
-                                                                    street: values.street,
-                                                                    zip: values.zip,
-                                                                    state: values.state,
-                                                                    city: values.city,
-                                                                },
-                                                                clientEmail: siteData.email,
-                                                            }
-
-                                                            setTimeout(async () => {
-                                                                try {
-                                                                    if (!siteData.email && !useEngage) {
-                                                                        throw new Error('No client email set up for this form')
-                                                                    }
-                                                                    if (useEngage && !values.fName) {
-                                                                        throw new Error('First name is required')
-                                                                    }
-
-                                                                    setFormMessage('Sending....')
-                                                                    setSubmitting(true)
-
-                                                                    const response = await postContactFormRoute(`/api/contacts`, {
-                                                                        formData: formData,
-                                                                        siteData: siteData,
-                                                                    })
-
-                                                                    if (!response.ok) {
-                                                                        let errorMessage = `Status: ${response.status}, Reason: ${response.statusText}`
-                                                                        try {
-                                                                            const errorJson = await response.json()
-                                                                            errorMessage = errorJson.error || errorJson.message || errorMessage
-                                                                        } catch (jsonError) {
-                                                                            console.error('Error parsing JSON:', jsonError)
-                                                                        }
-                                                                        throw new Error(errorMessage)
-                                                                    }
-
-                                                                    const result = await response.json()
-                                                                    setFormMessage('Thank you for contacting us')
-                                                                    setFormSent(true)
-                                                                } catch (error: any) {
-                                                                    setFormMessage(`Error: ${error.message || 'An error occurred'}`)
-                                                                    setFormSent(false)
-                                                                } finally {
-                                                                    setSubmitting(false)
-                                                                }
-                                                            }, 500)
-                                                        }}
+                                                        onSubmit={handleSubmit}
                                                     >
                                                         <Form>
                                                             {contactFormData.formFields.map((field, index: number) => (
