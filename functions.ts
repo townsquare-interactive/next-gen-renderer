@@ -137,16 +137,19 @@ export const transformFetchingDomain = async (params: { slug?: string | any[]; d
         }
     } else {
         console.log('using local domain', params.domain)
-        fetchingDomain = bucketUrl + '/' + removeCustomVercelDomainPostfixes(cmsUrl)
+        fetchingDomain = bucketUrl + '/' + convertURLIntoApexId(cmsUrl)
     }
     return fetchingDomain
 }
 
-const convertURLIntoApexId = (domain: string) => {
+export const convertURLIntoApexId = (domain: string) => {
     let apexID
+    apexID = domain.replace(/(^\w+:|^)\/\//, '') //remove protocol
+    apexID = apexID.replace(/^www\./, '') //remove www
     const removeAfterPeriod = /\..*/
-    apexID = domain?.replace(removeAfterPeriod, '')
+    apexID = apexID?.replace(removeAfterPeriod, '')
     apexID = removeCustomVercelDomainPostfixes(apexID)
+    console.log('here is a converted ID', apexID)
     return apexID
 }
 

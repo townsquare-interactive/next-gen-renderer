@@ -1,4 +1,4 @@
-import { transformFetchingDomain, decideHeadTag, removeAfterFirstSlash, pushEventToDataLayer } from './functions'
+import { transformFetchingDomain, decideHeadTag, removeAfterFirstSlash, pushEventToDataLayer, convertURLIntoApexId } from './functions'
 import { it, describe, expect, beforeEach, afterEach } from 'vitest'
 
 describe('transformFetchingDomain', () => {
@@ -23,6 +23,30 @@ describe('transformFetchingDomain', () => {
 
     it('should return stripped domain without -preview', async () => {
         expect(await transformFetchingDomain({ domain: 'bluesky-preview.com' })).toBe(`${s3Bucket}bluesky`)
+    })
+})
+
+describe('stripUrl', () => {
+    it('should return the unchanged value if no protocol is inside', () => {
+        expect(convertURLIntoApexId('taco')).toStrictEqual('taco')
+    })
+    it('should remove www.', () => {
+        expect(convertURLIntoApexId('www.taco.net')).toStrictEqual('taco')
+    })
+    it('should remove https://', () => {
+        expect(convertURLIntoApexId('https://taco.org')).toStrictEqual('taco')
+    })
+    it('should remove both https:// and www.', () => {
+        expect(convertURLIntoApexId('https://www.taco.org')).toStrictEqual('taco')
+    })
+    it('should remove both www. and https://', () => {
+        expect(convertURLIntoApexId('https://longer-one.com')).toStrictEqual('longer-one')
+    })
+    it('should remove the .net', () => {
+        expect(convertURLIntoApexId('green.net')).toStrictEqual('green')
+    })
+    it('should remove the slug after .com', () => {
+        expect(convertURLIntoApexId('https://hlbowman.com/local/heating-air-conditioning-service')).toStrictEqual('hlbowman')
     })
 })
 
