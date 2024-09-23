@@ -3,7 +3,6 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { ReactChild, ReactElement, ReactNode } from 'react'
 import { LatLngTuple } from 'leaflet'
 import { VcitaData } from 'components/custom/Engage'
-import { SiteData } from 'zod-objects'
 
 export interface ThemeStyles {
     logoColor: string
