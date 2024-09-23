@@ -6,7 +6,7 @@ import { submit as webhookSubmit } from '../../../services/contact-us-form/webho
 import { submit as SES } from '../../../services/contact-us-form/SES'
 import { submit as BMP } from '../../../services/contact-us-form/BMP'
 import { handleFormError } from 'services/contact-us-form/errors'
-import { ContactFormSchema, zodDataParse } from 'zod-objects'
+import { ContactFormSchema, zodDataParse } from 'schema/zod-objects'
 
 export async function POST(request: NextRequest, res: any) {
     const formRequest = await request.json()
