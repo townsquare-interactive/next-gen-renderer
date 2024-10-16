@@ -149,7 +149,6 @@ export const convertURLIntoApexId = (domain: string) => {
     const removeAfterPeriod = /\..*/
     apexID = apexID?.replace(removeAfterPeriod, '')
     apexID = removeCustomVercelDomainPostfixes(apexID)
-    console.log('here is a converted ID', apexID)
     return apexID
 }
 

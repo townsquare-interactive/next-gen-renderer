@@ -630,6 +630,7 @@ export const siteDataEx = {
     s3Folder: 'clttestsiteforjoshedwards',
     favicon: 'star.png',
     fontImport: ' body {font-family:Lato}\n    .hd-font{font-family:Lato} \n    .txt-font{font-family:Lato}\n    .feat-font{font-family:Josefin Sans}\n    ',
+    formService: 'webook',
 }
 
 export const itemStyle = {

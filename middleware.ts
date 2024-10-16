@@ -18,7 +18,7 @@ export const config = {
 export default async function middleware(req: NextRequest) {
     const url = req.nextUrl
 
-    const freeDomainPostfix = process.env.NEXT_PUBLIC_ROOT_DOMAIN || '.vercel.app'
+    const freeDomainPostfix = process.env.NEXT_PUBLIC_ROOT_DOMAIN || 'vercel.app'
 
     // Get hostname of request (e.g. demo.vercel.pub, demo.localhost:3000)
     let hostname = req.headers.get('host')!.replace('.localhost:3000', `.${freeDomainPostfix}`)
